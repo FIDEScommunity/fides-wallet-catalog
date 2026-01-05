@@ -1,0 +1,43 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "IDEMIA",
+    "did": "did:web:idemia.com",
+    "website": "https://idemia.com",
+    "logo": "https://idemia.com/logo.png",
+    "contact": {
+      "email": "contact@idemia.com"
+    }
+  },
+  "wallets": [
+    {
+      "id": "idemia-digital-id-wallet",
+      "name": "IDEMIA Digital ID Wallet",
+      "description": "An enterprise-grade digital identity wallet from a global leader in identity solutions, designed for government-scale deployments with ISO-compliant mobile driving licenses.",
+      "logo": "https://idemia.com/wallet-logo.png",
+      "website": "https://idemia.com/digital-id-wallet",
+      "type": "personal",
+      "platforms": ["iOS", "Android"],
+      "openSource": false,
+      "credentialFormats": ["mDL/mDoc", "SD-JWT-VC"],
+      "issuanceProtocols": ["OpenID4VCI", "ISO 18013-5 (Device Retrieval)"],
+      "presentationProtocols": ["OpenID4VP", "ISO 18013-5"],
+      "supportedDIDMethods": ["did:key", "did:web"],
+      "keyManagement": ["Secure Enclave (iOS)", "StrongBox (Android)", "TEE"],
+      "certifications": ["EUDI Wallet LSP", "Common Criteria"],
+      "standards": ["ARF 1.4", "mDL ISO 18013-5"],
+      "features": [
+        "Government-scale deployment",
+        "ISO 18013-5 compliant mDL",
+        "NFC proximity verification",
+        "Biometric binding",
+        "High assurance identity proofing"
+      ],
+      "documentation": "https://idemia.com/developers",
+      "status": "production",
+      "releaseDate": "2020-09-01"
+    }
+  ],
+  "lastUpdated": "2025-01-05T12:00:00Z"
+}
+

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "iGrant.io",
+    "did": "did:web:igrant.io",
+    "website": "https://igrant.io",
+    "logo": "https://igrant.io/logo.png",
+    "contact": {
+      "email": "info@igrant.io"
+    }
+  },
+  "wallets": [
+    {
+      "id": "igrant-data-wallet",
+      "name": "Data Wallet by iGrant.io",
+      "description": "A privacy-first data wallet focused on GDPR compliance and data exchange, enabling individuals to manage consent and share verifiable credentials securely.",
+      "logo": "https://igrant.io/wallet-logo.png",
+      "website": "https://igrant.io/datawallet",
+      "type": "personal",
+      "platforms": ["iOS", "Android", "Web"],
+      "openSource": true,
+      "license": "Apache-2.0",
+      "repository": "https://github.com/decentralised-dataexchange/data-wallet",
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "AnonCreds"],
+      "issuanceProtocols": ["OpenID4VCI", "DIDComm Issue Credential v2"],
+      "presentationProtocols": ["OpenID4VP", "DIDComm Present Proof v2"],
+      "supportedDIDMethods": ["did:key", "did:web", "did:peer"],
+      "keyManagement": ["Secure Enclave (iOS)", "StrongBox (Android)", "Software"],
+      "certifications": [],
+      "standards": ["ARF 1.4"],
+      "features": [
+        "GDPR consent management",
+        "Data agreement signing",
+        "Privacy dashboard",
+        "Credential sharing with consent",
+        "Audit trail"
+      ],
+      "documentation": "https://docs.igrant.io",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/data-wallet/id1522644429",
+        "android": "https://play.google.com/store/apps/details?id=io.igrant.mobileagent"
+      },
+      "status": "production",
+      "releaseDate": "2021-06-01"
+    }
+  ],
+  "lastUpdated": "2025-01-05T12:00:00Z"
+}
+

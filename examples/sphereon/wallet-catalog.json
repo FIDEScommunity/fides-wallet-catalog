@@ -1,0 +1,47 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Sphereon",
+    "did": "did:web:sphereon.com",
+    "website": "https://sphereon.com",
+    "logo": "https://sphereon.com/logo.png",
+    "contact": {
+      "email": "info@sphereon.com"
+    }
+  },
+  "wallets": [
+    {
+      "id": "sphereon-wallet",
+      "name": "Sphereon Wallet",
+      "description": "Enterprise-grade digital identity wallet with support for multiple credential formats and protocols.",
+      "logo": "https://sphereon.com/wallet-logo.png",
+      "website": "https://sphereon.com/wallet",
+      "type": "both",
+      "platforms": ["iOS", "Android", "Web"],
+      "openSource": true,
+      "license": "Apache-2.0",
+      "repository": "https://github.com/Sphereon-Opensource/ssi-mobile-wallet",
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC", "mDL/mDoc"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP", "SIOPv2"],
+      "supportedDIDMethods": ["did:web", "did:key", "did:jwk", "did:ion", "did:ebsi"],
+      "keyManagement": ["Secure Enclave (iOS)", "StrongBox (Android)", "Software"],
+      "certifications": ["EUDI Wallet LSP"],
+      "standards": ["ARF 1.4", "EBSI"],
+      "features": [
+        "Multi-tenant support",
+        "Enterprise integration",
+        "Biometric authentication",
+        "Cross-platform sync"
+      ],
+      "documentation": "https://docs.sphereon.com/wallet",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/sphereon-wallet/id987654321",
+        "android": "https://play.google.com/store/apps/details?id=com.sphereon.wallet"
+      },
+      "status": "production",
+      "releaseDate": "2022-03-15"
+    }
+  ],
+  "lastUpdated": "2025-01-03T14:30:00Z"
+}

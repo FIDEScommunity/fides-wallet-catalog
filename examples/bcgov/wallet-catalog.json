@@ -1,0 +1,49 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Government of British Columbia",
+    "did": "did:web:digital.gov.bc.ca",
+    "website": "https://digital.gov.bc.ca",
+    "logo": "https://digital.gov.bc.ca/logo.png",
+    "contact": {
+      "email": "DItrust@gov.bc.ca"
+    }
+  },
+  "wallets": [
+    {
+      "id": "bc-wallet",
+      "name": "BC Wallet",
+      "description": "A government-issued digital wallet for citizens of British Columbia, built on Hyperledger Aries, enabling secure storage of government-issued credentials.",
+      "logo": "https://digital.gov.bc.ca/bc-wallet-logo.png",
+      "website": "https://www2.gov.bc.ca/gov/content/governments/government-id/bc-wallet",
+      "type": "personal",
+      "platforms": ["iOS", "Android"],
+      "openSource": true,
+      "license": "Apache-2.0",
+      "repository": "https://github.com/bcgov/bc-wallet-mobile",
+      "credentialFormats": ["AnonCreds"],
+      "issuanceProtocols": ["DIDComm Issue Credential v1"],
+      "presentationProtocols": ["DIDComm Present Proof v1"],
+      "supportedDIDMethods": ["did:peer", "did:indy"],
+      "keyManagement": ["Secure Enclave (iOS)", "StrongBox (Android)"],
+      "certifications": [],
+      "standards": [],
+      "features": [
+        "Government credential issuance",
+        "Person credential",
+        "Lawyer credential",
+        "Biometric authentication",
+        "Offline support"
+      ],
+      "documentation": "https://github.com/bcgov/bc-wallet-mobile/wiki",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/bc-wallet/id1587380443",
+        "android": "https://play.google.com/store/apps/details?id=ca.bc.gov.BCWallet"
+      },
+      "status": "production",
+      "releaseDate": "2022-05-01"
+    }
+  ],
+  "lastUpdated": "2025-01-05T12:00:00Z"
+}
+

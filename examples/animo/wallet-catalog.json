@@ -1,0 +1,48 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Animo Solutions",
+    "did": "did:web:animo.id",
+    "website": "https://animo.id",
+    "logo": "https://animo.id/images/logo.png",
+    "contact": {
+      "email": "info@animo.id",
+      "support": "https://animo.id/support"
+    }
+  },
+  "wallets": [
+    {
+      "id": "paradym-wallet",
+      "name": "Paradym Wallet",
+      "description": "A user-friendly wallet for managing verifiable credentials, built on the Credo framework.",
+      "logo": "https://paradym.id/logo.png",
+      "website": "https://paradym.id",
+      "type": "personal",
+      "platforms": ["iOS", "Android"],
+      "openSource": true,
+      "license": "Apache-2.0",
+      "repository": "https://github.com/animo/paradym-wallet",
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "AnonCreds", "mDL/mDoc"],
+      "issuanceProtocols": ["OpenID4VCI", "DIDComm Issue Credential v2"],
+      "presentationProtocols": ["OpenID4VP", "DIDComm Present Proof v2", "SIOPv2"],
+      "supportedDIDMethods": ["did:web", "did:key", "did:jwk", "did:peer"],
+      "keyManagement": ["Secure Enclave (iOS)", "StrongBox (Android)", "Software"],
+      "certifications": [],
+      "standards": ["ARF 1.4", "HAIP"],
+      "features": [
+        "Biometric authentication",
+        "QR code scanning",
+        "Credential sharing",
+        "Backup & recovery"
+      ],
+      "documentation": "https://docs.paradym.id",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/paradym-wallet/id123456789",
+        "android": "https://play.google.com/store/apps/details?id=id.paradym.wallet"
+      },
+      "status": "production",
+      "releaseDate": "2023-06-01"
+    }
+  ],
+  "lastUpdated": "2025-01-05T10:00:00Z"
+}

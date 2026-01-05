@@ -1,0 +1,47 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Trinsic",
+    "did": "did:web:trinsic.id",
+    "website": "https://trinsic.id",
+    "logo": "https://trinsic.id/logo.png",
+    "contact": {
+      "email": "support@trinsic.id"
+    }
+  },
+  "wallets": [
+    {
+      "id": "trinsic-wallet",
+      "name": "Trinsic Wallet",
+      "description": "A developer-friendly identity wallet platform with white-label SDKs and APIs, enabling organizations to quickly deploy verifiable credential solutions.",
+      "logo": "https://trinsic.id/wallet-logo.png",
+      "website": "https://trinsic.id/wallet",
+      "type": "both",
+      "platforms": ["iOS", "Android", "Web"],
+      "openSource": false,
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "AnonCreds"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP", "SIOPv2"],
+      "supportedDIDMethods": ["did:web", "did:key", "did:ion"],
+      "keyManagement": ["Secure Enclave (iOS)", "StrongBox (Android)", "Cloud KMS"],
+      "certifications": [],
+      "standards": [],
+      "features": [
+        "White-label SDK",
+        "Developer-friendly API",
+        "Credential templates",
+        "Analytics dashboard",
+        "Multi-platform support"
+      ],
+      "documentation": "https://docs.trinsic.id",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/trinsic-wallet/id1475160728",
+        "android": "https://play.google.com/store/apps/details?id=id.trinsic.wallet"
+      },
+      "status": "production",
+      "releaseDate": "2020-03-01"
+    }
+  ],
+  "lastUpdated": "2025-01-05T12:00:00Z"
+}
+

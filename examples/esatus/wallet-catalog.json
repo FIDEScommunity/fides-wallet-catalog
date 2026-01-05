@@ -1,0 +1,64 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "esatus AG",
+    "did": "did:web:esatus.com",
+    "website": "https://esatus.com",
+    "logo": "https://esatus.com/logo.png",
+    "contact": {
+      "email": "info@esatus.com"
+    }
+  },
+  "wallets": [
+    {
+      "id": "esatus-wallet",
+      "name": "esatus Wallet",
+      "description": "Enterprise identity wallet with focus on organizational credentials and compliance.",
+      "logo": "https://esatus.com/wallet-logo.png",
+      "website": "https://esatus.com/wallet",
+      "type": "organizational",
+      "platforms": ["iOS", "Android", "Web", "Windows"],
+      "openSource": false,
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "X.509"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP", "SIOPv2"],
+      "supportedDIDMethods": ["did:web", "did:key", "did:ebsi"],
+      "keyManagement": ["HSM", "Cloud KMS", "Software"],
+      "certifications": ["ISO 27001", "EUDI Wallet LSP"],
+      "standards": ["ARF 1.4", "EBSI"],
+      "features": [
+        "Enterprise SSO integration",
+        "Audit logging",
+        "Multi-organization support",
+        "Role-based access control"
+      ],
+      "documentation": "https://docs.esatus.com",
+      "status": "production",
+      "releaseDate": "2021-09-01"
+    },
+    {
+      "id": "esatus-consumer-wallet",
+      "name": "esatus Personal Wallet",
+      "description": "Consumer-focused wallet for personal digital identity.",
+      "website": "https://esatus.com/personal-wallet",
+      "type": "personal",
+      "platforms": ["iOS", "Android"],
+      "openSource": false,
+      "credentialFormats": ["SD-JWT-VC", "mDL/mDoc"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP", "ISO 18013-5"],
+      "supportedDIDMethods": ["did:key", "did:jwk"],
+      "keyManagement": ["Secure Enclave (iOS)", "StrongBox (Android)"],
+      "certifications": [],
+      "standards": ["ARF 1.4"],
+      "features": [
+        "Biometric authentication",
+        "Offline verification",
+        "Privacy-preserving presentations"
+      ],
+      "status": "beta",
+      "releaseDate": "2024-11-01"
+    }
+  ],
+  "lastUpdated": "2024-12-20T09:00:00Z"
+}

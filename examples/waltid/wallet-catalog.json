@@ -1,0 +1,48 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "walt.id",
+    "did": "did:web:walt.id",
+    "website": "https://walt.id",
+    "logo": "https://walt.id/logo.png",
+    "contact": {
+      "email": "office@walt.id"
+    }
+  },
+  "wallets": [
+    {
+      "id": "waltid-wallet",
+      "name": "walt.id Web Wallet",
+      "description": "An open-source, white-label identity wallet solution that can be deployed as a web application, supporting multiple credential formats and protocols.",
+      "logo": "https://walt.id/wallet-logo.png",
+      "website": "https://wallet.walt.id",
+      "type": "both",
+      "platforms": ["Web"],
+      "openSource": true,
+      "license": "Apache-2.0",
+      "repository": "https://github.com/walt-id/waltid-identity",
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC", "mDL/mDoc"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP", "SIOPv2"],
+      "supportedDIDMethods": ["did:web", "did:key", "did:jwk", "did:ebsi", "did:cheqd"],
+      "keyManagement": ["Software", "Cloud KMS"],
+      "certifications": [],
+      "standards": ["ARF 1.4", "EBSI"],
+      "features": [
+        "White-label customization",
+        "Multi-tenant support",
+        "REST API",
+        "Kubernetes deployment",
+        "DID management"
+      ],
+      "documentation": "https://docs.walt.id",
+      "appStoreLinks": {
+        "web": "https://wallet.walt.id"
+      },
+      "status": "production",
+      "releaseDate": "2022-06-01"
+    }
+  ],
+  "lastUpdated": "2025-01-05T12:00:00Z"
+}
+

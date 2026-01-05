@@ -1,0 +1,43 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Thales Group",
+    "did": "did:web:thalesgroup.com",
+    "website": "https://thalesgroup.com",
+    "logo": "https://thalesgroup.com/logo.png",
+    "contact": {
+      "email": "dis.info@thalesgroup.com"
+    }
+  },
+  "wallets": [
+    {
+      "id": "thales-digital-id-wallet",
+      "name": "Thales Digital ID Wallet",
+      "description": "An enterprise digital identity wallet solution from Thales, supporting mobile driver's licenses and government credentials with strong security guarantees.",
+      "logo": "https://thalesgroup.com/wallet-logo.png",
+      "website": "https://thalesgroup.com/digital-id-wallet",
+      "type": "both",
+      "platforms": ["iOS", "Android"],
+      "openSource": false,
+      "credentialFormats": ["mDL/mDoc", "SD-JWT-VC", "X.509"],
+      "issuanceProtocols": ["OpenID4VCI", "ISO 18013-5 (Device Retrieval)"],
+      "presentationProtocols": ["OpenID4VP", "ISO 18013-5"],
+      "supportedDIDMethods": ["did:web", "did:key"],
+      "keyManagement": ["Secure Enclave (iOS)", "StrongBox (Android)", "HSM", "Smart Card"],
+      "certifications": ["EUDI Wallet LSP", "Common Criteria", "ISO 27001"],
+      "standards": ["ARF 1.4", "mDL ISO 18013-5", "EBSI"],
+      "features": [
+        "Government-grade security",
+        "Remote identity proofing",
+        "PKI integration",
+        "Smart card support",
+        "Enterprise MDM integration"
+      ],
+      "documentation": "https://thalesgroup.com/developers",
+      "status": "production",
+      "releaseDate": "2021-03-01"
+    }
+  ],
+  "lastUpdated": "2025-01-05T12:00:00Z"
+}
+

@@ -1,0 +1,254 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://fides.community/schemas/wallet-catalog/v1",
+  "title": "FIDES Wallet Catalog Descriptor",
+  "description": "Schema voor het beschrijven van digitale wallets door wallet providers",
+  "type": "object",
+  "required": ["$schema", "provider", "wallets"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "const": "https://fides.community/schemas/wallet-catalog/v1"
+    },
+    "provider": {
+      "type": "object",
+      "description": "Informatie over de wallet provider/organisatie",
+      "required": ["name", "did"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Naam van de organisatie"
+        },
+        "did": {
+          "type": "string",
+          "description": "DID van de organisatie",
+          "pattern": "^did:[a-z]+:.+"
+        },
+        "website": {
+          "type": "string",
+          "format": "uri",
+          "description": "Website van de organisatie"
+        },
+        "logo": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL naar het logo van de organisatie"
+        },
+        "contact": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string",
+              "format": "email"
+            },
+            "support": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        }
+      }
+    },
+    "wallets": {
+      "type": "array",
+      "description": "Lijst van wallets die deze provider aanbiedt",
+      "items": {
+        "$ref": "#/definitions/Wallet"
+      },
+      "minItems": 1
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp van laatste update"
+    }
+  },
+  "definitions": {
+    "Wallet": {
+      "type": "object",
+      "required": ["id", "name", "type"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unieke identifier voor de wallet binnen deze catalog",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "name": {
+          "type": "string",
+          "description": "Naam van de wallet"
+        },
+        "description": {
+          "type": "string",
+          "description": "Korte beschrijving van de wallet"
+        },
+        "logo": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL naar het logo van de wallet"
+        },
+        "website": {
+          "type": "string",
+          "format": "uri",
+          "description": "Website/landingspagina van de wallet"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["personal", "organizational", "both"],
+          "description": "Type wallet: personal (voor burgers), organizational (voor organisaties), of both"
+        },
+        "platforms": {
+          "type": "array",
+          "description": "Ondersteunde platforms",
+          "items": {
+            "type": "string",
+            "enum": ["iOS", "Android", "Web", "Windows", "macOS", "Linux", "CLI"]
+          }
+        },
+        "openSource": {
+          "type": "boolean",
+          "description": "Is de wallet open source?"
+        },
+        "license": {
+          "type": "string",
+          "description": "Open source licentie (indien van toepassing)",
+          "examples": ["MIT", "Apache-2.0", "GPL-3.0", "EUPL-1.2"]
+        },
+        "repository": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL naar de source code repository"
+        },
+        "credentialFormats": {
+          "type": "array",
+          "description": "Ondersteunde credential formaten",
+          "items": {
+            "type": "string",
+            "enum": [
+              "SD-JWT",
+              "SD-JWT-VC",
+              "mDL/mDoc",
+              "AnonCreds",
+              "JWT-VC",
+              "JSON-LD VC",
+              "X.509",
+              "CBOR-LD"
+            ]
+          }
+        },
+        "issuanceProtocols": {
+          "type": "array",
+          "description": "Ondersteunde issuance protocols",
+          "items": {
+            "type": "string",
+            "enum": [
+              "OpenID4VCI",
+              "DIDComm Issue Credential v1",
+              "DIDComm Issue Credential v2",
+              "ISO 18013-5 (Device Retrieval)"
+            ]
+          }
+        },
+        "presentationProtocols": {
+          "type": "array",
+          "description": "Ondersteunde presentation protocols",
+          "items": {
+            "type": "string",
+            "enum": [
+              "OpenID4VP",
+              "DIDComm Present Proof v1",
+              "DIDComm Present Proof v2",
+              "ISO 18013-5",
+              "SIOPv2"
+            ]
+          }
+        },
+        "supportedDIDMethods": {
+          "type": "array",
+          "description": "Ondersteunde DID methodes",
+          "items": {
+            "type": "string",
+            "pattern": "^did:[a-z]+$",
+            "examples": ["did:web", "did:key", "did:jwk", "did:peer", "did:ion", "did:ebsi"]
+          }
+        },
+        "keyManagement": {
+          "type": "array",
+          "description": "Ondersteunde key management methodes",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Software",
+              "Secure Enclave (iOS)",
+              "StrongBox (Android)",
+              "TEE",
+              "HSM",
+              "Cloud KMS",
+              "Smart Card",
+              "FIDO2/WebAuthn"
+            ]
+          }
+        },
+        "certifications": {
+          "type": "array",
+          "description": "Certificeringen en compliance",
+          "items": {
+            "type": "string",
+            "examples": ["EUDI Wallet LSP", "ISO 27001", "SOC 2", "Common Criteria"]
+          }
+        },
+        "standards": {
+          "type": "array",
+          "description": "Ondersteunde standaarden/profielen",
+          "items": {
+            "type": "string",
+            "examples": ["ARF 1.4", "HAIP", "mDL ISO 18013-5", "EBSI"]
+          }
+        },
+        "features": {
+          "type": "array",
+          "description": "Overige features/functionaliteiten",
+          "items": {
+            "type": "string"
+          },
+          "examples": [
+            ["Biometric authentication", "Backup & recovery", "Multi-device sync", "Offline support"]
+          ]
+        },
+        "documentation": {
+          "type": "string",
+          "format": "uri",
+          "description": "Link naar documentatie"
+        },
+        "appStoreLinks": {
+          "type": "object",
+          "description": "Links naar app stores",
+          "properties": {
+            "iOS": {
+              "type": "string",
+              "format": "uri"
+            },
+            "android": {
+              "type": "string",
+              "format": "uri"
+            },
+            "web": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        },
+        "status": {
+          "type": "string",
+          "enum": ["development", "beta", "production", "deprecated"],
+          "description": "Status van de wallet"
+        },
+        "releaseDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Release datum"
+        }
+      }
+    }
+  }
+}
+

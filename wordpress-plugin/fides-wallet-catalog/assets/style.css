@@ -1,0 +1,592 @@
+/**
+ * FIDES Wallet Catalog - WordPress Plugin Styles
+ */
+
+/* CSS Variables */
+.fides-wallet-catalog {
+  --fides-bg-primary: #0f172a;
+  --fides-bg-secondary: #1e293b;
+  --fides-bg-card: rgba(30, 41, 59, 0.8);
+  --fides-text-primary: #f1f5f9;
+  --fides-text-secondary: #94a3b8;
+  --fides-text-muted: #64748b;
+  --fides-border: rgba(255, 255, 255, 0.1);
+  --fides-accent: #3b82f6;
+  --fides-accent-hover: #60a5fa;
+  --fides-success: #22c55e;
+  --fides-warning: #f59e0b;
+  --fides-radius: 12px;
+  --fides-radius-lg: 16px;
+}
+
+.fides-wallet-catalog[data-theme="light"] {
+  --fides-bg-primary: #f8fafc;
+  --fides-bg-secondary: #ffffff;
+  --fides-bg-card: #ffffff;
+  --fides-text-primary: #1e293b;
+  --fides-text-secondary: #475569;
+  --fides-text-muted: #94a3b8;
+  --fides-border: rgba(0, 0, 0, 0.1);
+}
+
+/* Container */
+.fides-wallet-catalog {
+  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--fides-bg-primary);
+  color: var(--fides-text-primary);
+  padding: 2rem;
+  border-radius: var(--fides-radius-lg);
+  min-height: 400px;
+}
+
+/* Loading state */
+.fides-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  color: var(--fides-text-secondary);
+}
+
+.fides-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--fides-border);
+  border-top-color: var(--fides-accent);
+  border-radius: 50%;
+  animation: fides-spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes fides-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Header */
+.fides-header {
+  margin-bottom: 2rem;
+}
+
+.fides-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: var(--fides-text-primary);
+}
+
+.fides-subtitle {
+  color: var(--fides-text-secondary);
+  margin: 0;
+}
+
+/* Search */
+.fides-search-container {
+  margin-bottom: 1.5rem;
+}
+
+.fides-search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.fides-search-input {
+  width: 100%;
+  padding: 0.875rem 2.75rem 0.875rem 3rem !important;
+  background: var(--fides-bg-secondary);
+  border: 1px solid var(--fides-border);
+  border-radius: var(--fides-radius);
+  color: var(--fides-text-primary);
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  text-indent: 0;
+}
+
+.fides-search-input:focus {
+  outline: none;
+  border-color: var(--fides-accent);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.fides-search-input::placeholder {
+  color: var(--fides-text-muted);
+}
+
+.fides-search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--fides-text-muted);
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fides-search-clear {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background: var(--fides-bg-card);
+  border: 1px solid var(--fides-border);
+  border-radius: 50%;
+  color: var(--fides-text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.fides-search-clear:hover {
+  background: var(--fides-accent);
+  border-color: var(--fides-accent);
+  color: white;
+}
+
+.fides-search-clear.hidden {
+  display: none;
+}
+
+/* Filter Bar */
+.fides-filter-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.fides-filter-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.fides-filter-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--fides-bg-secondary);
+  border: 1px solid var(--fides-border);
+  border-radius: var(--fides-radius);
+  color: var(--fides-text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.fides-filter-toggle:hover {
+  background: var(--fides-bg-card);
+  border-color: var(--fides-text-muted);
+}
+
+.fides-filter-toggle.active {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: var(--fides-accent);
+  color: var(--fides-accent);
+}
+
+.fides-filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.375rem;
+  background: var(--fides-accent);
+  border-radius: 9999px;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.fides-clear-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: none;
+  color: var(--fides-text-muted);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.fides-clear-all:hover {
+  color: var(--fides-text-primary);
+}
+
+.fides-results-count {
+  color: var(--fides-text-secondary);
+  font-size: 0.875rem;
+}
+
+/* Filters Panel */
+.fides-filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  background: var(--fides-bg-secondary);
+  border-radius: var(--fides-radius);
+  border: 1px solid var(--fides-border);
+  animation: fides-slide-down 0.2s ease;
+}
+
+@keyframes fides-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fides-filter-group {
+  min-width: 0;
+}
+
+.fides-filter-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--fides-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.fides-filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.fides-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: transparent;
+  border: 1px solid var(--fides-border);
+  border-radius: 9999px;
+  color: var(--fides-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.fides-filter-btn:hover {
+  background: var(--fides-bg-card);
+  border-color: var(--fides-text-muted);
+}
+
+.fides-filter-btn.active {
+  background: var(--fides-accent);
+  border-color: var(--fides-accent);
+  color: white;
+}
+
+/* Results info */
+.fides-results-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  color: var(--fides-text-secondary);
+  font-size: 0.875rem;
+}
+
+.fides-clear-filters {
+  background: none;
+  border: none;
+  color: var(--fides-accent);
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.fides-clear-filters:hover {
+  color: var(--fides-accent-hover);
+  text-decoration: underline;
+}
+
+/* Wallet Grid */
+.fides-wallet-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.fides-wallet-grid[data-columns="1"] { grid-template-columns: 1fr; }
+.fides-wallet-grid[data-columns="2"] { grid-template-columns: repeat(2, 1fr); }
+.fides-wallet-grid[data-columns="3"] { grid-template-columns: repeat(3, 1fr); }
+.fides-wallet-grid[data-columns="4"] { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 1024px) {
+  .fides-wallet-grid[data-columns="3"],
+  .fides-wallet-grid[data-columns="4"] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .fides-wallet-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Wallet Card */
+.fides-wallet-card {
+  background: var(--fides-bg-card);
+  border: 1px solid var(--fides-border);
+  border-radius: var(--fides-radius-lg);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.fides-wallet-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.fides-wallet-header {
+  padding: 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  min-height: 100px;
+}
+
+.fides-wallet-header.type-personal {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(6, 182, 212, 0.15) 100%);
+}
+
+.fides-wallet-header.type-organizational {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%);
+}
+
+.fides-wallet-header.type-both {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(249, 115, 22, 0.15) 100%);
+}
+
+.fides-wallet-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--fides-radius);
+  object-fit: cover;
+  background: var(--fides-bg-secondary);
+}
+
+.fides-wallet-logo-placeholder {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--fides-radius);
+  background: var(--fides-bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fides-text-muted);
+}
+
+.fides-wallet-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.fides-wallet-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  color: var(--fides-text-primary);
+}
+
+.fides-wallet-provider {
+  font-size: 0.875rem;
+  color: var(--fides-text-secondary);
+  margin: 0;
+}
+
+.fides-wallet-type-badge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+.fides-wallet-type-badge.personal {
+  background: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.fides-wallet-type-badge.organizational {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fcd34d;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.fides-wallet-type-badge.both {
+  background: rgba(34, 197, 94, 0.2);
+  color: #86efac;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.fides-wallet-body {
+  padding: 1.25rem;
+}
+
+.fides-wallet-description {
+  font-size: 0.875rem;
+  color: var(--fides-text-secondary);
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+}
+
+/* Tags */
+.fides-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-bottom: 1rem;
+}
+
+.fides-tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  background: rgba(59, 130, 246, 0.1);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.fides-tag.platform {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--fides-text-secondary);
+  border-color: var(--fides-border);
+}
+
+/* Section */
+.fides-wallet-section {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--fides-border);
+}
+
+.fides-wallet-section-title {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--fides-text-muted);
+  margin: 0 0 0.5rem 0;
+}
+
+/* Footer */
+.fides-wallet-footer {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--fides-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fides-wallet-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.fides-wallet-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  color: var(--fides-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.fides-wallet-link:hover {
+  color: var(--fides-text-primary);
+}
+
+.fides-expand-btn {
+  background: none;
+  border: none;
+  color: var(--fides-accent);
+  font-size: 0.875rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.fides-expand-btn:hover {
+  color: var(--fides-accent-hover);
+}
+
+/* Empty state */
+.fides-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--fides-text-secondary);
+}
+
+.fides-empty-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1rem;
+  color: var(--fides-text-muted);
+}
+
+.fides-empty-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: var(--fides-text-primary);
+}
+
+.fides-empty-text {
+  margin: 0;
+}
+
+/* Animations */
+@keyframes fides-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fides-wallet-card {
+  animation: fides-fade-in 0.3s ease forwards;
+}
+
+.fides-wallet-card:nth-child(1) { animation-delay: 0ms; }
+.fides-wallet-card:nth-child(2) { animation-delay: 50ms; }
+.fides-wallet-card:nth-child(3) { animation-delay: 100ms; }
+.fides-wallet-card:nth-child(4) { animation-delay: 150ms; }
+.fides-wallet-card:nth-child(5) { animation-delay: 200ms; }
+.fides-wallet-card:nth-child(6) { animation-delay: 250ms; }
