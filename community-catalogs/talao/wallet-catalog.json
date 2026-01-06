@@ -30,7 +30,7 @@
       "id": "talao-wallet",
       "name": "Talao Wallet",
       "logo": "https://www.google.com/s2/favicons?domain=talao.io&sz=128",
-      "description": "Enterprise-grade identity wallet supporting verifiable credentials and decentralized identity protocols. HAIP compliant (expected November 2025).",
+      "description": "Enterprise-grade identity wallet supporting verifiable credentials and decentralized identity protocols.",
       "type": "personal",
       "platforms": ["iOS", "Android"],
       "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC"],

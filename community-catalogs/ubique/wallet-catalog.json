@@ -10,7 +10,7 @@
       "id": "heidi-wallet",
       "name": "Heidi Wallet App",
       "logo": "https://www.google.com/s2/favicons?domain=ubique.ch&sz=128",
-      "description": "A HAIP-compliant Swiss identity wallet supporting verifiable credentials for secure digital identity management.",
+      "description": "A DIIP v4-compliant Swiss identity wallet supporting verifiable credentials for secure digital identity management.",
       "type": "personal",
       "platforms": ["iOS", "Android"],
       "credentialFormats": ["SD-JWT-VC", "JWT-VC"],

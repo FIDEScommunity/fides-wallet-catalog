@@ -10,7 +10,7 @@
       "id": "unime-wallet",
       "name": "UniMe",
       "logo": "https://www.google.com/s2/favicons?domain=impierce.com&sz=128",
-      "description": "A privacy-focused identity wallet supporting HAIP interoperability profile, enabling secure storage and sharing of verifiable credentials.",
+      "description": "A privacy-focused identity wallet supporting DIIP v4 interoperability profile, enabling secure storage and sharing of verifiable credentials.",
       "type": "personal",
       "platforms": ["iOS", "Android"],
       "credentialFormats": ["SD-JWT-VC", "JWT-VC"],

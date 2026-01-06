@@ -10,7 +10,7 @@
       "id": "digidentity-wallet",
       "name": "Digidentity Wallet",
       "logo": "https://www.google.com/s2/favicons?domain=digidentity.com&sz=128",
-      "description": "A HAIP-compliant identity wallet from Digidentity, supporting secure digital identity verification and verifiable credentials for government and enterprise use cases.",
+      "description": "An EWC v3-compliant identity wallet from Digidentity, supporting secure digital identity verification and verifiable credentials for government and enterprise use cases.",
       "type": "personal",
       "platforms": ["iOS", "Android"],
       "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
