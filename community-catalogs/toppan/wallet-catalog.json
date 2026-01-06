@@ -1,0 +1,30 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Toppan",
+    "website": "https://www.toppan.com"
+  },
+  "wallets": [
+    {
+      "id": "toppan-security-wallet",
+      "name": "TOPPAN Security Wallet",
+      "description": "An enterprise security wallet supporting digital identity and verifiable credentials. HAIP compliance expected November 2025.",
+      "type": "personal",
+      "platforms": ["iOS", "Android"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
+      "protocols": {
+        "issuance": ["OpenID4VCI"],
+        "presentation": ["OpenID4VP"]
+      },
+      "website": "https://www.toppan.com",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/ts-digital-onboarding-solution/id6479744390",
+        "android": "https://play.google.com/store/apps/details?id=com.toppangravity.app"
+      },
+      "openSource": false,
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2025-01-06T12:00:00Z"
+}
+

@@ -1011,47 +1011,130 @@
 }
 
 /* FIDES/Light theme modal adjustments */
-.fides-wallet-catalog[data-theme="fides"] ~ .fides-modal-overlay .fides-modal,
-.fides-wallet-catalog[data-theme="light"] ~ .fides-modal-overlay .fides-modal {
+.fides-modal-overlay[data-theme="fides"] .fides-modal,
+.fides-modal-overlay[data-theme="light"] .fides-modal {
   background: #ffffff;
 }
 
-.fides-wallet-catalog[data-theme="fides"] ~ .fides-modal-overlay .fides-modal-grid-item,
-.fides-wallet-catalog[data-theme="light"] ~ .fides-modal-overlay .fides-modal-grid-item {
-  background: #f8fafc;
+.fides-modal-overlay[data-theme="fides"] .fides-modal-grid-item,
+.fides-modal-overlay[data-theme="light"] .fides-modal-grid-item {
+  background: #f1f5f9;
 }
 
-.fides-wallet-catalog[data-theme="fides"] ~ .fides-modal-overlay .fides-modal-title,
-.fides-wallet-catalog[data-theme="light"] ~ .fides-modal-overlay .fides-modal-title,
-.fides-wallet-catalog[data-theme="fides"] ~ .fides-modal-overlay .fides-modal-provider-value,
-.fides-wallet-catalog[data-theme="light"] ~ .fides-modal-overlay .fides-modal-provider-value {
-  color: #1e293b;
+.fides-modal-overlay[data-theme="fides"] .fides-modal-title,
+.fides-modal-overlay[data-theme="light"] .fides-modal-title,
+.fides-modal-overlay[data-theme="fides"] .fides-modal-provider-value,
+.fides-modal-overlay[data-theme="light"] .fides-modal-provider-value {
+  color: #000000;
 }
 
-.fides-wallet-catalog[data-theme="fides"] ~ .fides-modal-overlay .fides-modal-provider,
-.fides-wallet-catalog[data-theme="light"] ~ .fides-modal-overlay .fides-modal-provider,
-.fides-wallet-catalog[data-theme="fides"] ~ .fides-modal-overlay .fides-modal-description,
-.fides-wallet-catalog[data-theme="light"] ~ .fides-modal-overlay .fides-modal-description {
-  color: #475569;
+.fides-modal-overlay[data-theme="fides"] .fides-modal-provider,
+.fides-modal-overlay[data-theme="light"] .fides-modal-provider,
+.fides-modal-overlay[data-theme="fides"] .fides-modal-description,
+.fides-modal-overlay[data-theme="light"] .fides-modal-description {
+  color: #374151;
 }
 
-.fides-wallet-catalog[data-theme="fides"] ~ .fides-modal-overlay .fides-modal-badge.type-personal,
-.fides-wallet-catalog[data-theme="light"] ~ .fides-modal-overlay .fides-modal-badge.type-personal {
+.fides-modal-overlay[data-theme="fides"] .fides-modal-header,
+.fides-modal-overlay[data-theme="light"] .fides-modal-header {
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-close,
+.fides-modal-overlay[data-theme="light"] .fides-modal-close {
+  color: #6b7280;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-close:hover,
+.fides-modal-overlay[data-theme="light"] .fides-modal-close:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #000000;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.type-personal,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.type-personal {
   background: rgba(10, 110, 243, 0.1);
   color: #0A6EF3;
 }
 
-.fides-wallet-catalog[data-theme="fides"] ~ .fides-modal-overlay .fides-modal-badge.type-organizational,
-.fides-wallet-catalog[data-theme="light"] ~ .fides-modal-overlay .fides-modal-badge.type-organizational {
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.type-organizational,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.type-organizational {
   background: rgba(124, 58, 237, 0.1);
   color: #7c3aed;
 }
 
-
-.fides-wallet-catalog[data-theme="fides"] ~ .fides-modal-overlay .fides-modal-badge.open-source,
-.fides-wallet-catalog[data-theme="light"] ~ .fides-modal-overlay .fides-modal-badge.open-source {
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.open-source,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.open-source {
   background: rgba(34, 197, 94, 0.1);
   color: #16a34a;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.proprietary,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.proprietary {
+  background: rgba(0, 0, 0, 0.05);
+  color: #6b7280;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-grid-label,
+.fides-modal-overlay[data-theme="light"] .fides-modal-grid-label {
+  color: #6b7280;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-section-title,
+.fides-modal-overlay[data-theme="light"] .fides-modal-section-title {
+  color: #6b7280;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-provider-section,
+.fides-modal-overlay[data-theme="light"] .fides-modal-provider-section {
+  border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-provider-label,
+.fides-modal-overlay[data-theme="light"] .fides-modal-provider-label {
+  color: #6b7280;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-provider-did,
+.fides-modal-overlay[data-theme="light"] .fides-modal-provider-did {
+  background: #f1f5f9;
+  color: #374151;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-link,
+.fides-modal-overlay[data-theme="light"] .fides-modal-link {
+  background: rgba(0, 0, 0, 0.05);
+  color: #000000;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-link:hover,
+.fides-modal-overlay[data-theme="light"] .fides-modal-link:hover {
+  background: #0A6EF3;
+  color: #ffffff;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-link.primary,
+.fides-modal-overlay[data-theme="light"] .fides-modal-link.primary {
+  background: #0A6EF3;
+  color: #ffffff;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-link.primary:hover,
+.fides-modal-overlay[data-theme="light"] .fides-modal-link.primary:hover {
+  background: #0858c4;
+}
+
+/* FIDES theme tags in modal */
+.fides-modal-overlay[data-theme="fides"] .fides-tag,
+.fides-modal-overlay[data-theme="light"] .fides-tag {
+  background: rgba(0, 0, 0, 0.05);
+  color: #374151;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-tag.platform,
+.fides-modal-overlay[data-theme="light"] .fides-tag.platform {
+  background: rgba(10, 110, 243, 0.1);
+  color: #0A6EF3;
 }
 
 /* ==========================================================================
@@ -1203,60 +1286,120 @@
 }
 
 /* FIDES/Light theme - Extended modal adjustments */
-.fides-wallet-catalog[data-theme="fides"] ~ .fides-modal-overlay .fides-tag.did-method,
-.fides-wallet-catalog[data-theme="light"] ~ .fides-modal-overlay .fides-tag.did-method {
+.fides-modal-overlay[data-theme="fides"] .fides-tag.did-method,
+.fides-modal-overlay[data-theme="light"] .fides-tag.did-method {
   background: rgba(0, 0, 0, 0.05);
-  color: #475569;
+  color: #374151;
 }
 
-.fides-wallet-catalog[data-theme="fides"] ~ .fides-modal-overlay .fides-tag.protocol-issuance,
-.fides-wallet-catalog[data-theme="light"] ~ .fides-modal-overlay .fides-tag.protocol-issuance {
+.fides-modal-overlay[data-theme="fides"] .fides-tag.protocol-issuance,
+.fides-modal-overlay[data-theme="light"] .fides-tag.protocol-issuance {
   background: rgba(34, 197, 94, 0.1);
   color: #16a34a;
 }
 
-.fides-wallet-catalog[data-theme="fides"] ~ .fides-modal-overlay .fides-tag.protocol-presentation,
-.fides-wallet-catalog[data-theme="light"] ~ .fides-modal-overlay .fides-tag.protocol-presentation {
+.fides-modal-overlay[data-theme="fides"] .fides-tag.protocol-presentation,
+.fides-modal-overlay[data-theme="light"] .fides-tag.protocol-presentation {
   background: rgba(124, 58, 237, 0.1);
   color: #7c3aed;
 }
 
-.fides-wallet-catalog[data-theme="fides"] ~ .fides-modal-overlay .fides-tag.standard,
-.fides-wallet-catalog[data-theme="light"] ~ .fides-modal-overlay .fides-tag.standard {
+.fides-modal-overlay[data-theme="fides"] .fides-tag.standard,
+.fides-modal-overlay[data-theme="light"] .fides-tag.standard {
   background: rgba(6, 182, 212, 0.1);
   color: #0891b2;
 }
 
-.fides-wallet-catalog[data-theme="fides"] ~ .fides-modal-overlay .fides-modal-features,
-.fides-wallet-catalog[data-theme="light"] ~ .fides-modal-overlay .fides-modal-features {
-  background: #f8fafc;
+.fides-modal-overlay[data-theme="fides"] .fides-tag.certification,
+.fides-modal-overlay[data-theme="light"] .fides-tag.certification {
+  background: rgba(245, 158, 11, 0.1);
+  color: #d97706;
 }
 
-.fides-wallet-catalog[data-theme="fides"] ~ .fides-modal-overlay .fides-features-list li,
-.fides-wallet-catalog[data-theme="light"] ~ .fides-modal-overlay .fides-features-list li {
-  color: #475569;
+.fides-modal-overlay[data-theme="fides"] .fides-tag.key-mgmt,
+.fides-modal-overlay[data-theme="light"] .fides-tag.key-mgmt {
+  background: rgba(0, 0, 0, 0.05);
+  color: #374151;
 }
 
-.fides-wallet-catalog[data-theme="fides"] ~ .fides-modal-overlay .fides-modal-badge.status-dev,
-.fides-wallet-catalog[data-theme="light"] ~ .fides-modal-overlay .fides-modal-badge.status-dev {
+.fides-modal-overlay[data-theme="fides"] .fides-modal-features,
+.fides-modal-overlay[data-theme="light"] .fides-modal-features {
+  background: #f1f5f9;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-features-title,
+.fides-modal-overlay[data-theme="light"] .fides-modal-features-title {
+  color: #000000;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-features-list li,
+.fides-modal-overlay[data-theme="light"] .fides-features-list li {
+  color: #374151;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.status-dev,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.status-dev {
   background: rgba(234, 179, 8, 0.1);
   color: #ca8a04;
 }
 
-.fides-wallet-catalog[data-theme="fides"] ~ .fides-modal-overlay .fides-modal-badge.status-beta,
-.fides-wallet-catalog[data-theme="light"] ~ .fides-modal-overlay .fides-modal-badge.status-beta {
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.status-beta,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.status-beta {
   background: rgba(249, 115, 22, 0.1);
   color: #ea580c;
 }
 
-.fides-wallet-catalog[data-theme="fides"] ~ .fides-modal-overlay .fides-modal-badge.status-prod,
-.fides-wallet-catalog[data-theme="light"] ~ .fides-modal-overlay .fides-modal-badge.status-prod {
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.status-prod,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.status-prod {
   background: rgba(34, 197, 94, 0.1);
   color: #16a34a;
 }
 
-.fides-wallet-catalog[data-theme="fides"] ~ .fides-modal-overlay .fides-modal-badge.status-deprecated,
-.fides-wallet-catalog[data-theme="light"] ~ .fides-modal-overlay .fides-modal-badge.status-deprecated {
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.status-deprecated,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.status-deprecated {
   background: rgba(239, 68, 68, 0.1);
   color: #dc2626;
+}
+
+/* FIDES theme - Logo placeholder in modal */
+.fides-modal-overlay[data-theme="fides"] .fides-modal-logo-placeholder,
+.fides-modal-overlay[data-theme="light"] .fides-modal-logo-placeholder {
+  background: #f1f5f9;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-logo-placeholder svg,
+.fides-modal-overlay[data-theme="light"] .fides-modal-logo-placeholder svg {
+  color: #0A6EF3;
+}
+
+/* FIDES theme - Credential format tags in modal */
+.fides-modal-overlay[data-theme="fides"] .fides-tag.credential-format,
+.fides-modal-overlay[data-theme="light"] .fides-tag.credential-format {
+  background: rgba(10, 110, 243, 0.1);
+  color: #0A6EF3;
+}
+
+/* FIDES theme - Platform tags in modal */
+.fides-modal-overlay[data-theme="fides"] .fides-tag.platform,
+.fides-modal-overlay[data-theme="light"] .fides-tag.platform {
+  background: rgba(10, 110, 243, 0.1);
+  color: #0A6EF3;
+}
+
+.fides-modal-overlay[data-theme="fides"] a.fides-tag.platform.clickable,
+.fides-modal-overlay[data-theme="light"] a.fides-tag.platform.clickable {
+  text-decoration: none;
+}
+
+.fides-modal-overlay[data-theme="fides"] a.fides-tag.platform.clickable:hover,
+.fides-modal-overlay[data-theme="light"] a.fides-tag.platform.clickable:hover {
+  background: #0A6EF3;
+  color: #ffffff;
+}
+
+/* FIDES theme - Features checkmark color */
+.fides-modal-overlay[data-theme="fides"] .fides-features-list li svg,
+.fides-modal-overlay[data-theme="light"] .fides-features-list li svg {
+  color: #16a34a;
 }

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Gataca Labs",
+    "website": "https://gataca.io"
+  },
+  "wallets": [
+    {
+      "id": "gataca-wallet",
+      "name": "Gataca Digital Identity Wallet",
+      "description": "A privacy-first digital identity wallet supporting verifiable credentials and self-sovereign identity. HAIP compliance expected November 2025.",
+      "type": "personal",
+      "platforms": ["iOS", "Android"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC"],
+      "protocols": {
+        "issuance": ["OpenID4VCI"],
+        "presentation": ["OpenID4VP"]
+      },
+      "website": "https://gataca.io",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/gataca/id1498607616",
+        "android": "https://play.google.com/store/apps/details?id=com.gataca.identity"
+      },
+      "openSource": false,
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2025-01-06T12:00:00Z"
+}
+

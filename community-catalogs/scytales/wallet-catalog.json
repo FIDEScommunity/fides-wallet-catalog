@@ -1,0 +1,30 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Scytales",
+    "website": "https://scytales.com"
+  },
+  "wallets": [
+    {
+      "id": "scytales-id-wallet",
+      "name": "Scytales ID Wallet",
+      "description": "An enterprise-grade digital identity wallet for secure credential management, supporting various verifiable credential formats.",
+      "type": "personal",
+      "platforms": ["iOS", "Android"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
+      "protocols": {
+        "issuance": ["OpenID4VCI"],
+        "presentation": ["OpenID4VP"]
+      },
+      "website": "https://scytales.com",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/scytales-id/id1526508103",
+        "android": "https://play.google.com/store/apps/details?id=com.scytales.wallet"
+      },
+      "openSource": false,
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2025-01-06T12:00:00Z"
+}
+

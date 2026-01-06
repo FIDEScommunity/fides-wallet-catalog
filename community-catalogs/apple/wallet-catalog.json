@@ -1,0 +1,25 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Apple",
+    "website": "https://www.apple.com"
+  },
+  "wallets": [
+    {
+      "id": "apple-wallet",
+      "name": "Apple Wallet",
+      "description": "Apple's built-in wallet app for iPhone, supporting payment cards, boarding passes, tickets, and increasingly digital identity credentials like driver's licenses.",
+      "type": "personal",
+      "platforms": ["iOS"],
+      "credentialFormats": ["mDL/mDoc"],
+      "website": "https://www.apple.com/wallet/",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/us/app/apple-wallet/id1160481993"
+      },
+      "openSource": false,
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2025-01-06T12:00:00Z"
+}
+

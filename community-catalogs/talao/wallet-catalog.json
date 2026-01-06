@@ -1,0 +1,49 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Talao",
+    "website": "https://talao.io"
+  },
+  "wallets": [
+    {
+      "id": "altme-wallet",
+      "name": "Altme",
+      "description": "A self-sovereign identity wallet for managing verifiable credentials, supporting decentralized identity standards and blockchain-based credentials.",
+      "type": "personal",
+      "platforms": ["iOS", "Android"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC"],
+      "protocols": {
+        "issuance": ["OpenID4VCI"],
+        "presentation": ["OpenID4VP"]
+      },
+      "website": "https://altme.io",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/altme-wallet/id1633216869",
+        "android": "https://play.google.com/store/apps/details?id=co.altme.alt.me.altme"
+      },
+      "openSource": true,
+      "status": "production"
+    },
+    {
+      "id": "talao-wallet",
+      "name": "Talao Wallet",
+      "description": "Enterprise-grade identity wallet supporting verifiable credentials and decentralized identity protocols. HAIP compliant (expected November 2025).",
+      "type": "personal",
+      "platforms": ["iOS", "Android"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC"],
+      "protocols": {
+        "issuance": ["OpenID4VCI"],
+        "presentation": ["OpenID4VP"]
+      },
+      "website": "https://talao.io",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/talao-wallet/id1582183266",
+        "android": "https://play.google.com/store/apps/details?id=co.talao.wallet"
+      },
+      "openSource": true,
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2025-01-06T12:00:00Z"
+}
+

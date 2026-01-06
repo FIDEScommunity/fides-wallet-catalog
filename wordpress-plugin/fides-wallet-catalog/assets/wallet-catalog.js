@@ -457,8 +457,11 @@
       ...(wallet.protocols || [])
     ].filter((v, i, a) => a.indexOf(v) === i); // Remove duplicates
 
+    // Get current theme from container
+    const currentTheme = container.getAttribute('data-theme') || 'dark';
+
     const modalHtml = `
-      <div class="fides-modal-overlay" id="fides-modal-overlay">
+      <div class="fides-modal-overlay" id="fides-modal-overlay" data-theme="${currentTheme}">
         <div class="fides-modal" role="dialog" aria-modal="true" aria-labelledby="fides-modal-title">
           <div class="fides-modal-header">
             <div class="fides-modal-header-content">
@@ -544,7 +547,7 @@
                     ${icons.fileCheck} Credential Formats
                   </div>
                   <div class="fides-modal-grid-value">
-                    ${sortCredentialFormats(wallet.credentialFormats).map(f => `<span class="fides-tag">${escapeHtml(f)}</span>`).join('')}
+                    ${sortCredentialFormats(wallet.credentialFormats).map(f => `<span class="fides-tag credential-format">${escapeHtml(f)}</span>`).join('')}
                   </div>
                 </div>
               ` : ''}

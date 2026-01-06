@@ -41,9 +41,11 @@
         "Software"
       ],
       "certifications": [],
-      "standards": [
-        "ARF 1.4",
+      "interoperabilityProfiles": [
         "HAIP"
+      ],
+      "standards": [
+        "ARF 1.4"
       ],
       "features": [
         "Biometric authentication",
@@ -53,7 +55,7 @@
       ],
       "documentation": "https://docs.paradym.id",
       "appStoreLinks": {
-        "iOS": "https://apps.apple.com/app/paradym-wallet/id123456789",
+        "iOS": "https://apps.apple.com/us/app/paradym-wallet/id6449846111",
         "android": "https://play.google.com/store/apps/details?id=id.paradym.wallet"
       },
       "status": "production",
@@ -68,8 +70,33 @@
           "support": "https://animo.id/support"
         }
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/examples/animo/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T06:32:28.510Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/animo/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.493Z",
+      "source": "local"
+    },
+    {
+      "id": "apple-wallet",
+      "name": "Apple Wallet",
+      "description": "Apple's built-in wallet app for iPhone, supporting payment cards, boarding passes, tickets, and increasingly digital identity credentials like driver's licenses.",
+      "type": "personal",
+      "platforms": [
+        "iOS"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc"
+      ],
+      "website": "https://www.apple.com/wallet/",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/us/app/apple-wallet/id1160481993"
+      },
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "Apple",
+        "website": "https://www.apple.com"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/apple/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.495Z",
       "source": "local"
     },
     {
@@ -128,8 +155,47 @@
           "email": "DItrust@gov.bc.ca"
         }
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/examples/bcgov/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T06:32:28.511Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/bcgov/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.495Z",
+      "source": "local"
+    },
+    {
+      "id": "digidentity-wallet",
+      "name": "Digidentity Wallet",
+      "description": "A HAIP-compliant identity wallet from Digidentity, supporting secure digital identity verification and verifiable credentials for government and enterprise use cases.",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "protocols": {
+        "issuance": [
+          "OpenID4VCI"
+        ],
+        "presentation": [
+          "OpenID4VP"
+        ]
+      },
+      "interoperabilityProfiles": [
+        "HAIP"
+      ],
+      "website": "https://www.digidentity.com",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/digidentity-wallet/id916749732",
+        "android": "https://play.google.com/store/apps/details?id=com.digidentity"
+      },
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "Digidentity",
+        "website": "https://www.digidentity.com"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/digidentity/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.495Z",
       "source": "local"
     },
     {
@@ -194,8 +260,8 @@
           "email": "info@esatus.com"
         }
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/examples/esatus/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T06:32:28.512Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/esatus/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.495Z",
       "source": "local"
     },
     {
@@ -248,8 +314,70 @@
           "email": "info@esatus.com"
         }
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/examples/esatus/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T06:32:28.512Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/esatus/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.495Z",
+      "source": "local"
+    },
+    {
+      "id": "gataca-wallet",
+      "name": "Gataca Digital Identity Wallet",
+      "description": "A privacy-first digital identity wallet supporting verifiable credentials and self-sovereign identity. HAIP compliance expected November 2025.",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "JSON-LD VC"
+      ],
+      "protocols": {
+        "issuance": [
+          "OpenID4VCI"
+        ],
+        "presentation": [
+          "OpenID4VP"
+        ]
+      },
+      "website": "https://gataca.io",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/gataca/id1498607616",
+        "android": "https://play.google.com/store/apps/details?id=com.gataca.identity"
+      },
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "Gataca Labs",
+        "website": "https://gataca.io"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/gataca/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.496Z",
+      "source": "local"
+    },
+    {
+      "id": "google-wallet",
+      "name": "Google Wallet",
+      "description": "Google's digital wallet for Android devices, supporting payment cards, loyalty cards, boarding passes, tickets, and digital identity credentials.",
+      "type": "personal",
+      "platforms": [
+        "Android"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc"
+      ],
+      "website": "https://wallet.google.com/",
+      "appStoreLinks": {
+        "android": "https://play.google.com/store/apps/details?id=com.google.android.apps.walletnfcrel"
+      },
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "Google",
+        "website": "https://www.google.com"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/google/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.496Z",
       "source": "local"
     },
     {
@@ -312,8 +440,8 @@
           "email": "contact@idemia.com"
         }
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/examples/idemia/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T06:32:28.520Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/idemia/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.496Z",
       "source": "local"
     },
     {
@@ -355,6 +483,10 @@
         "Software"
       ],
       "certifications": [],
+      "interoperabilityProfiles": [
+        "HAIP",
+        "DIIP v4"
+      ],
       "standards": [
         "ARF 1.4"
       ],
@@ -381,8 +513,47 @@
           "email": "info@igrant.io"
         }
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/examples/igrant/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T06:32:28.521Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/igrant/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.496Z",
+      "source": "local"
+    },
+    {
+      "id": "unime-wallet",
+      "name": "UniMe",
+      "description": "A privacy-focused identity wallet supporting HAIP interoperability profile, enabling secure storage and sharing of verifiable credentials.",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "protocols": {
+        "issuance": [
+          "OpenID4VCI"
+        ],
+        "presentation": [
+          "OpenID4VP"
+        ]
+      },
+      "interoperabilityProfiles": [
+        "HAIP"
+      ],
+      "website": "https://impierce.com/unime",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/unime-identity-wallet/id6451394321",
+        "android": "https://play.google.com/store/apps/details?id=com.impierce.identity_wallet"
+      },
+      "openSource": true,
+      "status": "production",
+      "provider": {
+        "name": "Impierce Technologies",
+        "website": "https://impierce.com"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/impierce/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.497Z",
       "source": "local"
     },
     {
@@ -424,6 +595,9 @@
       "certifications": [
         "EUDI Wallet LSP"
       ],
+      "interoperabilityProfiles": [
+        "HAIP"
+      ],
       "standards": [
         "ARF 1.4"
       ],
@@ -449,8 +623,76 @@
           "email": "info@lissi.id"
         }
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/examples/lissi/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T06:32:28.522Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/lissi/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.497Z",
+      "source": "local"
+    },
+    {
+      "id": "microsoft-authenticator",
+      "name": "Microsoft Authenticator",
+      "description": "Microsoft's authentication app that also supports verifiable credentials through Microsoft Entra Verified ID, enabling passwordless sign-in and digital identity verification.",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "JWT-VC"
+      ],
+      "protocols": {
+        "issuance": [
+          "OpenID4VCI"
+        ],
+        "presentation": [
+          "OpenID4VP"
+        ]
+      },
+      "website": "https://www.microsoft.com/authenticator",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/us/app/microsoft-authenticator/id983156458",
+        "android": "https://play.google.com/store/apps/details?id=com.azure.authenticator"
+      },
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "Microsoft",
+        "website": "https://www.microsoft.com"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/microsoft/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.497Z",
+      "source": "local"
+    },
+    {
+      "id": "yivi",
+      "name": "Yivi",
+      "description": "An open-source privacy-friendly identity wallet (formerly IRMA) developed by the Privacy by Design Foundation, enabling attribute-based credentials with selective disclosure.",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "AnonCreds"
+      ],
+      "protocols": {
+        "presentation": [
+          "IRMA Protocol"
+        ]
+      },
+      "website": "https://yivi.app",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/yivi/id1294092994",
+        "android": "https://play.google.com/store/apps/details?id=org.irmacard.cardemu"
+      },
+      "openSource": true,
+      "repositoryUrl": "https://github.com/privacybydesign",
+      "status": "production",
+      "provider": {
+        "name": "Privacy by Design Foundation",
+        "website": "https://privacybydesign.foundation"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/privacybydesign/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.497Z",
       "source": "local"
     },
     {
@@ -520,8 +762,44 @@
           "email": "info@procivis.ch"
         }
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/examples/procivis/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T06:32:28.522Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/procivis/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.498Z",
+      "source": "local"
+    },
+    {
+      "id": "scytales-id-wallet",
+      "name": "Scytales ID Wallet",
+      "description": "An enterprise-grade digital identity wallet for secure credential management, supporting various verifiable credential formats.",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "protocols": {
+        "issuance": [
+          "OpenID4VCI"
+        ],
+        "presentation": [
+          "OpenID4VP"
+        ]
+      },
+      "website": "https://scytales.com",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/scytales-id/id1526508103",
+        "android": "https://play.google.com/store/apps/details?id=com.scytales.wallet"
+      },
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "Scytales",
+        "website": "https://scytales.com"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/scytales/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.498Z",
       "source": "local"
     },
     {
@@ -593,8 +871,118 @@
           "email": "info@sphereon.com"
         }
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/examples/sphereon/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T06:32:28.523Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/sphereon/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.498Z",
+      "source": "local"
+    },
+    {
+      "id": "altme-wallet",
+      "name": "Altme",
+      "description": "A self-sovereign identity wallet for managing verifiable credentials, supporting decentralized identity standards and blockchain-based credentials.",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "JSON-LD VC"
+      ],
+      "protocols": {
+        "issuance": [
+          "OpenID4VCI"
+        ],
+        "presentation": [
+          "OpenID4VP"
+        ]
+      },
+      "website": "https://altme.io",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/altme-wallet/id1633216869",
+        "android": "https://play.google.com/store/apps/details?id=co.altme.alt.me.altme"
+      },
+      "openSource": true,
+      "status": "production",
+      "provider": {
+        "name": "Talao",
+        "website": "https://talao.io"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/talao/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.498Z",
+      "source": "local"
+    },
+    {
+      "id": "talao-wallet",
+      "name": "Talao Wallet",
+      "description": "Enterprise-grade identity wallet supporting verifiable credentials and decentralized identity protocols. HAIP compliant (expected November 2025).",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "JSON-LD VC"
+      ],
+      "protocols": {
+        "issuance": [
+          "OpenID4VCI"
+        ],
+        "presentation": [
+          "OpenID4VP"
+        ]
+      },
+      "website": "https://talao.io",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/talao-wallet/id1582183266",
+        "android": "https://play.google.com/store/apps/details?id=co.talao.wallet"
+      },
+      "openSource": true,
+      "status": "production",
+      "provider": {
+        "name": "Talao",
+        "website": "https://talao.io"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/talao/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.498Z",
+      "source": "local"
+    },
+    {
+      "id": "vira-wallet",
+      "name": "Vira",
+      "description": "A decentralized identity wallet built on IOTA technology, enabling secure management of verifiable credentials with a focus on sustainability and scalability.",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "protocols": {
+        "issuance": [
+          "OpenID4VCI"
+        ],
+        "presentation": [
+          "OpenID4VP"
+        ]
+      },
+      "website": "https://tanglelabs.io",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/vira-wallet/id6466040524",
+        "android": "https://play.google.com/store/apps/details?id=io.tanglelabs.vira"
+      },
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "Tangle Labs",
+        "website": "https://tanglelabs.io"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/tanglelabs/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.498Z",
       "source": "local"
     },
     {
@@ -661,8 +1049,44 @@
           "email": "dis.info@thalesgroup.com"
         }
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/examples/thales/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T06:32:28.523Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/thales/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.498Z",
+      "source": "local"
+    },
+    {
+      "id": "toppan-security-wallet",
+      "name": "TOPPAN Security Wallet",
+      "description": "An enterprise security wallet supporting digital identity and verifiable credentials. HAIP compliance expected November 2025.",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "protocols": {
+        "issuance": [
+          "OpenID4VCI"
+        ],
+        "presentation": [
+          "OpenID4VP"
+        ]
+      },
+      "website": "https://www.toppan.com",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/ts-digital-onboarding-solution/id6479744390",
+        "android": "https://play.google.com/store/apps/details?id=com.toppangravity.app"
+      },
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "Toppan",
+        "website": "https://www.toppan.com"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/toppan/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.499Z",
       "source": "local"
     },
     {
@@ -725,8 +1149,86 @@
           "email": "support@trinsic.id"
         }
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/examples/trinsic/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T06:32:28.524Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/trinsic/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.499Z",
+      "source": "local"
+    },
+    {
+      "id": "heidi-wallet",
+      "name": "Heidi Wallet App",
+      "description": "A HAIP-compliant Swiss identity wallet supporting verifiable credentials for secure digital identity management.",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "protocols": {
+        "issuance": [
+          "OpenID4VCI"
+        ],
+        "presentation": [
+          "OpenID4VP"
+        ]
+      },
+      "interoperabilityProfiles": [
+        "HAIP"
+      ],
+      "website": "https://ubique.ch",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/bj/app/heidi-wallet/id6741428702",
+        "android": "https://play.google.com/store/apps/details?id=ch.ubique.heidi.android"
+      },
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "Ubique Innovation",
+        "website": "https://ubique.ch"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/ubique/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.499Z",
+      "source": "local"
+    },
+    {
+      "id": "vidwallet",
+      "name": "VIDwallet",
+      "description": "A HAIP-compliant digital identity wallet enabling secure storage and presentation of verifiable credentials for individuals and organizations.",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "protocols": {
+        "issuance": [
+          "OpenID4VCI"
+        ],
+        "presentation": [
+          "OpenID4VP"
+        ]
+      },
+      "interoperabilityProfiles": [
+        "HAIP"
+      ],
+      "website": "https://www.validatedid.com",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/vidwallet/id1554340592",
+        "android": "https://play.google.com/store/apps/details?id=com.validatedid.wallet"
+      },
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "Validated ID",
+        "website": "https://www.validatedid.com"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/validatedid/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.499Z",
       "source": "local"
     },
     {
@@ -793,8 +1295,155 @@
           "email": "office@walt.id"
         }
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/examples/waltid/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T06:32:28.524Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/waltid/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.500Z",
+      "source": "local"
+    },
+    {
+      "id": "wwwallet",
+      "name": "wwWallet",
+      "description": "An open-source web-based wallet for verifiable credentials, enabling users to manage their digital identity directly in the browser without installing an app.",
+      "type": "personal",
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "protocols": {
+        "issuance": [
+          "OpenID4VCI"
+        ],
+        "presentation": [
+          "OpenID4VP"
+        ]
+      },
+      "website": "https://wwwallet.org",
+      "appStoreLinks": {
+        "web": "https://demo.wwwallet.org/login"
+      },
+      "openSource": true,
+      "repositoryUrl": "https://github.com/wwWallet",
+      "status": "production",
+      "provider": {
+        "name": "wwWallet.org",
+        "website": "https://wwwallet.org"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/wwwallet/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.500Z",
+      "source": "local"
+    },
+    {
+      "id": "eausweise",
+      "name": "eAusweise (Austrian Wallet)",
+      "description": "The official Austrian government identity wallet, enabling citizens to store and present digital identity documents and verifiable credentials.",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "mDL/mDoc"
+      ],
+      "protocols": {
+        "issuance": [
+          "OpenID4VCI"
+        ],
+        "presentation": [
+          "OpenID4VP"
+        ]
+      },
+      "website": "https://www.oesterreich.gv.at",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/de/app/eausweise/id1641458335",
+        "android": "https://play.google.com/store/apps/details?id=at.gv.oe.awp.eausweise"
+      },
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "youniqx Identity AG",
+        "website": "https://www.youniqx.com"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/youniqx/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.500Z",
+      "source": "local"
+    },
+    {
+      "id": "eid-li",
+      "name": "eID.li (Liechtenstein Wallet)",
+      "description": "The official Liechtenstein government identity wallet, enabling citizens to store and present digital identity documents and verifiable credentials.",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "mDL/mDoc"
+      ],
+      "protocols": {
+        "issuance": [
+          "OpenID4VCI"
+        ],
+        "presentation": [
+          "OpenID4VP"
+        ]
+      },
+      "website": "https://www.llv.li",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/us/app/eid-li/id1490404943",
+        "android": "https://play.google.com/store/apps/details?id=li.llv.eidli.app"
+      },
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "youniqx Identity AG",
+        "website": "https://www.youniqx.com"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/youniqx/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.500Z",
+      "source": "local"
+    },
+    {
+      "id": "yourd-data-wallet",
+      "name": "YourD Data Wallet",
+      "description": "A data ownership wallet supporting both HAIP and DIIP v4 interoperability profiles, enabling secure management of personal data and verifiable credentials.",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "protocols": {
+        "issuance": [
+          "OpenID4VCI"
+        ],
+        "presentation": [
+          "OpenID4VP"
+        ]
+      },
+      "interoperabilityProfiles": [
+        "HAIP",
+        "DIIP v4"
+      ],
+      "website": "https://yourd.xyz",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/yourd/id6477564824",
+        "android": "https://play.google.com/store/apps/details?id=com.yourd.connect"
+      },
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "YourD",
+        "website": "https://yourd.xyz"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/yourd/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T08:54:25.501Z",
       "source": "local"
     }
   ],
@@ -810,6 +1459,10 @@
       }
     },
     {
+      "name": "Apple",
+      "website": "https://www.apple.com"
+    },
+    {
       "name": "Government of British Columbia",
       "did": "did:web:digital.gov.bc.ca",
       "website": "https://digital.gov.bc.ca",
@@ -819,6 +1472,10 @@
       }
     },
     {
+      "name": "Digidentity",
+      "website": "https://www.digidentity.com"
+    },
+    {
       "name": "esatus AG",
       "did": "did:web:esatus.com",
       "website": "https://esatus.com",
@@ -826,6 +1483,14 @@
       "contact": {
         "email": "info@esatus.com"
       }
+    },
+    {
+      "name": "Gataca Labs",
+      "website": "https://gataca.io"
+    },
+    {
+      "name": "Google",
+      "website": "https://www.google.com"
     },
     {
       "name": "IDEMIA",
@@ -846,6 +1511,10 @@
       }
     },
     {
+      "name": "Impierce Technologies",
+      "website": "https://impierce.com"
+    },
+    {
       "name": "Neosfer GmbH",
       "did": "did:web:lissi.id",
       "website": "https://lissi.id",
@@ -853,6 +1522,14 @@
       "contact": {
         "email": "info@lissi.id"
       }
+    },
+    {
+      "name": "Microsoft",
+      "website": "https://www.microsoft.com"
+    },
+    {
+      "name": "Privacy by Design Foundation",
+      "website": "https://privacybydesign.foundation"
     },
     {
       "name": "Procivis AG",
@@ -864,6 +1541,10 @@
       }
     },
     {
+      "name": "Scytales",
+      "website": "https://scytales.com"
+    },
+    {
       "name": "Sphereon",
       "did": "did:web:sphereon.com",
       "website": "https://sphereon.com",
@@ -871,6 +1552,14 @@
       "contact": {
         "email": "info@sphereon.com"
       }
+    },
+    {
+      "name": "Talao",
+      "website": "https://talao.io"
+    },
+    {
+      "name": "Tangle Labs",
+      "website": "https://tanglelabs.io"
     },
     {
       "name": "Thales Group",
@@ -882,6 +1571,10 @@
       }
     },
     {
+      "name": "Toppan",
+      "website": "https://www.toppan.com"
+    },
+    {
       "name": "Trinsic",
       "did": "did:web:trinsic.id",
       "website": "https://trinsic.id",
@@ -891,6 +1584,14 @@
       }
     },
     {
+      "name": "Ubique Innovation",
+      "website": "https://ubique.ch"
+    },
+    {
+      "name": "Validated ID",
+      "website": "https://www.validatedid.com"
+    },
+    {
       "name": "walt.id",
       "did": "did:web:walt.id",
       "website": "https://walt.id",
@@ -898,32 +1599,44 @@
       "contact": {
         "email": "office@walt.id"
       }
+    },
+    {
+      "name": "wwWallet.org",
+      "website": "https://wwwallet.org"
+    },
+    {
+      "name": "youniqx Identity AG",
+      "website": "https://www.youniqx.com"
+    },
+    {
+      "name": "YourD",
+      "website": "https://yourd.xyz"
     }
   ],
-  "lastUpdated": "2026-01-06T06:32:28.659Z",
+  "lastUpdated": "2026-01-06T08:54:25.664Z",
   "stats": {
-    "totalWallets": 12,
-    "totalProviders": 11,
+    "totalWallets": 30,
+    "totalProviders": 12,
     "byType": {
-      "personal": 10,
+      "personal": 28,
       "organizational": 2
     },
     "byPlatform": {
-      "iOS": 11,
-      "Android": 11,
-      "Web": 6,
+      "iOS": 27,
+      "Android": 27,
+      "Web": 7,
       "Windows": 1,
       "macOS": 0,
       "Linux": 0,
       "CLI": 0
     },
     "byCredentialFormat": {
-      "SD-JWT-VC": 11,
-      "JWT-VC": 8,
-      "AnonCreds": 5,
-      "mDL/mDoc": 7,
+      "SD-JWT-VC": 25,
+      "JWT-VC": 21,
+      "AnonCreds": 6,
+      "mDL/mDoc": 11,
       "X.509": 2,
-      "JSON-LD VC": 3
+      "JSON-LD VC": 6
     }
   }
 }

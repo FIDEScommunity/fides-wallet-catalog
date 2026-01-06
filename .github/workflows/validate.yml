@@ -3,12 +3,10 @@ name: Validate Wallet Catalogs
 on:
   push:
     paths:
-      - 'examples/**/wallet-catalog.json'
       - 'community-catalogs/**/wallet-catalog.json'
       - 'schemas/**'
   pull_request:
     paths:
-      - 'examples/**/wallet-catalog.json'
       - 'community-catalogs/**/wallet-catalog.json'
       - 'schemas/**'
 
@@ -34,20 +32,7 @@ jobs:
         run: |
           echo "🔍 Validating wallet catalogs against schema..."
           
-          # Validate example catalogs
-          for file in examples/*/wallet-catalog.json; do
-            if [ -f "$file" ]; then
-              echo "Validating: $file"
-              npx ajv validate \
-                -s schemas/wallet-catalog.schema.json \
-                -d "$file" \
-                --spec=draft2020 \
-                -c ajv-formats \
-                --strict=false
-            fi
-          done
-          
-          # Validate community catalogs
+          # Validate all community catalogs
           for file in community-catalogs/*/wallet-catalog.json; do
             if [ -f "$file" ]; then
               echo "Validating: $file"

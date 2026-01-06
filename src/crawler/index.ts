@@ -33,11 +33,8 @@ const validateCatalog = ajv.compile(schema);
 
 // Configuration
 const CONFIG = {
-  // Local examples directory (for development/reference)
-  localExamplesDir: path.join(process.cwd(), 'examples'),
-  
-  // Local community catalogs directory
-  localCommunityDir: path.join(process.cwd(), 'community-catalogs'),
+  // Community catalogs directory - all wallet catalogs are stored here
+  communityCatalogsDir: path.join(process.cwd(), 'community-catalogs'),
   
   // GitHub repository for community-contributed catalogs (fallback if not running locally)
   githubRepo: {
@@ -326,7 +323,7 @@ async function crawlGitHubRepo(): Promise<{ wallets: NormalizedWallet[], provide
       const catalogUrl = `https://github.com/${owner}/${repo}/blob/${branch}/${providerPath}/wallet-catalog.json`;
       const normalizedWallets = normalizeWallets(catalog, catalogUrl, 'github');
       wallets.push(...normalizedWallets);
-      providers.set(catalog.provider.did, catalog.provider);
+      providers.set(catalog.provider.did || catalog.provider.name, catalog.provider);
       
       console.log(`      ✅ Found ${catalog.wallets.length} wallet(s)`);
     }
@@ -385,7 +382,7 @@ async function crawlDIDProviders(): Promise<{ wallets: NormalizedWallet[], provi
       if (catalog) {
         const normalizedWallets = normalizeWallets(catalog, catalogUrl, 'did');
         wallets.push(...normalizedWallets);
-        providers.set(catalog.provider.did, catalog.provider);
+        providers.set(catalog.provider.did || catalog.provider.name, catalog.provider);
         
         entry.lastSuccessfulCrawl = new Date().toISOString();
         entry.status = 'active';
@@ -433,7 +430,7 @@ async function crawlLegacyRegistry(): Promise<{ wallets: NormalizedWallet[], pro
     if (catalog) {
       const normalizedWallets = normalizeWallets(catalog, entry.catalogUrl, 'did');
       wallets.push(...normalizedWallets);
-      providers.set(catalog.provider.did, catalog.provider);
+      providers.set(catalog.provider.did || catalog.provider.name, catalog.provider);
       
       entry.lastChecked = new Date().toISOString();
       entry.lastSuccessfulFetch = new Date().toISOString();
@@ -497,7 +494,7 @@ async function crawlLocalDirectory(
         if (catalog) {
           const normalizedWallets = normalizeWallets(catalog, catalogPath, source);
           wallets.push(...normalizedWallets);
-          providers.set(catalog.provider.did, catalog.provider);
+          providers.set(catalog.provider.did || catalog.provider.name, catalog.provider);
           
           console.log(`      ✅ Found ${catalog.wallets.length} wallet(s)`);
         }
@@ -514,17 +511,10 @@ async function crawlLocalDirectory(
 }
 
 /**
- * Crawl local examples (reference implementations)
+ * Crawl community catalogs (all wallet catalogs are stored here)
  */
-async function crawlLocalExamples(): Promise<{ wallets: NormalizedWallet[], providers: Map<string, WalletCatalog['provider']> }> {
-  return crawlLocalDirectory(CONFIG.localExamplesDir, 'local examples', 'local');
-}
-
-/**
- * Crawl local community catalogs
- */
-async function crawlLocalCommunity(): Promise<{ wallets: NormalizedWallet[], providers: Map<string, WalletCatalog['provider']> }> {
-  return crawlLocalDirectory(CONFIG.localCommunityDir, 'community catalogs', 'github');
+async function crawlCommunityCatalogs(): Promise<{ wallets: NormalizedWallet[], providers: Map<string, WalletCatalog['provider']> }> {
+  return crawlLocalDirectory(CONFIG.communityCatalogsDir, 'community catalogs', 'local');
 }
 
 /**
@@ -592,15 +582,17 @@ function calculateStats(wallets: NormalizedWallet[]): AggregatedCatalog['stats']
 }
 
 /**
- * Deduplicate wallets (same provider DID + wallet ID)
+ * Deduplicate wallets (same provider + wallet ID)
  * Priority: DID > GitHub > Local
+ * Uses provider DID if available, otherwise falls back to provider name
  */
 function deduplicateWallets(wallets: NormalizedWallet[]): NormalizedWallet[] {
   const seen = new Map<string, NormalizedWallet>();
   const priority = { did: 3, github: 2, local: 1 };
   
   for (const wallet of wallets) {
-    const key = `${wallet.provider.did}:${wallet.id}`;
+    const providerKey = wallet.provider.did || wallet.provider.name;
+    const key = `${providerKey}:${wallet.id}`;
     const existing = seen.get(key);
     const walletSource = (wallet as any).source || 'local';
     const existingSource = existing ? ((existing as any).source || 'local') : 'local';
@@ -622,29 +614,24 @@ async function crawl(): Promise<void> {
   const allWallets: NormalizedWallet[] = [];
   const allProviders = new Map<string, WalletCatalog['provider']>();
   
-  // 1. Crawl local examples (reference implementations)
-  const local = await crawlLocalExamples();
-  allWallets.push(...local.wallets);
-  local.providers.forEach((v, k) => allProviders.set(k, v));
-  
-  // 2. Crawl local community catalogs
-  const community = await crawlLocalCommunity();
+  // 1. Crawl community catalogs (all wallet catalogs are stored here)
+  const community = await crawlCommunityCatalogs();
   allWallets.push(...community.wallets);
   community.providers.forEach((v, k) => allProviders.set(k, v));
-  
-  // 3. Crawl GitHub repository (if enabled, for remote-only deployments)
+
+  // 2. Crawl GitHub repository (if enabled, for remote-only deployments)
   if (CONFIG.githubRepo.enabled) {
     const github = await crawlGitHubRepo();
     allWallets.push(...github.wallets);
     github.providers.forEach((v, k) => allProviders.set(k, v));
   }
   
-  // 4. Crawl DID-registered providers (with automatic DID resolution)
+  // 3. Crawl DID-registered providers (with automatic DID resolution)
   const didProviders = await crawlDIDProviders();
   allWallets.push(...didProviders.wallets);
   didProviders.providers.forEach((v, k) => allProviders.set(k, v));
   
-  // 5. Crawl legacy registry (for backwards compatibility)
+  // 4. Crawl legacy registry (for backwards compatibility)
   const legacy = await crawlLegacyRegistry();
   allWallets.push(...legacy.wallets);
   legacy.providers.forEach((v, k) => allProviders.set(k, v));

@@ -25,6 +25,7 @@
       "supportedDIDMethods": ["did:key", "did:peer", "did:indy"],
       "keyManagement": ["Secure Enclave (iOS)", "StrongBox (Android)", "Software"],
       "certifications": ["EUDI Wallet LSP"],
+      "interoperabilityProfiles": ["HAIP"],
       "standards": ["ARF 1.4"],
       "features": [
         "Biometric authentication",

@@ -19,12 +19,14 @@ wallet-catalog/
 ├── CONCEPT.md                    # Conceptual design
 ├── schemas/
 │   └── wallet-catalog.schema.json  # JSON Schema for wallet descriptors
-├── examples/                     # Example wallet catalogs
+├── community-catalogs/           # All wallet catalogs (add yours here!)
 │   ├── animo/
-│   │   ├── did.json              # Example DID document
+│   │   ├── did.json              # Example DID document (optional)
 │   │   └── wallet-catalog.json   # Wallet catalog descriptor
 │   ├── sphereon/
-│   └── esatus/
+│   ├── google/
+│   ├── apple/
+│   └── ...                       # 27+ wallet providers
 ├── src/
 │   ├── types/wallet.ts           # TypeScript types
 │   ├── crawler/index.ts          # Crawler service
@@ -33,8 +35,12 @@ wallet-catalog/
 │   └── ...
 ├── wordpress-plugin/             # WordPress plugin
 │   └── fides-wallet-catalog/
-└── data/
-    └── aggregated.json           # Aggregated wallet data
+├── data/
+│   ├── aggregated.json           # Aggregated wallet data
+│   └── did-registry.json         # Registered DIDs for automatic crawling
+└── docs/                         # Documentation
+    ├── DID_REGISTRATION.md       # How to register your DID
+    └── GITHUB_REPO_STRUCTURE.md  # Repository structure
 ```
 
 ## 🚀 Getting Started
@@ -145,7 +151,7 @@ GET /api/wallets?search=paradym&type=personal&platforms=iOS,Android&credentialFo
 The schema supports extensive wallet information:
 
 - **General**: name, description, logo, website
-- **Type**: personal, organizational, or both
+- **Type**: personal or organizational
 - **Platforms**: iOS, Android, Web, Desktop, CLI
 - **Credential Formats**: SD-JWT-VC, mDL/mDoc, AnonCreds, JWT-VC, etc.
 - **Protocols**: OpenID4VCI, OpenID4VP, DIDComm, ISO 18013-5
@@ -173,27 +179,9 @@ A WordPress plugin is included in `wordpress-plugin/fides-wallet-catalog/`.
 
 | Option | Values | Description |
 |--------|--------|-------------|
-| `type` | personal, organizational, both | Filter by wallet type |
+| `type` | personal, organizational | Filter by wallet type |
 | `show_filters` | true, false | Show/hide filters |
 | `show_search` | true, false | Show/hide search bar |
 | `columns` | 1, 2, 3, 4 | Number of columns |
 | `theme` | dark, light | Color theme |
 
-## 🛠️ Technology Stack
-
-- **Frontend**: React, Tailwind CSS, Vite
-- **Backend**: Node.js, Express
-- **Validation**: AJV (JSON Schema)
-- **Types**: TypeScript
-
-## 📝 Next Steps
-
-1. **WordPress integration**: Embed the widget in WordPress
-2. **Registration portal**: Interface for providers to register
-3. **Automatic crawling**: Cron job for periodic updates
-4. **Verification**: DID document signature verification
-5. **Caching**: Redis/database for better performance
-
-## 📄 License
-
-MIT

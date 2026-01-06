@@ -1,0 +1,25 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Google",
+    "website": "https://www.google.com"
+  },
+  "wallets": [
+    {
+      "id": "google-wallet",
+      "name": "Google Wallet",
+      "description": "Google's digital wallet for Android devices, supporting payment cards, loyalty cards, boarding passes, tickets, and digital identity credentials.",
+      "type": "personal",
+      "platforms": ["Android"],
+      "credentialFormats": ["mDL/mDoc"],
+      "website": "https://wallet.google.com/",
+      "appStoreLinks": {
+        "android": "https://play.google.com/store/apps/details?id=com.google.android.apps.walletnfcrel"
+      },
+      "openSource": false,
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2025-01-06T12:00:00Z"
+}
+

@@ -14,7 +14,7 @@
     "provider": {
       "type": "object",
       "description": "Information about the wallet provider/organization",
-      "required": ["name", "did"],
+      "required": ["name"],
       "properties": {
         "name": {
           "type": "string",
@@ -22,7 +22,7 @@
         },
         "did": {
           "type": "string",
-          "description": "Decentralized Identifier (DID) of the organization",
+          "description": "Decentralized Identifier (DID) of the organization (optional, but recommended)",
           "pattern": "^did:[a-z]+:.+"
         },
         "website": {
@@ -201,13 +201,25 @@
           },
           "examples": [["EUDI Wallet LSP", "ISO 27001", "SOC 2", "Common Criteria"]]
         },
+        "interoperabilityProfiles": {
+          "type": "array",
+          "description": "Supported interoperability profiles for cross-wallet compatibility",
+          "items": {
+            "type": "string",
+            "enum": [
+              "HAIP",
+              "DIIP v4",
+              "EWC v3"
+            ]
+          }
+        },
         "standards": {
           "type": "array",
-          "description": "Supported standards and profiles",
+          "description": "Supported technical standards",
           "items": {
             "type": "string"
           },
-          "examples": [["ARF 1.4", "HAIP", "mDL ISO 18013-5", "EBSI"]]
+          "examples": [["ARF 1.4", "mDL ISO 18013-5", "EBSI"]]
         },
         "features": {
           "type": "array",

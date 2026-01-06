@@ -1,0 +1,49 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "youniqx Identity AG",
+    "website": "https://www.youniqx.com"
+  },
+  "wallets": [
+    {
+      "id": "eausweise",
+      "name": "eAusweise (Austrian Wallet)",
+      "description": "The official Austrian government identity wallet, enabling citizens to store and present digital identity documents and verifiable credentials.",
+      "type": "personal",
+      "platforms": ["iOS", "Android"],
+      "credentialFormats": ["SD-JWT-VC", "mDL/mDoc"],
+      "protocols": {
+        "issuance": ["OpenID4VCI"],
+        "presentation": ["OpenID4VP"]
+      },
+      "website": "https://www.oesterreich.gv.at",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/de/app/eausweise/id1641458335",
+        "android": "https://play.google.com/store/apps/details?id=at.gv.oe.awp.eausweise"
+      },
+      "openSource": false,
+      "status": "production"
+    },
+    {
+      "id": "eid-li",
+      "name": "eID.li (Liechtenstein Wallet)",
+      "description": "The official Liechtenstein government identity wallet, enabling citizens to store and present digital identity documents and verifiable credentials.",
+      "type": "personal",
+      "platforms": ["iOS", "Android"],
+      "credentialFormats": ["SD-JWT-VC", "mDL/mDoc"],
+      "protocols": {
+        "issuance": ["OpenID4VCI"],
+        "presentation": ["OpenID4VP"]
+      },
+      "website": "https://www.llv.li",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/us/app/eid-li/id1490404943",
+        "android": "https://play.google.com/store/apps/details?id=li.llv.eidli.app"
+      },
+      "openSource": false,
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2025-01-06T12:00:00Z"
+}
+

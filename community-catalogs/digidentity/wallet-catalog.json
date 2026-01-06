@@ -1,0 +1,31 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Digidentity",
+    "website": "https://www.digidentity.com"
+  },
+  "wallets": [
+    {
+      "id": "digidentity-wallet",
+      "name": "Digidentity Wallet",
+      "description": "A HAIP-compliant identity wallet from Digidentity, supporting secure digital identity verification and verifiable credentials for government and enterprise use cases.",
+      "type": "personal",
+      "platforms": ["iOS", "Android"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
+      "protocols": {
+        "issuance": ["OpenID4VCI"],
+        "presentation": ["OpenID4VP"]
+      },
+      "interoperabilityProfiles": ["HAIP"],
+      "website": "https://www.digidentity.com",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/digidentity-wallet/id916749732",
+        "android": "https://play.google.com/store/apps/details?id=com.digidentity"
+      },
+      "openSource": false,
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2025-01-06T12:00:00Z"
+}
+

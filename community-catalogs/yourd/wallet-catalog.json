@@ -1,0 +1,31 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "YourD",
+    "website": "https://yourd.xyz"
+  },
+  "wallets": [
+    {
+      "id": "yourd-data-wallet",
+      "name": "YourD Data Wallet",
+      "description": "A data ownership wallet supporting both HAIP and DIIP v4 interoperability profiles, enabling secure management of personal data and verifiable credentials.",
+      "type": "personal",
+      "platforms": ["iOS", "Android"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
+      "protocols": {
+        "issuance": ["OpenID4VCI"],
+        "presentation": ["OpenID4VP"]
+      },
+      "interoperabilityProfiles": ["HAIP", "DIIP v4"],
+      "website": "https://yourd.xyz",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/yourd/id6477564824",
+        "android": "https://play.google.com/store/apps/details?id=com.yourd.connect"
+      },
+      "openSource": false,
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2025-01-06T12:00:00Z"
+}
+

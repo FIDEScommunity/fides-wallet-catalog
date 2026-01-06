@@ -1,0 +1,31 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Impierce Technologies",
+    "website": "https://impierce.com"
+  },
+  "wallets": [
+    {
+      "id": "unime-wallet",
+      "name": "UniMe",
+      "description": "A privacy-focused identity wallet supporting HAIP interoperability profile, enabling secure storage and sharing of verifiable credentials.",
+      "type": "personal",
+      "platforms": ["iOS", "Android"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
+      "protocols": {
+        "issuance": ["OpenID4VCI"],
+        "presentation": ["OpenID4VP"]
+      },
+      "interoperabilityProfiles": ["HAIP"],
+      "website": "https://impierce.com/unime",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/unime-identity-wallet/id6451394321",
+        "android": "https://play.google.com/store/apps/details?id=com.impierce.identity_wallet"
+      },
+      "openSource": true,
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2025-01-06T12:00:00Z"
+}
+

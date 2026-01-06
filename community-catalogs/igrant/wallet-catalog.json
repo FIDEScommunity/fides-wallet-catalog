@@ -27,6 +27,7 @@
       "supportedDIDMethods": ["did:key", "did:web", "did:peer"],
       "keyManagement": ["Secure Enclave (iOS)", "StrongBox (Android)", "Software"],
       "certifications": [],
+      "interoperabilityProfiles": ["HAIP", "DIIP v4"],
       "standards": ["ARF 1.4"],
       "features": [
         "GDPR consent management",

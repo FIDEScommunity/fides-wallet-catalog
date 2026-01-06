@@ -1,0 +1,30 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Microsoft",
+    "website": "https://www.microsoft.com"
+  },
+  "wallets": [
+    {
+      "id": "microsoft-authenticator",
+      "name": "Microsoft Authenticator",
+      "description": "Microsoft's authentication app that also supports verifiable credentials through Microsoft Entra Verified ID, enabling passwordless sign-in and digital identity verification.",
+      "type": "personal",
+      "platforms": ["iOS", "Android"],
+      "credentialFormats": ["JWT-VC"],
+      "protocols": {
+        "issuance": ["OpenID4VCI"],
+        "presentation": ["OpenID4VP"]
+      },
+      "website": "https://www.microsoft.com/authenticator",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/us/app/microsoft-authenticator/id983156458",
+        "android": "https://play.google.com/store/apps/details?id=com.azure.authenticator"
+      },
+      "openSource": false,
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2025-01-06T12:00:00Z"
+}
+

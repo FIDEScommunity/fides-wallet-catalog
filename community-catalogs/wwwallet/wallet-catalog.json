@@ -1,0 +1,30 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "wwWallet.org",
+    "website": "https://wwwallet.org"
+  },
+  "wallets": [
+    {
+      "id": "wwwallet",
+      "name": "wwWallet",
+      "description": "An open-source web-based wallet for verifiable credentials, enabling users to manage their digital identity directly in the browser without installing an app.",
+      "type": "personal",
+      "platforms": ["Web"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
+      "protocols": {
+        "issuance": ["OpenID4VCI"],
+        "presentation": ["OpenID4VP"]
+      },
+      "website": "https://wwwallet.org",
+      "appStoreLinks": {
+        "web": "https://demo.wwwallet.org/login"
+      },
+      "openSource": true,
+      "repositoryUrl": "https://github.com/wwWallet",
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2025-01-06T12:00:00Z"
+}
+

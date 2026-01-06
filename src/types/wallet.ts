@@ -39,7 +39,7 @@ export type KeyManagement =
 
 export interface WalletProvider {
   name: string;
-  did: string;
+  did?: string; // Optional - not all providers have a DID yet
   website?: string;
   logo?: string;
   contact?: {

@@ -28,7 +28,8 @@
       "supportedDIDMethods": ["did:web", "did:key", "did:jwk", "did:peer"],
       "keyManagement": ["Secure Enclave (iOS)", "StrongBox (Android)", "Software"],
       "certifications": [],
-      "standards": ["ARF 1.4", "HAIP"],
+      "interoperabilityProfiles": ["HAIP"],
+      "standards": ["ARF 1.4"],
       "features": [
         "Biometric authentication",
         "QR code scanning",
@@ -37,7 +38,7 @@
       ],
       "documentation": "https://docs.paradym.id",
       "appStoreLinks": {
-        "iOS": "https://apps.apple.com/app/paradym-wallet/id123456789",
+        "iOS": "https://apps.apple.com/us/app/paradym-wallet/id6449846111",
         "android": "https://play.google.com/store/apps/details?id=id.paradym.wallet"
       },
       "status": "production",
