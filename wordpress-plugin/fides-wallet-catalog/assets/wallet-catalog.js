@@ -219,6 +219,11 @@
     const filtered = getFilteredWallets();
     const activeFilterCount = getActiveFilterCount();
     
+    // Save focus state before re-rendering
+    const searchInput = document.getElementById('fides-search');
+    const wasSearchFocused = searchInput && document.activeElement === searchInput;
+    const cursorPosition = wasSearchFocused ? searchInput.selectionStart : 0;
+    
     let html = '';
 
     // Search
@@ -352,6 +357,15 @@
 
     container.innerHTML = html;
     attachEventListeners();
+    
+    // Restore focus to search input if it was focused
+    if (wasSearchFocused) {
+      const newSearchInput = document.getElementById('fides-search');
+      if (newSearchInput) {
+        newSearchInput.focus();
+        newSearchInput.setSelectionRange(cursorPosition, cursorPosition);
+      }
+    }
   }
 
   /**
