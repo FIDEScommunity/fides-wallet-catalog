@@ -3,13 +3,13 @@
   "provider": {
     "name": "Validated ID",
     "website": "https://www.validatedid.com",
-    "logo": "https://logo.clearbit.com/validatedid.com"
+    "logo": "https://www.google.com/s2/favicons?domain=validatedid.com&sz=128"
   },
   "wallets": [
     {
       "id": "vidwallet",
       "name": "VIDwallet",
-      "logo": "https://play-lh.googleusercontent.com/jHhBYSsZ0gPRKmOVv0d5pT2L9B0Rb8hPWY8xZD4RTEuH8bLBVy8rYxVqG5b5qpj5qQ=w480-h960",
+      "logo": "https://www.google.com/s2/favicons?domain=validatedid.com&sz=128",
       "description": "A HAIP-compliant digital identity wallet enabling secure storage and presentation of verifiable credentials for individuals and organizations.",
       "type": "personal",
       "platforms": ["iOS", "Android"],

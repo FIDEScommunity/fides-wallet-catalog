@@ -3,13 +3,13 @@
   "provider": {
     "name": "Apple",
     "website": "https://www.apple.com",
-    "logo": "https://logo.clearbit.com/apple.com"
+    "logo": "https://www.google.com/s2/favicons?domain=apple.com&sz=128"
   },
   "wallets": [
     {
       "id": "apple-wallet",
       "name": "Apple Wallet",
-      "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/58/59/56/58595680-1d32-f0f7-dd7d-a66b392d1f99/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/460x0w.webp",
+      "logo": "https://www.google.com/s2/favicons?domain=apple.com&sz=128",
       "description": "Apple's built-in wallet app for iPhone, supporting payment cards, boarding passes, tickets, and increasingly digital identity credentials like driver's licenses.",
       "type": "personal",
       "platforms": ["iOS"],

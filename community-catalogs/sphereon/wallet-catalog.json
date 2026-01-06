@@ -4,7 +4,7 @@
     "name": "Sphereon",
     "did": "did:web:sphereon.com",
     "website": "https://sphereon.com",
-    "logo": "https://sphereon.com/logo.png",
+    "logo": "https://www.google.com/s2/favicons?domain=sphereon.com&sz=128",
     "contact": {
       "email": "info@sphereon.com"
     }
@@ -14,7 +14,7 @@
       "id": "sphereon-wallet",
       "name": "Sphereon Wallet",
       "description": "Enterprise-grade digital identity wallet with support for multiple credential formats and protocols.",
-      "logo": "https://sphereon.com/wallet-logo.png",
+      "logo": "https://www.google.com/s2/favicons?domain=sphereon.com&sz=128",
       "website": "https://sphereon.com/wallet",
       "type": "personal",
       "platforms": ["iOS", "Android", "Web"],

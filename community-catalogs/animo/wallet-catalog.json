@@ -4,7 +4,7 @@
     "name": "Animo Solutions",
     "did": "did:web:animo.id",
     "website": "https://animo.id",
-    "logo": "https://animo.id/images/logo.png",
+    "logo": "https://www.google.com/s2/favicons?domain=animo.id&sz=128",
     "contact": {
       "email": "info@animo.id",
       "support": "https://animo.id/support"
@@ -15,7 +15,7 @@
       "id": "paradym-wallet",
       "name": "Paradym Wallet",
       "description": "A user-friendly wallet for managing verifiable credentials, built on the Credo framework.",
-      "logo": "https://paradym.id/logo.png",
+      "logo": "https://www.google.com/s2/favicons?domain=paradym.id&sz=128",
       "website": "https://paradym.id",
       "type": "personal",
       "platforms": ["iOS", "Android"],

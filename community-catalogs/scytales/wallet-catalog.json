@@ -3,13 +3,13 @@
   "provider": {
     "name": "Scytales",
     "website": "https://scytales.com",
-    "logo": "https://logo.clearbit.com/scytales.com"
+    "logo": "https://www.google.com/s2/favicons?domain=scytales.com&sz=128"
   },
   "wallets": [
     {
       "id": "scytales-id-wallet",
       "name": "Scytales ID Wallet",
-      "logo": "https://play-lh.googleusercontent.com/9P5O3E4bJPO3MlVOzM8gEgVMvxhZmPYUgT-8mfYxdJT0rV-aw51T7mCGSqYjD5HM1w=w480-h960",
+      "logo": "https://www.google.com/s2/favicons?domain=scytales.com&sz=128",
       "description": "An enterprise-grade digital identity wallet for secure credential management, supporting various verifiable credential formats.",
       "type": "personal",
       "platforms": ["iOS", "Android"],

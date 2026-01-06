@@ -3,13 +3,13 @@
   "provider": {
     "name": "Gataca Labs",
     "website": "https://gataca.io",
-    "logo": "https://logo.clearbit.com/gataca.io"
+    "logo": "https://www.google.com/s2/favicons?domain=gataca.io&sz=128"
   },
   "wallets": [
     {
       "id": "gataca-wallet",
       "name": "Gataca Digital Identity Wallet",
-      "logo": "https://play-lh.googleusercontent.com/5gTOLknHqRbXS1RTgLqvOzXsIx1qXVuYmOXSFqv9zqHs_JTH1NcfIxZhQe3vH-TZew=w480-h960",
+      "logo": "https://www.google.com/s2/favicons?domain=gataca.io&sz=128",
       "description": "A privacy-first digital identity wallet supporting verifiable credentials and self-sovereign identity. HAIP compliance expected November 2025.",
       "type": "personal",
       "platforms": ["iOS", "Android"],

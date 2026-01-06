@@ -3,13 +3,13 @@
   "provider": {
     "name": "Microsoft",
     "website": "https://www.microsoft.com",
-    "logo": "https://logo.clearbit.com/microsoft.com"
+    "logo": "https://www.google.com/s2/favicons?domain=microsoft.com&sz=128"
   },
   "wallets": [
     {
       "id": "microsoft-authenticator",
       "name": "Microsoft Authenticator",
-      "logo": "https://play-lh.googleusercontent.com/hBnFWGM9zFXWkzE2m3lUB8lNFcYNl28Tzm0sEqAqpkdHf2Im8K6UNDHrYb3jBZ5p7zE=w480-h960",
+      "logo": "https://www.google.com/s2/favicons?domain=microsoft.com&sz=128",
       "description": "Microsoft's authentication app that also supports verifiable credentials through Microsoft Entra Verified ID, enabling passwordless sign-in and digital identity verification.",
       "type": "personal",
       "platforms": ["iOS", "Android"],

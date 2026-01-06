@@ -3,13 +3,13 @@
   "provider": {
     "name": "Google",
     "website": "https://www.google.com",
-    "logo": "https://logo.clearbit.com/google.com"
+    "logo": "https://www.google.com/s2/favicons?domain=google.com&sz=128"
   },
   "wallets": [
     {
       "id": "google-wallet",
       "name": "Google Wallet",
-      "logo": "https://play-lh.googleusercontent.com/HArtbyi53u0jnqhnnxkQnMx9dHOERNcprZyKnInd2nrfHjp4fKI45zxHsNjBM8QwIqRd=w480-h960",
+      "logo": "https://www.google.com/s2/favicons?domain=google.com&sz=128",
       "description": "Google's digital wallet for Android devices, supporting payment cards, loyalty cards, boarding passes, tickets, and digital identity credentials.",
       "type": "personal",
       "platforms": ["Android"],

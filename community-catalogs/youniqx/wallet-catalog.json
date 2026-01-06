@@ -3,13 +3,13 @@
   "provider": {
     "name": "youniqx Identity AG",
     "website": "https://www.youniqx.com",
-    "logo": "https://logo.clearbit.com/youniqx.com"
+    "logo": "https://www.google.com/s2/favicons?domain=youniqx.com&sz=128"
   },
   "wallets": [
     {
       "id": "eausweise",
       "name": "eAusweise (Austrian Wallet)",
-      "logo": "https://play-lh.googleusercontent.com/6gMPLiP4L9K7q1vW0K8KfYsEwEQPxvLqEXsZqR8vWJ0uVHQ7XMxNVLxTsJU8EqXjZA=w480-h960",
+      "logo": "https://www.google.com/s2/favicons?domain=oesterreich.gv.at&sz=128",
       "description": "The official Austrian government identity wallet, enabling citizens to store and present digital identity documents and verifiable credentials.",
       "type": "personal",
       "platforms": ["iOS", "Android"],
@@ -29,7 +29,7 @@
     {
       "id": "eid-li",
       "name": "eID.li (Liechtenstein Wallet)",
-      "logo": "https://play-lh.googleusercontent.com/3j3kcLCp3BN6RJBS0V7yNyQ3D5Q7gMVTQ9cU8qTYsP8BvD5qXq3dPk3r3XqZ1vKMpw=w480-h960",
+      "logo": "https://www.google.com/s2/favicons?domain=llv.li&sz=128",
       "description": "The official Liechtenstein government identity wallet, enabling citizens to store and present digital identity documents and verifiable credentials.",
       "type": "personal",
       "platforms": ["iOS", "Android"],

@@ -3,13 +3,13 @@
   "provider": {
     "name": "YourD",
     "website": "https://yourd.xyz",
-    "logo": "https://logo.clearbit.com/yourd.xyz"
+    "logo": "https://www.google.com/s2/favicons?domain=yourd.xyz&sz=128"
   },
   "wallets": [
     {
       "id": "yourd-data-wallet",
       "name": "YourD Data Wallet",
-      "logo": "https://play-lh.googleusercontent.com/D2g8PNXK6hZbXQNm_nTD9hPnKuvrMxI-fQDg5L1yRn8rMK6X1YPQW7_aFw6pX5vNNw=w480-h960",
+      "logo": "https://www.google.com/s2/favicons?domain=yourd.xyz&sz=128",
       "description": "A data ownership wallet supporting both HAIP and DIIP v4 interoperability profiles, enabling secure management of personal data and verifiable credentials.",
       "type": "personal",
       "platforms": ["iOS", "Android"],

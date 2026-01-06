@@ -3,13 +3,13 @@
   "provider": {
     "name": "Toppan",
     "website": "https://www.toppan.com",
-    "logo": "https://logo.clearbit.com/toppan.com"
+    "logo": "https://www.google.com/s2/favicons?domain=toppan.com&sz=128"
   },
   "wallets": [
     {
       "id": "toppan-security-wallet",
       "name": "TOPPAN Security Wallet",
-      "logo": "https://play-lh.googleusercontent.com/iBIgj_PL1D5h6qLqJGJXTW5X3R_Sq3uBkL6L9xK5QwM_m_vEJTJKqbX4H7_ufOlIvg=w480-h960",
+      "logo": "https://www.google.com/s2/favicons?domain=toppan.com&sz=128",
       "description": "An enterprise security wallet supporting digital identity and verifiable credentials. HAIP compliance expected November 2025.",
       "type": "personal",
       "platforms": ["iOS", "Android"],

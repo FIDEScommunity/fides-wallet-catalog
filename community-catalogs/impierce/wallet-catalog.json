@@ -3,13 +3,13 @@
   "provider": {
     "name": "Impierce Technologies",
     "website": "https://impierce.com",
-    "logo": "https://logo.clearbit.com/impierce.com"
+    "logo": "https://www.google.com/s2/favicons?domain=impierce.com&sz=128"
   },
   "wallets": [
     {
       "id": "unime-wallet",
       "name": "UniMe",
-      "logo": "https://play-lh.googleusercontent.com/3O4o-sB2dNpYwmMl1V9EnSpnxwwK-S8h-tP0RXqQTgPu3R3QYSC77O8j5oHJRJdpvFo=w480-h960",
+      "logo": "https://www.google.com/s2/favicons?domain=impierce.com&sz=128",
       "description": "A privacy-focused identity wallet supporting HAIP interoperability profile, enabling secure storage and sharing of verifiable credentials.",
       "type": "personal",
       "platforms": ["iOS", "Android"],

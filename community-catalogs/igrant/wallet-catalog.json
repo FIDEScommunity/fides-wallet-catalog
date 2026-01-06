@@ -4,7 +4,7 @@
     "name": "iGrant.io",
     "did": "did:web:igrant.io",
     "website": "https://igrant.io",
-    "logo": "https://igrant.io/logo.png",
+    "logo": "https://www.google.com/s2/favicons?domain=igrant.io&sz=128",
     "contact": {
       "email": "info@igrant.io"
     }
@@ -14,7 +14,7 @@
       "id": "igrant-data-wallet",
       "name": "Data Wallet by iGrant.io",
       "description": "A privacy-first data wallet focused on GDPR compliance and data exchange, enabling individuals to manage consent and share verifiable credentials securely.",
-      "logo": "https://igrant.io/wallet-logo.png",
+      "logo": "https://www.google.com/s2/favicons?domain=igrant.io&sz=128",
       "website": "https://igrant.io/datawallet",
       "type": "personal",
       "platforms": ["iOS", "Android", "Web"],

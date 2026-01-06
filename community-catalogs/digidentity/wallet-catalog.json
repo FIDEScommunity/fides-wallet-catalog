@@ -3,13 +3,13 @@
   "provider": {
     "name": "Digidentity",
     "website": "https://www.digidentity.com",
-    "logo": "https://logo.clearbit.com/digidentity.com"
+    "logo": "https://www.google.com/s2/favicons?domain=digidentity.com&sz=128"
   },
   "wallets": [
     {
       "id": "digidentity-wallet",
       "name": "Digidentity Wallet",
-      "logo": "https://play-lh.googleusercontent.com/6b7Dnmbu5UfwMxvIhvyj17Yl1NbqxvRzghf3g2y3oNSDyS6SrDH8tQm0v0eWfnI0yA=w480-h960",
+      "logo": "https://www.google.com/s2/favicons?domain=digidentity.com&sz=128",
       "description": "A HAIP-compliant identity wallet from Digidentity, supporting secure digital identity verification and verifiable credentials for government and enterprise use cases.",
       "type": "personal",
       "platforms": ["iOS", "Android"],

@@ -3,13 +3,13 @@
   "provider": {
     "name": "Ubique Innovation",
     "website": "https://ubique.ch",
-    "logo": "https://logo.clearbit.com/ubique.ch"
+    "logo": "https://www.google.com/s2/favicons?domain=ubique.ch&sz=128"
   },
   "wallets": [
     {
       "id": "heidi-wallet",
       "name": "Heidi Wallet App",
-      "logo": "https://play-lh.googleusercontent.com/8m6g5vHK6qAGwPH5oD7x6cNBvhQpMjH8_zKnLXHQhvB8TQgSHvMxmLnPbEYW6BqXtA=w480-h960",
+      "logo": "https://www.google.com/s2/favicons?domain=ubique.ch&sz=128",
       "description": "A HAIP-compliant Swiss identity wallet supporting verifiable credentials for secure digital identity management.",
       "type": "personal",
       "platforms": ["iOS", "Android"],
