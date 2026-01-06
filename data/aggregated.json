@@ -69,7 +69,8 @@
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/examples/animo/wallet-catalog.json",
-      "fetchedAt": "2026-01-05T18:07:53.507Z"
+      "fetchedAt": "2026-01-06T06:30:33.770Z",
+      "source": "local"
     },
     {
       "id": "bc-wallet",
@@ -128,7 +129,8 @@
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/examples/bcgov/wallet-catalog.json",
-      "fetchedAt": "2026-01-05T18:07:53.508Z"
+      "fetchedAt": "2026-01-06T06:30:33.771Z",
+      "source": "local"
     },
     {
       "id": "esatus-wallet",
@@ -193,7 +195,8 @@
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/examples/esatus/wallet-catalog.json",
-      "fetchedAt": "2026-01-05T18:07:53.509Z"
+      "fetchedAt": "2026-01-06T06:30:33.772Z",
+      "source": "local"
     },
     {
       "id": "esatus-consumer-wallet",
@@ -246,7 +249,8 @@
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/examples/esatus/wallet-catalog.json",
-      "fetchedAt": "2026-01-05T18:07:53.509Z"
+      "fetchedAt": "2026-01-06T06:30:33.772Z",
+      "source": "local"
     },
     {
       "id": "idemia-digital-id-wallet",
@@ -309,7 +313,8 @@
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/examples/idemia/wallet-catalog.json",
-      "fetchedAt": "2026-01-05T18:07:53.509Z"
+      "fetchedAt": "2026-01-06T06:30:33.772Z",
+      "source": "local"
     },
     {
       "id": "igrant-data-wallet",
@@ -377,7 +382,8 @@
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/examples/igrant/wallet-catalog.json",
-      "fetchedAt": "2026-01-05T18:07:53.509Z"
+      "fetchedAt": "2026-01-06T06:30:33.772Z",
+      "source": "local"
     },
     {
       "id": "lissi-wallet",
@@ -444,7 +450,8 @@
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/examples/lissi/wallet-catalog.json",
-      "fetchedAt": "2026-01-05T18:07:53.510Z"
+      "fetchedAt": "2026-01-06T06:30:33.773Z",
+      "source": "local"
     },
     {
       "id": "procivis-one",
@@ -452,7 +459,7 @@
       "description": "A comprehensive Swiss-made digital identity platform combining wallet, issuer, and verifier capabilities with strong focus on privacy and security.",
       "logo": "https://procivis.ch/one-logo.png",
       "website": "https://procivis.ch/one",
-      "type": "both",
+      "type": "personal",
       "platforms": [
         "iOS",
         "Android",
@@ -514,7 +521,8 @@
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/examples/procivis/wallet-catalog.json",
-      "fetchedAt": "2026-01-05T18:07:53.510Z"
+      "fetchedAt": "2026-01-06T06:30:33.773Z",
+      "source": "local"
     },
     {
       "id": "sphereon-wallet",
@@ -522,7 +530,7 @@
       "description": "Enterprise-grade digital identity wallet with support for multiple credential formats and protocols.",
       "logo": "https://sphereon.com/wallet-logo.png",
       "website": "https://sphereon.com/wallet",
-      "type": "both",
+      "type": "personal",
       "platforms": [
         "iOS",
         "Android",
@@ -586,7 +594,8 @@
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/examples/sphereon/wallet-catalog.json",
-      "fetchedAt": "2026-01-05T18:07:53.510Z"
+      "fetchedAt": "2026-01-06T06:30:33.774Z",
+      "source": "local"
     },
     {
       "id": "thales-digital-id-wallet",
@@ -594,7 +603,7 @@
       "description": "An enterprise digital identity wallet solution from Thales, supporting mobile driver's licenses and government credentials with strong security guarantees.",
       "logo": "https://thalesgroup.com/wallet-logo.png",
       "website": "https://thalesgroup.com/digital-id-wallet",
-      "type": "both",
+      "type": "personal",
       "platforms": [
         "iOS",
         "Android"
@@ -653,7 +662,8 @@
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/examples/thales/wallet-catalog.json",
-      "fetchedAt": "2026-01-05T18:07:53.511Z"
+      "fetchedAt": "2026-01-06T06:30:33.774Z",
+      "source": "local"
     },
     {
       "id": "trinsic-wallet",
@@ -661,7 +671,7 @@
       "description": "A developer-friendly identity wallet platform with white-label SDKs and APIs, enabling organizations to quickly deploy verifiable credential solutions.",
       "logo": "https://trinsic.id/wallet-logo.png",
       "website": "https://trinsic.id/wallet",
-      "type": "both",
+      "type": "personal",
       "platforms": [
         "iOS",
         "Android",
@@ -716,7 +726,8 @@
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/examples/trinsic/wallet-catalog.json",
-      "fetchedAt": "2026-01-05T18:07:53.511Z"
+      "fetchedAt": "2026-01-06T06:30:33.774Z",
+      "source": "local"
     },
     {
       "id": "waltid-wallet",
@@ -724,7 +735,7 @@
       "description": "An open-source, white-label identity wallet solution that can be deployed as a web application, supporting multiple credential formats and protocols.",
       "logo": "https://walt.id/wallet-logo.png",
       "website": "https://wallet.walt.id",
-      "type": "both",
+      "type": "organizational",
       "platforms": [
         "Web"
       ],
@@ -783,7 +794,8 @@
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/examples/waltid/wallet-catalog.json",
-      "fetchedAt": "2026-01-05T18:07:53.511Z"
+      "fetchedAt": "2026-01-06T06:30:33.774Z",
+      "source": "local"
     }
   ],
   "providers": [
@@ -888,14 +900,13 @@
       }
     }
   ],
-  "lastUpdated": "2026-01-05T18:07:53.511Z",
+  "lastUpdated": "2026-01-06T06:30:34.314Z",
   "stats": {
     "totalWallets": 12,
     "totalProviders": 11,
     "byType": {
-      "personal": 6,
-      "organizational": 1,
-      "both": 5
+      "personal": 10,
+      "organizational": 2
     },
     "byPlatform": {
       "iOS": 11,

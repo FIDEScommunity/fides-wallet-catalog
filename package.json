@@ -1,7 +1,8 @@
 {
   "name": "fides-wallet-catalog",
   "version": "1.0.0",
-  "description": "FIDES Community Wallet Catalog - Gedecentraliseerde wallet registratie en weergave",
+  "description": "FIDES Community Wallet Catalog - Decentralized wallet registration and display",
+  "license": "Apache-2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",

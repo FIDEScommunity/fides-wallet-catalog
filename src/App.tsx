@@ -11,7 +11,6 @@ const CREDENTIAL_FORMAT_ORDER: string[] = ['SD-JWT-VC', 'SD-JWT', 'mDL/mDoc', 'J
 const WALLET_TYPES: { value: WalletType; label: string; icon: typeof Users }[] = [
   { value: 'personal', label: 'Personal', icon: Users },
   { value: 'organizational', label: 'Organizational', icon: Building2 },
-  { value: 'both', label: 'Both', icon: Wallet },
 ];
 
 function sortCredentialFormats(formats: string[] | undefined): string[] {
@@ -31,7 +30,6 @@ function WalletCard({ wallet, index }: { wallet: NormalizedWallet; index: number
   const typeConfig = {
     personal: { bg: 'from-blue-500/20 to-cyan-500/20', border: 'border-blue-500/30', text: 'text-blue-300' },
     organizational: { bg: 'from-purple-500/20 to-pink-500/20', border: 'border-purple-500/30', text: 'text-purple-300' },
-    both: { bg: 'from-amber-500/20 to-orange-500/20', border: 'border-amber-500/30', text: 'text-amber-300' },
   };
   
   const config = typeConfig[wallet.type];
@@ -61,8 +59,8 @@ function WalletCard({ wallet, index }: { wallet: NormalizedWallet; index: number
               <p className="text-sm text-gray-400">{wallet.provider.name}</p>
             </div>
           </div>
-          <div className={`tag ${wallet.type === 'organizational' ? 'tag-accent' : wallet.type === 'both' ? 'tag-green' : ''}`}>
-            {wallet.type === 'personal' ? 'Personal' : wallet.type === 'organizational' ? 'Organizational' : 'Both'}
+          <div className={`tag ${wallet.type === 'organizational' ? 'tag-accent' : ''}`}>
+            {wallet.type === 'personal' ? 'Personal' : 'Organizational'}
           </div>
         </div>
       </div>

@@ -1,49 +1,53 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://fides.community/schemas/wallet-catalog/v1",
   "title": "FIDES Wallet Catalog Descriptor",
-  "description": "Schema voor het beschrijven van digitale wallets door wallet providers",
+  "description": "Schema for describing digital wallets by wallet providers for the FIDES Community catalog",
   "type": "object",
   "required": ["$schema", "provider", "wallets"],
   "properties": {
     "$schema": {
       "type": "string",
-      "const": "https://fides.community/schemas/wallet-catalog/v1"
+      "const": "https://fides.community/schemas/wallet-catalog/v1",
+      "description": "Schema identifier - must be this exact value"
     },
     "provider": {
       "type": "object",
-      "description": "Informatie over de wallet provider/organisatie",
+      "description": "Information about the wallet provider/organization",
       "required": ["name", "did"],
       "properties": {
         "name": {
           "type": "string",
-          "description": "Naam van de organisatie"
+          "description": "Name of the organization"
         },
         "did": {
           "type": "string",
-          "description": "DID van de organisatie",
+          "description": "Decentralized Identifier (DID) of the organization",
           "pattern": "^did:[a-z]+:.+"
         },
         "website": {
           "type": "string",
           "format": "uri",
-          "description": "Website van de organisatie"
+          "description": "Website URL of the organization"
         },
         "logo": {
           "type": "string",
           "format": "uri",
-          "description": "URL naar het logo van de organisatie"
+          "description": "URL to the organization's logo"
         },
         "contact": {
           "type": "object",
+          "description": "Contact information",
           "properties": {
             "email": {
               "type": "string",
-              "format": "email"
+              "format": "email",
+              "description": "Contact email address"
             },
             "support": {
               "type": "string",
-              "format": "uri"
+              "format": "uri",
+              "description": "URL to support page or portal"
             }
           }
         }
@@ -51,7 +55,7 @@
     },
     "wallets": {
       "type": "array",
-      "description": "Lijst van wallets die deze provider aanbiedt",
+      "description": "List of wallets offered by this provider",
       "items": {
         "$ref": "#/definitions/Wallet"
       },
@@ -60,45 +64,46 @@
     "lastUpdated": {
       "type": "string",
       "format": "date-time",
-      "description": "Timestamp van laatste update"
+      "description": "Timestamp of last update (ISO 8601)"
     }
   },
   "definitions": {
     "Wallet": {
       "type": "object",
+      "description": "A digital identity wallet",
       "required": ["id", "name", "type"],
       "properties": {
         "id": {
           "type": "string",
-          "description": "Unieke identifier voor de wallet binnen deze catalog",
+          "description": "Unique identifier for the wallet within this catalog (lowercase alphanumeric with hyphens)",
           "pattern": "^[a-z0-9-]+$"
         },
         "name": {
           "type": "string",
-          "description": "Naam van de wallet"
+          "description": "Display name of the wallet"
         },
         "description": {
           "type": "string",
-          "description": "Korte beschrijving van de wallet"
+          "description": "Short description of the wallet and its purpose"
         },
         "logo": {
           "type": "string",
           "format": "uri",
-          "description": "URL naar het logo van de wallet"
+          "description": "URL to the wallet's logo image"
         },
         "website": {
           "type": "string",
           "format": "uri",
-          "description": "Website/landingspagina van de wallet"
+          "description": "Landing page or website for the wallet"
         },
         "type": {
           "type": "string",
-          "enum": ["personal", "organizational", "both"],
-          "description": "Type wallet: personal (voor burgers), organizational (voor organisaties), of both"
+          "enum": ["personal", "organizational"],
+          "description": "Wallet type: 'personal' for citizen/consumer wallets, 'organizational' for enterprise/business wallets"
         },
         "platforms": {
           "type": "array",
-          "description": "Ondersteunde platforms",
+          "description": "Supported platforms",
           "items": {
             "type": "string",
             "enum": ["iOS", "Android", "Web", "Windows", "macOS", "Linux", "CLI"]
@@ -106,21 +111,21 @@
         },
         "openSource": {
           "type": "boolean",
-          "description": "Is de wallet open source?"
+          "description": "Whether the wallet is open source"
         },
         "license": {
           "type": "string",
-          "description": "Open source licentie (indien van toepassing)",
+          "description": "Open source license identifier (SPDX format recommended)",
           "examples": ["MIT", "Apache-2.0", "GPL-3.0", "EUPL-1.2"]
         },
         "repository": {
           "type": "string",
           "format": "uri",
-          "description": "URL naar de source code repository"
+          "description": "URL to the source code repository"
         },
         "credentialFormats": {
           "type": "array",
-          "description": "Ondersteunde credential formaten",
+          "description": "Supported verifiable credential formats",
           "items": {
             "type": "string",
             "enum": [
@@ -137,7 +142,7 @@
         },
         "issuanceProtocols": {
           "type": "array",
-          "description": "Ondersteunde issuance protocols",
+          "description": "Supported credential issuance protocols",
           "items": {
             "type": "string",
             "enum": [
@@ -150,7 +155,7 @@
         },
         "presentationProtocols": {
           "type": "array",
-          "description": "Ondersteunde presentation protocols",
+          "description": "Supported credential presentation/verification protocols",
           "items": {
             "type": "string",
             "enum": [
@@ -164,7 +169,7 @@
         },
         "supportedDIDMethods": {
           "type": "array",
-          "description": "Ondersteunde DID methodes",
+          "description": "Supported DID methods",
           "items": {
             "type": "string",
             "pattern": "^did:[a-z]+$",
@@ -173,7 +178,7 @@
         },
         "keyManagement": {
           "type": "array",
-          "description": "Ondersteunde key management methodes",
+          "description": "Supported key management and storage methods",
           "items": {
             "type": "string",
             "enum": [
@@ -190,65 +195,65 @@
         },
         "certifications": {
           "type": "array",
-          "description": "Certificeringen en compliance",
-          "items": {
-            "type": "string",
-            "examples": ["EUDI Wallet LSP", "ISO 27001", "SOC 2", "Common Criteria"]
-          }
-        },
-        "standards": {
-          "type": "array",
-          "description": "Ondersteunde standaarden/profielen",
-          "items": {
-            "type": "string",
-            "examples": ["ARF 1.4", "HAIP", "mDL ISO 18013-5", "EBSI"]
-          }
-        },
-        "features": {
-          "type": "array",
-          "description": "Overige features/functionaliteiten",
+          "description": "Certifications and compliance attestations",
           "items": {
             "type": "string"
           },
-          "examples": [
-            ["Biometric authentication", "Backup & recovery", "Multi-device sync", "Offline support"]
-          ]
+          "examples": [["EUDI Wallet LSP", "ISO 27001", "SOC 2", "Common Criteria"]]
+        },
+        "standards": {
+          "type": "array",
+          "description": "Supported standards and profiles",
+          "items": {
+            "type": "string"
+          },
+          "examples": [["ARF 1.4", "HAIP", "mDL ISO 18013-5", "EBSI"]]
+        },
+        "features": {
+          "type": "array",
+          "description": "Additional features and capabilities",
+          "items": {
+            "type": "string"
+          },
+          "examples": [["Biometric authentication", "Backup & recovery", "Multi-device sync", "Offline support"]]
         },
         "documentation": {
           "type": "string",
           "format": "uri",
-          "description": "Link naar documentatie"
+          "description": "URL to developer or user documentation"
         },
         "appStoreLinks": {
           "type": "object",
-          "description": "Links naar app stores",
+          "description": "Links to app stores for downloading the wallet",
           "properties": {
             "iOS": {
               "type": "string",
-              "format": "uri"
+              "format": "uri",
+              "description": "Apple App Store link"
             },
             "android": {
               "type": "string",
-              "format": "uri"
+              "format": "uri",
+              "description": "Google Play Store link"
             },
             "web": {
               "type": "string",
-              "format": "uri"
+              "format": "uri",
+              "description": "Web application URL"
             }
           }
         },
         "status": {
           "type": "string",
           "enum": ["development", "beta", "production", "deprecated"],
-          "description": "Status van de wallet"
+          "description": "Current status/maturity of the wallet"
         },
         "releaseDate": {
           "type": "string",
           "format": "date",
-          "description": "Release datum"
+          "description": "Initial release date (YYYY-MM-DD)"
         }
       }
     }
   }
 }
-

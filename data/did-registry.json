@@ -1,0 +1,9 @@
+[
+  {
+    "did": "did:web:animo.id",
+    "addedAt": "2025-01-06T10:00:00Z",
+    "status": "error",
+    "lastResolved": "2026-01-06T06:30:34.311Z",
+    "errorMessage": "Failed to resolve DID document"
+  }
+]

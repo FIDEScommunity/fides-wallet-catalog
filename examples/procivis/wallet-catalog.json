@@ -16,7 +16,7 @@
       "description": "A comprehensive Swiss-made digital identity platform combining wallet, issuer, and verifier capabilities with strong focus on privacy and security.",
       "logo": "https://procivis.ch/one-logo.png",
       "website": "https://procivis.ch/one",
-      "type": "both",
+      "type": "personal",
       "platforms": ["iOS", "Android", "Web"],
       "openSource": true,
       "license": "Apache-2.0",

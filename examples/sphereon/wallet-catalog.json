@@ -16,7 +16,7 @@
       "description": "Enterprise-grade digital identity wallet with support for multiple credential formats and protocols.",
       "logo": "https://sphereon.com/wallet-logo.png",
       "website": "https://sphereon.com/wallet",
-      "type": "both",
+      "type": "personal",
       "platforms": ["iOS", "Android", "Web"],
       "openSource": true,
       "license": "Apache-2.0",

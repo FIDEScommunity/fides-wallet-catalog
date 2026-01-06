@@ -1,0 +1,64 @@
+name: Validate Wallet Catalogs
+
+on:
+  push:
+    paths:
+      - 'examples/**/wallet-catalog.json'
+      - 'community-catalogs/**/wallet-catalog.json'
+      - 'schemas/**'
+  pull_request:
+    paths:
+      - 'examples/**/wallet-catalog.json'
+      - 'community-catalogs/**/wallet-catalog.json'
+      - 'schemas/**'
+
+jobs:
+  validate:
+    name: Validate Schema
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Validate all wallet catalogs
+        run: |
+          echo "🔍 Validating wallet catalogs against schema..."
+          
+          # Validate example catalogs
+          for file in examples/*/wallet-catalog.json; do
+            if [ -f "$file" ]; then
+              echo "Validating: $file"
+              npx ajv validate \
+                -s schemas/wallet-catalog.schema.json \
+                -d "$file" \
+                --spec=draft2020 \
+                -c ajv-formats \
+                --strict=false
+            fi
+          done
+          
+          # Validate community catalogs
+          for file in community-catalogs/*/wallet-catalog.json; do
+            if [ -f "$file" ]; then
+              echo "Validating: $file"
+              npx ajv validate \
+                -s schemas/wallet-catalog.schema.json \
+                -d "$file" \
+                --spec=draft2020 \
+                -c ajv-formats \
+                --strict=false
+            fi
+          done
+          
+          echo "✅ All wallet catalogs are valid!"
+

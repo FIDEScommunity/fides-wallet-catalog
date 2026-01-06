@@ -16,7 +16,7 @@
       "description": "An enterprise digital identity wallet solution from Thales, supporting mobile driver's licenses and government credentials with strong security guarantees.",
       "logo": "https://thalesgroup.com/wallet-logo.png",
       "website": "https://thalesgroup.com/digital-id-wallet",
-      "type": "both",
+      "type": "personal",
       "platforms": ["iOS", "Android"],
       "openSource": false,
       "credentialFormats": ["mDL/mDoc", "SD-JWT-VC", "X.509"],

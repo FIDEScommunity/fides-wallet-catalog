@@ -16,7 +16,7 @@
       "description": "A developer-friendly identity wallet platform with white-label SDKs and APIs, enabling organizations to quickly deploy verifiable credential solutions.",
       "logo": "https://trinsic.id/wallet-logo.png",
       "website": "https://trinsic.id/wallet",
-      "type": "both",
+      "type": "personal",
       "platforms": ["iOS", "Android", "Web"],
       "openSource": false,
       "credentialFormats": ["SD-JWT-VC", "JWT-VC", "AnonCreds"],

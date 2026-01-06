@@ -1,6 +1,6 @@
 // Types for the FIDES Wallet Catalog
 
-export type WalletType = 'personal' | 'organizational' | 'both';
+export type WalletType = 'personal' | 'organizational';
 export type WalletStatus = 'development' | 'beta' | 'production' | 'deprecated';
 export type Platform = 'iOS' | 'Android' | 'Web' | 'Windows' | 'macOS' | 'Linux' | 'CLI';
 
@@ -89,6 +89,7 @@ export interface NormalizedWallet extends Wallet {
   provider: WalletProvider;
   catalogUrl: string;
   fetchedAt: string;
+  source?: 'local' | 'github' | 'did'; // Where the catalog was fetched from
 }
 
 // Registry entry for registered providers

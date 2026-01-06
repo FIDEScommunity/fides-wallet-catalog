@@ -4,8 +4,8 @@ Tags: wallet, identity, did, ssi, credentials
 Requires at least: 5.0
 Tested up to: 6.4
 Stable tag: 1.0.0
-License: MIT
-License URI: https://opensource.org/licenses/MIT
+License: Apache-2.0
+License URI: https://www.apache.org/licenses/LICENSE-2.0
 
 Displays the FIDES Wallet Catalog with search and filter functionality on your WordPress website.
 

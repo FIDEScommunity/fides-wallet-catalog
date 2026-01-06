@@ -5,7 +5,9 @@
  * Description: Displays the FIDES Wallet Catalog with search and filter functionality
  * Version: 1.0.0
  * Author: FIDES Community
- * License: MIT
+ * Author URI: https://fides.community
+ * License: Apache-2.0
+ * License URI: https://www.apache.org/licenses/LICENSE-2.0
  */
 
 if (!defined('ABSPATH')) {
@@ -77,7 +79,7 @@ class FIDES_Wallet_Catalog {
             'show_filters' => 'true',
             'show_search' => 'true',
             'columns' => '3',
-            'theme' => 'dark', // dark or light
+            'theme' => 'fides', // fides, light, or dark
         ), $atts);
         
         // Enqueue assets
@@ -182,15 +184,16 @@ class FIDES_Wallet_Catalog {
                         </tr>
                         <tr>
                             <td><code>theme</code></td>
-                            <td>dark, light</td>
-                            <td>Color theme</td>
+                            <td>fides, light, dark</td>
+                            <td>Color theme (fides = FIDES brand colors)</td>
                         </tr>
                     </tbody>
                 </table>
                 
                 <h3>Examples</h3>
+                <p><code>[fides_wallet_catalog]</code> - Default with FIDES theme</p>
                 <p><code>[fides_wallet_catalog type="personal" columns="2"]</code> - Personal wallets only, 2 columns</p>
-                <p><code>[fides_wallet_catalog show_filters="false" theme="light"]</code> - Without filters, light theme</p>
+                <p><code>[fides_wallet_catalog theme="dark"]</code> - Dark theme variant</p>
                 
                 <p class="submit">
                     <input type="submit" name="fides_save_settings" class="button-primary" value="Save Settings">
