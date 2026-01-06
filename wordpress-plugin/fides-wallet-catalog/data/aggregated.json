@@ -28,6 +28,9 @@
       "interoperabilityProfiles": [
         "DIIP v4"
       ],
+      "features": [
+        "Universal OID4VP API"
+      ],
       "openSource": false,
       "status": "production",
       "provider": {
@@ -36,7 +39,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=4sure.io&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/4sure/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.568Z",
+      "fetchedAt": "2026-01-06T10:58:02.312Z",
       "source": "local"
     },
     {
@@ -72,7 +75,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=affinidi.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/affinidi/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.568Z",
+      "fetchedAt": "2026-01-06T10:58:02.314Z",
       "source": "local"
     },
     {
@@ -146,7 +149,7 @@
         }
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/animo/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.569Z",
+      "fetchedAt": "2026-01-06T10:58:02.315Z",
       "source": "local"
     },
     {
@@ -197,7 +200,7 @@
         }
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/animo/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.569Z",
+      "fetchedAt": "2026-01-06T10:58:02.315Z",
       "source": "local"
     },
     {
@@ -224,7 +227,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=apple.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/apple/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.570Z",
+      "fetchedAt": "2026-01-06T10:58:02.324Z",
       "source": "local"
     },
     {
@@ -260,7 +263,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=archipels.io&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/archipels/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.571Z",
+      "fetchedAt": "2026-01-06T10:58:02.325Z",
       "source": "local"
     },
     {
@@ -295,7 +298,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=auth0.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/auth0/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.571Z",
+      "fetchedAt": "2026-01-06T10:58:02.326Z",
       "source": "local"
     },
     {
@@ -331,7 +334,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=auvo.io&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/auvodigital/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.572Z",
+      "fetchedAt": "2026-01-06T10:58:02.327Z",
       "source": "local"
     },
     {
@@ -362,6 +365,9 @@
       "interoperabilityProfiles": [
         "DIIP v4"
       ],
+      "features": [
+        "Universal OID4VP API"
+      ],
       "openSource": false,
       "status": "production",
       "provider": {
@@ -370,7 +376,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=credenco.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/credenco/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.572Z",
+      "fetchedAt": "2026-01-06T10:58:02.327Z",
       "source": "local"
     },
     {
@@ -411,7 +417,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=digidentity.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/digidentity/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.573Z",
+      "fetchedAt": "2026-01-06T10:58:02.328Z",
       "source": "local"
     },
     {
@@ -451,7 +457,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=digitalbazaar.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/digitalbazaar/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.573Z",
+      "fetchedAt": "2026-01-06T10:58:02.328Z",
       "source": "local"
     },
     {
@@ -490,7 +496,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=dock.io&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/dock/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.574Z",
+      "fetchedAt": "2026-01-06T10:58:02.329Z",
       "source": "local"
     },
     {
@@ -526,7 +532,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=forkbomb.solutions&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/forkbomb/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.574Z",
+      "fetchedAt": "2026-01-06T10:58:02.329Z",
       "source": "local"
     },
     {
@@ -568,7 +574,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=gataca.io&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/gataca/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.575Z",
+      "fetchedAt": "2026-01-06T10:58:02.330Z",
       "source": "local"
     },
     {
@@ -595,7 +601,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=google.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/google/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.575Z",
+      "fetchedAt": "2026-01-06T10:58:02.330Z",
       "source": "local"
     },
     {
@@ -668,7 +674,7 @@
         }
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/igrant/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.576Z",
+      "fetchedAt": "2026-01-06T10:58:02.331Z",
       "source": "local"
     },
     {
@@ -720,7 +726,7 @@
         }
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/igrant/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.576Z",
+      "fetchedAt": "2026-01-06T10:58:02.331Z",
       "source": "local"
     },
     {
@@ -759,7 +765,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=impierce.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/impierce/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.576Z",
+      "fetchedAt": "2026-01-06T10:58:02.332Z",
       "source": "local"
     },
     {
@@ -797,7 +803,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=impierce.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/impierce/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.576Z",
+      "fetchedAt": "2026-01-06T10:58:02.332Z",
       "source": "local"
     },
     {
@@ -868,7 +874,7 @@
         }
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/lissi/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.577Z",
+      "fetchedAt": "2026-01-06T10:58:02.332Z",
       "source": "local"
     },
     {
@@ -920,7 +926,7 @@
         }
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/lissi/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.577Z",
+      "fetchedAt": "2026-01-06T10:58:02.332Z",
       "source": "local"
     },
     {
@@ -963,7 +969,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=mattr.global&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/mattr/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.577Z",
+      "fetchedAt": "2026-01-06T10:58:02.333Z",
       "source": "local"
     },
     {
@@ -1000,7 +1006,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=meeco.me&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/meeco/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.578Z",
+      "fetchedAt": "2026-01-06T10:58:02.333Z",
       "source": "local"
     },
     {
@@ -1037,7 +1043,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=microsoft.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/microsoft/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.578Z",
+      "fetchedAt": "2026-01-06T10:58:02.334Z",
       "source": "local"
     },
     {
@@ -1072,7 +1078,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=minisuomi.fi&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/minisuomi/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.579Z",
+      "fetchedAt": "2026-01-06T10:58:02.334Z",
       "source": "local"
     },
     {
@@ -1114,7 +1120,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=mosip.io&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/mosip/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.579Z",
+      "fetchedAt": "2026-01-06T10:58:02.335Z",
       "source": "local"
     },
     {
@@ -1152,7 +1158,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=northernblock.io&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/northernblock/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.580Z",
+      "fetchedAt": "2026-01-06T10:58:02.335Z",
       "source": "local"
     },
     {
@@ -1187,7 +1193,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=yivi.app&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/privacybydesign/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.580Z",
+      "fetchedAt": "2026-01-06T10:58:02.336Z",
       "source": "local"
     },
     {
@@ -1223,7 +1229,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=procivis.ch&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/procivis/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.580Z",
+      "fetchedAt": "2026-01-06T10:58:02.336Z",
       "source": "local"
     },
     {
@@ -1259,7 +1265,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=scytales.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/scytales/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.581Z",
+      "fetchedAt": "2026-01-06T10:58:02.337Z",
       "source": "local"
     },
     {
@@ -1295,7 +1301,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=scytales.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/scytales/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.581Z",
+      "fetchedAt": "2026-01-06T10:58:02.337Z",
       "source": "local"
     },
     {
@@ -1330,7 +1336,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=sicpa.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/sicpa/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.581Z",
+      "fetchedAt": "2026-01-06T10:58:02.337Z",
       "source": "local"
     },
     {
@@ -1406,7 +1412,7 @@
         }
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/sphereon/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.582Z",
+      "fetchedAt": "2026-01-06T10:58:02.338Z",
       "source": "local"
     },
     {
@@ -1452,7 +1458,7 @@
         }
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/sphereon/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.582Z",
+      "fetchedAt": "2026-01-06T10:58:02.338Z",
       "source": "local"
     },
     {
@@ -1494,7 +1500,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=spherity.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/spherity/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.582Z",
+      "fetchedAt": "2026-01-06T10:58:02.338Z",
       "source": "local"
     },
     {
@@ -1533,7 +1539,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=talao.io&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/talao/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.582Z",
+      "fetchedAt": "2026-01-06T10:58:02.339Z",
       "source": "local"
     },
     {
@@ -1572,7 +1578,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=talao.io&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/talao/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.582Z",
+      "fetchedAt": "2026-01-06T10:58:02.339Z",
       "source": "local"
     },
     {
@@ -1610,7 +1616,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=tanglelabs.io&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/tanglelabs/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.583Z",
+      "fetchedAt": "2026-01-06T10:58:02.339Z",
       "source": "local"
     },
     {
@@ -1651,7 +1657,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=toppan.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/toppan/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.583Z",
+      "fetchedAt": "2026-01-06T10:58:02.340Z",
       "source": "local"
     },
     {
@@ -1695,7 +1701,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=transmute.industries&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/transmute/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.584Z",
+      "fetchedAt": "2026-01-06T10:58:02.340Z",
       "source": "local"
     },
     {
@@ -1734,7 +1740,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=aegean.gr&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/uaegean/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.584Z",
+      "fetchedAt": "2026-01-06T10:58:02.341Z",
       "source": "local"
     },
     {
@@ -1775,7 +1781,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=ubique.ch&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/ubique/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.585Z",
+      "fetchedAt": "2026-01-06T10:58:02.341Z",
       "source": "local"
     },
     {
@@ -1814,7 +1820,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=validatedid.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/validatedid/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.585Z",
+      "fetchedAt": "2026-01-06T10:58:02.342Z",
       "source": "local"
     },
     {
@@ -1853,7 +1859,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=validatedid.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/validatedid/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.585Z",
+      "fetchedAt": "2026-01-06T10:58:02.342Z",
       "source": "local"
     },
     {
@@ -1890,7 +1896,7 @@
         "logo": "https://avatars.githubusercontent.com/u/126908515"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/wwwallet/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.598Z",
+      "fetchedAt": "2026-01-06T10:58:02.342Z",
       "source": "local"
     },
     {
@@ -1928,7 +1934,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=youniqx.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/youniqx/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.599Z",
+      "fetchedAt": "2026-01-06T10:58:02.342Z",
       "source": "local"
     },
     {
@@ -1966,7 +1972,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=youniqx.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/youniqx/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.599Z",
+      "fetchedAt": "2026-01-06T10:58:02.342Z",
       "source": "local"
     },
     {
@@ -2008,7 +2014,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=yourd.xyz&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/yourd/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:47:51.599Z",
+      "fetchedAt": "2026-01-06T10:58:02.343Z",
       "source": "local"
     }
   ],
@@ -2226,7 +2232,7 @@
       "logo": "https://www.google.com/s2/favicons?domain=yourd.xyz&sz=128"
     }
   ],
-  "lastUpdated": "2026-01-06T10:47:51.733Z",
+  "lastUpdated": "2026-01-06T10:58:02.608Z",
   "stats": {
     "totalWallets": 48,
     "totalProviders": 5,
