@@ -1,0 +1,27 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "University of the Aegean",
+    "website": "https://www.aegean.gr",
+    "logo": "https://www.google.com/s2/favicons?domain=aegean.gr&sz=128"
+  },
+  "wallets": [
+    {
+      "id": "uaegean-wallet",
+      "name": "UAegean Wallet (Cyclades Fast Ferries)",
+      "description": "An organizational wallet developed by the University of the Aegean providing holder, issuer, and verifier capabilities, demonstrated in the Cyclades Fast Ferries use case.",
+      "logo": "https://www.google.com/s2/favicons?domain=aegean.gr&sz=128",
+      "website": "https://www.aegean.gr",
+      "type": "organizational",
+      "capabilities": ["holder", "issuer", "verifier"],
+      "platforms": ["Web"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "openSource": false,
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2026-01-06T12:00:00Z"
+}
+

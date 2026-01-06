@@ -264,6 +264,14 @@
           "type": "string",
           "format": "date",
           "description": "Initial release date (YYYY-MM-DD)"
+        },
+        "capabilities": {
+          "type": "array",
+          "description": "Capabilities/roles of the wallet (primarily for organizational wallets)",
+          "items": {
+            "type": "string",
+            "enum": ["holder", "issuer", "verifier"]
+          }
         }
       }
     }

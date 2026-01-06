@@ -10,14 +10,12 @@
       "id": "vidwallet",
       "name": "VIDwallet",
       "logo": "https://www.google.com/s2/favicons?domain=validatedid.com&sz=128",
-      "description": "A HAIP-compliant digital identity wallet enabling secure storage and presentation of verifiable credentials for individuals and organizations.",
+      "description": "A HAIP-compliant digital identity wallet enabling secure storage and presentation of verifiable credentials for individuals.",
       "type": "personal",
       "platforms": ["iOS", "Android"],
       "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
-      "protocols": {
-        "issuance": ["OpenID4VCI"],
-        "presentation": ["OpenID4VP"]
-      },
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
       "interoperabilityProfiles": ["HAIP"],
       "website": "https://www.validatedid.com",
       "appStoreLinks": {
@@ -26,8 +24,23 @@
       },
       "openSource": false,
       "status": "production"
+    },
+    {
+      "id": "validatedid-platform",
+      "name": "ValidatedID Platform",
+      "logo": "https://www.google.com/s2/favicons?domain=validatedid.com&sz=128",
+      "description": "An enterprise digital identity platform providing complete holder, issuer, and verifier capabilities for organizational credential management.",
+      "type": "organizational",
+      "capabilities": ["holder", "issuer", "verifier"],
+      "platforms": ["Web"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "interoperabilityProfiles": ["HAIP"],
+      "website": "https://validated.id",
+      "openSource": false,
+      "status": "production"
     }
   ],
-  "lastUpdated": "2025-01-06T12:00:00Z"
+  "lastUpdated": "2026-01-06T12:00:00Z"
 }
-

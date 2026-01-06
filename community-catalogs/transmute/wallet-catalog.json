@@ -1,0 +1,30 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Transmute",
+    "website": "https://transmute.industries",
+    "logo": "https://www.google.com/s2/favicons?domain=transmute.industries&sz=128"
+  },
+  "wallets": [
+    {
+      "id": "transmute-platform",
+      "name": "Transmute Platform",
+      "description": "An enterprise platform for verifiable data and supply chain traceability, providing issuer, verifier, and holder capabilities with a focus on trade and logistics.",
+      "logo": "https://www.google.com/s2/favicons?domain=transmute.industries&sz=128",
+      "website": "https://transmute.industries",
+      "type": "organizational",
+      "capabilities": ["holder", "issuer", "verifier"],
+      "platforms": ["Web"],
+      "credentialFormats": ["JSON-LD VC", "JWT-VC"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "supportedDIDMethods": ["did:web", "did:key"],
+      "interoperabilityProfiles": ["DIIP v4"],
+      "openSource": true,
+      "status": "production",
+      "documentation": "https://transmute.industries/docs"
+    }
+  ],
+  "lastUpdated": "2026-01-06T12:00:00Z"
+}
+

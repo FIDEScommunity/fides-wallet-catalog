@@ -1,0 +1,30 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "MOSIP",
+    "website": "https://www.mosip.io",
+    "logo": "https://www.google.com/s2/favicons?domain=mosip.io&sz=128"
+  },
+  "wallets": [
+    {
+      "id": "inji-wallet",
+      "name": "Inji Wallet",
+      "description": "An open-source modular identity platform providing complete holder, issuer (Certify), and verifier capabilities, designed for national-scale digital identity deployments.",
+      "logo": "https://www.google.com/s2/favicons?domain=mosip.io&sz=128",
+      "website": "https://www.mosip.io",
+      "type": "organizational",
+      "capabilities": ["holder", "issuer", "verifier"],
+      "platforms": ["Web", "iOS", "Android"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "mDL/mDoc"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "openSource": true,
+      "license": "MPL-2.0",
+      "repository": "https://github.com/mosip/inji",
+      "status": "production",
+      "documentation": "https://docs.mosip.io"
+    }
+  ],
+  "lastUpdated": "2026-01-06T12:00:00Z"
+}
+

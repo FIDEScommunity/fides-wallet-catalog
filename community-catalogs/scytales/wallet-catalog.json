@@ -14,10 +14,8 @@
       "type": "personal",
       "platforms": ["iOS", "Android"],
       "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
-      "protocols": {
-        "issuance": ["OpenID4VCI"],
-        "presentation": ["OpenID4VP"]
-      },
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
       "website": "https://scytales.com",
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/app/scytales-id/id1526508103",
@@ -25,8 +23,22 @@
       },
       "openSource": false,
       "status": "production"
+    },
+    {
+      "id": "scytales-eu-reference-wallet",
+      "name": "Scytales EU Reference Wallet",
+      "logo": "https://www.google.com/s2/favicons?domain=scytales.com&sz=128",
+      "description": "An organizational platform based on the EU Digital Identity Wallet reference implementation, providing issuer and verifier capabilities.",
+      "type": "organizational",
+      "capabilities": ["issuer", "verifier"],
+      "platforms": ["Web"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "mDL/mDoc"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "website": "https://www.scytales.com",
+      "openSource": false,
+      "status": "production"
     }
   ],
-  "lastUpdated": "2025-01-06T12:00:00Z"
+  "lastUpdated": "2026-01-06T12:00:00Z"
 }
-

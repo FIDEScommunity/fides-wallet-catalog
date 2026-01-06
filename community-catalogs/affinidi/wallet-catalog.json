@@ -1,0 +1,27 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Affinidi",
+    "website": "https://www.affinidi.com",
+    "logo": "https://www.google.com/s2/favicons?domain=affinidi.com&sz=128"
+  },
+  "wallets": [
+    {
+      "id": "affinidi-vault",
+      "name": "Affinidi Vault",
+      "description": "A comprehensive identity and data management platform enabling organizations to issue and hold verifiable credentials with privacy-preserving data sharing.",
+      "logo": "https://www.google.com/s2/favicons?domain=affinidi.com&sz=128",
+      "website": "https://www.affinidi.com",
+      "type": "organizational",
+      "capabilities": ["holder", "issuer"],
+      "platforms": ["Web"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "openSource": false,
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2026-01-06T12:00:00Z"
+}
+

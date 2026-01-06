@@ -1,0 +1,27 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Meeco",
+    "website": "https://www.meeco.me",
+    "logo": "https://www.google.com/s2/favicons?domain=meeco.me&sz=128"
+  },
+  "wallets": [
+    {
+      "id": "meeco-wallet",
+      "name": "Meeco Wallet",
+      "description": "A personal data and identity management platform enabling organizations to hold and issue verifiable credentials with zero-knowledge proof capabilities.",
+      "logo": "https://www.google.com/s2/favicons?domain=meeco.me&sz=128",
+      "website": "https://www.meeco.me",
+      "type": "organizational",
+      "capabilities": ["holder", "issuer"],
+      "platforms": ["Web", "iOS", "Android"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "openSource": false,
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2026-01-06T12:00:00Z"
+}
+

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Forkbomb",
+    "website": "https://forkbomb.solutions",
+    "logo": "https://www.google.com/s2/favicons?domain=forkbomb.solutions&sz=128"
+  },
+  "wallets": [
+    {
+      "id": "didroom",
+      "name": "DIDroom",
+      "description": "An open-source decentralized identity platform providing issuer and verifier capabilities with a focus on privacy and user sovereignty.",
+      "logo": "https://www.google.com/s2/favicons?domain=forkbomb.solutions&sz=128",
+      "website": "https://forkbomb.solutions",
+      "type": "organizational",
+      "capabilities": ["issuer", "verifier"],
+      "platforms": ["Web"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "openSource": true,
+      "license": "AGPL-3.0",
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2026-01-06T12:00:00Z"
+}
+

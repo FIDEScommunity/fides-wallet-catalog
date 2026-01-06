@@ -1,0 +1,28 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "4Sure",
+    "website": "https://4sure.io",
+    "logo": "https://www.google.com/s2/favicons?domain=4sure.io&sz=128"
+  },
+  "wallets": [
+    {
+      "id": "4sure-wallet",
+      "name": "4Sure Wallet",
+      "description": "An organizational wallet platform providing holder, issuer, and verifier capabilities for enterprise digital identity management.",
+      "logo": "https://www.google.com/s2/favicons?domain=4sure.io&sz=128",
+      "website": "https://4sure.io",
+      "type": "organizational",
+      "capabilities": ["holder", "issuer", "verifier"],
+      "platforms": ["Web"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "interoperabilityProfiles": ["DIIP v4"],
+      "openSource": false,
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2026-01-06T12:00:00Z"
+}
+

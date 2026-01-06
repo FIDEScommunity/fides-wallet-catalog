@@ -14,10 +14,8 @@
       "type": "personal",
       "platforms": ["iOS", "Android"],
       "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
-      "protocols": {
-        "issuance": ["OpenID4VCI"],
-        "presentation": ["OpenID4VP"]
-      },
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
       "interoperabilityProfiles": ["HAIP"],
       "website": "https://impierce.com/unime",
       "appStoreLinks": {
@@ -26,8 +24,24 @@
       },
       "openSource": true,
       "status": "production"
+    },
+    {
+      "id": "impierce-agent",
+      "name": "Impierce Agent",
+      "logo": "https://www.google.com/s2/favicons?domain=impierce.com&sz=128",
+      "description": "An open-source organizational identity agent providing complete holder, issuer, and verifier capabilities built on the UniCore framework.",
+      "type": "organizational",
+      "capabilities": ["holder", "issuer", "verifier"],
+      "platforms": ["Web"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "website": "https://impierce.com",
+      "openSource": true,
+      "license": "Apache-2.0",
+      "repository": "https://github.com/impierce/ssi-agent",
+      "status": "production"
     }
   ],
-  "lastUpdated": "2025-01-06T12:00:00Z"
+  "lastUpdated": "2026-01-06T12:00:00Z"
 }
-

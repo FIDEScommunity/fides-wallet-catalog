@@ -1,0 +1,28 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Credenco",
+    "website": "https://www.credenco.com",
+    "logo": "https://www.google.com/s2/favicons?domain=credenco.com&sz=128"
+  },
+  "wallets": [
+    {
+      "id": "credenco-wallet",
+      "name": "Credenco Wallet",
+      "description": "A DIIP v4 compliant organizational wallet platform providing full holder, issuer, and verifier capabilities for enterprise digital identity management.",
+      "logo": "https://www.google.com/s2/favicons?domain=credenco.com&sz=128",
+      "website": "https://www.credenco.com",
+      "type": "organizational",
+      "capabilities": ["holder", "issuer", "verifier"],
+      "platforms": ["Web"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "interoperabilityProfiles": ["DIIP v4"],
+      "openSource": false,
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2026-01-06T12:00:00Z"
+}
+

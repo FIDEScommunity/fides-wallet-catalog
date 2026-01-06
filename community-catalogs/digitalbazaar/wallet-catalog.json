@@ -1,0 +1,29 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Digital Bazaar",
+    "website": "https://www.digitalbazaar.com",
+    "logo": "https://www.google.com/s2/favicons?domain=digitalbazaar.com&sz=128"
+  },
+  "wallets": [
+    {
+      "id": "veres-wallet",
+      "name": "Veres Wallet",
+      "description": "An enterprise-grade verifiable credentials platform built by Digital Bazaar, pioneers of the W3C Verifiable Credentials standard, offering issuer and verifier capabilities.",
+      "logo": "https://www.google.com/s2/favicons?domain=digitalbazaar.com&sz=128",
+      "website": "https://www.digitalbazaar.com",
+      "type": "organizational",
+      "capabilities": ["issuer", "verifier"],
+      "platforms": ["Web"],
+      "credentialFormats": ["JSON-LD VC", "JWT-VC"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "supportedDIDMethods": ["did:web", "did:key"],
+      "openSource": true,
+      "license": "BSD-3-Clause",
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2026-01-06T12:00:00Z"
+}
+

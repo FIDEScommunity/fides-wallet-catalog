@@ -1,0 +1,29 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "MATTR",
+    "website": "https://mattr.global",
+    "logo": "https://www.google.com/s2/favicons?domain=mattr.global&sz=128"
+  },
+  "wallets": [
+    {
+      "id": "mattr-vii",
+      "name": "MATTR VII",
+      "description": "An enterprise identity infrastructure platform providing comprehensive issuer and verifier capabilities for verifiable credentials at scale.",
+      "logo": "https://www.google.com/s2/favicons?domain=mattr.global&sz=128",
+      "website": "https://mattr.global",
+      "type": "organizational",
+      "capabilities": ["issuer", "verifier"],
+      "platforms": ["Web"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC", "mDL/mDoc"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "supportedDIDMethods": ["did:web", "did:key", "did:ion"],
+      "openSource": false,
+      "status": "production",
+      "documentation": "https://learn.mattr.global"
+    }
+  ],
+  "lastUpdated": "2026-01-06T12:00:00Z"
+}
+

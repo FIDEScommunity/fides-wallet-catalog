@@ -43,7 +43,24 @@
       },
       "status": "production",
       "releaseDate": "2023-06-01"
+    },
+    {
+      "id": "paradym-platform",
+      "name": "Paradym Platform",
+      "description": "An enterprise platform for issuing and verifying verifiable credentials, built on the open-source Credo framework.",
+      "logo": "https://www.google.com/s2/favicons?domain=paradym.id&sz=128",
+      "website": "https://paradym.id",
+      "type": "organizational",
+      "capabilities": ["holder", "issuer"],
+      "platforms": ["Web"],
+      "openSource": false,
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "AnonCreds", "mDL/mDoc"],
+      "issuanceProtocols": ["OpenID4VCI", "DIDComm Issue Credential v2"],
+      "presentationProtocols": ["OpenID4VP", "DIDComm Present Proof v2"],
+      "supportedDIDMethods": ["did:web", "did:key", "did:jwk", "did:cheqd"],
+      "documentation": "https://docs.paradym.id",
+      "status": "production"
     }
   ],
-  "lastUpdated": "2025-01-05T10:00:00Z"
+  "lastUpdated": "2026-01-06T12:00:00Z"
 }

@@ -37,6 +37,10 @@ export type KeyManagement =
   | 'Smart Card'
   | 'FIDO2/WebAuthn';
 
+export type WalletCapability = 'holder' | 'issuer' | 'verifier';
+
+export type InteroperabilityProfile = 'HAIP' | 'DIIP v4' | 'EWC v3';
+
 export interface WalletProvider {
   name: string;
   did?: string; // Optional - not all providers have a DID yet
@@ -55,6 +59,7 @@ export interface Wallet {
   logo?: string;
   website?: string;
   type: WalletType;
+  capabilities?: WalletCapability[]; // For organizational wallets: holder, issuer, verifier
   platforms?: Platform[];
   openSource?: boolean;
   license?: string;
@@ -65,6 +70,7 @@ export interface Wallet {
   supportedDIDMethods?: string[];
   keyManagement?: KeyManagement[];
   certifications?: string[];
+  interoperabilityProfiles?: InteroperabilityProfile[];
   standards?: string[];
   features?: string[];
   documentation?: string;
@@ -121,8 +127,10 @@ export interface AggregatedCatalog {
 export interface WalletFilters {
   search?: string;
   type?: WalletType[];
+  capabilities?: WalletCapability[];
   platforms?: Platform[];
   credentialFormats?: CredentialFormat[];
+  interoperabilityProfiles?: InteroperabilityProfile[];
   protocols?: string[];
   openSource?: boolean;
   status?: WalletStatus[];

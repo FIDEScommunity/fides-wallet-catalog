@@ -1,0 +1,28 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Spherity",
+    "website": "https://www.spherity.com",
+    "logo": "https://www.google.com/s2/favicons?domain=spherity.com&sz=128"
+  },
+  "wallets": [
+    {
+      "id": "spherity-wallet",
+      "name": "Spherity Wallet",
+      "description": "An enterprise identity wallet specializing in supply chain and pharmaceutical industry use cases, providing complete holder, issuer, and verifier capabilities.",
+      "logo": "https://www.google.com/s2/favicons?domain=spherity.com&sz=128",
+      "website": "https://www.spherity.com",
+      "type": "organizational",
+      "capabilities": ["holder", "issuer", "verifier"],
+      "platforms": ["Web"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "supportedDIDMethods": ["did:web", "did:key", "did:ethr"],
+      "openSource": false,
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2026-01-06T12:00:00Z"
+}
+

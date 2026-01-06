@@ -1,0 +1,28 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Dock",
+    "website": "https://www.dock.io",
+    "logo": "https://www.google.com/s2/favicons?domain=dock.io&sz=128"
+  },
+  "wallets": [
+    {
+      "id": "dock-certs",
+      "name": "Dock Certs",
+      "description": "A blockchain-based verifiable credentials platform enabling organizations to issue and verify tamper-proof digital credentials.",
+      "logo": "https://www.google.com/s2/favicons?domain=dock.io&sz=128",
+      "website": "https://www.dock.io",
+      "type": "organizational",
+      "capabilities": ["issuer", "verifier"],
+      "platforms": ["Web"],
+      "credentialFormats": ["JSON-LD VC", "JWT-VC"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "supportedDIDMethods": ["did:dock", "did:key"],
+      "openSource": false,
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2026-01-06T12:00:00Z"
+}
+

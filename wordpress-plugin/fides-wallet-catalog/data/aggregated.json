@@ -1,6 +1,81 @@
 {
   "wallets": [
     {
+      "id": "4sure-wallet",
+      "name": "4Sure Wallet",
+      "description": "An organizational wallet platform providing holder, issuer, and verifier capabilities for enterprise digital identity management.",
+      "logo": "https://www.google.com/s2/favicons?domain=4sure.io&sz=128",
+      "website": "https://4sure.io",
+      "type": "organizational",
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "interoperabilityProfiles": [
+        "DIIP v4"
+      ],
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "4Sure",
+        "website": "https://4sure.io",
+        "logo": "https://www.google.com/s2/favicons?domain=4sure.io&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/4sure/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.155Z",
+      "source": "local"
+    },
+    {
+      "id": "affinidi-vault",
+      "name": "Affinidi Vault",
+      "description": "A comprehensive identity and data management platform enabling organizations to issue and hold verifiable credentials with privacy-preserving data sharing.",
+      "logo": "https://www.google.com/s2/favicons?domain=affinidi.com&sz=128",
+      "website": "https://www.affinidi.com",
+      "type": "organizational",
+      "capabilities": [
+        "holder",
+        "issuer"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "JSON-LD VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "Affinidi",
+        "website": "https://www.affinidi.com",
+        "logo": "https://www.google.com/s2/favicons?domain=affinidi.com&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/affinidi/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.156Z",
+      "source": "local"
+    },
+    {
       "id": "paradym-wallet",
       "name": "Paradym Wallet",
       "description": "A user-friendly wallet for managing verifiable credentials, built on the Credo framework.",
@@ -70,8 +145,59 @@
           "support": "https://animo.id/support"
         }
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/animo/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.387Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/animo/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.157Z",
+      "source": "local"
+    },
+    {
+      "id": "paradym-platform",
+      "name": "Paradym Platform",
+      "description": "An enterprise platform for issuing and verifying verifiable credentials, built on the open-source Credo framework.",
+      "logo": "https://www.google.com/s2/favicons?domain=paradym.id&sz=128",
+      "website": "https://paradym.id",
+      "type": "organizational",
+      "capabilities": [
+        "holder",
+        "issuer"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "openSource": false,
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "AnonCreds",
+        "mDL/mDoc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI",
+        "DIDComm Issue Credential v2"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "DIDComm Present Proof v2"
+      ],
+      "supportedDIDMethods": [
+        "did:web",
+        "did:key",
+        "did:jwk",
+        "did:cheqd"
+      ],
+      "documentation": "https://docs.paradym.id",
+      "status": "production",
+      "provider": {
+        "name": "Animo Solutions",
+        "did": "did:web:animo.id",
+        "website": "https://animo.id",
+        "logo": "https://www.google.com/s2/favicons?domain=animo.id&sz=128",
+        "contact": {
+          "email": "info@animo.id",
+          "support": "https://animo.id/support"
+        }
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/animo/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.157Z",
       "source": "local"
     },
     {
@@ -97,8 +223,154 @@
         "website": "https://www.apple.com",
         "logo": "https://www.google.com/s2/favicons?domain=apple.com&sz=128"
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/apple/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.388Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/apple/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.157Z",
+      "source": "local"
+    },
+    {
+      "id": "archipels-wallet",
+      "name": "Archipels",
+      "description": "A French enterprise identity platform providing complete holder, issuer, and verifier capabilities for organizational digital credential management.",
+      "logo": "https://www.google.com/s2/favicons?domain=archipels.io&sz=128",
+      "website": "https://en.archipels.io",
+      "type": "organizational",
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "Archipels",
+        "website": "https://en.archipels.io",
+        "logo": "https://www.google.com/s2/favicons?domain=archipels.io&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/archipels/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.158Z",
+      "source": "local"
+    },
+    {
+      "id": "auth0-lab-verifiable-credentials",
+      "name": "Auth0 Lab Verifiable Credentials",
+      "description": "Auth0's experimental verifiable credentials platform enabling organizations to issue and verify digital credentials integrated with Auth0's identity platform.",
+      "logo": "https://www.google.com/s2/favicons?domain=auth0.com&sz=128",
+      "website": "https://lab.auth0.com",
+      "type": "organizational",
+      "capabilities": [
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "openSource": false,
+      "status": "beta",
+      "provider": {
+        "name": "Auth0 (Okta)",
+        "website": "https://auth0.com",
+        "logo": "https://www.google.com/s2/favicons?domain=auth0.com&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/auth0/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.158Z",
+      "source": "local"
+    },
+    {
+      "id": "auvodigital-wallet",
+      "name": "AuvoDigital",
+      "description": "An enterprise digital identity platform offering complete holder, issuer, and verifier capabilities for organizational credential management.",
+      "logo": "https://www.google.com/s2/favicons?domain=auvo.io&sz=128",
+      "website": "https://auvo.io",
+      "type": "organizational",
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "AuvoDigital",
+        "website": "https://auvo.io",
+        "logo": "https://www.google.com/s2/favicons?domain=auvo.io&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/auvodigital/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.158Z",
+      "source": "local"
+    },
+    {
+      "id": "credenco-wallet",
+      "name": "Credenco Wallet",
+      "description": "A DIIP v4 compliant organizational wallet platform providing full holder, issuer, and verifier capabilities for enterprise digital identity management.",
+      "logo": "https://www.google.com/s2/favicons?domain=credenco.com&sz=128",
+      "website": "https://www.credenco.com",
+      "type": "organizational",
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "interoperabilityProfiles": [
+        "DIIP v4"
+      ],
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "Credenco",
+        "website": "https://www.credenco.com",
+        "logo": "https://www.google.com/s2/favicons?domain=credenco.com&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/credenco/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.159Z",
       "source": "local"
     },
     {
@@ -138,8 +410,123 @@
         "website": "https://www.digidentity.com",
         "logo": "https://www.google.com/s2/favicons?domain=digidentity.com&sz=128"
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/digidentity/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.388Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/digidentity/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.159Z",
+      "source": "local"
+    },
+    {
+      "id": "veres-wallet",
+      "name": "Veres Wallet",
+      "description": "An enterprise-grade verifiable credentials platform built by Digital Bazaar, pioneers of the W3C Verifiable Credentials standard, offering issuer and verifier capabilities.",
+      "logo": "https://www.google.com/s2/favicons?domain=digitalbazaar.com&sz=128",
+      "website": "https://www.digitalbazaar.com",
+      "type": "organizational",
+      "capabilities": [
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "JSON-LD VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "supportedDIDMethods": [
+        "did:web",
+        "did:key"
+      ],
+      "openSource": true,
+      "license": "BSD-3-Clause",
+      "status": "production",
+      "provider": {
+        "name": "Digital Bazaar",
+        "website": "https://www.digitalbazaar.com",
+        "logo": "https://www.google.com/s2/favicons?domain=digitalbazaar.com&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/digitalbazaar/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.160Z",
+      "source": "local"
+    },
+    {
+      "id": "dock-certs",
+      "name": "Dock Certs",
+      "description": "A blockchain-based verifiable credentials platform enabling organizations to issue and verify tamper-proof digital credentials.",
+      "logo": "https://www.google.com/s2/favicons?domain=dock.io&sz=128",
+      "website": "https://www.dock.io",
+      "type": "organizational",
+      "capabilities": [
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "JSON-LD VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "supportedDIDMethods": [
+        "did:dock",
+        "did:key"
+      ],
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "Dock",
+        "website": "https://www.dock.io",
+        "logo": "https://www.google.com/s2/favicons?domain=dock.io&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/dock/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.160Z",
+      "source": "local"
+    },
+    {
+      "id": "didroom",
+      "name": "DIDroom",
+      "description": "An open-source decentralized identity platform providing issuer and verifier capabilities with a focus on privacy and user sovereignty.",
+      "logo": "https://www.google.com/s2/favicons?domain=forkbomb.solutions&sz=128",
+      "website": "https://forkbomb.solutions",
+      "type": "organizational",
+      "capabilities": [
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "openSource": true,
+      "license": "AGPL-3.0",
+      "status": "production",
+      "provider": {
+        "name": "Forkbomb",
+        "website": "https://forkbomb.solutions",
+        "logo": "https://www.google.com/s2/favicons?domain=forkbomb.solutions&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/forkbomb/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.160Z",
       "source": "local"
     },
     {
@@ -177,8 +564,8 @@
         "website": "https://gataca.io",
         "logo": "https://www.google.com/s2/favicons?domain=gataca.io&sz=128"
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/gataca/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.389Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/gataca/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.160Z",
       "source": "local"
     },
     {
@@ -204,8 +591,8 @@
         "website": "https://www.google.com",
         "logo": "https://www.google.com/s2/favicons?domain=google.com&sz=128"
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/google/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.403Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/google/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.161Z",
       "source": "local"
     },
     {
@@ -277,8 +664,60 @@
           "email": "info@igrant.io"
         }
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/igrant/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.404Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/igrant/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.161Z",
+      "source": "local"
+    },
+    {
+      "id": "igrant-organization-wallet",
+      "name": "iGrant.io Organization Wallet",
+      "description": "An enterprise wallet platform providing complete holder, issuer, and verifier capabilities with DIIP v4 compliance for organizational digital identity management.",
+      "logo": "https://www.google.com/s2/favicons?domain=igrant.io&sz=128",
+      "website": "https://igrant.io",
+      "type": "organizational",
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "openSource": true,
+      "license": "Apache-2.0",
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "AnonCreds"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI",
+        "DIDComm Issue Credential v2"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "DIDComm Present Proof v2"
+      ],
+      "supportedDIDMethods": [
+        "did:key",
+        "did:web"
+      ],
+      "interoperabilityProfiles": [
+        "DIIP v4"
+      ],
+      "documentation": "https://docs.igrant.io",
+      "status": "production",
+      "provider": {
+        "name": "iGrant.io",
+        "did": "did:web:igrant.io",
+        "website": "https://igrant.io",
+        "logo": "https://www.google.com/s2/favicons?domain=igrant.io&sz=128",
+        "contact": {
+          "email": "info@igrant.io"
+        }
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/igrant/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.161Z",
       "source": "local"
     },
     {
@@ -295,14 +734,12 @@
         "SD-JWT-VC",
         "JWT-VC"
       ],
-      "protocols": {
-        "issuance": [
-          "OpenID4VCI"
-        ],
-        "presentation": [
-          "OpenID4VP"
-        ]
-      },
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
       "interoperabilityProfiles": [
         "HAIP"
       ],
@@ -318,8 +755,46 @@
         "website": "https://impierce.com",
         "logo": "https://www.google.com/s2/favicons?domain=impierce.com&sz=128"
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/impierce/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.404Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/impierce/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.161Z",
+      "source": "local"
+    },
+    {
+      "id": "impierce-agent",
+      "name": "Impierce Agent",
+      "logo": "https://www.google.com/s2/favicons?domain=impierce.com&sz=128",
+      "description": "An open-source organizational identity agent providing complete holder, issuer, and verifier capabilities built on the UniCore framework.",
+      "type": "organizational",
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "website": "https://impierce.com",
+      "openSource": true,
+      "license": "Apache-2.0",
+      "repository": "https://github.com/impierce/ssi-agent",
+      "status": "production",
+      "provider": {
+        "name": "Impierce Technologies",
+        "website": "https://impierce.com",
+        "logo": "https://www.google.com/s2/favicons?domain=impierce.com&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/impierce/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.161Z",
       "source": "local"
     },
     {
@@ -389,8 +864,137 @@
           "email": "info@lissi.id"
         }
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/lissi/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.406Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/lissi/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.162Z",
+      "source": "local"
+    },
+    {
+      "id": "lissi-id-wallet-connector",
+      "name": "Lissi ID-Wallet Connector",
+      "description": "An enterprise integration platform enabling organizations to hold, issue, and verify verifiable credentials, connecting with the Lissi ecosystem.",
+      "logo": "https://www.google.com/s2/favicons?domain=lissi.id&sz=128",
+      "website": "https://www.lissi.id",
+      "type": "organizational",
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "openSource": false,
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "AnonCreds",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI",
+        "DIDComm Issue Credential v2"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "DIDComm Present Proof v2"
+      ],
+      "supportedDIDMethods": [
+        "did:web",
+        "did:key",
+        "did:indy"
+      ],
+      "documentation": "https://docs.lissi.id",
+      "status": "production",
+      "provider": {
+        "name": "Neosfer GmbH",
+        "did": "did:web:lissi.id",
+        "website": "https://lissi.id",
+        "logo": "https://www.google.com/s2/favicons?domain=lissi.id&sz=128",
+        "contact": {
+          "email": "info@lissi.id"
+        }
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/lissi/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.162Z",
+      "source": "local"
+    },
+    {
+      "id": "mattr-vii",
+      "name": "MATTR VII",
+      "description": "An enterprise identity infrastructure platform providing comprehensive issuer and verifier capabilities for verifiable credentials at scale.",
+      "logo": "https://www.google.com/s2/favicons?domain=mattr.global&sz=128",
+      "website": "https://mattr.global",
+      "type": "organizational",
+      "capabilities": [
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "JSON-LD VC",
+        "mDL/mDoc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "supportedDIDMethods": [
+        "did:web",
+        "did:key",
+        "did:ion"
+      ],
+      "openSource": false,
+      "status": "production",
+      "documentation": "https://learn.mattr.global",
+      "provider": {
+        "name": "MATTR",
+        "website": "https://mattr.global",
+        "logo": "https://www.google.com/s2/favicons?domain=mattr.global&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/mattr/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.162Z",
+      "source": "local"
+    },
+    {
+      "id": "meeco-wallet",
+      "name": "Meeco Wallet",
+      "description": "A personal data and identity management platform enabling organizations to hold and issue verifiable credentials with zero-knowledge proof capabilities.",
+      "logo": "https://www.google.com/s2/favicons?domain=meeco.me&sz=128",
+      "website": "https://www.meeco.me",
+      "type": "organizational",
+      "capabilities": [
+        "holder",
+        "issuer"
+      ],
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "Meeco",
+        "website": "https://www.meeco.me",
+        "logo": "https://www.google.com/s2/favicons?domain=meeco.me&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/meeco/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.163Z",
       "source": "local"
     },
     {
@@ -426,8 +1030,123 @@
         "website": "https://www.microsoft.com",
         "logo": "https://www.google.com/s2/favicons?domain=microsoft.com&sz=128"
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/microsoft/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.408Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/microsoft/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.163Z",
+      "source": "local"
+    },
+    {
+      "id": "mini-wallet-finland",
+      "name": "Mini-Wallet (Finland)",
+      "description": "The Finnish government's digital identity wallet enabling organizations and citizens to hold and issue verifiable credentials as part of the national digital identity infrastructure.",
+      "logo": "https://www.google.com/s2/favicons?domain=minisuomi.fi&sz=128",
+      "website": "https://wallet.minisuomi.fi",
+      "type": "organizational",
+      "capabilities": [
+        "holder",
+        "issuer"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "Mini-Suomi (DVV Finland)",
+        "website": "https://wallet.minisuomi.fi",
+        "logo": "https://www.google.com/s2/favicons?domain=minisuomi.fi&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/minisuomi/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.163Z",
+      "source": "local"
+    },
+    {
+      "id": "inji-wallet",
+      "name": "Inji Wallet",
+      "description": "An open-source modular identity platform providing complete holder, issuer (Certify), and verifier capabilities, designed for national-scale digital identity deployments.",
+      "logo": "https://www.google.com/s2/favicons?domain=mosip.io&sz=128",
+      "website": "https://www.mosip.io",
+      "type": "organizational",
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "mDL/mDoc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "openSource": true,
+      "license": "MPL-2.0",
+      "repository": "https://github.com/mosip/inji",
+      "status": "production",
+      "documentation": "https://docs.mosip.io",
+      "provider": {
+        "name": "MOSIP",
+        "website": "https://www.mosip.io",
+        "logo": "https://www.google.com/s2/favicons?domain=mosip.io&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/mosip/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.164Z",
+      "source": "local"
+    },
+    {
+      "id": "orbit-enterprise",
+      "name": "Orbit Enterprise",
+      "description": "An enterprise digital identity platform providing holder and issuer capabilities for organizations to manage and issue verifiable credentials.",
+      "logo": "https://www.google.com/s2/favicons?domain=northernblock.io&sz=128",
+      "website": "https://northernblock.io",
+      "type": "organizational",
+      "capabilities": [
+        "holder",
+        "issuer"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "AnonCreds"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI",
+        "DIDComm Issue Credential v2"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "DIDComm Present Proof v2"
+      ],
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "Northern Block",
+        "website": "https://northernblock.io",
+        "logo": "https://www.google.com/s2/favicons?domain=northernblock.io&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/northernblock/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.164Z",
       "source": "local"
     },
     {
@@ -461,8 +1180,44 @@
         "website": "https://privacybydesign.foundation",
         "logo": "https://www.google.com/s2/favicons?domain=yivi.app&sz=128"
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/privacybydesign/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.409Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/privacybydesign/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.164Z",
+      "source": "local"
+    },
+    {
+      "id": "procivis-one",
+      "name": "Procivis One",
+      "description": "A Swiss enterprise identity platform providing issuer and verifier capabilities for verifiable credentials with a focus on privacy and compliance.",
+      "logo": "https://www.google.com/s2/favicons?domain=procivis.ch&sz=128",
+      "website": "https://www.procivis.ch",
+      "type": "organizational",
+      "capabilities": [
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "mDL/mDoc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "Procivis",
+        "website": "https://www.procivis.ch",
+        "logo": "https://www.google.com/s2/favicons?domain=procivis.ch&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/procivis/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.164Z",
       "source": "local"
     },
     {
@@ -479,14 +1234,12 @@
         "SD-JWT-VC",
         "JWT-VC"
       ],
-      "protocols": {
-        "issuance": [
-          "OpenID4VCI"
-        ],
-        "presentation": [
-          "OpenID4VP"
-        ]
-      },
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
       "website": "https://scytales.com",
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/app/scytales-id/id1526508103",
@@ -499,8 +1252,79 @@
         "website": "https://scytales.com",
         "logo": "https://www.google.com/s2/favicons?domain=scytales.com&sz=128"
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/scytales/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.410Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/scytales/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.165Z",
+      "source": "local"
+    },
+    {
+      "id": "scytales-eu-reference-wallet",
+      "name": "Scytales EU Reference Wallet",
+      "logo": "https://www.google.com/s2/favicons?domain=scytales.com&sz=128",
+      "description": "An organizational platform based on the EU Digital Identity Wallet reference implementation, providing issuer and verifier capabilities.",
+      "type": "organizational",
+      "capabilities": [
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "mDL/mDoc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "website": "https://www.scytales.com",
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "Scytales",
+        "website": "https://scytales.com",
+        "logo": "https://www.google.com/s2/favicons?domain=scytales.com&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/scytales/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.165Z",
+      "source": "local"
+    },
+    {
+      "id": "sicpa-digital-trust-suite",
+      "name": "SICPA Digital Trust Suite",
+      "description": "An enterprise digital trust platform from SICPA providing issuer and verifier capabilities for secure credential management, building on their expertise in security authentication.",
+      "logo": "https://www.google.com/s2/favicons?domain=sicpa.com&sz=128",
+      "website": "https://www.sicpa.com",
+      "type": "organizational",
+      "capabilities": [
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "SICPA",
+        "website": "https://www.sicpa.com",
+        "logo": "https://www.google.com/s2/favicons?domain=sicpa.com&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/sicpa/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.165Z",
       "source": "local"
     },
     {
@@ -572,8 +1396,50 @@
           "email": "info@sphereon.com"
         }
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/sphereon/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.410Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/sphereon/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.165Z",
+      "source": "local"
+    },
+    {
+      "id": "spherity-wallet",
+      "name": "Spherity Wallet",
+      "description": "An enterprise identity wallet specializing in supply chain and pharmaceutical industry use cases, providing complete holder, issuer, and verifier capabilities.",
+      "logo": "https://www.google.com/s2/favicons?domain=spherity.com&sz=128",
+      "website": "https://www.spherity.com",
+      "type": "organizational",
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "JSON-LD VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "supportedDIDMethods": [
+        "did:web",
+        "did:key",
+        "did:ethr"
+      ],
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "Spherity",
+        "website": "https://www.spherity.com",
+        "logo": "https://www.google.com/s2/favicons?domain=spherity.com&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/spherity/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.166Z",
       "source": "local"
     },
     {
@@ -611,8 +1477,8 @@
         "website": "https://talao.io",
         "logo": "https://www.google.com/s2/favicons?domain=talao.io&sz=128"
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/talao/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.411Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/talao/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.167Z",
       "source": "local"
     },
     {
@@ -650,8 +1516,8 @@
         "website": "https://talao.io",
         "logo": "https://www.google.com/s2/favicons?domain=talao.io&sz=128"
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/talao/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.411Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/talao/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.167Z",
       "source": "local"
     },
     {
@@ -688,8 +1554,8 @@
         "website": "https://tanglelabs.io",
         "logo": "https://www.google.com/s2/favicons?domain=tanglelabs.io&sz=128"
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/tanglelabs/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.412Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/tanglelabs/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.167Z",
       "source": "local"
     },
     {
@@ -726,8 +1592,88 @@
         "website": "https://www.toppan.com",
         "logo": "https://www.google.com/s2/favicons?domain=toppan.com&sz=128"
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/toppan/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.414Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/toppan/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.168Z",
+      "source": "local"
+    },
+    {
+      "id": "transmute-platform",
+      "name": "Transmute Platform",
+      "description": "An enterprise platform for verifiable data and supply chain traceability, providing issuer, verifier, and holder capabilities with a focus on trade and logistics.",
+      "logo": "https://www.google.com/s2/favicons?domain=transmute.industries&sz=128",
+      "website": "https://transmute.industries",
+      "type": "organizational",
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "JSON-LD VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "supportedDIDMethods": [
+        "did:web",
+        "did:key"
+      ],
+      "interoperabilityProfiles": [
+        "DIIP v4"
+      ],
+      "openSource": true,
+      "status": "production",
+      "documentation": "https://transmute.industries/docs",
+      "provider": {
+        "name": "Transmute",
+        "website": "https://transmute.industries",
+        "logo": "https://www.google.com/s2/favicons?domain=transmute.industries&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/transmute/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.168Z",
+      "source": "local"
+    },
+    {
+      "id": "uaegean-wallet",
+      "name": "UAegean Wallet (Cyclades Fast Ferries)",
+      "description": "An organizational wallet developed by the University of the Aegean providing holder, issuer, and verifier capabilities, demonstrated in the Cyclades Fast Ferries use case.",
+      "logo": "https://www.google.com/s2/favicons?domain=aegean.gr&sz=128",
+      "website": "https://www.aegean.gr",
+      "type": "organizational",
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "University of the Aegean",
+        "website": "https://www.aegean.gr",
+        "logo": "https://www.google.com/s2/favicons?domain=aegean.gr&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/uaegean/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.171Z",
       "source": "local"
     },
     {
@@ -767,15 +1713,15 @@
         "website": "https://ubique.ch",
         "logo": "https://www.google.com/s2/favicons?domain=ubique.ch&sz=128"
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/ubique/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.415Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/ubique/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.171Z",
       "source": "local"
     },
     {
       "id": "vidwallet",
       "name": "VIDwallet",
       "logo": "https://www.google.com/s2/favicons?domain=validatedid.com&sz=128",
-      "description": "A HAIP-compliant digital identity wallet enabling secure storage and presentation of verifiable credentials for individuals and organizations.",
+      "description": "A HAIP-compliant digital identity wallet enabling secure storage and presentation of verifiable credentials for individuals.",
       "type": "personal",
       "platforms": [
         "iOS",
@@ -785,14 +1731,12 @@
         "SD-JWT-VC",
         "JWT-VC"
       ],
-      "protocols": {
-        "issuance": [
-          "OpenID4VCI"
-        ],
-        "presentation": [
-          "OpenID4VP"
-        ]
-      },
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
       "interoperabilityProfiles": [
         "HAIP"
       ],
@@ -808,8 +1752,47 @@
         "website": "https://www.validatedid.com",
         "logo": "https://www.google.com/s2/favicons?domain=validatedid.com&sz=128"
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/validatedid/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.415Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/validatedid/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.171Z",
+      "source": "local"
+    },
+    {
+      "id": "validatedid-platform",
+      "name": "ValidatedID Platform",
+      "logo": "https://www.google.com/s2/favicons?domain=validatedid.com&sz=128",
+      "description": "An enterprise digital identity platform providing complete holder, issuer, and verifier capabilities for organizational credential management.",
+      "type": "organizational",
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "interoperabilityProfiles": [
+        "HAIP"
+      ],
+      "website": "https://validated.id",
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "Validated ID",
+        "website": "https://www.validatedid.com",
+        "logo": "https://www.google.com/s2/favicons?domain=validatedid.com&sz=128"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/validatedid/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.171Z",
       "source": "local"
     },
     {
@@ -845,8 +1828,8 @@
         "website": "https://wwwallet.org",
         "logo": "https://avatars.githubusercontent.com/u/126908515"
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/wwwallet/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.416Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/wwwallet/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.171Z",
       "source": "local"
     },
     {
@@ -883,8 +1866,8 @@
         "website": "https://www.youniqx.com",
         "logo": "https://www.google.com/s2/favicons?domain=youniqx.com&sz=128"
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/youniqx/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.417Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/youniqx/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.172Z",
       "source": "local"
     },
     {
@@ -921,8 +1904,8 @@
         "website": "https://www.youniqx.com",
         "logo": "https://www.google.com/s2/favicons?domain=youniqx.com&sz=128"
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/youniqx/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.417Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/youniqx/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.172Z",
       "source": "local"
     },
     {
@@ -963,12 +1946,22 @@
         "website": "https://yourd.xyz",
         "logo": "https://www.google.com/s2/favicons?domain=yourd.xyz&sz=128"
       },
-      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/yourd/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T09:40:17.418Z",
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/yourd/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T09:54:46.172Z",
       "source": "local"
     }
   ],
   "providers": [
+    {
+      "name": "4Sure",
+      "website": "https://4sure.io",
+      "logo": "https://www.google.com/s2/favicons?domain=4sure.io&sz=128"
+    },
+    {
+      "name": "Affinidi",
+      "website": "https://www.affinidi.com",
+      "logo": "https://www.google.com/s2/favicons?domain=affinidi.com&sz=128"
+    },
     {
       "name": "Animo Solutions",
       "did": "did:web:animo.id",
@@ -985,9 +1978,44 @@
       "logo": "https://www.google.com/s2/favicons?domain=apple.com&sz=128"
     },
     {
+      "name": "Archipels",
+      "website": "https://en.archipels.io",
+      "logo": "https://www.google.com/s2/favicons?domain=archipels.io&sz=128"
+    },
+    {
+      "name": "Auth0 (Okta)",
+      "website": "https://auth0.com",
+      "logo": "https://www.google.com/s2/favicons?domain=auth0.com&sz=128"
+    },
+    {
+      "name": "AuvoDigital",
+      "website": "https://auvo.io",
+      "logo": "https://www.google.com/s2/favicons?domain=auvo.io&sz=128"
+    },
+    {
+      "name": "Credenco",
+      "website": "https://www.credenco.com",
+      "logo": "https://www.google.com/s2/favicons?domain=credenco.com&sz=128"
+    },
+    {
       "name": "Digidentity",
       "website": "https://www.digidentity.com",
       "logo": "https://www.google.com/s2/favicons?domain=digidentity.com&sz=128"
+    },
+    {
+      "name": "Digital Bazaar",
+      "website": "https://www.digitalbazaar.com",
+      "logo": "https://www.google.com/s2/favicons?domain=digitalbazaar.com&sz=128"
+    },
+    {
+      "name": "Dock",
+      "website": "https://www.dock.io",
+      "logo": "https://www.google.com/s2/favicons?domain=dock.io&sz=128"
+    },
+    {
+      "name": "Forkbomb",
+      "website": "https://forkbomb.solutions",
+      "logo": "https://www.google.com/s2/favicons?domain=forkbomb.solutions&sz=128"
     },
     {
       "name": "Gataca Labs",
@@ -1023,9 +2051,34 @@
       }
     },
     {
+      "name": "MATTR",
+      "website": "https://mattr.global",
+      "logo": "https://www.google.com/s2/favicons?domain=mattr.global&sz=128"
+    },
+    {
+      "name": "Meeco",
+      "website": "https://www.meeco.me",
+      "logo": "https://www.google.com/s2/favicons?domain=meeco.me&sz=128"
+    },
+    {
       "name": "Microsoft",
       "website": "https://www.microsoft.com",
       "logo": "https://www.google.com/s2/favicons?domain=microsoft.com&sz=128"
+    },
+    {
+      "name": "Mini-Suomi (DVV Finland)",
+      "website": "https://wallet.minisuomi.fi",
+      "logo": "https://www.google.com/s2/favicons?domain=minisuomi.fi&sz=128"
+    },
+    {
+      "name": "MOSIP",
+      "website": "https://www.mosip.io",
+      "logo": "https://www.google.com/s2/favicons?domain=mosip.io&sz=128"
+    },
+    {
+      "name": "Northern Block",
+      "website": "https://northernblock.io",
+      "logo": "https://www.google.com/s2/favicons?domain=northernblock.io&sz=128"
     },
     {
       "name": "Privacy by Design Foundation",
@@ -1033,9 +2086,19 @@
       "logo": "https://www.google.com/s2/favicons?domain=yivi.app&sz=128"
     },
     {
+      "name": "Procivis",
+      "website": "https://www.procivis.ch",
+      "logo": "https://www.google.com/s2/favicons?domain=procivis.ch&sz=128"
+    },
+    {
       "name": "Scytales",
       "website": "https://scytales.com",
       "logo": "https://www.google.com/s2/favicons?domain=scytales.com&sz=128"
+    },
+    {
+      "name": "SICPA",
+      "website": "https://www.sicpa.com",
+      "logo": "https://www.google.com/s2/favicons?domain=sicpa.com&sz=128"
     },
     {
       "name": "Sphereon",
@@ -1045,6 +2108,11 @@
       "contact": {
         "email": "info@sphereon.com"
       }
+    },
+    {
+      "name": "Spherity",
+      "website": "https://www.spherity.com",
+      "logo": "https://www.google.com/s2/favicons?domain=spherity.com&sz=128"
     },
     {
       "name": "Talao",
@@ -1060,6 +2128,16 @@
       "name": "Toppan",
       "website": "https://www.toppan.com",
       "logo": "https://www.google.com/s2/favicons?domain=toppan.com&sz=128"
+    },
+    {
+      "name": "Transmute",
+      "website": "https://transmute.industries",
+      "logo": "https://www.google.com/s2/favicons?domain=transmute.industries&sz=128"
+    },
+    {
+      "name": "University of the Aegean",
+      "website": "https://www.aegean.gr",
+      "logo": "https://www.google.com/s2/favicons?domain=aegean.gr&sz=128"
     },
     {
       "name": "Ubique Innovation",
@@ -1087,29 +2165,29 @@
       "logo": "https://www.google.com/s2/favicons?domain=yourd.xyz&sz=128"
     }
   ],
-  "lastUpdated": "2026-01-06T09:40:17.671Z",
+  "lastUpdated": "2026-01-06T09:54:46.332Z",
   "stats": {
-    "totalWallets": 22,
+    "totalWallets": 47,
     "totalProviders": 5,
     "byType": {
       "personal": 22,
-      "organizational": 0
+      "organizational": 25
     },
     "byPlatform": {
-      "iOS": 20,
-      "Android": 20,
-      "Web": 3,
+      "iOS": 22,
+      "Android": 22,
+      "Web": 28,
       "Windows": 0,
       "macOS": 0,
       "Linux": 0,
       "CLI": 0
     },
     "byCredentialFormat": {
-      "SD-JWT-VC": 18,
-      "JWT-VC": 17,
-      "AnonCreds": 4,
-      "mDL/mDoc": 6,
-      "JSON-LD VC": 4
+      "SD-JWT-VC": 40,
+      "JWT-VC": 42,
+      "JSON-LD VC": 10,
+      "AnonCreds": 8,
+      "mDL/mDoc": 11
     }
   }
 }

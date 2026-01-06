@@ -1,0 +1,27 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "SICPA",
+    "website": "https://www.sicpa.com",
+    "logo": "https://www.google.com/s2/favicons?domain=sicpa.com&sz=128"
+  },
+  "wallets": [
+    {
+      "id": "sicpa-digital-trust-suite",
+      "name": "SICPA Digital Trust Suite",
+      "description": "An enterprise digital trust platform from SICPA providing issuer and verifier capabilities for secure credential management, building on their expertise in security authentication.",
+      "logo": "https://www.google.com/s2/favicons?domain=sicpa.com&sz=128",
+      "website": "https://www.sicpa.com",
+      "type": "organizational",
+      "capabilities": ["issuer", "verifier"],
+      "platforms": ["Web"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "openSource": false,
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2026-01-06T12:00:00Z"
+}
+

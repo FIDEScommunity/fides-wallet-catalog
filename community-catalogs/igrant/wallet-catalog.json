@@ -43,8 +43,26 @@
       },
       "status": "production",
       "releaseDate": "2021-06-01"
+    },
+    {
+      "id": "igrant-organization-wallet",
+      "name": "iGrant.io Organization Wallet",
+      "description": "An enterprise wallet platform providing complete holder, issuer, and verifier capabilities with DIIP v4 compliance for organizational digital identity management.",
+      "logo": "https://www.google.com/s2/favicons?domain=igrant.io&sz=128",
+      "website": "https://igrant.io",
+      "type": "organizational",
+      "capabilities": ["holder", "issuer", "verifier"],
+      "platforms": ["Web"],
+      "openSource": true,
+      "license": "Apache-2.0",
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "AnonCreds"],
+      "issuanceProtocols": ["OpenID4VCI", "DIDComm Issue Credential v2"],
+      "presentationProtocols": ["OpenID4VP", "DIDComm Present Proof v2"],
+      "supportedDIDMethods": ["did:key", "did:web"],
+      "interoperabilityProfiles": ["DIIP v4"],
+      "documentation": "https://docs.igrant.io",
+      "status": "production"
     }
   ],
-  "lastUpdated": "2025-01-05T12:00:00Z"
+  "lastUpdated": "2026-01-06T12:00:00Z"
 }
-

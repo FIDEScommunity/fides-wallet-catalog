@@ -1,0 +1,27 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Archipels",
+    "website": "https://en.archipels.io",
+    "logo": "https://www.google.com/s2/favicons?domain=archipels.io&sz=128"
+  },
+  "wallets": [
+    {
+      "id": "archipels-wallet",
+      "name": "Archipels",
+      "description": "A French enterprise identity platform providing complete holder, issuer, and verifier capabilities for organizational digital credential management.",
+      "logo": "https://www.google.com/s2/favicons?domain=archipels.io&sz=128",
+      "website": "https://en.archipels.io",
+      "type": "organizational",
+      "capabilities": ["holder", "issuer", "verifier"],
+      "platforms": ["Web"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "openSource": false,
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2026-01-06T12:00:00Z"
+}
+

@@ -40,8 +40,24 @@
       },
       "status": "production",
       "releaseDate": "2021-01-15"
+    },
+    {
+      "id": "lissi-id-wallet-connector",
+      "name": "Lissi ID-Wallet Connector",
+      "description": "An enterprise integration platform enabling organizations to hold, issue, and verify verifiable credentials, connecting with the Lissi ecosystem.",
+      "logo": "https://www.google.com/s2/favicons?domain=lissi.id&sz=128",
+      "website": "https://www.lissi.id",
+      "type": "organizational",
+      "capabilities": ["holder", "issuer", "verifier"],
+      "platforms": ["Web"],
+      "openSource": false,
+      "credentialFormats": ["SD-JWT-VC", "AnonCreds", "JWT-VC"],
+      "issuanceProtocols": ["OpenID4VCI", "DIDComm Issue Credential v2"],
+      "presentationProtocols": ["OpenID4VP", "DIDComm Present Proof v2"],
+      "supportedDIDMethods": ["did:web", "did:key", "did:indy"],
+      "documentation": "https://docs.lissi.id",
+      "status": "production"
     }
   ],
-  "lastUpdated": "2025-01-05T12:00:00Z"
+  "lastUpdated": "2026-01-06T12:00:00Z"
 }
-
