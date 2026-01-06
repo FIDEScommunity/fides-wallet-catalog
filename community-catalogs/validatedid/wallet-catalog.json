@@ -36,7 +36,6 @@
       "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
       "issuanceProtocols": ["OpenID4VCI"],
       "presentationProtocols": ["OpenID4VP"],
-      "interoperabilityProfiles": ["HAIP"],
       "website": "https://validated.id",
       "openSource": false,
       "status": "production"
