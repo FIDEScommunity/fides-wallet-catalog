@@ -36,7 +36,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=4sure.io&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/4sure/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.969Z",
+      "fetchedAt": "2026-01-06T10:29:27.879Z",
       "source": "local"
     },
     {
@@ -72,7 +72,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=affinidi.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/affinidi/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.970Z",
+      "fetchedAt": "2026-01-06T10:29:27.880Z",
       "source": "local"
     },
     {
@@ -117,7 +117,7 @@
       ],
       "certifications": [],
       "interoperabilityProfiles": [
-        "HAIP"
+        "DIIP v4"
       ],
       "standards": [
         "ARF 1.4"
@@ -146,7 +146,7 @@
         }
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/animo/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.971Z",
+      "fetchedAt": "2026-01-06T10:29:27.881Z",
       "source": "local"
     },
     {
@@ -197,7 +197,7 @@
         }
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/animo/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.971Z",
+      "fetchedAt": "2026-01-06T10:29:27.881Z",
       "source": "local"
     },
     {
@@ -224,7 +224,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=apple.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/apple/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.971Z",
+      "fetchedAt": "2026-01-06T10:29:27.891Z",
       "source": "local"
     },
     {
@@ -260,7 +260,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=archipels.io&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/archipels/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.982Z",
+      "fetchedAt": "2026-01-06T10:29:27.892Z",
       "source": "local"
     },
     {
@@ -295,7 +295,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=auth0.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/auth0/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.982Z",
+      "fetchedAt": "2026-01-06T10:29:27.893Z",
       "source": "local"
     },
     {
@@ -331,7 +331,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=auvo.io&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/auvodigital/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.983Z",
+      "fetchedAt": "2026-01-06T10:29:27.893Z",
       "source": "local"
     },
     {
@@ -370,7 +370,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=credenco.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/credenco/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.983Z",
+      "fetchedAt": "2026-01-06T10:29:27.894Z",
       "source": "local"
     },
     {
@@ -396,7 +396,7 @@
         ]
       },
       "interoperabilityProfiles": [
-        "HAIP"
+        "EWC v3"
       ],
       "website": "https://www.digidentity.com",
       "appStoreLinks": {
@@ -411,7 +411,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=digidentity.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/digidentity/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.984Z",
+      "fetchedAt": "2026-01-06T10:29:27.895Z",
       "source": "local"
     },
     {
@@ -451,7 +451,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=digitalbazaar.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/digitalbazaar/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.984Z",
+      "fetchedAt": "2026-01-06T10:29:27.896Z",
       "source": "local"
     },
     {
@@ -490,7 +490,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=dock.io&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/dock/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.986Z",
+      "fetchedAt": "2026-01-06T10:29:27.897Z",
       "source": "local"
     },
     {
@@ -526,14 +526,14 @@
         "logo": "https://www.google.com/s2/favicons?domain=forkbomb.solutions&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/forkbomb/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.988Z",
+      "fetchedAt": "2026-01-06T10:29:27.898Z",
       "source": "local"
     },
     {
       "id": "gataca-wallet",
       "name": "Gataca Digital Identity Wallet",
       "logo": "https://www.google.com/s2/favicons?domain=gataca.io&sz=128",
-      "description": "A privacy-first digital identity wallet supporting verifiable credentials and self-sovereign identity. HAIP compliance expected November 2025.",
+      "description": "A privacy-first digital identity wallet supporting verifiable credentials and self-sovereign identity with DIIP v4 compliance.",
       "type": "personal",
       "platforms": [
         "iOS",
@@ -552,6 +552,9 @@
           "OpenID4VP"
         ]
       },
+      "interoperabilityProfiles": [
+        "DIIP v4"
+      ],
       "website": "https://gataca.io",
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/app/gataca/id1498607616",
@@ -565,7 +568,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=gataca.io&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/gataca/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.989Z",
+      "fetchedAt": "2026-01-06T10:29:27.899Z",
       "source": "local"
     },
     {
@@ -592,7 +595,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=google.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/google/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.989Z",
+      "fetchedAt": "2026-01-06T10:29:27.901Z",
       "source": "local"
     },
     {
@@ -635,8 +638,8 @@
       ],
       "certifications": [],
       "interoperabilityProfiles": [
-        "HAIP",
-        "DIIP v4"
+        "DIIP v4",
+        "EWC v3"
       ],
       "standards": [
         "ARF 1.4"
@@ -665,7 +668,7 @@
         }
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/igrant/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.990Z",
+      "fetchedAt": "2026-01-06T10:29:27.902Z",
       "source": "local"
     },
     {
@@ -703,7 +706,7 @@
         "did:web"
       ],
       "interoperabilityProfiles": [
-        "DIIP v4"
+        "EWC v3"
       ],
       "documentation": "https://docs.igrant.io",
       "status": "production",
@@ -717,7 +720,7 @@
         }
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/igrant/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.990Z",
+      "fetchedAt": "2026-01-06T10:29:27.902Z",
       "source": "local"
     },
     {
@@ -741,7 +744,7 @@
         "OpenID4VP"
       ],
       "interoperabilityProfiles": [
-        "HAIP"
+        "DIIP v4"
       ],
       "website": "https://impierce.com/unime",
       "appStoreLinks": {
@@ -756,7 +759,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=impierce.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/impierce/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.990Z",
+      "fetchedAt": "2026-01-06T10:29:27.904Z",
       "source": "local"
     },
     {
@@ -794,7 +797,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=impierce.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/impierce/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.990Z",
+      "fetchedAt": "2026-01-06T10:29:27.904Z",
       "source": "local"
     },
     {
@@ -837,7 +840,7 @@
         "EUDI Wallet LSP"
       ],
       "interoperabilityProfiles": [
-        "HAIP"
+        "EWC v3"
       ],
       "standards": [
         "ARF 1.4"
@@ -865,7 +868,7 @@
         }
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/lissi/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.991Z",
+      "fetchedAt": "2026-01-06T10:29:27.905Z",
       "source": "local"
     },
     {
@@ -902,6 +905,9 @@
         "did:key",
         "did:indy"
       ],
+      "interoperabilityProfiles": [
+        "EWC v3"
+      ],
       "documentation": "https://docs.lissi.id",
       "status": "production",
       "provider": {
@@ -914,7 +920,7 @@
         }
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/lissi/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.991Z",
+      "fetchedAt": "2026-01-06T10:29:27.905Z",
       "source": "local"
     },
     {
@@ -957,7 +963,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=mattr.global&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/mattr/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.991Z",
+      "fetchedAt": "2026-01-06T10:29:27.906Z",
       "source": "local"
     },
     {
@@ -994,7 +1000,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=meeco.me&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/meeco/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.992Z",
+      "fetchedAt": "2026-01-06T10:29:27.906Z",
       "source": "local"
     },
     {
@@ -1031,7 +1037,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=microsoft.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/microsoft/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.992Z",
+      "fetchedAt": "2026-01-06T10:29:27.907Z",
       "source": "local"
     },
     {
@@ -1066,7 +1072,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=minisuomi.fi&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/minisuomi/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.993Z",
+      "fetchedAt": "2026-01-06T10:29:27.907Z",
       "source": "local"
     },
     {
@@ -1108,7 +1114,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=mosip.io&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/mosip/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.993Z",
+      "fetchedAt": "2026-01-06T10:29:27.908Z",
       "source": "local"
     },
     {
@@ -1146,7 +1152,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=northernblock.io&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/northernblock/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.994Z",
+      "fetchedAt": "2026-01-06T10:29:27.908Z",
       "source": "local"
     },
     {
@@ -1181,7 +1187,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=yivi.app&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/privacybydesign/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.994Z",
+      "fetchedAt": "2026-01-06T10:29:27.909Z",
       "source": "local"
     },
     {
@@ -1217,7 +1223,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=procivis.ch&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/procivis/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.994Z",
+      "fetchedAt": "2026-01-06T10:29:27.909Z",
       "source": "local"
     },
     {
@@ -1253,7 +1259,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=scytales.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/scytales/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.995Z",
+      "fetchedAt": "2026-01-06T10:29:27.910Z",
       "source": "local"
     },
     {
@@ -1289,7 +1295,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=scytales.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/scytales/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.995Z",
+      "fetchedAt": "2026-01-06T10:29:27.910Z",
       "source": "local"
     },
     {
@@ -1324,7 +1330,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=sicpa.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/sicpa/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.995Z",
+      "fetchedAt": "2026-01-06T10:29:27.910Z",
       "source": "local"
     },
     {
@@ -1370,6 +1376,9 @@
       "certifications": [
         "EUDI Wallet LSP"
       ],
+      "interoperabilityProfiles": [
+        "DIIP v4"
+      ],
       "standards": [
         "ARF 1.4",
         "EBSI"
@@ -1397,7 +1406,53 @@
         }
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/sphereon/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.996Z",
+      "fetchedAt": "2026-01-06T10:29:27.911Z",
+      "source": "local"
+    },
+    {
+      "id": "sphereon-platform",
+      "name": "Sphereon Platform",
+      "description": "An enterprise organizational wallet platform providing holder, issuer, and verifier capabilities with DIIP v4 compliance.",
+      "logo": "https://www.google.com/s2/favicons?domain=sphereon.com&sz=128",
+      "website": "https://sphereon.com",
+      "type": "organizational",
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "openSource": false,
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "JSON-LD VC",
+        "mDL/mDoc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "interoperabilityProfiles": [
+        "DIIP v4"
+      ],
+      "documentation": "https://docs.sphereon.com",
+      "status": "production",
+      "provider": {
+        "name": "Sphereon",
+        "did": "did:web:sphereon.com",
+        "website": "https://sphereon.com",
+        "logo": "https://www.google.com/s2/favicons?domain=sphereon.com&sz=128",
+        "contact": {
+          "email": "info@sphereon.com"
+        }
+      },
+      "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/sphereon/wallet-catalog.json",
+      "fetchedAt": "2026-01-06T10:29:27.911Z",
       "source": "local"
     },
     {
@@ -1439,7 +1494,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=spherity.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/spherity/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.996Z",
+      "fetchedAt": "2026-01-06T10:29:27.911Z",
       "source": "local"
     },
     {
@@ -1478,7 +1533,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=talao.io&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/talao/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.996Z",
+      "fetchedAt": "2026-01-06T10:29:27.912Z",
       "source": "local"
     },
     {
@@ -1517,7 +1572,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=talao.io&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/talao/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.996Z",
+      "fetchedAt": "2026-01-06T10:29:27.912Z",
       "source": "local"
     },
     {
@@ -1555,14 +1610,14 @@
         "logo": "https://www.google.com/s2/favicons?domain=tanglelabs.io&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/tanglelabs/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.997Z",
+      "fetchedAt": "2026-01-06T10:29:27.913Z",
       "source": "local"
     },
     {
       "id": "toppan-security-wallet",
       "name": "TOPPAN Security Wallet",
       "logo": "https://www.google.com/s2/favicons?domain=toppan.com&sz=128",
-      "description": "An enterprise security wallet supporting digital identity and verifiable credentials. HAIP compliance expected November 2025.",
+      "description": "An enterprise security wallet supporting digital identity and verifiable credentials with DIIP v4 compliance.",
       "type": "personal",
       "platforms": [
         "iOS",
@@ -1580,6 +1635,9 @@
           "OpenID4VP"
         ]
       },
+      "interoperabilityProfiles": [
+        "DIIP v4"
+      ],
       "website": "https://www.toppan.com",
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/app/ts-digital-onboarding-solution/id6479744390",
@@ -1593,7 +1651,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=toppan.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/toppan/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.997Z",
+      "fetchedAt": "2026-01-06T10:29:27.913Z",
       "source": "local"
     },
     {
@@ -1637,7 +1695,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=transmute.industries&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/transmute/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.998Z",
+      "fetchedAt": "2026-01-06T10:29:27.913Z",
       "source": "local"
     },
     {
@@ -1665,6 +1723,9 @@
       "presentationProtocols": [
         "OpenID4VP"
       ],
+      "interoperabilityProfiles": [
+        "EWC v3"
+      ],
       "openSource": false,
       "status": "production",
       "provider": {
@@ -1673,7 +1734,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=aegean.gr&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/uaegean/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.998Z",
+      "fetchedAt": "2026-01-06T10:29:27.914Z",
       "source": "local"
     },
     {
@@ -1699,7 +1760,7 @@
         ]
       },
       "interoperabilityProfiles": [
-        "HAIP"
+        "DIIP v4"
       ],
       "website": "https://ubique.ch",
       "appStoreLinks": {
@@ -1714,7 +1775,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=ubique.ch&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/ubique/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.998Z",
+      "fetchedAt": "2026-01-06T10:29:27.914Z",
       "source": "local"
     },
     {
@@ -1738,7 +1799,7 @@
         "OpenID4VP"
       ],
       "interoperabilityProfiles": [
-        "HAIP"
+        "EWC v3"
       ],
       "website": "https://www.validatedid.com",
       "appStoreLinks": {
@@ -1753,7 +1814,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=validatedid.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/validatedid/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.999Z",
+      "fetchedAt": "2026-01-06T10:29:27.915Z",
       "source": "local"
     },
     {
@@ -1780,6 +1841,9 @@
       "presentationProtocols": [
         "OpenID4VP"
       ],
+      "interoperabilityProfiles": [
+        "EWC v3"
+      ],
       "website": "https://validated.id",
       "openSource": false,
       "status": "production",
@@ -1789,7 +1853,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=validatedid.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/validatedid/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.999Z",
+      "fetchedAt": "2026-01-06T10:29:27.915Z",
       "source": "local"
     },
     {
@@ -1826,7 +1890,7 @@
         "logo": "https://avatars.githubusercontent.com/u/126908515"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/wwwallet/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.999Z",
+      "fetchedAt": "2026-01-06T10:29:27.916Z",
       "source": "local"
     },
     {
@@ -1864,7 +1928,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=youniqx.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/youniqx/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.999Z",
+      "fetchedAt": "2026-01-06T10:29:27.916Z",
       "source": "local"
     },
     {
@@ -1902,7 +1966,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=youniqx.com&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/youniqx/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:11.999Z",
+      "fetchedAt": "2026-01-06T10:29:27.916Z",
       "source": "local"
     },
     {
@@ -1928,8 +1992,8 @@
         ]
       },
       "interoperabilityProfiles": [
-        "HAIP",
-        "DIIP v4"
+        "DIIP v4",
+        "EWC v3"
       ],
       "website": "https://yourd.xyz",
       "appStoreLinks": {
@@ -1944,7 +2008,7 @@
         "logo": "https://www.google.com/s2/favicons?domain=yourd.xyz&sz=128"
       },
       "catalogUrl": "/home/runner/work/fides-wallet-catalog/fides-wallet-catalog/community-catalogs/yourd/wallet-catalog.json",
-      "fetchedAt": "2026-01-06T10:20:12.000Z",
+      "fetchedAt": "2026-01-06T10:29:27.917Z",
       "source": "local"
     }
   ],
@@ -2162,29 +2226,29 @@
       "logo": "https://www.google.com/s2/favicons?domain=yourd.xyz&sz=128"
     }
   ],
-  "lastUpdated": "2026-01-06T10:20:12.172Z",
+  "lastUpdated": "2026-01-06T10:29:28.094Z",
   "stats": {
-    "totalWallets": 47,
+    "totalWallets": 48,
     "totalProviders": 5,
     "byType": {
       "personal": 22,
-      "organizational": 25
+      "organizational": 26
     },
     "byPlatform": {
       "iOS": 22,
       "Android": 22,
-      "Web": 28,
+      "Web": 29,
       "Windows": 0,
       "macOS": 0,
       "Linux": 0,
       "CLI": 0
     },
     "byCredentialFormat": {
-      "SD-JWT-VC": 40,
-      "JWT-VC": 42,
-      "JSON-LD VC": 10,
+      "SD-JWT-VC": 41,
+      "JWT-VC": 43,
+      "JSON-LD VC": 11,
       "AnonCreds": 8,
-      "mDL/mDoc": 11
+      "mDL/mDoc": 12
     }
   }
 }
