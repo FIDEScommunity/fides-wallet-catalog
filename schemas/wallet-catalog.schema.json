@@ -208,7 +208,8 @@
             "type": "string",
             "enum": [
               "DIIP v4",
-              "EWC v3"
+              "EWC v3",
+              "EUDI Wallet ARF"
             ]
           }
         },

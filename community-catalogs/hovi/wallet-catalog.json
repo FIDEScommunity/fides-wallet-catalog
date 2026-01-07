@@ -1,0 +1,31 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Hovi",
+    "website": "https://www.hovi.id/",
+    "logo": "https://www.google.com/s2/favicons?domain=hovi.id&sz=128"
+  },
+  "wallets": [
+    {
+      "id": "hovi-id",
+      "name": "Hovi ID",
+      "description": "Hovi is a Finnish digital identity infrastructure platform founded in 2023 that enables businesses to issue, verify, and manage verifiable credentials at scale. The platform offers Business Wallet API, Cloud Wallet API, Studio (no-code platform), Mobile Wallet, and SDKs supporting multiple programming languages, with compliance for eIDAS 2.0 and integration with EU Digital Identity Wallets across 27+ EU member states. While Hovi itself is not an eIDAS-notified identification scheme, it serves as a technology provider helping businesses integrate with eIDAS-compliant digital identity solutions using self-sovereign identity (SSI) principles and supports SD-JWT and ISO mDoc formats with OpenID4VCI and OpenID4VP protocols.",
+      "logo": "https://www.google.com/s2/favicons?domain=hovi.id&sz=128",
+      "website": "https://www.hovi.id/wallet",
+      "type": "personal",
+      "platforms": ["iOS", "Android"],
+      "openSource": false,
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "mDL/mDoc"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "countries": ["FI"],
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/hovi-wallet/id6478072406",
+        "android": "https://play.google.com/store/apps/details?id=com.hovi.wallet"
+      },
+      "status": "production",
+      "releaseDate": "2023-01-01"
+    }
+  ],
+  "lastUpdated": "2026-01-07T12:00:00Z"
+}

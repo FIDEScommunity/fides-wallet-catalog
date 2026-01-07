@@ -36,9 +36,9 @@ const CONFIG = {
   // Community catalogs directory - all wallet catalogs are stored here
   communityCatalogsDir: path.join(process.cwd(), 'community-catalogs'),
   
-  // GitHub repository for community-contributed catalogs (fallback if not running locally)
+  // GitHub repository for community-contributed catalogs
   githubRepo: {
-    enabled: false,
+    enabled: true,
     owner: 'FIDEScommunity',
     repo: 'fides-wallet-catalog',
     branch: 'main',
@@ -522,14 +522,20 @@ async function crawlCommunityCatalogs(): Promise<{ wallets: NormalizedWallet[], 
  */
 function normalizeWallets(catalog: WalletCatalog, catalogUrl: string, source: 'local' | 'github' | 'did'): NormalizedWallet[] {
   const fetchedAt = new Date().toISOString();
-  
-  return catalog.wallets.map(wallet => ({
-    ...wallet,
-    provider: catalog.provider,
-    catalogUrl,
-    fetchedAt,
-    source // Track where the catalog came from
-  } as NormalizedWallet));
+
+  return catalog.wallets.map(wallet => {
+    // Check if wallet already has provider info (e.g., from EU landscape)
+    // If so, use that instead of the catalog provider
+    const provider = (wallet as any).provider || catalog.provider;
+
+    return {
+      ...wallet,
+      provider,
+      catalogUrl,
+      fetchedAt,
+      source // Track where the catalog came from
+    } as NormalizedWallet;
+  });
 }
 
 /**
@@ -583,25 +589,34 @@ function calculateStats(wallets: NormalizedWallet[]): AggregatedCatalog['stats']
 
 /**
  * Deduplicate wallets (same provider + wallet ID)
- * Priority: DID > GitHub > Local
+ * Priority: DID > GitHub > Local (non-EU landscape) > EU Landscape
  * Uses provider DID if available, otherwise falls back to provider name
  */
 function deduplicateWallets(wallets: NormalizedWallet[]): NormalizedWallet[] {
   const seen = new Map<string, NormalizedWallet>();
-  const priority = { did: 3, github: 2, local: 1 };
-  
+
+  const getPriority = (wallet: NormalizedWallet): number => {
+    const source = (wallet as any).source || 'local';
+    const catalogUrl = wallet.catalogUrl;
+
+    if (source === 'did') return 4;
+    if (source === 'github') return 3;
+    if (source === 'local' && !catalogUrl.includes('eu-landscape')) return 2;
+    if (source === 'local' && catalogUrl.includes('eu-landscape')) return 1;
+
+    return 0;
+  };
+
   for (const wallet of wallets) {
     const providerKey = wallet.provider.did || wallet.provider.name;
     const key = `${providerKey}:${wallet.id}`;
     const existing = seen.get(key);
-    const walletSource = (wallet as any).source || 'local';
-    const existingSource = existing ? ((existing as any).source || 'local') : 'local';
-    
-    if (!existing || priority[walletSource as keyof typeof priority] > priority[existingSource as keyof typeof priority]) {
+
+    if (!existing || getPriority(wallet) > getPriority(existing)) {
       seen.set(key, wallet);
     }
   }
-  
+
   return Array.from(seen.values());
 }
 
@@ -610,33 +625,33 @@ function deduplicateWallets(wallets: NormalizedWallet[]): NormalizedWallet[] {
  */
 async function crawl(): Promise<void> {
   console.log('🔍 Starting FIDES Wallet Catalog crawl...');
-  
+
   const allWallets: NormalizedWallet[] = [];
   const allProviders = new Map<string, WalletCatalog['provider']>();
-  
-  // 1. Crawl community catalogs (all wallet catalogs are stored here)
-  const community = await crawlCommunityCatalogs();
-  allWallets.push(...community.wallets);
-  community.providers.forEach((v, k) => allProviders.set(k, v));
 
-  // 2. Crawl GitHub repository (if enabled, for remote-only deployments)
+  // 1. Crawl GitHub repository first (highest priority)
   if (CONFIG.githubRepo.enabled) {
     const github = await crawlGitHubRepo();
     allWallets.push(...github.wallets);
     github.providers.forEach((v, k) => allProviders.set(k, v));
   }
-  
+
+  // 2. Crawl community catalogs (including EU landscape)
+  const community = await crawlCommunityCatalogs();
+  allWallets.push(...community.wallets);
+  community.providers.forEach((v, k) => allProviders.set(k, v));
+
   // 3. Crawl DID-registered providers (with automatic DID resolution)
   const didProviders = await crawlDIDProviders();
   allWallets.push(...didProviders.wallets);
   didProviders.providers.forEach((v, k) => allProviders.set(k, v));
-  
+
   // 4. Crawl legacy registry (for backwards compatibility)
   const legacy = await crawlLegacyRegistry();
   allWallets.push(...legacy.wallets);
   legacy.providers.forEach((v, k) => allProviders.set(k, v));
-  
-  // Deduplicate (prefer DID > GitHub/Community > Local)
+
+  // Deduplicate (prefer DID > GitHub > EU Landscape > Local)
   const dedupedWallets = deduplicateWallets(allWallets);
   
   // Create aggregated data

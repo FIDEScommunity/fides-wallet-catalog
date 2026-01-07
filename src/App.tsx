@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Search, Filter, Wallet, Building2, Users, Smartphone, Globe, Github, ExternalLink, ChevronDown, X, Shield, Key, FileCheck } from 'lucide-react';
-import type { NormalizedWallet, WalletFilters, Platform, CredentialFormat, WalletType } from './types/wallet';
+import type { NormalizedWallet, WalletFilters, Platform, CredentialFormat, WalletType, InteroperabilityProfile } from './types/wallet';
 
 // Demo data - in production this comes from the API
 import demoData from '../data/aggregated.json';
@@ -8,6 +8,7 @@ import demoData from '../data/aggregated.json';
 const PLATFORMS: Platform[] = ['iOS', 'Android', 'Web', 'Windows', 'macOS', 'Linux'];
 const CREDENTIAL_FORMATS: CredentialFormat[] = ['SD-JWT-VC', 'SD-JWT', 'mDL/mDoc', 'JWT-VC', 'JSON-LD VC', 'AnonCreds', 'X.509'];
 const CREDENTIAL_FORMAT_ORDER: string[] = ['SD-JWT-VC', 'SD-JWT', 'mDL/mDoc', 'JWT-VC', 'JSON-LD VC', 'AnonCreds', 'X.509', 'CBOR-LD'];
+const INTEROPERABILITY_PROFILES: InteroperabilityProfile[] = ['DIIP v4', 'EWC v3', 'EUDI Wallet ARF'];
 const WALLET_TYPES: { value: WalletType; label: string; icon: typeof Users }[] = [
   { value: 'personal', label: 'Personal', icon: Users },
   { value: 'organizational', label: 'Organizational', icon: Building2 },
@@ -261,6 +262,7 @@ export default function App() {
     type: [],
     platforms: [],
     credentialFormats: [],
+    interoperabilityProfiles: [],
     openSource: undefined,
   });
   const [showFilters, setShowFilters] = useState(false);
@@ -299,7 +301,13 @@ export default function App() {
         const hasMatch = filters.credentialFormats.some(f => wallet.credentialFormats?.includes(f as CredentialFormat));
         if (!hasMatch) return false;
       }
-      
+
+      // Interoperability profiles
+      if (filters.interoperabilityProfiles && filters.interoperabilityProfiles.length > 0) {
+        const hasMatch = filters.interoperabilityProfiles.some(p => wallet.interoperabilityProfiles?.includes(p));
+        if (!hasMatch) return false;
+      }
+
       // Open source
       if (filters.openSource !== undefined) {
         if (wallet.openSource !== filters.openSource) return false;
@@ -309,10 +317,11 @@ export default function App() {
     });
   }, [wallets, filters]);
   
-  const activeFilterCount = 
-    (filters.type?.length || 0) + 
-    (filters.platforms?.length || 0) + 
+  const activeFilterCount =
+    (filters.type?.length || 0) +
+    (filters.platforms?.length || 0) +
     (filters.credentialFormats?.length || 0) +
+    (filters.interoperabilityProfiles?.length || 0) +
     (filters.openSource !== undefined ? 1 : 0);
   
   const clearFilters = () => {
@@ -321,6 +330,7 @@ export default function App() {
       type: [],
       platforms: [],
       credentialFormats: [],
+      interoperabilityProfiles: [],
       openSource: undefined,
     });
   };
@@ -432,7 +442,7 @@ export default function App() {
               border: '1px solid rgba(255, 255, 255, 0.1)'
             }}
           >
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
               {/* Type filter */}
               <div>
                 <h3 className="text-sm font-medium text-gray-400 mb-2">Type</h3>
@@ -472,7 +482,15 @@ export default function App() {
                 selected={filters.credentialFormats || []}
                 onChange={(formats) => setFilters({ ...filters, credentialFormats: formats as CredentialFormat[] })}
               />
-              
+
+              {/* Interoperability profiles filter */}
+              <FilterSection
+                title="Interoperability"
+                options={INTEROPERABILITY_PROFILES}
+                selected={filters.interoperabilityProfiles || []}
+                onChange={(profiles) => setFilters({ ...filters, interoperabilityProfiles: profiles as InteroperabilityProfile[] })}
+              />
+
               {/* Open source filter */}
               <div>
                 <h3 className="text-sm font-medium text-gray-400 mb-2">License</h3>

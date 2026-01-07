@@ -1,0 +1,1501 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "EU Digital Identity Landscape",
+    "website": "https://www.digital-identity-landscape.eu/"
+  },
+  "wallets": [
+    {
+      "id": "cartera-ciudadana-de-identidad-digital",
+      "name": "Cartera Ciudadana de Identidad Digital",
+      "description": "The Cartera Ciudadana de Identidad Digital (Digital Citizen Identity Wallet) is Andorra's mobile digital identity solution, presented at Madrid Tech Show in October 2024. Developed by VAR Group in collaboration with OSCEPA (established July 1, 2015), the wallet employs self-sovereign identity (SSI) technology that enables citizens to maintain full control over their personal data.",
+      "type": "personal",
+      "openSource": false,
+      "status": "production",
+      "website": "https://www.govern.ad/ca/tematiques/ciutadania-i-documentacio/certificat-digital/oscepa",
+      "provider": {
+        "name": "Government of Andorra",
+        "website": "https://www.govern.ad/ca/tematiques/ciutadania-i-documentacio/certificat-digital/oscepa"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "AD"
+      ],
+      "logo": "https://flagcdn.com/w80/ad.png",
+      "releaseDate": "2024-01-01"
+    },
+    {
+      "id": "e-albania-digital-id",
+      "name": "e-Albania Digital ID",
+      "description": "Launch announced for 2026, to be introduced one year before the EU Digital ID Wallet (2027). Technology partner: Idemia. Biometric identification (fingerprint, facial recognition). Goal: Modernization of administration and preparation for EU accession. Budget: over 5 billion ALL.",
+      "type": "personal",
+      "openSource": true,
+      "status": "development",
+      "website": "https://me.rks-gov.net",
+      "provider": {
+        "name": "IdentiTek (State-owned enterprise)",
+        "website": "https://me.rks-gov.net"
+      },
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "AL"
+      ],
+      "logo": "https://flagcdn.com/w80/al.png"
+    },
+    {
+      "id": "national-eudi-wallet-valera",
+      "name": "National EUDI Wallet (Valera)",
+      "description": "Open-source wallet \"Valera\" developed by A-SIT. Migration of eID Austria (~3 million users) and eAusausweis (~1 million users) to the EUDI architecture. One of the first nine countries with a deployed EUDI wallet.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "website": "https://a-sit-plus.github.io/",
+      "provider": {
+        "name": "A-SIT, Austrian Government",
+        "website": "https://a-sit-plus.github.io/"
+      },
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "AT"
+      ],
+      "logo": "https://flagcdn.com/w80/at.png",
+      "releaseDate": "2024-01-01"
+    },
+    {
+      "id": "eausweise",
+      "name": "eAusweise",
+      "description": "eAusweise is Austria's official digital wallet app that consolidates citizens' ID documents onto smartphones, enabling offline verification via QR codes and Bluetooth for documents including mobile driver's licenses (mDL) built to ISO/IEC 18013-5 standard, vehicle registrations, and age verification. The app implements privacy-preserving features with minimal data transmission, uses ID Austria for authentication, and has achieved strong adoption with over 2.3 million downloads and 800,000+ digital driver's licenses activated as of 2025. Currently valid only within Austria, the platform is already largely compliant with EU Digital Identity Wallet (EUDI Wallet) requirements ahead of the December 2026 deadline.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "website": "https://www.id-austria.gv.at/de/verwenden/eausweise",
+      "provider": {
+        "name": "Federal Government of Austria",
+        "website": "https://www.id-austria.gv.at/de/verwenden/eausweise"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc"
+      ],
+      "countries": [
+        "AT"
+      ],
+      "logo": "https://flagcdn.com/w80/at.png",
+      "releaseDate": "2022-01-01"
+    },
+    {
+      "id": "eid-cards",
+      "name": "eID cards",
+      "description": "Austria's eAusweise app launched in October 2022 by Austrian State Printing House (OSD) and youniqx Identity AG as the country's first digital ID platform, initially featuring a mobile driver's license (mDL) and subsequently expanding to include digital vehicle registration, age verification, and identity proof. The platform achieved over 500,000 digital driver's licenses activated within six months of launch and operates through QR code and Bluetooth-based verification requiring ID Austria authentication. The digital wallet provides privacy-focused credential sharing where users control what information is displayed, with future plans to incorporate all Austrian IDs from student cards to e-cards into a comprehensive digital identity platform.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "website": "https://www.id-austria.gv.at/de/verwenden/eausweise",
+      "provider": {
+        "name": "Austrian Federal Government",
+        "website": "https://www.id-austria.gv.at/de/verwenden/eausweise"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc"
+      ],
+      "countries": [
+        "AT"
+      ],
+      "logo": "https://flagcdn.com/w80/at.png",
+      "releaseDate": "2022-01-01"
+    },
+    {
+      "id": "ichapp",
+      "name": "ich.app",
+      "description": "Bank-verified digital identity solution developed by PSA Payment Services Austria. Leverages existing KYC processes from participating Austrian banks (Raiffeisen, HYPO, Oberbank, BKS, VKB, etc.). Integrates with ID Austria for government service verification. Uses Worldline core components. Free for users. Enables one-click authentication, form autofill, and data-minimized identity verification with explicit user consent.",
+      "type": "personal",
+      "openSource": false,
+      "status": "production",
+      "website": "https://ich.app",
+      "provider": {
+        "name": "PSA Payment Services Austria GmbH",
+        "website": "https://ich.app"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "countries": [
+        "AT"
+      ],
+      "logo": "https://flagcdn.com/w80/at.png",
+      "releaseDate": "2022-01-01"
+    },
+    {
+      "id": "e-iddeea-digital-id-app",
+      "name": "e-IDDEEA Digital ID App",
+      "description": "Includes digital versions of national identity cards, driver's licenses, and passports. Fully eIDAS compliant. Integration with banks and telecommunications providers. Developed with Identyum (Croatian tech startup) and Adverta Pro. QES activation at IDDEEA registration offices. EU-funded (EU4DigitalSME project).",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "website": "https://www.iddeea.gov.ba",
+      "provider": {
+        "name": "IDDEEA (Agency for Identification Documents, Registers and Data Exchange)",
+        "website": "https://www.iddeea.gov.ba"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "releaseDate": "2025-01-01"
+    },
+    {
+      "id": "national-eudi-wallet",
+      "name": "National EUDI Wallet",
+      "description": "Belgium's MyGov.be national EUDI wallet went live in May 2024 following publication of eIDAS 2.0, becoming one of nine EU countries (Austria, Belgium, Cyprus, Czech Republic, France, Hungary, Italy, Poland, Portugal) with deployed digital identity wallet solutions at national level ahead of the December 2026 mandatory deadline for all EU member states. The wallet builds on existing digital identity infrastructure including the eID system and itsme, enabling Belgian residents to register using identity cards or existing authentication methods, with planned expansion to incorporate mobile driving licenses by 2025 and European Health Insurance Card by 2026, positioning Belgium as an early adopter in Europe's transition to unified digital identity architecture under eIDAS 2.0 framework.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "provider": {
+        "name": "Belgian Government",
+        "website": ""
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "BE"
+      ],
+      "logo": "https://flagcdn.com/w80/be.png",
+      "releaseDate": "2025-01-01"
+    },
+    {
+      "id": "pxl-vision-daego-auto-ident",
+      "name": "PXL Vision (Daego Auto-Ident)",
+      "description": "PXL Vision AG is Switzerland's premium provider of AI-powered digital identity verification and electronic signature solutions based in Zurich. The company is the Swiss market leader in enterprise identification solutions, offering fully automated, browser-based identity verification that completes in under 30 seconds. PXL Vision achieved eIDAS certification in September 2022, making it one of the first Swiss companies to provide eIDAS-compliant online identification services for qualified electronic signatures (QES) across the EU and Switzerland.",
+      "type": "personal",
+      "openSource": false,
+      "status": "production",
+      "website": "https://www.pxl-vision.com",
+      "provider": {
+        "name": "PXL Vision AG",
+        "website": "https://www.pxl-vision.com"
+      },
+      "platforms": [
+        "Web"
+      ],
+      "countries": [
+        "CH"
+      ],
+      "logo": "https://flagcdn.com/w80/ch.png"
+    },
+    {
+      "id": "post-id-check-swiss-post-identification-services",
+      "name": "Post ID-Check (Swiss Post Identification Services)",
+      "description": "Swiss Post offers comprehensive identity verification services leveraging its nationwide network of postal branches (the densest in Switzerland) to provide legally-compliant personal identification for business customers. The service portfolio includes in-branch certification (Yellow Identification with 200,000+ annual verifications), at-home identification (Letter with ID Check), and online identification (SwissID integration). These services are designed to meet Swiss Anti-Money Laundering Act and FINMA regulatory requirements, primarily serving financial institutions, insurance companies, and other businesses requiring customer identity verification.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "website": "https://www.post.ch/en/business-solutions/identification",
+      "provider": {
+        "name": "Swiss Post (Die Schweizerische Post AG)",
+        "website": "https://www.post.ch/en/business-solutions/identification"
+      },
+      "countries": [
+        "CH"
+      ],
+      "logo": "https://flagcdn.com/w80/ch.png"
+    },
+    {
+      "id": "procivis-one",
+      "name": "Procivis One",
+      "description": "Procivis One is a modular, open-source technology platform for digital identities, credentials, and wallets launched in 2023 by Procivis AG, a subsidiary of Orell Füssli established in 2017. The platform is compliant with eIDAS 2.0, the Swiss E-ID ecosystem, and ISO 18013-5 mDL standards, providing production-ready enterprise deployment for government agencies, financial institutions, and telecommunications companies across Europe. The solution handles the complete lifecycle of digital identity management including issuance, verification, and wallet functionality, with implementations including the city of Zug's digital credentials pilot (September 2024) and serves as Switzerland's pathway toward the federal digital identity system planned for 2026.",
+      "type": "personal",
+      "openSource": false,
+      "status": "production",
+      "website": "https://www.procivis.ch",
+      "provider": {
+        "name": "Procivis AG (subsidiary of Orell Füssli)",
+        "website": "https://www.procivis.ch"
+      },
+      "credentialFormats": [
+        "mDL/mDoc"
+      ],
+      "countries": [
+        "CH"
+      ],
+      "logo": "https://flagcdn.com/w80/ch.png",
+      "releaseDate": "2023-01-01"
+    },
+    {
+      "id": "state-e-id-staatliche-e-id-swiss-e-id",
+      "name": "State e-ID (Staatliche E-ID / Swiss E-ID)",
+      "description": "Switzerland's State e-ID represents the country's second attempt at implementing a national electronic identification system, following the rejection of a private-sector model in 2021. The new solution features state-operated infrastructure, decentralized data storage on user smartphones, and voluntary adoption at no cost to citizens.",
+      "type": "personal",
+      "openSource": true,
+      "status": "development",
+      "website": "https://www.ejpd.admin.ch/bj/de/home/staat/gesetzgebung/staatliche-e-id.html",
+      "provider": {
+        "name": "Federal Office of Justice (Bundesamt für Justiz - BJ)",
+        "website": "https://www.ejpd.admin.ch/bj/de/home/staat/gesetzgebung/staatliche-e-id.html"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "CH"
+      ],
+      "logo": "https://flagcdn.com/w80/ch.png"
+    },
+    {
+      "id": "cygov-eid",
+      "name": "CyGov eID",
+      "description": "Cyprus's national electronic identity system IDMe.cy received European Commission approval in December 2023 at the highest security level (\"High Assurance\") under eIDAS Regulation, establishing Cyprus as one of the first nine EU countries to deploy EUDI Wallet-compatible digital identity infrastructure alongside Austria, Belgium, Czech Republic, France, Hungary, Italy, Poland, and Portugal ahead of the 2026 mandatory deadline. The eIDAS-notified Digital Citizen program launched the mobile digital ID app in December 2024 following rollout of the first 100,000 digital IDs in October 2024, enabling Cypriot citizens to use IDMe.cy for identity verification, authentication, and digital document signing across government services and private sector applications, with major organizations including telecommunications provider Cyta integrating the system for customer verification, while applications for electronic IDs began January 2025 for citizens over 18 requiring activated CY Login profiles with two-factor authentication.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "website": "https://www.cygov.gov.cy/",
+      "provider": {
+        "name": "Government of Cyprus",
+        "website": "https://www.cygov.gov.cy/"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "CY"
+      ],
+      "logo": "https://flagcdn.com/w80/cy.png",
+      "certifications": [
+        "eIDAS notified"
+      ],
+      "releaseDate": "2020-01-01"
+    },
+    {
+      "id": "digital-citizen",
+      "name": "Digital Citizen",
+      "description": "Cyprus's Digital Citizen mobile app launched December 12, 2024, following the broader Digital Citizen program initiative, enables citizens to securely store and present biometric identity cards, driving licenses, and vehicle roadworthiness certificates on smartphones using QR code verification technology for scanning and authenticating digital documents with citizen authorization, achieving over 10,000 downloads in initial rollout. The app requires users to have activated and verified CY Login profiles to access government systems and services along with two-factor authentication enabled, working alongside Cyprus's IDMe.cy digital ID system as the country fulfills eIDAS 2.0 requirements mandating EU member states to offer digital wallet options by 2026, with the government progressively expanding Digital Citizen program to offer citizens, businesses, and professionals additional digital solutions for transformation of public services delivery.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "provider": {
+        "name": "Government of Cyprus",
+        "website": ""
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "countries": [
+        "CY"
+      ],
+      "logo": "https://flagcdn.com/w80/cy.png",
+      "releaseDate": "2024-01-01"
+    },
+    {
+      "id": "edoklady",
+      "name": "eDoklady",
+      "description": "Czech Republic's eDoklady mobile wallet application launched January 20, 2024, developed by the Digital and Information Agency (DIA) and National Agency for Communication and Information Technology, serves as \"an important intermediate step\" towards full EU Digital Identity Wallet (EUDI) implementation by enabling citizens to store ID cards, passports, driving licenses, health documentation, professional qualifications, and education certificates on mobile devices with over 70,000 downloads on first day. The app provides real electronic documents compatible with pending EUDI Wallet framework rather than mere document images, with central administrative authorities required to accept digital eDoklady credentials from January 2024, other government bodies from July 1, 2024, and all entities performing identity verification from January 1, 2025, positioning Czech Republic as one of the first nine EU countries to deploy national digital identity wallet solutions ahead of the 2026 mandatory deadline.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "website": "https://www.edoklady.cz/",
+      "provider": {
+        "name": "Czech Government",
+        "website": "https://www.edoklady.cz/"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "countries": [
+        "CZ"
+      ],
+      "logo": "https://flagcdn.com/w80/cz.png",
+      "releaseDate": "2022-01-01"
+    },
+    {
+      "id": "helix-id-wallet",
+      "name": "Helix ID Wallet",
+      "description": "Helix ID launched in 2020 as a German self-sovereign identity (SSI) mobile wallet solution emerging during Germany's innovation competition \"Schaufenster sichere digitale Identitäten\" (Showcase on Secure Digital Identities), which tested open and user-friendly ID ecosystems including projects ID-Ideal, IDunion, ONCE, and SDIKA. The SSI wallet embodies the decentralized identity principles where users maintain control over their digital credentials and data rather than relying on centralized authorities. Helix ID operates within Germany's SSI framework landscape that includes initiatives like Lissi (\"Let's initiate self-sovereign identity\") involving twelve German entities working to jumpstart adoption of self-sovereign identity solutions for citizen empowerment.",
+      "type": "personal",
+      "openSource": false,
+      "status": "production",
+      "website": "https://helixid.io",
+      "provider": {
+        "name": "Helix ID GmbH",
+        "website": "https://helixid.io"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "countries": [
+        "DE"
+      ],
+      "logo": "https://flagcdn.com/w80/de.png",
+      "releaseDate": "2020-01-01"
+    },
+    {
+      "id": "national-eudi-wallet",
+      "name": "National EUDI Wallet",
+      "description": "Coordination by SPRIND on behalf of the BMDS (Federal Ministry for Digital and Economic Affairs). SPRIND Funke competition for prototype development (15 months, 3 stages). Stage 3 ends September 2025. Partners: BSI (Federal Office for Information Security), Bundesdruckerei (Federal Printing Office), Fraunhofer AISEC, PwC.",
+      "type": "personal",
+      "openSource": true,
+      "status": "development",
+      "website": "https://www.sprind.org/eudi-wallet",
+      "provider": {
+        "name": "SPRIND, BMDS, BMI, BSI, Bundesdruckerei, Fraunhofer AISEC, PwC",
+        "website": "https://www.sprind.org/eudi-wallet"
+      },
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "DE"
+      ],
+      "logo": "https://flagcdn.com/w80/de.png"
+    },
+    {
+      "id": "spherity-eida-wallet",
+      "name": "Spherity EIDA Wallet",
+      "description": "Spherity EIDA is a cloud-based EUDI Wallet for Organizations developed by Spherity GmbH (founded 2017, Dortmund) in partnership with Bundesanzeiger Verlag, designed specifically for legal persons (companies and organizations) to manage verifiable credentials within the eIDAS 2.0 ecosystem. The solution provides automated KYC/KYS processes, role-based access control for Industry 4.0 workflows, and real-time business partner validation by integrating primary registry data from Bundesanzeiger Verlag, serving sectors including finance, energy, supply chains, and manufacturing. As part of the EUDI Wallet Consortium selected for EU large-scale pilots, Spherity secured €2.5 million funding in March 2024 and was recognized as Digital Identity Solution of the Year 2025.",
+      "type": "personal",
+      "openSource": false,
+      "status": "production",
+      "website": "https://www.spherity.com/eida",
+      "provider": {
+        "name": "Spherity GmbH",
+        "website": "https://www.spherity.com/eida"
+      },
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "DE"
+      ],
+      "logo": "https://flagcdn.com/w80/de.png",
+      "releaseDate": "2023-01-01"
+    },
+    {
+      "id": "verimi",
+      "name": "Verimi",
+      "description": "Verimi launched in 2017 in Berlin as a digital identity platform founded by a consortium of 25 major German companies including Deutsche Bank, Allianz, Axel Springer, Bundesdruckerei, Deutsche Bahn, Lufthansa, Deutsche Telekom, Volkswagen, Mercedes-Benz, Samsung, and insurance companies (via GMB Systems including Huk-Coburg, Provinzial, LVM, DEVK, Zurich). In November 2022, Verimi merged with Yes (supported by Sparkassen, Volksbanken, and Raiffeisenbanken savings/cooperative banks) to create Germany's unified digital identity ecosystem, combining forces with 25 companies and processing over 10 million transactions in 2022. The merged platform bundles services from both providers to accelerate growth and offer comprehensive identification, ID wallet, and identity verification services from a single source, working with both public institutions (AOK) and private sector partners.",
+      "type": "personal",
+      "openSource": false,
+      "status": "production",
+      "website": "https://verimi.de/",
+      "provider": {
+        "name": "Verimi GmbH",
+        "website": "https://verimi.de/"
+      },
+      "countries": [
+        "DE"
+      ],
+      "logo": "https://flagcdn.com/w80/de.png",
+      "releaseDate": "2017-01-01"
+    },
+    {
+      "id": "mysaveid",
+      "name": "mySaveID",
+      "description": "msg mySaveID developed by targens in 2018 and acquired by msg systems in May 2022 is a Germany-based Identity-as-a-Service (IDaaS) platform providing and managing trustworthy digital identities in strict compliance with GDPR, developed and hosted within Germany. The solution achieved notable recognition with a 2019 pilot project concluding the first fully automated syndicated loan agreement worth 750 million euros with international bank participation using digital signatures. As an end-to-end solution, mySaveID handles all identity services from creation and management to release of identity data to third parties, integration of qualified electronic signatures, and integration into business processes, positioning it as a comprehensive identity broker and digital wallet solution for the German market.",
+      "type": "personal",
+      "openSource": false,
+      "status": "production",
+      "provider": {
+        "name": "msg systems AG",
+        "website": ""
+      },
+      "countries": [
+        "DE"
+      ],
+      "logo": "https://flagcdn.com/w80/de.png",
+      "releaseDate": "2019-01-01"
+    },
+    {
+      "id": "national-eudi-wallet",
+      "name": "National EUDI Wallet",
+      "description": "Denmark's National EUDI Wallet awarded to Nine (Trifork Group subsidiary) by the Danish Agency for Digital Government in a DKK 29 million Phase 1 contract encompasses development starting April 2025, Q1 2026 go-live, and two years of support and continued development. The Digital Identity Wallet will initially enable citizens to obtain digital proof of age and digital ID credentials usable both physically and online without sharing unnecessary personal information, building upon Denmark's existing MitID system that completed transition at the end of 2023. Subsequent project phases will expand functionality to include a wide range of digital credentials complying with EU eIDAS2 regulation requirements, positioning Denmark among early EU adopters implementing the European Digital Identity Wallet framework aligned with EU-wide digital identity standards.",
+      "type": "personal",
+      "openSource": true,
+      "status": "development",
+      "provider": {
+        "name": "Nine (Trifork Group)",
+        "website": ""
+      },
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "DK"
+      ],
+      "logo": "https://flagcdn.com/w80/dk.png",
+      "releaseDate": "2026-01-01"
+    },
+    {
+      "id": "national-eudi-wallet",
+      "name": "National EUDI Wallet",
+      "description": "Estonia's National EUDI Wallet is in development for 2026-2027 deployment to comply with eIDAS 2.0 regulation mandating EU member states to provide European Digital Identity Wallets, building upon Estonia's world-leading e-ID infrastructure established since 2002 with the pioneering national electronic identity card. The wallet will leverage Estonia's extensive digital government experience including RIA's (Information System Authority) coordination of electronic identity and cybersecurity, integrating with existing eID solutions like ID cards, Mobile-ID, and Smart-ID. Estonia's implementation will continue the country's e-governance leadership by enabling citizens to securely store and share verified digital credentials across EU member states while maintaining interoperability with Estonia's established digital ecosystem that has processed over 600 million digital signatures and achieved \"high\" eIDAS certification.",
+      "type": "personal",
+      "openSource": true,
+      "status": "development",
+      "provider": {
+        "name": "Estonian Government",
+        "website": ""
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "EE"
+      ],
+      "logo": "https://flagcdn.com/w80/ee.png"
+    },
+    {
+      "id": "cartera-digital-beta",
+      "name": "Cartera Digital Beta",
+      "description": "Spain's Cartera Digital Beta presented by Minister José Luis Escrivá in July 2024 is a mobile digital wallet pilot implementing an age verification system for accessing adult content using government-issued age credentials based on users' ID cards stored in the system, with availability for all citizens by end of summer 2024. The wallet generates 30 pairs of keys monthly for one-time identity verification through a double-blind system protecting privacy with double authentication preventing minors from accessing through adult devices, selected by the EU for a pilot project due to Spain's advanced work in developing age-assurance applications. As part of eIDAS2 standard requiring content platforms to accept European digital identity wallets by October 2027, Cartera Digital Beta will expand beyond age assurance to store municipal registries, university/non-university degrees, and ID documents, positioning Spain among EU countries piloting EUDI wallet functionality ahead of mandatory implementation.",
+      "type": "personal",
+      "openSource": true,
+      "status": "development",
+      "website": "https://digital.gob.es/especificaciones_tecnicas.html",
+      "provider": {
+        "name": "Spanish Government",
+        "website": "https://digital.gob.es/especificaciones_tecnicas.html"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "logo": "https://flagcdn.com/w80/es.png",
+      "releaseDate": "2024-01-01"
+    },
+    {
+      "id": "identfy",
+      "name": "Identfy",
+      "description": "Identfy is Spain's first open-source digital wallet solution developed by Izertis S.A. The solution features a two-wallet architecture (Holder Wallet mobile app and Organization Wallet for enterprises) enabling issuance, storage, and verification of verifiable credentials with Zero-Knowledge-Proof protocols for selective disclosure, biometric authentication, and DLT-based security, supporting use cases in healthcare, education, border control, and financial services across EU member states. Izertis actively participates in major EU digital identity projects including DC4EU consortium, EBSI-VECTOR project, and WE BUILD Large Scale Pilot.",
+      "type": "personal",
+      "openSource": false,
+      "status": "production",
+      "website": "https://www.izertis.com/en/-/caso-de-exito/identfy",
+      "provider": {
+        "name": "Izertis S.A.",
+        "website": "https://www.izertis.com/en/-/caso-de-exito/identfy"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "ES"
+      ],
+      "logo": "https://flagcdn.com/w80/es.png",
+      "releaseDate": "2023-01-01"
+    },
+    {
+      "id": "we-build",
+      "name": "WE BUILD",
+      "description": "WE BUILD (Wallet Ecosystem for Business & payment Use cases, Identification, Legal person representation, and Data sharing) consortium selected for second round of Large Scale Pilots commencing September 2025 for 24 months, led by Ministry of Economic Affairs (Netherlands), KVK (Netherlands), and Bolagsverket (Sweden) with 197 participants including 99 beneficiaries and 74 associated partners covering 27 countries with approximately €25 million budget. The organizational and business identity-focused pilot deploys 13 high-impact use cases for production-ready EUDI Wallet solutions representing organizations through power of attorney, signatory rights, and UBO attestations to streamline B2B, B2G, and B2C interactions improving KYx processes (Know Your Customer/Business/Supplier/Employee), engaging 20 wallet providers, 13 business register providers, 20 relying parties, 30 qualified trust service providers (QTSPs), 25 public identity (PID) providers, and 25 public agencies for automated, cost-reduced, and secure digital business identity infrastructure across Europe.",
+      "type": "personal",
+      "openSource": false,
+      "status": "beta",
+      "website": "https://www.webuildconsortium.eu",
+      "provider": {
+        "name": "Consortium (200+ partners)",
+        "website": "https://www.webuildconsortium.eu"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "releaseDate": "2025-01-01"
+    },
+    {
+      "id": "finnish-authenticator",
+      "name": "Finnish Authenticator",
+      "description": "The Finnish Authenticator is a mobile application designed for foreign citizens aged 18+ without a Finnish personal identity code to access public e-services. Users verify their identity by uploading passport or ID card photos plus a selfie, receiving a unique foreigner's identifier (UID) upon successful verification. The service operates 24/7 in English but does not meet eIDAS strong identification standards.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "website": "https://dvv.fi/en/finnish-authenticator-identification-service1",
+      "provider": {
+        "name": "Digital and Population Data Services Agency (DVV)",
+        "website": "https://dvv.fi/en/finnish-authenticator-identification-service1"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "countries": [
+        "FI"
+      ],
+      "logo": "https://flagcdn.com/w80/fi.png",
+      "releaseDate": "2020-01-01"
+    },
+    {
+      "id": "mobiilivarmenne-mobile-id",
+      "name": "Mobiilivarmenne (Mobile ID)",
+      "description": "Mobiilivarmenne is a SIM-based PKI authentication method jointly operated by Finland's three mobile operators (DNA, Elisa, Telia), launched in 2010, with approximately 2 million monthly identifications across 20,000+ services. In 2025, a new Mobile Certificate app was launched supporting biometric authentication (fingerprint/facial recognition), evolving from the original SIM-only approach. It is approved for strong domestic authentication but not eIDAS-notified for cross-border use.",
+      "type": "personal",
+      "openSource": false,
+      "status": "production",
+      "website": "https://mobiilivarmenne.fi/en/",
+      "provider": {
+        "name": "DNA, Elisa, Telia (Finnish mobile network operators, coordinated by FiCom)",
+        "website": "https://mobiilivarmenne.fi/en/"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "countries": [
+        "FI"
+      ],
+      "logo": "https://flagcdn.com/w80/fi.png",
+      "releaseDate": "2010-01-01"
+    },
+    {
+      "id": "national-eudi-wallet",
+      "name": "National EUDI Wallet",
+      "description": "Developed by DVV, coordinated by the Ministry of Finance. Launch end of 2026. Features: eID, QES, later expanded to include various certificates and documents. Participation in POTENTIAL, EWC, and DC4EU pilots.",
+      "type": "personal",
+      "openSource": true,
+      "status": "development",
+      "website": "https://dvv.fi/en/european-digital-identity-wallet",
+      "provider": {
+        "name": "Digital and Population Data Services Agency (DVV)",
+        "website": "https://dvv.fi/en/european-digital-identity-wallet"
+      },
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "FI"
+      ],
+      "logo": "https://flagcdn.com/w80/fi.png",
+      "releaseDate": "2026-01-01"
+    },
+    {
+      "id": "carte-vitale-app",
+      "name": "Carte Vitale (app)",
+      "description": "France's digital Carte Vitale app launched March 18, 2025, enabling all insured individuals with new biometric French ID cards to activate their digital health card through the France Identité smartphone application, dematerializing France's traditional health insurance card with same benefits accessible via smartphone. The app presents at medical appointments through QR code scanning or NFC technology for identification with Health Insurance and reimbursement with teletransmission, expanding from initial 23 départements to 46 by May 2025 with nationwide availability by end of 2025. Optional and free to download on iOS/Android, the digital version complements the still-valid physical Carte Vitale, available to legal residents over 18 with biometric French ID cards or plastic residency cards provided they already have a carte Vitale, allowing users to always have their card during appointments and immediately view healthcare expenses.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "website": "https://www.ameli.fr/assure/remboursements/etre-bien-rembourse/carte-vitale",
+      "provider": {
+        "name": "French Government",
+        "website": "https://www.ameli.fr/assure/remboursements/etre-bien-rembourse/carte-vitale"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "countries": [
+        "FR"
+      ],
+      "logo": "https://flagcdn.com/w80/fr.png",
+      "releaseDate": "2025-01-01"
+    },
+    {
+      "id": "france-identity-app",
+      "name": "France Identity (App)",
+      "description": "France Identité app launched by French Ministry of Interior entered beta in May 2022 before full public rollout February 14, 2024, with no user limits, enabling citizens to create dematerialized versions of identity cards and driving licenses on smartphones using NFC readers to scan biometric identity cards requiring Android 11 or iOS 16 minimum software. The state-provided digital identity platform generates electronically signed proofs of identity to prevent fraud, authenticates users for FranceConnect government services access, and displays identity cards and Carte Vitale health insurance cards, with plans to expand health card functionality in 2025, positioning France among early adopters of EUDI Wallet-compatible infrastructure preparing for EU Digital Identity Wallet framework implementation by 2030 for uniform mobile driving licenses across Europe aligned with eIDAS 2.0 regulation.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "website": "https://france-identite.gouv.fr/",
+      "provider": {
+        "name": "French Ministry of the Interior",
+        "website": "https://france-identite.gouv.fr/"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "FR"
+      ],
+      "logo": "https://flagcdn.com/w80/fr.png",
+      "releaseDate": "2024-01-01"
+    },
+    {
+      "id": "digime",
+      "name": "Digi.me",
+      "description": "Digi.me founded in 2009 by serial entrepreneur Julian Ranger (whose previous company STASYS sold to Lockheed Martin in 2005) is a UK-based personal data platform offering self-sovereign cloud-based storage where consumers control how and with whom their data is shared. The award-winning free application enables safe and secure sharing of highly sensitive personal data, with Digi.me's business model ensuring the company never sees, touches, or holds user data. Digi.me merged with US company Personal in 2017 and was acquired by Sydney-based World Data Exchange in 2022, continuing operations focused on helping businesses and governments develop consumer-centric applications that give users control over their personal data ecosystem.",
+      "type": "personal",
+      "openSource": false,
+      "status": "production",
+      "website": "https://digi.me/",
+      "provider": {
+        "name": "Digi.me Ltd.",
+        "website": "https://digi.me/"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "releaseDate": "2009-01-01"
+    },
+    {
+      "id": "select-id",
+      "name": "Select ID",
+      "description": "Select ID is a digital identity marketplace launched by TISA in May 2024, backed by Barclays, Visa, and Northern Trust, connecting UK financial institutions with certified identity providers under the UK DIATF framework. Rather than being an identity provider itself, Select ID operates as an aggregator enabling consumer choice while ensuring AML/KYC compliance, achieving 84% success rates during testing. The platform enables financial institutions to access multiple reusable digital identity providers under a single contract.",
+      "type": "personal",
+      "openSource": false,
+      "status": "production",
+      "website": "https://www.selectid.co.uk",
+      "provider": {
+        "name": "The Investing and Saving Alliance (TISA)",
+        "website": "https://www.selectid.co.uk"
+      },
+      "releaseDate": "2024-01-01"
+    },
+    {
+      "id": "yoti",
+      "name": "Yoti",
+      "description": "Yoti founded in 2014 by three Oxford University students enables users to create reusable Digital IDs by adding government-issued identity documents and taking biometric selfies, protected by multi-factor authentication including phone linking, PIN protection, and personal biometrics. The UK's Proof of Age Standards Scheme (PASS) accredited Yoti ID in 2022 alongside Post Office EasyID and Lloyds Bank Smart ID as government-recognized proof of identity and age for buying restricted goods/services, with Yoti becoming one of the first certified Digital Identity Service Providers (IDSPs) under UK's digital identity framework in June 2022. Yoti technology enables Jersey islanders to prove identity for safely accessing government services online as fundamental infrastructure for Jersey's public sector modernization, while serving global markets through Digital ID Wallets and Connect apps supporting interoperable age verification across UK's expanding digital identity network.",
+      "type": "personal",
+      "openSource": false,
+      "status": "production",
+      "website": "https://www.yoti.com/",
+      "provider": {
+        "name": "Yoti Ltd.",
+        "website": "https://www.yoti.com/"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "releaseDate": "2014-01-01"
+    },
+    {
+      "id": "govgr-wallet",
+      "name": "Gov.gr Wallet",
+      "description": "Official Greek wallet app since July 2022. Enables digital ID cards, driver's licenses, disability cards, DYPA cards, and other documents. Fully valid within Greece (not for international travel). Login via TaxisNet or online banking. Under development into the EUDI Wallet.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "website": "https://wallet.gov.gr/",
+      "provider": {
+        "name": "Greek Ministry of Digital Governance",
+        "website": "https://wallet.gov.gr/"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "countries": [
+        "GR"
+      ],
+      "logo": "https://flagcdn.com/w80/gr.png",
+      "releaseDate": "2022-01-01"
+    },
+    {
+      "id": "national-eudi-wallet",
+      "name": "National EUDI Wallet",
+      "description": "Launch expected in November 2026. Builds on Gov.gr Wallet. Planned use cases: eGov, banking, SIM registration, mobile DL, QES, eRx, travel, education. Participation in EWC and DC4EU pilot projects. Pilot test at Thessaloniki Airport for travel credentials.",
+      "type": "personal",
+      "openSource": true,
+      "status": "development",
+      "provider": {
+        "name": "Greek Government",
+        "website": ""
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "GR"
+      ],
+      "logo": "https://flagcdn.com/w80/gr.png",
+      "releaseDate": "2026-01-01"
+    },
+    {
+      "id": "national-eudi-wallet",
+      "name": "National EUDI Wallet",
+      "description": "Hungary deployed national EUDI Wallet in 2024 as one of nine EU countries (Austria, Belgium, Cyprus, Czech Republic, France, Hungary, Italy, Poland, and Portugal) with digital identity wallet solutions at national level ahead of December 2026 mandatory deadline when all 27 EU member states must ensure European Digital Identity Wallet availability to citizens following implementing acts adopted November 28, 2024. The Hungarian wallet builds on eSzemélyi (electronic personal identity card) infrastructure introduced January 1, 2016, and issued in current form since August 2, 2021, incorporating electronic chip storing biometric data (photo, fingerprints and signature for those over 12) enabling electronic public identification and qualified electronic signatures, with rapid EUDI wallet deployment facilitated by adjusting existing digital ID infrastructure to integrate required EUDI wallet capabilities under eIDAS 2.0 framework.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "provider": {
+        "name": "Hungarian Government",
+        "website": ""
+      },
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "HU"
+      ],
+      "logo": "https://flagcdn.com/w80/hu.png",
+      "releaseDate": "2024-01-01"
+    },
+    {
+      "id": "national-eudi-wallet",
+      "name": "National EUDI Wallet",
+      "description": "Ireland's National EUDI Wallet is in development to comply with eIDAS 2.0 regulation, which mandates all EU member states to provide European Digital Identity Wallets by 2026. The wallet will enable Irish citizens to securely store and share verified digital credentials, access online services across the EU, and authenticate their identity for both public and private sector services. Ireland's implementation will integrate with the country's existing MyGovID authentication system and align with the EU-wide interoperability framework for cross-border digital identity recognition established under eIDAS Regulation 2024/1183.",
+      "type": "personal",
+      "openSource": true,
+      "status": "development",
+      "provider": {
+        "name": "Irish Government",
+        "website": ""
+      },
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "IE"
+      ],
+      "logo": "https://flagcdn.com/w80/ie.png"
+    },
+    {
+      "id": "national-eudi-wallet",
+      "name": "National EUDI Wallet",
+      "description": "Iceland as European Economic Area (EEA) country alongside Liechtenstein and Norway has been granted one-year extension for EUDI Wallet implementation with December 2027 deadline compared to EU member states' December 2026 requirement, positioning Iceland among thirteen countries embarked on digital ID wallet development journeys at different stages including development, beta testing, or pre-production. The Icelandic government participates in pilot projects involving more than 250 private and public organizations across almost every EU member state as well as Norway, Iceland, and Ukraine to test EUDI Wallet enabling citizens to digitally prove identity and share verified attributes across EU/EEA in secure, user-controlled manner, building on Iceland's existing advanced electronic identification infrastructure including Auðkenni system achieving 97% adoption among eligible population for transition to European Digital Identity Wallet framework under eIDAS 2.0 regulation.",
+      "type": "personal",
+      "openSource": true,
+      "status": "development",
+      "provider": {
+        "name": "Icelandic Government",
+        "website": ""
+      },
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "IS"
+      ],
+      "logo": "https://flagcdn.com/w80/is.png",
+      "releaseDate": "2027-01-01"
+    },
+    {
+      "id": "it-wallet",
+      "name": "IT wallet",
+      "description": "Italy's IT-Wallet pilot launched October 23, 2024, with 50,000 users selected through IO app, achieving full nationwide deployment December 4, 2024, making Italy the first EU member state to fully deploy an EUDI Wallet under eIDAS 2.0 framework with 1.76 million digital driving licenses and 2.04 million digital health cards added within the first week. The comprehensive digital identity wallet integrated into PagoPa's IO app enables Italian citizens to securely store and present digital versions of identity cards, driving licenses, health cards, and European Disability Cards on smartphones, with plans to expand to educational qualifications and professional licenses while serving as foundation for Italy's digital government modernization strategy aligned with EU Digital Identity Wallet Architecture Reference Framework specifications.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "website": "https://io.italia.it/",
+      "provider": {
+        "name": "Italian Ministry of Digitalization (via IO App)",
+        "website": "https://io.italia.it/"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "IT"
+      ],
+      "logo": "https://flagcdn.com/w80/it.png",
+      "releaseDate": "2024-01-01"
+    },
+    {
+      "id": "idenfy",
+      "name": "iDenfy",
+      "description": "iDenfy is a Lithuania-based RegTech company founded in 2017, headquartered in Kaunas, providing an all-in-one identity verification, fraud prevention, and compliance platform serving 1,000+ businesses across fintech, cryptocurrency, e-commerce, iGaming, healthcare, and regulated industries. The platform combines AI-based biometric recognition with 24/7 manual review by in-house experts, offering document extraction from 3,500+ government-issued IDs across 200+ countries, and integrates with physical eID cards (Belgium, Estonia, Portugal, Lithuania) and mobile eIDs (Smart-ID, BankID) for eIDAS-compliant verification. Recognized in G2's top 50 Financial Services Products in 2025 and trusted by Bank of Lithuania, Juni, and Kevin, iDenfy claims to help businesses onboard users 3x faster and reduce costs by up to 70%, though it is NOT an electronic identity scheme or QTSP but rather a private identity verification service provider.",
+      "type": "personal",
+      "openSource": false,
+      "status": "production",
+      "website": "https://www.idenfy.com/",
+      "provider": {
+        "name": "iDenfy (private company)",
+        "website": "https://www.idenfy.com/"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "countries": [
+        "LT"
+      ],
+      "logo": "https://flagcdn.com/w80/lt.png",
+      "releaseDate": "2017-01-01"
+    },
+    {
+      "id": "national-eudi-wallet",
+      "name": "National EUDI Wallet",
+      "description": "Latvia's National EUDI Wallet is in development to comply with eIDAS 2.0 regulation mandating EU member states to provide European Digital Identity Wallets by 2026-2027. The wallet will build upon Latvia's existing eID infrastructure including the Personas apliecība (eID card) and eParaksts services, enabling citizens to securely store and share verified digital credentials across EU member states. Latvia's implementation will integrate with the cross-border eIDAS ecosystem, leveraging the country's experience as the second Nordic-Baltic state to achieve EU-wide e-service recognition and continuing Latvia's leadership in digital identity interoperability.",
+      "type": "personal",
+      "openSource": true,
+      "status": "development",
+      "provider": {
+        "name": "Latvian Government",
+        "website": ""
+      },
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "LV"
+      ],
+      "logo": "https://flagcdn.com/w80/lv.png"
+    },
+    {
+      "id": "national-identity-scheme",
+      "name": "National Identity Scheme",
+      "description": "Legal framework for digital identity to use e-services. Uniform identification codes for online identification. Focus on efficiency, security, and data protection. Part of the Digital Agenda. Challenge under discussion: user-friendliness for the average citizen.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "website": "https://www.gov.me",
+      "provider": {
+        "name": "Ministry of Public Administration",
+        "website": "https://www.gov.me"
+      },
+      "countries": [
+        "ME"
+      ],
+      "logo": "https://flagcdn.com/w80/me.png",
+      "releaseDate": "2019-01-01"
+    },
+    {
+      "id": "e-uprava-egovernment-portal",
+      "name": "e-Uprava (eGovernment Portal)",
+      "description": "e-Uprava is Montenegro's central eGovernment portal providing citizens, NGOs, academia, and businesses with access to over 45 electronic services. The portal integrates with Montenegro's national eID card infrastructure (TrustME PKI) and represents the country's major digital transformation initiative aligned with EU eIDAS standards.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "website": "https://www.euprava.me",
+      "provider": {
+        "name": "Ministry of Public Administration, Digital Society and Media of Montenegro",
+        "website": "https://www.euprava.me"
+      },
+      "countries": [
+        "ME"
+      ],
+      "logo": "https://flagcdn.com/w80/me.png",
+      "releaseDate": "2019-01-01"
+    },
+    {
+      "id": "eli-app-digital-id-wallet",
+      "name": "ELI App (Digital ID Wallet)",
+      "description": "Includes electronic versions of national identity cards and driver's licenses. Linked to portal.gov.mk (centralized e-government platform under redesign). Funded by the EU Digital Europe Programme. Enables identification and authentication for digital services.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "website": "https://portal.gov.mk",
+      "provider": {
+        "name": "Ministry of Digital Transformation",
+        "website": "https://portal.gov.mk"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "countries": [
+        "MK"
+      ],
+      "logo": "https://flagcdn.com/w80/mk.png",
+      "releaseDate": "2024-01-01"
+    },
+    {
+      "id": "national-eudi-wallet",
+      "name": "National EUDI Wallet",
+      "description": "Netherlands' public NL-wallet EUDI implementation developed by Ministry of Interior and Kingdom Relations (BZK) aims to offer inclusive and dependable digital solution prioritizing user-friendliness, accessibility, privacy, and security by late 2026, with various sectors preparing to accept wallets by 2027. The Dutch government creates nationwide version maintaining user control over data where citizens decide what information to keep, when to use it, and whom to share it with, preventing sharing more details than needed for services, building on existing DigiD national eID and eHerkenning business authentication schemes with several public service providers already testing wallet functionality in real-world scenarios, positioning Netherlands among EU countries advancing toward voluntary adoption of European Digital Identity Wallet framework ahead of December 2026 mandatory availability deadline.",
+      "type": "personal",
+      "openSource": true,
+      "status": "development",
+      "website": "https://www.nldigitalgovernment.nl/",
+      "provider": {
+        "name": "Dutch Government",
+        "website": "https://www.nldigitalgovernment.nl/"
+      },
+      "platforms": [
+        "iOS"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "NL"
+      ],
+      "logo": "https://flagcdn.com/w80/nl.png"
+    },
+    {
+      "id": "national-eudi-wallet",
+      "name": "National EUDI Wallet",
+      "description": "Norway as European Economic Area (EEA) country alongside Iceland and Liechtenstein has December 2027 deadline (one-year extension compared to EU member states' December 2026 requirement) to offer citizens EU Digital Identity Wallet, led by Digdir (Norwegian Digitalisation Agency) coordinating NOBID (Nordic-Baltic eID Project) multi-country consortium including Denmark, Germany, Iceland, Italy, and Latvia focusing on payments use case leveraging existing payment infrastructure. BankID participates in first phase of European Identity Wallet work through involvement in two consortia (EUDI Wallet Consortium EWC and Digital Credentials for Europe DC4EU) piloting EUDI wallet functionality, building on Norway's advanced digital infrastructure where more than 90% of citizens have access to eID with millions using digital services daily and 75% (4.1 million) Norwegians using Vipps payment tool, positioning Norway as leader in digital payments and eID adoption preparing for EUDI wallet integration with financial institutions obliged to accept wallet as official identification method from end of 2027.",
+      "type": "personal",
+      "openSource": true,
+      "status": "development",
+      "provider": {
+        "name": "Norwegian Government",
+        "website": ""
+      },
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "NO"
+      ],
+      "logo": "https://flagcdn.com/w80/no.png",
+      "releaseDate": "2027-01-01"
+    },
+    {
+      "id": "mobywatel",
+      "name": "mObywatel",
+      "description": "Poland's mObywatel mobile application created in 2017 introduced electronic prescriptions and mobile driving licenses (mDL) in 2020, significantly boosting popularity as gateway into digitalization process storing e-documents including driving licenses, diplomas, COVID certificates, and ID cards, with mObywatel 2.0 mDowód digital ID becoming fully equal to plastic counterpart from September 2023 as biggest EU country where eID achieved full legal equivalence with traditional identification. The government develops mObywatel 3.0 application for European Digital Identity Wallet (EUDI Wallet) targeting full eIDAS 2.0 compliance by 2026, positioning Poland as one of nine countries (Austria, Belgium, Cyprus, Czech Republic, France, Hungary, Italy, Poland, Portugal) with digital identity wallet solution deployed at national level by building on existing digital ID app infrastructure and adjusting to integrate required EUDI wallet capabilities ahead of December 2026 mandatory deadline.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "website": "https://www.gov.pl/mobywatel",
+      "provider": {
+        "name": "Polish Government",
+        "website": "https://www.gov.pl/mobywatel"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc"
+      ],
+      "countries": [
+        "PL"
+      ],
+      "logo": "https://flagcdn.com/w80/pl.png",
+      "certifications": [
+        "eIDAS notified"
+      ],
+      "releaseDate": "2018-01-01"
+    },
+    {
+      "id": "mojeid",
+      "name": "mojeID",
+      "description": "mojeID is Poland's bank-issued eID developed by KIR with 15 major banks, serving 22 million users (98% of online banking users), making it Poland's most adopted digital identity solution—double the government's mObywatel (10M users). Users authenticate via their bank's e-banking system, with mojeID offering two eIDAS-compliant assurance levels (low and substantial) for both public and private sector services. While eIDAS-compliant, mojeID is not separately notified; Poland's official eIDAS schemes are Trusted Profile and Personal Profile.",
+      "type": "personal",
+      "openSource": false,
+      "status": "production",
+      "website": "https://www.kir.pl/en/our-products/clients/identity-i-e-signature/mojeid",
+      "provider": {
+        "name": "KIR (Krajowa Izba Rozliczeniowa S.A. - Polish National Clearing House)",
+        "website": "https://www.kir.pl/en/our-products/clients/identity-i-e-signature/mojeid"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "countries": [
+        "PL"
+      ],
+      "logo": "https://flagcdn.com/w80/pl.png"
+    },
+    {
+      "id": "govpt-formerly-idgovpt",
+      "name": "gov.pt (formerly id.gov.pt)",
+      "description": "Portugal's ID.gov.pt (now gov.pt) mobile digital wallet officially launched January 2019 as pioneer wallet application managed by AMA (Administrative Modernization Agency) enabling citizens to keep and consult ID cards anytime anywhere through active Digital Mobile Key (CMD) with High Level of Assurance required for authentication and all app actions. The wallet achieved 548,338 app downloads by April 2021 (375,284 Android, 173,054 iOS) with 793,948 downloaded cards including Citizen Card (390,966), driving license (337,173), ADSE health card (65,809), plus Employee Card, Defense Digital Card, Former Combatant Card, Single Port Card, ADM Card, and Youth Card, supporting over 80% population eID usage making nearly 13 million authentications per year, establishing Portugal as European leader in digital identity wallet adoption ahead of eIDAS 2.0 framework and EUDI Wallet deployment requirements.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "website": "https://eportugal.gov.pt",
+      "provider": {
+        "name": "AMA - Agency for Administrative Modernisation",
+        "website": "https://eportugal.gov.pt"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "countries": [
+        "PT"
+      ],
+      "logo": "https://flagcdn.com/w80/pt.png",
+      "releaseDate": "2019-01-01"
+    },
+    {
+      "id": "consentid-eid-portal",
+      "name": "ConsentID (eID Portal)",
+      "description": "ConsentID is Serbia's government mobile application and digital identity platform that enables citizens to become \"eCitizens\" and access eGovernment services without physical cards or readers. The system uses cloud-based qualified electronic certificates and provides high-level authentication for all government digital services.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "website": "https://eid.gov.rs",
+      "provider": {
+        "name": "Office for Information Technologies and eGovernment (Kancelarija ITE)",
+        "website": "https://eid.gov.rs"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "countries": [
+        "RS"
+      ],
+      "logo": "https://flagcdn.com/w80/rs.png",
+      "releaseDate": "2020-01-01"
+    },
+    {
+      "id": "national-eudi-wallet",
+      "name": "National EUDI Wallet",
+      "description": "Sweden's national EUDI Wallet developed by DIGG (Agency for Digital Government) with recommended Swedish open model allowing both private and public operators as issuers of digital identity wallets, building on BankID infrastructure dominating market with over 8.5 million users as most widely used eID in Sweden and only one usable for identifying to payment service providers and authenticating payments. The EWC project co-founded by Swedish government agencies including DIGG, Companies Registration Office (Bolagsverket), Research Council (Vetenskapsrådet), and Sunet (University Computer Network) participates in two consortia (EUDI Wallet Consortium EWC and Digital Credentials for Europe DC4EU) piloting EU Digital Identity Wallet, positioning Sweden to meet December 2026 deadline for offering every citizen European Digital Identity Wallet with financial institutions, telecom operators, and major online service providers required to accept EUDI Wallet as valid authentication and identity verification from 2027 onward.",
+      "type": "personal",
+      "openSource": true,
+      "status": "development",
+      "provider": {
+        "name": "Swedish Government",
+        "website": ""
+      },
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "SE"
+      ],
+      "logo": "https://flagcdn.com/w80/se.png"
+    },
+    {
+      "id": "truid",
+      "name": "Truid",
+      "description": "Truid is a Stockholm-based identity verification company founded in 2021, providing eIDAS-compliant KYC, fraud prevention, and digital signatures, with solutions built for the EU Digital Identity Wallet (EUDI Wallet) specification. On March 14, 2025, Truid was acquired by Kivra (Sweden's leading digital communication platform) to develop a next-generation identity wallet aligned with eIDAS 2.0. Truid focuses on identity verification and wallet technology rather than traditional eID authentication like BankID.",
+      "type": "personal",
+      "openSource": false,
+      "status": "production",
+      "website": "https://www.truid.app/",
+      "provider": {
+        "name": "Truid AB (acquired by Kivra on March 14, 2025)",
+        "website": "https://www.truid.app/"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "countries": [
+        "SE"
+      ],
+      "logo": "https://flagcdn.com/w80/se.png",
+      "releaseDate": "2021-01-01"
+    },
+    {
+      "id": "national-eudi-wallet",
+      "name": "National EUDI Wallet",
+      "description": "Slovenia develops national EUDI Wallet as one of thirteen EU countries (Denmark, Estonia, Finland, Germany, Greece, Iceland, Ireland, Latvia, Netherlands, Slovakia, Slovenia, Spain, Sweden) embarked on digital ID wallet development at various stages including development, beta testing, or pre-production, meeting December 2026 deadline for all 27 EU member states to ensure European Digital Identity Wallet availability to citizens following first implementing regulations published December 4, 2024, entering force 20 days later. The Slovenian wallet builds on existing smartcard ID infrastructure, mobile ID systems, and electronic certificates to support personal identification data, university diplomas, driver's licenses, electronic certificates and attestations of attributes with secure authentication, document storage, sharing capabilities, and digital signing, preparing for 2027 requirements when banks, telecom operators, and major online service providers must accept EUDI Wallet as valid authentication and identity verification across EU member states.",
+      "type": "personal",
+      "openSource": true,
+      "status": "development",
+      "provider": {
+        "name": "Slovenian Government",
+        "website": ""
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "SI"
+      ],
+      "logo": "https://flagcdn.com/w80/si.png"
+    },
+    {
+      "id": "national-eudi-wallet",
+      "name": "National EUDI Wallet",
+      "description": "Slovakia's National EUDI Wallet is in development to meet eIDAS 2.0 mandates requiring all EU member states to provide European Digital Identity Wallets by 2026-2027. The wallet will enable Slovak citizens to securely manage verified digital credentials, authenticate across EU services, and engage in secure digital transactions for both government and commercial applications. Slovakia's implementation will build upon the country's existing electronic identity infrastructure and integrate with the EU-wide EUDI Wallet ecosystem for seamless cross-border identity verification compliant with eIDAS Regulation 2024/1183.",
+      "type": "personal",
+      "openSource": true,
+      "status": "development",
+      "provider": {
+        "name": "Slovak Government",
+        "website": ""
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "SK"
+      ],
+      "logo": "https://flagcdn.com/w80/sk.png"
+    },
+    {
+      "id": "slovensko-v-mobile",
+      "name": "Slovensko v mobile",
+      "description": "Slovakia's Slovensko v mobile (Slovakia in Mobile) app launched in 2017 by Ministry of Investment, Regional Development and Informatization creates communication channel between citizens and authorities, enabling Slovak citizens to access state services via mobile devices using mobile ID authentication simplifying login to government services including slovensko.sk portal and electronic mailbox. The platform extends government services to mobile devices providing access to official e-mailbox messages, Electronic Health Record (EZK) viewing on national health portal, automatic notifications for vehicle emissions tests and technical inspections, and calendar of important events, serving as digital state assistant with single sign-on integrated for central public administration portal, available on Google Play and Apple App Store for comprehensive mobile government services access throughout Slovakia's digital public administration ecosystem.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "provider": {
+        "name": "Slovak Government",
+        "website": ""
+      },
+      "platforms": [
+        "iOS"
+      ],
+      "countries": [
+        "SK"
+      ],
+      "logo": "https://flagcdn.com/w80/sk.png",
+      "releaseDate": "2017-01-01"
+    },
+    {
+      "id": "diia",
+      "name": "Diia (Дія)",
+      "description": "Ukraine's Diia (\"Action\" in Ukrainian) launched in 2020 by Ministry of Digital Transformation led by Minister Mykhailo Fedorov serves as mobile app and online portal acting as one-stop shop for public services and wallet for digital documents with same legal status as paper originals including digital passports and driving licenses, providing access to over 130 government services for approximately 18.5 million users (around half adult population). The comprehensive GovTech platform implemented by UNDP Ukraine with funding from Government of Sweden (SweMFA) through DIA Support Project builds on UNDP's experience in administrative service reform, digitalisation, and public administration process re-engineering, successfully demonstrating digital government resilience during crisis with Ukraine now exporting digital transformation know-how to other countries including Estonia adapting Diia to their needs, establishing Ukraine as leader in government digital innovation despite challenging circumstances.",
+      "type": "personal",
+      "openSource": true,
+      "status": "production",
+      "website": "https://diia.gov.ua/",
+      "provider": {
+        "name": "Ukrainian Ministry of Digitalisation",
+        "website": "https://diia.gov.ua/"
+      },
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "countries": [
+        "UA"
+      ],
+      "logo": "https://flagcdn.com/w80/ua.png",
+      "releaseDate": "2020-01-01"
+    },
+    {
+      "id": "eid-kosovo-platform",
+      "name": "eID Kosovo Platform",
+      "description": "EU-funded (EU4Innovation). Technology partner: VIDChain/Validated ID. Includes an identity wallet for electronic signatures and data management. Complete PKI infrastructure. Integration with the e-Kosova portal. Despite not being an EU member, it is eIDAS 2.0 and GDPR compliant. Focus: e-commerce, e-government, e-banking.",
+      "type": "personal",
+      "openSource": true,
+      "status": "development",
+      "website": "https://me.rks-gov.net",
+      "provider": {
+        "name": "Ministry of Economy",
+        "website": "https://me.rks-gov.net"
+      },
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "countries": [
+        "XK"
+      ],
+      "logo": "https://flagcdn.com/w80/xk.png",
+      "releaseDate": "2024-01-01"
+    }
+  ]
+}

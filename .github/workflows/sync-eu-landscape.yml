@@ -1,0 +1,61 @@
+name: Sync EU Digital Identity Landscape
+
+on:
+  schedule:
+    # Run every Monday at 9:00 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Run EU Landscape sync
+        run: node scripts/sync-eu-landscape.js
+      
+      - name: Check for changes
+        id: git-check
+        run: |
+          git diff --quiet community-catalogs/eu-landscape/ || echo "changed=true" >> $GITHUB_OUTPUT
+      
+      - name: Commit and push if changed
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add community-catalogs/eu-landscape/
+          git commit -m "🔄 Auto-sync: Update EU Digital Identity Landscape wallets"
+          git push
+      
+      - name: Regenerate aggregated.json
+        if: steps.git-check.outputs.changed == 'true'
+        run: node scripts/aggregate.js
+      
+      - name: Commit aggregated changes
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          git add data/aggregated.json wordpress-plugin/fides-wallet-catalog/data/aggregated.json
+          git commit -m "🔄 Auto-sync: Update aggregated wallet data" || exit 0
+          git push
+
+      - name: Create summary
+        if: always()
+        run: |
+          echo "## EU Landscape Sync Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ -f community-catalogs/eu-landscape/sync-metadata.json ]; then
+            echo "### Sync Metadata" >> $GITHUB_STEP_SUMMARY
+            cat community-catalogs/eu-landscape/sync-metadata.json >> $GITHUB_STEP_SUMMARY
+          fi
+

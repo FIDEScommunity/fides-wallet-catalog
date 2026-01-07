@@ -23,10 +23,14 @@ wallet-catalog/
 │   ├── animo/
 │   │   ├── did.json              # Example DID document (optional)
 │   │   └── wallet-catalog.json   # Wallet catalog descriptor
+│   ├── eu-landscape/             # Auto-synced from EU Digital Identity Landscape
+│   │   ├── wallet-catalog.json   # 53 European wallets (auto-updated weekly)
+│   │   ├── sync-metadata.json    # Sync status and statistics
+│   │   └── README.md             # EU Landscape integration docs
 │   ├── sphereon/
 │   ├── google/
 │   ├── apple/
-│   └── ...                       # 27+ wallet providers
+│   └── ...                       # 80+ wallet providers
 ├── src/
 │   ├── types/wallet.ts           # TypeScript types
 │   ├── crawler/index.ts          # Crawler service
@@ -53,11 +57,21 @@ npm install
 
 ### Run Crawler
 
-This crawls the example wallet catalogs and generates `data/aggregated.json`:
+This crawls the wallet catalogs and generates `data/aggregated.json`:
 
 ```bash
 npm run crawl
 ```
+
+### Sync EU Digital Identity Landscape
+
+Fetch and sync wallets from the [EU Digital Identity Landscape](https://www.digital-identity-landscape.eu/):
+
+```bash
+node scripts/sync-eu-landscape.js
+```
+
+This automatically runs weekly via GitHub Actions. See [`community-catalogs/eu-landscape/README.md`](community-catalogs/eu-landscape/README.md) for details.
 
 ### Start Development Server
 
@@ -74,6 +88,25 @@ npm run serve
 ```
 
 The API runs on http://localhost:3001
+
+## 🌍 Data Sources
+
+The FIDES Wallet Catalog aggregates wallet data from multiple sources:
+
+### 1. Community Contributions
+Individual wallet providers submit their own `wallet-catalog.json` files to the `community-catalogs/` directory via pull requests.
+
+### 2. EU Digital Identity Landscape (Auto-sync)
+We automatically sync 53+ wallets from the [EU Digital Identity Landscape](https://www.digital-identity-landscape.eu/) every Monday at 9:00 AM UTC. This includes:
+- National EUDI Wallets (Austria, Finland, Germany, Netherlands, Spain, etc.)
+- Bank-based identity solutions (BankID, itsme, etc.)
+- Government digital ID apps (France Identité, mObywatel, Diia, etc.)
+- Commercial wallet providers across Europe
+
+See [`community-catalogs/eu-landscape/`](community-catalogs/eu-landscape/) for the complete list.
+
+### 3. DID-based Auto-discovery (Planned)
+Wallet providers can register their DID in `data/did-registry.json`. The crawler will automatically fetch and update their wallet information from their DID document.
 
 ## 📋 Wallet Provider Integration
 

@@ -76,6 +76,7 @@
     platforms: [],
     credentialFormats: [],
     interoperabilityProfiles: [],
+    status: [],
     openSource: null
   };
   let showFiltersPanel = false;
@@ -189,13 +190,18 @@
         if (!hasMatch) return false;
       }
 
+      // Status
+      if (filters.status.length > 0) {
+        if (!filters.status.includes(wallet.status || 'production')) return false;
+      }
+
       // Open source
       if (filters.openSource !== null) {
         if (wallet.openSource !== filters.openSource) return false;
       }
 
       return true;
-    });
+    }).sort((a, b) => a.name.localeCompare(b.name));
   }
 
   /**
@@ -208,6 +214,7 @@
     count += filters.platforms.length;
     count += filters.credentialFormats.length;
     count += filters.interoperabilityProfiles.length;
+    count += filters.status.length;
     if (filters.openSource !== null) count += 1;
     return count;
   }
@@ -282,19 +289,30 @@
                 </div>
               </div>
             ` : ''}
-            <div class="fides-filter-group">
-              <span class="fides-filter-label">Capabilities</span>
-              <div class="fides-filter-buttons">
-                <button class="fides-filter-btn ${filters.capabilities.includes('holder') ? 'active' : ''}" data-filter="capabilities" data-value="holder">Holder</button>
-                <button class="fides-filter-btn ${filters.capabilities.includes('issuer') ? 'active' : ''}" data-filter="capabilities" data-value="issuer">Issuer</button>
-                <button class="fides-filter-btn ${filters.capabilities.includes('verifier') ? 'active' : ''}" data-filter="capabilities" data-value="verifier">Verifier</button>
+            ${filters.type.includes('organizational') || settings.type === 'organizational' ? `
+              <div class="fides-filter-group">
+                <span class="fides-filter-label">Capabilities</span>
+                <div class="fides-filter-buttons">
+                  <button class="fides-filter-btn ${filters.capabilities.includes('holder') ? 'active' : ''}" data-filter="capabilities" data-value="holder">Holder</button>
+                  <button class="fides-filter-btn ${filters.capabilities.includes('issuer') ? 'active' : ''}" data-filter="capabilities" data-value="issuer">Issuer</button>
+                  <button class="fides-filter-btn ${filters.capabilities.includes('verifier') ? 'active' : ''}" data-filter="capabilities" data-value="verifier">Verifier</button>
+                </div>
               </div>
-            </div>
+            ` : ''}
             <div class="fides-filter-group">
               <span class="fides-filter-label">Interop Profile</span>
               <div class="fides-filter-buttons">
+                <button class="fides-filter-btn ${filters.interoperabilityProfiles.includes('EUDI Wallet ARF') ? 'active' : ''}" data-filter="interoperabilityProfiles" data-value="EUDI Wallet ARF">EUDI Wallet ARF</button>
                 <button class="fides-filter-btn ${filters.interoperabilityProfiles.includes('DIIP v4') ? 'active' : ''}" data-filter="interoperabilityProfiles" data-value="DIIP v4">DIIP v4</button>
                 <button class="fides-filter-btn ${filters.interoperabilityProfiles.includes('EWC v3') ? 'active' : ''}" data-filter="interoperabilityProfiles" data-value="EWC v3">EWC v3</button>
+              </div>
+            </div>
+            <div class="fides-filter-group">
+              <span class="fides-filter-label">Status</span>
+              <div class="fides-filter-buttons">
+                <button class="fides-filter-btn ${filters.status.includes('production') ? 'active' : ''}" data-filter="status" data-value="production">Production</button>
+                <button class="fides-filter-btn ${filters.status.includes('beta') ? 'active' : ''}" data-filter="status" data-value="beta">Beta</button>
+                <button class="fides-filter-btn ${filters.status.includes('development') ? 'active' : ''}" data-filter="status" data-value="development">In Development</button>
               </div>
             </div>
             <div class="fides-filter-group">
@@ -399,7 +417,7 @@
         <div class="fides-wallet-body">
           ${wallet.description ? `<p class="fides-wallet-description">${escapeHtml(wallet.description)}</p>` : ''}
           
-          ${wallet.capabilities && wallet.capabilities.length > 0 ? `
+          ${wallet.type === 'organizational' && wallet.capabilities && wallet.capabilities.length > 0 ? `
             <div class="fides-tags fides-capability-tags">
               ${wallet.capabilities.map(c => `
                 <span class="fides-tag capability capability-${c}">
@@ -553,7 +571,7 @@
               <span class="fides-modal-badge type-${wallet.type}">
                 ${typeLabels[wallet.type]}
               </span>
-              ${wallet.capabilities && wallet.capabilities.length > 0 ? wallet.capabilities.map(c => `
+              ${wallet.type === 'organizational' && wallet.capabilities && wallet.capabilities.length > 0 ? wallet.capabilities.map(c => `
                 <span class="fides-modal-badge capability-${c}">
                   ${c.charAt(0).toUpperCase() + c.slice(1)}
                 </span>
@@ -911,6 +929,7 @@
           platforms: [],
           credentialFormats: [],
           interoperabilityProfiles: [],
+          status: [],
           openSource: null
         };
         render();

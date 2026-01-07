@@ -1,7 +1,7 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
   "provider": {
-    "name": "Neosfer GmbH",
+    "name": "Lissi GmbH",
     "did": "did:web:lissi.id",
     "website": "https://lissi.id",
     "logo": "https://www.google.com/s2/favicons?domain=lissi.id&sz=128",
@@ -12,7 +12,7 @@
   "wallets": [
     {
       "id": "lissi-wallet",
-      "name": "Lissi Wallet",
+      "name": "Lissi ID-Wallet",
       "description": "A privacy-focused digital identity wallet developed by Neosfer, a subsidiary of Commerzbank, enabling users to securely store and share verifiable credentials.",
       "logo": "https://www.google.com/s2/favicons?domain=lissi.id&sz=128",
       "website": "https://lissi.id/wallet",
