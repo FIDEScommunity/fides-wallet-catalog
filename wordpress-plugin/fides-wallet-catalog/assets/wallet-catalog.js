@@ -307,14 +307,16 @@
                 <button class="fides-filter-btn ${filters.interoperabilityProfiles.includes('EWC v3') ? 'active' : ''}" data-filter="interoperabilityProfiles" data-value="EWC v3">EWC v3</button>
               </div>
             </div>
-            <div class="fides-filter-group">
-              <span class="fides-filter-label">Status</span>
-              <div class="fides-filter-buttons">
-                <button class="fides-filter-btn ${filters.status.includes('production') ? 'active' : ''}" data-filter="status" data-value="production">Production</button>
-                <button class="fides-filter-btn ${filters.status.includes('beta') ? 'active' : ''}" data-filter="status" data-value="beta">Beta</button>
-                <button class="fides-filter-btn ${filters.status.includes('development') ? 'active' : ''}" data-filter="status" data-value="development">In Development</button>
+            ${filters.type.includes('personal') || settings.type === 'personal' || (!filters.type.includes('organizational') && settings.type !== 'organizational') ? `
+              <div class="fides-filter-group">
+                <span class="fides-filter-label">Status</span>
+                <div class="fides-filter-buttons">
+                  <button class="fides-filter-btn ${filters.status.includes('production') ? 'active' : ''}" data-filter="status" data-value="production">Production</button>
+                  <button class="fides-filter-btn ${filters.status.includes('beta') ? 'active' : ''}" data-filter="status" data-value="beta">Beta</button>
+                  <button class="fides-filter-btn ${filters.status.includes('development') ? 'active' : ''}" data-filter="status" data-value="development">In Development</button>
+                </div>
               </div>
-            </div>
+            ` : ''}
             <div class="fides-filter-group">
               <span class="fides-filter-label">Platform</span>
               <div class="fides-filter-buttons">
