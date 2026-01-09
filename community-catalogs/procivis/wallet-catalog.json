@@ -19,6 +19,8 @@
       "credentialFormats": ["SD-JWT-VC", "JWT-VC", "mDL/mDoc"],
       "issuanceProtocols": ["OpenID4VCI"],
       "presentationProtocols": ["OpenID4VP"],
+      "signingAlgorithms": ["ES256", "EdDSA"],
+      "credentialStatusMethods": ["StatusList2021"],
       "openSource": false,
       "status": "production"
     }

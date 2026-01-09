@@ -28,7 +28,9 @@
     check: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
     download: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>',
     apple: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>',
-    playStore: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 9.99l-2.302 2.302-8.634-8.634z"/></svg>'
+    playStore: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 9.99l-2.302 2.302-8.634-8.634z"/></svg>',
+    eye: '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>',
+    penLine: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>'
   };
 
   // Selected wallet for modal
@@ -47,8 +49,10 @@
     credentialFormats: false,
     issuanceProtocols: false,
     presentationProtocols: false,
-    supportedDIDMethods: false,
-    keyManagement: false,
+    supportedIdentifiers: false,
+    keyStorage: false,
+    signingAlgorithms: false,
+    credentialStatusMethods: false,
     license: false
   };
 
@@ -96,8 +100,10 @@
     credentialFormats: [],
     issuanceProtocols: [],
     presentationProtocols: [],
-    supportedDIDMethods: [],
-    keyManagement: [],
+    supportedIdentifiers: [],
+    keyStorage: [],
+    signingAlgorithms: [],
+    credentialStatusMethods: [],
     interoperabilityProfiles: [],
     status: [],
     openSource: null,
@@ -263,16 +269,28 @@
         if (!hasMatch) return false;
       }
 
-      // DID Methods
-      if (filters.supportedDIDMethods.length > 0) {
-        const walletDIDMethods = wallet.supportedDIDMethods || wallet.didMethods || [];
-        const hasMatch = filters.supportedDIDMethods.some(d => walletDIDMethods.includes(d));
+      // Identifiers
+      if (filters.supportedIdentifiers.length > 0) {
+        const walletIdentifiers = wallet.supportedIdentifiers || wallet.didMethods || [];
+        const hasMatch = filters.supportedIdentifiers.some(d => walletIdentifiers.includes(d));
         if (!hasMatch) return false;
       }
 
-      // Key Management
-      if (filters.keyManagement.length > 0) {
-        const hasMatch = filters.keyManagement.some(k => (wallet.keyManagement || []).includes(k));
+      // Key Storage
+      if (filters.keyStorage.length > 0) {
+        const hasMatch = filters.keyStorage.some(k => (wallet.keyStorage || []).includes(k));
+        if (!hasMatch) return false;
+      }
+
+      // Signing Algorithms
+      if (filters.signingAlgorithms.length > 0) {
+        const hasMatch = filters.signingAlgorithms.some(a => (wallet.signingAlgorithms || []).includes(a));
+        if (!hasMatch) return false;
+      }
+
+      // Credential Status Methods
+      if (filters.credentialStatusMethods.length > 0) {
+        const hasMatch = filters.credentialStatusMethods.some(s => (wallet.credentialStatusMethods || []).includes(s));
         if (!hasMatch) return false;
       }
 
@@ -327,8 +345,10 @@
     count += filters.credentialFormats.length;
     count += filters.issuanceProtocols.length;
     count += filters.presentationProtocols.length;
-    count += filters.supportedDIDMethods.length;
-    count += filters.keyManagement.length;
+    count += filters.supportedIdentifiers.length;
+    count += filters.keyStorage.length;
+    count += filters.signingAlgorithms.length;
+    count += filters.credentialStatusMethods.length;
     count += filters.interoperabilityProfiles.length;
     count += filters.status.length;
     if (filters.openSource !== null) count += 1;
@@ -351,6 +371,28 @@
       const nameB = COUNTRY_NAMES[b] || b;
       return nameA.localeCompare(nameB);
     });
+  }
+
+  /**
+   * Get unique signing algorithms from all wallets
+   */
+  function getAvailableSigningAlgorithms() {
+    const algorithms = new Set();
+    wallets.forEach(wallet => {
+      (wallet.signingAlgorithms || []).forEach(a => algorithms.add(a));
+    });
+    return Array.from(algorithms).sort();
+  }
+
+  /**
+   * Get unique credential status methods from all wallets
+   */
+  function getAvailableCredentialStatusMethods() {
+    const methods = new Set();
+    wallets.forEach(wallet => {
+      (wallet.credentialStatusMethods || []).forEach(m => methods.add(m));
+    });
+    return Array.from(methods).sort();
   }
 
   /**
@@ -617,64 +659,98 @@
                 </label>
               </div>
             </div>
-            <div class="fides-filter-group collapsible ${!filterGroupState.supportedDIDMethods ? 'collapsed' : ''} ${filters.supportedDIDMethods.length > 0 ? 'has-active' : ''}" data-filter-group="supportedDIDMethods">
-              <button class="fides-filter-label-toggle" type="button" aria-expanded="${filterGroupState.supportedDIDMethods}">
-                <span class="fides-filter-label">DID Methods</span>
+            <div class="fides-filter-group collapsible ${!filterGroupState.supportedIdentifiers ? 'collapsed' : ''} ${filters.supportedIdentifiers.length > 0 ? 'has-active' : ''}" data-filter-group="supportedIdentifiers">
+              <button class="fides-filter-label-toggle" type="button" aria-expanded="${filterGroupState.supportedIdentifiers}">
+                <span class="fides-filter-label">Identifiers</span>
                 <span class="fides-filter-active-indicator"></span>
                 ${icons.chevronDown}
               </button>
               <div class="fides-filter-options">
                 <label class="fides-filter-checkbox">
-                  <input type="checkbox" data-filter="supportedDIDMethods" data-value="did:web" ${filters.supportedDIDMethods.includes('did:web') ? 'checked' : ''}>
+                  <input type="checkbox" data-filter="supportedIdentifiers" data-value="did:web" ${filters.supportedIdentifiers.includes('did:web') ? 'checked' : ''}>
                   <span>did:web</span>
                 </label>
                 <label class="fides-filter-checkbox">
-                  <input type="checkbox" data-filter="supportedDIDMethods" data-value="did:key" ${filters.supportedDIDMethods.includes('did:key') ? 'checked' : ''}>
+                  <input type="checkbox" data-filter="supportedIdentifiers" data-value="did:key" ${filters.supportedIdentifiers.includes('did:key') ? 'checked' : ''}>
                   <span>did:key</span>
                 </label>
                 <label class="fides-filter-checkbox">
-                  <input type="checkbox" data-filter="supportedDIDMethods" data-value="did:jwk" ${filters.supportedDIDMethods.includes('did:jwk') ? 'checked' : ''}>
+                  <input type="checkbox" data-filter="supportedIdentifiers" data-value="did:jwk" ${filters.supportedIdentifiers.includes('did:jwk') ? 'checked' : ''}>
                   <span>did:jwk</span>
                 </label>
                 <label class="fides-filter-checkbox">
-                  <input type="checkbox" data-filter="supportedDIDMethods" data-value="did:peer" ${filters.supportedDIDMethods.includes('did:peer') ? 'checked' : ''}>
+                  <input type="checkbox" data-filter="supportedIdentifiers" data-value="did:peer" ${filters.supportedIdentifiers.includes('did:peer') ? 'checked' : ''}>
                   <span>did:peer</span>
                 </label>
                 <label class="fides-filter-checkbox">
-                  <input type="checkbox" data-filter="supportedDIDMethods" data-value="did:ebsi" ${filters.supportedDIDMethods.includes('did:ebsi') ? 'checked' : ''}>
+                  <input type="checkbox" data-filter="supportedIdentifiers" data-value="did:ebsi" ${filters.supportedIdentifiers.includes('did:ebsi') ? 'checked' : ''}>
                   <span>did:ebsi</span>
                 </label>
               </div>
             </div>
-            <div class="fides-filter-group collapsible ${!filterGroupState.keyManagement ? 'collapsed' : ''} ${filters.keyManagement.length > 0 ? 'has-active' : ''}" data-filter-group="keyManagement">
-              <button class="fides-filter-label-toggle" type="button" aria-expanded="${filterGroupState.keyManagement}">
-                <span class="fides-filter-label">Key Management</span>
+            <div class="fides-filter-group collapsible ${!filterGroupState.keyStorage ? 'collapsed' : ''} ${filters.keyStorage.length > 0 ? 'has-active' : ''}" data-filter-group="keyStorage">
+              <button class="fides-filter-label-toggle" type="button" aria-expanded="${filterGroupState.keyStorage}">
+                <span class="fides-filter-label">Key Storage</span>
                 <span class="fides-filter-active-indicator"></span>
                 ${icons.chevronDown}
               </button>
               <div class="fides-filter-options">
                 <label class="fides-filter-checkbox">
-                  <input type="checkbox" data-filter="keyManagement" data-value="Secure Enclave (iOS)" ${filters.keyManagement.includes('Secure Enclave (iOS)') ? 'checked' : ''}>
+                  <input type="checkbox" data-filter="keyStorage" data-value="Secure Enclave (iOS)" ${filters.keyStorage.includes('Secure Enclave (iOS)') ? 'checked' : ''}>
                   <span>Secure Enclave (iOS)</span>
                 </label>
                 <label class="fides-filter-checkbox">
-                  <input type="checkbox" data-filter="keyManagement" data-value="StrongBox (Android)" ${filters.keyManagement.includes('StrongBox (Android)') ? 'checked' : ''}>
+                  <input type="checkbox" data-filter="keyStorage" data-value="StrongBox (Android)" ${filters.keyStorage.includes('StrongBox (Android)') ? 'checked' : ''}>
                   <span>StrongBox (Android)</span>
                 </label>
                 <label class="fides-filter-checkbox">
-                  <input type="checkbox" data-filter="keyManagement" data-value="Software" ${filters.keyManagement.includes('Software') ? 'checked' : ''}>
+                  <input type="checkbox" data-filter="keyStorage" data-value="Software" ${filters.keyStorage.includes('Software') ? 'checked' : ''}>
                   <span>Software</span>
                 </label>
                 <label class="fides-filter-checkbox">
-                  <input type="checkbox" data-filter="keyManagement" data-value="HSM" ${filters.keyManagement.includes('HSM') ? 'checked' : ''}>
+                  <input type="checkbox" data-filter="keyStorage" data-value="HSM" ${filters.keyStorage.includes('HSM') ? 'checked' : ''}>
                   <span>HSM</span>
                 </label>
                 <label class="fides-filter-checkbox">
-                  <input type="checkbox" data-filter="keyManagement" data-value="TEE" ${filters.keyManagement.includes('TEE') ? 'checked' : ''}>
+                  <input type="checkbox" data-filter="keyStorage" data-value="TEE" ${filters.keyStorage.includes('TEE') ? 'checked' : ''}>
                   <span>TEE</span>
                 </label>
               </div>
             </div>
+            ${getAvailableSigningAlgorithms().length > 0 ? `
+            <div class="fides-filter-group collapsible ${!filterGroupState.signingAlgorithms ? 'collapsed' : ''} ${filters.signingAlgorithms.length > 0 ? 'has-active' : ''}" data-filter-group="signingAlgorithms">
+              <button class="fides-filter-label-toggle" type="button" aria-expanded="${filterGroupState.signingAlgorithms}">
+                <span class="fides-filter-label">Signing Algorithm</span>
+                <span class="fides-filter-active-indicator"></span>
+                ${icons.chevronDown}
+              </button>
+              <div class="fides-filter-options">
+                ${getAvailableSigningAlgorithms().map(alg => `
+                  <label class="fides-filter-checkbox">
+                    <input type="checkbox" data-filter="signingAlgorithms" data-value="${alg}" ${filters.signingAlgorithms.includes(alg) ? 'checked' : ''}>
+                    <span>${escapeHtml(alg)}</span>
+                  </label>
+                `).join('')}
+              </div>
+            </div>
+            ` : ''}
+            ${getAvailableCredentialStatusMethods().length > 0 ? `
+            <div class="fides-filter-group collapsible ${!filterGroupState.credentialStatusMethods ? 'collapsed' : ''} ${filters.credentialStatusMethods.length > 0 ? 'has-active' : ''}" data-filter-group="credentialStatusMethods">
+              <button class="fides-filter-label-toggle" type="button" aria-expanded="${filterGroupState.credentialStatusMethods}">
+                <span class="fides-filter-label">Credential Status</span>
+                <span class="fides-filter-active-indicator"></span>
+                ${icons.chevronDown}
+              </button>
+              <div class="fides-filter-options">
+                ${getAvailableCredentialStatusMethods().map(method => `
+                  <label class="fides-filter-checkbox">
+                    <input type="checkbox" data-filter="credentialStatusMethods" data-value="${method}" ${filters.credentialStatusMethods.includes(method) ? 'checked' : ''}>
+                    <span>${escapeHtml(method)}</span>
+                  </label>
+                `).join('')}
+              </div>
+            </div>
+            ` : ''}
             <div class="fides-filter-group collapsible ${!filterGroupState.license ? 'collapsed' : ''} ${filters.openSource !== null ? 'has-active' : ''}" data-filter-group="license">
               <button class="fides-filter-label-toggle" type="button" aria-expanded="${filterGroupState.license}">
                 <span class="fides-filter-label">License</span>
@@ -840,18 +916,13 @@
         </div>
         <div class="fides-wallet-footer">
           <div class="fides-wallet-links">
-            ${wallet.openSource && wallet.repository ? `
+            ${wallet.openSource ? (wallet.repository ? `
               <a href="${escapeHtml(wallet.repository)}" target="_blank" rel="noopener" class="fides-wallet-link" onclick="event.stopPropagation();">
                 ${icons.github} Open Source
               </a>
-            ` : ''}
-            ${wallet.website ? `
-              <a href="${escapeHtml(wallet.website)}" target="_blank" rel="noopener" class="fides-wallet-link" onclick="event.stopPropagation();">
-                ${icons.externalLink} Website
-              </a>
-            ` : ''}
+            ` : `<span class="fides-wallet-link">${icons.github} Open Source</span>`) : ''}
           </div>
-          <span class="fides-view-details">View details →</span>
+          <span class="fides-view-details">${icons.eye} View details</span>
         </div>
       </div>
     `;
@@ -976,37 +1047,13 @@
               </div>
             ` : ''}
 
-            <!-- App Store Links -->
-            ${wallet.appStoreLinks && (wallet.appStoreLinks.iOS || wallet.appStoreLinks.ios || wallet.appStoreLinks.android) ? `
-              <div class="fides-modal-app-stores">
-                ${wallet.appStoreLinks.iOS || wallet.appStoreLinks.ios ? `
-                  <a href="${escapeHtml(wallet.appStoreLinks.iOS || wallet.appStoreLinks.ios)}" target="_blank" rel="noopener" class="fides-app-store-btn ios">
-                    ${icons.apple}
-                    <span>
-                      <small>Download on the</small>
-                      <strong>App Store</strong>
-                    </span>
-                  </a>
-                ` : ''}
-                ${wallet.appStoreLinks.android ? `
-                  <a href="${escapeHtml(wallet.appStoreLinks.android)}" target="_blank" rel="noopener" class="fides-app-store-btn android">
-                    ${icons.playStore}
-                    <span>
-                      <small>Get it on</small>
-                      <strong>Google Play</strong>
-                    </span>
-                  </a>
-                ` : ''}
-              </div>
-            ` : ''}
-
             <!-- Quick info grid -->
             <div class="fides-modal-grid">
-              <!-- Platforms -->
+              <!-- Platforms (with app store links) -->
               ${wallet.platforms && wallet.platforms.length > 0 ? `
                 <div class="fides-modal-grid-item">
                   <div class="fides-modal-grid-label">
-                    ${icons.smartphone} Platforms
+                    ${icons.smartphone} Platforms <span class="fides-label-hint">(click to access)</span>
                   </div>
                   <div class="fides-modal-grid-value">
                     ${wallet.platforms.map(p => renderPlatformTag(wallet, p)).join('')}
@@ -1056,50 +1103,50 @@
               ` : '';
               })()}
 
-              <!-- DID Methods -->
-              ${(wallet.supportedDIDMethods || wallet.didMethods) && (wallet.supportedDIDMethods || wallet.didMethods).length > 0 ? `
+              <!-- Identifiers -->
+              ${(wallet.supportedIdentifiers || wallet.didMethods) && (wallet.supportedIdentifiers || wallet.didMethods).length > 0 ? `
                 <div class="fides-modal-grid-item">
                   <div class="fides-modal-grid-label">
-                    ${icons.key} DID Methods
+                    ${icons.key} Identifiers
                   </div>
                   <div class="fides-modal-grid-value">
-                    ${(wallet.supportedDIDMethods || wallet.didMethods).map(d => `<span class="fides-tag did-method">${escapeHtml(d)}</span>`).join('')}
+                    ${(wallet.supportedIdentifiers || wallet.didMethods).map(d => `<span class="fides-tag did-method">${escapeHtml(d)}</span>`).join('')}
                   </div>
                 </div>
               ` : ''}
 
-              <!-- Key Management -->
-              ${wallet.keyManagement && wallet.keyManagement.length > 0 ? `
+              <!-- Key Storage -->
+              ${wallet.keyStorage && wallet.keyStorage.length > 0 ? `
                 <div class="fides-modal-grid-item">
                   <div class="fides-modal-grid-label">
-                    ${icons.key} Key Management
+                    ${icons.key} Key Storage
                   </div>
                   <div class="fides-modal-grid-value">
-                    ${wallet.keyManagement.map(k => `<span class="fides-tag">${escapeHtml(k)}</span>`).join('')}
+                    ${wallet.keyStorage.map(k => `<span class="fides-tag">${escapeHtml(k)}</span>`).join('')}
                   </div>
                 </div>
               ` : ''}
 
-              <!-- Standards -->
-              ${wallet.standards && wallet.standards.length > 0 ? `
+              <!-- Signing Algorithms -->
+              ${wallet.signingAlgorithms && wallet.signingAlgorithms.length > 0 ? `
                 <div class="fides-modal-grid-item">
                   <div class="fides-modal-grid-label">
-                    ${icons.book} Standards
+                    ${icons.penLine} Signing Algorithms
                   </div>
                   <div class="fides-modal-grid-value">
-                    ${wallet.standards.map(s => `<span class="fides-tag standard">${escapeHtml(s)}</span>`).join('')}
+                    ${wallet.signingAlgorithms.map(a => `<span class="fides-tag">${escapeHtml(a)}</span>`).join('')}
                   </div>
                 </div>
               ` : ''}
 
-              <!-- Certifications -->
-              ${wallet.certifications && wallet.certifications.length > 0 ? `
+              <!-- Credential Status Methods -->
+              ${wallet.credentialStatusMethods && wallet.credentialStatusMethods.length > 0 ? `
                 <div class="fides-modal-grid-item">
                   <div class="fides-modal-grid-label">
-                    ${icons.award} Certifications
+                    ${icons.shield} Credential Status
                   </div>
                   <div class="fides-modal-grid-value">
-                    ${wallet.certifications.map(c => `<span class="fides-tag certification">${escapeHtml(c)}</span>`).join('')}
+                    ${wallet.credentialStatusMethods.map(m => `<span class="fides-tag">${escapeHtml(m)}</span>`).join('')}
                   </div>
                 </div>
               ` : ''}
@@ -1378,8 +1425,10 @@
           credentialFormats: [],
           issuanceProtocols: [],
           presentationProtocols: [],
-          supportedDIDMethods: [],
-          keyManagement: [],
+          supportedIdentifiers: [],
+          keyStorage: [],
+          signingAlgorithms: [],
+          credentialStatusMethods: [],
           interoperabilityProfiles: [],
           status: [],
           openSource: null,

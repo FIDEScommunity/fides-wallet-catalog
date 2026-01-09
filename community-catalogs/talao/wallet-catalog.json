@@ -24,7 +24,10 @@
         "iOS": "https://apps.apple.com/app/altme-wallet/id1633216869",
         "android": "https://play.google.com/store/apps/details?id=co.altme.alt.me.altme"
       },
+      "signingAlgorithms": ["ES256", "EdDSA"],
+      "credentialStatusMethods": ["StatusList2021"],
       "openSource": true,
+      "repository": "https://github.com/altme-project/altme",
       "status": "production"
     },
     {
@@ -44,7 +47,10 @@
         "iOS": "https://apps.apple.com/app/talao-wallet/id1582183266",
         "android": "https://play.google.com/store/apps/details?id=co.talao.wallet"
       },
+      "signingAlgorithms": ["ES256", "EdDSA"],
+      "credentialStatusMethods": ["StatusList2021"],
       "openSource": true,
+      "repository": "https://github.com/TalaoDAO/talao-wallet",
       "status": "production"
     }
   ],

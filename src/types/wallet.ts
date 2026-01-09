@@ -27,7 +27,7 @@ export type PresentationProtocol =
   | 'ISO 18013-5'
   | 'SIOPv2';
 
-export type KeyManagement = 
+export type KeyStorage = 
   | 'Software'
   | 'Secure Enclave (iOS)'
   | 'StrongBox (Android)'
@@ -68,8 +68,10 @@ export interface Wallet {
   credentialFormats?: CredentialFormat[];
   issuanceProtocols?: IssuanceProtocol[];
   presentationProtocols?: PresentationProtocol[];
-  supportedDIDMethods?: string[];
-  keyManagement?: KeyManagement[];
+  supportedIdentifiers?: string[];
+  keyStorage?: KeyStorage[];
+  signingAlgorithms?: string[];
+  credentialStatusMethods?: string[];
   certifications?: string[];
   interoperabilityProfiles?: InteroperabilityProfile[];
   standards?: string[];

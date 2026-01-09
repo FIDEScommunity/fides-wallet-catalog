@@ -26,8 +26,10 @@
       "credentialFormats": ["SD-JWT-VC", "JWT-VC", "AnonCreds", "mDL/mDoc"],
       "issuanceProtocols": ["OpenID4VCI", "DIDComm Issue Credential v2"],
       "presentationProtocols": ["OpenID4VP", "DIDComm Present Proof v2", "SIOPv2"],
-      "supportedDIDMethods": ["did:web", "did:key", "did:jwk", "did:peer"],
-      "keyManagement": ["Secure Enclave (iOS)", "StrongBox (Android)", "Software"],
+      "supportedIdentifiers": ["did:web", "did:key", "did:jwk", "did:peer"],
+      "keyStorage": ["Secure Enclave (iOS)", "StrongBox (Android)", "Software"],
+      "signingAlgorithms": ["ES256", "EdDSA"],
+      "credentialStatusMethods": ["StatusList2021"],
       "certifications": [],
       "interoperabilityProfiles": ["DIIP v4"],
       "standards": ["ARF 1.4"],
@@ -58,7 +60,7 @@
       "credentialFormats": ["SD-JWT-VC", "JWT-VC", "AnonCreds", "mDL/mDoc"],
       "issuanceProtocols": ["OpenID4VCI", "DIDComm Issue Credential v2"],
       "presentationProtocols": ["OpenID4VP", "DIDComm Present Proof v2"],
-      "supportedDIDMethods": ["did:web", "did:key", "did:jwk", "did:cheqd"],
+      "supportedIdentifiers": ["did:web", "did:key", "did:jwk", "did:cheqd"],
       "documentation": "https://docs.paradym.id",
       "status": "production"
     }

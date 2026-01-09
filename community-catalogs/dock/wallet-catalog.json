@@ -19,7 +19,9 @@
       "credentialFormats": ["JSON-LD VC", "JWT-VC"],
       "issuanceProtocols": ["OpenID4VCI"],
       "presentationProtocols": ["OpenID4VP"],
-      "supportedDIDMethods": ["did:dock", "did:key"],
+      "supportedIdentifiers": ["did:dock", "did:key"],
+      "signingAlgorithms": ["EdDSA", "ES256", "BBS+"],
+      "credentialStatusMethods": ["StatusList2021"],
       "openSource": false,
       "status": "production"
     }

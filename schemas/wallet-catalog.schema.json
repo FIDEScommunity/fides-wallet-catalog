@@ -172,18 +172,17 @@
             ]
           }
         },
-        "supportedDIDMethods": {
+        "supportedIdentifiers": {
           "type": "array",
-          "description": "Supported DID methods",
+          "description": "Supported identifier methods (DID methods, X.509, etc.)",
           "items": {
             "type": "string",
-            "pattern": "^did:[a-z]+$",
-            "examples": ["did:web", "did:key", "did:jwk", "did:peer", "did:ion", "did:ebsi"]
+            "examples": ["did:web", "did:key", "did:jwk", "did:peer", "did:ion", "did:ebsi", "X.509"]
           }
         },
-        "keyManagement": {
+        "keyStorage": {
           "type": "array",
-          "description": "Supported key management and storage methods",
+          "description": "Supported key storage methods",
           "items": {
             "type": "string",
             "enum": [
@@ -196,6 +195,22 @@
               "Smart Card",
               "FIDO2/WebAuthn"
             ]
+          }
+        },
+        "signingAlgorithms": {
+          "type": "array",
+          "description": "Supported cryptographic signing algorithms",
+          "items": {
+            "type": "string",
+            "examples": ["ES256", "ES384", "ES512", "EdDSA", "RS256", "PS256"]
+          }
+        },
+        "credentialStatusMethods": {
+          "type": "array",
+          "description": "Supported credential status/revocation methods",
+          "items": {
+            "type": "string",
+            "examples": ["StatusList2021", "RevocationList2020", "OCSP", "CRL"]
           }
         },
         "certifications": {

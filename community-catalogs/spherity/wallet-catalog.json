@@ -19,7 +19,7 @@
       "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC"],
       "issuanceProtocols": ["OpenID4VCI"],
       "presentationProtocols": ["OpenID4VP"],
-      "supportedDIDMethods": ["did:web", "did:key", "did:ethr"],
+      "supportedIdentifiers": ["did:web", "did:key", "did:ethr"],
       "openSource": false,
       "status": "production"
     }

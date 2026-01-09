@@ -18,6 +18,8 @@
       "issuanceProtocols": ["OpenID4VCI"],
       "presentationProtocols": ["OpenID4VP"],
       "interoperabilityProfiles": ["EWC v3"],
+      "signingAlgorithms": ["ES256"],
+      "credentialStatusMethods": ["StatusList2021"],
       "website": "https://www.validatedid.com",
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/app/vidwallet/id1554340592",
@@ -38,6 +40,8 @@
       "issuanceProtocols": ["OpenID4VCI"],
       "presentationProtocols": ["OpenID4VP"],
       "interoperabilityProfiles": ["EWC v3"],
+      "signingAlgorithms": ["ES256"],
+      "credentialStatusMethods": ["StatusList2021"],
       "website": "https://validated.id",
       "openSource": false,
       "status": "production"

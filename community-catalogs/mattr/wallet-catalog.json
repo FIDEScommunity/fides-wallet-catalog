@@ -19,7 +19,9 @@
       "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC", "mDL/mDoc"],
       "issuanceProtocols": ["OpenID4VCI"],
       "presentationProtocols": ["OpenID4VP"],
-      "supportedDIDMethods": ["did:web", "did:key", "did:ion"],
+      "supportedIdentifiers": ["did:web", "did:key", "did:ion"],
+      "signingAlgorithms": ["ES256", "EdDSA", "BBS+"],
+      "credentialStatusMethods": ["StatusList2021", "RevocationList2020"],
       "openSource": false,
       "status": "production",
       "documentation": "https://learn.mattr.global"
