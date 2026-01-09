@@ -5,10 +5,13 @@ on:
     paths:
       - 'community-catalogs/**/wallet-catalog.json'
       - 'schemas/**'
+      - '.github/workflows/validate.yml'
+      - 'package.json'
   pull_request:
     paths:
       - 'community-catalogs/**/wallet-catalog.json'
       - 'schemas/**'
+  workflow_dispatch:
 
 jobs:
   validate:
