@@ -10,11 +10,11 @@
     {
       "id": "orbit-enterprise",
       "name": "Orbit Enterprise",
-      "description": "An enterprise digital identity platform providing holder and issuer capabilities for organizations to manage and issue verifiable credentials.",
+      "description": "An enterprise digital identity platform providing verifier and issuer capabilities for organizations to manage and issue verifiable credentials.",
       "logo": "https://www.google.com/s2/favicons?domain=northernblock.io&sz=128",
       "website": "https://northernblock.io",
       "type": "organizational",
-      "capabilities": ["holder", "issuer"],
+      "capabilities": ["verifier", "issuer"],
       "platforms": ["Web"],
       "credentialFormats": ["SD-JWT-VC", "JWT-VC", "AnonCreds"],
       "issuanceProtocols": ["OpenID4VCI", "DIDComm Issue Credential v2"],
