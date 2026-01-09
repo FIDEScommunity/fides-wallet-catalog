@@ -12,12 +12,12 @@
   "wallets": [
     {
       "id": "igrant-data-wallet",
-      "name": "Data Wallet by iGrant.io",
+      "name": "Data Wallet",
       "description": "A privacy-first data wallet focused on GDPR compliance and data exchange, enabling individuals to manage consent and share verifiable credentials securely.",
       "logo": "https://www.google.com/s2/favicons?domain=igrant.io&sz=128",
       "website": "https://igrant.io/datawallet",
       "type": "personal",
-      "platforms": ["iOS", "Android", "Web"],
+      "platforms": ["iOS", "Android"],
       "openSource": true,
       "license": "Apache-2.0",
       "repository": "https://github.com/decentralised-dataexchange/data-wallet",

@@ -1,10 +1,10 @@
 {
-  "lastSync": "2026-01-07T19:18:59.853Z",
+  "lastSync": "2026-01-09T11:42:46.130Z",
   "sourceUrl": "https://www.digital-identity-landscape.eu/data/solutions.json",
-  "totalWallets": 57,
+  "totalWallets": 56,
   "byStatus": {
     "production": 39,
-    "beta": 1,
+    "beta": 0,
     "development": 17
   }
 }

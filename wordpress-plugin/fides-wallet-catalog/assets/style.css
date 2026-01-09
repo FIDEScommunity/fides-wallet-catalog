@@ -298,9 +298,27 @@
   border-color: var(--fides-text-muted);
 }
 
-/* Search */
+/* Search - now in sidebar */
 .fides-search-container {
-  margin-bottom: 1.5rem;
+  display: none; /* Legacy - moved to sidebar */
+}
+
+.fides-sidebar-search {
+  margin-bottom: 0.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--fides-border);
+}
+
+/* Mobile search - visible only on mobile */
+.fides-mobile-search {
+  display: none;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 1023px) {
+  .fides-mobile-search {
+    display: block;
+  }
 }
 
 .fides-search-wrapper {
@@ -375,9 +393,9 @@
   display: none;
 }
 
-/* Filter Bar - Legacy (kept for backwards compatibility) */
+/* Filter Bar - Legacy (replaced by sidebar) */
 .fides-filter-bar {
-  display: none; /* Hidden - replaced by sidebar */
+  display: none;
 }
 
 .fides-filter-bar-left {
@@ -387,7 +405,7 @@
 }
 
 .fides-filter-toggle {
-  display: none; /* Hidden - replaced by sidebar */
+  display: none;
 }
 
 .fides-filter-count {
@@ -670,6 +688,9 @@
   font-size: 0.875rem;
   color: var(--fides-text-secondary);
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .fides-wallet-type-badge {
@@ -1404,17 +1425,39 @@
   color: #ef4444;
 }
 
-/* Clickable platform tags */
-.fides-tag.platform.clickable {
+/* Clickable platform tags (has app store link) */
+a.fides-tag.platform.clickable {
   cursor: pointer;
   text-decoration: none;
   transition: all 0.2s ease;
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border-color: rgba(34, 197, 94, 0.3);
 }
 
-.fides-tag.platform.clickable:hover {
-  background: var(--fides-accent, #3b82f6);
+a.fides-tag.platform.clickable:hover {
+  background: var(--fides-success, #22c55e);
   color: white;
   transform: translateY(-1px);
+}
+
+/* Non-clickable platform tags (no link) */
+span.fides-tag.platform {
+  opacity: 0.6;
+}
+
+/* Light/FIDES theme clickable platform tags */
+.fides-wallet-catalog[data-theme="fides"] a.fides-tag.platform.clickable,
+.fides-wallet-catalog[data-theme="light"] a.fides-tag.platform.clickable {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.fides-wallet-catalog[data-theme="fides"] a.fides-tag.platform.clickable:hover,
+.fides-wallet-catalog[data-theme="light"] a.fides-tag.platform.clickable:hover {
+  background: #16a34a;
+  color: white;
 }
 
 /* Protocol tags */

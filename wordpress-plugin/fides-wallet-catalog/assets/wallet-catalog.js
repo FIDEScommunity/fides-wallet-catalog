@@ -77,9 +77,27 @@
     credentialFormats: [],
     interoperabilityProfiles: [],
     status: [],
-    openSource: null
+    openSource: null,
+    governance: null // 'government' or 'private'
   };
-  // showFiltersPanel removed - sidebar is always visible on desktop
+
+  /**
+   * Determine if a wallet is government-backed based on provider/name keywords
+   */
+  function isGovernmentWallet(wallet) {
+    const providerLower = (wallet.provider?.name || '').toLowerCase();
+    const nameLower = (wallet.name || '').toLowerCase();
+    
+    const govKeywords = [
+      'government', 'federal', 'ministry', 'state-owned', 'state owned',
+      'logius', 'agency', 'national eudi', 'eudi wallet', 'public sector',
+      'republic', 'régimen', 'gobierno', 'gouvernement', 'regierung'
+    ];
+    
+    return govKeywords.some(kw => 
+      providerLower.includes(kw) || nameLower.includes(kw)
+    );
+  }
 
   // DOM Elements
   let container;
@@ -190,14 +208,33 @@
         if (!hasMatch) return false;
       }
 
-      // Status
+      // Status (available = has app store links, development = no links)
       if (filters.status.length > 0) {
-        if (!filters.status.includes(wallet.status || 'production')) return false;
+        const hasAppLinks = wallet.appStoreLinks && (
+          wallet.appStoreLinks.iOS || 
+          wallet.appStoreLinks.ios || 
+          wallet.appStoreLinks.android || 
+          wallet.appStoreLinks.web
+        );
+        
+        const matchesFilter = filters.status.some(f => {
+          if (f === 'available') return hasAppLinks;
+          if (f === 'development') return !hasAppLinks;
+          return false;
+        });
+        if (!matchesFilter) return false;
       }
 
       // Open source
       if (filters.openSource !== null) {
         if (wallet.openSource !== filters.openSource) return false;
+      }
+
+      // Governance (government vs private)
+      if (filters.governance !== null) {
+        const isGov = isGovernmentWallet(wallet);
+        if (filters.governance === 'government' && !isGov) return false;
+        if (filters.governance === 'private' && isGov) return false;
       }
 
       return true;
@@ -216,6 +253,7 @@
     count += filters.interoperabilityProfiles.length;
     count += filters.status.length;
     if (filters.openSource !== null) count += 1;
+    if (filters.governance !== null) count += 1;
     return count;
   }
 
@@ -233,31 +271,10 @@
     
     let html = '';
 
-    // Search bar (always on top)
-    if (settings.showSearch) {
-      html += `
-        <div class="fides-search-container">
-          <div class="fides-search-wrapper">
-            <span class="fides-search-icon">${icons.search}</span>
-            <input 
-              type="text" 
-              class="fides-search-input" 
-              placeholder="Search by name, description or provider..."
-              value="${escapeHtml(filters.search)}"
-              id="fides-search"
-            >
-            <button class="fides-search-clear ${filters.search ? '' : 'hidden'}" id="fides-search-clear" type="button">
-              ${icons.xSmall}
-            </button>
-          </div>
-        </div>
-      `;
-    }
-
     // Main layout with sidebar
     html += `<div class="fides-main-layout">`;
 
-    // Sidebar with filters
+    // Sidebar with search and filters
     if (settings.showFilters) {
       html += `
         <aside class="fides-sidebar">
@@ -279,6 +296,23 @@
             </div>
           </div>
           <div class="fides-sidebar-content">
+            ${settings.showSearch ? `
+              <div class="fides-sidebar-search">
+                <div class="fides-search-wrapper">
+                  <span class="fides-search-icon">${icons.search}</span>
+                  <input 
+                    type="text" 
+                    class="fides-search-input" 
+                    placeholder="Search..."
+                    value="${escapeHtml(filters.search)}"
+                    id="fides-search"
+                  >
+                  <button class="fides-search-clear ${filters.search ? '' : 'hidden'}" id="fides-search-clear" type="button">
+                    ${icons.xSmall}
+                  </button>
+                </div>
+              </div>
+            ` : ''}
             ${!settings.type ? `
               <div class="fides-filter-group">
                 <span class="fides-filter-label">Type</span>
@@ -288,6 +322,13 @@
                 </div>
               </div>
             ` : ''}
+            <div class="fides-filter-group">
+              <span class="fides-filter-label">Governance</span>
+              <div class="fides-filter-buttons">
+                <button class="fides-filter-btn ${filters.governance === 'government' ? 'active' : ''}" data-filter="governance" data-value="government">Government</button>
+                <button class="fides-filter-btn ${filters.governance === 'private' ? 'active' : ''}" data-filter="governance" data-value="private">Private</button>
+              </div>
+            </div>
             ${filters.type.includes('organizational') || settings.type === 'organizational' ? `
               <div class="fides-filter-group">
                 <span class="fides-filter-label">Capabilities</span>
@@ -310,9 +351,8 @@
               <div class="fides-filter-group">
                 <span class="fides-filter-label">Status</span>
                 <div class="fides-filter-buttons">
-                  <button class="fides-filter-btn ${filters.status.includes('production') ? 'active' : ''}" data-filter="status" data-value="production">Production</button>
-                  <button class="fides-filter-btn ${filters.status.includes('beta') ? 'active' : ''}" data-filter="status" data-value="beta">Beta</button>
-                  <button class="fides-filter-btn ${filters.status.includes('development') ? 'active' : ''}" data-filter="status" data-value="development">In Development</button>
+                  <button class="fides-filter-btn ${filters.status.includes('available') ? 'active' : ''}" data-filter="status" data-value="available">Available</button>
+                  <button class="fides-filter-btn ${filters.status.includes('development') ? 'active' : ''}" data-filter="status" data-value="development">Development</button>
                 </div>
               </div>
             ` : ''}
@@ -352,6 +392,27 @@
 
     // Main content area
     html += `<main class="fides-content">`;
+
+    // Mobile search bar (visible only on mobile)
+    if (settings.showSearch) {
+      html += `
+        <div class="fides-mobile-search">
+          <div class="fides-search-wrapper">
+            <span class="fides-search-icon">${icons.search}</span>
+            <input 
+              type="text" 
+              class="fides-search-input fides-mobile-search-input" 
+              placeholder="Search..."
+              value="${escapeHtml(filters.search)}"
+              id="fides-mobile-search"
+            >
+            <button class="fides-search-clear ${filters.search ? '' : 'hidden'}" id="fides-mobile-search-clear" type="button">
+              ${icons.xSmall}
+            </button>
+          </div>
+        </div>
+      `;
+    }
 
     // Results count
     html += `
@@ -404,19 +465,23 @@
   }
 
   /**
+   * Strip parenthetical text from wallet name for card display
+   */
+  function getDisplayName(name) {
+    return name.replace(/\s*\([^)]*\)\s*/g, '').trim();
+  }
+
+  /**
    * Render a single wallet card
    */
   function renderWalletCard(wallet) {
-    const typeLabels = {
-      personal: 'Personal',
-      organizational: 'Organizational'
-    };
-
     const capabilityLabels = {
       holder: 'Holder',
       issuer: 'Issuer',
       verifier: 'Verifier'
     };
+
+    const displayName = getDisplayName(wallet.name);
 
     return `
       <div class="fides-wallet-card" data-wallet-id="${wallet.id}" role="button" tabindex="0">
@@ -426,10 +491,9 @@
             : `<div class="fides-wallet-logo-placeholder">${icons.wallet}</div>`
           }
           <div class="fides-wallet-info">
-            <h3 class="fides-wallet-name">${escapeHtml(wallet.name)}</h3>
+            <h3 class="fides-wallet-name">${escapeHtml(displayName)}</h3>
             <p class="fides-wallet-provider">${escapeHtml(wallet.provider.name)}</p>
           </div>
-          <span class="fides-wallet-type-badge ${wallet.type}">${typeLabels[wallet.type]}</span>
         </div>
         <div class="fides-wallet-body">
           ${wallet.description ? `<p class="fides-wallet-description">${escapeHtml(wallet.description)}</p>` : ''}
@@ -446,12 +510,7 @@
           
           ${wallet.platforms && wallet.platforms.length > 0 ? `
             <div class="fides-tags">
-              ${wallet.platforms.map(p => `
-                <span class="fides-tag platform">
-                  ${p === 'iOS' || p === 'Android' ? icons.smartphone : icons.globe}
-                  ${escapeHtml(p)}
-                </span>
-              `).join('')}
+              ${wallet.platforms.map(p => renderPlatformTag(wallet, p)).join('')}
             </div>
           ` : ''}
 
@@ -885,22 +944,36 @@
    * Attach event listeners
    */
   function attachEventListeners() {
-    // Search input
+    // Search inputs (sidebar + mobile)
     const searchInput = document.getElementById('fides-search');
+    const mobileSearchInput = document.getElementById('fides-mobile-search');
+    
+    const handleSearchInput = debounce((e) => {
+      filters.search = e.target.value;
+      render();
+    }, 300);
+
     if (searchInput) {
-      searchInput.addEventListener('input', debounce((e) => {
-        filters.search = e.target.value;
-        render();
-      }, 300));
+      searchInput.addEventListener('input', handleSearchInput);
+    }
+    if (mobileSearchInput) {
+      mobileSearchInput.addEventListener('input', handleSearchInput);
     }
 
-    // Search clear button
+    // Search clear buttons
     const searchClear = document.getElementById('fides-search-clear');
+    const mobileSearchClear = document.getElementById('fides-mobile-search-clear');
+    
+    const handleSearchClear = () => {
+      filters.search = '';
+      render();
+    };
+
     if (searchClear) {
-      searchClear.addEventListener('click', () => {
-        filters.search = '';
-        render();
-      });
+      searchClear.addEventListener('click', handleSearchClear);
+    }
+    if (mobileSearchClear) {
+      mobileSearchClear.addEventListener('click', handleSearchClear);
     }
 
     // Mobile filter toggle
@@ -947,7 +1020,12 @@
         if (filterType === 'openSource') {
           const boolValue = value === 'true';
           filters.openSource = filters.openSource === boolValue ? null : boolValue;
-        } else {
+        } 
+        // Special handling for governance (string toggle)
+        else if (filterType === 'governance') {
+          filters.governance = filters.governance === value ? null : value;
+        }
+        else {
           // Array-based filters
           if (filters[filterType].includes(value)) {
             filters[filterType] = filters[filterType].filter(v => v !== value);
@@ -972,7 +1050,8 @@
           credentialFormats: [],
           interoperabilityProfiles: [],
           status: [],
-          openSource: null
+          openSource: null,
+          governance: null
         };
         render();
       });

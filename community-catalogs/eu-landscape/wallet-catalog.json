@@ -650,37 +650,6 @@
       "releaseDate": "2023-01-01"
     },
     {
-      "id": "we-build",
-      "name": "WE BUILD",
-      "description": "WE BUILD (Wallet Ecosystem for Business & payment Use cases, Identification, Legal person representation, and Data sharing) consortium selected for second round of Large Scale Pilots commencing September 2025 for 24 months, led by Ministry of Economic Affairs (Netherlands), KVK (Netherlands), and Bolagsverket (Sweden) with 197 participants including 99 beneficiaries and 74 associated partners covering 27 countries with approximately €25 million budget. The organizational and business identity-focused pilot deploys 13 high-impact use cases for production-ready EUDI Wallet solutions representing organizations through power of attorney, signatory rights, and UBO attestations to streamline B2B, B2G, and B2C interactions improving KYx processes (Know Your Customer/Business/Supplier/Employee), engaging 20 wallet providers, 13 business register providers, 20 relying parties, 30 qualified trust service providers (QTSPs), 25 public identity (PID) providers, and 25 public agencies for automated, cost-reduced, and secure digital business identity infrastructure across Europe.",
-      "type": "personal",
-      "openSource": false,
-      "status": "beta",
-      "website": "https://www.webuildconsortium.eu",
-      "provider": {
-        "name": "Consortium (200+ partners)",
-        "website": "https://www.webuildconsortium.eu"
-      },
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "presentationProtocols": [
-        "OpenID4VP"
-      ],
-      "issuanceProtocols": [
-        "OpenID4VCI"
-      ],
-      "credentialFormats": [
-        "mDL/mDoc",
-        "SD-JWT-VC"
-      ],
-      "interoperabilityProfiles": [
-        "EUDI Wallet ARF"
-      ],
-      "releaseDate": "2025-01-01"
-    },
-    {
       "id": "finnish-authenticator",
       "name": "Finnish Authenticator",
       "description": "The Finnish Authenticator is a mobile application designed for foreign citizens aged 18+ without a Finnish personal identity code to access public e-services. Users verify their identity by uploading passport or ID card photos plus a selfie, receiving a unique foreigner's identifier (UID) upon successful verification. The service operates 24/7 in English but does not meet eIDAS strong identification standards.",

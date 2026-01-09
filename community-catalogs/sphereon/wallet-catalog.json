@@ -17,7 +17,7 @@
       "logo": "https://www.google.com/s2/favicons?domain=sphereon.com&sz=128",
       "website": "https://sphereon.com/wallet",
       "type": "personal",
-      "platforms": ["iOS", "Android", "Web"],
+      "platforms": ["iOS", "Android"],
       "openSource": true,
       "license": "Apache-2.0",
       "repository": "https://github.com/Sphereon-Opensource/ssi-mobile-wallet",
