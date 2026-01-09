@@ -79,7 +79,7 @@
     status: [],
     openSource: null
   };
-  let showFiltersPanel = false;
+  // showFiltersPanel removed - sidebar is always visible on desktop
 
   // DOM Elements
   let container;
@@ -233,7 +233,7 @@
     
     let html = '';
 
-    // Search
+    // Search bar (always on top)
     if (settings.showSearch) {
       html += `
         <div class="fides-search-container">
@@ -254,32 +254,31 @@
       `;
     }
 
-    // Filter toggle bar
+    // Main layout with sidebar
+    html += `<div class="fides-main-layout">`;
+
+    // Sidebar with filters
     if (settings.showFilters) {
       html += `
-        <div class="fides-filter-bar">
-          <div class="fides-filter-bar-left">
-            <button class="fides-filter-toggle ${showFiltersPanel ? 'active' : ''}" id="fides-filter-toggle">
+        <aside class="fides-sidebar">
+          <div class="fides-sidebar-header">
+            <div class="fides-sidebar-title">
               ${icons.filter}
               <span>Filters</span>
               ${activeFilterCount > 0 ? `<span class="fides-filter-count">${activeFilterCount}</span>` : ''}
-            </button>
-            ${activeFilterCount > 0 ? `
-              <button class="fides-clear-all" id="fides-clear">
-                ${icons.x} Clear filters
+            </div>
+            <div class="fides-sidebar-actions">
+              ${activeFilterCount > 0 ? `
+                <button class="fides-clear-all" id="fides-clear">
+                  ${icons.x} Clear
+                </button>
+              ` : ''}
+              <button class="fides-sidebar-close" id="fides-sidebar-close" aria-label="Close filters">
+                ${icons.xLarge}
               </button>
-            ` : ''}
+            </div>
           </div>
-          <div class="fides-results-count">
-            ${filtered.length} wallet${filtered.length !== 1 ? 's' : ''} found
-          </div>
-        </div>
-      `;
-
-      // Filters panel
-      if (showFiltersPanel) {
-        html += `
-          <div class="fides-filters">
+          <div class="fides-sidebar-content">
             ${!settings.type ? `
               <div class="fides-filter-group">
                 <span class="fides-filter-label">Type</span>
@@ -347,16 +346,29 @@
               </div>
             </div>
           </div>
-        `;
-      }
-    } else {
-      // Simple results info without filter toggle
-      html += `
-        <div class="fides-results-info">
-          <span>${filtered.length} wallet${filtered.length !== 1 ? 's' : ''} found</span>
-        </div>
+        </aside>
       `;
     }
+
+    // Main content area
+    html += `<main class="fides-content">`;
+
+    // Results count
+    html += `
+      <div class="fides-results-bar">
+        <div class="fides-results-count">
+          ${filtered.length} wallet${filtered.length !== 1 ? 's' : ''} found
+        </div>
+        <!-- Mobile filter toggle -->
+        ${settings.showFilters ? `
+          <button class="fides-mobile-filter-toggle" id="fides-mobile-filter-toggle">
+            ${icons.filter}
+            <span>Filters</span>
+            ${activeFilterCount > 0 ? `<span class="fides-filter-count">${activeFilterCount}</span>` : ''}
+          </button>
+        ` : ''}
+      </div>
+    `;
 
     // Wallet grid
     if (filtered.length > 0) {
@@ -374,6 +386,9 @@
         </div>
       `;
     }
+
+    html += `</main>`; // Close fides-content
+    html += `</div>`; // Close fides-main-layout
 
     container.innerHTML = html;
     attachEventListeners();
@@ -888,12 +903,37 @@
       });
     }
 
-    // Filter toggle
-    const filterToggle = document.getElementById('fides-filter-toggle');
-    if (filterToggle) {
-      filterToggle.addEventListener('click', () => {
-        showFiltersPanel = !showFiltersPanel;
-        render();
+    // Mobile filter toggle
+    const mobileFilterToggle = document.getElementById('fides-mobile-filter-toggle');
+    const sidebar = container.querySelector('.fides-sidebar');
+    
+    if (mobileFilterToggle) {
+      mobileFilterToggle.addEventListener('click', () => {
+        if (sidebar) {
+          sidebar.classList.add('mobile-open');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    }
+
+    // Close sidebar button
+    const sidebarClose = document.getElementById('fides-sidebar-close');
+    if (sidebarClose) {
+      sidebarClose.addEventListener('click', () => {
+        if (sidebar) {
+          sidebar.classList.remove('mobile-open');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    // Close sidebar when clicking overlay (mobile)
+    if (sidebar) {
+      sidebar.addEventListener('click', (e) => {
+        if (e.target === sidebar && sidebar.classList.contains('mobile-open')) {
+          sidebar.classList.remove('mobile-open');
+          document.body.style.overflow = '';
+        }
       });
     }
 
