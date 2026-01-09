@@ -27,9 +27,6 @@ npm-debug.log*
 tmp/
 temp/
 
-
-# Generated data (created by GitHub Action)
-data/
-
-# WordPress plugin zip files
+# WordPress plugin local data and zips (plugin fetches from GitHub)
+wordpress-plugin/*/data/
 wordpress-plugin/*.zip
