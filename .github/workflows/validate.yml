@@ -31,19 +31,6 @@ jobs:
       - name: Validate all wallet catalogs
         run: |
           echo "🔍 Validating wallet catalogs against schema..."
-          
-          # Validate all community catalogs
-          for file in community-catalogs/*/wallet-catalog.json; do
-            if [ -f "$file" ]; then
-              echo "Validating: $file"
-              npx ajv validate \
-                -s schemas/wallet-catalog.schema.json \
-                -d "$file" \
-                --spec=draft2020 \
-                -c ajv-formats \
-                --strict=false
-            fi
-          done
-          
+          npm run validate
           echo "✅ All wallet catalogs are valid!"
 
