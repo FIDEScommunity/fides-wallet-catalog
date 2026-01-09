@@ -525,21 +525,6 @@
                 </div>
               </div>
             ` : ''}
-            <div class="fides-filter-group collapsible ${!filterGroupState.country ? 'collapsed' : ''} ${filters.countries.length > 0 ? 'has-active' : ''}" data-filter-group="country">
-              <button class="fides-filter-label-toggle" type="button" aria-expanded="${filterGroupState.country}">
-                <span class="fides-filter-label">Country</span>
-                <span class="fides-filter-active-indicator"></span>
-                ${icons.chevronDown}
-              </button>
-              <div class="fides-filter-options fides-filter-options-scrollable">
-                ${getAvailableCountries().map(code => `
-                  <label class="fides-filter-checkbox">
-                    <input type="checkbox" data-filter="countries" data-value="${code}" ${filters.countries.includes(code) ? 'checked' : ''}>
-                    <span><img src="https://flagcdn.com/w20/${code.toLowerCase()}.png" alt="" class="fides-country-flag"> ${COUNTRY_NAMES[code] || code}</span>
-                  </label>
-                `).join('')}
-              </div>
-            </div>
             ${filters.type.includes('organizational') || settings.type === 'organizational' ? `
               <div class="fides-filter-group collapsible ${!filterGroupState.capabilities ? 'collapsed' : ''} ${filters.capabilities.length > 0 ? 'has-active' : ''}" data-filter-group="capabilities">
                 <button class="fides-filter-label-toggle" type="button" aria-expanded="${filterGroupState.capabilities}">
@@ -563,6 +548,21 @@
                 </div>
               </div>
             ` : ''}
+            <div class="fides-filter-group collapsible ${!filterGroupState.country ? 'collapsed' : ''} ${filters.countries.length > 0 ? 'has-active' : ''}" data-filter-group="country">
+              <button class="fides-filter-label-toggle" type="button" aria-expanded="${filterGroupState.country}">
+                <span class="fides-filter-label">Country</span>
+                <span class="fides-filter-active-indicator"></span>
+                ${icons.chevronDown}
+              </button>
+              <div class="fides-filter-options fides-filter-options-scrollable">
+                ${getAvailableCountries().map(code => `
+                  <label class="fides-filter-checkbox">
+                    <input type="checkbox" data-filter="countries" data-value="${code}" ${filters.countries.includes(code) ? 'checked' : ''}>
+                    <span><img src="https://flagcdn.com/w20/${code.toLowerCase()}.png" alt="" class="fides-country-flag"> ${COUNTRY_NAMES[code] || code}</span>
+                  </label>
+                `).join('')}
+              </div>
+            </div>
             <div class="fides-filter-group collapsible ${!filterGroupState.interop ? 'collapsed' : ''} ${filters.interoperabilityProfiles.length > 0 ? 'has-active' : ''}" data-filter-group="interop">
               <button class="fides-filter-label-toggle" type="button" aria-expanded="${filterGroupState.interop}">
                 <span class="fides-filter-label">Interop Profile</span>

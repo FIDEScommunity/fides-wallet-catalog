@@ -776,6 +776,8 @@
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
 .fides-wallet-card:hover {
@@ -920,11 +922,12 @@
   padding: 0.75rem 1.25rem;
   border-top: 1px solid var(--fides-border);
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
   min-height: 2.5rem;
+  margin-top: auto;
 }
 
 .fides-wallet-links {
@@ -932,6 +935,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 1rem;
+  min-width: 0;
 }
 
 .fides-wallet-link {
@@ -1012,15 +1016,20 @@
 .fides-wallet-card:nth-child(5) { animation-delay: 200ms; }
 .fides-wallet-card:nth-child(6) { animation-delay: 250ms; }
 
-/* View details hint */
-.fides-view-details {
+/* View details hint - always visible */
+.fides-view-details,
+.fides-wallet-card .fides-view-details,
+.fides-wallet-footer .fides-view-details,
+.fides-wallet-catalog .fides-view-details {
   font-size: 0.8125rem;
   color: var(--fides-accent);
-  display: inline-flex;
+  display: inline-flex !important;
   align-items: center;
   gap: 0.25rem;
   flex-shrink: 0;
-  margin-left: auto;
+  opacity: 1 !important;
+  visibility: visible !important;
+  white-space: nowrap;
 }
 
 .fides-wallet-card:hover .fides-view-details {
