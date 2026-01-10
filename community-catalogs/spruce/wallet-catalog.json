@@ -1,0 +1,35 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Spruce Systems, Inc. (SpruceID)",
+    "website": "https://spruceid.com/products/sprucekit",
+    "logo": "https://www.google.com/s2/favicons?domain=spruceid.com&sz=128",
+    "country": "US"
+  },
+  "wallets": [
+    {
+      "id": "sprucekit-showcase",
+      "name": "SpruceKit Showcase",
+      "description": "Reference implementation of a lightweight personal wallet and verifier app, built on the open-source SpruceKit Mobile SDK, for receiving and presenting verifiable credentials and mdocs.",
+      "logo": "https://www.google.com/s2/favicons?domain=sprucekit.dev&sz=128",
+      "website": "https://www.sprucekit.dev/sprucekit-mobile/sprucekit-showcase-app",
+      "type": "personal",
+      "capabilities": ["holder", "verifier"],
+      "platforms": ["iOS", "Android"],
+      "openSource": true,
+      "license": "Apache-2.0",
+      "repository": "https://github.com/spruceid/sprucekit-mobile",
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC", "mDL/mDoc"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "status": "production",
+      "documentation": "https://www.sprucekit.dev/",
+      "appStoreLinks": {
+        "web": "https://www.sprucekit.dev/sprucekit-mobile/sprucekit-showcase-app",
+        "iOS": "https://apps.apple.com/us/app/sprucekit-showcase/id6599845610",
+        "android": "https://play.google.com/store/apps/details?id=com.spruceid.mobilesdkexample"
+      }
+    }
+  ],
+  "lastUpdated": "2026-01-10T12:00:00Z"
+}
