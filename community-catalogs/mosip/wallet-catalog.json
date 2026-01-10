@@ -23,9 +23,11 @@
       "license": "MPL-2.0",
       "repository": "https://github.com/mosip/inji",
       "status": "production",
-      "documentation": "https://docs.mosip.io"
+      "documentation": "https://docs.mosip.io",
+      "appStoreLinks": {
+        "web": "https://injiweb.collab.mosip.net/"
+      }
     }
   ],
-  "lastUpdated": "2026-01-06T12:00:00Z"
+  "lastUpdated": "2026-01-10T12:00:00Z"
 }
-
