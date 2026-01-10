@@ -1,0 +1,31 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Dock Labs AG",
+    "website": "https://www.dock.io/",
+    "logo": "https://www.google.com/s2/favicons?domain=dock.io&sz=128",
+    "country": "CH"
+  },
+  "wallets": [
+    {
+      "id": "truvera-wallet",
+      "name": "Truvera Wallet",
+      "description": "Personal digital wallet for holding and presenting verifiable credentials, provided by Dock Labs AG under the Truvera brand.",
+      "logo": "https://www.google.com/s2/favicons?domain=truvera.io&sz=128",
+      "website": "https://www.truvera.io/",
+      "type": "personal",
+      "capabilities": ["holder"],
+      "platforms": ["iOS"],
+      "status": "production",
+      "credentialFormats": ["JSON-LD VC", "JWT-VC"],
+      "presentationProtocols": ["DIDComm", "OpenID4VP"],
+      "supportedIdentifiers": ["did:key", "did:peer", "did:web"],
+      "openSource": false,
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/nl/app/truvera-wallet/id6739359697"
+      },
+      "documentation": "https://docs.truvera.io/"
+    }
+  ],
+  "lastUpdated": "2026-01-10T12:00:00Z"
+}
