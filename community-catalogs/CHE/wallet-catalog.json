@@ -10,8 +10,8 @@
     {
       "id": "swiyu-wallet",
       "name": "SWIYU Wallet",
-      "description": "Official Swiss government digital wallet for holding and presenting government-issued digital credentials and attestations.",
-      "logo": "https://www.google.com/s2/favicons?domain=swiyu.admin.ch&sz=128",
+      "description": "swiyu is the Swiss Confederation's wallet. It can be used to easily and securely request, store and present digital credentials and documents.swiyu can currently be used as part of Public Beta. The aim is to gain experience with the e-ID (digital identity) that will be issued by the Swiss Confederation.",
+      "logo": "https://play.google.com/remote?type=icon&name=ch.admin.foitt.swiyu&size=512",
       "website": "https://www.swiyu.admin.ch/",
       "type": "personal",
       "platforms": ["iOS", "Android"],
