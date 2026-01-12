@@ -22,7 +22,7 @@
       "openSource": true,
       "license": "Apache-2.0",
       "repository": "https://github.com/Sphereon-Opensource/ssi-mobile-wallet",
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC", "mDL/mDoc"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC"],
       "issuanceProtocols": ["OpenID4VCI"],
       "presentationProtocols": ["OpenID4VP", "SIOPv2"],
       "supportedIdentifiers": ["did:web", "did:key", "did:jwk", "did:ion", "did:ebsi"],
