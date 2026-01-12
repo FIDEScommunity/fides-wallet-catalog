@@ -12,7 +12,7 @@
       "description": "Open-source wallet \"Valera\" developed by A-SIT. Migration of eID Austria (~3 million users) and eAusausweis (~1 million users) to the EUDI architecture. One of the first nine countries with a deployed EUDI wallet.",
       "type": "personal",
       "openSource": true,
-      "repository": "https://github.com/a-sit-plus/valera"
+      "repository": "https://github.com/a-sit-plus/valera",
       "status": "development",
       "website": "https://a-sit-plus.github.io/",
       "platforms": ["iOS", "Android"],
