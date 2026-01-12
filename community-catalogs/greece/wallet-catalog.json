@@ -11,7 +11,6 @@
       "name": "Gov.gr Wallet",
       "description": "Official Greek wallet app since July 2022. Enables digital ID cards, driver's licenses, disability cards, DYPA cards, and other documents. Fully valid within Greece (not for international travel). Login via TaxisNet or online banking. Under development into the EUDI Wallet.",
       "type": "personal",
-      "openSource": true,
       "status": "production",
       "website": "https://wallet.gov.gr/",
       "platforms": ["iOS", "Android"],
