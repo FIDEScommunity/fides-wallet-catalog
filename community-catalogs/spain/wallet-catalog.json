@@ -11,7 +11,6 @@
       "name": "Cartera Digital Beta",
       "description": "Spain's Cartera Digital Beta presented by Minister José Luis Escrivá in July 2024 is a mobile digital wallet pilot implementing an age verification system for accessing adult content using government-issued age credentials based on users' ID cards stored in the system, with availability for all citizens by end of summer 2024. The wallet generates 30 pairs of keys monthly for one-time identity verification through a double-blind system protecting privacy with double authentication preventing minors from accessing through adult devices, selected by the EU for a pilot project due to Spain's advanced work in developing age-assurance applications. As part of eIDAS2 standard requiring content platforms to accept European digital identity wallets by October 2027, Cartera Digital Beta will expand beyond age assurance to store municipal registries, university/non-university degrees, and ID documents, positioning Spain among EU countries piloting EUDI wallet functionality ahead of mandatory implementation.",
       "type": "personal",
-      "openSource": true,
       "status": "development",
       "website": "https://digital.gob.es/especificaciones_tecnicas.html",
       "platforms": ["iOS", "Android"],
