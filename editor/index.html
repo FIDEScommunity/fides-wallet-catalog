@@ -1,1 +1,694 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FIDES Wallet Catalog Editor</title>
+  <style>
+    :root { --bg:#0b1220; --card:#111a2e; --muted:#a9b3c7; --text:#e9eef9; --line:#223152; --accent:#6aa6ff; }
+    body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; background:var(--bg); color:var(--text); }
+    a { color: var(--accent); }
+    header { padding: 18px 20px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    header h1 { font-size:16px; margin:0; letter-spacing:.2px; }
+    header .actions { display:flex; gap:10px; flex-wrap:wrap; }
+    main { padding: 18px 20px; display:grid; grid-template-columns: 1.1fr 0.9fr; gap:16px; }
+    @media (max-width: 980px){ main{ grid-template-columns:1fr; } }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px; }
+    .card h2 { margin:0 0 10px; font-size:14px; }
+    .row { display:grid; grid-template-columns: 1fr 1fr; gap:10px; }
+    @media (max-width: 980px){ .row{ grid-template-columns:1fr; } }
+    label { display:block; font-size:12px; color:var(--muted); margin:10px 0 6px; }
+    input[type="text"], input[type="url"], input[type="email"], textarea, select {
+      width:100%; box-sizing:border-box; padding:10px 10px; border-radius:10px; border:1px solid var(--line);
+      background:#0f1730; color:var(--text); outline:none;
+    }
+    textarea { min-height:120px; resize:vertical; }
+    .hint { font-size:12px; color: var(--muted); margin-top:6px; }
+    .pill { display:inline-flex; align-items:center; gap:8px; padding:8px 10px; border:1px solid var(--line); border-radius:999px; background:#0f1730; color:var(--text); font-size:12px; cursor:pointer; }
+    button { border:1px solid var(--line); background:#0f1730; color:var(--text); padding:10px 12px; border-radius:12px; cursor:pointer; }
+    button.primary { border-color:#2b4e9b; background:#143060; }
+    button:disabled { opacity:.55; cursor:not-allowed; }
+    .subtle { color:var(--muted); font-size:12px; }
+    .wallet { border-top:1px dashed var(--line); margin-top:12px; padding-top:12px; }
+    .wallet-head { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+    .wallet-head h3 { margin:0; font-size:13px; }
+    .grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:8px; margin-top:10px; }
+    @media (max-width: 980px){ .grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    .check { display:flex; align-items:center; gap:8px; padding:8px 10px; border:1px solid var(--line); border-radius:12px; background:#0f1730; font-size:12px; }
+    .check input { margin:0; }
+    .warn { padding:10px 12px; border-radius:12px; border:1px solid #6a4b1e; background:#2a1d0c; color:#ffd6a1; font-size:12px; }
+    .ok { padding:10px 12px; border-radius:12px; border:1px solid #1e6a3b; background:#0c2a18; color:#c7ffe0; font-size:12px; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size:12px; }
+    details { border:1px solid var(--line); border-radius:12px; padding:10px 12px; margin-top:12px; background:#0f1730; }
+    summary { cursor:pointer; color:var(--text); font-size:12px; }
+    .smallbtn { padding:8px 10px; border-radius:10px; font-size:12px; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>FIDES Wallet Catalog Editor <span class="subtle">— generate JSON for GitHub PRs</span></h1>
+  <div class="actions">
+    <button id="btnLoadFromSrc" class="smallbtn">Load from ?src</button>
+    <button id="btnImportPaste" class="smallbtn">Import pasted JSON</button>
+    <button id="btnCopy" class="primary">Copy JSON</button>
+    <button id="btnDownload">Download JSON</button>
+    <button id="btnReset">Reset</button>
+  </div>
+</header>
+
+<main>
+  <section class="card">
+    <h2>1) Provider</h2>
+    <div class="row">
+      <div>
+        <label>Provider name *</label>
+        <input id="p_name" type="text" placeholder="e.g. Example Wallet Co" />
+      </div>
+      <div>
+        <label>Country (ISO-2)</label>
+        <input id="p_country" type="text" placeholder="e.g. NL" maxlength="2" />
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>Website</label>
+        <input id="p_website" type="url" placeholder="https://…" />
+      </div>
+      <div>
+        <label>Logo URL</label>
+        <input id="p_logo" type="url" placeholder="https://…/logo.png" />
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>DID</label>
+        <input id="p_did" type="text" placeholder="did:web:example.com" />
+        <div class="hint">Must start with <span class="mono">did:</span> if provided.</div>
+      </div>
+      <div>
+        <label>Contact email</label>
+        <input id="p_email" type="email" placeholder="support@…" />
+      </div>
+    </div>
+    <div>
+      <label>Support URL</label>
+      <input id="p_support" type="url" placeholder="https://…/support" />
+    </div>
+
+    <div class="wallet" style="margin-top:16px;">
+      <div class="wallet-head">
+        <h3>2) Wallets</h3>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button id="btnAddWallet" class="smallbtn">+ Add wallet</button>
+        </div>
+      </div>
+      <div id="walletList"></div>
+    </div>
+
+    <details>
+      <summary>Instructions (GitHub workflow)</summary>
+      <div class="hint" style="margin-top:10px;">
+        <ol>
+          <li>Fill the form (or load an existing entry via <span class="mono">?src=RAW_URL</span>).</li>
+          <li>Copy or download the generated JSON.</li>
+          <li>Fork the catalog repo and add/replace the JSON file (commit + PR).</li>
+        </ol>
+        Tip: keep <span class="mono">wallet.id</span> stable across updates.
+      </div>
+    </details>
+  </section>
+
+  <aside class="card">
+    <h2>3) Generated JSON</h2>
+    <div id="msg" class="warn" style="display:none;"></div>
+    <textarea id="out" class="mono" spellcheck="false"></textarea>
+    <div class="hint">
+      Empty / not-applicable fields are omitted. Arrays are omitted when empty.
+    </div>
+
+    <details>
+      <summary>Paste existing JSON (for import)</summary>
+      <div class="hint" style="margin-top:10px;">
+        Paste a full provider file here and click <b>Import pasted JSON</b>.
+      </div>
+      <textarea id="paste" class="mono" spellcheck="false" placeholder="{ ... }"></textarea>
+    </details>
+  </aside>
+</main>
+
+<script>
+  // --- enums (hardcoded v1) ---
+  const ENUMS = {
+    walletType: ["personal","organizational"],
+    platforms: ["iOS","Android","Web","Windows","macOS","Linux","CLI"],
+    status: ["development","beta","production","deprecated"],
+    credentialFormats: ["SD-JWT","SD-JWT-VC","mDL/mDoc","AnonCreds","JWT-VC","JSON-LD VC","Apple Wallet Pass","Google Wallet Pass","X.509","CBOR-LD"],
+    issuanceProtocols: ["OpenID4VCI","DIDComm Issue Credential v1","DIDComm Issue Credential v2","ISO 18013-5 (Device Retrieval)"],
+    presentationProtocols: ["OpenID4VP","DIDComm Present Proof v1","DIDComm Present Proof v2","ISO 18013-5","SIOPv2"],
+    interoperabilityProfiles: ["DIIP v4","EWC v3","EUDI Wallet ARF"],
+    capabilities: ["holder","issuer","verifier"],
+    keyStorage: ["Software","Secure Enclave (iOS)","StrongBox (Android)","TEE","HSM","Cloud KMS","Smart Card","FIDO2/WebAuthn"]
+  };
+
+  // --- helpers ---
+  const $ = (id) => document.getElementById(id);
+  const nowIso = () => new Date().toISOString();
+  const isNonEmpty = (v) => typeof v === "string" ? v.trim().length > 0 : v != null;
+
+  function slugify(s){
+    return (s || "")
+      .toLowerCase()
+      .trim()
+      .replace(/['"]/g,"")
+      .replace(/[^a-z0-9]+/g,"-")
+      .replace(/^-+|-+$/g,"")
+      .slice(0, 80) || "";
+  }
+
+  function pick(obj){
+    // remove empty / undefined and empty arrays/objects
+    const out = {};
+    for (const [k,v] of Object.entries(obj)){
+      if (Array.isArray(v)){
+        if (v.length) out[k] = v;
+      } else if (v && typeof v === "object"){
+        const inner = pick(v);
+        if (Object.keys(inner).length) out[k] = inner;
+      } else if (isNonEmpty(v)){
+        out[k] = (typeof v === "string") ? v.trim() : v;
+      }
+    }
+    return out;
+  }
+
+  function getQueryParam(name){
+    const url = new URL(window.location.href);
+    return url.searchParams.get(name);
+  }
+
+  function setMsg(type, text){
+    const el = $("msg");
+    el.style.display = "block";
+    el.className = type === "ok" ? "ok" : "warn";
+    el.textContent = text;
+  }
+  function clearMsg(){
+    const el = $("msg");
+    el.style.display = "none";
+    el.textContent = "";
+  }
+
+  // --- wallet UI ---
+  let wallets = [];
+
+  function checkboxGroup(values, selected, onToggle){
+    const wrap = document.createElement("div");
+    wrap.className = "grid";
+    for (const v of values){
+      const lab = document.createElement("label");
+      lab.className = "check";
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.checked = selected.includes(v);
+      cb.addEventListener("change", () => onToggle(v, cb.checked));
+      const span = document.createElement("span");
+      span.textContent = v;
+      lab.appendChild(cb);
+      lab.appendChild(span);
+      wrap.appendChild(lab);
+    }
+    return wrap;
+  }
+
+  function renderWallets(){
+    const list = $("walletList");
+    list.innerHTML = "";
+    wallets.forEach((w, idx) => {
+      const box = document.createElement("div");
+      box.className = "wallet";
+
+      const head = document.createElement("div");
+      head.className = "wallet-head";
+
+      const title = document.createElement("h3");
+      title.textContent = `Wallet ${idx+1}: ${w.name || "(unnamed)"}`;
+      head.appendChild(title);
+
+      const right = document.createElement("div");
+      right.style.display = "flex";
+      right.style.gap = "8px";
+
+      const btnDup = document.createElement("button");
+      btnDup.className = "smallbtn";
+      btnDup.textContent = "Duplicate";
+      btnDup.onclick = () => {
+        const copy = JSON.parse(JSON.stringify(w));
+        copy.id = (copy.id ? copy.id + "-copy" : "");
+        wallets.splice(idx+1, 0, copy);
+        renderWallets(); generate();
+      };
+
+      const btnDel = document.createElement("button");
+      btnDel.className = "smallbtn";
+      btnDel.textContent = "Remove";
+      btnDel.onclick = () => {
+        wallets.splice(idx, 1);
+        renderWallets(); generate();
+      };
+
+      right.appendChild(btnDup);
+      right.appendChild(btnDel);
+      head.appendChild(right);
+
+      box.appendChild(head);
+
+      // basic fields
+      const row1 = document.createElement("div");
+      row1.className = "row";
+
+      const f_name = document.createElement("div");
+      f_name.innerHTML = `<label>Wallet name *</label>`;
+      const in_name = document.createElement("input");
+      in_name.type = "text";
+      in_name.value = w.name || "";
+      in_name.placeholder = "e.g. Example Wallet";
+      in_name.oninput = () => {
+        w.name = in_name.value;
+        // auto id if empty or if it matches old slug
+        const s = slugify(in_name.value);
+        if (!w.id || w.id === slugify(w.id) || w._autoId){
+          w.id = s;
+          w._autoId = true;
+          in_id.value = w.id;
+        }
+        title.textContent = `Wallet ${idx+1}: ${w.name || "(unnamed)"}`;
+        generate();
+      };
+      f_name.appendChild(in_name);
+
+      const f_id = document.createElement("div");
+      f_id.innerHTML = `<label>Wallet id *</label>`;
+      const in_id = document.createElement("input");
+      in_id.type = "text";
+      in_id.value = w.id || "";
+      in_id.placeholder = "lowercase-hyphen (e.g. example-wallet)";
+      in_id.oninput = () => {
+        w.id = in_id.value;
+        w._autoId = false;
+        generate();
+      };
+      f_id.appendChild(in_id);
+
+      row1.appendChild(f_name);
+      row1.appendChild(f_id);
+
+      const row2 = document.createElement("div");
+      row2.className = "row";
+
+      const f_type = document.createElement("div");
+      f_type.innerHTML = `<label>Type *</label>`;
+      const sel_type = document.createElement("select");
+      ENUMS.walletType.forEach(v => {
+        const opt = document.createElement("option");
+        opt.value = v; opt.textContent = v;
+        if ((w.type || "personal") === v) opt.selected = true;
+        sel_type.appendChild(opt);
+      });
+      sel_type.onchange = () => { w.type = sel_type.value; generate(); };
+      f_type.appendChild(sel_type);
+
+      const f_status = document.createElement("div");
+      f_status.innerHTML = `<label>Status *</label>`;
+      const sel_status = document.createElement("select");
+      ENUMS.status.forEach(v => {
+        const opt = document.createElement("option");
+        opt.value = v; opt.textContent = v;
+        if ((w.status || "production") === v) opt.selected = true;
+        sel_status.appendChild(opt);
+      });
+      sel_status.onchange = () => { w.status = sel_status.value; generate(); };
+      f_status.appendChild(sel_status);
+
+      row2.appendChild(f_type);
+      row2.appendChild(f_status);
+
+      const row3 = document.createElement("div");
+      row3.className = "row";
+
+      const f_web = document.createElement("div");
+      f_web.innerHTML = `<label>Website</label>`;
+      const in_web = document.createElement("input");
+      in_web.type = "url";
+      in_web.value = w.website || "";
+      in_web.placeholder = "https://…";
+      in_web.oninput = () => { w.website = in_web.value; generate(); };
+      f_web.appendChild(in_web);
+
+      const f_logo = document.createElement("div");
+      f_logo.innerHTML = `<label>Logo URL</label>`;
+      const in_logo = document.createElement("input");
+      in_logo.type = "url";
+      in_logo.value = w.logo || "";
+      in_logo.placeholder = "https://…/logo.png";
+      in_logo.oninput = () => { w.logo = in_logo.value; generate(); };
+      f_logo.appendChild(in_logo);
+
+      row3.appendChild(f_web);
+      row3.appendChild(f_logo);
+
+      const f_desc = document.createElement("div");
+      f_desc.innerHTML = `<label>Description</label>`;
+      const in_desc = document.createElement("textarea");
+      in_desc.value = w.description || "";
+      in_desc.placeholder = "Short description…";
+      in_desc.oninput = () => { w.description = in_desc.value; generate(); };
+      f_desc.appendChild(in_desc);
+
+      // AppStore links
+      const row4 = document.createElement("div");
+      row4.className = "row";
+
+      const f_ios = document.createElement("div");
+      f_ios.innerHTML = `<label>App Store link (iOS)</label>`;
+      const in_ios = document.createElement("input");
+      in_ios.type = "url";
+      in_ios.value = (w.appStoreLinks && w.appStoreLinks.iOS) || "";
+      in_ios.placeholder = "https://apps.apple.com/…";
+      in_ios.oninput = () => {
+        w.appStoreLinks = w.appStoreLinks || {};
+        w.appStoreLinks.iOS = in_ios.value;
+        generate();
+      };
+      f_ios.appendChild(in_ios);
+
+      const f_android = document.createElement("div");
+      f_android.innerHTML = `<label>Play Store link (android)</label>`;
+      const in_android = document.createElement("input");
+      in_android.type = "url";
+      in_android.value = (w.appStoreLinks && w.appStoreLinks.android) || "";
+      in_android.placeholder = "https://play.google.com/…";
+      in_android.oninput = () => {
+        w.appStoreLinks = w.appStoreLinks || {};
+        w.appStoreLinks.android = in_android.value;
+        generate();
+      };
+      f_android.appendChild(in_android);
+
+      row4.appendChild(f_ios);
+      row4.appendChild(f_android);
+
+      const f_webapp = document.createElement("div");
+      f_webapp.innerHTML = `<label>Web app link</label>`;
+      const in_webapp = document.createElement("input");
+      in_webapp.type = "url";
+      in_webapp.value = (w.appStoreLinks && w.appStoreLinks.web) || "";
+      in_webapp.placeholder = "https://…";
+      in_webapp.oninput = () => {
+        w.appStoreLinks = w.appStoreLinks || {};
+        w.appStoreLinks.web = in_webapp.value;
+        generate();
+      };
+      f_webapp.appendChild(in_webapp);
+
+      // platforms
+      const f_platforms = document.createElement("div");
+      f_platforms.innerHTML = `<label>Platforms *</label>`;
+      f_platforms.appendChild(
+        checkboxGroup(ENUMS.platforms, w.platforms || [], (val, checked) => {
+          w.platforms = w.platforms || [];
+          if (checked) { if (!w.platforms.includes(val)) w.platforms.push(val); }
+          else w.platforms = w.platforms.filter(x => x !== val);
+          generate();
+        })
+      );
+
+      // advanced
+      const adv = document.createElement("details");
+      adv.innerHTML = `<summary>Advanced (formats, protocols, profiles, capabilities)</summary>`;
+
+      const cf = document.createElement("div");
+      cf.innerHTML = `<label>Credential formats</label>`;
+      cf.appendChild(checkboxGroup(ENUMS.credentialFormats, w.credentialFormats || [], (val, checked) => {
+        w.credentialFormats = w.credentialFormats || [];
+        if (checked) { if (!w.credentialFormats.includes(val)) w.credentialFormats.push(val); }
+        else w.credentialFormats = w.credentialFormats.filter(x => x !== val);
+        generate();
+      }));
+
+      const ip = document.createElement("div");
+      ip.innerHTML = `<label>Issuance protocols</label>`;
+      ip.appendChild(checkboxGroup(ENUMS.issuanceProtocols, w.issuanceProtocols || [], (val, checked) => {
+        w.issuanceProtocols = w.issuanceProtocols || [];
+        if (checked) { if (!w.issuanceProtocols.includes(val)) w.issuanceProtocols.push(val); }
+        else w.issuanceProtocols = w.issuanceProtocols.filter(x => x !== val);
+        generate();
+      }));
+
+      const pp = document.createElement("div");
+      pp.innerHTML = `<label>Presentation protocols</label>`;
+      pp.appendChild(checkboxGroup(ENUMS.presentationProtocols, w.presentationProtocols || [], (val, checked) => {
+        w.presentationProtocols = w.presentationProtocols || [];
+        if (checked) { if (!w.presentationProtocols.includes(val)) w.presentationProtocols.push(val); }
+        else w.presentationProtocols = w.presentationProtocols.filter(x => x !== val);
+        generate();
+      }));
+
+      const prof = document.createElement("div");
+      prof.innerHTML = `<label>Interoperability profiles</label>`;
+      prof.appendChild(checkboxGroup(ENUMS.interoperabilityProfiles, w.interoperabilityProfiles || [], (val, checked) => {
+        w.interoperabilityProfiles = w.interoperabilityProfiles || [];
+        if (checked) { if (!w.interoperabilityProfiles.includes(val)) w.interoperabilityProfiles.push(val); }
+        else w.interoperabilityProfiles = w.interoperabilityProfiles.filter(x => x !== val);
+        generate();
+      }));
+
+      const caps = document.createElement("div");
+      caps.innerHTML = `<label>Capabilities</label>`;
+      caps.appendChild(checkboxGroup(ENUMS.capabilities, w.capabilities || [], (val, checked) => {
+        w.capabilities = w.capabilities || [];
+        if (checked) { if (!w.capabilities.includes(val)) w.capabilities.push(val); }
+        else w.capabilities = w.capabilities.filter(x => x !== val);
+        generate();
+      }));
+
+      const ks = document.createElement("div");
+      ks.innerHTML = `<label>Key storage</label>`;
+      ks.appendChild(checkboxGroup(ENUMS.keyStorage, w.keyStorage || [], (val, checked) => {
+        w.keyStorage = w.keyStorage || [];
+        if (checked) { if (!w.keyStorage.includes(val)) w.keyStorage.push(val); }
+        else w.keyStorage = w.keyStorage.filter(x => x !== val);
+        generate();
+      }));
+
+      adv.appendChild(cf);
+      adv.appendChild(ip);
+      adv.appendChild(pp);
+      adv.appendChild(prof);
+      adv.appendChild(caps);
+      adv.appendChild(ks);
+
+      // assemble
+      box.appendChild(row1);
+      box.appendChild(row2);
+      box.appendChild(row3);
+      box.appendChild(f_desc);
+      box.appendChild(row4);
+      box.appendChild(f_webapp);
+      box.appendChild(f_platforms);
+      box.appendChild(adv);
+
+      list.appendChild(box);
+    });
+  }
+
+  function addWallet(seed = {}){
+    wallets.push({
+      id: seed.id || "",
+      name: seed.name || "",
+      type: seed.type || "personal",
+      status: seed.status || "production",
+      platforms: seed.platforms || [],
+      description: seed.description || "",
+      logo: seed.logo || "",
+      website: seed.website || "",
+      appStoreLinks: seed.appStoreLinks || {},
+      credentialFormats: seed.credentialFormats || [],
+      issuanceProtocols: seed.issuanceProtocols || [],
+      presentationProtocols: seed.presentationProtocols || [],
+      interoperabilityProfiles: seed.interoperabilityProfiles || [],
+      capabilities: seed.capabilities || [],
+      keyStorage: seed.keyStorage || []
+    });
+    renderWallets(); generate();
+  }
+
+  // --- generate JSON ---
+  function generate(){
+    clearMsg();
+
+    // basic required checks (soft)
+    const missing = [];
+    if (!$("p_name").value.trim()) missing.push("provider.name");
+    if (!wallets.length) missing.push("wallets[0..n]");
+    wallets.forEach((w, i) => {
+      if (!w.name || !w.name.trim()) missing.push(`wallets[${i}].name`);
+      if (!w.id || !w.id.trim()) missing.push(`wallets[${i}].id`);
+      if (!w.type) missing.push(`wallets[${i}].type`);
+      if (!w.status) missing.push(`wallets[${i}].status`);
+      if (!w.platforms || !w.platforms.length) missing.push(`wallets[${i}].platforms`);
+    });
+
+    if (missing.length){
+      setMsg("warn", "Missing recommended required fields: " + missing.join(", "));
+    }
+
+    const provider = pick({
+      name: $("p_name").value,
+      did: $("p_did").value,
+      website: $("p_website").value,
+      logo: $("p_logo").value,
+      country: $("p_country").value ? $("p_country").value.trim().toUpperCase() : "",
+      contact: pick({
+        email: $("p_email").value,
+        support: $("p_support").value
+      })
+    });
+
+    const wOut = wallets.map(w => pick({
+      id: w.id,
+      name: w.name,
+      description: w.description,
+      logo: w.logo,
+      website: w.website,
+      type: w.type,
+      platforms: w.platforms,
+      openSource: w.openSource,
+      license: w.license,
+      repository: w.repository,
+      credentialFormats: w.credentialFormats,
+      issuanceProtocols: w.issuanceProtocols,
+      presentationProtocols: w.presentationProtocols,
+      supportedIdentifiers: w.supportedIdentifiers,
+      keyStorage: w.keyStorage,
+      signingAlgorithms: w.signingAlgorithms,
+      credentialStatusMethods: w.credentialStatusMethods,
+      certifications: w.certifications,
+      interoperabilityProfiles: w.interoperabilityProfiles,
+      standards: w.standards,
+      features: w.features,
+      documentation: w.documentation,
+      appStoreLinks: w.appStoreLinks,
+      status: w.status,
+      releaseDate: w.releaseDate,
+      capabilities: w.capabilities
+    }));
+
+    const doc = pick({
+      $schema: "https://fides.community/schemas/wallet-catalog/v1",
+      provider,
+      wallets: wOut,
+      lastUpdated: nowIso()
+    });
+
+    $("out").value = JSON.stringify(doc, null, 2);
+  }
+
+  // --- import ---
+  function importJson(obj){
+    // provider
+    const p = obj.provider || {};
+    $("p_name").value = p.name || "";
+    $("p_did").value = p.did || "";
+    $("p_website").value = p.website || "";
+    $("p_logo").value = p.logo || "";
+    $("p_country").value = p.country || "";
+    $("p_email").value = (p.contact && p.contact.email) || "";
+    $("p_support").value = (p.contact && p.contact.support) || "";
+
+    wallets = [];
+    (obj.wallets || []).forEach(w => addWallet(w));
+    if (!(obj.wallets || []).length) addWallet();
+    renderWallets();
+    setMsg("ok", "Imported JSON successfully. Make changes and regenerate.");
+    generate();
+  }
+
+  async function loadFromSrc(){
+    const src = getQueryParam("src");
+    if (!src){
+      setMsg("warn", "No ?src= parameter found in the URL.");
+      return;
+    }
+    try {
+      const res = await fetch(src, { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const text = await res.text();
+      const obj = JSON.parse(text);
+      importJson(obj);
+    } catch (e){
+      setMsg("warn", "Failed to load/parse src JSON: " + e.message);
+    }
+  }
+
+  // --- buttons / events ---
+  function wire(){
+    const inputs = ["p_name","p_did","p_website","p_logo","p_country","p_email","p_support"];
+    inputs.forEach(id => $(id).addEventListener("input", generate));
+
+    $("btnAddWallet").onclick = () => addWallet();
+    $("btnCopy").onclick = async () => {
+      try {
+        await navigator.clipboard.writeText($("out").value);
+        setMsg("ok", "Copied JSON to clipboard.");
+      } catch {
+        setMsg("warn", "Copy failed (browser permissions). You can still select and copy manually.");
+      }
+    };
+
+    $("btnDownload").onclick = () => {
+      const blob = new Blob([$("out").value], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "wallet-catalog.json";
+      a.click();
+      URL.revokeObjectURL(a.href);
+      setMsg("ok", "Downloaded wallet-catalog.json");
+    };
+
+    $("btnReset").onclick = () => {
+      if (!confirm("Reset form?")) return;
+      $("p_name").value = "";
+      $("p_did").value = "";
+      $("p_website").value = "";
+      $("p_logo").value = "";
+      $("p_country").value = "";
+      $("p_email").value = "";
+      $("p_support").value = "";
+      wallets = [];
+      addWallet();
+      clearMsg();
+      generate();
+    };
+
+    $("btnImportPaste").onclick = () => {
+      try {
+        const obj = JSON.parse($("paste").value);
+        importJson(obj);
+      } catch (e){
+        setMsg("warn", "Paste JSON parse error: " + e.message);
+      }
+    };
+
+    $("btnLoadFromSrc").onclick = loadFromSrc;
+  }
+
+  // init
+  wire();
+  addWallet();
+  generate();
+  // auto-load if src is present
+  if (getQueryParam("src")) loadFromSrc();
+</script>
+</body>
+</html>
 
