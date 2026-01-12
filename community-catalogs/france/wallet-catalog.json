@@ -26,19 +26,6 @@
       "logo": "https://www.google.com/s2/favicons?domain=france-identite.gouv.fr&sz=128",
       "releaseDate": "2024-01-01"
     },
-    {
-      "id": "carte-vitale-app",
-      "name": "Carte Vitale (app)",
-      "description": "France's digital Carte Vitale app launched March 18, 2025, enabling all insured individuals with new biometric French ID cards to activate their digital health card through the France Identité smartphone application, dematerializing France's traditional health insurance card with same benefits accessible via smartphone. The app presents at medical appointments through QR code scanning or NFC technology for identification with Health Insurance and reimbursement with teletransmission, expanding from initial 23 départements to 46 by May 2025 with nationwide availability by end of 2025. Optional and free to download on iOS/Android, the digital version complements the still-valid physical Carte Vitale, available to legal residents over 18 with biometric French ID cards or plastic residency cards provided they already have a carte Vitale.",
-      "type": "personal",
-      "openSource": true,
-      "status": "production",
-      "website": "https://www.ameli.fr/assure/remboursements/etre-bien-rembourse/carte-vitale",
-      "platforms": ["iOS", "Android"],
-      "appStoreLinks": {
-        "iOS": "https://apps.apple.com/nl/app/carte-vitale/id1458351041",
-        "android": "https://play.google.com/store/apps/details?id=fr.sesamvitale.cartevitale.app"
-      },
       "logo": "https://www.google.com/s2/favicons?domain=ameli.fr&sz=128",
       "releaseDate": "2025-01-01"
     }
