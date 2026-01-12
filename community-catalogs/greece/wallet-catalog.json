@@ -27,7 +27,6 @@
       "name": "National EUDI Wallet (Greece)",
       "description": "Launch expected in November 2026. Builds on Gov.gr Wallet. Planned use cases: eGov, banking, SIM registration, mobile DL, QES, eRx, travel, education. Participation in EWC and DC4EU pilot projects. Pilot test at Thessaloniki Airport for travel credentials.",
       "type": "personal",
-      "openSource": true,
       "status": "development",
       "platforms": ["iOS", "Android"],
       "interoperabilityProfiles": ["EUDI Wallet ARF"],
