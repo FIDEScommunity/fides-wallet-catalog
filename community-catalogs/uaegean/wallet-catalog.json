@@ -8,8 +8,8 @@
   },
   "wallets": [
     {
-      "id": "uaegean-wallet",
-      "name": "UAegean Wallet (Cyclades Fast Ferries)",
+      "id": "uaegean-stack",
+      "name": "UAegean Stack (Cyclades Fast Ferries)",
       "description": "An open source solution developed by the University of the Aegean providing holder, issuer, and verifier capabilities for the EWC LSP, demonstrated in the Cyclades Fast Ferries use case.",
       "logo": "https://www.google.com/s2/favicons?domain=aegean.gr&sz=128",
       "website": "https://www.aegean.gr",
