@@ -32,7 +32,7 @@
         "OpenID4VP"
       ],
       "appStoreLinks": {
-        "web": "CredIssuer is a digital credentialing platform that enables institutions and governments to issue tamper-proof, verifiable certificates in real time."
+        "web": "https://ooru.io/products/credissuer-secure-verifiable-credentials/"
       },
       "status": "production",
       "capabilities": [
@@ -40,5 +40,5 @@
       ]
     }
   ],
-  "lastUpdated": "2026-01-12T13:26:42.805Z"
+  "lastUpdated": "2026-01-12T14:26:01.465Z"
 }
