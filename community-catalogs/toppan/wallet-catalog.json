@@ -8,9 +8,9 @@
   },
   "wallets": [
     {
-      "id": "toppan-security-wallet",
-      "name": "TOPPAN Security Wallet",
-      "logo": "https://www.google.com/s2/favicons?domain=toppan.com&sz=128",
+      "id": "toppan-wallet",
+      "name": "TOPPAN Wallet",
+      "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/94/f2/d5/94f2d5a5-d720-59f1-53e7-719bd047428a/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/400x400ia-75.webp",
       "description": "An enterprise security wallet supporting digital identity and verifiable credentials with DIIP v4 compliance.",
       "type": "personal",
       "platforms": ["iOS", "Android"],
@@ -22,7 +22,7 @@
       "interoperabilityProfiles": ["DIIP v4"],
       "website": "https://www.toppan.com",
       "appStoreLinks": {
-        "iOS": "https://apps.apple.com/app/ts-digital-onboarding-solution/id6479744390",
+        "iOS": "https://apps.apple.com/us/app/toppan-wallet/id6754371637",
         "android": "https://play.google.com/store/apps/details?id=com.toppangravity.app"
       },
       "openSource": false,
