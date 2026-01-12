@@ -3,7 +3,7 @@
   "provider": {
     "name": "youniqx Identity AG",
     "website": "https://www.youniqx.com",
-    "logo": "https://www.google.com/s2/favicons?domain=youniqx.com&sz=128",
+    "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/41/f7/85/41f78596-1cab-3d90-4fe9-98977dd360e1/AppIcon-0-1x_U007emarketing-0-6-0-85-220-0.png/400x400ia-75.webp",
     "country": "AT"
   },
   "wallets": [
@@ -14,10 +14,7 @@
       "description": "The official Austrian government identity wallet, enabling citizens to store and present digital identity documents and verifiable credentials.",
       "type": "personal",
       "platforms": ["iOS", "Android"],
-      "credentialFormats": ["SD-JWT-VC", "mDL/mDoc"],
-      "protocols": {
-        "issuance": ["OpenID4VCI"],
-        "presentation": ["OpenID4VP"]
+      "credentialFormats": ["mDL/mDoc"],
       },
       "website": "https://www.oesterreich.gv.at",
       "appStoreLinks": {
@@ -34,10 +31,7 @@
       "description": "The official Liechtenstein government identity wallet, enabling citizens to store and present digital identity documents and verifiable credentials.",
       "type": "personal",
       "platforms": ["iOS", "Android"],
-      "credentialFormats": ["SD-JWT-VC", "mDL/mDoc"],
-      "protocols": {
-        "issuance": ["OpenID4VCI"],
-        "presentation": ["OpenID4VP"]
+      "credentialFormats": ["mDL/mDoc"],
       },
       "website": "https://www.llv.li",
       "appStoreLinks": {
