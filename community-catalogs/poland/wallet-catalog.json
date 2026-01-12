@@ -11,7 +11,6 @@
       "name": "mObywatel",
       "description": "Poland's mObywatel mobile application created in 2017 introduced electronic prescriptions and mobile driving licenses (mDL) in 2020, significantly boosting popularity as gateway into digitalization process storing e-documents including driving licenses, diplomas, COVID certificates, and ID cards, with mObywatel 2.0 mDowód digital ID becoming fully equal to plastic counterpart from September 2023 as biggest EU country where eID achieved full legal equivalence with traditional identification. The government develops mObywatel 3.0 application for European Digital Identity Wallet (EUDI Wallet) targeting full eIDAS 2.0 compliance by 2026, positioning Poland as one of nine countries (Austria, Belgium, Cyprus, Czech Republic, France, Hungary, Italy, Poland, Portugal) with digital identity wallet solution deployed at national level by building on existing digital ID app infrastructure and adjusting to integrate required EUDI wallet capabilities ahead of December 2026 mandatory deadline.",
       "type": "personal",
-      "openSource": true,
       "status": "production",
       "website": "https://www.gov.pl/mobywatel",
       "platforms": ["iOS", "Android"],
