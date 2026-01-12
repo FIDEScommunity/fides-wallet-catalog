@@ -11,12 +11,8 @@
       "name": "National EUDI Wallet (Slovakia)",
       "description": "Slovakia's National EUDI Wallet is in development to meet eIDAS 2.0 mandates requiring all EU member states to provide European Digital Identity Wallets by 2026-2027. The wallet will enable Slovak citizens to securely manage verified digital credentials, authenticate across EU services, and engage in secure digital transactions for both government and commercial applications. Slovakia's implementation will build upon the country's existing electronic identity infrastructure and integrate with the EU-wide EUDI Wallet ecosystem for seamless cross-border identity verification compliant with eIDAS Regulation 2024/1183.",
       "type": "personal",
-      "openSource": true,
       "status": "development",
       "platforms": ["iOS", "Android"],
-      "presentationProtocols": ["OpenID4VP"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "credentialFormats": ["mDL/mDoc", "SD-JWT-VC"],
       "interoperabilityProfiles": ["EUDI Wallet ARF"],
       "logo": "https://flagcdn.com/w80/sk.png"
     }
