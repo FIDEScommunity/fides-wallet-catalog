@@ -27,8 +27,8 @@
       "status": "production"
     },
     {
-      "id": "impierce-agent",
-      "name": "Impierce Agent",
+      "id": "impierce-unitrust",
+      "name": "Impierce UniTrust",
       "logo": "https://www.google.com/s2/favicons?domain=impierce.com&sz=128",
       "description": "An open-source organizational identity agent providing complete holder, issuer, and verifier capabilities built on the UniCore framework.",
       "type": "organizational",
