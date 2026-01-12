@@ -15,10 +15,6 @@
       "status": "production",
       "website": "https://www.izertis.com/en/-/caso-de-exito/identfy",
       "platforms": ["iOS", "Android"],
-      "presentationProtocols": ["OpenID4VP"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "credentialFormats": ["mDL/mDoc", "SD-JWT-VC"],
-      "interoperabilityProfiles": ["EUDI Wallet ARF"],
       "logo": "https://flagcdn.com/w80/es.png",
       "releaseDate": "2023-01-01"
     }
