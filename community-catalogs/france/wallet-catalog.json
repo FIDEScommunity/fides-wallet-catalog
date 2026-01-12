@@ -19,10 +19,6 @@
         "iOS": "https://apps.apple.com/fr/app/france-identit%C3%A9/id1590142959",
         "android": "https://play.google.com/store/apps/details?id=fr.gouv.franceidentite"
       },
-      "presentationProtocols": ["OpenID4VP"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "credentialFormats": ["mDL/mDoc", "SD-JWT-VC"],
-      "interoperabilityProfiles": ["EUDI Wallet ARF"],
       "logo": "https://www.google.com/s2/favicons?domain=france-identite.gouv.fr&sz=128",
       "releaseDate": "2024-01-01"
     }
