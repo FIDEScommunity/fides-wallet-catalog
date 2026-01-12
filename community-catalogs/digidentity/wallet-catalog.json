@@ -14,7 +14,7 @@
       "description": "An EWC v3-compliant identity wallet from Digidentity, supporting secure digital identity verification and verifiable credentials for government and enterprise use cases.",
       "type": "personal",
       "platforms": ["iOS", "Android"],
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
+      "credentialFormats": ["SD-JWT-VC"],
       "protocols": {
         "issuance": ["OpenID4VCI"],
         "presentation": ["OpenID4VP"]
