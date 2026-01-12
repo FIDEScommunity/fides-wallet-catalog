@@ -11,7 +11,6 @@
       "name": "National EUDI Wallet (Estonia)",
       "description": "Estonia's National EUDI Wallet is in development for 2026-2027 deployment to comply with eIDAS 2.0 regulation mandating EU member states to provide European Digital Identity Wallets, building upon Estonia's world-leading e-ID infrastructure established since 2002 with the pioneering national electronic identity card. The wallet will leverage Estonia's extensive digital government experience including RIA's (Information System Authority) coordination of electronic identity and cybersecurity, integrating with existing eID solutions like ID cards, Mobile-ID, and Smart-ID. Estonia's implementation will continue the country's e-governance leadership by enabling citizens to securely store and share verified digital credentials across EU member states while maintaining interoperability with Estonia's established digital ecosystem that has processed over 600 million digital signatures and achieved \"high\" eIDAS certification.",
       "type": "personal",
-      "openSource": true,
       "status": "development",
       "platforms": ["iOS", "Android"],
       "interoperabilityProfiles": ["EUDI Wallet ARF"],
