@@ -11,7 +11,6 @@
       "name": "France Identité",
       "description": "France Identité app launched by French Ministry of Interior entered beta in May 2022 before full public rollout February 14, 2024, with no user limits, enabling citizens to create dematerialized versions of identity cards and driving licenses on smartphones using NFC readers to scan biometric identity cards requiring Android 11 or iOS 16 minimum software. The state-provided digital identity platform generates electronically signed proofs of identity to prevent fraud, authenticates users for FranceConnect government services access, and displays identity cards and Carte Vitale health insurance cards, with plans to expand health card functionality in 2025, positioning France among early adopters of EUDI Wallet-compatible infrastructure preparing for EU Digital Identity Wallet framework implementation by 2030 for uniform mobile driving licenses across Europe aligned with eIDAS 2.0 regulation.",
       "type": "personal",
-      "openSource": true,
       "status": "production",
       "website": "https://france-identite.gouv.fr/",
       "platforms": ["iOS", "Android"],
