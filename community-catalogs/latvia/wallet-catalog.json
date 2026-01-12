@@ -11,7 +11,6 @@
       "name": "National EUDI Wallet (Latvia)",
       "description": "Latvia's National EUDI Wallet is in development to comply with eIDAS 2.0 regulation mandating EU member states to provide European Digital Identity Wallets by 2026-2027. The wallet will build upon Latvia's existing eID infrastructure including the Personas apliecība (eID card) and eParaksts services, enabling citizens to securely store and share verified digital credentials across EU member states. Latvia's implementation will integrate with the cross-border eIDAS ecosystem, leveraging the country's experience as the second Nordic-Baltic state to achieve EU-wide e-service recognition and continuing Latvia's leadership in digital identity interoperability.",
       "type": "personal",
-      "openSource": true,
       "status": "development",
       "platforms": ["iOS", "Android"],
       "interoperabilityProfiles": ["EUDI Wallet ARF"],
