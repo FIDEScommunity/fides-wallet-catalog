@@ -1,0 +1,28 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Government of British Columbia",
+    "website": "https://www2.gov.bc.ca/",
+    "logo": "https://www.google.com/s2/favicons?domain=gov.bc.ca&sz=256",
+    "country": "CA"
+  },
+  "wallets": [
+    {
+      "id": "bc-wallet",
+      "name": "BC Wallet",
+      "description": "BC Wallet is the official digital identity wallet of the Government of British Columbia. It allows residents to securely store and present government-issued credentials and access provincial digital services.",
+      "logo": "https://www.google.com/s2/favicons?domain=gov.bc.ca&sz=256",
+      "website": "https://www2.gov.bc.ca/gov/content/governments/government-id/bc-wallet",
+      "type": "personal",
+      "platforms": ["iOS", "Android"],
+      "openSource": true,
+      "repository": "https://github.com/bcgov/bc-wallet-mobile"
+      "status": "production",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/ca/app/bc-wallet/id1554510349",
+        "android": "https://play.google.com/store/apps/details?id=ca.bc.gov.wallet"
+      }
+    }
+  ],
+  "lastUpdated": "2026-01-12T00:00:00Z"
+}
