@@ -15,10 +15,6 @@
       "status": "development",
       "website": "https://digital.gob.es/especificaciones_tecnicas.html",
       "platforms": ["iOS", "Android"],
-      "presentationProtocols": ["OpenID4VP"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "credentialFormats": ["mDL/mDoc", "SD-JWT-VC"],
-      "interoperabilityProfiles": ["EUDI Wallet ARF"],
       "logo": "https://flagcdn.com/w80/es.png",
       "releaseDate": "2024-01-01"
     }
