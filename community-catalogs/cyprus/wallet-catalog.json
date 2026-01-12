@@ -11,7 +11,6 @@
       "name": "Digital Citizen",
       "description": "Cyprus's Digital Citizen mobile app launched December 12, 2024, following the broader Digital Citizen program initiative, enables citizens to securely store and present biometric identity cards, driving licenses, and vehicle roadworthiness certificates on smartphones using QR code verification technology for scanning and authenticating digital documents with citizen authorization, achieving over 10,000 downloads in initial rollout. The app requires users to have activated and verified CY Login profiles to access government systems and services along with two-factor authentication enabled, working alongside Cyprus's IDMe.cy digital ID system as the country fulfills eIDAS 2.0 requirements mandating EU member states to offer digital wallet options by 2026.",
       "type": "personal",
-      "openSource": true,
       "status": "production",
       "website": "https://www.digital-citizen.gov.cy/",
       "platforms": ["iOS", "Android"],
