@@ -13,7 +13,7 @@
       "type": "personal",
       "openSource": true,
       "repository": "https://github.com/a-sit-plus/valera"
-      "status": "production",
+      "status": "development",
       "website": "https://a-sit-plus.github.io/",
       "platforms": ["iOS", "Android"],
       "presentationProtocols": ["OpenID4VP"],
