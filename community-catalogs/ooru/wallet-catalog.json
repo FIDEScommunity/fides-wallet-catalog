@@ -1,0 +1,44 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Ooru",
+    "website": "https://ooru.io/",
+    "country": "IN",
+    "contact": {
+      "email": "info@oouru.io"
+    }
+  },
+  "wallets": [
+    {
+      "id": "credissuer",
+      "name": "CredIssuer",
+      "description": "CredIssuer is a digital credentialing platform that enables institutions and governments to issue tamper-proof, verifiable certificates in real time.",
+      "logo": "https://i0.wp.com/ooru.io/wp-content/uploads/2025/06/ooru-logo.f.png?w=1600&ssl=1",
+      "website": "https://ooru.io/products/credissuer-secure-verifiable-credentials/",
+      "type": "organizational",
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "mDL/mDoc",
+        "JSON-LD VC",
+        "CBOR-LD"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "appStoreLinks": {
+        "web": "CredIssuer is a digital credentialing platform that enables institutions and governments to issue tamper-proof, verifiable certificates in real time."
+      },
+      "status": "production",
+      "capabilities": [
+        "issuer"
+      ]
+    }
+  ],
+  "lastUpdated": "2026-01-12T13:26:42.805Z"
+}
