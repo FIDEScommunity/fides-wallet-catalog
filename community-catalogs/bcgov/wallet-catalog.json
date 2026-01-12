@@ -16,7 +16,7 @@
       "type": "personal",
       "platforms": ["iOS", "Android"],
       "openSource": true,
-      "repository": "https://github.com/bcgov/bc-wallet-mobile"
+      "repository": "https://github.com/bcgov/bc-wallet-mobile",
       "status": "production",
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/ca/app/bc-wallet/id1554510349",
