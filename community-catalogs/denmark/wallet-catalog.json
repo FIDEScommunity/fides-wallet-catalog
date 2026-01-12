@@ -11,7 +11,6 @@
       "name": "National EUDI Wallet (Denmark)",
       "description": "Denmark's National EUDI Wallet awarded to Nine (Trifork Group subsidiary) by the Danish Agency for Digital Government in a DKK 29 million Phase 1 contract encompasses development starting April 2025, Q1 2026 go-live, and two years of support and continued development. The Digital Identity Wallet will initially enable citizens to obtain digital proof of age and digital ID credentials usable both physically and online without sharing unnecessary personal information, building upon Denmark's existing MitID system that completed transition at the end of 2023. Subsequent project phases will expand functionality to include a wide range of digital credentials complying with EU eIDAS2 regulation requirements.",
       "type": "personal",
-      "openSource": true,
       "status": "development",
       "platforms": ["iOS", "Android"],
       "interoperabilityProfiles": ["EUDI Wallet ARF"],
