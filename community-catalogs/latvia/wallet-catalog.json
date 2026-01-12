@@ -14,9 +14,6 @@
       "openSource": true,
       "status": "development",
       "platforms": ["iOS", "Android"],
-      "presentationProtocols": ["OpenID4VP"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "credentialFormats": ["mDL/mDoc", "SD-JWT-VC"],
       "interoperabilityProfiles": ["EUDI Wallet ARF"],
       "logo": "https://flagcdn.com/w80/lv.png"
     }
