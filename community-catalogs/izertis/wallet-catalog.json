@@ -12,6 +12,7 @@
       "description": "Identfy is Spain's first open-source digital wallet solution developed by Izertis S.A. The solution features a two-wallet architecture (Holder Wallet mobile app and Organization Wallet for enterprises) enabling issuance, storage, and verification of verifiable credentials with Zero-Knowledge-Proof protocols for selective disclosure, biometric authentication, and DLT-based security, supporting use cases in healthcare, education, border control, and financial services across EU member states. Izertis actively participates in major EU digital identity projects including DC4EU consortium, EBSI-VECTOR project, and WE BUILD Large Scale Pilot.",
       "type": "personal",
       "openSource": true,
+      "repository": "https://github.com/izertis/identfy"
       "status": "production",
       "website": "https://www.izertis.com/en/-/caso-de-exito/identfy",
       "platforms": ["iOS", "Android"],
