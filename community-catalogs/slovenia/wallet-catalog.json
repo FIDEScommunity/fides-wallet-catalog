@@ -11,12 +11,8 @@
       "name": "National EUDI Wallet (Slovenia)",
       "description": "Slovenia develops national EUDI Wallet as one of thirteen EU countries (Denmark, Estonia, Finland, Germany, Greece, Iceland, Ireland, Latvia, Netherlands, Slovakia, Slovenia, Spain, Sweden) embarked on digital ID wallet development at various stages including development, beta testing, or pre-production, meeting December 2026 deadline for all 27 EU member states to ensure European Digital Identity Wallet availability to citizens following first implementing regulations published December 4, 2024, entering force 20 days later. The Slovenian wallet builds on existing smartcard ID infrastructure, mobile ID systems, and electronic certificates to support personal identification data, university diplomas, driver's licenses, electronic certificates and attestations of attributes with secure authentication, document storage, sharing capabilities, and digital signing, preparing for 2027 requirements when banks, telecom operators, and major online service providers must accept EUDI Wallet as valid authentication and identity verification across EU member states.",
       "type": "personal",
-      "openSource": true,
       "status": "development",
       "platforms": ["iOS", "Android"],
-      "presentationProtocols": ["OpenID4VP"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "credentialFormats": ["mDL/mDoc", "SD-JWT-VC"],
       "interoperabilityProfiles": ["EUDI Wallet ARF"],
       "logo": "https://flagcdn.com/w80/si.png"
     }
