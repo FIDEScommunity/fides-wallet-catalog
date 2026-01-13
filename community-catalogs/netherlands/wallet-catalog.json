@@ -8,8 +8,8 @@
   "wallets": [
     {
       "id": "national-eudi-wallet-netherlands",
-      "name": "National EUDI Wallet (Netherlands)",
-      "description": "Netherlands' public NL-wallet EUDI implementation developed by Ministry of Interior and Kingdom Relations (BZK) aims to offer inclusive and dependable digital solution prioritizing user-friendliness, accessibility, privacy, and security by late 2026, with various sectors preparing to accept wallets by 2027. The Dutch government creates nationwide version maintaining user control over data where citizens decide what information to keep, when to use it, and whom to share it with, preventing sharing more details than needed for services, building on existing DigiD national eID and eHerkenning business authentication schemes with several public service providers already testing wallet functionality in real-world scenarios, positioning Netherlands among EU countries advancing toward voluntary adoption of European Digital Identity Wallet framework ahead of December 2026 mandatory availability deadline.",
+      "name": "NL Wallet (Netherlands)",
+      "description": "Netherlands' public NL wallet EUDI implementation developed by Ministry of Interior and Kingdom Relations (BZK) aims to offer inclusive and dependable digital solution prioritizing user-friendliness, accessibility, privacy, and security by late 2026, with various sectors preparing to accept wallets by 2027. The Dutch government creates nationwide version maintaining user control over data where citizens decide what information to keep, when to use it, and whom to share it with, preventing sharing more details than needed for services, building on existing DigiD national eID and eHerkenning business authentication schemes with several public service providers already testing wallet functionality in real-world scenarios, positioning Netherlands among EU countries advancing toward voluntary adoption of European Digital Identity Wallet framework ahead of December 2026 mandatory availability deadline.",
       "type": "personal",
       "openSource": true,
       "repository": "https://github.com/MinBZK/nl-wallet",
