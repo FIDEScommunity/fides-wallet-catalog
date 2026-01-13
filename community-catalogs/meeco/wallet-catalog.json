@@ -21,8 +21,21 @@
       "presentationProtocols": ["OpenID4VP"],
       "openSource": false,
       "status": "production"
+    },
+    {
+      "id": "meeco-personal-wallet",
+      "name": "Meeco Wallet",
+      "description": "Personal digital wallet by Meeco for individuals to securely store, manage and share personal data and credentials.",
+      "logo": "https://www.google.com/s2/favicons?domain=meeco.me&sz=128",
+      "website": "https://www.meeco.me",
+      "type": "personal",
+      "platforms": ["iOS", "Android"],
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/pk/app/meeco-wallet/id1570355469"
+      },
+      "openSource": false,
+      "status": "production"
     }
   ],
   "lastUpdated": "2026-01-06T12:00:00Z"
 }
-
