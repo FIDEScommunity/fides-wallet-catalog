@@ -1,0 +1,26 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "2060.io",
+    "website": "https://2060.io",
+    "logo": "https://www.google.com/s2/favicons?domain=2060.io&sz=128",
+    "country": "EE"
+  },
+  "wallets": [
+    {
+      "id": "hologram-messaging",
+      "type": "personal",
+      "name": "Hologram Messaging",
+      "description": "Verifiable credential wallet and messaging app focused on privacy and self-custody. Users can collect and present verifiable credentials and communicate via authenticated messaging.",
+      "logo": "https://www.google.com/s2/favicons?domain=2060.io&sz=128",
+      "website": "https://2060.io",
+      "platforms": ["iOS", "Android"],
+      "openSource": true,
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/my/app/hologram-messaging/id6474701855",
+        "android": "https://play.google.com/store/apps/details?id=io.twentysixty.mobileagent.m"
+      },
+      "status": "production"
+    }
+  ]
+}
