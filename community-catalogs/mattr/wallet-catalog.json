@@ -25,8 +25,22 @@
       "openSource": false,
       "status": "production",
       "documentation": "https://learn.mattr.global"
+    },
+    {
+      "id": "mattr-go-hold",
+      "type": "personal",
+      "name": "MATTR Go | Hold",
+      "description": "Personal wallet by MATTR for storing and presenting verifiable credentials and self-sovereign identity artefacts.",
+      "logo": "https://www.google.com/s2/favicons?domain=mattr.global&sz=128",
+      "website": "https://mattr.global/products/go-hold",
+      "platforms": ["iOS", "Android"],
+      "openSource": false,
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/au/app/mattr-go-hold/id1518660243",
+        "android": "https://play.google.com/store/apps/details?id=io.mattrlabs.mattrgo"
+      },
+      "status": "production"
     }
   ],
   "lastUpdated": "2026-01-06T12:00:00Z"
 }
-
