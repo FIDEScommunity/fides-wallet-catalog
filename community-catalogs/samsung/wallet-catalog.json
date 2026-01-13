@@ -1,0 +1,25 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Samsung",
+    "website": "https://www.samsung.com/us/apps/samsung-wallet/",
+    "logo": "https://www.google.com/s2/favicons?domain=samsung.com&sz=128",
+    "country": "KR"
+  },
+  "wallets": [
+    {
+      "id": "samsung-wallet",
+      "type": "personal",
+      "name": "Samsung Wallet",
+      "description": "Samsung’s consumer wallet for Galaxy devices, combining Samsung Pay and Samsung Pass. Supports payments and storing items like cards, passes, and digital keys (features vary by country).",
+      "logo": "https://www.google.com/s2/favicons?domain=samsung.com&sz=128",
+      "website": "https://www.samsung.com/us/apps/samsung-wallet/",
+      "openSource": false,
+      "platforms": ["Android"],
+      "appStoreLinks": {
+        "android": "https://play.google.com/store/apps/details?id=com.samsung.android.spay"
+      },
+      "status": "production"
+    }
+  ]
+}
