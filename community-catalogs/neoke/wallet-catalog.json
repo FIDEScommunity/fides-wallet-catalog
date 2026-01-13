@@ -1,0 +1,26 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Neoke",
+    "website": "https://www.neoke.com/",
+    "logo": "https://www.google.com/s2/favicons?domain=neoke.com&sz=128",
+    "country": "NL"
+  },
+  "wallets": [
+    {
+      "id": "neoke-wallet",
+      "type": "personal",
+      "name": "Neoke",
+      "description": "Travel wallet for storing and securely sharing travel-related identity documents and preferences, designed to streamline trusted digital journeys.",
+      "logo": "https://www.google.com/s2/favicons?domain=neoke.com&sz=128",
+      "website": "https://www.neoke.com/platform/identity-wallets",
+      "platforms": ["iOS", "Android"],
+      "openSource": false,
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/au/app/neoke/id6462846673",
+        "android": "https://play.google.com/store/apps/details?id=neoke.cloud.wallet"
+      },
+      "status": "production"
+    }
+  ]
+}
