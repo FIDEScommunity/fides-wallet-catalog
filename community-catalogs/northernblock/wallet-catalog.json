@@ -21,8 +21,21 @@
       "presentationProtocols": ["OpenID4VP", "DIDComm Present Proof v2"],
       "openSource": false,
       "status": "production"
+    },
+    {
+      "id": "orbit-edge",
+      "type": "personal",
+      "name": "Orbit Edge",
+      "description": "Personal wallet by Northern Block for holding and presenting verifiable credentials, designed to work with the Orbit enterprise identity platform.",
+      "logo": "https://www.google.com/s2/favicons?domain=northernblock.io&sz=128",
+      "website": "https://northernblock.io",
+      "platforms": ["iOS", "Android"],
+      "openSource": false,
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/au/app/orbit-edge/id1508037063"
+      },
+      "status": "production"
     }
   ],
   "lastUpdated": "2026-01-06T12:00:00Z"
 }
-
