@@ -1,7 +1,7 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
   "provider": {
-    "name": "European Commission (DG CONNECT)",
+    "name": "European Commission - Government",
     "website": "https://github.com/eu-digital-identity-wallet",
     "logo": "https://www.google.com/s2/favicons?domain=ec.europa.eu&sz=128",
     "country": "BE"
