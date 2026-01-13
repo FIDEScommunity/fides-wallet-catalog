@@ -1,0 +1,28 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "TNO",
+    "website": "https://tsg.dataspac.es/",
+    "logo": "https://www.google.com/s2/favicons?domain=tno.nl&sz=128",
+    "country": "NL"
+    }
+  },
+  "wallets": [
+    {
+      "id": "tsg-mobile-wallet",
+      "type": "personal",
+      "name": "TSG Mobile Wallet",
+      "description": "Personal SSI wallet for receiving, storing and presenting Verifiable Credentials within the TNO Security Gateway (TSG) ecosystem. Supports OpenID4VCI for issuance and OpenID4VP for presentations.",
+      "logo": "https://www.google.com/s2/favicons?domain=tsg.dataspac.es&sz=128",
+      "website": "https://tsg.dataspac.es/docs/apps/wallet/",
+      "platforms": ["iOS"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/pk/app/tsg-mobile-wallet/id6741323068"
+      },
+      "status": "beta",
+      "releaseDate": "2025-06-06"
+    }
+  ]
+}
