@@ -1,0 +1,27 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "IXO World AG",
+    "website": "https://www.ixo.world/",
+    "logo": "https://www.google.com/s2/favicons?domain=ixo.world&sz=128",
+    "country": "CH"
+  },
+  "wallets": [
+    {
+      "id": "ixo-portal",
+      "type": "personal",
+      "name": "IXO Portal",
+      "description": "Personal wallet by IXO for self-sovereign identity and managing verifiable claims/credentials within the IXO ecosystem.",
+      "logo": "https://www.google.com/s2/favicons?domain=ixo.world&sz=128",
+      "website": "https://mobile.ixo.world/",
+      "platforms": ["iOS", "Android"],
+      "credentialFormats": ["JSON-LD VC"],
+      "openSource": false,
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/au/app/ixo-portal/id6444948058",
+        "android": "https://play.google.com/store/apps/details?id=com.ixo.mobile"
+      },
+      "status": "production"
+    }
+  ]
+}
