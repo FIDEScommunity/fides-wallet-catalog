@@ -9,6 +9,7 @@
   "wallets": [
     {
       "id": "eudi-reference-personal-wallet",
+      "type": "personal",
       "name": "EUDI Wallet Reference Implementation",
       "description": "Android and iOS reference wallet application for the EU Digital Identity Wallet (EUDI). Built on the Architecture Reference Framework (ARF). Supports issuing (OpenID4VCI), remote presentation (OpenID4VP + DCQL), and proximity presentation (ISO/IEC 18013-5 / mDoc). Intended as a technical reference and demo; not a production wallet.",
       "logo": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
@@ -18,17 +19,8 @@
       "platforms": ["iOS", "Android"]
     },
     {
-      "id": "eudi-reference-issuer-pid",
-      "name": "EUDI PID Issuer (Reference)",
-      "description": "Reference credential issuing service implementing OpenID for Verifiable Credential Issuance (OpenID4VCI v1.0). Provides example issuance for PID and other attestations, with support for both mso_mdoc and SD-JWT-VC formats (examples include PID, mDL, EHIC, and Learning Credential). Intended for development/testing and reference purposes.",
-      "logo": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
-      "website": "https://github.com/eu-digital-identity-wallet/eudi-srv-pid-issuer",
-      "openSource": true,
-      "repository": "https://github.com/eu-digital-identity-wallet/eudi-srv-pid-issuer",
-      "platforms": ["Web"]
-    },
-    {
       "id": "eudi-reference-issuer",
+      "type": "organizational",
       "name": "EUDIW Reference Issuer",
       "description": "Reference/demo web issuing service for the EUDI Wallet ecosystem (EUDIW Issuer). Intended to support development and testing of OpenID4VCI issuance flows alongside the reference wallet.",
       "logo": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
@@ -39,6 +31,7 @@
     },
     {
       "id": "eudi-reference-verifier",
+      "type": "organizational",
       "name": "EUDI Reference Verifier",
       "description": "Reference verifier/relying party backend implementing OpenID4VP (1.0). Acts as a trusted verifier endpoint and provides APIs for initializing transactions and receiving wallet responses. Intended as a development/reference tool, not a production-ready verifier service.",
       "logo": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
