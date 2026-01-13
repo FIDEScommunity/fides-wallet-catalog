@@ -1,0 +1,26 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Bhutan Government",
+    "website": "https://bhutanndi.com/",
+    "logo": "https://www.google.com/s2/favicons?domain=bhutanndi.com&sz=128",
+    "country": "BT"
+  },
+  "wallets": [
+    {
+      "id": "bhutan-ndi-mobile-wallet",
+      "type": "personal",
+      "name": "Bhutan NDI Mobile Wallet",
+      "description": "Official mobile wallet for Bhutan’s National Digital Identity (NDI) program, enabling citizens to hold and present digital identity credentials securely.",
+      "logo": "https://www.google.com/s2/favicons?domain=bhutanndi.com&sz=128",
+      "website": "https://bhutanndi.com/",
+      "platforms": ["iOS", "Android"],
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/gb/app/bhutan-ndi/id1645493166",
+        "android": "https://play.google.com/store/apps/details?id=com.bhutanndi"
+      },
+      "openSource": false,
+      "status": "production"
+    }
+  ]
+}
