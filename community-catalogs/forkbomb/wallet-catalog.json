@@ -22,8 +22,21 @@
       "openSource": true,
       "license": "AGPL-3.0",
       "status": "production"
+    },
+    {
+      "id": "didroom-wallet",
+      "type": "personal",
+      "name": "DIDroom Wallet",
+      "description": "Personal wallet by Forkbomb for holding and presenting verifiable credentials, designed to work with the DIDroom decentralized identity platform.",
+      "logo": "https://www.google.com/s2/favicons?domain=forkbomb.solutions&sz=128",
+      "website": "https://forkbomb.solutions",
+      "platforms": ["iOS", "Android"],
+      "openSource": true,
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/au/app/didroom-wallet/id6670396049"
+      },
+      "status": "production"
     }
   ],
   "lastUpdated": "2026-01-06T12:00:00Z"
 }
-
