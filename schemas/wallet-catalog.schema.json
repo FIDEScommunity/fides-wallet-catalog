@@ -231,7 +231,8 @@
             "enum": [
               "DIIP v4",
               "EWC v3",
-              "EUDI Wallet ARF"
+              "EUDI Wallet ARF",
+              "HAIP v1"
             ]
           }
         },

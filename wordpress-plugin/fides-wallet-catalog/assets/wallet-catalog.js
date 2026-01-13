@@ -584,6 +584,10 @@
                   <input type="checkbox" data-filter="interoperabilityProfiles" data-value="EWC v3" ${filters.interoperabilityProfiles.includes('EWC v3') ? 'checked' : ''}>
                   <span>EWC v3</span>
                 </label>
+                <label class="fides-filter-checkbox">
+                  <input type="checkbox" data-filter="interoperabilityProfiles" data-value="HAIP v1" ${filters.interoperabilityProfiles.includes('HAIP v1') ? 'checked' : ''}>
+                  <span>HAIP v1</span>
+                </label>
               </div>
             </div>
             <div class="fides-filter-group collapsible ${!filterGroupState.credentialFormats ? 'collapsed' : ''} ${filters.credentialFormats.length > 0 ? 'has-active' : ''}" data-filter-group="credentialFormats">
