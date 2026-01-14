@@ -3,44 +3,65 @@
   "provider": {
     "name": "Hovi",
     "website": "https://www.hovi.id/",
-    "logo": "https://www.google.com/s2/favicons?domain=hovi.id&sz=128",
-    "country": "FI"
+    "logo": "https://cdn.prod.website-files.com/659dad70ef0ae858f66ae208/6966ba7d3a1f6bb1adf4a924_hovi-logo-white.png",
+    "country": "FI",
+    "contact": {
+      "email": "contact@hovi.id"
+    }
   },
   "wallets": [
     {
-      "id": "hovi-id",
-      "name": "Hovi ID",
-      "description": "Hovi is a Finnish digital identity infrastructure platform founded in 2023 that enables businesses to issue, verify, and manage verifiable credentials at scale. The platform offers Business Wallet API, Cloud Wallet API, Studio (no-code platform), Mobile Wallet, and SDKs supporting multiple programming languages, with compliance for eIDAS 2.0 and integration with EU Digital Identity Wallets across 27+ EU member states. While Hovi itself is not an eIDAS-notified identification scheme, it serves as a technology provider helping businesses integrate with eIDAS-compliant digital identity solutions using self-sovereign identity (SSI) principles and supports SD-JWT and ISO mDoc formats with OpenID4VCI and OpenID4VP protocols.",
-      "logo": "https://www.google.com/s2/favicons?domain=hovi.id&sz=128",
+      "id": "hovi-wallet",
+      "name": "Hovi Wallet",
+      "description": "Hovi Wallet is a privacy preserving digital identity wallet that supports W3C Verifiable Credentials and decentralized identifiers (DIDs) for secure issuance, storage, and presentation of credentials. It enables selective disclosure and zero knowledge proof based verification, allowing relying parties to validate claims without accessing raw personal data. The wallet uses cryptographic key management on device, supports standards aligned with EUDI wallet requirements, and interoperates with cross border trust frameworks. Credentials are presented using secure, standards based protocols, ensuring integrity, authenticity, and user controlled consent across authentication and authorization flows.",
+      "logo": "https://cdn.prod.website-files.com/659dad70ef0ae858f66ae208/6966ba7d633e575933328227_hovi-app-icon.png",
       "website": "https://www.hovi.id/wallet",
       "type": "personal",
       "platforms": ["iOS", "Android"],
       "openSource": false,
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "mDL/mDoc", "JSON-LD VC"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "mDL/mDoc", "JSON-LD VC", "AnonCreds"],
+      "issuanceProtocols": ["OpenID4VCI", "DIDComm Issue Credential v2"],
+      "presentationProtocols": ["OpenID4VP", "DIDComm Present Proof v2", "SIOPv2"],
+      "supportedIdentifiers": ["did:key", "did:peer", "did:indy", "did:cheqd", "did:jwk", "x509"],
+      "credentialStatusMethods": ["IETF Token Status List","StatusList2021"],
+      "keyStorage": ["Secure Enclave (iOS)", "StrongBox (Android)", "Software"],
+      "signingAlgorithms": ["ES256", "EdDSA"],
+      "features": [
+        "Multi-language support",
+        "Biometric authentication",
+        "Privacy-preserving selective disclosure",
+        "Credential backup",
+        "Wallet recovery"
+      ],
+      "documentation": "https://docs.hovi.id",
       "appStoreLinks": {
-        "iOS": "https://apps.apple.com/app/hovi-wallet/id6478072406",
-        "android": "https://play.google.com/store/apps/details?id=com.hovi.wallet"
+        "iOS": "https://apps.apple.com/us/app/hovi-wallet/id6736700908",
+        "android": "https://play.google.com/store/apps/details?id=droidwallet.hovi.id&hl=en"
       },
       "status": "production",
-      "releaseDate": "2023-01-01"
+      "releaseDate": "2024-10-01"
     },
     {
       "id": "hovi-business-wallet",
       "name": "Hovi Business Wallet",
-      "description": "Issue credentials, verify users, and stay compliant in one flow. Replace outdated ID checks with secure, privacy-first identity built for today’s digital world.",
-      "logo": "https://www.google.com/s2/favicons?domain=hovi.id&sz=128",
-      "website": "https://www.hovi.id/",
+      "description": "Hovi Business Wallet is an enterprise grade organizational wallet designed for issuing, holding, and verifying verifiable credentials at scale. It enables businesses to manage decentralized identifiers, cryptographic keys, and credential lifecycles for employees, partners, devices, and automated agents. The wallet supports W3C Verifiable Credentials, policy based verification, selective disclosure, and zero knowledge proof flows, and integrates via APIs and webhooks into existing identity, compliance, and business systems. Built to align with eIDAS 2.0 and EUDI wallet ecosystems, Hovi Business Wallet provides auditable, secure, and interoperable digital trust infrastructure for cross border and regulated use cases.",
+      "logo": "https://cdn.prod.website-files.com/659dad70ef0ae858f66ae208/6966ba7db9a130a7b508f415_hovi-logo-color.png",
+      "website": "https://www.hovi.id/api",
+      "capabilities": ["holder", "issuer", "verifier"],
       "type": "organizational",
       "platforms": ["Web"],
       "openSource": false,
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "mDL/mDoc", "JSON-LD VC"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "mDL/mDoc", "JSON-LD VC", "AnonCreds"],
+      "supportedIdentifiers": ["did:key", "did:peer", "did:indy", "did:cheqd", "did:web", "did:polygon", "did:jwk", "x509"],
+      "credentialStatusMethods": ["IETF Token Status List"],
+      "keyStorage": ["Cloud KMS"],
+      "issuanceProtocols": ["OpenID4VCI", "DIDComm Issue Credential v2"],
+      "presentationProtocols": ["OpenID4VP", "DIDComm Present Proof v2"],
+      "standards": ["EUDI ARF", "W3C Verifiable Credentials", "OpenID for Verifiable Credentials"],
+      "documentation": "https://docs.hovi.id/api",
       "status": "production",
-      "releaseDate": "2023-01-01"
+      "releaseDate": "2024-10-01"
     }
   ],
-  "lastUpdated": "2026-01-07T12:00:00Z"
+  "lastUpdated": "2026-01-13T12:00:00Z"
 }
