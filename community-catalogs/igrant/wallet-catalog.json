@@ -30,7 +30,7 @@
       "signingAlgorithms": ["ES256", "EdDSA"],
       "credentialStatusMethods": ["IETF Token Status List", "W3C Verifiable Credentials Status List v2021"],
       "certifications": [],
-      "interoperabilityProfiles": ["DIIP v4", "EWC v3"],
+      "interoperabilityProfiles": ["DIIP v4", "EWC v3", "HAIP v1", "EUDI Wallet ARF"],
       "standards": ["ARF 2.7.3", "W3C Verifiable Credentials", "OpenID for Verifiable Credentials", "HAIP v1"],
       "features": [
         "Strong Customer Authentication",
@@ -67,7 +67,7 @@
       "signingAlgorithms": ["ES256", "EdDSA"],
       "credentialStatusMethods": ["IETF Token Status List", "W3C Verifiable Credentials Status List v2021"],
       "certifications": [],
-      "interoperabilityProfiles": ["DIIP v4", "EWC v3"],
+      "interoperabilityProfiles": ["DIIP v4", "EWC v3", "HAIP v1", "EUDI Wallet ARF"],
       "standards": ["ARF 2.7.3", "W3C Verifiable Credentials", "OpenID for Verifiable Credentials", "HAIP v1"],
       "features": [
         "Strong Customer Authentication",
