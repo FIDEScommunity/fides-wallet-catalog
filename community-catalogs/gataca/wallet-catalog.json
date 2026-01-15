@@ -4,31 +4,92 @@
     "name": "Gataca Labs",
     "website": "https://gataca.io",
     "logo": "https://www.google.com/s2/favicons?domain=gataca.io&sz=128",
-    "country": "ES"
+    "country": "ES",
+    "contact": {
+      "email": "samuel@gataca.io"
+    }
   },
   "wallets": [
     {
       "id": "gataca-wallet",
-      "name": "Gataca Digital Identity Wallet",
-      "logo": "https://www.google.com/s2/favicons?domain=gataca.io&sz=128",
-      "description": "A privacy-first digital identity wallet supporting verifiable credentials and self-sovereign identity with DIIP v4 compliance.",
+      "name": "Gataca Wallet",
+      "logo": "https://media-gataca.s3.eu-west-1.amazonaws.com/logo_48x48_6195afe3cb.png",
+      "description": "Gataca Wallet is a mobile digital identity wallet enabling users to securely store and share reusable digital credentials—such as national IDs, proof of age, or diplomas—to easily authenticate in digital services. These credentials are digitized according to open standards (W3C Verifiable Credentials and ISO/IEC 18013-5), cryptographically signed by authorities, and protected with biometrics and strong encryption, to ensure authenticity and that the user remains in complete control of their data. Gataca Wallet complies with European regulations, including eIDAS 2.0, and has successfully passed EBSI Wallet Conformance Tests. It is available on both iOS and Android.",
       "type": "personal",
       "platforms": ["iOS", "Android"],
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC"],
-      "protocols": {
-        "issuance": ["OpenID4VCI"],
-        "presentation": ["OpenID4VP"]
-      },
-      "interoperabilityProfiles": ["DIIP v4"],
-      "website": "https://gataca.io",
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC", "mDL/mDoc"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP", "SIOPv2", "ISO 18013-5"],
+      "supportedIdentifiers": ["did:gatc", "did:key", "did:web", "did:jwk", "x509", "did:ebsi"],
+      "keyStorage": ["Secure Enclave (iOS)", "StrongBox (Android)", "Software"],
+      "signingAlgorithms": ["ES256", "ES512", "EdDSA", "RS256", "PS256"],
+      "credentialStatusMethods": ["IETF Token Status List", "W3C Verifiable Credentials Status List v2021", "RevocationList2020"],
+      "interoperabilityProfiles": ["DIIP v4", "EUDI Wallet ARF"],
+      "standards": ["W3C Verifiable Credentials", "mDL ISO 18013-5", "EBSI", "HAIP v1"],
+      "features": [
+        "Secure device-side storage of credentials",
+        "Selective disclosure (SD-JWT) of credential attributes",
+        "Support for NFC",
+        "Compliance with eIDAS 2.0 and EUDI Wallet reference architecture",
+        "Strong cryptography and biometrics",
+        "Age verification flows",
+        "Multi-identity profile support",
+        "Backup and recovery",
+        "Consent manager",
+        "Selective disclosure"
+      ],
+      "website": "https://gataca.io/products/wallet",
+      "documentation": "https://docs.gataca.io",
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/app/gataca/id1498607616",
         "android": "https://play.google.com/store/apps/details?id=com.gataca.identity"
       },
       "openSource": false,
       "status": "production"
+    },
+    {
+      "id": "gataca-studio",
+      "name": "Gataca Studio",
+      "description": "Gataca Studio is a cloud-based digital identity platform enabling organizations to interact with ID wallets. From an intuitive dashboard, companies can manage credential issuance and verification to support simple, private, and compliant identity verification and authentication across digital services. Gataca Studio currently works with the Gataca Wallet and other ID wallets aligned with the EU Digital Identity Wallet and European Business Wallet requirements. Built on open standards, the platform supports multiple trust frameworks and integrates easily with existing systems through open APIs without dependence on a specific infrastructure.",
+      "logo": "https://media-gataca.s3.eu-west-1.amazonaws.com/logo_48x48_6195afe3cb.png",
+      "website": "https://gataca.io/products/gataca-studio",
+      "type": "organizational",
+      "capabilities": ["holder", "issuer", "verifier"],
+      "platforms": ["Web"],
+      "openSource": false,
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC", "mDL/mDoc"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP", "SIOPv2"],
+      "supportedIdentifiers": ["did:gatc", "did:key", "did:web", "did:jwk", "x509", "did:ebsi"],
+      "keyStorage": ["HSM", "Cloud KMS"],
+      "signingAlgorithms": ["ES256", "ES512", "EdDSA", "RS256", "PS256"],
+      "credentialStatusMethods": ["IETF Token Status List", "W3C Verifiable Credentials Status List v2021", "RevocationList2020"],
+      "certifications": [],
+      "interoperabilityProfiles": ["DIIP v4", "EUDI Wallet ARF"],
+      "standards": ["W3C Verifiable Credentials", "mDL ISO 18013-5", "EBSI", "HAIP v1"],
+      "features": [
+        "Insights dashboard",
+        "Adaptive verification",
+        "Open badges issuance",
+        "SSO platform",
+        "Fraud prevention",
+        "Role-based access control",
+        "Multi-tenant support",
+        "Dashboard and open APIs",
+        "Credential issuance and verification",
+        "GDPR & Consent Handling",
+        "Selective Disclosure",
+        "Audit trail",
+        "Infrastructure-agnostic deployment",
+        "Template-based credential issuance",
+        "Automated verification workflows",
+        "Webhook integrations",
+        "Compliance reporting"
+      ],
+      "documentation": "https://docs.gataca.io/studio/platform-tutorials/gataca-studio-overview",
+      "status": "production"
     }
   ],
-  "lastUpdated": "2025-01-06T12:00:00Z"
+  "lastUpdated": "2026-01-15T12:00:00Z"
 }
 
