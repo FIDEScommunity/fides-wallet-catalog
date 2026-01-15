@@ -18,7 +18,7 @@
       "issuanceProtocols": ["OpenID4VCI"],
       "presentationProtocols": ["OpenID4VP"],
       "interoperabilityProfiles": ["DIIP v4"],
-      "website": "https://impierce.com/unime",
+      "website": "https://www.impierce.com/product/unime",
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/app/unime-identity-wallet/id6451394321",
         "android": "https://play.google.com/store/apps/details?id=com.impierce.identity_wallet"
@@ -27,16 +27,16 @@
     },
     {
       "id": "impierce-unitrust",
-      "name": "Impierce UniTrust",
+      "name": "UniTrust",
       "logo": "https://www.google.com/s2/favicons?domain=impierce.com&sz=128",
-      "description": "An open-source organizational identity agent providing complete holder, issuer, and verifier capabilities built on the UniCore framework.",
+      "description": "Digital Identity trust Platform with holder, issuer and verifier capabilities,  built on an open-source core and the option to self-host.",
       "type": "organizational",
       "capabilities": ["holder", "issuer", "verifier"],
       "platforms": ["Web"],
       "credentialFormats": ["SD-JWT-VC","JSON-LD VC","JWT-VC"],
       "issuanceProtocols": ["OpenID4VCI"],
       "presentationProtocols": ["OpenID4VP"],
-      "website": "https://impierce.com",
+      "website": "https://www.impierce.com/product/unitrust",
       "license": "Apache-2.0",
       "repository": "https://github.com/impierce/ssi-agent",
       "status": "production"
