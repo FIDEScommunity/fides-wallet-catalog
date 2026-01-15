@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 1.7.8
+Stable tag: 1.8.0
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -86,6 +86,11 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 
 == Changelog ==
 
+= 1.8.0 =
+* Added deep link support: wallets can now be opened directly via URL parameter (e.g., `?wallet=sphereon-wallet`)
+* Enables linking from RP Catalog to specific wallets
+* Minor code optimizations
+
 = 1.7.8 =
 * Updated credential format filters (Apple Wallet Pass, Google Wallet Pass)
 * Improved mobile search functionality
@@ -106,6 +111,9 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 * Responsive grid layout
 
 == Upgrade Notice ==
+
+= 1.8.0 =
+Added deep link support for wallet URLs. Enables integration with RP Catalog.
 
 = 1.7.8 =
 Enhanced UI/UX and support for new credential formats. Recommended update.

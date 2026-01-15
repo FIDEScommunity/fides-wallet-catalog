@@ -211,6 +211,31 @@
     }
 
     render();
+    
+    // Check for deep link after render
+    checkDeepLink();
+  }
+
+  /**
+   * Check URL for wallet deep link parameter
+   * Supports: ?wallet=wallet-id or #wallet-id
+   */
+  function checkDeepLink() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const walletId = urlParams.get('wallet') || window.location.hash.replace('#', '');
+    
+    if (walletId) {
+      const wallet = wallets.find(w => w.id === walletId);
+      if (wallet) {
+        console.log(`🔗 Deep link found: opening wallet "${wallet.name}"`);
+        // Small delay to ensure DOM is fully ready
+        setTimeout(() => {
+          openWalletDetail(walletId);
+        }, 150);
+      } else {
+        console.warn(`Deep link wallet not found: ${walletId}`);
+      }
+    }
   }
 
   /**
