@@ -3,7 +3,7 @@
   "provider": {
     "name": "Credenco",
     "website": "https://www.credenco.com",
-    "logo": "https://www.google.com/s2/favicons?domain=credenco.com&sz=128",
+    "logo": "https://wallet.acc.credenco.com/logo_white_background.png",
     "country": "NL"
   },
   "wallets": [
@@ -11,7 +11,7 @@
       "id": "credenco-business-wallet",
       "name": "Credenco Business Wallet",
       "description": "A DIIP v4 compliant organizational wallet platform providing full holder, issuer, and verifier capabilities for enterprise digital identity management.",
-      "logo": "https://www.google.com/s2/favicons?domain=credenco.com&sz=128",
+      "logo": "https://wallet.acc.credenco.com/logo_white_background.png",
       "website": "https://www.credenco.com",
       "type": "organizational",
       "capabilities": ["holder", "issuer", "verifier"],
@@ -27,4 +27,3 @@
   ],
   "lastUpdated": "2026-01-06T12:00:00Z"
 }
-
