@@ -14,7 +14,7 @@
       "description": "A data ownership wallet supporting DIIP v4 and EWC v3 interoperability profiles, enabling secure management of personal data and verifiable credentials.",
       "type": "personal",
       "platforms": ["iOS", "Android"],
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
+      "credentialFormats": ["SD-JWT-VC", "JSON-LD VC", "mDL/mDoc"],
       "protocols": {
         "issuance": ["OpenID4VCI"],
         "presentation": ["OpenID4VP"]
@@ -27,8 +27,24 @@
       },
       "openSource": false,
       "status": "production"
+    },
+    {
+      "id": "yourd-business-wallet",
+      "name": "YourData Business Wallet",
+      "logo": "https://www.google.com/s2/favicons?domain=yourd.xyz&sz=128",
+      "description": "An organizational wallet for companies to issue, hold, and verify verifiable credentials, supporting DIIP v4 and EWC v3 interoperability profiles.",
+      "type": "organizational",
+      "platforms": ["Web"],
+      "credentialFormats": ["SD-JWT-VC", "JSON-LD VC", "mDL/mDoc"],
+      "protocols": {
+        "issuance": ["OpenID4VCI"],
+        "presentation": ["OpenID4VP"]
+      },
+      "interoperabilityProfiles": ["DIIP v4", "EWC v3"],
+      "website": "https://yourd.xyz",
+      "openSource": false,
+      "status": "production"
     }
   ],
   "lastUpdated": "2025-01-06T12:00:00Z"
 }
-
