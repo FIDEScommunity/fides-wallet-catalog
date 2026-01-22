@@ -61,7 +61,7 @@ Quick reference for wallet providers to see which fields accept fixed values (en
 
 | Field | Type | Valid Values |
 |-------|------|--------------|
-| `credentialFormats` | 🔒 | `SD-JWT`, `SD-JWT-VC`, `mDL/mDoc`, `AnonCreds`, `JWT-VC`, `JSON-LD VC`, `Apple Wallet Pass`, `Google Wallet Pass`, `X.509`, `CBOR-LD` |
+| `credentialFormats` | 🔒 | `SD-JWT`, `SD-JWT-VC`, `mDL/mDoc`, `AnonCreds`, `Idemix`, `JWT-VC`, `JSON-LD VC`, `Apple Wallet Pass`, `Google Wallet Pass`, `X.509`, `CBOR-LD` |
 | `issuanceProtocols` | 🔒 | `OpenID4VCI`, `DIDComm Issue Credential v1`, `DIDComm Issue Credential v2`, `ISO 18013-5 (Device Retrieval)` |
 | `presentationProtocols` | 🔒 | `OpenID4VP`, `DIDComm Present Proof v1`, `DIDComm Present Proof v2`, `ISO 18013-5`, `SIOPv2` |
 | `interoperabilityProfiles` | 🔒 | `DIIP v4`, `EWC v3`, `EUDI Wallet ARF`, `HAIP v1` |

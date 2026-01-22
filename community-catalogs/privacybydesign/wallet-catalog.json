@@ -14,7 +14,7 @@
       "description": "An open-source privacy-friendly identity wallet (formerly IRMA) developed by the Privacy by Design Foundation, enabling attribute-based credentials with selective disclosure.",
       "type": "personal",
       "platforms": ["iOS", "Android"],
-      "credentialFormats": ["AnonCreds"],
+      "credentialFormats": ["Idemix"],
       "protocols": {
         "presentation": ["IRMA Protocol"]
       },
@@ -28,6 +28,6 @@
       "status": "production"
     }
   ],
-  "lastUpdated": "2025-01-06T12:00:00Z"
+  "lastUpdated": "2026-01-22T12:00:00Z"
 }
 
