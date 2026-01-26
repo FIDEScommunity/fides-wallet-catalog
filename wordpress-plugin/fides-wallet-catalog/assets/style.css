@@ -706,14 +706,14 @@
   .fides-sidebar {
     display: none;
     position: fixed;
-    top: 0;
+    top: 100px;
     left: 0;
     right: 0;
     bottom: 0;
     width: 100%;
-    max-height: 100vh;
+    max-height: calc(100vh - 100px);
     border-radius: 0;
-    z-index: 999998;
+    z-index: 9999999;
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(4px);
     padding: 1rem;
@@ -741,7 +741,7 @@
     border-radius: 0 0 var(--fides-radius) var(--fides-radius);
     max-width: 320px;
     width: 100%;
-    max-height: calc(100vh - 120px);
+    max-height: calc(100vh - 220px);
     overflow-y: auto;
     border: 1px solid var(--fides-border);
     border-top: none;
