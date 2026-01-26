@@ -1204,6 +1204,8 @@
 .fides-modal-badges {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
   gap: 0.5rem;
   margin-bottom: 1.25rem;
 }
