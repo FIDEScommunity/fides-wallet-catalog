@@ -608,6 +608,10 @@
                   <span>DIIP v4</span>
                 </label>
                 <label class="fides-filter-checkbox">
+                  <input type="checkbox" data-filter="interoperabilityProfiles" data-value="DIIP v5" ${filters.interoperabilityProfiles.includes('DIIP v5') ? 'checked' : ''}>
+                  <span>DIIP v5</span>
+                </label>
+                <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="interoperabilityProfiles" data-value="EWC v3" ${filters.interoperabilityProfiles.includes('EWC v3') ? 'checked' : ''}>
                   <span>EWC v3</span>
                 </label>

@@ -236,6 +236,7 @@
             "type": "string",
             "enum": [
               "DIIP v4",
+              "DIIP v5",
               "EWC v3",
               "EUDI Wallet ARF",
               "HAIP v1"

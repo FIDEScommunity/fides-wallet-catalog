@@ -39,7 +39,7 @@ export type KeyStorage =
 
 export type WalletCapability = 'holder' | 'issuer' | 'verifier';
 
-export type InteroperabilityProfile = 'DIIP v4' | 'EWC v3' | 'EUDI Wallet ARF';
+export type InteroperabilityProfile = 'DIIP v4' | 'DIIP v5' | 'EWC v3' | 'EUDI Wallet ARF' | 'HAIP v1';
 
 export interface WalletProvider {
   name: string;
