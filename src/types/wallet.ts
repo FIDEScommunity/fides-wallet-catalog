@@ -59,6 +59,7 @@ export interface Wallet {
   description?: string;
   logo?: string;
   website?: string;
+  video?: string;
   type: WalletType;
   capabilities?: WalletCapability[]; // For organizational wallets: holder, issuer, verifier
   platforms?: Platform[];

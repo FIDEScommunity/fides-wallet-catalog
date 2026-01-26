@@ -39,6 +39,7 @@ Quick reference for wallet providers to see which fields accept fixed values (en
 | `description` | | 📝 | Any text |
 | `logo` | | 🔗 | URL |
 | `website` | | 🔗 | URL |
+| `video` | | 🔗 | URL to demo or promotional video |
 | `openSource` | | | `true`, `false` |
 | `license` | | 📝 | SPDX format recommended (`MIT`, `Apache-2.0`, `GPL-3.0`, `EUPL-1.2`) |
 | `repository` | | 🔗 | URL |
@@ -149,6 +150,7 @@ Quick reference for wallet providers to see which fields accept fixed values (en
       "type": "personal",
       "logo": "https://example.com/wallet-logo.png",
       "website": "https://example.com/wallet",
+      "video": "https://www.youtube.com/watch?v=example",
       "platforms": ["iOS", "Android"],
       "openSource": true,
       "license": "Apache-2.0",

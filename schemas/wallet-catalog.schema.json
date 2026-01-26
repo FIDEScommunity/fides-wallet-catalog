@@ -101,6 +101,11 @@
           "format": "uri",
           "description": "Landing page or website for the wallet"
         },
+        "video": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to a demo or promotional video showcasing the wallet"
+        },
         "type": {
           "type": "string",
           "enum": ["personal", "organizational"],
