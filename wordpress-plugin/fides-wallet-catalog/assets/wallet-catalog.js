@@ -1191,6 +1191,9 @@
               </div>
             ` : ''}
 
+            <!-- Video embed (if available) -->
+            ${wallet.video ? getVideoEmbedHtml(wallet.video) : ''}
+
             <!-- Quick info grid -->
             <div class="fides-modal-grid">
               <!-- Platforms (with app store links) -->
@@ -1327,11 +1330,6 @@
                   ${icons.externalLink} Visit Website
                 </a>
               ` : ''}
-              ${wallet.video ? `
-                <a href="${escapeHtml(wallet.video)}" target="_blank" rel="noopener" class="fides-modal-link primary">
-                  ${icons.play} Watch Video
-                </a>
-              ` : ''}
               ${wallet.openSource && wallet.repository ? `
                 <a href="${escapeHtml(wallet.repository)}" target="_blank" rel="noopener" class="fides-modal-link">
                   ${icons.github} View Repository
@@ -1439,6 +1437,10 @@
     const wallet = wallets.find(w => w.id === walletId);
     if (wallet) {
       selectedWallet = wallet;
+      
+      // Track modal open in Matomo
+      trackMatomoEvent('Wallet Catalog', 'Modal Open', wallet.name);
+      
       renderModal(wallet);
     }
   }
@@ -1630,6 +1632,160 @@
     const div = document.createElement('div');
     div.textContent = str;
     return div.innerHTML;
+  }
+
+  /**
+   * ============================================================================
+   * VIDEO HELPER FUNCTIONS
+   * ============================================================================
+   * 
+   * IMPORTANT - CODE DUPLICATION WARNING:
+   * These functions are duplicated between:
+   * - wordpress-plugin/fides-rp-catalog/assets/rp-catalog.js
+   * - wordpress-plugin/fides-wallet-catalog/assets/wallet-catalog.js
+   * 
+   * When making changes (adding providers, fixing bugs), UPDATE BOTH FILES!
+   * ============================================================================
+   */
+
+  /**
+   * Video provider configuration
+   * Add new providers here - automatically supported in all functions
+   */
+  const VIDEO_PROVIDERS = [
+    {
+      name: 'youtube',
+      patterns: [
+        /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\?\/]+)/,
+        /youtube\.com\/embed\/([^&\?\/]+)/
+      ],
+      embedUrl: (videoId) => `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1`,
+      privacy: 'Uses youtube-nocookie.com for GDPR compliance'
+    },
+    {
+      name: 'vimeo',
+      patterns: [
+        /vimeo\.com\/(\d+)/,
+        /player\.vimeo\.com\/video\/(\d+)/
+      ],
+      embedUrl: (videoId) => `https://player.vimeo.com/video/${videoId}`,
+      privacy: 'Privacy-friendly by default'
+    }
+    // To add Loom support in the future, uncomment:
+    // {
+    //   name: 'loom',
+    //   patterns: [/loom\.com\/share\/([a-f0-9]+)/],
+    //   embedUrl: (videoId) => `https://www.loom.com/embed/${videoId}`,
+    //   privacy: 'Reasonably privacy-friendly'
+    // }
+  ];
+
+  /**
+   * Detect video provider from URL
+   * @param {string} url - Video URL
+   * @returns {string|null} - Provider name or null if not recognized
+   */
+  function detectVideoProvider(url) {
+    if (!url) return null;
+    
+    for (const provider of VIDEO_PROVIDERS) {
+      for (const pattern of provider.patterns) {
+        if (url.match(pattern)) {
+          return provider.name;
+        }
+      }
+    }
+    
+    return null;
+  }
+
+  /**
+   * Convert video URL to embed URL
+   * @param {string} videoUrl - Original video URL
+   * @returns {string|null} - Embed URL or null if provider not supported
+   */
+  function getVideoEmbedUrl(videoUrl) {
+    if (!videoUrl) return null;
+    
+    // Try each provider
+    for (const provider of VIDEO_PROVIDERS) {
+      for (const pattern of provider.patterns) {
+        const match = videoUrl.match(pattern);
+        if (match && match[1]) {
+          return provider.embedUrl(match[1]);
+        }
+      }
+    }
+    
+    return null;
+  }
+
+  /**
+   * Generate video embed HTML
+   * @param {string} videoUrl - Original video URL
+   * @returns {string} - HTML for embedded video or fallback button
+   */
+  function getVideoEmbedHtml(videoUrl) {
+    const embedUrl = getVideoEmbedUrl(videoUrl);
+    
+    if (embedUrl) {
+      return `
+        <div class="fides-video-container">
+          <iframe 
+            src="${embedUrl}"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            class="fides-video-iframe"
+            title="Video player">
+          </iframe>
+        </div>
+      `;
+    }
+    
+    // Fallback: external link button if provider not supported
+    return `
+      <div class="fides-video-fallback">
+        <a href="${escapeHtml(videoUrl)}" target="_blank" rel="noopener" class="fides-modal-link primary">
+          ${icons.play} Watch Video (External)
+        </a>
+      </div>
+    `;
+  }
+
+  /**
+   * ============================================================================
+   * MATOMO ANALYTICS HELPER
+   * ============================================================================
+   * Track user interactions with Matomo (if available)
+   * Privacy-friendly: respects DoNotTrack and only tracks if Matomo is loaded
+   */
+
+  /**
+   * Track event to Matomo analytics
+   * @param {string} category - Event category (e.g., 'Wallet Catalog')
+   * @param {string} action - Event action (e.g., 'Modal Open')
+   * @param {string} name - Event name (e.g., wallet name)
+   * @param {number} value - Optional numeric value
+   */
+  function trackMatomoEvent(category, action, name, value) {
+    // Check if Matomo is loaded
+    if (typeof window._paq === 'undefined') {
+      return;
+    }
+    
+    // Respect DoNotTrack
+    if (navigator.doNotTrack === '1' || navigator.doNotTrack === 'yes') {
+      return;
+    }
+    
+    // Track the event
+    try {
+      window._paq.push(['trackEvent', category, action, name, value]);
+    } catch (e) {
+      // Silently fail if tracking fails
+      console.debug('Matomo tracking failed:', e);
+    }
   }
 
   /**

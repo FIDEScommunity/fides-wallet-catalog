@@ -953,6 +953,23 @@
   color: var(--fides-text-primary);
 }
 
+/* Video badge - visual indicator on wallet tile */
+.fides-wallet-video-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.8125rem;
+  color: var(--fides-video, #8b5cf6);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.fides-wallet-video-badge svg {
+  width: 12px;
+  height: 12px;
+}
+
 .fides-expand-btn {
   background: none;
   border: none;
@@ -1218,6 +1235,8 @@
   border-radius: 9999px;
   font-size: 0.8125rem;
   font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .fides-modal-badge.type-personal {
@@ -1251,6 +1270,39 @@
   line-height: 1.6;
   color: var(--fides-text-secondary, #94a3b8);
   margin: 0;
+}
+
+/* Video embed container - responsive 16:9 */
+.fides-video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  margin: 1.5rem 0;
+  border-radius: var(--fides-radius, 12px);
+  background: #000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.fides-video-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Fallback for unsupported video providers */
+.fides-video-fallback {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+/* FIDES/Light theme adjustments */
+.fides-modal-overlay[data-theme="fides"] .fides-video-container,
+.fides-modal-overlay[data-theme="light"] .fides-video-container {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 /* Info grid */
