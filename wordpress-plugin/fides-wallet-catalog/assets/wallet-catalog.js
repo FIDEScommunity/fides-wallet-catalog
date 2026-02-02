@@ -212,10 +212,29 @@
       console.error('Failed to load wallets from any source');
     }
 
+    // Read query parameters for filtering
+    readQueryParams();
+    
     render();
     
     // Check for deep link after render
     checkDeepLink();
+  }
+
+  /**
+   * Read and apply query parameters for filtering
+   * Supports: ?profile=Profile Name
+   */
+  function readQueryParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const profileParam = urlParams.get('profile');
+    
+    if (profileParam && !filters.interoperabilityProfiles.includes(profileParam)) {
+      filters.interoperabilityProfiles.push(profileParam);
+      // Auto-expand filters to show pre-selection
+      document.body.classList.add('filters-visible');
+      console.log(`🔗 Profile filter applied: ${profileParam}`);
+    }
   }
 
   /**
