@@ -10,41 +10,116 @@
     {
       "id": "procivis-one-wallet",
       "name": "Procivis One Wallet",
-      "description": "A Swiss personal identity wallet app enabling secure storage and presentation of verifiable credentials for individuals, built on the Procivis One platform.",
+      "description": "Procivis One Wallet is a digital identity software that enables individuals to securely store, manage and present verifiable credentials. Built on the modular, Rust-based Procivis One platform, it provides high-assurance security through hardware-backed key management and a privacy-first architecture. The wallet is fully optimized for the eIDAS 2 and swyiu ecosystems, supporting open standards like SD-JWT VC and OID4VC to facilitate trusted interactions with selective disclosure and offline verification capabilities.",
       "logo": "https://www.google.com/s2/favicons?domain=procivis.ch&sz=128",
       "website": "https://www.procivis.ch",
       "type": "personal",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/nl/app/procivis-one-wallet/id6480111491",
         "android": "https://play.google.com/store/apps/details?id=ch.procivis.one.wallet.trial"
       },
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "mDL/mDoc"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
-      "signingAlgorithms": ["ES256", "EdDSA"],
-      "credentialStatusMethods": ["StatusList2021"],
-      "openSource": false,
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "mDL/mDoc",
+        "JSON-LD VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "ISO 18013-5"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "EdDSA",
+        "BBS+",
+        "ML-DSA (FIPS 204)"
+      ],
+      "credentialStatusMethods": [
+        "IETF Token Status List",
+        "Bitstring Status List"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF",
+        "HAIP v1"
+      ],
+      "supportedIdentifiers": [
+        "X509",
+        "did:webvh",
+        "did:key",
+        "did:web",
+        "did:jwk"
+      ],
+      "keyStorage": [
+        "Software",
+        "Secure Enclave (iOS)",
+        "StrongBox (Android)",
+        "HSM"
+      ],
+      "openSource": true,
+      "repository": "https://github.com/procivis",
       "status": "production"
     },
     {
       "id": "procivis-one",
       "name": "Procivis One",
-      "description": "A Swiss enterprise identity platform providing issuer and verifier capabilities for verifiable credentials with a focus on privacy and compliance.",
+      "description": "Procivis One Business Wallet is an enterprise-grade identity solution engineered for organizational credential management. Leveraging the modular architecture of the Procivis One platform, it provides a scalable, production-ready environment for holding and presenting corporate attributes with verifiable trust. The wallet is fully compatible with EUDI and swyiu frameworks, supporting high-integrity use cases such as delegated authority and decentralized organizational governance.",
       "logo": "https://www.google.com/s2/favicons?domain=procivis.ch&sz=128",
       "website": "https://www.procivis.ch",
       "type": "organizational",
-      "capabilities": ["issuer", "verifier"],
-      "platforms": ["Web"],
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "mDL/mDoc"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
-      "signingAlgorithms": ["ES256", "EdDSA"],
-      "credentialStatusMethods": ["StatusList2021"],
+      "capabilities": [
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "mDL/mDoc",
+        "JSON-LD VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "EdDSA",
+        "BBS+",
+        "ML-DSA (FIPS 204)"
+      ],
+      "credentialStatusMethods": [
+        "IETF Token Status List",
+        "Bitstring Status List"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF",
+        "HAIP v1"
+      ],
+      "supportedIdentifiers": [
+        "X509",
+        "did:webvh",
+        "did:key",
+        "did:web",
+        "did:jwk"
+      ],
+      "keyStorage": [
+        "Software",
+        "HSM"
+      ],
       "openSource": false,
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-01-06T12:00:00Z"
+  "lastUpdated": "2026-02-04T12:00:00Z"
 }
-
