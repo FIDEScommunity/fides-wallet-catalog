@@ -39,7 +39,6 @@
         "ES256",
         "EdDSA",
         "BBS+",
-        "CRYSTALS-Dilithium",
         "ML-DSA (FIPS 204)"
       ],
       "credentialStatusMethods": [
@@ -97,7 +96,6 @@
         "ES256",
         "EdDSA",
         "BBS+",
-        "CRYSTALS-Dilithium",
         "ML-DSA (FIPS 204)"
       ],
       "credentialStatusMethods": [
