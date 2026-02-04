@@ -3,7 +3,7 @@
  * Plugin Name: FIDES Wallet Catalog
  * Plugin URI: https://fides.community
  * Description: Displays the FIDES Wallet Catalog with search and filter functionality
- * Version: 2.1.0
+ * Version: 2.1.1
  * Author: FIDES Labs BV
  * Author URI: https://fides.community
  * License: Apache-2.0
@@ -55,14 +55,14 @@ class FIDES_Wallet_Catalog {
             'fides-wallet-catalog',
             $this->plugin_url . 'assets/style.css',
             array(),
-            '1.0.0'
+            '1.0.6'
         );
         
         wp_register_script(
             'fides-wallet-catalog',
             $this->plugin_url . 'assets/wallet-catalog.js',
             array(),
-            '1.0.0',
+            '1.0.6',
             true
         );
         
