@@ -10,7 +10,7 @@
     {
       "id": "procivis-one-wallet",
       "name": "Procivis One Wallet",
-      "description": "A Swiss personal identity wallet app enabling secure storage and presentation of verifiable credentials for individuals, built on the Procivis One platform.",
+      "description": "Procivis One Wallet is a digital identity software that enables individuals to securely store, manage and present verifiable credentials. Built on the modular, Rust-based Procivis One platform, it provides high-assurance security through hardware-backed key management and a privacy-first architecture. The wallet is fully optimized for the eIDAS 2 and swyiu ecosystems, supporting open standards like SD-JWT VC and OID4VC to facilitate trusted interactions with selective disclosure and offline verification capabilities.",
       "logo": "https://www.google.com/s2/favicons?domain=procivis.ch&sz=128",
       "website": "https://www.procivis.ch",
       "type": "personal",
@@ -69,7 +69,7 @@
     {
       "id": "procivis-one",
       "name": "Procivis One",
-      "description": "A Swiss enterprise identity platform providing issuer and verifier capabilities for verifiable credentials with a focus on privacy and compliance.",
+      "description": "Procivis One Business Wallet is an enterprise-grade identity solution engineered for organizational credential management. Leveraging the modular architecture of the Procivis One platform, it provides a scalable, production-ready environment for holding and presenting corporate attributes with verifiable trust. The wallet is fully compatible with EUDI and swyiu frameworks, supporting high-integrity use cases such as delegated authority and decentralized organizational governance.",
       "logo": "https://www.google.com/s2/favicons?domain=procivis.ch&sz=128",
       "website": "https://www.procivis.ch",
       "type": "organizational",
