@@ -14,17 +14,57 @@
       "logo": "https://www.google.com/s2/favicons?domain=procivis.ch&sz=128",
       "website": "https://www.procivis.ch",
       "type": "personal",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/nl/app/procivis-one-wallet/id6480111491",
         "android": "https://play.google.com/store/apps/details?id=ch.procivis.one.wallet.trial"
       },
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "mDL/mDoc"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
-      "signingAlgorithms": ["ES256", "EdDSA"],
-      "credentialStatusMethods": ["StatusList2021"],
-      "openSource": false,
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "mDL/mDoc",
+        "JSON-LD VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "ISO 18013-5"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "EdDSA",
+        "BBS+",
+        "CRYSTALS-Dilithium",
+        "ML-DSA (FIPS 204)"
+      ],
+      "credentialStatusMethods": [
+        "IETF Token Status List",
+        "Bitstring Status List"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF",
+        "HAIP v1"
+      ],
+      "supportedIdentifiers": [
+        "X509",
+        "did:webvh",
+        "did:key",
+        "did:web",
+        "did:jwk"
+      ],
+      "keyStorage": [
+        "Software",
+        "Secure Enclave (iOS)",
+        "StrongBox (Android)",
+        "HSM"
+      ],
+      "openSource": true,
+      "repository": "https://github.com/procivis",
       "status": "production"
     },
     {
@@ -34,17 +74,54 @@
       "logo": "https://www.google.com/s2/favicons?domain=procivis.ch&sz=128",
       "website": "https://www.procivis.ch",
       "type": "organizational",
-      "capabilities": ["issuer", "verifier"],
-      "platforms": ["Web"],
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "mDL/mDoc"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
-      "signingAlgorithms": ["ES256", "EdDSA"],
-      "credentialStatusMethods": ["StatusList2021"],
+      "capabilities": [
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "mDL/mDoc",
+        "JSON-LD VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "EdDSA",
+        "BBS+",
+        "CRYSTALS-Dilithium",
+        "ML-DSA (FIPS 204)"
+      ],
+      "credentialStatusMethods": [
+        "IETF Token Status List",
+        "Bitstring Status List"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF",
+        "HAIP v1"
+      ],
+      "supportedIdentifiers": [
+        "X509",
+        "did:webvh",
+        "did:key",
+        "did:web",
+        "did:jwk"
+      ],
+      "keyStorage": [
+        "Software",
+        "HSM"
+      ],
       "openSource": false,
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-01-06T12:00:00Z"
+  "lastUpdated": "2026-02-04T12:00:00Z"
 }
-
