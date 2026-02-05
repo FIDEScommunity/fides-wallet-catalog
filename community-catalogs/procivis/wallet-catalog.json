@@ -72,6 +72,7 @@
       "description": "Procivis One Business Wallet is an enterprise-grade identity solution engineered for organizational credential management. Leveraging the modular architecture of the Procivis One platform, it provides a scalable, production-ready environment for holding and presenting corporate attributes with verifiable trust. The wallet is fully compatible with EUDI and swyiu frameworks, supporting high-integrity use cases such as delegated authority and decentralized organizational governance.",
       "logo": "https://www.google.com/s2/favicons?domain=procivis.ch&sz=128",
       "website": "https://www.procivis.ch",
+      "video":"https://onesdk.blob.core.windows.net/doc-assets/videos/components-organizational-wallet.mp4",
       "type": "organizational",
       "capabilities": [
         "issuer",
