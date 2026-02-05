@@ -1,25 +1,74 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
   "provider": {
-    "name": "Helix ID GmbH",
+    "name": "Blockchain HELIX AG",
     "website": "https://helixid.io",
-    "country": "DE"
+    "country": "DE",
+    "contact": {
+      "email": "oliver@blockchain-helix.com"
+    }
   },
   "wallets": [
     {
       "id": "helix-id-wallet",
-      "name": "Helix ID Wallet",
-      "description": "Helix ID launched in 2020 as a German self-sovereign identity (SSI) mobile wallet solution emerging during Germany's innovation competition \"Schaufenster sichere digitale Identitäten\" (Showcase on Secure Digital Identities), which tested open and user-friendly ID ecosystems including projects ID-Ideal, IDunion, ONCE, and SDIKA. The SSI wallet embodies the decentralized identity principles where users maintain control over their digital credentials and data rather than relying on centralized authorities. Helix ID operates within Germany's SSI framework landscape that includes initiatives like Lissi (\"Let's initiate self-sovereign identity\") involving twelve German entities working to jumpstart adoption of self-sovereign identity solutions for citizen empowerment.",
+      "name": "helix id Wallet",
+      "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/71/5b/0b/715b0be2-d249-11ce-b9ad-15305f6f058f/AppIcon-0-1x_U007ephone-0-1-85-220-0.png/400x400ia-75.webp",
+      "description": "helix id launched in 2020 as a German self-sovereign identity (SSI) mobile wallet solution. It is part of the German innovation competition \"Schaufenster sichere digitale Identitäten\" (Showcase on Secure Digital Identities), which tested open and user-friendly ID ecosystems including projects ID-Ideal. The SSI wallet embodies the decentralized identity principles where users maintain control over their digital credentials and data rather than relying on centralized authorities. helix id includes a payment wallet with crypto as well as commercial bank money token CBMT, a marketplace with business wallet interaction and DLT atomic settlement. Verification with eID, world wide verification partners and ZKP capability for enhanced privacy protection. Age verification for KJM and WalletConnect integration for Transfer of Funds interaction that enables AML protection.",
       "type": "personal",
       "openSource": false,
       "status": "production",
       "website": "https://helixid.io",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "JWT-VC",
+        "JSON-LD VC"
+      ],
+      "supportedIdentifiers": [
+        "did:eth",
+        "did:ebsi"
+      ],
+      "keyStorage": [
+        "Secure Enclave (iOS)",
+        "StrongBox (Android)"
+      ],
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/de/app/helix-id-wallet/id1469238013",
         "android": "https://play.google.com/store/apps/details?id=com.io.helix.id"
       },
-      "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/71/5b/0b/715b0be2-d249-11ce-b9ad-15305f6f058f/AppIcon-0-1x_U007ephone-0-1-85-220-0.png/400x400ia-75.webp",
+      "signingAlgorithms": [
+        "ES256"
+      ],
+      "credentialStatusMethods": [
+        "IETF Token Status List",
+        "W3C Verifiable Credentials Status List v2021",
+        "RevocationList2020"
+      ],
+      "interoperabilityProfiles": [],
+      "standards": [
+        "W3C Verifiable Credentials",
+        "EBSI"
+      ],
+      "features": [
+        "WalletConnect",
+        "Payment Services",
+        "Web3 Wallet",
+        "Marketplace",
+        "Messaging",
+        "Event Tickets",
+        "eID and other verification types",
+        "Desktop Version"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "SIOPv2",
+        "ISO 18013-5"
+      ],
       "releaseDate": "2020-01-01"
     }
   ]
