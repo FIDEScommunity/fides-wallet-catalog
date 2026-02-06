@@ -1808,7 +1808,8 @@
       name: 'youtube',
       patterns: [
         /(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\?\/]+)/,
-        /youtube\.com\/embed\/([^&\?\/]+)/
+        /youtube\.com\/embed\/([^&\?\/]+)/,
+        /youtube\.com\/shorts\/([^&\?\/]+)/
       ],
       embedUrl: (videoId) => `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1`,
       privacy: 'Uses youtube-nocookie.com for GDPR compliance'
