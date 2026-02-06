@@ -1,0 +1,225 @@
+{
+  "$schema": "https://fides.community/schemas/vocabulary/v1",
+  "version": "1.0.0",
+  "terms": {
+    "type": {
+      "description": "Wallet type: designed for individual users (personal) or for organizations to manage credentials (organizational)."
+    },
+    "personal": {
+      "description": "Wallet for individuals to store and present their own credentials, such as ID cards or diplomas."
+    },
+    "organizational": {
+      "description": "Wallet for organizations to issue, hold, or verify credentials in professional contexts."
+    },
+    "capabilities": {
+      "description": "What organizational wallets can do: store credentials (holder), issue new credentials (issuer), or verify credentials from others (verifier)."
+    },
+    "holder": {
+      "description": "Can store and present credentials to verifiers (holder role)."
+    },
+    "issuer": {
+      "description": "Can create and issue new credentials to users or organizations (issuer role)."
+    },
+    "verifier": {
+      "description": "Can request and verify credentials presented by holders (verifier role)."
+    },
+    "interopProfile": {
+      "description": "Interoperability profiles define standards and protocols that ensure wallets, issuers, and verifiers work together seamlessly across different implementations."
+    },
+    "DIIP v4": {
+      "description": "Community-driven interoperability profile based on W3C DID Core and Verifiable Credentials Data Model 2.0 (VCDM), using OpenID4VC and SD-JWT VC for organizational credentials."
+    },
+    "DIIP v5": {
+      "description": "Update of DIIP v4 aligned with the current or final versions of OpenID4VCI and OpenID4VP."
+    },
+    "EWC v3": {
+      "description": "European Wallet Consortium profile with specification set and conformance approach targeting EUDI Wallet implementations."
+    },
+    "HAIP v1": {
+      "description": "OpenID Foundation interoperability profile for high-assurance exchanges, typically combining SD-JWT VC with ISO mdoc."
+    },
+    "EUDI Wallet ARF": {
+      "description": "EU Architecture and Reference Framework defining requirements and guidance for interoperable EUDI Wallets."
+    },
+    "credentialFormat": {
+      "description": "The technical format in which credentials are encoded. Different formats support different features like selective disclosure, privacy protection, or compatibility with specific standards."
+    },
+    "SD-JWT-VC": {
+      "description": "IETF JWT-based format allowing holders to selectively reveal only necessary claims using cryptographic hashing."
+    },
+    "mDL/mDoc": {
+      "description": "ISO (18013-5) binary (CBOR) format for mobile documents with strong authentication and selective disclosure."
+    },
+    "JWT-VC": {
+      "description": "W3C credential format using JSON Web Tokens for signing and verification."
+    },
+    "AnonCreds": {
+      "description": "Privacy-preserving format using zero-knowledge proofs for selective disclosure without correlatable identifiers."
+    },
+    "JSON-LD VC": {
+      "description": "Supports rich semantic data with linked data capabilities."
+    },
+    "issuanceProtocol": {
+      "description": "The protocol used to issue credentials from an issuer to a wallet. Defines how authentication, credential request, and delivery work."
+    },
+    "OpenID4VCI": {
+      "description": "OAuth 2.0-based protocol for securely issuing credentials to wallets."
+    },
+    "presentationProtocol": {
+      "description": "The protocol used to present credentials from a wallet to a verifier. Defines how credential requests and presentations are exchanged."
+    },
+    "OpenID4VP": {
+      "description": "OAuth 2.0-based protocol for requesting and presenting credentials to verifiers."
+    },
+    "identifiers": {
+      "description": "Methods for identifying issuers, holders, and verifiers in credential exchanges. Includes decentralized identifiers (DIDs), HTTPS URLs, OAuth client IDs, and X.509 certificates."
+    },
+    "keyStorage": {
+      "description": "Where cryptographic keys are stored: in secure hardware (like TPM or secure enclave) or in software (encrypted storage)."
+    },
+    "secureEnclaveIos": {
+      "description": "Apple's dedicated coprocessor for storing keys and performing crypto operations on iOS devices."
+    },
+    "strongboxAndroid": {
+      "description": "Android's hardware-backed Keystore (StrongBox Keymaster) for key storage on supported devices."
+    },
+    "softwareKeyStorage": {
+      "description": "Keys stored in software (e.g. encrypted storage), without dedicated hardware protection."
+    },
+    "hsm": {
+      "description": "Hardware Security Module; dedicated hardware for key storage and cryptographic operations, often used in servers."
+    },
+    "tee": {
+      "description": "Trusted Execution Environment; isolated area in the processor for running sensitive code and storing keys."
+    },
+    "signingAlgorithm": {
+      "description": "Cryptographic algorithms used to sign credentials and presentations, ensuring authenticity and integrity."
+    },
+    "credentialStatus": {
+      "description": "How the validity of credentials is checked: whether they are revoked, suspended, or still valid. Different methods use different technical approaches."
+    },
+    "license": {
+      "description": "Software license type: open source (publicly available code) or proprietary (closed source)."
+    },
+    "openSource": {
+      "description": "Source code is publicly available; licensing (e.g. Apache, MIT) defines use and distribution."
+    },
+    "proprietary": {
+      "description": "Closed-source software; the vendor retains full control over the code and distribution."
+    },
+    "remotePresentationProtocol": {
+      "description": "Protocol for remote (online) presentation of credentials, enabling verification over the internet without physical proximity."
+    },
+    "signatureScheme": {
+      "description": "Signature encoding format: JOSE (JSON-based for web) or COSE (binary CBOR for constrained environments like embedded systems)."
+    },
+    "signatureAlgorithm": {
+      "description": "Cryptographic algorithm used for signing credentials in this interoperability profile."
+    },
+    "iso18013_5": {
+      "description": "International standard for mobile driver's licenses with device retrieval (local presentation)."
+    },
+    "iso18013_7": {
+      "description": "Extension of ISO 18013-5 adding remote presentation capabilities for mobile driver's licenses over the internet."
+    },
+    "vcdm20": {
+      "description": "W3C standard data model for expressing verifiable credentials in a secure, privacy-respecting way."
+    },
+    "jwtValidity": {
+      "description": "Credential status determined by JWT expiration timestamp."
+    },
+    "pkiCertValidity": {
+      "description": "Credential status verified through X.509 certificate validity periods."
+    },
+    "ietfTokenStatusList": {
+      "description": "Standard mechanism for representing revocation and suspension status of credentials using status lists."
+    },
+    "didWeb": {
+      "description": "DID method using web domains; DID document hosted at a URL leveraging existing domain reputation and TLS security."
+    },
+    "didWebvh": {
+      "description": "DID method with verifiable history; extends did:web with version control and cryptographic proof of document history."
+    },
+    "didJwk": {
+      "description": "DID method embedding a public key directly in the identifier; self-contained without external resolution."
+    },
+    "didKey": {
+      "description": "DID method where the identifier is derived from a public key; compact and self-certifying."
+    },
+    "didPeer": {
+      "description": "DID method for peer-to-peer relationships; often used in direct connections between two parties."
+    },
+    "didEbsi": {
+      "description": "DID method for the European Blockchain Services Infrastructure; used in EU digital identity contexts."
+    },
+    "httpsIss": {
+      "description": "Issuer identified by HTTPS URL; credential issuer metadata and public keys retrieved from a web endpoint."
+    },
+    "openidClientId": {
+      "description": "OAuth 2.0 client identifier used in OpenID4VC flows to identify wallets and applications in authorization."
+    },
+    "x509Certificate": {
+      "description": "PKI certificate binding an identity to a public key; enables trust through established certificate chains."
+    },
+    "joseJws": {
+      "description": "JSON-based signature format for web applications providing integrity and authenticity."
+    },
+    "cose": {
+      "description": "Binary signature format optimized for constrained devices and bandwidth efficiency."
+    },
+    "ecdsaEs256": {
+      "description": "Elliptic curve signature algorithm providing strong security with efficient key sizes."
+    },
+    "Apple Wallet Pass": {
+      "description": "Apple's pass format for storing credentials, tickets, and keys in the Wallet app on iOS and macOS."
+    },
+    "Google Wallet Pass": {
+      "description": "Google's pass format for storing credentials and passes in the Google Wallet app on Android and the web."
+    },
+    "DIDComm v2": {
+      "description": "Secure messaging protocol for DID-based communication; used for agent-to-agent credential exchange and notifications."
+    },
+    "DIDComm v1": {
+      "description": "Earlier version of the DIDComm secure messaging protocol for communication between entities with DIDs."
+    },
+    "SIOPv2": {
+      "description": "Self-Issued OpenID Provider; allows the holder to act as an OpenID provider and present self-issued or other credentials."
+    },
+    "ISO 18013-5": {
+      "description": "International standard for mobile driver's licenses with device retrieval (local presentation)."
+    },
+    "BBS+": {
+      "description": "Signature scheme supporting selective disclosure and unlinkable proofs; used in some privacy-preserving credential systems."
+    },
+    "ES384": {
+      "description": "ECDSA with P-384 curve; stronger variant of ES256 for signatures and key agreement."
+    },
+    "ES512": {
+      "description": "ECDSA with P-521 curve; higher security level elliptic curve signature algorithm."
+    },
+    "EdDSA": {
+      "description": "Edwards-curve Digital Signature Algorithm; modern signature scheme (e.g. Ed25519) with fast verification."
+    },
+    "ML-DSA (FIPS 204)": {
+      "description": "Module-Lattice-Based Digital Signature Standard; NIST post-quantum signature algorithm."
+    },
+    "PS256": {
+      "description": "RSASSA-PSS with SHA-256; RSA signature algorithm with probabilistic padding for signing."
+    },
+    "RS256": {
+      "description": "RSASSA-PKCS1-v1_5 with SHA-256; widely used RSA signature algorithm in JWT and certificates."
+    },
+    "Bitstring Status List": {
+      "description": "Compact status list where each credential maps to a bit; used for revocation and suspension checks."
+    },
+    "RevocationList2020": {
+      "description": "W3C status list format for credential revocation; each entry is a bit in a compressed bitstring."
+    },
+    "StatusList2021": {
+      "description": "W3C status list encoding for revocation and suspension; used with Verifiable Credentials."
+    },
+    "W3C Verifiable Credentials Status List v2021": {
+      "description": "Standard status list format for checking revocation and suspension of W3C credentials."
+    }
+  }
+}

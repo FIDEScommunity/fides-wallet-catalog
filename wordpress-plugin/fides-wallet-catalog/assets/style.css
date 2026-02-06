@@ -523,7 +523,11 @@
 .fides-filter-group.collapsible {
   padding-top: 0;
   margin-top: 0;
+  margin-bottom: 0.5rem;
   transition: padding 0.2s ease;
+}
+.fides-filter-group.collapsible:last-child {
+  margin-bottom: 0;
 }
 
 .fides-filter-group.collapsible.collapsed {
@@ -549,12 +553,36 @@
   color: var(--fides-accent);
 }
 
+/* Wrapper keeps label + [i] together; only as wide as content (like interop matrix) */
+.fides-filter-label-with-info {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex: 0 1 auto;
+  min-width: 0;
+}
+.fides-filter-label-with-info .fides-filter-label {
+  flex: 0 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .fides-filter-label-toggle .fides-filter-label {
   margin-bottom: 0;
   flex: 1;
+  min-width: 0;
   text-align: left;
   font-weight: 600;
   color: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fides-filter-toggle-spacer {
+  flex: 1;
+  min-width: 0.5rem;
 }
 
 .fides-filter-label-toggle svg {
@@ -566,18 +594,126 @@
   transform: rotate(-90deg);
 }
 
-/* Active filter indicator (dot) */
+/* Vocabulary [i] info button – after active indicator; tight spacing to chevron */
+.fides-vocab-info {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--fides-border);
+  border-radius: 50%;
+  background: var(--fides-bg-secondary);
+  color: var(--fides-text-muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-style: normal;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.15s;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+.fides-vocab-info:hover {
+  color: #fff;
+  background: var(--fides-accent);
+  border-color: var(--fides-accent);
+  transform: scale(1.05);
+}
+.fides-vocab-info:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--fides-accent);
+}
+.fides-wallet-catalog[data-theme="fides"] .fides-vocab-info:hover,
+.fides-wallet-catalog[data-theme="light"] .fides-vocab-info:hover {
+  background: var(--fides-accent);
+  border-color: var(--fides-accent);
+  color: #fff;
+}
+/* Overlay backdrop behind popup (above mobile menu) */
+.fides-vocab-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 10000000;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.fides-vocab-overlay.visible {
+  opacity: 1;
+}
+
+/* Popup: solid background so it stays readable (above mobile menu) */
+.fides-vocab-popup {
+  position: fixed;
+  z-index: 10000001;
+  max-width: 480px;
+  max-height: 75vh;
+  overflow-y: auto;
+  padding: 1.125rem 1.375rem;
+  background: #ffffff;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.fides-vocab-popup.visible {
+  opacity: 1;
+}
+.fides-vocab-popup-intro {
+  margin: 0 0 0.875rem 0;
+  color: #475569;
+  font-size: 0.875rem;
+}
+.fides-vocab-popup-list {
+  margin: 0;
+  padding-left: 1.375rem;
+  color: #334155;
+}
+.fides-vocab-popup-list li {
+  margin-bottom: 0.5rem;
+}
+.fides-vocab-popup-list li:last-child {
+  margin-bottom: 0;
+}
+.fides-vocab-popup-list strong {
+  color: #1e293b;
+}
+
+@media (max-width: 520px) {
+  .fides-vocab-popup {
+    left: 1rem !important;
+    right: 1rem !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: 85vh;
+    box-sizing: border-box;
+  }
+}
+
+/* Active filter indicator (dot) – no width when inactive so title gets more space */
 .fides-filter-active-indicator {
-  width: 6px;
+  width: 0;
+  min-width: 0;
   height: 6px;
   background: var(--fides-accent);
   border-radius: 50%;
   flex-shrink: 0;
   opacity: 0;
-  transition: opacity 0.2s;
+  overflow: hidden;
+  transition: width 0.2s, opacity 0.2s;
 }
 
 .fides-filter-group.has-active .fides-filter-active-indicator {
+  width: 6px;
   opacity: 1;
 }
 
