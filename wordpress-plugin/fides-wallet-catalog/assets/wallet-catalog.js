@@ -116,8 +116,8 @@
     credentialStatusMethods: 'credentialStatus',
     license: 'license'
   };
-  /** Groups that do not show the [i] info button */
-  const WALLET_VOCAB_NO_INFO = new Set(['availability', 'provider', 'platform', 'country']);
+  /** Groups that do not show the [i] info button (empty: all groups can show category description from vocabulary) */
+  const WALLET_VOCAB_NO_INFO = new Set([]);
 
   /** Map filter option data-value to vocabulary key (per group) so popup finds descriptions */
   const WALLET_OPTION_TO_VOCAB = {
@@ -1920,7 +1920,11 @@
   function showVocabularyPopup(button, groupEl, vocabKey) {
     hideVocabularyPopup();
     const groupTerm = vocabulary[vocabKey];
+    const categoryName = (groupEl.querySelector('.fides-filter-label') && groupEl.querySelector('.fides-filter-label').textContent) ? groupEl.querySelector('.fides-filter-label').textContent.trim() : '';
     let html = '';
+    if (categoryName) {
+      html += '<p class="fides-vocab-popup-title"><strong>' + escapeHtml(categoryName) + '</strong></p>';
+    }
     if (groupTerm && groupTerm.description) {
       html += '<p class="fides-vocab-popup-intro">' + escapeHtml(groupTerm.description) + '</p>';
     }
@@ -1928,7 +1932,7 @@
     if (optionsEl) {
       const labels = optionsEl.querySelectorAll('label.fides-filter-checkbox');
       if (labels.length > 0) {
-        html += '<ul class="fides-vocab-popup-list">';
+        const listItems = [];
         labels.forEach(label => {
           const input = label.querySelector('input[data-value]');
           const value = input ? input.dataset.value : '';
@@ -1937,9 +1941,16 @@
             ? WALLET_OPTION_TO_VOCAB[vocabKey][value] : value;
           const term = optionVocabKey ? vocabulary[optionVocabKey] : null;
           const desc = term && term.description ? escapeHtml(term.description) : '';
-          html += '<li><strong>' + escapeHtml(labelText) + '</strong>' + (desc ? ': ' + desc : '') + '</li>';
+          listItems.push({ labelText, desc });
         });
-        html += '</ul>';
+        const hasAnyOptionDesc = listItems.some(item => item.desc);
+        if (hasAnyOptionDesc) {
+          html += '<ul class="fides-vocab-popup-list">';
+          listItems.forEach(item => {
+            html += '<li><strong>' + escapeHtml(item.labelText) + '</strong>' + (item.desc ? ': ' + item.desc : '') + '</li>';
+          });
+          html += '</ul>';
+        }
       }
     }
     if (!html) html = '<p>No description available.</p>';

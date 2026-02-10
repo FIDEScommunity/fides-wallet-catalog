@@ -41,6 +41,27 @@
     "EUDI Wallet ARF": {
       "description": "EU Architecture and Reference Framework defining requirements and guidance for interoperable EUDI Wallets."
     },
+    "availability": {
+      "description": "Whether the wallet is generally available to users or still in development."
+    },
+    "provider": {
+      "description": "Whether the wallet or service is provided by government or private sector."
+    },
+    "platform": {
+      "description": "Operating system or environment the wallet runs on (e.g. iOS, Android, Web)."
+    },
+    "country": {
+      "description": "Country or region where the wallet is available or the organization is based."
+    },
+    "readiness": {
+      "description": "Maturity or deployment stage of the relying party (e.g. production, pilot)."
+    },
+    "supportedWallet": {
+      "description": "Wallets that the relying party has been tested with or supports."
+    },
+    "sector": {
+      "description": "Industry or domain the relying party operates in."
+    },
     "credentialFormat": {
       "description": "The technical format in which credentials are encoded. Different formats support different features like selective disclosure, privacy protection, or compatibility with specific standards."
     },

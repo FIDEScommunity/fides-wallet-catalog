@@ -668,6 +668,10 @@
 .fides-vocab-popup.visible {
   opacity: 1;
 }
+.fides-vocab-popup-title {
+  margin: 0 0 0.5rem 0;
+  color: #1e293b;
+}
 .fides-vocab-popup-intro {
   margin: 0 0 0.875rem 0;
   color: #475569;
