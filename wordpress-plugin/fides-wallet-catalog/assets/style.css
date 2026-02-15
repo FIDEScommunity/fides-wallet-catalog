@@ -327,7 +327,32 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   margin-bottom: 1rem;
+}
+
+/* Scoped under .fides-wallet-catalog so link color wins over theme/site rules (e.g. a { color: inherit }) */
+.fides-wallet-catalog .fides-show-on-map,
+.fides-wallet-catalog a.fides-show-on-map {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: auto;
+  font-size: 0.875rem;
+  color: var(--fides-accent, #3b82f6) !important;
+  text-decoration: none;
+}
+
+.fides-wallet-catalog .fides-show-on-map:hover,
+.fides-wallet-catalog a.fides-show-on-map:hover {
+  color: var(--fides-accent-hover, #60a5fa) !important;
+  text-decoration: underline;
+}
+
+.fides-wallet-catalog .fides-show-on-map svg {
+  flex-shrink: 0;
+  stroke: currentColor;
 }
 
 /* Mobile filter toggle - hidden on desktop */

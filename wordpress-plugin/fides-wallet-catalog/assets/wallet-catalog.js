@@ -95,6 +95,10 @@
     githubDataUrl: 'https://raw.githubusercontent.com/FIDEScommunity/fides-wallet-catalog/main/data/aggregated.json'
   };
 
+  // Map page URL for "Show on map" link (configurable via WordPress)
+  const MAP_PAGE_URL = (window.fidesWalletCatalog && window.fidesWalletCatalog.mapPageUrl)
+    || 'https://fides.community/community-tools/map/';
+
   // Vocabulary for [i] info popups (loaded from interop-profiles)
   let vocabulary = null;
 
@@ -959,12 +963,13 @@
       `;
     }
 
-    // Results count
+    // Results count + link to map
     html += `
       <div class="fides-results-bar">
         <div class="fides-results-count">
           ${filtered.length} wallet${filtered.length !== 1 ? 's' : ''} found
         </div>
+        <a href="${MAP_PAGE_URL}" class="fides-show-on-map" target="_blank" rel="noopener" aria-label="Show on map (opens in new tab)">${icons.externalLink} Show on map</a>
         <!-- Mobile filter toggle -->
         ${settings.showFilters ? `
           <button class="fides-mobile-filter-toggle" id="fides-mobile-filter-toggle">
