@@ -30,7 +30,7 @@
       "id": "impierce-unitrust",
       "name": "UniTrust",
       "logo": "https://www.google.com/s2/favicons?domain=impierce.com&sz=128",
-      "description": "Digital Identity trust Platform with holder, issuer and verifier capabilities,  built on an open-source core and the option to self-host.",
+      "description": "Digital Identity trust Platform with holder, issuer and verifier capabilities,  built on an open-source core and the option to self-host. Unitrust enables organizations to collaborate with confidence through verified organizational identities and credentials within a reliable and secure ecosystem of trust.",
       "type": "organizational",
       "capabilities": ["holder", "issuer", "verifier"],
       "platforms": ["Web"],
