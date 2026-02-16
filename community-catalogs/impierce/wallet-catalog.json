@@ -15,6 +15,7 @@
       "type": "personal",
       "platforms": ["iOS", "Android"],
       "credentialFormats": ["SD-JWT-VC","JSON-LD VC","JWT-VC"],
+      "signingAlgorithms": ["EdDSA", "ES256"],
       "issuanceProtocols": ["OpenID4VCI"],
       "presentationProtocols": ["OpenID4VP"],
       "interoperabilityProfiles": ["DIIP v4"],
@@ -34,13 +35,15 @@
       "capabilities": ["holder", "issuer", "verifier"],
       "platforms": ["Web"],
       "credentialFormats": ["SD-JWT-VC","JSON-LD VC","JWT-VC"],
+      "signingAlgorithms": ["EdDSA", "ES256"],
       "issuanceProtocols": ["OpenID4VCI"],
       "presentationProtocols": ["OpenID4VP"],
+      "interoperabilityProfiles": ["DIIP v4"],
       "website": "https://www.impierce.com/product/unitrust",
       "license": "Apache-2.0",
       "repository": "https://github.com/impierce/ssi-agent",
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-01-06T12:00:00Z"
+  "lastUpdated": "2026-02-16T12:00:00Z"
 }
