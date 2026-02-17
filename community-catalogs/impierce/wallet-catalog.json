@@ -15,6 +15,7 @@
       "type": "personal",
       "platforms": ["iOS", "Android"],
       "credentialFormats": ["SD-JWT-VC","JSON-LD VC","JWT-VC"],
+      "signingAlgorithms": ["EdDSA", "ES256"],
       "issuanceProtocols": ["OpenID4VCI"],
       "presentationProtocols": ["OpenID4VP"],
       "interoperabilityProfiles": ["DIIP v4"],
@@ -29,18 +30,20 @@
       "id": "impierce-unitrust",
       "name": "UniTrust",
       "logo": "https://www.google.com/s2/favicons?domain=impierce.com&sz=128",
-      "description": "Digital Identity trust Platform with holder, issuer and verifier capabilities,  built on an open-source core and the option to self-host.",
+      "description": "Digital Identity trust Platform with holder, issuer and verifier capabilities,  built on an open-source core and the option to self-host. Unitrust enables organizations to collaborate with confidence through verified organizational identities and credentials within a reliable and secure ecosystem of trust.",
       "type": "organizational",
       "capabilities": ["holder", "issuer", "verifier"],
       "platforms": ["Web"],
       "credentialFormats": ["SD-JWT-VC","JSON-LD VC","JWT-VC"],
+      "signingAlgorithms": ["EdDSA", "ES256"],
       "issuanceProtocols": ["OpenID4VCI"],
       "presentationProtocols": ["OpenID4VP"],
+      "interoperabilityProfiles": ["DIIP v4"],
       "website": "https://www.impierce.com/product/unitrust",
       "license": "Apache-2.0",
       "repository": "https://github.com/impierce/ssi-agent",
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-01-06T12:00:00Z"
+  "lastUpdated": "2026-02-16T12:00:00Z"
 }
