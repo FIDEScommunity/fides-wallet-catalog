@@ -28,9 +28,6 @@
       "issuanceProtocols": [
         "OpenID4VCI"
       ],
-      "presentationProtocols": [
-        "OpenID4VP"
-      ],
       "appStoreLinks": {
         "web": "https://ooru.io/products/credissuer-secure-verifiable-credentials/"
       },
@@ -38,7 +35,33 @@
       "capabilities": [
         "issuer"
       ]
+    },
+    {
+      "id": "snapkyc",
+      "name": "SnapKYC",
+      "description": "SnapKYC is a consent-first business verification platform that enables organizations to verify digital credentials. Supports OID4VP-based presentations including mDL/mDoc, SD-JWT VC and VCDM credentials.",
+      "logo": "https://www.google.com/s2/favicons?domain=ooru.io&sz=256",
+      "website": "https://ooru.io/products/sanpkyc-user-approved-national-id-authentication/",
+      "type": "organizational",
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "mDL/mDoc",
+        "JSON-LD VC"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "appStoreLinks": {
+        "web": "https://ooru.io/products/sanpkyc-user-approved-national-id-authentication/"
+      },
+      "status": "production",
+      "capabilities": [
+        "verifier"
+      ]
     }
   ],
-  "lastUpdated": "2026-01-12T14:26:01.465Z"
+  "lastUpdated": "2026-02-18T07:25:00Z"
 }
