@@ -1,0 +1,25 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Department of Information and Communications Technology, Papua New Guinea",
+    "website": "https://www.sevis.gov.pg/",
+    "logo": "https://www.google.com/s2/favicons?domain=sevis.gov.pg&sz=128",
+    "country": "PG"
+  },
+  "wallets": [
+    {
+      "id": "seviswallet",
+      "name": "SevisWallet",
+      "description": "Papua New Guinea’s official digital identity wallet, enabling citizens and residents to securely store and manage their SevisPass digital ID and other trusted digital credentials via a multifunctional mobile app.",
+      "logo": "https://play-lh.googleusercontent.com/thumb/ESevisWalletIcon", 
+      "website": "https://www.sevis.gov.pg/",
+      "type": "personal",
+      "platforms": ["Android"],
+      "status": "production",
+      "appStoreLinks": {
+        "android": "https://play.google.com/store/apps/details?id=com.png.sevispass"
+      }
+    }
+  ],
+  "lastUpdated": "2026-02-18T00:00:00Z"
+}
