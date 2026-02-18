@@ -1,0 +1,27 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "National ID Program (NIDP), Ethiopia",
+    "website": "https://id.gov.et/",
+    "logo": "https://www.google.com/s2/favicons?domain=id.gov.et&sz=128",
+    "country": "ET"
+  },
+  "wallets": [
+    {
+      "id": "fayda-id",
+      "name": "Fayda ID",
+      "description": "Official digital identity wallet of Ethiopia's National ID Program (Fayda). Enables citizens to view, verify, download and manage their Fayda digital ID credentials.",
+      "logo": "https://play-lh.googleusercontent.com/tx1qrpGe0b6uBTadJqLqF64_HW-ehqnH_00J5L5CxjtDPu84eDgnDvSD5d9OTHe3Suw=w480-h960-rw",
+      "website": "https://id.gov.et/",
+      "type": "personal",
+      "platforms": ["Android", "iOS"],
+      "status": "production",
+      "appStoreLinks": {
+        "android": "https://play.google.com/store/apps/details?id=et.fayda.nidfaydaApp&hl=en",
+        "iOS": "https://apps.apple.com/nl/app/fayda-id/id6740314990"
+      },
+      "documentation": "https://id.gov.et/"
+    }
+  ],
+  "lastUpdated": "2026-02-18T09:00:00Z"
+}
