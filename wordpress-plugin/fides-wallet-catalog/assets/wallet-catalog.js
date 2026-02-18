@@ -1688,6 +1688,15 @@
   function openWalletDetail(walletId) {
     const wallet = wallets.find(w => w.id === walletId);
     if (wallet) {
+      if (window.FidesCatalogUI && typeof window.FidesCatalogUI.openWalletModal === 'function') {
+        window.FidesCatalogUI.openWalletModal(wallet, {
+          theme: container ? (container.getAttribute('data-theme') || 'dark') : 'dark',
+          onOpen: function(openedWallet) {
+            trackMatomoEvent('Wallet Catalog', 'Modal Open', openedWallet.name);
+          }
+        });
+        return;
+      }
       selectedWallet = wallet;
       
       // Track modal open in Matomo

@@ -3,7 +3,7 @@
  * Plugin Name: FIDES Wallet Catalog
  * Plugin URI: https://fides.community
  * Description: Displays the FIDES Wallet Catalog with search and filter functionality
- * Version: 2.1.5
+ * Version: 2.1.7
  * Author: FIDES Labs BV
  * Author URI: https://fides.community
  * License: Apache-2.0
@@ -20,6 +20,7 @@ if (!defined('ABSPATH')) {
 class FIDES_Wallet_Catalog {
     
     private static $instance = null;
+    private const VERSION = '2.1.7';
     private $plugin_url;
     private $plugin_path;
     
@@ -50,19 +51,37 @@ class FIDES_Wallet_Catalog {
      * Register CSS and JS assets
      */
     public function register_assets() {
+        $ui_lib_css_path = $this->plugin_path . 'assets/lib/fides-catalog-ui.css';
+        $ui_lib_js_path = $this->plugin_path . 'assets/lib/fides-catalog-ui.js';
+        $ui_lib_css_version = file_exists($ui_lib_css_path) ? filemtime($ui_lib_css_path) : self::VERSION;
+        $ui_lib_js_version = file_exists($ui_lib_js_path) ? filemtime($ui_lib_js_path) : self::VERSION;
+
         // Assets are only loaded when the shortcode is used
         wp_register_style(
             'fides-wallet-catalog',
             $this->plugin_url . 'assets/style.css',
             array(),
-            '1.0.6'
+            self::VERSION
+        );
+        wp_register_style(
+            'fides-wallet-catalog-ui-lib',
+            $this->plugin_url . 'assets/lib/fides-catalog-ui.css',
+            array(),
+            $ui_lib_css_version
+        );
+        wp_register_script(
+            'fides-wallet-catalog-ui-lib',
+            $this->plugin_url . 'assets/lib/fides-catalog-ui.js',
+            array(),
+            $ui_lib_js_version,
+            true
         );
         
         wp_register_script(
             'fides-wallet-catalog',
             $this->plugin_url . 'assets/wallet-catalog.js',
-            array(),
-            '1.0.6',
+            array('fides-wallet-catalog-ui-lib'),
+            self::VERSION,
             true
         );
         
@@ -90,6 +109,7 @@ class FIDES_Wallet_Catalog {
         
         // Enqueue assets
         wp_enqueue_style('fides-wallet-catalog');
+        wp_enqueue_script('fides-wallet-catalog-ui-lib');
         wp_enqueue_script('fides-wallet-catalog');
         
         // Data attributes for configuration
