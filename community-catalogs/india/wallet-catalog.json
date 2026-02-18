@@ -3,7 +3,7 @@
   "provider": {
     "name": "India Government",
     "website": "https://www.digilocker.gov.in/",
-    "logo": "https://www.google.com/s2/favicons?domain=digilocker.gov.in&sz=128",
+    "logo": "https://www.google.com/s2/favicons?domain=uidai.gov.in&sz=128",
     "country": "IN"
   },
   "wallets": [
@@ -22,7 +22,24 @@
         "iOS": "https://apps.apple.com/in/app/digilocker/id1320618078"
       },
       "documentation": "https://www.digilocker.gov.in/web/resources"
+    },
+    {
+      "id": "maadhaar",
+      "name": "mAadhaar",
+      "description": "Official UIDAI mobile wallet for Aadhaar digital identity credentials. Uses ISO mDL/mDoc and supports OpenID4VP (v1.0) presentation flows.",
+      "logo": "https://play-lh.googleusercontent.com/j7kM2-v1QBN5YO167Si_6YEmLc2A-f_4vaMyf-imZjwIkV83IkWm6U7NYfOdTbNGyaQ=w480-h960-rw",
+      "website": "https://uidai.gov.in/",
+      "type": "personal",
+      "platforms": ["Android"],
+      "status": "production",
+      "appStoreLinks": {
+        "android": "https://play.google.com/store/apps/details?id=in.gov.uidai.mAadhaarPlus&hl=en"
+      },
+      "credentialFormats": ["mDL/mDoc"],
+      "presentationProtocols": ["OpenID4VP"],
+      "features": ["OpenID4VP 1.0"],
+      "documentation": "https://uidai.gov.in/"
     }
   ],
-  "lastUpdated": "2026-01-10T12:00:00Z"
+  "lastUpdated": "2026-02-18T08:15:00Z"
 }
