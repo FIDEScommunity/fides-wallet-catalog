@@ -1,0 +1,33 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "California Department of Motor Vehicles (DMV)",
+    "website": "https://www.dmv.ca.gov/portal/ca-dmv-wallet/",
+    "logo": "https://www.google.com/s2/favicons?domain=dmv.ca.gov&sz=128",
+    "country": "US"
+  },
+  "wallets": [
+    {
+      "id": "ca-dmv-wallet",
+      "name": "CA DMV Wallet",
+      "description": "Official California DMV wallet app for the California mobile Driver’s License (mDL) pilot.",
+      "logo": "https://www.google.com/s2/favicons?domain=dmv.ca.gov&sz=128",
+      "website": "https://www.dmv.ca.gov/portal/ca-dmv-wallet/",
+      "type": "personal",
+      "platforms": ["Android", "iOS"],
+      "status": "beta",
+      "appStoreLinks": {
+        "android": "https://play.google.com/store/apps/details?id=gov.ca.dmv.wallet",
+        "iOS": "https://apps.apple.com/us/app/ca-dmv-wallet/id6449002508"
+      },
+      "credentialFormats": ["mDL/mDoc"],
+      "presentationProtocols": ["ISO 18013-5"],
+      "features": [
+        "Pilot phase",
+        "Selective disclosure style data sharing"
+      ],
+      "documentation": "https://www.dmv.ca.gov/portal/ca-dmv-wallet/"
+    }
+  ],
+  "lastUpdated": "2026-02-18T00:00:00Z"
+}
