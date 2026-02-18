@@ -1,0 +1,26 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "RNP HN (Registro Nacional de las Personas), Honduras",
+    "website": "https://www.rnp.hn/",
+    "logo": "https://www.google.com/s2/favicons?domain=rnp.hn&sz=128",
+    "country": "HN"
+  },
+  "wallets": [
+    {
+      "id": "bien",
+      "name": "Bien",
+      "description": "A self-sovereign, identity-based digital wallet for citizens to securely store and manage credentials on their smartphone, with RNP as the root of trust.",
+      "logo": "https://play-lh.googleusercontent.com/ZCotfBIRuTIBXCOZIDkTWtwJfiCv1sf3YGef5BuOzWOQAlM6vO0Q5yNw2usjvR7d8PzkIL45_z9Pc5F4H1VmlA=w480-h960-rw",
+      "website": "https://www.rnp.hn/",
+      "type": "personal",
+      "platforms": ["Android", "iOS"],
+      "status": "production",
+      "appStoreLinks": {
+        "android": "https://play.google.com/store/apps/details?id=com.honduras.bien",
+        "iOS": "https://apps.apple.com/us/app/bien/id6754266435"
+      }
+    }
+  ],
+  "lastUpdated": "2026-02-18T10:15:00Z"
+}
