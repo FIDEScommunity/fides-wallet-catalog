@@ -10,8 +10,8 @@
     {
       "id": "seviswallet",
       "name": "SevisWallet",
-      "description": "Papua New Guinea’s official digital identity wallet, enabling citizens and residents to securely store and manage their SevisPass digital ID and other trusted digital credentials via a multifunctional mobile app.",
-      "logo": "https://play-lh.googleusercontent.com/thumb/ESevisWalletIcon", 
+      "description": "Papua New Guinea’s official digital identity wallet for the SevisPass Digital ID ecosystem, enabling citizens and residents to securely store and manage identity credentials and access government and private services.",
+      "logo": "https://play-lh.googleusercontent.com/e6fcdFw8Fif5wYNmXbwEPKEVdLnWBiRbxzWViM6NmyU3SVjMKzr69Sf8RbnnlUPXzDqYWQ94dKbMqKXsQ3SV=w480-h960-rw",
       "website": "https://www.sevis.gov.pg/",
       "type": "personal",
       "platforms": ["Android"],
@@ -21,5 +21,5 @@
       }
     }
   ],
-  "lastUpdated": "2026-02-18T00:00:00Z"
+  "lastUpdated": "2026-02-18T12:00:00Z"
 }
