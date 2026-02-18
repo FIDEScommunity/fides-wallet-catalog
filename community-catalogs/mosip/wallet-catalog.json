@@ -29,16 +29,32 @@
       }
     },
     {
-      "id": "inji-platform",
-      "name": "Inji Platform",
-      "description": "A set of open source modules by MOSIP, enabling organizations and governments to issue, verify, and manage verifiable credentials at scale.",
+      "id": "inji-certifier",
+      "name": "Inji Certifier",
+      "description": "An open-source issuing component by MOSIP enabling governments and organizations to issue verifiable credentials at scale.",
       "logo": "https://www.google.com/s2/favicons?domain=mosip.io&sz=128",
       "website": "https://www.mosip.io",
       "type": "organizational",
-      "capabilities": ["issuer", "verifier"],
+      "capabilities": ["issuer"],
       "platforms": ["Web"],
       "credentialFormats": ["SD-JWT-VC", "JWT-VC", "mDL/mDoc"],
       "issuanceProtocols": ["OpenID4VCI"],
+      "openSource": true,
+      "license": "MPL-2.0",
+      "repository": "https://github.com/mosip",
+      "status": "production",
+      "documentation": "https://docs.mosip.io"
+    },
+    {
+      "id": "inji-verifier",
+      "name": "Inji Verifier",
+      "description": "An open-source verification component by MOSIP enabling organizations and relying parties to verify verifiable credentials using OpenID4VP.",
+      "logo": "https://www.google.com/s2/favicons?domain=mosip.io&sz=128",
+      "website": "https://www.mosip.io",
+      "type": "organizational",
+      "capabilities": ["verifier"],
+      "platforms": ["Web"],
+      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "mDL/mDoc"],
       "presentationProtocols": ["OpenID4VP"],
       "openSource": true,
       "license": "MPL-2.0",
@@ -47,6 +63,5 @@
       "documentation": "https://docs.mosip.io"
     }
   ],
-  "lastUpdated": "2026-01-10T12:00:00Z"
+  "lastUpdated": "2026-02-18T07:45:00Z"
 }
-
