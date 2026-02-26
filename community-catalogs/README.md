@@ -46,3 +46,13 @@ Your wallet catalog will be automatically validated against the schema when you 
 
 See the full schema documentation: [Wallet Catalog Schema](../schemas/wallet-catalog.schema.json)
 
+## Date Fields (Optional, Recommended)
+
+You can include provider-managed update dates:
+
+- `wallets[].updatedAt` (preferred)
+- `wallets[].updated` (legacy alias)
+- top-level `lastUpdated` (catalog-level)
+
+Do not include `firstSeenAt` in provider files. That value is maintained by the crawler in `data/wallet-history-state.json`.
+

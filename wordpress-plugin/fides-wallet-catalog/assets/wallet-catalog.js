@@ -163,6 +163,8 @@
 
   // State
   let wallets = [];
+  const SORT_PREFERENCE_STORAGE_KEY = 'fidesWalletCatalogSortBy';
+  let sortBy = 'lastUpdated';
   let filters = {
     search: '',
     type: [],
@@ -179,7 +181,9 @@
     interoperabilityProfiles: [],
     status: [],
     openSource: null,
-    governance: null // 'government' or 'private'
+    governance: null, // 'government' or 'private'
+    addedLast30Days: false,
+    includesVideo: false
   };
 
   // Country code to name mapping
@@ -246,8 +250,100 @@
       filters.type = [settings.type];
     }
 
+    // Restore persisted sort preference (if supported)
+    try {
+      const savedSort = window.localStorage.getItem(SORT_PREFERENCE_STORAGE_KEY);
+      if (savedSort === 'az' || savedSort === 'lastUpdated') {
+        sortBy = savedSort;
+      }
+    } catch (error) {
+      // Ignore storage errors (private mode / blocked storage)
+    }
+
     // Load data
     loadWallets();
+  }
+
+  /**
+   * Parse first available date from candidate fields
+   */
+  function parseWalletDate(wallet, dateFields) {
+    if (!wallet || !Array.isArray(dateFields)) return null;
+    for (const field of dateFields) {
+      const value = wallet[field];
+      if (!value) continue;
+      const date = new Date(value);
+      if (!Number.isNaN(date.getTime())) return date;
+    }
+    return null;
+  }
+
+  /**
+   * Best-effort "added" date for quick filter
+   */
+  function getWalletAddedDate(wallet) {
+    return parseWalletDate(wallet, ['firstSeenAt', 'createdAt', 'addedAt', 'releaseDate']);
+  }
+
+  /**
+   * Best-effort "updated" date for sorting/stats
+   */
+  function getWalletUpdatedDate(wallet) {
+    return parseWalletDate(wallet, ['updatedAt', 'fetchedAt', 'releaseDate']);
+  }
+
+  /**
+   * Check if date is within X days from now
+   */
+  function isWithinLastDays(date, days) {
+    if (!date || Number.isNaN(date.getTime())) return false;
+    const threshold = Date.now() - (days * 24 * 60 * 60 * 1000);
+    return date.getTime() >= threshold;
+  }
+
+  /**
+   * Format date as relative update text for cards
+   */
+  function formatUpdatedLabel(date) {
+    if (!date || Number.isNaN(date.getTime())) return '';
+    return `Updated ${date.toLocaleDateString('en-US')}`;
+  }
+
+  /**
+   * Whether wallet has a usable video URL
+   */
+  function hasWalletVideo(wallet) {
+    if (!wallet || !wallet.video || typeof wallet.video !== 'string') return false;
+    return wallet.video.trim().length > 0;
+  }
+
+  /**
+   * Get simple KPI metrics for current result set
+   */
+  function getCatalogMetrics(items) {
+    const safeItems = Array.isArray(items) ? items : [];
+    let newLast30Days = 0;
+    let updatedLast30Days = 0;
+    const countries = new Set();
+
+    safeItems.forEach((wallet) => {
+      if (isWithinLastDays(getWalletAddedDate(wallet), 30)) {
+        newLast30Days += 1;
+      }
+      if (isWithinLastDays(getWalletUpdatedDate(wallet), 30)) {
+        updatedLast30Days += 1;
+      }
+      if (wallet.provider && wallet.provider.country) {
+        countries.add(wallet.provider.country);
+      }
+    });
+
+    return {
+      total: safeItems.length,
+      newLast30Days,
+      updatedLast30Days,
+      countryCount: countries.size
+    };
   }
 
   /**
@@ -365,7 +461,7 @@
    * Filter wallets based on current filters
    */
   function getFilteredWallets() {
-    return wallets.filter(wallet => {
+    const filtered = wallets.filter(wallet => {
       // Search
       if (filters.search) {
         const search = filters.search.toLowerCase();
@@ -479,8 +575,31 @@
         if (filters.governance === 'private' && isGov) return false;
       }
 
+      // Added in last 30 days
+      if (filters.addedLast30Days) {
+        if (!isWithinLastDays(getWalletAddedDate(wallet), 30)) return false;
+      }
+
+      // Includes video
+      if (filters.includesVideo) {
+        if (!hasWalletVideo(wallet)) return false;
+      }
+
       return true;
-    }).sort((a, b) => a.name.localeCompare(b.name));
+    });
+
+    if (sortBy === 'lastUpdated') {
+      return filtered.sort((a, b) => {
+        const dateA = getWalletUpdatedDate(a);
+        const dateB = getWalletUpdatedDate(b);
+        const timeA = dateA ? dateA.getTime() : 0;
+        const timeB = dateB ? dateB.getTime() : 0;
+        if (timeB !== timeA) return timeB - timeA;
+        return a.name.localeCompare(b.name);
+      });
+    }
+
+    return filtered.sort((a, b) => a.name.localeCompare(b.name));
   }
 
   /**
@@ -503,6 +622,8 @@
     count += filters.status.length;
     if (filters.openSource !== null) count += 1;
     if (filters.governance !== null) count += 1;
+    if (filters.addedLast30Days) count += 1;
+    if (filters.includesVideo) count += 1;
     return count;
   }
 
@@ -550,6 +671,7 @@
    */
   function render() {
     const filtered = getFilteredWallets();
+    const metrics = getCatalogMetrics(filtered);
     const activeFilterCount = getActiveFilterCount();
     
     // Save focus state before re-rendering
@@ -599,6 +721,17 @@
                 </div>
               </div>
             ` : ''}
+            <div class="fides-quick-filters">
+              <span class="fides-quick-filters-title">Quick filters</span>
+              <label class="fides-filter-checkbox">
+                <input type="checkbox" data-filter="addedLast30Days" data-value="true" ${filters.addedLast30Days ? 'checked' : ''}>
+                <span>Added last 30 days</span>
+              </label>
+              <label class="fides-filter-checkbox">
+                <input type="checkbox" data-filter="includesVideo" data-value="true" ${filters.includesVideo ? 'checked' : ''}>
+                <span>Includes video</span>
+              </label>
+            </div>
             ${!settings.type ? `
               <div class="fides-filter-group collapsible ${!filterGroupState.type ? 'collapsed' : ''} ${filters.type.length > 0 ? 'has-active' : ''}" data-filter-group="type">
                 <button class="fides-filter-label-toggle" type="button" aria-expanded="${filterGroupState.type}">
@@ -966,8 +1099,14 @@
     // Results count + link to map
     html += `
       <div class="fides-results-bar">
-        <div class="fides-results-count">
-          ${filtered.length} wallet${filtered.length !== 1 ? 's' : ''} found
+        <div class="fides-results-controls">
+          <label class="fides-sort-wrap">
+            <span class="fides-sort-label">Sort by:</span>
+            <select id="fides-sort-select" class="fides-sort-select">
+              <option value="lastUpdated" ${sortBy === 'lastUpdated' ? 'selected' : ''}>Last updated</option>
+              <option value="az" ${sortBy === 'az' ? 'selected' : ''}>A-Z</option>
+            </select>
+          </label>
         </div>
         <a href="${MAP_PAGE_URL}" class="fides-show-on-map" target="_blank" rel="noopener" aria-label="Show on map (opens in new tab)">${icons.externalLink} Show on map</a>
         <!-- Mobile filter toggle -->
@@ -978,6 +1117,26 @@
             <span class="fides-filter-count ${activeFilterCount > 0 ? '' : 'hidden'}">${activeFilterCount || 0}</span>
           </button>
         ` : ''}
+      </div>
+    `;
+    html += `
+      <div class="fides-kpi-row">
+        <button class="fides-kpi-card" type="button" data-kpi-action="clear-added-filter">
+          <span class="fides-kpi-value">${metrics.total}</span>
+          <span class="fides-kpi-label">Wallets</span>
+        </button>
+        <button class="fides-kpi-card ${filters.addedLast30Days ? 'active' : ''}" type="button" data-kpi-action="toggle-added-filter">
+          <span class="fides-kpi-value">${metrics.newLast30Days}</span>
+          <span class="fides-kpi-label">New last 30 days</span>
+        </button>
+        <button class="fides-kpi-card" type="button" data-kpi-action="set-last-updated-sort">
+          <span class="fides-kpi-value">${metrics.updatedLast30Days}</span>
+          <span class="fides-kpi-label">Updated last 30 days</span>
+        </button>
+        <button class="fides-kpi-card ${filters.countries.length > 0 ? 'active' : ''}" type="button" data-kpi-action="clear-country-filter">
+          <span class="fides-kpi-value">${metrics.countryCount}</span>
+          <span class="fides-kpi-label">Countries</span>
+        </button>
       </div>
     `;
 
@@ -1020,12 +1179,20 @@
    */
   function renderWalletGridOnly() {
     const filtered = getFilteredWallets();
+    const metrics = getCatalogMetrics(filtered);
     
-    // Update results count
-    const resultsCount = container.querySelector('.fides-results-count');
-    if (resultsCount) {
-      resultsCount.textContent = `${filtered.length} wallet${filtered.length !== 1 ? 's' : ''} found`;
-    }
+    const kpiTotal = container.querySelector('.fides-kpi-card[data-kpi-action="clear-added-filter"] .fides-kpi-value');
+    const kpiNew = container.querySelector('.fides-kpi-card[data-kpi-action="toggle-added-filter"] .fides-kpi-value');
+    const kpiUpdated = container.querySelector('.fides-kpi-card[data-kpi-action="set-last-updated-sort"] .fides-kpi-value');
+    const kpiCountries = container.querySelector('.fides-kpi-card[data-kpi-action="clear-country-filter"] .fides-kpi-value');
+    const kpiAddedCard = container.querySelector('.fides-kpi-card[data-kpi-action="toggle-added-filter"]');
+    const kpiCountryCard = container.querySelector('.fides-kpi-card[data-kpi-action="clear-country-filter"]');
+    if (kpiTotal) kpiTotal.textContent = String(metrics.total);
+    if (kpiNew) kpiNew.textContent = String(metrics.newLast30Days);
+    if (kpiUpdated) kpiUpdated.textContent = String(metrics.updatedLast30Days);
+    if (kpiCountries) kpiCountries.textContent = String(metrics.countryCount);
+    if (kpiAddedCard) kpiAddedCard.classList.toggle('active', filters.addedLast30Days);
+    if (kpiCountryCard) kpiCountryCard.classList.toggle('active', filters.countries.length > 0);
     
     // Update search clear button visibility
     const searchClear = document.getElementById('fides-search-clear');
@@ -1129,6 +1296,12 @@
     };
 
     const displayName = getDisplayName(wallet.name);
+    const addedDate = getWalletAddedDate(wallet);
+    const updatedDate = getWalletUpdatedDate(wallet);
+    const isNewWallet = isWithinLastDays(addedDate, 30);
+    const activityLabel = isNewWallet && addedDate
+      ? `Added ${addedDate.toLocaleDateString('en-US')}`
+      : formatUpdatedLabel(updatedDate);
 
     return `
       <div class="fides-wallet-card" data-wallet-id="${wallet.id}" role="button" tabindex="0">
@@ -1143,6 +1316,7 @@
           </div>
         </div>
         <div class="fides-wallet-body">
+          ${activityLabel ? `<p class="fides-wallet-updated">${escapeHtml(activityLabel)}</p>` : ''}
           ${wallet.description ? `<p class="fides-wallet-description">${escapeHtml(wallet.description)}</p>` : ''}
           
           ${wallet.type === 'organizational' && wallet.capabilities && wallet.capabilities.length > 0 ? `
@@ -1818,8 +1992,11 @@
         const value = checkbox.dataset.value;
         const isChecked = checkbox.checked;
         
+        if (filterType === 'addedLast30Days' || filterType === 'includesVideo') {
+          filters[filterType] = isChecked;
+        }
         // Special handling for openSource (boolean toggle)
-        if (filterType === 'openSource') {
+        else if (filterType === 'openSource') {
           const boolValue = value === 'true';
           filters.openSource = isChecked ? boolValue : null;
         } 
@@ -1839,6 +2016,55 @@
         }
         
         render();
+      });
+    });
+
+    const sortSelect = document.getElementById('fides-sort-select');
+    if (sortSelect) {
+      sortSelect.addEventListener('change', () => {
+        const nextSort = sortSelect.value === 'az' ? 'az' : 'lastUpdated';
+        sortBy = nextSort;
+        try {
+          window.localStorage.setItem(SORT_PREFERENCE_STORAGE_KEY, sortBy);
+        } catch (error) {
+          // Ignore storage errors
+        }
+        render();
+      });
+    }
+
+    container.querySelectorAll('.fides-kpi-card').forEach((kpiCard) => {
+      kpiCard.addEventListener('click', () => {
+        const action = kpiCard.dataset.kpiAction;
+        if (action === 'toggle-added-filter') {
+          filters.addedLast30Days = !filters.addedLast30Days;
+          render();
+          return;
+        }
+        if (action === 'set-last-updated-sort') {
+          sortBy = 'lastUpdated';
+          try {
+            window.localStorage.setItem(SORT_PREFERENCE_STORAGE_KEY, sortBy);
+          } catch (error) {
+            // Ignore storage errors
+          }
+          render();
+          return;
+        }
+        if (action === 'clear-country-filter') {
+          if (filters.countries.length > 0) {
+            filters.countries = [];
+            render();
+          }
+          return;
+        }
+        if (action === 'clear-added-filter') {
+          if (filters.addedLast30Days) {
+            filters.addedLast30Days = false;
+            render();
+          }
+          return;
+        }
       });
     });
 
@@ -1862,7 +2088,9 @@
           interoperabilityProfiles: [],
           status: [],
           openSource: null,
-          governance: null
+          governance: null,
+          addedLast30Days: false,
+          includesVideo: false
         };
         render();
       });

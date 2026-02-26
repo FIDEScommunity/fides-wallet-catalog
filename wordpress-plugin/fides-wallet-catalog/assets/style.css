@@ -355,6 +355,83 @@
   stroke: currentColor;
 }
 
+.fides-results-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.fides-sort-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--fides-text-secondary);
+}
+
+.fides-sort-label {
+  white-space: nowrap;
+}
+
+.fides-sort-select {
+  min-width: 160px;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--fides-border);
+  border-radius: 6px;
+  background: var(--fides-bg-secondary);
+  color: var(--fides-text-primary);
+  font-size: 0.875rem;
+}
+
+.fides-sort-select:focus {
+  outline: none;
+  border-color: var(--fides-accent);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+}
+
+.fides-kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.fides-kpi-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--fides-border);
+  border-radius: 10px;
+  background: var(--fides-bg-secondary);
+  color: var(--fides-text-primary);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fides-kpi-card:hover {
+  border-color: var(--fides-accent);
+  transform: translateY(-1px);
+}
+
+.fides-kpi-card.active {
+  border-color: var(--fides-accent);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.12);
+}
+
+.fides-kpi-value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.fides-kpi-label {
+  font-size: 0.78rem;
+  color: var(--fides-text-secondary);
+}
+
 /* Mobile filter toggle - hidden on desktop */
 .fides-mobile-filter-toggle {
   display: none;
@@ -396,6 +473,23 @@
 .fides-mobile-search {
   display: none;
   margin-bottom: 1rem;
+}
+
+.fides-quick-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--fides-border);
+}
+
+.fides-quick-filters-title {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--fides-text-muted);
 }
 
 @media (max-width: 1023px) {
@@ -860,6 +954,26 @@
   .fides-wallet-grid[data-columns="4"] {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .fides-results-controls {
+    order: 3;
+    width: 100%;
+  }
+
+  .fides-sort-wrap {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .fides-sort-select {
+    min-width: 0;
+    width: 100%;
+    max-width: 220px;
+  }
+
+  .fides-kpi-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 /* Tablet/small desktop (below 1024px): hide sidebar, show mobile toggle */
@@ -1005,6 +1119,13 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.fides-wallet-updated {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  color: var(--fides-text-muted);
+  line-height: 1.3;
 }
 
 .fides-wallet-type-badge {

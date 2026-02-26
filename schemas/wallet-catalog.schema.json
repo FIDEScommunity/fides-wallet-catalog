@@ -295,6 +295,21 @@
           "format": "date",
           "description": "Initial release date (YYYY-MM-DD)"
         },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Optional provider-supplied creation timestamp"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Optional provider-supplied last update timestamp (legacy key)"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Optional provider-supplied last update timestamp"
+        },
         "capabilities": {
           "type": "array",
           "description": "Capabilities/roles of the wallet (primarily for organizational wallets)",

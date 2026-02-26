@@ -44,6 +44,9 @@ Quick reference for wallet providers to see which fields accept fixed values (en
 | `license` | | 📝 | SPDX format recommended (`MIT`, `Apache-2.0`, `GPL-3.0`, `EUPL-1.2`) |
 | `repository` | | 🔗 | URL |
 | `releaseDate` | | 🆔 | `YYYY-MM-DD` |
+| `createdAt` | | 🔗 | ISO 8601 date-time (optional provider timestamp) |
+| `updated` | | 🔗 | ISO 8601 date-time (legacy wallet update key) |
+| `updatedAt` | | 🔗 | ISO 8601 date-time (preferred wallet update key) |
 | `documentation` | | 🔗 | URL |
 
 ---
@@ -177,6 +180,14 @@ Quick reference for wallet providers to see which fields accept fixed values (en
 
 If you need a new enum value (e.g., a new credential format or protocol), open an issue or PR on GitHub:
 https://github.com/FIDEScommunity/fides-wallet-catalog
+
+## Notes on Crawler-managed Fields
+
+The aggregated output (`data/aggregated.json`) contains additional crawler-managed fields such as:
+- `fetchedAt`
+- `firstSeenAt`
+
+These are not required in provider `wallet-catalog.json` files.
 
 ---
 

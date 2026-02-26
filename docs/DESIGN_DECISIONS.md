@@ -32,7 +32,22 @@ This document describes the key architecture and design decisions for the FIDES 
   - Fast load time for users
 - **Implementation**: `src/crawler/index.ts` + GitHub Action
 
-### 1.4 Git Workflow & CI/CD
+### 1.4 Semantic Date Strategy for Sorting & "New" Signals
+- **Decision**: Distinguish semantic update dates from technical crawl timestamps
+- **Rationale**:
+  - `fetchedAt` changes every crawl and causes noisy "recently updated" behavior
+  - Users need meaningful chronology (`updatedAt`, `firstSeenAt`)
+  - Stable "Added last 30 days" requires persisted first-seen tracking
+- **Implementation**:
+  - `updatedAt` fallback order:
+    1) wallet `updatedAt` / `updated`
+    2) catalog `lastUpdated`
+    3) git last commit date of provider `wallet-catalog.json`
+    4) `fetchedAt` (last resort)
+  - `firstSeenAt` persisted in `data/wallet-history-state.json`
+  - one-time backfill via `src/crawler/backfill-first-seen.ts`
+
+### 1.5 Git Workflow & CI/CD
 - **Decision**: Automatic validation and crawl in GitHub Actions
 - **Rationale**:
   - Prevents merging invalid data
@@ -60,7 +75,7 @@ This document describes the key architecture and design decisions for the FIDES 
   - Prevents "old version" problems
 - **Implementation**: 
 ```php
-define('FIDES_WALLET_CATALOG_VERSION', '1.2.2');
+define('FIDES_WALLET_CATALOG_VERSION', '2.1.8');
 wp_enqueue_style('fides-wallet-catalog', plugins_url('assets/style.css', __FILE__), [], FIDES_WALLET_CATALOG_VERSION);
 ```
 

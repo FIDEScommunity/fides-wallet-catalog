@@ -11,6 +11,7 @@
 
 import fs from 'fs/promises';
 import path from 'path';
+import { execFileSync } from 'child_process';
 import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 import type { 
@@ -50,10 +51,82 @@ const CONFIG = {
   
   // Legacy registry file (for backwards compatibility)
   registryPath: path.join(process.cwd(), 'data/registry.json'),
+
+  // Stable first-seen tracking (independent from provider-managed fields)
+  walletHistoryStatePath: path.join(process.cwd(), 'data/wallet-history-state.json'),
   
   // Output file
   aggregatedPath: path.join(process.cwd(), 'data/aggregated.json'),
 };
+
+interface WalletHistoryEntry {
+  firstSeenAt: string;
+  lastSeenAt?: string;
+  providerKey?: string;
+  walletId?: string;
+}
+
+type WalletHistoryState = Record<string, WalletHistoryEntry>;
+const gitLastCommitDateCache = new Map<string, string | null>();
+
+/**
+ * Load stable wallet history state (firstSeen tracking)
+ */
+async function loadWalletHistoryState(): Promise<WalletHistoryState> {
+  try {
+    const data = await fs.readFile(CONFIG.walletHistoryStatePath, 'utf-8');
+    const parsed = JSON.parse(data) as WalletHistoryState;
+    if (!parsed || typeof parsed !== 'object') return {};
+    return parsed;
+  } catch {
+    return {};
+  }
+}
+
+/**
+ * Save stable wallet history state
+ */
+async function saveWalletHistoryState(state: WalletHistoryState): Promise<void> {
+  await fs.mkdir(path.dirname(CONFIG.walletHistoryStatePath), { recursive: true });
+  await fs.writeFile(CONFIG.walletHistoryStatePath, JSON.stringify(state, null, 2));
+}
+
+/**
+ * Normalize potentially non-ISO date-like value into ISO string
+ */
+function toIsoString(value?: string): string | null {
+  if (!value || typeof value !== 'string') return null;
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return null;
+  return date.toISOString();
+}
+
+/**
+ * Get last commit date for a repo-relative file path
+ */
+function getGitLastCommitDateForPath(repoRelativePath: string): string | null {
+  if (!repoRelativePath) return null;
+
+  const normalizedPath = repoRelativePath.replace(/\\/g, '/');
+  if (gitLastCommitDateCache.has(normalizedPath)) {
+    return gitLastCommitDateCache.get(normalizedPath) || null;
+  }
+
+  try {
+    const output = execFileSync(
+      'git',
+      ['log', '-1', '--format=%aI', '--', normalizedPath],
+      { cwd: process.cwd(), encoding: 'utf-8' }
+    ).trim();
+
+    const parsed = toIsoString(output || undefined);
+    gitLastCommitDateCache.set(normalizedPath, parsed);
+    return parsed;
+  } catch {
+    gitLastCommitDateCache.set(normalizedPath, null);
+    return null;
+  }
+}
 
 // =============================================================================
 // DID RESOLUTION
@@ -297,7 +370,7 @@ async function fetchGitHubCatalog(owner: string, repo: string, branch: string, p
 /**
  * Crawl GitHub repository for wallet catalogs
  */
-async function crawlGitHubRepo(): Promise<{ wallets: NormalizedWallet[], providers: Map<string, WalletCatalog['provider']> }> {
+async function crawlGitHubRepo(walletHistoryState: WalletHistoryState): Promise<{ wallets: NormalizedWallet[], providers: Map<string, WalletCatalog['provider']> }> {
   const wallets: NormalizedWallet[] = [];
   const providers = new Map<string, WalletCatalog['provider']>();
   
@@ -315,13 +388,15 @@ async function crawlGitHubRepo(): Promise<{ wallets: NormalizedWallet[], provide
   
   for (const providerDir of providerDirs) {
     const providerPath = `${catalogsPath}/${providerDir}`;
+    const catalogFilePath = `${providerPath}/wallet-catalog.json`;
+    const gitLastCommitAt = getGitLastCommitDateForPath(catalogFilePath);
     console.log(`   📦 Processing: ${providerDir}`);
     
     const catalog = await fetchGitHubCatalog(owner, repo, branch, providerPath);
     
     if (catalog) {
       const catalogUrl = `https://github.com/${owner}/${repo}/blob/${branch}/${providerPath}/wallet-catalog.json`;
-      const normalizedWallets = normalizeWallets(catalog, catalogUrl, 'github');
+      const normalizedWallets = normalizeWallets(catalog, catalogUrl, 'github', walletHistoryState, gitLastCommitAt);
       wallets.push(...normalizedWallets);
       providers.set(catalog.provider.did || catalog.provider.name, catalog.provider);
       
@@ -335,7 +410,7 @@ async function crawlGitHubRepo(): Promise<{ wallets: NormalizedWallet[], provide
 /**
  * Crawl DID-registered providers (with automatic DID resolution)
  */
-async function crawlDIDProviders(): Promise<{ wallets: NormalizedWallet[], providers: Map<string, WalletCatalog['provider']> }> {
+async function crawlDIDProviders(walletHistoryState: WalletHistoryState): Promise<{ wallets: NormalizedWallet[], providers: Map<string, WalletCatalog['provider']> }> {
   const wallets: NormalizedWallet[] = [];
   const providers = new Map<string, WalletCatalog['provider']>();
   
@@ -380,7 +455,7 @@ async function crawlDIDProviders(): Promise<{ wallets: NormalizedWallet[], provi
       const catalog = await fetchCatalog(catalogUrl);
       
       if (catalog) {
-        const normalizedWallets = normalizeWallets(catalog, catalogUrl, 'did');
+        const normalizedWallets = normalizeWallets(catalog, catalogUrl, 'did', walletHistoryState, null);
         wallets.push(...normalizedWallets);
         providers.set(catalog.provider.did || catalog.provider.name, catalog.provider);
         
@@ -408,7 +483,7 @@ async function crawlDIDProviders(): Promise<{ wallets: NormalizedWallet[], provi
 /**
  * Legacy: Crawl providers from old registry format (for backwards compatibility)
  */
-async function crawlLegacyRegistry(): Promise<{ wallets: NormalizedWallet[], providers: Map<string, WalletCatalog['provider']> }> {
+async function crawlLegacyRegistry(walletHistoryState: WalletHistoryState): Promise<{ wallets: NormalizedWallet[], providers: Map<string, WalletCatalog['provider']> }> {
   const wallets: NormalizedWallet[] = [];
   const providers = new Map<string, WalletCatalog['provider']>();
   
@@ -428,7 +503,7 @@ async function crawlLegacyRegistry(): Promise<{ wallets: NormalizedWallet[], pro
     const catalog = await fetchCatalog(entry.catalogUrl);
     
     if (catalog) {
-      const normalizedWallets = normalizeWallets(catalog, entry.catalogUrl, 'did');
+      const normalizedWallets = normalizeWallets(catalog, entry.catalogUrl, 'did', walletHistoryState, null);
       wallets.push(...normalizedWallets);
       providers.set(catalog.provider.did || catalog.provider.name, catalog.provider);
       
@@ -454,7 +529,8 @@ async function crawlLegacyRegistry(): Promise<{ wallets: NormalizedWallet[], pro
 async function crawlLocalDirectory(
   dirPath: string, 
   label: string, 
-  source: 'local' | 'github' | 'did'
+  source: 'local' | 'github' | 'did',
+  walletHistoryState: WalletHistoryState
 ): Promise<{ wallets: NormalizedWallet[], providers: Map<string, WalletCatalog['provider']> }> {
   const wallets: NormalizedWallet[] = [];
   const providers = new Map<string, WalletCatalog['provider']>();
@@ -484,6 +560,8 @@ async function crawlLocalDirectory(
     
     for (const provider of providerDirs) {
       const catalogPath = path.join(dirPath, provider, 'wallet-catalog.json');
+      const relativeCatalogPath = path.relative(process.cwd(), catalogPath).replace(/\\/g, '/');
+      const gitLastCommitAt = getGitLastCommitDateForPath(relativeCatalogPath);
       
       try {
         await fs.access(catalogPath);
@@ -492,7 +570,7 @@ async function crawlLocalDirectory(
         const catalog = await fetchLocalCatalog(catalogPath);
         
         if (catalog) {
-          const normalizedWallets = normalizeWallets(catalog, catalogPath, source);
+          const normalizedWallets = normalizeWallets(catalog, catalogPath, source, walletHistoryState, gitLastCommitAt);
           wallets.push(...normalizedWallets);
           providers.set(catalog.provider.did || catalog.provider.name, catalog.provider);
           
@@ -513,26 +591,59 @@ async function crawlLocalDirectory(
 /**
  * Crawl community catalogs (all wallet catalogs are stored here)
  */
-async function crawlCommunityCatalogs(): Promise<{ wallets: NormalizedWallet[], providers: Map<string, WalletCatalog['provider']> }> {
-  return crawlLocalDirectory(CONFIG.communityCatalogsDir, 'community catalogs', 'local');
+async function crawlCommunityCatalogs(walletHistoryState: WalletHistoryState): Promise<{ wallets: NormalizedWallet[], providers: Map<string, WalletCatalog['provider']> }> {
+  return crawlLocalDirectory(CONFIG.communityCatalogsDir, 'community catalogs', 'local', walletHistoryState);
 }
 
 /**
  * Normalize wallets with provider info
  */
-function normalizeWallets(catalog: WalletCatalog, catalogUrl: string, source: 'local' | 'github' | 'did'): NormalizedWallet[] {
+function normalizeWallets(
+  catalog: WalletCatalog,
+  catalogUrl: string,
+  source: 'local' | 'github' | 'did',
+  walletHistoryState: WalletHistoryState,
+  gitLastCommitAt: string | null
+): NormalizedWallet[] {
   const fetchedAt = new Date().toISOString();
 
   return catalog.wallets.map(wallet => {
     // Check if wallet already has provider info (e.g., from EU landscape)
     // If so, use that instead of the catalog provider
     const provider = (wallet as any).provider || catalog.provider;
+    const providerKey = provider.did || provider.name;
+    const historyKey = `${providerKey}:${wallet.id}`;
+
+    const updatedAt =
+      toIsoString((wallet as any).updatedAt) ||
+      toIsoString((wallet as any).updated) ||
+      toIsoString(catalog.lastUpdated) ||
+      gitLastCommitAt ||
+      fetchedAt;
+
+    const existingHistory = walletHistoryState[historyKey];
+    const firstSeenAt =
+      existingHistory?.firstSeenAt ||
+      toIsoString((wallet as any).firstSeenAt) ||
+      toIsoString((wallet as any).createdAt) ||
+      toIsoString(wallet.releaseDate) ||
+      updatedAt ||
+      fetchedAt;
+
+    walletHistoryState[historyKey] = {
+      firstSeenAt,
+      lastSeenAt: fetchedAt,
+      providerKey,
+      walletId: wallet.id
+    };
 
     return {
       ...wallet,
       provider,
       catalogUrl,
       fetchedAt,
+      updatedAt,
+      firstSeenAt,
       source // Track where the catalog came from
     } as NormalizedWallet;
   });
@@ -625,29 +736,30 @@ function deduplicateWallets(wallets: NormalizedWallet[]): NormalizedWallet[] {
  */
 async function crawl(): Promise<void> {
   console.log('🔍 Starting FIDES Wallet Catalog crawl...');
+  const walletHistoryState = await loadWalletHistoryState();
 
   const allWallets: NormalizedWallet[] = [];
   const allProviders = new Map<string, WalletCatalog['provider']>();
 
   // 1. Crawl GitHub repository first (highest priority)
   if (CONFIG.githubRepo.enabled) {
-    const github = await crawlGitHubRepo();
+    const github = await crawlGitHubRepo(walletHistoryState);
     allWallets.push(...github.wallets);
     github.providers.forEach((v, k) => allProviders.set(k, v));
   }
 
   // 2. Crawl community catalogs (including EU landscape)
-  const community = await crawlCommunityCatalogs();
+  const community = await crawlCommunityCatalogs(walletHistoryState);
   allWallets.push(...community.wallets);
   community.providers.forEach((v, k) => allProviders.set(k, v));
 
   // 3. Crawl DID-registered providers (with automatic DID resolution)
-  const didProviders = await crawlDIDProviders();
+  const didProviders = await crawlDIDProviders(walletHistoryState);
   allWallets.push(...didProviders.wallets);
   didProviders.providers.forEach((v, k) => allProviders.set(k, v));
 
   // 4. Crawl legacy registry (for backwards compatibility)
-  const legacy = await crawlLegacyRegistry();
+  const legacy = await crawlLegacyRegistry(walletHistoryState);
   allWallets.push(...legacy.wallets);
   legacy.providers.forEach((v, k) => allProviders.set(k, v));
 
@@ -665,11 +777,13 @@ async function crawl(): Promise<void> {
   // Save
   await fs.mkdir(path.dirname(CONFIG.aggregatedPath), { recursive: true });
   await fs.writeFile(CONFIG.aggregatedPath, JSON.stringify(aggregated, null, 2));
+  await saveWalletHistoryState(walletHistoryState);
   
   console.log('\n📊 Aggregation complete:');
   console.log(`   Total wallets: ${aggregated.stats.totalWallets}`);
   console.log(`   Total providers: ${aggregated.stats.totalProviders}`);
   console.log(`   Output: ${CONFIG.aggregatedPath}`);
+  console.log(`   History state: ${CONFIG.walletHistoryStatePath}`);
 }
 
 // Run crawler
