@@ -375,12 +375,19 @@
 
 .fides-sort-select {
   min-width: 160px;
-  padding: 0.4rem 0.6rem;
+  padding: 0.4rem 2rem 0.4rem 0.6rem;
   border: 1px solid var(--fides-border);
   border-radius: 6px;
-  background: var(--fides-bg-secondary);
+  background-color: var(--fides-bg-secondary);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1rem;
   color: var(--fides-text-primary);
   font-size: 0.875rem;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
 }
 
 .fides-sort-select:focus {
@@ -430,6 +437,13 @@
 .fides-kpi-label {
   font-size: 0.78rem;
   color: var(--fides-text-secondary);
+}
+
+/* On small screens show only "New" and "Updated" so labels stay on one line */
+@media (max-width: 600px) {
+  .fides-kpi-card .fides-kpi-label-extra {
+    display: none;
+  }
 }
 
 /* Mobile filter toggle - hidden on desktop */

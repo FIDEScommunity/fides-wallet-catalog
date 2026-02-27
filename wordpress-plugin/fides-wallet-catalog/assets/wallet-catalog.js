@@ -1127,11 +1127,11 @@
         </button>
         <button class="fides-kpi-card ${filters.addedLast30Days ? 'active' : ''}" type="button" data-kpi-action="toggle-added-filter">
           <span class="fides-kpi-value">${metrics.newLast30Days}</span>
-          <span class="fides-kpi-label">New last 30 days</span>
+          <span class="fides-kpi-label">New<span class="fides-kpi-label-extra"> last 30 days</span></span>
         </button>
         <button class="fides-kpi-card" type="button" data-kpi-action="set-last-updated-sort">
           <span class="fides-kpi-value">${metrics.updatedLast30Days}</span>
-          <span class="fides-kpi-label">Updated last 30 days</span>
+          <span class="fides-kpi-label">Updated<span class="fides-kpi-label-extra"> last 30 days</span></span>
         </button>
         <button class="fides-kpi-card ${filters.countries.length > 0 ? 'active' : ''}" type="button" data-kpi-action="clear-country-filter">
           <span class="fides-kpi-value">${metrics.countryCount}</span>
