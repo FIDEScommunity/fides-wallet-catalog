@@ -446,6 +446,13 @@
   }
 }
 
+/* Filter option counts (n) next to each sidebar option */
+.fides-filter-option-count {
+  margin-left: 0.25em;
+  font-size: 0.875em;
+  color: var(--fides-accent);
+}
+
 /* Mobile filter toggle - hidden on desktop */
 .fides-mobile-filter-toggle {
   display: none;

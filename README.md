@@ -249,6 +249,8 @@ A WordPress plugin is included in `wordpress-plugin/fides-wallet-catalog/`.
 | `columns` | 1, 2, 3, 4 | Number of columns (default: 3) |
 | `theme` | dark, light | Color theme (default: dark) |
 
+Each filter option shows a count of how many wallets match (e.g. "Personal (52)", "SD-JWT-VC (48)") so you can see the dataset distribution at a glance. Counts are computed over the visible set (e.g. when using `type="personal"`, only personal wallets are counted).
+
 The plugin automatically fetches data from the FIDES Community GitHub repository daily.
 
 ### Plugin data fallback (local)

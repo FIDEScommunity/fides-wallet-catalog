@@ -3,7 +3,7 @@
  * Plugin Name: FIDES Wallet Catalog
  * Plugin URI: https://fides.community
  * Description: Displays the FIDES Wallet Catalog with search and filter functionality
- * Version: 2.1.8
+ * Version: 2.1.9
  * Author: FIDES Labs BV
  * Author URI: https://fides.community
  * License: Apache-2.0
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
 class FIDES_Wallet_Catalog {
     
     private static $instance = null;
-    private const VERSION = '2.1.8';
+    private const VERSION = '2.1.9';
     private $plugin_url;
     private $plugin_path;
     

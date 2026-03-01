@@ -75,7 +75,7 @@ This document describes the key architecture and design decisions for the FIDES 
   - Prevents "old version" problems
 - **Implementation**: 
 ```php
-define('FIDES_WALLET_CATALOG_VERSION', '2.1.8');
+define('FIDES_WALLET_CATALOG_VERSION', '2.1.9');
 wp_enqueue_style('fides-wallet-catalog', plugins_url('assets/style.css', __FILE__), [], FIDES_WALLET_CATALOG_VERSION);
 ```
 
@@ -121,7 +121,17 @@ clearAllBtn.classList.toggle('hidden', activeCount === 0);
 
 **Important**: Use `visibility: hidden`, NOT `display: none`, to preserve space.
 
-### 3.3 Mobile-First Search: Partial Re-render
+### 3.3 Filter Option Counters (Facets)
+- **Decision**: Show a count next to each filter option (e.g. "Personal (52)", "SD-JWT-VC (48)")
+- **Rationale**:
+  - Users see dataset distribution at a glance without applying filters
+  - Same pattern as RP Catalog; consistent UX across FIDES catalogs
+- **Implementation**:
+  - Compute facets once after data load: single pass over the **visible** wallet set (e.g. when shortcode has `type="personal"`, count only personal wallets so numbers match what the user sees).
+  - Store result in `filterFacets`; render `(n)` in each option via `.fides-filter-option-count`.
+  - Use same derivation rules as filtering (e.g. "Publicly available" = has app store links) so counts match selectable results.
+
+### 3.4 Mobile-First Search: Partial Re-render
 - **Decision**: On search input only update grid, not entire DOM
 - **Rationale**:
   - On mobile keyboard disappears with full re-render
@@ -137,7 +147,7 @@ function renderWalletGridOnly() {
 }
 ```
 
-### 3.4 Progressive Disclosure: Collapsible Filters
+### 3.5 Progressive Disclosure: Collapsible Filters
 - **Decision**: Filter groups are collapsible with state persistence
 - **Rationale**:
   - Clear overview on mobile
