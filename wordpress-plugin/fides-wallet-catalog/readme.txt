@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 1.8.0
+Stable tag: 2.1.9
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -22,10 +22,15 @@ Wallet providers contribute their wallet information via GitHub Pull Requests to
 * 70+ wallets from national governments and commercial providers
 * Advanced search by name, description and provider
 * Extensive filters: type, platform, credential format, issuance/presentation protocols, interoperability profiles, and more
+* Filter option counters: each option shows how many wallets match (e.g. Personal (52), SD-JWT-VC (48))
+* Sort options including "Last updated" and A-Z
+* Quick filters including "Added last 30 days" and "Includes video"
+* Key figure tiles for total wallets, recently added, recently updated, and countries
 * Responsive design with dark and light themes
 * Simple shortcode integration: `[fides_wallet_catalog]`
 * Automatic daily updates from GitHub repository
 * Detailed wallet information including app store links, certifications, and technical specs
+* Semantic date display on cards ("Added" for new wallets, "Updated" otherwise)
 
 == Installation ==
 
@@ -91,6 +96,17 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 * Enables linking from RP Catalog to specific wallets
 * Minor code optimizations
 
+= 2.1.9 =
+* Added filter option counters: each sidebar filter shows how many wallets match (e.g. Personal (52), SD-JWT-VC (48))
+* Counts are computed over the visible dataset (respects shortcode type when set)
+
+= 2.1.8 =
+* Added sort dropdown in results controls with "Last updated" default
+* Added quick filters for "Added last 30 days" and "Includes video"
+* Added key figure row above results
+* Improved date semantics in UI by using `updatedAt` / `firstSeenAt` from aggregated data
+* Updated card activity label to show "Added <date>" for new wallets and "Updated <date>" for others
+
 = 1.7.8 =
 * Updated credential format filters (Apple Wallet Pass, Google Wallet Pass)
 * Improved mobile search functionality
@@ -112,8 +128,11 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 
 == Upgrade Notice ==
 
-= 1.8.0 =
-Added deep link support for wallet URLs. Enables integration with RP Catalog.
+= 2.1.9 =
+Adds filter option counters so you can see how many wallets match each filter at a glance.
+
+= 2.1.8 =
+Adds sorting, quick filters, key figures and improved update visibility in wallet cards.
 
 = 1.7.8 =
 Enhanced UI/UX and support for new credential formats. Recommended update.

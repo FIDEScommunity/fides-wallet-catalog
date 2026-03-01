@@ -85,6 +85,10 @@ export interface Wallet {
   };
   status?: WalletStatus;
   releaseDate?: string;
+  createdAt?: string;
+  updated?: string;
+  updatedAt?: string;
+  firstSeenAt?: string;
 }
 
 export interface WalletCatalog {
@@ -99,6 +103,8 @@ export interface NormalizedWallet extends Wallet {
   provider: WalletProvider;
   catalogUrl: string;
   fetchedAt: string;
+  updatedAt?: string;
+  firstSeenAt?: string;
   source?: 'local' | 'github' | 'did'; // Where the catalog was fetched from
 }
 

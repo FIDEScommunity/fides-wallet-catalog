@@ -163,6 +163,10 @@
 
   // State
   let wallets = [];
+  /** Precomputed counts per filter option (set after load, over walletsForFacets) */
+  let filterFacets = null;
+  const SORT_PREFERENCE_STORAGE_KEY = 'fidesWalletCatalogSortBy';
+  let sortBy = 'lastUpdated';
   let filters = {
     search: '',
     type: [],
@@ -179,7 +183,9 @@
     interoperabilityProfiles: [],
     status: [],
     openSource: null,
-    governance: null // 'government' or 'private'
+    governance: null, // 'government' or 'private'
+    addedLast30Days: false,
+    includesVideo: false
   };
 
   // Country code to name mapping
@@ -246,8 +252,100 @@
       filters.type = [settings.type];
     }
 
+    // Restore persisted sort preference (if supported)
+    try {
+      const savedSort = window.localStorage.getItem(SORT_PREFERENCE_STORAGE_KEY);
+      if (savedSort === 'az' || savedSort === 'lastUpdated') {
+        sortBy = savedSort;
+      }
+    } catch (error) {
+      // Ignore storage errors (private mode / blocked storage)
+    }
+
     // Load data
     loadWallets();
+  }
+
+  /**
+   * Parse first available date from candidate fields
+   */
+  function parseWalletDate(wallet, dateFields) {
+    if (!wallet || !Array.isArray(dateFields)) return null;
+    for (const field of dateFields) {
+      const value = wallet[field];
+      if (!value) continue;
+      const date = new Date(value);
+      if (!Number.isNaN(date.getTime())) return date;
+    }
+    return null;
+  }
+
+  /**
+   * Best-effort "added" date for quick filter
+   */
+  function getWalletAddedDate(wallet) {
+    return parseWalletDate(wallet, ['firstSeenAt', 'createdAt', 'addedAt', 'releaseDate']);
+  }
+
+  /**
+   * Best-effort "updated" date for sorting/stats
+   */
+  function getWalletUpdatedDate(wallet) {
+    return parseWalletDate(wallet, ['updatedAt', 'fetchedAt', 'releaseDate']);
+  }
+
+  /**
+   * Check if date is within X days from now
+   */
+  function isWithinLastDays(date, days) {
+    if (!date || Number.isNaN(date.getTime())) return false;
+    const threshold = Date.now() - (days * 24 * 60 * 60 * 1000);
+    return date.getTime() >= threshold;
+  }
+
+  /**
+   * Format date as relative update text for cards
+   */
+  function formatUpdatedLabel(date) {
+    if (!date || Number.isNaN(date.getTime())) return '';
+    return `Updated ${date.toLocaleDateString('en-US')}`;
+  }
+
+  /**
+   * Whether wallet has a usable video URL
+   */
+  function hasWalletVideo(wallet) {
+    if (!wallet || !wallet.video || typeof wallet.video !== 'string') return false;
+    return wallet.video.trim().length > 0;
+  }
+
+  /**
+   * Get simple KPI metrics for current result set
+   */
+  function getCatalogMetrics(items) {
+    const safeItems = Array.isArray(items) ? items : [];
+    let newLast30Days = 0;
+    let updatedLast30Days = 0;
+    const countries = new Set();
+
+    safeItems.forEach((wallet) => {
+      if (isWithinLastDays(getWalletAddedDate(wallet), 30)) {
+        newLast30Days += 1;
+      }
+      if (isWithinLastDays(getWalletUpdatedDate(wallet), 30)) {
+        updatedLast30Days += 1;
+      }
+      if (wallet.provider && wallet.provider.country) {
+        countries.add(wallet.provider.country);
+      }
+    });
+
+    return {
+      total: safeItems.length,
+      newLast30Days,
+      updatedLast30Days,
+      countryCount: countries.size
+    };
   }
 
   /**
@@ -278,6 +376,9 @@
 
     if (wallets.length === 0) {
       console.error('Failed to load wallets from any source');
+    } else {
+      const walletsForFacets = settings.type ? wallets.filter(w => w.type === settings.type) : wallets;
+      filterFacets = computeFilterFacets(walletsForFacets);
     }
 
     // Load vocabulary for [i] info popups (primary = GitHub, fallback = local assets)
@@ -365,7 +466,7 @@
    * Filter wallets based on current filters
    */
   function getFilteredWallets() {
-    return wallets.filter(wallet => {
+    const filtered = wallets.filter(wallet => {
       // Search
       if (filters.search) {
         const search = filters.search.toLowerCase();
@@ -479,8 +580,31 @@
         if (filters.governance === 'private' && isGov) return false;
       }
 
+      // Added in last 30 days
+      if (filters.addedLast30Days) {
+        if (!isWithinLastDays(getWalletAddedDate(wallet), 30)) return false;
+      }
+
+      // Includes video
+      if (filters.includesVideo) {
+        if (!hasWalletVideo(wallet)) return false;
+      }
+
       return true;
-    }).sort((a, b) => a.name.localeCompare(b.name));
+    });
+
+    if (sortBy === 'lastUpdated') {
+      return filtered.sort((a, b) => {
+        const dateA = getWalletUpdatedDate(a);
+        const dateB = getWalletUpdatedDate(b);
+        const timeA = dateA ? dateA.getTime() : 0;
+        const timeB = dateB ? dateB.getTime() : 0;
+        if (timeB !== timeA) return timeB - timeA;
+        return a.name.localeCompare(b.name);
+      });
+    }
+
+    return filtered.sort((a, b) => a.name.localeCompare(b.name));
   }
 
   /**
@@ -503,7 +627,120 @@
     count += filters.status.length;
     if (filters.openSource !== null) count += 1;
     if (filters.governance !== null) count += 1;
+    if (filters.addedLast30Days) count += 1;
+    if (filters.includesVideo) count += 1;
     return count;
+  }
+
+  /**
+   * Derive status bucket for facets (must match getFilteredWallets logic)
+   */
+  function getWalletStatusBucket(wallet) {
+    const hasAppLinks = wallet.appStoreLinks && (
+      wallet.appStoreLinks.iOS ||
+      wallet.appStoreLinks.ios ||
+      wallet.appStoreLinks.android ||
+      wallet.appStoreLinks.web
+    );
+    return hasAppLinks ? 'available' : 'development';
+  }
+
+  /**
+   * Compute filter facets (counts per option) in one pass over wallets.
+   * Called once after load over the visible set (walletsForFacets). Used for sidebar (n) counters.
+   */
+  function computeFilterFacets(walletList) {
+    const type = {};
+    const status = { available: 0, development: 0 };
+    const governance = { government: 0, private: 0 };
+    const platforms = {};
+    const capabilities = {};
+    const countryCount = {};
+    const credentialFormats = {};
+    const issuanceProtocols = {};
+    const presentationProtocols = {};
+    const supportedIdentifiers = {};
+    const keyStorage = {};
+    const signingAlgorithms = {};
+    const credentialStatusMethods = {};
+    const interoperabilityProfiles = {};
+    const openSource = { true: 0, false: 0 };
+    let addedLast30Days = 0;
+    let includesVideo = 0;
+
+    walletList.forEach(wallet => {
+      if (wallet.type) {
+        type[wallet.type] = (type[wallet.type] || 0) + 1;
+      }
+      status[getWalletStatusBucket(wallet)] += 1;
+      const isGov = isGovernmentWallet(wallet);
+      if (isGov) governance.government += 1;
+      else governance.private += 1;
+      (wallet.platforms || []).forEach(p => {
+        platforms[p] = (platforms[p] || 0) + 1;
+      });
+      (wallet.capabilities || []).forEach(c => {
+        capabilities[c] = (capabilities[c] || 0) + 1;
+      });
+      const c = wallet.provider?.country;
+      if (c) {
+        countryCount[c] = (countryCount[c] || 0) + 1;
+      }
+      (wallet.credentialFormats || []).forEach(f => {
+        credentialFormats[f] = (credentialFormats[f] || 0) + 1;
+      });
+      const issuance = wallet.issuanceProtocols || (wallet.protocols && wallet.protocols.issuance) || [];
+      issuance.forEach(p => {
+        issuanceProtocols[p] = (issuanceProtocols[p] || 0) + 1;
+      });
+      const presentation = wallet.presentationProtocols || (wallet.protocols && wallet.protocols.presentation) || [];
+      presentation.forEach(p => {
+        presentationProtocols[p] = (presentationProtocols[p] || 0) + 1;
+      });
+      (wallet.supportedIdentifiers || wallet.didMethods || []).forEach(d => {
+        supportedIdentifiers[d] = (supportedIdentifiers[d] || 0) + 1;
+      });
+      (wallet.keyStorage || []).forEach(k => {
+        keyStorage[k] = (keyStorage[k] || 0) + 1;
+      });
+      (wallet.signingAlgorithms || []).forEach(a => {
+        signingAlgorithms[a] = (signingAlgorithms[a] || 0) + 1;
+      });
+      (wallet.credentialStatusMethods || []).forEach(m => {
+        credentialStatusMethods[m] = (credentialStatusMethods[m] || 0) + 1;
+      });
+      (wallet.interoperabilityProfiles || []).forEach(p => {
+        interoperabilityProfiles[p] = (interoperabilityProfiles[p] || 0) + 1;
+      });
+      if (wallet.openSource === true) openSource.true += 1;
+      else openSource.false += 1;
+      if (isWithinLastDays(getWalletAddedDate(wallet), 30)) addedLast30Days += 1;
+      if (hasWalletVideo(wallet)) includesVideo += 1;
+    });
+
+    const country = Object.entries(countryCount)
+      .map(([code, count]) => ({ code, count }))
+      .sort((a, b) => (COUNTRY_NAMES[a.code] || a.code).localeCompare(COUNTRY_NAMES[b.code] || b.code));
+
+    return {
+      type,
+      status,
+      governance,
+      platforms,
+      capabilities,
+      country,
+      credentialFormats,
+      issuanceProtocols,
+      presentationProtocols,
+      supportedIdentifiers,
+      keyStorage,
+      signingAlgorithms,
+      credentialStatusMethods,
+      interoperabilityProfiles,
+      openSource,
+      addedLast30Days,
+      includesVideo
+    };
   }
 
   /**
@@ -550,6 +787,7 @@
    */
   function render() {
     const filtered = getFilteredWallets();
+    const metrics = getCatalogMetrics(filtered);
     const activeFilterCount = getActiveFilterCount();
     
     // Save focus state before re-rendering
@@ -599,6 +837,17 @@
                 </div>
               </div>
             ` : ''}
+            <div class="fides-quick-filters">
+              <span class="fides-quick-filters-title">Quick filters</span>
+              <label class="fides-filter-checkbox">
+                <input type="checkbox" data-filter="addedLast30Days" data-value="true" ${filters.addedLast30Days ? 'checked' : ''}>
+                <span>Added last 30 days<span class="fides-filter-option-count">(${filterFacets ? filterFacets.addedLast30Days : ''})</span></span>
+              </label>
+              <label class="fides-filter-checkbox">
+                <input type="checkbox" data-filter="includesVideo" data-value="true" ${filters.includesVideo ? 'checked' : ''}>
+                <span>Includes video<span class="fides-filter-option-count">(${filterFacets ? filterFacets.includesVideo : ''})</span></span>
+              </label>
+            </div>
             ${!settings.type ? `
               <div class="fides-filter-group collapsible ${!filterGroupState.type ? 'collapsed' : ''} ${filters.type.length > 0 ? 'has-active' : ''}" data-filter-group="type">
                 <button class="fides-filter-label-toggle" type="button" aria-expanded="${filterGroupState.type}">
@@ -609,11 +858,11 @@
                 <div class="fides-filter-options">
                   <label class="fides-filter-checkbox">
                     <input type="checkbox" data-filter="type" data-value="personal" ${filters.type.includes('personal') ? 'checked' : ''}>
-                    <span>Personal</span>
+                    <span>Personal<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.type['personal'] || 0) : ''})</span></span>
                   </label>
                   <label class="fides-filter-checkbox">
                     <input type="checkbox" data-filter="type" data-value="organizational" ${filters.type.includes('organizational') ? 'checked' : ''}>
-                    <span>Organizational</span>
+                    <span>Organizational<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.type['organizational'] || 0) : ''})</span></span>
                   </label>
                 </div>
               </div>
@@ -628,11 +877,11 @@
                 <div class="fides-filter-options">
                   <label class="fides-filter-checkbox">
                     <input type="checkbox" data-filter="status" data-value="available" ${filters.status.includes('available') ? 'checked' : ''}>
-                    <span>Publicly available</span>
+                    <span>Publicly available<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.status.available || 0) : ''})</span></span>
                   </label>
                   <label class="fides-filter-checkbox">
                     <input type="checkbox" data-filter="status" data-value="development" ${filters.status.includes('development') ? 'checked' : ''}>
-                    <span>Not publicly available</span>
+                    <span>Not publicly available<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.status.development || 0) : ''})</span></span>
                   </label>
                 </div>
               </div>
@@ -645,11 +894,11 @@
                 <div class="fides-filter-options">
                   <label class="fides-filter-checkbox">
                     <input type="checkbox" data-filter="governance" data-value="government" ${filters.governance === 'government' ? 'checked' : ''}>
-                    <span>Government</span>
+                    <span>Government<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.governance.government || 0) : ''})</span></span>
                   </label>
                   <label class="fides-filter-checkbox">
                     <input type="checkbox" data-filter="governance" data-value="private" ${filters.governance === 'private' ? 'checked' : ''}>
-                    <span>Non-government</span>
+                    <span>Non-government<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.governance.private || 0) : ''})</span></span>
                   </label>
                 </div>
               </div>
@@ -662,15 +911,15 @@
                 <div class="fides-filter-options">
                   <label class="fides-filter-checkbox">
                     <input type="checkbox" data-filter="platforms" data-value="iOS" ${filters.platforms.includes('iOS') ? 'checked' : ''}>
-                    <span>iOS</span>
+                    <span>iOS<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.platforms['iOS'] || 0) : ''})</span></span>
                   </label>
                   <label class="fides-filter-checkbox">
                     <input type="checkbox" data-filter="platforms" data-value="Android" ${filters.platforms.includes('Android') ? 'checked' : ''}>
-                    <span>Android</span>
+                    <span>Android<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.platforms['Android'] || 0) : ''})</span></span>
                   </label>
                   <label class="fides-filter-checkbox">
                     <input type="checkbox" data-filter="platforms" data-value="Web" ${filters.platforms.includes('Web') ? 'checked' : ''}>
-                    <span>Web</span>
+                    <span>Web<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.platforms['Web'] || 0) : ''})</span></span>
                   </label>
                 </div>
               </div>
@@ -685,15 +934,15 @@
                 <div class="fides-filter-options">
                   <label class="fides-filter-checkbox">
                     <input type="checkbox" data-filter="capabilities" data-value="holder" ${filters.capabilities.includes('holder') ? 'checked' : ''}>
-                    <span>Holder</span>
+                    <span>Holder<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.capabilities['holder'] || 0) : ''})</span></span>
                   </label>
                   <label class="fides-filter-checkbox">
                     <input type="checkbox" data-filter="capabilities" data-value="issuer" ${filters.capabilities.includes('issuer') ? 'checked' : ''}>
-                    <span>Issuer</span>
+                    <span>Issuer<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.capabilities['issuer'] || 0) : ''})</span></span>
                   </label>
                   <label class="fides-filter-checkbox">
                     <input type="checkbox" data-filter="capabilities" data-value="verifier" ${filters.capabilities.includes('verifier') ? 'checked' : ''}>
-                    <span>Verifier</span>
+                    <span>Verifier<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.capabilities['verifier'] || 0) : ''})</span></span>
                   </label>
                 </div>
               </div>
@@ -705,10 +954,10 @@
                 ${icons.chevronDown}
               </button>
               <div class="fides-filter-options fides-filter-options-scrollable">
-                ${getAvailableCountries().map(code => `
+                ${(filterFacets ? filterFacets.country : getAvailableCountries().map(code => ({ code, count: 0 }))).map(({ code, count }) => `
                   <label class="fides-filter-checkbox">
                     <input type="checkbox" data-filter="countries" data-value="${code}" ${filters.countries.includes(code) ? 'checked' : ''}>
-                    <span><img src="https://flagcdn.com/w20/${code.toLowerCase()}.png" alt="" class="fides-country-flag"> ${COUNTRY_NAMES[code] || code}</span>
+                    <span><img src="https://flagcdn.com/w20/${code.toLowerCase()}.png" alt="" class="fides-country-flag"> ${COUNTRY_NAMES[code] || code}<span class="fides-filter-option-count">(${count != null ? count : ''})</span></span>
                   </label>
                 `).join('')}
               </div>
@@ -722,23 +971,23 @@
               <div class="fides-filter-options">
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="interoperabilityProfiles" data-value="EUDI Wallet ARF" ${filters.interoperabilityProfiles.includes('EUDI Wallet ARF') ? 'checked' : ''}>
-                  <span>EUDI Wallet ARF</span>
+                  <span>EUDI Wallet ARF<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.interoperabilityProfiles['EUDI Wallet ARF'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="interoperabilityProfiles" data-value="DIIP v4" ${filters.interoperabilityProfiles.includes('DIIP v4') ? 'checked' : ''}>
-                  <span>DIIP v4</span>
+                  <span>DIIP v4<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.interoperabilityProfiles['DIIP v4'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="interoperabilityProfiles" data-value="DIIP v5" ${filters.interoperabilityProfiles.includes('DIIP v5') ? 'checked' : ''}>
-                  <span>DIIP v5</span>
+                  <span>DIIP v5<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.interoperabilityProfiles['DIIP v5'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="interoperabilityProfiles" data-value="EWC v3" ${filters.interoperabilityProfiles.includes('EWC v3') ? 'checked' : ''}>
-                  <span>EWC v3</span>
+                  <span>EWC v3<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.interoperabilityProfiles['EWC v3'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="interoperabilityProfiles" data-value="HAIP v1" ${filters.interoperabilityProfiles.includes('HAIP v1') ? 'checked' : ''}>
-                  <span>HAIP v1</span>
+                  <span>HAIP v1<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.interoperabilityProfiles['HAIP v1'] || 0) : ''})</span></span>
                 </label>
               </div>
             </div>
@@ -751,31 +1000,31 @@
               <div class="fides-filter-options">
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="credentialFormats" data-value="SD-JWT-VC" ${filters.credentialFormats.includes('SD-JWT-VC') ? 'checked' : ''}>
-                  <span>SD-JWT-VC</span>
+                  <span>SD-JWT-VC<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.credentialFormats['SD-JWT-VC'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="credentialFormats" data-value="mDL/mDoc" ${filters.credentialFormats.includes('mDL/mDoc') ? 'checked' : ''}>
-                  <span>mDL/mDoc</span>
+                  <span>mDL/mDoc<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.credentialFormats['mDL/mDoc'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="credentialFormats" data-value="JWT-VC" ${filters.credentialFormats.includes('JWT-VC') ? 'checked' : ''}>
-                  <span>JWT-VC</span>
+                  <span>JWT-VC<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.credentialFormats['JWT-VC'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="credentialFormats" data-value="AnonCreds" ${filters.credentialFormats.includes('AnonCreds') ? 'checked' : ''}>
-                  <span>AnonCreds</span>
+                  <span>AnonCreds<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.credentialFormats['AnonCreds'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="credentialFormats" data-value="JSON-LD VC" ${filters.credentialFormats.includes('JSON-LD VC') ? 'checked' : ''}>
-                  <span>JSON-LD VC</span>
+                  <span>JSON-LD VC<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.credentialFormats['JSON-LD VC'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="credentialFormats" data-value="Apple Wallet Pass" ${filters.credentialFormats.includes('Apple Wallet Pass') ? 'checked' : ''}>
-                  <span>Apple Wallet Pass</span>
+                  <span>Apple Wallet Pass<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.credentialFormats['Apple Wallet Pass'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="credentialFormats" data-value="Google Wallet Pass" ${filters.credentialFormats.includes('Google Wallet Pass') ? 'checked' : ''}>
-                  <span>Google Wallet Pass</span>
+                  <span>Google Wallet Pass<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.credentialFormats['Google Wallet Pass'] || 0) : ''})</span></span>
                 </label>
               </div>
             </div>
@@ -788,15 +1037,15 @@
               <div class="fides-filter-options">
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="issuanceProtocols" data-value="OpenID4VCI" ${filters.issuanceProtocols.includes('OpenID4VCI') ? 'checked' : ''}>
-                  <span>OpenID4VCI</span>
+                  <span>OpenID4VCI<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.issuanceProtocols['OpenID4VCI'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="issuanceProtocols" data-value="DIDComm Issue Credential v2" ${filters.issuanceProtocols.includes('DIDComm Issue Credential v2') ? 'checked' : ''}>
-                  <span>DIDComm v2</span>
+                  <span>DIDComm v2<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.issuanceProtocols['DIDComm Issue Credential v2'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="issuanceProtocols" data-value="DIDComm Issue Credential v1" ${filters.issuanceProtocols.includes('DIDComm Issue Credential v1') ? 'checked' : ''}>
-                  <span>DIDComm v1</span>
+                  <span>DIDComm v1<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.issuanceProtocols['DIDComm Issue Credential v1'] || 0) : ''})</span></span>
                 </label>
               </div>
             </div>
@@ -809,19 +1058,19 @@
               <div class="fides-filter-options">
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="presentationProtocols" data-value="OpenID4VP" ${filters.presentationProtocols.includes('OpenID4VP') ? 'checked' : ''}>
-                  <span>OpenID4VP</span>
+                  <span>OpenID4VP<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.presentationProtocols['OpenID4VP'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="presentationProtocols" data-value="SIOPv2" ${filters.presentationProtocols.includes('SIOPv2') ? 'checked' : ''}>
-                  <span>SIOPv2</span>
+                  <span>SIOPv2<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.presentationProtocols['SIOPv2'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="presentationProtocols" data-value="DIDComm Present Proof v2" ${filters.presentationProtocols.includes('DIDComm Present Proof v2') ? 'checked' : ''}>
-                  <span>DIDComm v2</span>
+                  <span>DIDComm v2<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.presentationProtocols['DIDComm Present Proof v2'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="presentationProtocols" data-value="ISO 18013-5" ${filters.presentationProtocols.includes('ISO 18013-5') ? 'checked' : ''}>
-                  <span>ISO 18013-5</span>
+                  <span>ISO 18013-5<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.presentationProtocols['ISO 18013-5'] || 0) : ''})</span></span>
                 </label>
               </div>
             </div>
@@ -834,23 +1083,23 @@
               <div class="fides-filter-options">
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="supportedIdentifiers" data-value="did:web" ${filters.supportedIdentifiers.includes('did:web') ? 'checked' : ''}>
-                  <span>did:web</span>
+                  <span>did:web<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.supportedIdentifiers['did:web'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="supportedIdentifiers" data-value="did:key" ${filters.supportedIdentifiers.includes('did:key') ? 'checked' : ''}>
-                  <span>did:key</span>
+                  <span>did:key<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.supportedIdentifiers['did:key'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="supportedIdentifiers" data-value="did:jwk" ${filters.supportedIdentifiers.includes('did:jwk') ? 'checked' : ''}>
-                  <span>did:jwk</span>
+                  <span>did:jwk<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.supportedIdentifiers['did:jwk'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="supportedIdentifiers" data-value="did:peer" ${filters.supportedIdentifiers.includes('did:peer') ? 'checked' : ''}>
-                  <span>did:peer</span>
+                  <span>did:peer<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.supportedIdentifiers['did:peer'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="supportedIdentifiers" data-value="did:ebsi" ${filters.supportedIdentifiers.includes('did:ebsi') ? 'checked' : ''}>
-                  <span>did:ebsi</span>
+                  <span>did:ebsi<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.supportedIdentifiers['did:ebsi'] || 0) : ''})</span></span>
                 </label>
               </div>
             </div>
@@ -863,23 +1112,23 @@
               <div class="fides-filter-options">
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="keyStorage" data-value="Secure Enclave (iOS)" ${filters.keyStorage.includes('Secure Enclave (iOS)') ? 'checked' : ''}>
-                  <span>Secure Enclave (iOS)</span>
+                  <span>Secure Enclave (iOS)<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.keyStorage['Secure Enclave (iOS)'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="keyStorage" data-value="StrongBox (Android)" ${filters.keyStorage.includes('StrongBox (Android)') ? 'checked' : ''}>
-                  <span>StrongBox (Android)</span>
+                  <span>StrongBox (Android)<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.keyStorage['StrongBox (Android)'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="keyStorage" data-value="Software" ${filters.keyStorage.includes('Software') ? 'checked' : ''}>
-                  <span>Software</span>
+                  <span>Software<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.keyStorage['Software'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="keyStorage" data-value="HSM" ${filters.keyStorage.includes('HSM') ? 'checked' : ''}>
-                  <span>HSM</span>
+                  <span>HSM<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.keyStorage['HSM'] || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="keyStorage" data-value="TEE" ${filters.keyStorage.includes('TEE') ? 'checked' : ''}>
-                  <span>TEE</span>
+                  <span>TEE<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.keyStorage['TEE'] || 0) : ''})</span></span>
                 </label>
               </div>
             </div>
@@ -894,7 +1143,7 @@
                 ${getAvailableSigningAlgorithms().map(alg => `
                   <label class="fides-filter-checkbox">
                     <input type="checkbox" data-filter="signingAlgorithms" data-value="${alg}" ${filters.signingAlgorithms.includes(alg) ? 'checked' : ''}>
-                    <span>${escapeHtml(alg)}</span>
+                    <span>${escapeHtml(alg)}<span class="fides-filter-option-count">(${filterFacets && filterFacets.signingAlgorithms[alg] != null ? filterFacets.signingAlgorithms[alg] : ''})</span></span>
                   </label>
                 `).join('')}
               </div>
@@ -911,7 +1160,7 @@
                 ${getAvailableCredentialStatusMethods().map(method => `
                   <label class="fides-filter-checkbox">
                     <input type="checkbox" data-filter="credentialStatusMethods" data-value="${method}" ${filters.credentialStatusMethods.includes(method) ? 'checked' : ''}>
-                    <span>${escapeHtml(method)}</span>
+                    <span>${escapeHtml(method)}<span class="fides-filter-option-count">(${filterFacets && filterFacets.credentialStatusMethods[method] != null ? filterFacets.credentialStatusMethods[method] : ''})</span></span>
                   </label>
                 `).join('')}
               </div>
@@ -926,11 +1175,11 @@
               <div class="fides-filter-options">
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="openSource" data-value="true" ${filters.openSource === true ? 'checked' : ''}>
-                  <span>Open Source</span>
+                  <span>Open Source<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.openSource.true || 0) : ''})</span></span>
                 </label>
                 <label class="fides-filter-checkbox">
                   <input type="checkbox" data-filter="openSource" data-value="false" ${filters.openSource === false ? 'checked' : ''}>
-                  <span>Proprietary</span>
+                  <span>Proprietary<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.openSource.false || 0) : ''})</span></span>
                 </label>
               </div>
             </div>
@@ -966,8 +1215,14 @@
     // Results count + link to map
     html += `
       <div class="fides-results-bar">
-        <div class="fides-results-count">
-          ${filtered.length} wallet${filtered.length !== 1 ? 's' : ''} found
+        <div class="fides-results-controls">
+          <label class="fides-sort-wrap">
+            <span class="fides-sort-label">Sort by:</span>
+            <select id="fides-sort-select" class="fides-sort-select">
+              <option value="lastUpdated" ${sortBy === 'lastUpdated' ? 'selected' : ''}>Last updated</option>
+              <option value="az" ${sortBy === 'az' ? 'selected' : ''}>A-Z</option>
+            </select>
+          </label>
         </div>
         <a href="${MAP_PAGE_URL}" class="fides-show-on-map" target="_blank" rel="noopener" aria-label="Show on map (opens in new tab)">${icons.externalLink} Show on map</a>
         <!-- Mobile filter toggle -->
@@ -978,6 +1233,27 @@
             <span class="fides-filter-count ${activeFilterCount > 0 ? '' : 'hidden'}">${activeFilterCount || 0}</span>
           </button>
         ` : ''}
+      </div>
+    `;
+    const walletsLabel = settings.type === 'personal' ? 'Personal Wallets' : settings.type === 'organizational' ? 'Business Wallets' : 'Wallets';
+    html += `
+      <div class="fides-kpi-row">
+        <button class="fides-kpi-card" type="button" data-kpi-action="clear-added-filter">
+          <span class="fides-kpi-value">${metrics.total}</span>
+          <span class="fides-kpi-label">${walletsLabel}</span>
+        </button>
+        <button class="fides-kpi-card ${filters.addedLast30Days ? 'active' : ''}" type="button" data-kpi-action="toggle-added-filter">
+          <span class="fides-kpi-value">${metrics.newLast30Days}</span>
+          <span class="fides-kpi-label">New<span class="fides-kpi-label-extra"> last 30 days</span></span>
+        </button>
+        <button class="fides-kpi-card" type="button" data-kpi-action="set-last-updated-sort">
+          <span class="fides-kpi-value">${metrics.updatedLast30Days}</span>
+          <span class="fides-kpi-label">Updated<span class="fides-kpi-label-extra"> last 30 days</span></span>
+        </button>
+        <button class="fides-kpi-card ${filters.countries.length > 0 ? 'active' : ''}" type="button" data-kpi-action="clear-country-filter">
+          <span class="fides-kpi-value">${metrics.countryCount}</span>
+          <span class="fides-kpi-label">Countries</span>
+        </button>
       </div>
     `;
 
@@ -1020,12 +1296,20 @@
    */
   function renderWalletGridOnly() {
     const filtered = getFilteredWallets();
+    const metrics = getCatalogMetrics(filtered);
     
-    // Update results count
-    const resultsCount = container.querySelector('.fides-results-count');
-    if (resultsCount) {
-      resultsCount.textContent = `${filtered.length} wallet${filtered.length !== 1 ? 's' : ''} found`;
-    }
+    const kpiTotal = container.querySelector('.fides-kpi-card[data-kpi-action="clear-added-filter"] .fides-kpi-value');
+    const kpiNew = container.querySelector('.fides-kpi-card[data-kpi-action="toggle-added-filter"] .fides-kpi-value');
+    const kpiUpdated = container.querySelector('.fides-kpi-card[data-kpi-action="set-last-updated-sort"] .fides-kpi-value');
+    const kpiCountries = container.querySelector('.fides-kpi-card[data-kpi-action="clear-country-filter"] .fides-kpi-value');
+    const kpiAddedCard = container.querySelector('.fides-kpi-card[data-kpi-action="toggle-added-filter"]');
+    const kpiCountryCard = container.querySelector('.fides-kpi-card[data-kpi-action="clear-country-filter"]');
+    if (kpiTotal) kpiTotal.textContent = String(metrics.total);
+    if (kpiNew) kpiNew.textContent = String(metrics.newLast30Days);
+    if (kpiUpdated) kpiUpdated.textContent = String(metrics.updatedLast30Days);
+    if (kpiCountries) kpiCountries.textContent = String(metrics.countryCount);
+    if (kpiAddedCard) kpiAddedCard.classList.toggle('active', filters.addedLast30Days);
+    if (kpiCountryCard) kpiCountryCard.classList.toggle('active', filters.countries.length > 0);
     
     // Update search clear button visibility
     const searchClear = document.getElementById('fides-search-clear');
@@ -1129,6 +1413,12 @@
     };
 
     const displayName = getDisplayName(wallet.name);
+    const addedDate = getWalletAddedDate(wallet);
+    const updatedDate = getWalletUpdatedDate(wallet);
+    const isNewWallet = isWithinLastDays(addedDate, 30);
+    const activityLabel = isNewWallet && addedDate
+      ? `Added ${addedDate.toLocaleDateString('en-US')}`
+      : formatUpdatedLabel(updatedDate);
 
     return `
       <div class="fides-wallet-card" data-wallet-id="${wallet.id}" role="button" tabindex="0">
@@ -1143,6 +1433,7 @@
           </div>
         </div>
         <div class="fides-wallet-body">
+          ${activityLabel ? `<p class="fides-wallet-updated">${escapeHtml(activityLabel)}</p>` : ''}
           ${wallet.description ? `<p class="fides-wallet-description">${escapeHtml(wallet.description)}</p>` : ''}
           
           ${wallet.type === 'organizational' && wallet.capabilities && wallet.capabilities.length > 0 ? `
@@ -1818,8 +2109,11 @@
         const value = checkbox.dataset.value;
         const isChecked = checkbox.checked;
         
+        if (filterType === 'addedLast30Days' || filterType === 'includesVideo') {
+          filters[filterType] = isChecked;
+        }
         // Special handling for openSource (boolean toggle)
-        if (filterType === 'openSource') {
+        else if (filterType === 'openSource') {
           const boolValue = value === 'true';
           filters.openSource = isChecked ? boolValue : null;
         } 
@@ -1839,6 +2133,55 @@
         }
         
         render();
+      });
+    });
+
+    const sortSelect = document.getElementById('fides-sort-select');
+    if (sortSelect) {
+      sortSelect.addEventListener('change', () => {
+        const nextSort = sortSelect.value === 'az' ? 'az' : 'lastUpdated';
+        sortBy = nextSort;
+        try {
+          window.localStorage.setItem(SORT_PREFERENCE_STORAGE_KEY, sortBy);
+        } catch (error) {
+          // Ignore storage errors
+        }
+        render();
+      });
+    }
+
+    container.querySelectorAll('.fides-kpi-card').forEach((kpiCard) => {
+      kpiCard.addEventListener('click', () => {
+        const action = kpiCard.dataset.kpiAction;
+        if (action === 'toggle-added-filter') {
+          filters.addedLast30Days = !filters.addedLast30Days;
+          render();
+          return;
+        }
+        if (action === 'set-last-updated-sort') {
+          sortBy = 'lastUpdated';
+          try {
+            window.localStorage.setItem(SORT_PREFERENCE_STORAGE_KEY, sortBy);
+          } catch (error) {
+            // Ignore storage errors
+          }
+          render();
+          return;
+        }
+        if (action === 'clear-country-filter') {
+          if (filters.countries.length > 0) {
+            filters.countries = [];
+            render();
+          }
+          return;
+        }
+        if (action === 'clear-added-filter') {
+          if (filters.addedLast30Days) {
+            filters.addedLast30Days = false;
+            render();
+          }
+          return;
+        }
       });
     });
 
@@ -1862,7 +2205,9 @@
           interoperabilityProfiles: [],
           status: [],
           openSource: null,
-          governance: null
+          governance: null,
+          addedLast30Days: false,
+          includesVideo: false
         };
         render();
       });

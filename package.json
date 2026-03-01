@@ -9,6 +9,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "crawl": "tsx src/crawler/index.ts",
+    "backfill:first-seen": "tsx src/crawler/backfill-first-seen.ts",
     "serve": "tsx src/server/index.ts",
     "validate": "ajv validate --spec=draft2020 -c ajv-formats -s schemas/wallet-catalog.schema.json -d 'community-catalogs/**/wallet-catalog.json' --strict=false"
   },

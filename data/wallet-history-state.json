@@ -1,0 +1,674 @@
+{
+  "2060.io:hologram-messaging": {
+    "firstSeenAt": "2026-01-13T19:28:00.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.535Z",
+    "providerKey": "2060.io",
+    "walletId": "hologram-messaging"
+  },
+  "California Department of Motor Vehicles (DMV):ca-dmv-wallet": {
+    "firstSeenAt": "2026-02-18T15:29:14.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.535Z",
+    "providerKey": "California Department of Motor Vehicles (DMV)",
+    "walletId": "ca-dmv-wallet"
+  },
+  "TNO:tsg-mobile-wallet": {
+    "firstSeenAt": "2026-01-13T18:54:35.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.536Z",
+    "providerKey": "TNO",
+    "walletId": "tsg-mobile-wallet"
+  },
+  "Affinidi:affinidi-portal": {
+    "firstSeenAt": "2026-01-12T10:11:20.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.536Z",
+    "providerKey": "Affinidi",
+    "walletId": "affinidi-portal"
+  },
+  "Albanian Government:e-albania-digital-id": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.537Z",
+    "providerKey": "Albanian Government",
+    "walletId": "e-albania-digital-id"
+  },
+  "did:web:animo.id:paradym-wallet": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.537Z",
+    "providerKey": "did:web:animo.id",
+    "walletId": "paradym-wallet"
+  },
+  "did:web:animo.id:paradym-platform": {
+    "firstSeenAt": "2026-01-06T09:55:51.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.537Z",
+    "providerKey": "did:web:animo.id",
+    "walletId": "paradym-platform"
+  },
+  "Apple:apple-wallet": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.538Z",
+    "providerKey": "Apple",
+    "walletId": "apple-wallet"
+  },
+  "Austrian Government:national-eudi-wallet-austria": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.538Z",
+    "providerKey": "Austrian Government",
+    "walletId": "national-eudi-wallet-austria"
+  },
+  "Auth0 (Okta):auth0-platform": {
+    "firstSeenAt": "2026-01-12T10:26:35.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.538Z",
+    "providerKey": "Auth0 (Okta)",
+    "walletId": "auth0-platform"
+  },
+  "Authbound:authbound-wallet": {
+    "firstSeenAt": "2026-02-17T18:18:01.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.539Z",
+    "providerKey": "Authbound",
+    "walletId": "authbound-wallet"
+  },
+  "AyanWorks Technology Solutions Pvt. Ltd.:sovio-adeva-wallet": {
+    "firstSeenAt": "2026-01-19T10:10:20.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.539Z",
+    "providerKey": "AyanWorks Technology Solutions Pvt. Ltd.",
+    "walletId": "sovio-adeva-wallet"
+  },
+  "AyanWorks Technology Solutions Pvt. Ltd.:credebl-organizational-wallet": {
+    "firstSeenAt": "2026-01-19T10:10:20.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.539Z",
+    "providerKey": "AyanWorks Technology Solutions Pvt. Ltd.",
+    "walletId": "credebl-organizational-wallet"
+  },
+  "Government of British Columbia:bc-wallet": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.539Z",
+    "providerKey": "Government of British Columbia",
+    "walletId": "bc-wallet"
+  },
+  "Belgian Government:national-eudi-wallet-belgium": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.540Z",
+    "providerKey": "Belgian Government",
+    "walletId": "national-eudi-wallet-belgium"
+  },
+  "Bhutan Government:bhutan-ndi-mobile-wallet": {
+    "firstSeenAt": "2026-01-13T19:56:51.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.540Z",
+    "providerKey": "Bhutan Government",
+    "walletId": "bhutan-ndi-mobile-wallet"
+  },
+  "Swiss Government:swiyu-wallet": {
+    "firstSeenAt": "2026-01-10T12:00:00.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.650Z",
+    "providerKey": "Swiss Government",
+    "walletId": "swiyu-wallet"
+  },
+  "Credenco:credenco-business-wallet": {
+    "firstSeenAt": "2026-01-12T10:19:01.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.650Z",
+    "providerKey": "Credenco",
+    "walletId": "credenco-business-wallet"
+  },
+  "Government of Cyprus:digital-citizen-cyprus": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.651Z",
+    "providerKey": "Government of Cyprus",
+    "walletId": "digital-citizen-cyprus"
+  },
+  "Czech Government:edoklady": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.651Z",
+    "providerKey": "Czech Government",
+    "walletId": "edoklady"
+  },
+  "DataKeeper:datakeeper-personal-wallet": {
+    "firstSeenAt": "2026-01-12T17:07:23.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.651Z",
+    "providerKey": "DataKeeper",
+    "walletId": "datakeeper-personal-wallet"
+  },
+  "Danish Government:national-eudi-wallet-denmark": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.652Z",
+    "providerKey": "Danish Government",
+    "walletId": "national-eudi-wallet-denmark"
+  },
+  "Digidentity:digidentity-wallet": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.652Z",
+    "providerKey": "Digidentity",
+    "walletId": "digidentity-wallet"
+  },
+  "Digital Bazaar:veres-wallet": {
+    "firstSeenAt": "2026-01-06T09:55:51.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.652Z",
+    "providerKey": "Digital Bazaar",
+    "walletId": "veres-wallet"
+  },
+  "Dock Labs AG:truvera-wallet": {
+    "firstSeenAt": "2026-01-10T12:37:35.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.653Z",
+    "providerKey": "Dock Labs AG",
+    "walletId": "truvera-wallet"
+  },
+  "Dock Labs AG:truvera-platform": {
+    "firstSeenAt": "2026-01-12T10:21:50.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.653Z",
+    "providerKey": "Dock Labs AG",
+    "walletId": "truvera-platform"
+  },
+  "Estonian Government:national-eudi-wallet-estonia": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.653Z",
+    "providerKey": "Estonian Government",
+    "walletId": "national-eudi-wallet-estonia"
+  },
+  "National ID Program (NIDP), Ethiopia:fayda-id": {
+    "firstSeenAt": "2026-02-18T14:19:41.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.653Z",
+    "providerKey": "National ID Program (NIDP), Ethiopia",
+    "walletId": "fayda-id"
+  },
+  "European Commission - Government:eudi-reference-personal-wallet": {
+    "firstSeenAt": "2026-01-13T15:59:27.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.654Z",
+    "providerKey": "European Commission - Government",
+    "walletId": "eudi-reference-personal-wallet"
+  },
+  "European Commission - Government:eudi-age-verification-wallet": {
+    "firstSeenAt": "2026-01-13T19:41:01.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.654Z",
+    "providerKey": "European Commission - Government",
+    "walletId": "eudi-age-verification-wallet"
+  },
+  "European Commission - Government:eudi-reference-issuer": {
+    "firstSeenAt": "2026-01-13T15:59:27.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.654Z",
+    "providerKey": "European Commission - Government",
+    "walletId": "eudi-reference-issuer"
+  },
+  "European Commission - Government:eudi-reference-verifier": {
+    "firstSeenAt": "2026-01-13T15:59:27.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.654Z",
+    "providerKey": "European Commission - Government",
+    "walletId": "eudi-reference-verifier"
+  },
+  "Finnish Government:national-eudi-wallet-finland": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.654Z",
+    "providerKey": "Finnish Government",
+    "walletId": "national-eudi-wallet-finland"
+  },
+  "Forkbomb:didroom": {
+    "firstSeenAt": "2026-01-06T09:55:51.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.654Z",
+    "providerKey": "Forkbomb",
+    "walletId": "didroom"
+  },
+  "Forkbomb:didroom-wallet": {
+    "firstSeenAt": "2026-01-13T19:16:38.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.654Z",
+    "providerKey": "Forkbomb",
+    "walletId": "didroom-wallet"
+  },
+  "French Government:france-identite": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.654Z",
+    "providerKey": "French Government",
+    "walletId": "france-identite"
+  },
+  "Gataca Labs:gataca-wallet": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.655Z",
+    "providerKey": "Gataca Labs",
+    "walletId": "gataca-wallet"
+  },
+  "Gataca Labs:gataca-studio": {
+    "firstSeenAt": "2026-01-15T14:36:28.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.655Z",
+    "providerKey": "Gataca Labs",
+    "walletId": "gataca-studio"
+  },
+  "German Government:national-eudi-wallet-germany": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.655Z",
+    "providerKey": "German Government",
+    "walletId": "national-eudi-wallet-germany"
+  },
+  "Google:google-wallet": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.655Z",
+    "providerKey": "Google",
+    "walletId": "google-wallet"
+  },
+  "Greek Government:govgr-wallet": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.656Z",
+    "providerKey": "Greek Government",
+    "walletId": "govgr-wallet"
+  },
+  "Greek Government:national-eudi-wallet-greece": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.656Z",
+    "providerKey": "Greek Government",
+    "walletId": "national-eudi-wallet-greece"
+  },
+  "Blockchain HELIX AG:helix-id-wallet": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.656Z",
+    "providerKey": "Blockchain HELIX AG",
+    "walletId": "helix-id-wallet"
+  },
+  "RNP HN (Registro Nacional de las Personas), Honduras:bien": {
+    "firstSeenAt": "2026-02-18T14:33:27.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.656Z",
+    "providerKey": "RNP HN (Registro Nacional de las Personas), Honduras",
+    "walletId": "bien"
+  },
+  "Hovi:hovi-wallet": {
+    "firstSeenAt": "2026-01-07T19:15:10.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.657Z",
+    "providerKey": "Hovi",
+    "walletId": "hovi-wallet"
+  },
+  "Hovi:hovi-business-wallet": {
+    "firstSeenAt": "2026-01-12T15:10:12.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.657Z",
+    "providerKey": "Hovi",
+    "walletId": "hovi-business-wallet"
+  },
+  "Hungarian Government:national-eudi-wallet-hungary": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.657Z",
+    "providerKey": "Hungarian Government",
+    "walletId": "national-eudi-wallet-hungary"
+  },
+  "Icelandic Government:national-eudi-wallet-iceland": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.657Z",
+    "providerKey": "Icelandic Government",
+    "walletId": "national-eudi-wallet-iceland"
+  },
+  "did:web:igrant.io:igrant-data-wallet": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.658Z",
+    "providerKey": "did:web:igrant.io",
+    "walletId": "igrant-data-wallet"
+  },
+  "did:web:igrant.io:igrant-organization-wallet": {
+    "firstSeenAt": "2026-01-06T09:55:51.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.658Z",
+    "providerKey": "did:web:igrant.io",
+    "walletId": "igrant-organization-wallet"
+  },
+  "Impierce Technologies:unime-wallet": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.658Z",
+    "providerKey": "Impierce Technologies",
+    "walletId": "unime-wallet"
+  },
+  "Impierce Technologies:impierce-unitrust": {
+    "firstSeenAt": "2026-01-12T10:24:48.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.658Z",
+    "providerKey": "Impierce Technologies",
+    "walletId": "impierce-unitrust"
+  },
+  "India Government:digilocker": {
+    "firstSeenAt": "2026-01-10T12:29:40.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.659Z",
+    "providerKey": "India Government",
+    "walletId": "digilocker"
+  },
+  "India Government:maadhaar": {
+    "firstSeenAt": "2026-02-18T14:11:26.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.659Z",
+    "providerKey": "India Government",
+    "walletId": "maadhaar"
+  },
+  "Intercede:intercede-myid-identity-wallet": {
+    "firstSeenAt": "2026-01-19T11:26:02.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.659Z",
+    "providerKey": "Intercede",
+    "walletId": "intercede-myid-identity-wallet"
+  },
+  "Irish Government:national-eudi-wallet-ireland": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.660Z",
+    "providerKey": "Irish Government",
+    "walletId": "national-eudi-wallet-ireland"
+  },
+  "Italian Government:it-wallet": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.660Z",
+    "providerKey": "Italian Government",
+    "walletId": "it-wallet"
+  },
+  "IXO World AG:ixo-portal": {
+    "firstSeenAt": "2026-01-13T19:07:51.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.660Z",
+    "providerKey": "IXO World AG",
+    "walletId": "ixo-portal"
+  },
+  "Izertis S.A.:identfy": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.660Z",
+    "providerKey": "Izertis S.A.",
+    "walletId": "identfy"
+  },
+  "Latvian Government:national-eudi-wallet-latvia": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.661Z",
+    "providerKey": "Latvian Government",
+    "walletId": "national-eudi-wallet-latvia"
+  },
+  "did:web:lissi.id:lissi-wallet": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.661Z",
+    "providerKey": "did:web:lissi.id",
+    "walletId": "lissi-wallet"
+  },
+  "did:web:lissi.id:lissi-id-wallet-connector": {
+    "firstSeenAt": "2026-01-06T09:55:51.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.661Z",
+    "providerKey": "did:web:lissi.id",
+    "walletId": "lissi-id-wallet-connector"
+  },
+  "MATTR:mattr-vii": {
+    "firstSeenAt": "2026-01-06T09:55:51.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.661Z",
+    "providerKey": "MATTR",
+    "walletId": "mattr-vii"
+  },
+  "MATTR:mattr-go-hold": {
+    "firstSeenAt": "2026-01-13T19:14:20.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.661Z",
+    "providerKey": "MATTR",
+    "walletId": "mattr-go-hold"
+  },
+  "Meeco:meeco-svx-platform": {
+    "firstSeenAt": "2026-01-12T10:46:30.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.661Z",
+    "providerKey": "Meeco",
+    "walletId": "meeco-svx-platform"
+  },
+  "Meeco:meeco-personal-wallet": {
+    "firstSeenAt": "2026-01-13T19:03:07.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.661Z",
+    "providerKey": "Meeco",
+    "walletId": "meeco-personal-wallet"
+  },
+  "Microsoft:microsoft-authenticator": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.662Z",
+    "providerKey": "Microsoft",
+    "walletId": "microsoft-authenticator"
+  },
+  "Mini-Suomi (DVV Finland):mini-wallet-finland": {
+    "firstSeenAt": "2026-01-06T09:55:51.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.662Z",
+    "providerKey": "Mini-Suomi (DVV Finland)",
+    "walletId": "mini-wallet-finland"
+  },
+  "MOSIP:inji-wallet": {
+    "firstSeenAt": "2026-01-06T09:55:51.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.662Z",
+    "providerKey": "MOSIP",
+    "walletId": "inji-wallet"
+  },
+  "MOSIP:inji-platform": {
+    "firstSeenAt": "2026-01-12T11:02:31.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.662Z",
+    "providerKey": "MOSIP",
+    "walletId": "inji-platform"
+  },
+  "Neoke:neoke-wallet": {
+    "firstSeenAt": "2026-01-13T19:11:36.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.663Z",
+    "providerKey": "Neoke",
+    "walletId": "neoke-wallet"
+  },
+  "Dutch Government:national-eudi-wallet-netherlands": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.663Z",
+    "providerKey": "Dutch Government",
+    "walletId": "national-eudi-wallet-netherlands"
+  },
+  "Northern Block:orbit-enterprise": {
+    "firstSeenAt": "2026-01-06T09:55:51.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.664Z",
+    "providerKey": "Northern Block",
+    "walletId": "orbit-enterprise"
+  },
+  "Northern Block:orbit-edge": {
+    "firstSeenAt": "2026-01-13T19:19:27.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.664Z",
+    "providerKey": "Northern Block",
+    "walletId": "orbit-edge"
+  },
+  "Norwegian Government:national-eudi-wallet-norway": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.664Z",
+    "providerKey": "Norwegian Government",
+    "walletId": "national-eudi-wallet-norway"
+  },
+  "Ooru:credissuer": {
+    "firstSeenAt": "2026-01-12T13:28:06.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.665Z",
+    "providerKey": "Ooru",
+    "walletId": "credissuer"
+  },
+  "Department of Information and Communications Technology, Papua New Guinea:seviswallet": {
+    "firstSeenAt": "2026-02-18T14:36:30.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.665Z",
+    "providerKey": "Department of Information and Communications Technology, Papua New Guinea",
+    "walletId": "seviswallet"
+  },
+  "Polish Government:mobywatel": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.665Z",
+    "providerKey": "Polish Government",
+    "walletId": "mobywatel"
+  },
+  "Portuguese Government:govpt": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.666Z",
+    "providerKey": "Portuguese Government",
+    "walletId": "govpt"
+  },
+  "Privacy by Design Foundation:yivi": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.666Z",
+    "providerKey": "Privacy by Design Foundation",
+    "walletId": "yivi"
+  },
+  "Procivis:procivis-one-wallet": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.666Z",
+    "providerKey": "Procivis",
+    "walletId": "procivis-one-wallet"
+  },
+  "Procivis:procivis-one": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.666Z",
+    "providerKey": "Procivis",
+    "walletId": "procivis-one"
+  },
+  "Samsung:samsung-wallet": {
+    "firstSeenAt": "2026-01-13T18:47:53.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.666Z",
+    "providerKey": "Samsung",
+    "walletId": "samsung-wallet"
+  },
+  "Scytales:scytales-id-wallet": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.667Z",
+    "providerKey": "Scytales",
+    "walletId": "scytales-id-wallet"
+  },
+  "Scytales:scytales-eu-reference-wallet": {
+    "firstSeenAt": "2026-01-06T09:55:51.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.667Z",
+    "providerKey": "Scytales",
+    "walletId": "scytales-eu-reference-wallet"
+  },
+  "SICPA:sicpa-digital-trust-suite": {
+    "firstSeenAt": "2026-01-06T09:55:51.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.667Z",
+    "providerKey": "SICPA",
+    "walletId": "sicpa-digital-trust-suite"
+  },
+  "Slovak Government:national-eudi-wallet-slovakia": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.668Z",
+    "providerKey": "Slovak Government",
+    "walletId": "national-eudi-wallet-slovakia"
+  },
+  "Slovenian Government:national-eudi-wallet-slovenia": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.668Z",
+    "providerKey": "Slovenian Government",
+    "walletId": "national-eudi-wallet-slovenia"
+  },
+  "Spanish Government:cartera-digital-beta": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.669Z",
+    "providerKey": "Spanish Government",
+    "walletId": "cartera-digital-beta"
+  },
+  "did:web:sphereon.com:sphereon-wallet": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.669Z",
+    "providerKey": "did:web:sphereon.com",
+    "walletId": "sphereon-wallet"
+  },
+  "did:web:sphereon.com:sphereon-vdx-platform": {
+    "firstSeenAt": "2026-01-12T10:53:39.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.669Z",
+    "providerKey": "did:web:sphereon.com",
+    "walletId": "sphereon-vdx-platform"
+  },
+  "Spherity:spherity-business-wallet": {
+    "firstSeenAt": "2026-01-12T10:42:08.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.670Z",
+    "providerKey": "Spherity",
+    "walletId": "spherity-business-wallet"
+  },
+  "Spruce Systems, Inc. (SpruceID):sprucekit-showcase": {
+    "firstSeenAt": "2026-01-10T12:40:13.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.670Z",
+    "providerKey": "Spruce Systems, Inc. (SpruceID)",
+    "walletId": "sprucekit-showcase"
+  },
+  "Swedish Government:national-eudi-wallet-sweden": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.670Z",
+    "providerKey": "Swedish Government",
+    "walletId": "national-eudi-wallet-sweden"
+  },
+  "Talao:altme-wallet": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.670Z",
+    "providerKey": "Talao",
+    "walletId": "altme-wallet"
+  },
+  "Talao:talao-wallet": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.670Z",
+    "providerKey": "Talao",
+    "walletId": "talao-wallet"
+  },
+  "Toppan:toppan-wallet": {
+    "firstSeenAt": "2026-01-12T08:53:34.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.671Z",
+    "providerKey": "Toppan",
+    "walletId": "toppan-wallet"
+  },
+  "University of the Aegean:uaegean-stack": {
+    "firstSeenAt": "2026-01-12T11:48:11.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.671Z",
+    "providerKey": "University of the Aegean",
+    "walletId": "uaegean-stack"
+  },
+  "Ubique Innovation:heidi-wallet": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.671Z",
+    "providerKey": "Ubique Innovation",
+    "walletId": "heidi-wallet"
+  },
+  "Ukrainian Government:diia": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.671Z",
+    "providerKey": "Ukrainian Government",
+    "walletId": "diia"
+  },
+  "Validated ID:vidwallet": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.672Z",
+    "providerKey": "Validated ID",
+    "walletId": "vidwallet"
+  },
+  "Validated ID:validatedid-platform": {
+    "firstSeenAt": "2026-01-06T09:55:51.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.672Z",
+    "providerKey": "Validated ID",
+    "walletId": "validatedid-platform"
+  },
+  "Verimi GmbH:verimi": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.672Z",
+    "providerKey": "Verimi GmbH",
+    "walletId": "verimi"
+  },
+  "wwWallet.org:wwwallet": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.672Z",
+    "providerKey": "wwWallet.org",
+    "walletId": "wwwallet"
+  },
+  "Yoti Ltd.:yoti": {
+    "firstSeenAt": "2026-01-11T10:29:32.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.672Z",
+    "providerKey": "Yoti Ltd.",
+    "walletId": "yoti"
+  },
+  "youniqx Identity AG:eausweise": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.672Z",
+    "providerKey": "youniqx Identity AG",
+    "walletId": "eausweise"
+  },
+  "youniqx Identity AG:eid-li": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.672Z",
+    "providerKey": "youniqx Identity AG",
+    "walletId": "eid-li"
+  },
+  "YourD:yourd-data-wallet": {
+    "firstSeenAt": "2026-01-06T08:53:47.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.673Z",
+    "providerKey": "YourD",
+    "walletId": "yourd-data-wallet"
+  },
+  "YourD:yourd-business-wallet": {
+    "firstSeenAt": "2026-01-19T07:55:18.000Z",
+    "lastSeenAt": "2026-02-26T21:25:32.673Z",
+    "providerKey": "YourD",
+    "walletId": "yourd-business-wallet"
+  },
+  "MOSIP:inji-certifier": {
+    "firstSeenAt": "2026-02-18T07:45:00.000Z",
+    "lastSeenAt": "2026-02-26T21:25:26.492Z",
+    "providerKey": "MOSIP",
+    "walletId": "inji-certifier"
+  },
+  "MOSIP:inji-verifier": {
+    "firstSeenAt": "2026-02-18T07:45:00.000Z",
+    "lastSeenAt": "2026-02-26T21:25:26.492Z",
+    "providerKey": "MOSIP",
+    "walletId": "inji-verifier"
+  },
+  "Ooru:snapkyc": {
+    "firstSeenAt": "2026-02-18T07:25:00.000Z",
+    "lastSeenAt": "2026-02-26T21:25:27.449Z",
+    "providerKey": "Ooru",
+    "walletId": "snapkyc"
+  }
+}
