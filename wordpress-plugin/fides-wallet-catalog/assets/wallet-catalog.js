@@ -1428,7 +1428,7 @@
             : `<div class="fides-wallet-logo-placeholder">${icons.wallet}</div>`
           }
           <div class="fides-wallet-info">
-            <h3 class="fides-wallet-name">${escapeHtml(displayName)}</h3>
+            <h3 class="fides-wallet-name" title="${escapeHtml(displayName)}">${escapeHtml(displayName)}</h3>
             <p class="fides-wallet-provider">${escapeHtml(wallet.provider.name)}</p>
           </div>
         </div>

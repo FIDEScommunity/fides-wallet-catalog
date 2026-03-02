@@ -1131,6 +1131,24 @@
   font-weight: 600;
   margin: 0 0 0.25rem 0;
   color: var(--fides-text-primary);
+  /* Reserve 1 line for consistent card height; ellipsis if longer */
+  min-height: 1.4em;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 1 column (mobile): let title use only the space it needs, no fixed height */
+@media (max-width: 639px) {
+  .fides-wallet-name {
+    min-height: 0;
+    -webkit-line-clamp: unset;
+    display: block;
+    overflow: visible;
+    text-overflow: unset;
+  }
 }
 
 .fides-wallet-provider {
