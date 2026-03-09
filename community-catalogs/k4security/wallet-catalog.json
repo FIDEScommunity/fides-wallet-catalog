@@ -1,0 +1,53 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "K4-Security",
+    "website": "https://www.k4-security.com/",
+    "logo": "https://www.google.com/s2/favicons?domain=k4-security.com&sz=128",
+    "country": "KR",
+    "contact": {
+      "email": "contact@k4-security.com"
+    }
+  },
+  "wallets": [
+    {
+      "id": "ksid-wallet",
+      "name": "KSID Wallet",
+      "description": "KSID is a next-generation digital identity platform developed by K4 Security that enables the secure issuance, storage, and verification of identities for individuals, organizations, and products. Built on W3C DID and Verifiable Credentials (VC) standards, KSID is designed to support interoperability with EU eIDAS 2.0, the EUDI Wallet framework, and the Digital Product Passport (DPP) ecosystem.",
+      "logo": "https://www.google.com/s2/favicons?domain=k4-security.com&sz=128",
+      "website": "https://www.k4-security.com/solution#ssi",
+      "type": "personal",
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JSON-LD VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "SIOPv2"
+      ],
+      "interoperabilityProfiles": [
+        "DIIP v4",
+        "HAIP v1"
+      ],
+      "supportedIdentifiers": [
+        "did:web",
+        "did:key",
+        "did:kscirc"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "EdDSA"
+      ],
+      "openSource": false,
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2026-03-03T00:00:00Z"
+}
