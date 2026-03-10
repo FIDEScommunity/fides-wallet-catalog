@@ -1,0 +1,83 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Namirial",
+    "website": "https://www.namirial.com",
+    "logo": "https://wallet-demo.namirial.com/static/img/fav-namirial-logo.png",
+    "country": "IT",
+    "contact": {
+      "email": "support-wallet@namirial.com",
+      "support": "https://servicedesk.namirial.com/hc/en-gb"
+    }
+  },
+  "wallets": [
+    {
+      "id": "namirial-wallet",
+      "name": "Namirial Wallet",
+      "description": "Personal digital identity wallet designed to securely store and present verifiable credentials.",
+      "logo": "https://wallet-demo.namirial.com/static/img/Logo-NamirialWallet.png",
+      "website": "https://www.namirial.com/en/wallet/wallet-app/",
+      "type": "personal",
+      "platforms": ["iOS", "Android"],
+      "credentialFormats": ["SD-JWT-VC", "mDL/mDoc", "JSON-LD VC"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "ISO/IEC 18013-5",
+        "ISO/IEC 18013-7",
+        "SiOPv2"
+      ],
+      "interoperabilityProfiles": ["EWC v3", "EUDI Wallet ARF", "HAIP v1"],
+      "keyStorage": [
+        "HSM",
+        "Secure Enclave (iOS)",
+        "Trusted Execution Environment (Android)"
+      ],
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/en/app/namirial-wallet/id6739498969",
+        "android": "https://play.google.com/store/apps/details?id=com.namirial.wallet&hl=en-US"
+      },
+      "status": "production",
+      "features": [
+        "Secure credential storage",
+        "Secure key management",
+        "Biometric authentication",
+        "Selective disclosure",
+        "Proximity presentation",
+        "NFC",
+        "Multi credential presentation",
+        "Age verification flows",
+        "Multi-identity profile",
+        "Backup and recovery"
+      ]
+    },
+    {
+      "id": "namirial-wallet-enterprise",
+      "name": "Namirial Wallet Enterprise",
+      "description": "Business wallet platform that enables organizations to seamlessly manage, store, and present verifiable credentials in trusted digital ecosystems.",
+      "logo": "https://wallet-demo.namirial.com/static/img/Logo-NamirialWallet.png",
+      "website": "https://www.namirial.com/en/wallet/",
+      "type": "organizational",
+      "platforms": ["Web"],
+      "credentialFormats": ["SD-JWT-VC", "mDL/mDoc"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "ISO/IEC 18013-5",
+        "ISO/IEC 18013-7",
+        "SiOPv2"
+      ],
+      "interoperabilityProfiles": ["EWC v3", "EUDI Wallet ARF"],
+      "status": "production",
+      "capabilities": ["holder", "verifier"],
+      "features": [
+        "Enterprise management",
+        "Multi-tenant",
+        "API integration",
+        "Dashboard",
+        "Role-based access control"
+      ]
+    }
+  ],
+  "lastUpdated": "2026-03-10T19:00:00Z"
+}
