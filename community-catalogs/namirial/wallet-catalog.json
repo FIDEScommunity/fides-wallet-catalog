@@ -23,15 +23,14 @@
       "issuanceProtocols": ["OpenID4VCI"],
       "presentationProtocols": [
         "OpenID4VP",
-        "ISO/IEC 18013-5",
-        "ISO/IEC 18013-7",
-        "SiOPv2"
+        "ISO 18013-5",
+        "SIOPv2"
       ],
       "interoperabilityProfiles": ["EWC v3", "EUDI Wallet ARF", "HAIP v1"],
       "keyStorage": [
         "HSM",
         "Secure Enclave (iOS)",
-        "Trusted Execution Environment (Android)"
+        "TEE"
       ],
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/en/app/namirial-wallet/id6739498969",
@@ -63,9 +62,8 @@
       "issuanceProtocols": ["OpenID4VCI"],
       "presentationProtocols": [
         "OpenID4VP",
-        "ISO/IEC 18013-5",
-        "ISO/IEC 18013-7",
-        "SiOPv2"
+        "ISO 18013-5",
+        "SIOPv2"
       ],
       "interoperabilityProfiles": ["EWC v3", "EUDI Wallet ARF"],
       "status": "production",
