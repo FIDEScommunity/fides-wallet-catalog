@@ -8,29 +8,70 @@
   "wallets": [
     {
       "id": "identfy-personal-wallet",
-      "name": "Identfy Personal Wallet",
-      "description": "Identfy Personal Wallet is Izertis' mobile wallet for end users, designed to manage verifiable credentials and interact with public and private digital services with a strong focus on privacy, usability and user control. The wallet supports secure reception and presentation of verifiable credentials through QR codes, deeplinks and proximity-based interactions, and includes advanced features such as credential filtering and search, customizable activations, visual alerts, biometric onboarding, document signing integrations with configurable QTSP/TSP providers, and enterprise-grade security mechanisms including PIN, biometrics, BIP-32 key management, backup and key recovery. It is multi-language, adaptable to corporate look and feel, agnostic to credential types and use cases, and compatible with European business wallets and identity ecosystems such as EBSI, ISBE, LACChainID and AlastriaID.",
+      "name": "Identfy",
+      "description": "Identfy Personal Wallet is Izertis' mobile wallet for end users, designed to manage verifiable credentials and interact with public and private digital services with a strong focus on privacy, usability and user control. The wallet supports secure reception and presentation of verifiable credentials through QR codes, deeplinks and proximity-based interactions, and includes advanced features such as credential filtering and search, customizable activations, visual alerts, biometric onboarding, document signing integrations with configurable QTSP/TSP providers, and enterprise-grade security mechanisms including PIN, biometrics, BIP-32 key management, backup and key recovery. It is multi-language, adaptable to corporate look and feel, agnostic to credential types and use cases, and compatible with European business wallets and identity ecosystems.",
       "type": "personal",
       "platforms": ["iOS", "Android"],
+      "credentialFormats": ["SD-JWT-VC", "mDL/mDoc", "JWT-VC"],
       "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
+      "presentationProtocols": ["OpenID4VP", "SIOPv2", "ISO 18013-5"],
+      "supportedIdentifiers": ["did:key", "did:web", "did:isbe", "did:ebsi"],
+      "keyStorage": ["Secure Enclave (iOS)","StrongBox (Android)","HSM"],
+      "signingAlgorithms": ["ES256"],
+      "credentialStatusMethods": ["BitstringStatusList v1.0"],
+      "standards": ["W3C VC Data Model 2.0", "W3C DID Core v1.0"],
+      "features": [
+        "Secure device-side storage of credentials",
+        "Biometric authentication",
+        "Encrypted storage",
+        "Secure DID management",
+        "Credential presentation via QR codes and deeplinks",
+        "Proximity-based interactions",
+        "Credential filtering and search",
+        "Customizable activations and visual alerts",
+        "Backup and recovery",
+        "Document signing integrations",
+        "Multi-language support",
+        "Selective disclosure"
+      ],
       "website": "https://identfy.es/",
       "openSource": true,
       "repository": "https://github.com/izertis/identfy",
-      "status": "production"
+      "status": "production",
+      "logo": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMF82MDMyXzMpIj4KPHBhdGggZD0iTTk5IDY0OVYyNDZIMjE1VjY0OUg5OVoiIGZpbGw9IiNFQjVCNUIiLz4KPHBhdGggZD0iTTIzMCAxMjAuNjMyQzIyOS45NDEgMTQwLjg1MiAyMjMuMDM5IDE1Ni45NzYgMjA5LjMyMyAxNjkuMDMyQzE5NS42MzcgMTgxLjA2IDE3OC4xMzIgMTg3LjAyOSAxNTYuODY5IDE4N0MxMzUuNTc1IDE4Ni45NzEgMTE4LjI0NyAxODAuNTkxIDEwNC45MTMgMTY3Ljk3OUM5MS42MDg0IDE1NS4zMDggODQuOTcwNyAxMzkuNDQ4IDg1LjAwMDEgMTIwLjMzOUM4NS4wNTg4IDEwMC43MzMgOTEuNzI1OCA4NC43ODQ3IDEwNS4xMTkgNzIuNDA2NUMxMTguNTExIDYwLjA4NjggMTM1Ljg5OCA1My45NzA4IDE1Ny4xNjIgNTQuMDAwMUMxNzkuMDQzIDU0LjAyOTQgMTk2LjY2NSA2MC4yNjI0IDIxMC4wMjggNzIuNjExM0MyMjMuMzMzIDg1LjAxODggMjMwLjAyOSAxMDEuMDI2IDIyOS45NzEgMTIwLjYzMkgyMzBaIiBmaWxsPSIjRUI1QjVCIi8+CjxwYXRoIGQ9Ik0zNDUuOTE2IDUzNi45NzlDMzE5LjM3NCA1MzYuOTc5IDI5NS40NTcgNTMwLjk0NyAyNzQuMTQ1IDUxOC45MDNDMjUyLjgzNCA1MDYuODU5IDIzNS45OTMgNDg5Ljk5MyAyMjMuNjA0IDQ2OC4zNDdDMjExLjE5NSA0NDYuNzAxIDIwNSA0MjEuMTk3IDIwNSAzOTEuODU2QzIwNSAzNjIuNTE2IDIxMS4xOTUgMzM2LjQ5OSAyMjMuNjA0IDMxNC44MzJDMjM1Ljk5MyAyOTMuMTg2IDI1Mi44NTQgMjc2LjQwMiAyNzQuMTQ1IDI2NC41MjJDMjk1LjQzNiAyNTIuNjQyIDMxOS4zNzQgMjQ2LjcxMyAzNDUuOTE2IDI0Ni43MTNDMzY5LjY2OSAyNDYuNzEzIDM5MC40NDcgMjUxLjk0NSA0MDguMjUxIDI2Mi40MjlDNDI2LjA1NiAyNzIuOTE0IDQzOS44NiAyODguODE1IDQ0OS42MjQgMzEwLjExM0M0NTkuMzg3IDMzMS40MzEgNDY0LjI5IDM1OC42NzkgNDY0LjI5IDM5MS44NTZDNDY0LjI5IDQyNS4wMzQgNDczLjcyNSA0OTcuNDIxIDQ2NC4yOSA1MTguOTAzQzQ1NC44NTQgNTQwLjM4NSA0MjcuMTYzIDUxMC43OTkgNDA5LjU0NCA1MjEuMjgzQzM5MS45MDMgNTMxLjc2OCAzNzAuNjk0IDUzNyAzNDUuODk2IDUzN0wzNDUuOTE2IDUzNi45NzlaTTM2MC4wNjkgNDY5LjkwNkMzNzMuMzQgNDY5LjkwNiAzODUuMzgxIDQ2Ni43NjcgMzk2LjIxMSA0NjAuNDY4QzQwNy4wMjEgNDU0LjE5IDQxNS42NzcgNDQ1LjE4MiA0MjIuMTM4IDQzMy40ODdDNDI4LjU5OSA0MjEuNzkyIDQzMS44MTkgNDA3LjkwMSA0MzEuODE5IDM5MS44MzZDNDMxLjgxOSAzNzUuNzcgNDI4LjU3OSAzNjEuNDQ5IDQyMi4xMzggMzQ5LjkxOEM0MTUuNjc3IDMzOC4zODcgNDA3LjAyMSAzMjkuNDgyIDM5Ni4yMTEgMzIzLjIwM0MzODUuMzgxIDMxNi45MjUgMzczLjM0IDMxMy43NjUgMzYwLjA2OSAzMTMuNzY1QzM0Ni43OTggMzEzLjc2NSAzMzQuMjI0IDMxNi45MDQgMzIzLjM5NCAzMjMuMjAzQzMxMi41NjQgMzI5LjQ4MiAzMDMuOTI4IDMzOC40MDcgMjk3LjQ2NyAzNDkuOTE4QzI5MS4wMDYgMzYxLjQ0OSAyODcuNzg2IDM3NS40MjEgMjg3Ljc4NiAzOTEuODM2QzI4Ny43ODYgNDA4LjI1IDI5MS4wMDYgNDIxLjc5MiAyOTcuNDY3IDQzMy40ODdDMzAzLjkyOCA0NDUuMjAzIDMxMi41NjQgNDU0LjE5IDMyMy4zOTQgNDYwLjQ2OEMzMzQuMjI0IDQ2Ni43NDcgMzQ2LjQ0OSA0NjkuOTA2IDM2MC4wNjkgNDY5LjkwNlpNNDMzLjkzMiA1MzIuNzk0VjQ3NS4xNTlMNDM1LjUxMiAzOTEuMzIzTDQzMC4yODEgMzA4LjAyVjIyNi4wMVYxNDRINTEyVjUzMi43OTRINDMzLjk1M0g0MzMuOTMyWiIgZmlsbD0iI0VCNUI1QiIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzYwMzJfMyI+CjxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo="
     },
     {
       "id": "identfy-business-wallet",
       "name": "Identfy Business Wallet",
-      "description": "Identfy Business Wallet is Izertis' organizational wallet for enterprises and public administrations, enabling them to issue, receive and present corporate verifiable credentials in B2B and B2G environments. It supports end-to-end management of corporate credentials such as licenses, powers of attorney, certificates and registers, secure presentation of credentials to third parties, and interoperability with the European digital identity ecosystem, including EUDI and EU Business Wallet scenarios. The solution integrates with enterprise systems through REST APIs and wallet connectors, and provides enterprise-grade security and operations with HSM, RBAC, encryption and traceability. It supports flexible deployment models including on-premise and cloud environments, with a microservices-based architecture designed for Docker and Kubernetes, and is compatible with identity ecosystems such as EBSI, ISBE, LACChainID and AlastriaID.",
+      "description": "Identfy Business Wallet is an enterprise-grade organizational identity solution designed for managing, issuing and presenting corporate verifiable credentials in B2B and B2G environments. It provides a scalable, production-ready platform for handling business credentials such as licenses, powers of attorney, certificates and registry-based attributes, while enabling secure presentation to third parties with verifiable trust. Integrated through REST APIs and wallet connectors, the solution supports flexible on-premise and cloud deployments and combines HSM-backed operations, role-based access control, encryption and traceability to meet demanding enterprise and public-sector requirements. It is aligned with the European digital identity ecosystem, including EUDI and EU Business Wallet scenarios.",
       "type": "organizational",
       "capabilities": ["issuer", "holder"],
       "platforms": ["Web"],
+      "credentialFormats": ["SD-JWT-VC", "mDL/mDoc", "JWT-VC"],
       "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
+      "presentationProtocols": ["OpenID4VP", "SIOPv2", "ISO 18013-5"],
+      "supportedIdentifiers": ["did:key", "did:web", "did:isbe", "did:ebsi"],
+      "keyStorage": ["HSM"],
+      "signingAlgorithms": ["ES256"],
+      "credentialStatusMethods": ["BitstringStatusList v1.0"],
+      "interoperabilityProfiles": ["EUDI Wallet ARF", "HAIP v1"],
+      "standards": ["W3C VC Data Model 2.0", "W3C DID Core v1.0", "OpenAPI 3.0"],
+      "features": [
+        "Credential issuance and verification",
+        "Corporate credential management",
+        "B2B and B2G workflows",
+        "REST API integrations",
+        "Wallet connector integrations",
+        "Role-based access control",
+        "HSM-backed key management",
+        "Encryption and traceability",
+        "On-premise and cloud deployment",
+        "EUDI and EU Business Wallet interoperability"
+      ],
       "website": "https://identfy.es/",
-      "status": "production"
+      "status": "production",
+      "logo": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMF82MDMyXzMpIj4KPHBhdGggZD0iTTk5IDY0OVYyNDZIMjE1VjY0OUg5OVoiIGZpbGw9IiNFQjVCNUIiLz4KPHBhdGggZD0iTTIzMCAxMjAuNjMyQzIyOS45NDEgMTQwLjg1MiAyMjMuMDM5IDE1Ni45NzYgMjA5LjMyMyAxNjkuMDMyQzE5NS42MzcgMTgxLjA2IDE3OC4xMzIgMTg3LjAyOSAxNTYuODY5IDE4N0MxMzUuNTc1IDE4Ni45NzEgMTE4LjI0NyAxODAuNTkxIDEwNC45MTMgMTY3Ljk3OUM5MS42MDg0IDE1NS4zMDggODQuOTcwNyAxMzkuNDQ4IDg1LjAwMDEgMTIwLjMzOUM4NS4wNTg4IDEwMC43MzMgOTEuNzI1OCA4NC43ODQ3IDEwNS4xMTkgNzIuNDA2NUMxMTguNTExIDYwLjA4NjggMTM1Ljg5OCA1My45NzA4IDE1Ny4xNjIgNTQuMDAwMUMxNzkuMDQzIDU0LjAyOTQgMTk2LjY2NSA2MC4yNjI0IDIxMC4wMjggNzIuNjExM0MyMjMuMzMzIDg1LjAxODggMjMwLjAyOSAxMDEuMDI2IDIyOS45NzEgMTIwLjYzMkgyMzBaIiBmaWxsPSIjRUI1QjVCIi8+CjxwYXRoIGQ9Ik0zNDUuOTE2IDUzNi45NzlDMzE5LjM3NCA1MzYuOTc5IDI5NS40NTcgNTMwLjk0NyAyNzQuMTQ1IDUxOC45MDNDMjUyLjgzNCA1MDYuODU5IDIzNS45OTMgNDg5Ljk5MyAyMjMuNjA0IDQ2OC4zNDdDMjExLjE5NSA0NDYuNzAxIDIwNSA0MjEuMTk3IDIwNSAzOTEuODU2QzIwNSAzNjIuNTE2IDIxMS4xOTUgMzM2LjQ5OSAyMjMuNjA0IDMxNC44MzJDMjM1Ljk5MyAyOTMuMTg2IDI1Mi44NTQgMjc2LjQwMiAyNzQuMTQ1IDI2NC41MjJDMjk1LjQzNiAyNTIuNjQyIDMxOS4zNzQgMjQ2LjcxMyAzNDUuOTE2IDI0Ni43MTNDMzY5LjY2OSAyNDYuNzEzIDM5MC40NDcgMjUxLjk0NSA0MDguMjUxIDI2Mi40MjlDNDI2LjA1NiAyNzIuOTE0IDQzOS44NiAyODguODE1IDQ0OS42MjQgMzEwLjExM0M0NTkuMzg3IDMzMS40MzEgNDY0LjI5IDM1OC42NzkgNDY0LjI5IDM5MS44NTZDNDY0LjI5IDQyNS4wMzQgNDczLjcyNSA0OTcuNDIxIDQ2NC4yOSA1MTguOTAzQzQ1NC44NTQgNTQwLjM4NSA0MjcuMTYzIDUxMC43OTkgNDA5LjU0NCA1MjEuMjgzQzM5MS45MDMgNTMxLjc2OCAzNzAuNjk0IDUzNyAzNDUuODk2IDUzN0wzNDUuOTE2IDUzNi45NzlaTTM2MC4wNjkgNDY5LjkwNkMzNzMuMzQgNDY5LjkwNiAzODUuMzgxIDQ2Ni43NjcgMzk2LjIxMSA0NjAuNDY4QzQwNy4wMjEgNDU0LjE5IDQxNS42NzcgNDQ1LjE4MiA0MjIuMTM4IDQzMy40ODdDNDI4LjU5OSA0MjEuNzkyIDQzMS44MTkgNDA3LjkwMSA0MzEuODE5IDM5MS44MzZDNDMxLjgxOSAzNzUuNzcgNDI4LjU3OSAzNjEuNDQ5IDQyMi4xMzggMzQ5LjkxOEM0MTUuNjc3IDMzOC4zODcgNDA3LjAyMSAzMjkuNDgyIDM5Ni4yMTEgMzIzLjIwM0MzODUuMzgxIDMxNi45MjUgMzczLjM0IDMxMy43NjUgMzYwLjA2OSAzMTMuNzY1QzM0Ni43OTggMzEzLjc2NSAzMzQuMjI0IDMxNi45MDQgMzIzLjM5NCAzMjMuMjAzQzMxMi41NjQgMzI5LjQ4MiAzMDMuOTI4IDMzOC40MDcgMjk3LjQ2NyAzNDkuOTE4QzI5MS4wMDYgMzYxLjQ0OSAyODcuNzg2IDM3NS40MjEgMjg3Ljc4NiAzOTEuODM2QzI4Ny43ODYgNDA4LjI1IDI5MS4wMDYgNDIxLjc5MiAyOTcuNDY3IDQzMy40ODdDMzAzLjkyOCA0NDUuMjAzIDMxMi41NjQgNDU0LjE5IDMyMy4zOTQgNDYwLjQ2OEMzMzQuMjI0IDQ2Ni43NDcgMzQ2LjQ0OSA0NjkuOTA2IDM2MC4wNjkgNDY5LjkwNlpNNDMzLjkzMiA1MzIuNzk0VjQ3NS4xNTlMNDM1LjUxMiAzOTEuMzIzTDQzMC4yODEgMzA4LjAyVjIyNi4wMVYxNDRINTEyVjUzMi43OTRINDMzLjk1M0g0MzMuOTMyWiIgZmlsbD0iI0VCNUI1QiIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzYwMzJfMyI+CjxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo="
     }
   ],
-  "lastUpdated": "2026-03-13T12:00:00Z"
+  "lastUpdated": "2026-03-16T12:00:00Z"
 }
