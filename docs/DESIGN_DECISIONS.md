@@ -95,6 +95,32 @@ fetch('https://raw.githubusercontent.com/.../data/aggregated.json')
 
 ## 3. Frontend Design Patterns
 
+### 2.4 URL Parameter: ?wallets= for pre-filtering by ID
+
+- **Decision**: The wallet catalog supports a `?wallets=id1,id2,...` URL parameter that pre-filters the catalog to only show wallets with those IDs (comma-separated). A single `?wallet=id` still opens the detail modal directly (deep link). These two mechanisms are intentionally separate.
+- **Rationale**:
+  - Allows external catalogs (credential catalog, RP catalog) to link into the wallet catalog with the relevant wallets pre-selected, so the user immediately sees the filtered results.
+  - Keeps the existing `?wallet=` deep link intact (no breaking change).
+  - The `ids` pre-filter stacks with all other user-applied filters, so the experience is fully interactive.
+  - Clearing filters (via the "Clear" button) also removes the `ids` pre-filter, giving the user an easy way to see all wallets.
+- **Implementation**: `filters.ids` array set in `readQueryParams()`, applied as the first check in `getFilteredWallets()`.
+- **Used by**: The credential catalog's "Personal Wallets" box in the ecosystem model (links to `?wallets=id1,id2` for credentials that are accepted by RPs which support specific wallets).
+
+### 2.5 "Linked wallets" quick filter when arriving via ?wallets=
+
+- **Decision**: When the catalog is opened with a `?wallets=` URL parameter, a "Linked wallets (n)" checkbox appears at the top of the Quick filters section in the sidebar, pre-checked. The user can uncheck it to browse all wallets while retaining the ability to re-check it without reloading the page. Clicking the "Clear" button removes the filter permanently (including the checkbox and the URL parameter).
+- **Rationale**:
+  - Makes the active pre-filter explicitly visible in the UI — the user knows why the list is narrowed.
+  - Keeping the checkbox after unchecking (rather than hiding it) lets the user toggle back to the linked wallets without a page reload, which is important in a single-page catalog.
+  - Placing it in Quick filters is consistent with "Added last 30 days" and "Includes video" — all are transient, context-dependent filters rather than structural facets.
+- **Implementation**:
+  - `originalIds` (module-level variable) stores the IDs from the URL parameter and is never cleared by toggling — only by the "Clear" button.
+  - `filters.ids` is the live state: set to `[...originalIds]` when checked, `[]` when unchecked.
+  - The checkbox renders only when `originalIds.length > 0`.
+  - The filter count badge in the sidebar header counts `filters.ids.length > 0` as one active filter, making the "Clear" button visible.
+
+---
+
 ### 3.1 Client-Side Filtering
 - **Decision**: All filtering happens in JavaScript, not server-side
 - **Rationale**:
@@ -358,6 +384,18 @@ const CREDENTIAL_FORMAT_ORDER = [
 
 ---
 
+## 9.6 English Only: Code, Comments, and UI
+
+**Decision:** All code comments, UI strings (labels, placeholders, buttons, messages, error text), and in-repository documentation are written in English. Dutch or any other language is not used in code or UI.
+
+**Rationale:** The FIDES catalog platform is an open-source, internationally oriented project. Using English as the single working language ensures contributors from outside the Netherlands can read and review code without a language barrier, UI is immediately usable for non-Dutch-speaking users, and tools such as linters, AI assistants, and code-review bots work better with English source material.
+
+**Scope:** source code comments, UI strings, commit messages, pull request descriptions, schema `description` fields, and `docs/` files (DESIGN_DECISIONS.md, LESSONS_LEARNED.md, README).
+
+**Enforcement:** A Cursor workspace rule (`.cursor/rules/english-only.mdc`) is present in each repository to remind AI-assisted development of this convention.
+
+---
+
 ## 10. Reusable Template
 
 For new FIDES catalog projects:
@@ -380,6 +418,7 @@ For new FIDES catalog projects:
    - Mobile (iOS Safari, Android Chrome)
    - Tablet
 8. ✅ Document in README.md + schema docs
+9. ✅ When adding update visibility or filter counters, use the checklist in [LESSONS_LEARNED.md](LESSONS_LEARNED.md) so semantic dates and facets are done right in one go.
 
 ---
 

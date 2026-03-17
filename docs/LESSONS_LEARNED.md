@@ -111,4 +111,4 @@ Use this when adding update visibility, filter counters, or semantic dates to a 
 
 ---
 
-*For implementation details, see `src/crawler/index.ts`, `wordpress-plugin/.../assets/wallet-catalog.js`, and [DESIGN_DECISIONS.md](DESIGN_DECISIONS.md) (e.g. §1.4 Semantic date strategy, §3.3 Filter option counters).*
+*For implementation details, see `src/crawler/index.ts`, `wordpress-plugin/.../assets/wallet-catalog.js`, and [DESIGN_DECISIONS.md](DESIGN_DECISIONS.md) (e.g. §1.4 Semantic date strategy, §3.3 Filter option counters). The same pattern has been applied in the [RP catalog](https://github.com/FIDEScommunity/fides-rp-catalog) (see its README and docs/DESIGN_DECISIONS.md).*

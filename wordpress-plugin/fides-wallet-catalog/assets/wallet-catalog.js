@@ -167,6 +167,7 @@
   let filterFacets = null;
   const SORT_PREFERENCE_STORAGE_KEY = 'fidesWalletCatalogSortBy';
   let sortBy = 'lastUpdated';
+  let originalIds = []; // IDs from ?wallets= URL param; preserved so the filter can be toggled back on
   let filters = {
     search: '',
     type: [],
@@ -185,7 +186,8 @@
     openSource: null,
     governance: null, // 'government' or 'private'
     addedLast30Days: false,
-    includesVideo: false
+    includesVideo: false,
+    ids: [] // pre-filter by wallet IDs (set via ?wallets= URL param)
   };
 
   // Country code to name mapping
@@ -429,18 +431,24 @@
   }
 
   /**
-   * Read and apply query parameters for filtering
-   * Supports: ?profile=Profile Name
+   * Read and apply query parameters for filtering.
+   * Supports:
+   *   ?profile=Profile Name     — pre-filter by interoperability profile
+   *   ?wallets=id1,id2,...      — show only specific wallets (comma-separated IDs)
    */
   function readQueryParams() {
     const urlParams = new URLSearchParams(window.location.search);
+
     const profileParam = urlParams.get('profile');
-    
     if (profileParam && !filters.interoperabilityProfiles.includes(profileParam)) {
       filters.interoperabilityProfiles.push(profileParam);
-      // Auto-expand filters to show pre-selection
       document.body.classList.add('filters-visible');
-      console.log(`🔗 Profile filter applied: ${profileParam}`);
+    }
+
+    const walletsParam = urlParams.get('wallets');
+    if (walletsParam) {
+      originalIds = walletsParam.split(',').map(s => s.trim()).filter(Boolean);
+      filters.ids = [...originalIds];
     }
   }
 
@@ -471,6 +479,11 @@
    */
   function getFilteredWallets() {
     const filtered = wallets.filter(wallet => {
+      // Pre-filter: only show specific wallet IDs (set via ?wallets= URL param)
+      if (filters.ids && filters.ids.length > 0) {
+        if (!filters.ids.includes(wallet.id)) return false;
+      }
+
       // Search
       if (filters.search) {
         const search = filters.search.toLowerCase();
@@ -633,6 +646,7 @@
     if (filters.governance !== null) count += 1;
     if (filters.addedLast30Days) count += 1;
     if (filters.includesVideo) count += 1;
+    if (filters.ids && filters.ids.length > 0) count += 1;
     return count;
   }
 
@@ -843,6 +857,12 @@
             ` : ''}
             <div class="fides-quick-filters">
               <span class="fides-quick-filters-title">Quick filters</span>
+              ${originalIds.length > 0 ? `
+              <label class="fides-filter-checkbox">
+                <input type="checkbox" data-filter="linkedWallets" data-value="true" ${filters.ids.length > 0 ? 'checked' : ''}>
+                <span>Linked wallets<span class="fides-filter-option-count">(${originalIds.length})</span></span>
+              </label>
+              ` : ''}
               <label class="fides-filter-checkbox">
                 <input type="checkbox" data-filter="addedLast30Days" data-value="true" ${filters.addedLast30Days ? 'checked' : ''}>
                 <span>Added last 30 days<span class="fides-filter-option-count">(${filterFacets ? filterFacets.addedLast30Days : ''})</span></span>
@@ -1219,15 +1239,13 @@
     // Results count + link to map
     html += `
       <div class="fides-results-bar">
-        <div class="fides-results-controls">
-          <label class="fides-sort-wrap">
-            <span class="fides-sort-label">Sort by:</span>
-            <select id="fides-sort-select" class="fides-sort-select">
-              <option value="lastUpdated" ${sortBy === 'lastUpdated' ? 'selected' : ''}>Last updated</option>
-              <option value="az" ${sortBy === 'az' ? 'selected' : ''}>A-Z</option>
-            </select>
-          </label>
-        </div>
+        <label class="fides-sort-wrap">
+          <span class="fides-sort-label">Sort by:</span>
+          <select id="fides-sort-select" class="fides-sort-select">
+            <option value="lastUpdated" ${sortBy === 'lastUpdated' ? 'selected' : ''}>Last updated</option>
+            <option value="az" ${sortBy === 'az' ? 'selected' : ''}>A-Z</option>
+          </select>
+        </label>
         <a href="${MAP_PAGE_URL}" class="fides-show-on-map" target="_blank" rel="noopener" aria-label="Show on map (opens in new tab)">${icons.externalLink} Show on map</a>
         <!-- Mobile filter toggle -->
         ${settings.showFilters ? `
@@ -2113,7 +2131,10 @@
         const value = checkbox.dataset.value;
         const isChecked = checkbox.checked;
         
-        if (filterType === 'addedLast30Days' || filterType === 'includesVideo') {
+        if (filterType === 'linkedWallets') {
+          filters.ids = isChecked ? [...originalIds] : [];
+        }
+        else if (filterType === 'addedLast30Days' || filterType === 'includesVideo') {
           filters[filterType] = isChecked;
         }
         // Special handling for openSource (boolean toggle)
@@ -2212,8 +2233,16 @@
           openSource: null,
           governance: null,
           addedLast30Days: false,
-          includesVideo: false
+          includesVideo: false,
+          ids: []
         };
+        // Clear the deep-link pre-filter entirely (checkbox will disappear)
+        originalIds = [];
+        const url = new URL(window.location.href);
+        if (url.searchParams.has('wallets')) {
+          url.searchParams.delete('wallets');
+          history.replaceState(null, '', url.toString());
+        }
         render();
       });
     }

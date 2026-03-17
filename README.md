@@ -51,7 +51,9 @@ wallet-catalog/
 │   └── did-registry.json         # Registered DIDs for automatic crawling
 └── docs/                         # Documentation
     ├── DID_REGISTRATION.md       # How to register your DID
-    └── GITHUB_REPO_STRUCTURE.md  # Repository structure
+    ├── GITHUB_REPO_STRUCTURE.md  # Repository structure
+    ├── DESIGN_DECISIONS.md       # Architecture and design choices
+    └── LESSONS_LEARNED.md        # Lessons from update visibility & filter counters
 ```
 
 ## 🚀 Getting Started
