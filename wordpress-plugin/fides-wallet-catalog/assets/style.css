@@ -326,9 +326,47 @@
 .fides-results-bar {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap !important;
   gap: 0.5rem;
   margin-bottom: 1rem;
+}
+
+/* Search in results bar (aligned with credential catalog) */
+.fides-wallet-catalog .fides-topbar-search {
+  flex: 1;
+  min-width: 160px;
+  max-width: 480px;
+  height: 2.25rem;
+}
+
+.fides-wallet-catalog .fides-topbar-search .fides-search-input {
+  height: 2.25rem !important;
+  padding: 0 2.25rem 0 2.25rem !important;
+  font-size: 0.875rem;
+  line-height: 1.25;
+  border-radius: 6px !important;
+  background: var(--fides-bg-card) !important;
+  box-sizing: border-box;
+  border: 1px solid var(--fides-border) !important;
+  border-bottom: 1px solid var(--fides-border) !important;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.fides-wallet-catalog .fides-topbar-search .fides-search-input:focus,
+.fides-wallet-catalog .fides-topbar-search .fides-search-input:focus-visible {
+  outline: none !important;
+  border-color: var(--fides-accent) !important;
+  border-bottom-color: var(--fides-accent) !important;
+  box-shadow: 0 0 0 3px rgba(10, 110, 243, 0.15) !important;
+}
+
+.fides-wallet-catalog .fides-topbar-search .fides-search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 /* Scoped under .fides-wallet-catalog so link color wins over theme/site rules (e.g. a { color: inherit }) */
@@ -337,7 +375,6 @@
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  margin-left: auto;
   font-size: 0.875rem;
   color: var(--fides-accent, #3b82f6) !important;
   text-decoration: none;
@@ -356,25 +393,37 @@
   stroke: currentColor;
 }
 
-.fides-wallet-catalog .fides-sort-wrap {
-  display: inline-flex !important;
-  flex: none !important;
-  width: auto !important;
+/* Full label by default; short "Map" on smaller breakpoints (see media queries) */
+.fides-wallet-catalog .fides-show-on-map-label--short {
+  display: none;
+}
+
+/* Sort row: pushed right after search (credential catalog pattern) */
+.fides-wallet-catalog .fides-results-bar .fides-sort-label {
+  display: flex;
   align-items: center;
-  justify-content: flex-start;
   gap: 0.5rem;
   font-size: 0.875rem;
   color: var(--fides-text-secondary);
+  height: 2.25rem;
+  margin: 0;
+  margin-left: auto;
+  padding: 0;
+  flex: none;
+  width: auto;
 }
 
-.fides-wallet-catalog .fides-sort-label {
+.fides-wallet-catalog .fides-sort-text {
   white-space: nowrap;
 }
 
 .fides-wallet-catalog .fides-sort-select {
   width: auto !important;
   min-width: 130px;
-  padding: 0.4rem 2rem 0.4rem 0.6rem;
+  height: 2.25rem;
+  padding: 0 1.75rem 0 0.5rem;
+  line-height: 2.25rem;
+  box-sizing: border-box;
   border: 1px solid var(--fides-border);
   border-radius: 6px;
   background-color: var(--fides-bg-secondary);
@@ -473,26 +522,9 @@
   border-color: var(--fides-text-muted);
 }
 
-/* Search - now in sidebar */
+/* Legacy: search was in sidebar / duplicate mobile row; now uses .fides-topbar-search in .fides-results-bar */
 .fides-search-container {
-  display: none; /* Legacy - moved to sidebar */
-}
-
-.fides-sidebar-search {
-  margin-bottom: 0.25rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--fides-border);
-}
-
-.fides-sidebar-search .fides-search-input {
-  padding: 0.5rem 2.25rem 0.5rem 2.25rem !important;
-  font-size: 0.875rem;
-}
-
-/* Mobile search - visible only on mobile */
-.fides-mobile-search {
   display: none;
-  margin-bottom: 1rem;
 }
 
 .fides-quick-filters {
@@ -510,12 +542,6 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--fides-text-muted);
-}
-
-@media (max-width: 1023px) {
-  .fides-mobile-search {
-    display: block;
-  }
 }
 
 .fides-search-wrapper {
@@ -1033,6 +1059,32 @@
 
   .fides-mobile-filter-toggle {
     display: inline-flex;
+  }
+
+  .fides-wallet-catalog .fides-mobile-filter-toggle {
+    flex: 0 0 100%;
+    justify-content: center;
+  }
+
+  .fides-wallet-catalog .fides-results-bar .fides-sort-label {
+    display: none !important;
+  }
+
+  /* Keep search + "Map" on one row; search grows, link does not wrap below */
+  .fides-wallet-catalog .fides-topbar-search {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: none;
+    order: -1;
+    height: auto;
+  }
+
+  .fides-wallet-catalog .fides-show-on-map-label--full {
+    display: none;
+  }
+
+  .fides-wallet-catalog .fides-show-on-map-label--short {
+    display: inline;
   }
 
   .fides-wallet-grid[data-columns="3"],

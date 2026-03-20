@@ -809,7 +809,7 @@
     const activeFilterCount = getActiveFilterCount();
     
     // Save focus state before re-rendering
-    const searchInput = document.getElementById('fides-search');
+    const searchInput = document.getElementById('fides-search-input');
     const wasSearchFocused = searchInput && document.activeElement === searchInput;
     const cursorPosition = wasSearchFocused ? searchInput.selectionStart : 0;
     
@@ -838,23 +838,6 @@
             </div>
           </div>
           <div class="fides-sidebar-content">
-            ${settings.showSearch ? `
-              <div class="fides-sidebar-search">
-                <div class="fides-search-wrapper">
-                  <span class="fides-search-icon">${icons.search}</span>
-                  <input 
-                    type="text" 
-                    class="fides-search-input" 
-                    placeholder="Search..."
-                    value="${escapeHtml(filters.search)}"
-                    id="fides-search"
-                  >
-                  <button class="fides-search-clear ${filters.search ? '' : 'hidden'}" id="fides-search-clear" type="button">
-                    ${icons.xSmall}
-                  </button>
-                </div>
-              </div>
-            ` : ''}
             <div class="fides-quick-filters">
               <span class="fides-quick-filters-title">Quick filters</span>
               ${originalIds.length > 0 ? `
@@ -1215,38 +1198,35 @@
     // Main content area
     html += `<main class="fides-content">`;
 
-    // Mobile search bar (visible only on mobile)
-    if (settings.showSearch) {
-      html += `
-        <div class="fides-mobile-search">
-          <div class="fides-search-wrapper">
-            <span class="fides-search-icon">${icons.search}</span>
-            <input 
-              type="text" 
-              class="fides-search-input fides-mobile-search-input" 
-              placeholder="Search..."
-              value="${escapeHtml(filters.search)}"
-              id="fides-mobile-search"
-            >
-            <button class="fides-search-clear ${filters.search ? '' : 'hidden'}" id="fides-mobile-search-clear" type="button">
-              ${icons.xSmall}
-            </button>
-          </div>
-        </div>
-      `;
-    }
-
-    // Results count + link to map
+    // Results bar: search (optional) + sort + map link + mobile filter toggle (matches credential catalog layout)
     html += `
       <div class="fides-results-bar">
-        <label class="fides-sort-wrap">
-          <span class="fides-sort-label">Sort by:</span>
+        ${settings.showSearch ? `
+          <div class="fides-topbar-search">
+            <div class="fides-search-wrapper">
+              <span class="fides-search-icon">${icons.search}</span>
+              <input
+                type="text"
+                class="fides-search-input"
+                placeholder="Search..."
+                value="${escapeHtml(filters.search)}"
+                id="fides-search-input"
+                autocomplete="off"
+              >
+              <button class="fides-search-clear ${filters.search ? '' : 'hidden'}" id="fides-search-clear" type="button" aria-label="Clear search">
+                ${icons.xSmall}
+              </button>
+            </div>
+          </div>
+        ` : ''}
+        <label class="fides-sort-label" for="fides-sort-select">
+          <span class="fides-sort-text">Sort by:</span>
           <select id="fides-sort-select" class="fides-sort-select">
             <option value="lastUpdated" ${sortBy === 'lastUpdated' ? 'selected' : ''}>Last updated</option>
             <option value="az" ${sortBy === 'az' ? 'selected' : ''}>A-Z</option>
           </select>
         </label>
-        <a href="${MAP_PAGE_URL}" class="fides-show-on-map" target="_blank" rel="noopener" aria-label="Show on map (opens in new tab)">${icons.externalLink} Show on map</a>
+        <a href="${MAP_PAGE_URL}" class="fides-show-on-map" target="_blank" rel="noopener" aria-label="Show on map (opens in new tab)">${icons.externalLink}<span class="fides-show-on-map-label fides-show-on-map-label--full">Show on map</span><span class="fides-show-on-map-label fides-show-on-map-label--short" aria-hidden="true">Map</span></a>
         <!-- Mobile filter toggle -->
         ${settings.showFilters ? `
           <button class="fides-mobile-filter-toggle" id="fides-mobile-filter-toggle">
@@ -1304,7 +1284,7 @@
     
     // Restore focus to search input if it was focused
     if (wasSearchFocused) {
-      const newSearchInput = document.getElementById('fides-search');
+      const newSearchInput = document.getElementById('fides-search-input');
       if (newSearchInput) {
         newSearchInput.focus();
         newSearchInput.setSelectionRange(cursorPosition, cursorPosition);
@@ -1335,12 +1315,8 @@
     
     // Update search clear button visibility
     const searchClear = document.getElementById('fides-search-clear');
-    const mobileSearchClear = document.getElementById('fides-mobile-search-clear');
     if (searchClear) {
       searchClear.classList.toggle('hidden', !filters.search);
-    }
-    if (mobileSearchClear) {
-      mobileSearchClear.classList.toggle('hidden', !filters.search);
     }
     
     // Update wallet grid
@@ -2023,50 +1999,28 @@
    * Attach event listeners
    */
   function attachEventListeners() {
-    // Search inputs (sidebar + mobile)
-    const searchInput = document.getElementById('fides-search');
-    const mobileSearchInput = document.getElementById('fides-mobile-search');
-    
+    const searchInput = document.getElementById('fides-search-input');
+
     const handleSearchInput = debounce((e) => {
       filters.search = e.target.value;
-      // Use grid-only render to avoid losing focus/keyboard on mobile
       renderWalletGridOnly();
-      // Sync the other search input value
-      const otherInput = e.target.id === 'fides-search' 
-        ? document.getElementById('fides-mobile-search')
-        : document.getElementById('fides-search');
-      if (otherInput && otherInput.value !== e.target.value) {
-        otherInput.value = e.target.value;
-      }
     }, 300);
 
     if (searchInput) {
       searchInput.addEventListener('input', handleSearchInput);
     }
-    if (mobileSearchInput) {
-      mobileSearchInput.addEventListener('input', handleSearchInput);
-    }
 
-    // Search clear buttons
     const searchClear = document.getElementById('fides-search-clear');
-    const mobileSearchClear = document.getElementById('fides-mobile-search-clear');
-    
+
     const handleSearchClear = () => {
       filters.search = '';
-      // Clear both inputs
-      const sidebarInput = document.getElementById('fides-search');
-      const mobileInput = document.getElementById('fides-mobile-search');
-      if (sidebarInput) sidebarInput.value = '';
-      if (mobileInput) mobileInput.value = '';
-      // Use grid-only render
+      const input = document.getElementById('fides-search-input');
+      if (input) input.value = '';
       renderWalletGridOnly();
     };
 
     if (searchClear) {
       searchClear.addEventListener('click', handleSearchClear);
-    }
-    if (mobileSearchClear) {
-      mobileSearchClear.addEventListener('click', handleSearchClear);
     }
 
     // Mobile filter toggle
