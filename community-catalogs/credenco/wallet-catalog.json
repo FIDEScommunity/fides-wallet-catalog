@@ -10,20 +10,24 @@
     {
       "id": "credenco-business-wallet",
       "name": "Credenco Business Wallet",
-      "description": "A DIIP v4 compliant organizational wallet platform providing full holder, issuer, and verifier capabilities for enterprise digital identity management.",
+      "description": "A DIIP v5 compliant organizational wallet platform providing full holder, issuer, and verifier capabilities for enterprise digital identity management.",
       "logo": "https://wallet.acc.credenco.com/logo_white_background.png",
       "website": "https://www.credenco.com",
       "type": "organizational",
       "capabilities": ["holder", "issuer", "verifier"],
       "platforms": ["Web"],
-      "credentialFormats": ["SD-JWT-VC","JWT-VC","JSON-LD VC"],
+      "credentialFormats": ["SD-JWT-VC","JWT-VC","JSON-LD VC","mDL/mDoc"],
       "issuanceProtocols": ["OpenID4VCI"],
       "presentationProtocols": ["OpenID4VP"],
-      "interoperabilityProfiles": ["DIIP v4"],
+      "keyStorage": ["Software", "HSM", "Cloud KMS"],
+      "supportedIdentifiers": ["did:jwk", "did:web", "did:ebsi"],
+      "credentialStatusMethods": ["StatusList2021", "Token Status List"],
+      "interoperabilityProfiles": ["DIIP v4", "DIIP v5"],
       "features": ["Universal OID4VP API"],
+      "documentation": "https://wallet.acc.credenco.com",
       "openSource": false,
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-01-06T12:00:00Z"
+  "lastUpdated": "2026-03-26T12:00:00Z"
 }
