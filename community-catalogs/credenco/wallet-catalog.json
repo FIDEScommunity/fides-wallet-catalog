@@ -24,7 +24,7 @@
       "credentialStatusMethods": ["StatusList2021", "Token Status List"],
       "interoperabilityProfiles": ["DIIP v4", "DIIP v5"],
       "features": ["Universal OID4VP API", "Compliant with WE BUILD Interoperability Test Bed (ITB)", "Integration with FIDES Credential Catalog and BluePages", "EBSI Integration", "Public Profile", "Inbox notifications", "Available as SaaS or on-premise deployment"],
-      "documentation": "https://wallet.acc.credenco.com",
+      "documentation": "https://docs.acc.credenco.com",
       "openSource": false,
       "status": "production"
     }
