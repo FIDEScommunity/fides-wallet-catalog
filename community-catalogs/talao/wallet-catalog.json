@@ -15,19 +15,50 @@
       "type": "personal",
       "platforms": ["iOS", "Android"],
       "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC"],
-      "protocols": {
-        "issuance": ["OpenID4VCI"],
-        "presentation": ["OpenID4VP"]
-      },
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP", "SIOPv2"],
       "website": "https://altme.io",
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/app/altme-wallet/id1633216869",
         "android": "https://play.google.com/store/apps/details?id=co.altme.alt.me.altme"
       },
+       "features": [
+        "Biometric authentication",
+        "Selective disclosure",
+        "QR code scanning",
+        "Multi-language support"
+      ],
       "signingAlgorithms": ["ES256", "EdDSA"],
-      "credentialStatusMethods": ["StatusList2021"],
+      "credentialStatusMethods": ["StatusList2021", "Token Status List"],
       "openSource": true,
       "repository": "https://github.com/TalaoDAO/AltMe",
+      "status": "production"
+    },
+     {
+      "id": "wallet4agent",
+      "name": "Wallet4Agent",
+      "description": "Wallet4Agent gives AI agents a real identity — so people, companies, and other agents can trust them. Your agent can prove who it is and what it’s allowed to do before taking actions.",
+      "logo": "https://talao.co/server/image/talao.png",
+      "website": "https://wallet4agent.com",
+      "type": "organizational",
+      "capabilities": ["holder", "issuer", "verifier"],
+      "platforms": ["Web"],
+      "openSource": true,
+      "repository": "https://github.com/TalaoDAO/connectors",
+      "supportedIdentifiers": ["did:web", "did:cheqd"],
+      "credentialFormats": ["SD-JWT-VC", "JSON-LD VC"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "keyStorage": ["Software", "Cloud KMS"],
+      "signingAlgorithms": ["ES256", "EdDSA"],
+      "credentialStatusMethods": ["StatusList2021", "Token Status List"],
+      "interoperabilityProfiles": ["EUDI Wallet ARF"],
+      "features": [
+        "Selective disclosure",
+        "QR code scanning",
+        "Multi-language support"
+      ],
+      "documentation": "https://wallet4agent.com/documentation/stack",
       "status": "production"
     },
     {
@@ -38,22 +69,26 @@
       "type": "personal",
       "platforms": ["iOS", "Android"],
       "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC"],
-      "protocols": {
-        "issuance": ["OpenID4VCI"],
-        "presentation": ["OpenID4VP"]
-      },
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP", "SIOPv2"],
       "website": "https://talao.io",
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/app/talao-wallet/id1582183266",
         "android": "https://play.google.com/store/apps/details?id=co.talao.wallet"
       },
       "signingAlgorithms": ["ES256", "EdDSA"],
-      "credentialStatusMethods": ["StatusList2021"],
+      "credentialStatusMethods": ["StatusList2021", "Token Status List"],
       "openSource": true,
+       "features": [
+        "Biometric authentication",
+        "Selective disclosure",
+        "QR code scanning",
+        "Multi-language support"
+      ],
       "repository": "https://github.com/TalaoDAO/AltMe/tree/TALAO",
       "status": "production"
     }
   ],
-  "lastUpdated": "2025-01-06T12:00:00Z"
+  "lastUpdated": "2026-03-26T12:00:00Z"
 }
 
