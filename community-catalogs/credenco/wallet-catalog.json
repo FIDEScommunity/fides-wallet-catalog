@@ -23,7 +23,7 @@
       "supportedIdentifiers": ["did:jwk", "did:web", "did:ebsi"],
       "credentialStatusMethods": ["StatusList2021", "Token Status List"],
       "interoperabilityProfiles": ["DIIP v4", "DIIP v5"],
-      "features": ["Universal OID4VP API"],
+      "features": ["Universal OID4VP API", "Compliant with WE BUILD Interoperability Test Bed (ITB)"],
       "documentation": "https://wallet.acc.credenco.com",
       "openSource": false,
       "status": "production"
