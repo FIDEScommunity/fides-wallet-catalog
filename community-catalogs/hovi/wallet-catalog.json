@@ -46,7 +46,7 @@
       "name": "Hovi Business Wallet",
       "description": "Hovi Business Wallet is an enterprise grade organizational wallet designed for issuing, holding, and verifying verifiable credentials at scale. It enables businesses to manage decentralized identifiers, cryptographic keys, and credential lifecycles for employees, partners, devices, and automated agents. The wallet supports W3C Verifiable Credentials, policy based verification, selective disclosure, and zero knowledge proof flows, and integrates via APIs and webhooks into existing identity, compliance, and business systems. Built to align with eIDAS 2.0 and EUDI wallet ecosystems, Hovi Business Wallet provides auditable, secure, and interoperable digital trust infrastructure for cross border and regulated use cases.",
       "logo": "https://cdn.prod.website-files.com/659dad70ef0ae858f66ae208/6966ba7db9a130a7b508f415_hovi-logo-color.png",
-      "website": "https://www.hovi.id/api",
+      "website": "https://www.hovi.id",
       "capabilities": ["holder", "issuer", "verifier"],
       "type": "organizational",
       "platforms": ["Web"],
@@ -56,12 +56,15 @@
       "credentialStatusMethods": ["IETF Token Status List"],
       "keyStorage": ["Cloud KMS"],
       "issuanceProtocols": ["OpenID4VCI", "DIDComm Issue Credential v2"],
+      "interoperabilityProfiles": ["DIIP v5"],
       "presentationProtocols": ["OpenID4VP", "DIDComm Present Proof v2"],
       "standards": ["EUDI ARF", "W3C Verifiable Credentials", "OpenID for Verifiable Credentials"],
-      "documentation": "https://docs.hovi.id/api",
+      "documentation": "https://docs.hovi.id/api/open-id",
       "status": "production",
-      "releaseDate": "2024-10-01"
+      "features": [
+        "Ready for France Identité EUDIW", "OID4VCI 1.0", "OID4VP 1.0", "DCQL", "EUDI Ready","Multi-language support"
+      ]
     }
   ],
-  "lastUpdated": "2026-01-13T12:00:00Z"
+  "lastUpdated": "2026-03-31T12:00:00Z"
 }
