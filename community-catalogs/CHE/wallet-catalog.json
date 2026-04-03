@@ -15,8 +15,10 @@
       "website": "https://www.swiyu.admin.ch/",
       "type": "personal",
       "platforms": ["iOS", "Android"],
+      "credentialFormats": ["SD-JWT-VC"],
       "status": "production",
       "openSource": true,
+      "license": "MIT",
       "repository": "https://github.com/swiyu-admin-ch",
       "appStoreLinks": {
         "web": "https://www.swiyu.admin.ch/",
@@ -24,6 +26,38 @@
         "android": "https://play.google.com/store/apps/details?id=ch.admin.foitt.swiyu"
       },
       "documentation": "https://www.swiyu.admin.ch/documentation"
+    },
+    {
+      "id": "swiyu-generic-issuer",
+      "name": "SWIYU Generic Issuer",
+      "description": "Generic issuer component of the SWIYU ecosystem, enabling organizations to issue verifiable credentials to compatible wallets within the Swiss e-ID infrastructure.",
+      "type": "organizational",
+      "platforms": ["Web"],
+      "website": "https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-issuer/",
+      "documentation": "https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-issuer/",
+      "openSource": true,
+      "license": "MIT",
+      "repository": "https://github.com/swiyu-admin-ch/swiyu-issuer",
+      "credentialFormats": ["SD-JWT-VC"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "status": "development",
+      "capabilities": ["issuer"]
+    },
+    {
+      "id": "swiyu-generic-verifier",
+      "name": "SWIYU Generic Verifier",
+      "description": "Generic verifier component of the SWIYU ecosystem, enabling organizations to request and verify verifiable presentations from compatible wallets within the Swiss e-ID infrastructure.",
+      "type": "organizational",
+      "platforms": ["Web"],
+      "website": "https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-verifier/",
+      "documentation": "https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-verifier/",
+      "openSource": true,
+      "license": "MIT",
+      "repository": "https://github.com/swiyu-admin-ch/swiyu-verifier",
+      "credentialFormats": ["SD-JWT-VC"],
+      "presentationProtocols": ["OpenID4VP"],
+      "status": "development",
+      "capabilities": ["verifier"]
     }
   ],
   "lastUpdated": "2026-01-10T12:00:00Z"
