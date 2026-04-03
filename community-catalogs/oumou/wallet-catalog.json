@@ -1,0 +1,31 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "provider": {
+    "name": "Oumou Group",
+    "website": "https://oumougroup.com",
+    "logo": "https://www.google.com/s2/favicons?domain=oumougroup.com&sz=128",
+    "country": "SN"
+  },
+  "wallets": [
+    {
+      "id": "uwangu",
+      "name": "Uwangu",
+      "description": "Uwangu is a personal web wallet by Oumou Group designed to support digital identity use cases in African contexts.",
+      "website": "https://uwangu.oumougroup.com/",
+      "type": "personal",
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "JSON-LD VC"
+      ],
+      "appStoreLinks": {
+        "web": "https://uwangu.oumougroup.com/"
+      },
+      "status": "beta",
+      "capabilities": [
+        "holder"
+      ]
+    }
+  ]
+}
