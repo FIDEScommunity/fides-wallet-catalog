@@ -1,15 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Namirial",
-    "website": "https://www.namirial.com",
-    "logo": "https://wallet-demo.namirial.com/static/img/fav-namirial-logo.png",
-    "country": "IT",
-    "contact": {
-      "email": "support-wallet@namirial.com",
-      "support": "https://servicedesk.namirial.com/hc/en-gb"
-    }
-  },
   "wallets": [
     {
       "id": "namirial-wallet",
@@ -18,15 +8,28 @@
       "logo": "https://wallet-demo.namirial.com/static/img/Logo-NamirialWallet.png",
       "website": "https://www.namirial.com/en/wallet/wallet-app/",
       "type": "personal",
-      "platforms": ["iOS", "Android"],
-      "credentialFormats": ["SD-JWT-VC", "mDL/mDoc", "JSON-LD VC"],
-      "issuanceProtocols": ["OpenID4VCI"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "mDL/mDoc",
+        "JSON-LD VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
       "presentationProtocols": [
         "OpenID4VP",
         "ISO 18013-5",
         "SIOPv2"
       ],
-      "interoperabilityProfiles": ["EWC v3", "EUDI Wallet ARF", "HAIP v1"],
+      "interoperabilityProfiles": [
+        "EWC v3",
+        "EUDI Wallet ARF",
+        "HAIP v1"
+      ],
       "keyStorage": [
         "HSM",
         "Secure Enclave (iOS)",
@@ -57,17 +60,30 @@
       "logo": "https://wallet-demo.namirial.com/static/img/Logo-NamirialWallet.png",
       "website": "https://www.namirial.com/en/wallet/",
       "type": "organizational",
-      "platforms": ["Web"],
-      "credentialFormats": ["SD-JWT-VC", "mDL/mDoc"],
-      "issuanceProtocols": ["OpenID4VCI"],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "mDL/mDoc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
       "presentationProtocols": [
         "OpenID4VP",
         "ISO 18013-5",
         "SIOPv2"
       ],
-      "interoperabilityProfiles": ["EWC v3", "EUDI Wallet ARF"],
+      "interoperabilityProfiles": [
+        "EWC v3",
+        "EUDI Wallet ARF"
+      ],
       "status": "production",
-      "capabilities": ["holder", "verifier"],
+      "capabilities": [
+        "holder",
+        "verifier"
+      ],
       "features": [
         "Enterprise management",
         "Multi-tenant",
@@ -77,5 +93,6 @@
       ]
     }
   ],
-  "lastUpdated": "2026-03-10T19:00:00Z"
+  "lastUpdated": "2026-03-10T19:00:00Z",
+  "orgId": "org:namirial"
 }

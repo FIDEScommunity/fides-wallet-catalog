@@ -1,13 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Ooru",
-    "website": "https://ooru.io/",
-    "country": "IN",
-    "contact": {
-      "email": "info@oouru.io"
-    }
-  },
   "wallets": [
     {
       "id": "credissuer",
@@ -63,5 +55,6 @@
       ]
     }
   ],
-  "lastUpdated": "2026-02-18T07:25:00Z"
+  "lastUpdated": "2026-02-18T07:25:00Z",
+  "orgId": "org:ooru"
 }

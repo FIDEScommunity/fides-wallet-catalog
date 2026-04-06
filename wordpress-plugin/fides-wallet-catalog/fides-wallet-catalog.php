@@ -3,7 +3,7 @@
  * Plugin Name: FIDES Wallet Catalog
  * Plugin URI: https://fides.community
  * Description: Displays the FIDES Wallet Catalog with search and filter functionality
- * Version: 2.5.5
+ * Version: 2.5.6
  * Author: FIDES Labs BV
  * Author URI: https://fides.community
  * License: Apache-2.0
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
 class FIDES_Wallet_Catalog {
     
     private static $instance = null;
-    private const VERSION = '2.5.5';
+    private const VERSION = '2.5.6';
     private $plugin_url;
     private $plugin_path;
     
@@ -92,6 +92,14 @@ class FIDES_Wallet_Catalog {
             'vocabularyUrl' => 'https://raw.githubusercontent.com/FIDEScommunity/fides-interop-profiles/main/data/vocabulary.json',
             'vocabularyFallbackUrl' => $this->plugin_url . 'assets/vocabulary.json',
             'mapPageUrl' => get_option('fides_wallet_catalog_map_url', 'https://fides.community/community-tools/map/'),
+            'organizationCatalogUrl' => get_option(
+                'fides_wallet_catalog_organization_catalog_url',
+                'https://fides.community/ecosystem-explorer/organization-catalog/'
+            ),
+            'bluePagesUrl' => get_option(
+                'fides_wallet_catalog_blue_pages_url',
+                'https://fides.community/community-tools/blue-pages'
+            ),
         ));
     }
     

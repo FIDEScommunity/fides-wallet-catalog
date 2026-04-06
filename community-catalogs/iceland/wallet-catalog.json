@@ -1,10 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Icelandic Government",
-    "website": "https://www.government.is/",
-    "country": "IS"
-  },
   "wallets": [
     {
       "id": "national-eudi-wallet-iceland",
@@ -12,10 +7,16 @@
       "description": "Iceland as European Economic Area (EEA) country alongside Liechtenstein and Norway has been granted one-year extension for EUDI Wallet implementation with December 2027 deadline compared to EU member states' December 2026 requirement, positioning Iceland among thirteen countries embarked on digital ID wallet development journeys at different stages including development, beta testing, or pre-production. The Icelandic government participates in pilot projects involving more than 250 private and public organizations across almost every EU member state as well as Norway, Iceland, and Ukraine to test EUDI Wallet enabling citizens to digitally prove identity and share verified attributes across EU/EEA in secure, user-controlled manner, building on Iceland's existing advanced electronic identification infrastructure including Auðkenni system achieving 97% adoption among eligible population for transition to European Digital Identity Wallet framework under eIDAS 2.0 regulation.",
       "type": "personal",
       "status": "development",
-      "platforms": ["iOS", "Android"],
-      "interoperabilityProfiles": ["EUDI Wallet ARF"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
       "logo": "https://flagcdn.com/w80/is.png",
       "releaseDate": "2027-01-01"
     }
-  ]
+  ],
+  "orgId": "org:iceland"
 }

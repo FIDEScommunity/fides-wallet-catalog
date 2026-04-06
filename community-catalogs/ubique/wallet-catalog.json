@@ -1,11 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Ubique Innovation",
-    "website": "https://ubique.ch",
-    "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/13/2d/44/132d44a4-424b-3dfc-174e-541248ef421b/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/400x400ia-75.webp",
-    "country": "CH"
-  },
   "wallets": [
     {
       "id": "heidi-wallet",
@@ -13,13 +7,26 @@
       "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/13/2d/44/132d44a4-424b-3dfc-174e-541248ef421b/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/400x400ia-75.webp",
       "description": "A DIIP v4-compliant Swiss identity wallet supporting verifiable credentials for secure digital identity management.",
       "type": "personal",
-      "platforms": ["iOS", "Android"],
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "JSON-LD VC"
+      ],
       "protocols": {
-        "issuance": ["OpenID4VCI"],
-        "presentation": ["OpenID4VP"]
+        "issuance": [
+          "OpenID4VCI"
+        ],
+        "presentation": [
+          "OpenID4VP"
+        ]
       },
-      "interoperabilityProfiles": ["DIIP v4"],
+      "interoperabilityProfiles": [
+        "DIIP v4"
+      ],
       "website": "https://ubique.ch",
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/bj/app/heidi-wallet/id6741428702",
@@ -29,6 +36,6 @@
       "status": "production"
     }
   ],
-  "lastUpdated": "2025-01-06T12:00:00Z"
+  "lastUpdated": "2025-01-06T12:00:00Z",
+  "orgId": "org:ubique"
 }
-

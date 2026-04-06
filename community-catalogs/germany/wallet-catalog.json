@@ -1,10 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "German Government",
-    "website": "https://www.sprind.org/eudi-wallet",
-    "country": "DE"
-  },
   "wallets": [
     {
       "id": "national-eudi-wallet-germany",
@@ -14,12 +9,25 @@
       "openSource": true,
       "status": "development",
       "website": "https://www.sprind.org/eudi-wallet",
-      "platforms": ["iOS", "Android"],
-      "presentationProtocols": ["OpenID4VP"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "credentialFormats": ["mDL/mDoc", "SD-JWT-VC"],
-      "interoperabilityProfiles": ["EUDI Wallet ARF"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "SD-JWT-VC"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
       "logo": "https://flagcdn.com/w80/de.png"
     }
-  ]
+  ],
+  "orgId": "org:germany"
 }

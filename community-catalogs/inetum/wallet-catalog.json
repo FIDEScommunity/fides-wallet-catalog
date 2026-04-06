@@ -1,22 +1,30 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Inetum",
-    "website": "https://www.inetum.com/es/es.html",
-    "country": "ES"
-  },
   "wallets": [
     {
       "id": "miio-wallet",
       "name": "MIIO",
       "description": "MIIO is a digital identity wallet developed by Inetum that enables users to securely manage their digital credentials and participate in trusted identity ecosystems. Compatible with decentralized identity standards and protocols such as OIDC4VP and Verifiable Credentials (VCI), MIIO allows individuals and organizations to interact with digital services in a secure, private, and compliant manner.",
       "type": "personal",
-      "platforms": ["iOS", "Android"],
-      "credentialFormats": ["JWT-VC"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
-      "signingAlgorithms": ["ES256"],
-      "credentialStatusMethods": ["StatusList2021"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "signingAlgorithms": [
+        "ES256"
+      ],
+      "credentialStatusMethods": [
+        "StatusList2021"
+      ],
       "website": "https://www.engage.inetum.com/dalion/",
       "openSource": false,
       "status": "production"
@@ -26,17 +34,35 @@
       "name": "DALION",
       "description": "An enterprise digital identity platform providing complete issuer, and verifier capabilities for organizational credential management.",
       "type": "organizational",
-      "capabilities": ["issuer", "verifier"],
-      "platforms": ["Web"],
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
-      "signingAlgorithms": ["ES256", "ES256K"],
-      "credentialStatusMethods": ["StatusList2021"],
+      "capabilities": [
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "ES256K"
+      ],
+      "credentialStatusMethods": [
+        "StatusList2021"
+      ],
       "website": "https://www.engage.inetum.com/dalion/",
       "openSource": false,
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-03-05T12:00:00Z"
+  "lastUpdated": "2026-03-05T12:00:00Z",
+  "orgId": "org:inetum"
 }

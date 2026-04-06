@@ -26,6 +26,11 @@ Implement in the crawler; see `src/crawler/index.ts` for reference.
 
 ### 1.3 firstSeenAt is system-managed
 - **Do not** let providers set `firstSeenAt` in their JSON (they would overwrite it).
+
+## Wallet catalog `orgId` (2026)
+
+- Source `wallet-catalog.json` files reference the organization catalog via `orgId` instead of an inline `provider` object (same pattern as the RP catalog). The crawler resolves name, DID, website, logo, country, and contact from `fides-organization-catalog` aggregated data.
+- History keys in `wallet-history-state.json` use `orgId:walletId`. After migration, older keys keyed by `did:name` or `name` are orphaned; `firstSeenAt` may be re-derived on first crawl unless you run a one-off key migration.
 - **Do** persist it in a state file (e.g. `data/wallet-history-state.json`) and update it in the crawler when a wallet is first seen.
 - Optional: one-time backfill from git history (e.g. `npm run backfill:first-seen`) for existing items.
 

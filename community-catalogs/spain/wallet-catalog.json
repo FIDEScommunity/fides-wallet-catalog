@@ -1,10 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Spanish Government",
-    "website": "https://digital.gob.es/",
-    "country": "ES"
-  },
   "wallets": [
     {
       "id": "cartera-digital-beta",
@@ -13,9 +8,13 @@
       "type": "personal",
       "status": "development",
       "website": "https://digital.gob.es/especificaciones_tecnicas.html",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "logo": "https://flagcdn.com/w80/es.png",
       "releaseDate": "2024-01-01"
     }
-  ]
+  ],
+  "orgId": "org:spain"
 }

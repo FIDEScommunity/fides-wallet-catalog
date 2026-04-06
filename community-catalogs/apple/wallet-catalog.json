@@ -1,11 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Apple",
-    "website": "https://www.apple.com",
-    "logo": "https://www.google.com/s2/favicons?domain=apple.com&sz=128",
-    "country": "US"
-  },
   "wallets": [
     {
       "id": "apple-wallet",
@@ -13,8 +7,13 @@
       "logo": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/d6/24/66/d624660f-bf6f-b0f1-3a42-cd91027fe3a0/Placeholder.mill/400x400bb-75.webp",
       "description": "Apple's built-in wallet app for iPhone, supporting payment cards, boarding passes, tickets, and increasingly digital identity credentials like driver's licenses.",
       "type": "personal",
-      "platforms": ["iOS"],
-      "credentialFormats": ["mDL/mDoc","Apple Wallet Pass"],
+      "platforms": [
+        "iOS"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "Apple Wallet Pass"
+      ],
       "website": "https://www.apple.com/wallet/",
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/us/app/apple-wallet/id1160481993"
@@ -23,6 +22,6 @@
       "status": "production"
     }
   ],
-  "lastUpdated": "2025-01-06T12:00:00Z"
+  "lastUpdated": "2025-01-06T12:00:00Z",
+  "orgId": "org:apple"
 }
-

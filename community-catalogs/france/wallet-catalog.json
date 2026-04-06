@@ -1,10 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "French Government",
-    "website": "https://france-identite.gouv.fr/",
-    "country": "FR"
-  },
   "wallets": [
     {
       "id": "france-identite",
@@ -13,7 +8,10 @@
       "type": "personal",
       "status": "production",
       "website": "https://france-identite.gouv.fr/",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/fr/app/france-identit%C3%A9/id1590142959",
         "android": "https://play.google.com/store/apps/details?id=fr.gouv.franceidentite"
@@ -21,6 +19,6 @@
       "logo": "https://www.google.com/s2/favicons?domain=france-identite.gouv.fr&sz=128",
       "releaseDate": "2024-01-01"
     }
-  ]
+  ],
+  "orgId": "org:france"
 }
-

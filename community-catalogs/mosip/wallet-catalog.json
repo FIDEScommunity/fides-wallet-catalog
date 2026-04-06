@@ -1,11 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "MOSIP",
-    "website": "https://www.mosip.io",
-    "logo": "https://www.google.com/s2/favicons?domain=mosip.io&sz=128",
-    "country": "IN"
-  },
   "wallets": [
     {
       "id": "inji-wallet",
@@ -14,11 +8,25 @@
       "logo": "https://www.google.com/s2/favicons?domain=mosip.io&sz=128",
       "website": "https://www.mosip.io",
       "type": "personal",
-      "capabilities": ["holder"],
-      "platforms": ["Web", "iOS", "Android"],
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "mDL/mDoc"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
+      "capabilities": [
+        "holder"
+      ],
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "mDL/mDoc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
       "openSource": true,
       "license": "MPL-2.0",
       "repository": "https://github.com/mosip/inji",
@@ -35,10 +43,20 @@
       "logo": "https://www.google.com/s2/favicons?domain=mosip.io&sz=128",
       "website": "https://www.mosip.io",
       "type": "organizational",
-      "capabilities": ["issuer"],
-      "platforms": ["Web"],
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "mDL/mDoc"],
-      "issuanceProtocols": ["OpenID4VCI"],
+      "capabilities": [
+        "issuer"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "mDL/mDoc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
       "openSource": true,
       "license": "MPL-2.0",
       "repository": "https://github.com/mosip",
@@ -52,10 +70,20 @@
       "logo": "https://www.google.com/s2/favicons?domain=mosip.io&sz=128",
       "website": "https://www.mosip.io",
       "type": "organizational",
-      "capabilities": ["verifier"],
-      "platforms": ["Web"],
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "mDL/mDoc"],
-      "presentationProtocols": ["OpenID4VP"],
+      "capabilities": [
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "mDL/mDoc"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
       "openSource": true,
       "license": "MPL-2.0",
       "repository": "https://github.com/mosip",
@@ -63,5 +91,6 @@
       "documentation": "https://docs.mosip.io"
     }
   ],
-  "lastUpdated": "2026-02-18T07:45:00Z"
+  "lastUpdated": "2026-02-18T07:45:00Z",
+  "orgId": "org:mosip"
 }

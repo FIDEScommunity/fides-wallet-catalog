@@ -1,10 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Government of Cyprus",
-    "website": "https://www.cygov.gov.cy/",
-    "country": "CY"
-  },
   "wallets": [
     {
       "id": "digital-citizen-cyprus",
@@ -13,7 +8,10 @@
       "type": "personal",
       "status": "production",
       "website": "https://www.digital-citizen.gov.cy/",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/app/id6737911057",
         "android": "https://play.google.com/store/apps/details?id=cy.gov.digital.citizen"
@@ -21,5 +19,6 @@
       "logo": "https://www.google.com/s2/favicons?domain=digital-citizen.gov.cy&sz=128",
       "releaseDate": "2024-01-01"
     }
-  ]
+  ],
+  "orgId": "org:cyprus"
 }

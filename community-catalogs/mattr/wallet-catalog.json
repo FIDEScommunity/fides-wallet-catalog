@@ -1,11 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "MATTR",
-    "website": "https://mattr.global",
-    "logo": "https://www.google.com/s2/favicons?domain=mattr.global&sz=128",
-    "country": "NZ"
-  },
   "wallets": [
     {
       "id": "mattr-vii",
@@ -14,14 +8,39 @@
       "logo": "https://www.google.com/s2/favicons?domain=mattr.global&sz=128",
       "website": "https://mattr.global",
       "type": "organizational",
-      "capabilities": ["issuer", "verifier"],
-      "platforms": ["Web"],
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC", "mDL/mDoc"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
-      "supportedIdentifiers": ["did:web", "did:key", "did:ion"],
-      "signingAlgorithms": ["ES256", "EdDSA", "BBS+"],
-      "credentialStatusMethods": ["StatusList2021", "RevocationList2020"],
+      "capabilities": [
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "JSON-LD VC",
+        "mDL/mDoc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "supportedIdentifiers": [
+        "did:web",
+        "did:key",
+        "did:ion"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "EdDSA",
+        "BBS+"
+      ],
+      "credentialStatusMethods": [
+        "StatusList2021",
+        "RevocationList2020"
+      ],
       "openSource": false,
       "status": "production",
       "documentation": "https://learn.mattr.global"
@@ -33,7 +52,10 @@
       "description": "Personal wallet by MATTR for storing and presenting verifiable credentials and self-sovereign identity artefacts.",
       "logo": "https://www.google.com/s2/favicons?domain=mattr.global&sz=128",
       "website": "https://mattr.global/products/go-hold",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "openSource": false,
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/au/app/mattr-go-hold/id1518660243",
@@ -42,5 +64,6 @@
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-01-06T12:00:00Z"
+  "lastUpdated": "2026-01-06T12:00:00Z",
+  "orgId": "org:mattr"
 }

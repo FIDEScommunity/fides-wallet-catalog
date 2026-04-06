@@ -1,10 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Hungarian Government",
-    "website": "https://www.kormany.hu/",
-    "country": "HU"
-  },
   "wallets": [
     {
       "id": "national-eudi-wallet-hungary",
@@ -12,10 +7,16 @@
       "description": "Hungary deployed national EUDI Wallet in 2024 as one of nine EU countries (Austria, Belgium, Cyprus, Czech Republic, France, Hungary, Italy, Poland, and Portugal) with digital identity wallet solutions at national level ahead of December 2026 mandatory deadline when all 27 EU member states must ensure European Digital Identity Wallet availability to citizens following implementing acts adopted November 28, 2024. The Hungarian wallet builds on eSzemélyi (electronic personal identity card) infrastructure introduced January 1, 2016, and issued in current form since August 2, 2021, incorporating electronic chip storing biometric data (photo, fingerprints and signature for those over 12) enabling electronic public identification and qualified electronic signatures.",
       "type": "personal",
       "status": "production",
-      "platforms": ["iOS", "Android"],
-      "interoperabilityProfiles": ["EUDI Wallet ARF"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
       "logo": "https://flagcdn.com/w80/hu.png",
       "releaseDate": "2024-01-01"
     }
-  ]
+  ],
+  "orgId": "org:hungary"
 }

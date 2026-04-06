@@ -1,11 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Digital Bazaar",
-    "website": "https://www.digitalbazaar.com",
-    "logo": "https://www.google.com/s2/favicons?domain=digitalbazaar.com&sz=128",
-    "country": "US"
-  },
   "wallets": [
     {
       "id": "veres-wallet",
@@ -14,19 +8,41 @@
       "logo": "https://www.google.com/s2/favicons?domain=digitalbazaar.com&sz=128",
       "website": "https://www.digitalbazaar.com",
       "type": "organizational",
-      "capabilities": ["issuer", "verifier"],
-      "platforms": ["Web"],
-      "credentialFormats": ["JSON-LD VC", "JWT-VC"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
-      "supportedIdentifiers": ["did:web", "did:key"],
-      "signingAlgorithms": ["EdDSA", "ES256", "BBS+"],
-      "credentialStatusMethods": ["StatusList2021", "RevocationList2020"],
+      "capabilities": [
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "JSON-LD VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "supportedIdentifiers": [
+        "did:web",
+        "did:key"
+      ],
+      "signingAlgorithms": [
+        "EdDSA",
+        "ES256",
+        "BBS+"
+      ],
+      "credentialStatusMethods": [
+        "StatusList2021",
+        "RevocationList2020"
+      ],
       "openSource": true,
       "license": "BSD-3-Clause",
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-01-06T12:00:00Z"
+  "lastUpdated": "2026-01-06T12:00:00Z",
+  "orgId": "org:digitalbazaar"
 }
-

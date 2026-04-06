@@ -2,61 +2,20 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://fides.community/schemas/wallet-catalog/v1",
   "title": "FIDES Wallet Catalog Descriptor",
-  "description": "Schema for describing digital wallets by wallet providers for the FIDES Community catalog",
+  "description": "Schema for describing digital wallets for the FIDES Community catalog. Organization profile (name, DID, website, logo, country, contact) is defined in the FIDES organization catalog; this file references it via orgId (same pattern as RP, issuer, and credential catalogs).",
   "type": "object",
-  "required": ["$schema", "provider", "wallets"],
+  "additionalProperties": false,
+  "required": ["$schema", "orgId", "wallets"],
   "properties": {
     "$schema": {
       "type": "string",
       "const": "https://fides.community/schemas/wallet-catalog/v1",
       "description": "Schema identifier - must be this exact value"
     },
-    "provider": {
-      "type": "object",
-      "description": "Information about the wallet provider/organization",
-      "required": ["name"],
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "Name of the organization"
-        },
-        "did": {
-          "type": "string",
-          "description": "Decentralized Identifier (DID) of the organization (optional, but recommended)",
-          "pattern": "^did:[a-z]+:.+"
-        },
-        "website": {
-          "type": "string",
-          "format": "uri",
-          "description": "Website URL of the organization"
-        },
-        "logo": {
-          "type": "string",
-          "format": "uri",
-          "description": "URL to the organization's logo"
-        },
-        "country": {
-          "type": "string",
-          "pattern": "^[A-Z]{2}$",
-          "description": "ISO 3166-1 alpha-2 country code where the provider is based"
-        },
-        "contact": {
-          "type": "object",
-          "description": "Contact information",
-          "properties": {
-            "email": {
-              "type": "string",
-              "format": "email",
-              "description": "Contact email address"
-            },
-            "support": {
-              "type": "string",
-              "format": "uri",
-              "description": "URL to support page or portal"
-            }
-          }
-        }
-      }
+    "orgId": {
+      "type": "string",
+      "pattern": "^org:[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "Organization catalog id (e.g. org:animo). Must exist in https://github.com/FIDEScommunity/fides-organization-catalog — canonical name, DID, website, logo, country, and contact are resolved at crawl time from there."
     },
     "wallets": {
       "type": "array",

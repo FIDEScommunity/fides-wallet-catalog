@@ -1,10 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Italian Government",
-    "website": "https://io.italia.it/",
-    "country": "IT"
-  },
   "wallets": [
     {
       "id": "it-wallet",
@@ -13,7 +8,10 @@
       "type": "personal",
       "status": "production",
       "website": "https://io.italia.it/",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/us/app/io/id1501681835",
         "android": "https://play.google.com/store/apps/details?id=it.pagopa.io.app"
@@ -21,5 +19,6 @@
       "logo": "https://www.google.com/s2/favicons?domain=io.italia.it&sz=128",
       "releaseDate": "2024-01-01"
     }
-  ]
+  ],
+  "orgId": "org:italy"
 }

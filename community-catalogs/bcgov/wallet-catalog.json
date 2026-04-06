@@ -1,11 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Government of British Columbia",
-    "website": "https://www2.gov.bc.ca/",
-    "logo": "https://www.google.com/s2/favicons?domain=gov.bc.ca&sz=256",
-    "country": "CA"
-  },
   "wallets": [
     {
       "id": "bc-wallet",
@@ -14,7 +8,10 @@
       "logo": "https://www.google.com/s2/favicons?domain=gov.bc.ca&sz=256",
       "website": "https://www2.gov.bc.ca/gov/content/governments/government-id/bc-wallet",
       "type": "personal",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "openSource": true,
       "repository": "https://github.com/bcgov/bc-wallet-mobile",
       "status": "production",
@@ -24,5 +21,6 @@
       }
     }
   ],
-  "lastUpdated": "2026-01-12T00:00:00Z"
+  "lastUpdated": "2026-01-12T00:00:00Z",
+  "orgId": "org:bcgov"
 }

@@ -1,15 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Authbound",
-    "website": "https://authbound.io",
-    "logo": "https://www.google.com/s2/favicons?domain=authbound.io&sz=128",
-    "country": "FI",
-    "contact": {
-      "email": "info@authbound.io",
-      "support": "https://authbound.io/contact"
-    }
-  },
   "wallets": [
     {
       "id": "authbound-wallet",
@@ -18,16 +8,33 @@
       "logo": "https://www.google.com/s2/favicons?domain=authbound.io&sz=128",
       "website": "https://authbound.io",
       "type": "personal",
-      "platforms": ["Android"],
+      "platforms": [
+        "Android"
+      ],
       "openSource": true,
       "license": "EUPL-1.2",
       "repository": "https://github.com/Authbound/eudi-app-android-wallet",
-      "credentialFormats": ["SD-JWT-VC", "mDL/mDoc"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP", "ISO 18013-5"],
-      "keyStorage": ["StrongBox (Android)", "Software"],
-      "signingAlgorithms": ["ES256"],
-      "interoperabilityProfiles": ["EUDI Wallet ARF"],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "mDL/mDoc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "ISO 18013-5"
+      ],
+      "keyStorage": [
+        "StrongBox (Android)",
+        "Software"
+      ],
+      "signingAlgorithms": [
+        "ES256"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
       "features": [
         "Biometric authentication",
         "Selective disclosure",
@@ -40,5 +47,6 @@
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-02-17T12:00:00Z"
+  "lastUpdated": "2026-02-17T12:00:00Z",
+  "orgId": "org:authbound"
 }

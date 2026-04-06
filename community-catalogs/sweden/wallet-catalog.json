@@ -1,10 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Swedish Government",
-    "website": "https://www.digg.se/",
-    "country": "SE"
-  },
   "wallets": [
     {
       "id": "national-eudi-wallet-sweden",
@@ -12,9 +7,15 @@
       "description": "Sweden's national EUDI Wallet developed by DIGG (Agency for Digital Government) with recommended Swedish open model allowing both private and public operators as issuers of digital identity wallets, building on BankID infrastructure dominating market with over 8.5 million users as most widely used eID in Sweden and only one usable for identifying to payment service providers and authenticating payments. The EWC project co-founded by Swedish government agencies including DIGG, Companies Registration Office (Bolagsverket), Research Council (Vetenskapsrådet), and Sunet (University Computer Network) participates in two consortia (EUDI Wallet Consortium EWC and Digital Credentials for Europe DC4EU) piloting EU Digital Identity Wallet, positioning Sweden to meet December 2026 deadline for offering every citizen European Digital Identity Wallet with financial institutions, telecom operators, and major online service providers required to accept EUDI Wallet as valid authentication and identity verification from 2027 onward.",
       "type": "personal",
       "status": "development",
-      "platforms": ["iOS", "Android"],
-      "interoperabilityProfiles": ["EUDI Wallet ARF"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
       "logo": "https://flagcdn.com/w80/se.png"
     }
-  ]
+  ],
+  "orgId": "org:sweden"
 }

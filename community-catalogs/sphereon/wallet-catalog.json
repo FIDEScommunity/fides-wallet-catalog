@@ -1,15 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Sphereon",
-    "did": "did:web:sphereon.com",
-    "website": "https://sphereon.com",
-    "logo": "https://www.google.com/s2/favicons?domain=sphereon.com&sz=128",
-    "country": "NL",
-    "contact": {
-      "email": "info@sphereon.com"
-    }
-  },
   "wallets": [
     {
       "id": "sphereon-wallet",
@@ -18,20 +8,56 @@
       "logo": "https://www.google.com/s2/favicons?domain=sphereon.com&sz=128",
       "website": "https://sphereon.com/wallet",
       "type": "personal",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "openSource": true,
       "license": "Apache-2.0",
       "repository": "https://github.com/Sphereon-Opensource/ssi-mobile-wallet",
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP", "SIOPv2"],
-      "supportedIdentifiers": ["did:web", "did:key", "did:jwk", "did:ion", "did:ebsi"],
-      "keyStorage": ["Secure Enclave (iOS)", "StrongBox (Android)", "Software"],
-      "signingAlgorithms": ["ES256", "ES384", "EdDSA"],
-      "credentialStatusMethods": ["StatusList2021", "RevocationList2020"],
-      "certifications": ["EUDI Wallet LSP"],
-      "interoperabilityProfiles": ["DIIP v4"],
-      "standards": ["ARF 1.4", "EBSI"],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "JSON-LD VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "SIOPv2"
+      ],
+      "supportedIdentifiers": [
+        "did:web",
+        "did:key",
+        "did:jwk",
+        "did:ion",
+        "did:ebsi"
+      ],
+      "keyStorage": [
+        "Secure Enclave (iOS)",
+        "StrongBox (Android)",
+        "Software"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "ES384",
+        "EdDSA"
+      ],
+      "credentialStatusMethods": [
+        "StatusList2021",
+        "RevocationList2020"
+      ],
+      "certifications": [
+        "EUDI Wallet LSP"
+      ],
+      "interoperabilityProfiles": [
+        "DIIP v4"
+      ],
+      "standards": [
+        "ARF 1.4",
+        "EBSI"
+      ],
       "features": [
         "Multi-tenant support",
         "Enterprise integration",
@@ -53,17 +79,37 @@
       "logo": "https://www.google.com/s2/favicons?domain=sphereon.com&sz=128",
       "website": "https://sphereon.com",
       "type": "organizational",
-      "capabilities": ["holder", "issuer", "verifier"],
-      "platforms": ["Web"],
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
       "openSource": false,
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC", "mDL/mDoc"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
-      "interoperabilityProfiles": ["DIIP v4"],
-      "features": ["Universal OID4VP API"],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "JSON-LD VC",
+        "mDL/mDoc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "interoperabilityProfiles": [
+        "DIIP v4"
+      ],
+      "features": [
+        "Universal OID4VP API"
+      ],
       "documentation": "https://docs.sphereon.com",
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-01-06T12:00:00Z"
+  "lastUpdated": "2026-01-06T12:00:00Z",
+  "orgId": "org:sphereon"
 }

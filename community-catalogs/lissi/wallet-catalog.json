@@ -1,15 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Lissi GmbH",
-    "did": "did:web:lissi.id",
-    "website": "https://lissi.id",
-    "logo": "https://www.google.com/s2/favicons?domain=lissi.id&sz=128",
-    "country": "DE",
-    "contact": {
-      "email": "info@lissi.id"
-    }
-  },
   "wallets": [
     {
       "id": "lissi-wallet",
@@ -18,18 +8,51 @@
       "logo": "https://www.google.com/s2/favicons?domain=lissi.id&sz=128",
       "website": "https://lissi.id/wallet",
       "type": "personal",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "openSource": false,
-      "credentialFormats": ["SD-JWT-VC", "AnonCreds", "JWT-VC"],
-      "issuanceProtocols": ["OpenID4VCI", "DIDComm Issue Credential v2"],
-      "presentationProtocols": ["OpenID4VP", "DIDComm Present Proof v2", "SIOPv2"],
-      "supportedIdentifiers": ["did:key", "did:peer", "did:indy"],
-      "keyStorage": ["Secure Enclave (iOS)", "StrongBox (Android)", "Software"],
-      "signingAlgorithms": ["ES256", "EdDSA"],
-      "credentialStatusMethods": ["StatusList2021"],
-      "certifications": ["EUDI Wallet LSP"],
-      "interoperabilityProfiles": ["EWC v3"],
-      "standards": ["ARF 1.4"],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "AnonCreds",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI",
+        "DIDComm Issue Credential v2"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "DIDComm Present Proof v2",
+        "SIOPv2"
+      ],
+      "supportedIdentifiers": [
+        "did:key",
+        "did:peer",
+        "did:indy"
+      ],
+      "keyStorage": [
+        "Secure Enclave (iOS)",
+        "StrongBox (Android)",
+        "Software"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "EdDSA"
+      ],
+      "credentialStatusMethods": [
+        "StatusList2021"
+      ],
+      "certifications": [
+        "EUDI Wallet LSP"
+      ],
+      "interoperabilityProfiles": [
+        "EWC v3"
+      ],
+      "standards": [
+        "ARF 1.4"
+      ],
       "features": [
         "Biometric authentication",
         "Privacy-preserving selective disclosure",
@@ -51,17 +74,40 @@
       "logo": "https://www.google.com/s2/favicons?domain=lissi.id&sz=128",
       "website": "https://www.lissi.id",
       "type": "organizational",
-      "capabilities": ["holder", "issuer", "verifier"],
-      "platforms": ["Web"],
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
       "openSource": false,
-      "credentialFormats": ["SD-JWT-VC", "AnonCreds", "JWT-VC"],
-      "issuanceProtocols": ["OpenID4VCI", "DIDComm Issue Credential v2"],
-      "presentationProtocols": ["OpenID4VP", "DIDComm Present Proof v2"],
-      "supportedIdentifiers": ["did:web", "did:key", "did:indy"],
-      "interoperabilityProfiles": ["EWC v3"],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "AnonCreds",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI",
+        "DIDComm Issue Credential v2"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "DIDComm Present Proof v2"
+      ],
+      "supportedIdentifiers": [
+        "did:web",
+        "did:key",
+        "did:indy"
+      ],
+      "interoperabilityProfiles": [
+        "EWC v3"
+      ],
       "documentation": "https://docs.lissi.id",
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-01-06T12:00:00Z"
+  "lastUpdated": "2026-01-06T12:00:00Z",
+  "orgId": "org:lissi"
 }

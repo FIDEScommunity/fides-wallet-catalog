@@ -1,10 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Belgian Government",
-    "website": "https://www.belgium.be",
-    "country": "BE"
-  },
   "wallets": [
     {
       "id": "national-eudi-wallet-belgium",
@@ -12,10 +7,16 @@
       "description": "Belgium's MyGov.be national EUDI wallet went live in May 2024 following publication of eIDAS 2.0, becoming one of nine EU countries (Austria, Belgium, Cyprus, Czech Republic, France, Hungary, Italy, Poland, Portugal) with deployed digital identity wallet solutions at national level ahead of the December 2026 mandatory deadline for all EU member states. The wallet builds on existing digital identity infrastructure including the eID system and itsme, enabling Belgian residents to register using identity cards or existing authentication methods, with planned expansion to incorporate mobile driving licenses by 2025 and European Health Insurance Card by 2026.",
       "type": "personal",
       "status": "development",
-      "platforms": ["iOS", "Android"],
-      "interoperabilityProfiles": ["EUDI Wallet ARF"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
       "logo": "https://flagcdn.com/w80/be.png",
       "releaseDate": "2025-01-01"
     }
-  ]
+  ],
+  "orgId": "org:belgium"
 }

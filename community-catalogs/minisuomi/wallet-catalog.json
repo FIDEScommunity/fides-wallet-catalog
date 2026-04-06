@@ -1,11 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Mini-Suomi (DVV Finland)",
-    "website": "https://wallet.minisuomi.fi",
-    "logo": "https://www.google.com/s2/favicons?domain=minisuomi.fi&sz=128",
-    "country": "FI"
-  },
   "wallets": [
     {
       "id": "mini-wallet-finland",
@@ -14,15 +8,27 @@
       "logo": "https://www.google.com/s2/favicons?domain=minisuomi.fi&sz=128",
       "website": "https://wallet.minisuomi.fi",
       "type": "organizational",
-      "capabilities": ["holder", "issuer"],
-      "platforms": ["Web"],
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
+      "capabilities": [
+        "holder",
+        "issuer"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
       "openSource": false,
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-01-06T12:00:00Z"
+  "lastUpdated": "2026-01-06T12:00:00Z",
+  "orgId": "org:minisuomi"
 }
-

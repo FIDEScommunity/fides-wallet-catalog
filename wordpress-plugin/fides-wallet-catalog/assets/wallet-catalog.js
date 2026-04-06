@@ -137,6 +137,49 @@
   const MAP_PAGE_URL = (window.fidesWalletCatalog && window.fidesWalletCatalog.mapPageUrl)
     || 'https://fides.community/community-tools/map/';
 
+  const ORGANIZATION_CATALOG_PAGE_URL = (window.fidesWalletCatalog && window.fidesWalletCatalog.organizationCatalogUrl)
+    || 'https://fides.community/ecosystem-explorer/organization-catalog/';
+
+  const BLUE_PAGES_URL = (window.fidesWalletCatalog && window.fidesWalletCatalog.bluePagesUrl)
+    ? String(window.fidesWalletCatalog.bluePagesUrl).trim()
+    : '';
+
+  function getBluePagesUrlForWallet(did) {
+    const base = BLUE_PAGES_URL;
+    if (!base || !did) return null;
+    return base.replace(/\/$/, '') + '/' + encodeURIComponent(did) + '/';
+  }
+
+  function getWalletProviderDisplayName(wallet) {
+    if (!wallet || !wallet.provider || !wallet.provider.name) return 'Unknown';
+    return String(wallet.provider.name);
+  }
+
+  function getOrganizationCatalogDeepLink(orgId, baseUrl) {
+    if (!orgId || typeof orgId !== 'string' || orgId.indexOf('org:') !== 0) return null;
+    const base = (baseUrl || '').trim();
+    if (!base) return null;
+    try {
+      const u = new URL(base);
+      u.searchParams.set('org', orgId);
+      return u.toString();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  /** Prefer wallet.orgId; fall back to merged provider.orgId (e.g. older aggregated.json). */
+  function getWalletOrgIdForDeepLink(wallet) {
+    if (!wallet) return '';
+    const top = wallet.orgId;
+    if (top && typeof top === 'string' && top.trim().indexOf('org:') === 0) return top.trim();
+    const fromProvider = wallet.provider && wallet.provider.orgId;
+    if (fromProvider && typeof fromProvider === 'string' && fromProvider.trim().indexOf('org:') === 0) {
+      return fromProvider.trim();
+    }
+    return '';
+  }
+
   // Vocabulary for [i] info popups (loaded from interop-profiles)
   let vocabulary = null;
 
@@ -392,15 +435,25 @@
     };
   }
 
+  function isFidesLocalDevHost() {
+    try {
+      const h = window.location.hostname || '';
+      const href = window.location.href || '';
+      return h.includes('.local') || href.includes('.local');
+    } catch {
+      return false;
+    }
+  }
+
   /**
    * Load wallets from multiple sources (with fallbacks)
-   * Priority: 1. API  2. GitHub  3. Local plugin data
+   * Default: GitHub/raw JSON first, then plugin data/aggregated.json.
+   * Hostname or full URL contains ".local": try local plugin file first, then GitHub.
    */
   async function loadWallets() {
-    const sources = [
-      { name: 'GitHub', url: config.githubDataUrl, transform: (d) => d.wallets || [] },
-      { name: 'Local', url: `${config.pluginUrl}data/aggregated.json`, transform: (d) => d.wallets || [] }
-    ];
+    const remote = { name: 'GitHub', url: config.githubDataUrl, transform: (d) => d.wallets || [] };
+    const local = { name: 'Local', url: `${config.pluginUrl}data/aggregated.json`, transform: (d) => d.wallets || [] };
+    const sources = isFidesLocalDevHost() ? [local, remote] : [remote, local];
 
     for (const source of sources) {
       if (!source.url) continue;
@@ -444,26 +497,32 @@
    * Load vocabulary JSON (primary URL first, then fallback when GitHub unreachable)
    */
   async function loadVocabulary(primaryUrl, fallbackUrl) {
+    let first = primaryUrl;
+    let second = fallbackUrl;
+    if (isFidesLocalDevHost() && primaryUrl && fallbackUrl) {
+      first = fallbackUrl;
+      second = primaryUrl;
+    }
     const tryLoad = async (url) => {
       const res = await fetch(url);
       if (!res.ok) throw new Error('HTTP ' + res.status);
       const data = await res.json();
       return data.terms || null;
     };
-    if (primaryUrl) {
+    if (first) {
       try {
-        return await tryLoad(primaryUrl);
+        return await tryLoad(first);
       } catch (e) {
-        console.warn('Vocabulary load failed (primary):', e.message);
+        console.warn('Vocabulary load failed (first):', e.message);
       }
     }
-    if (fallbackUrl) {
+    if (second) {
       try {
-        const terms = await tryLoad(fallbackUrl);
-        if (terms) console.log('Vocabulary loaded from fallback');
+        const terms = await tryLoad(second);
+        if (terms) console.log('Vocabulary loaded from second source');
         return terms;
       } catch (e) {
-        console.warn('Vocabulary load failed (fallback):', e.message);
+        console.warn('Vocabulary load failed (second):', e.message);
       }
     }
     return null;
@@ -529,7 +588,8 @@
         const matches = 
           wallet.name.toLowerCase().includes(search) ||
           (wallet.description || '').toLowerCase().includes(search) ||
-          wallet.provider.name.toLowerCase().includes(search);
+          getWalletProviderDisplayName(wallet).toLowerCase().includes(search) ||
+          (wallet.orgId && String(wallet.orgId).toLowerCase().includes(search));
         if (!matches) return false;
       }
 
@@ -1477,7 +1537,7 @@
           }
           <div class="fides-wallet-info">
             <h3 class="fides-wallet-name" title="${escapeHtml(displayName)}">${escapeHtml(displayName)}</h3>
-            <p class="fides-wallet-provider">${escapeHtml(wallet.provider.name)}</p>
+            <p class="fides-wallet-provider">${escapeHtml(getWalletProviderDisplayName(wallet))}</p>
           </div>
         </div>
         <div class="fides-wallet-body">
@@ -1605,6 +1665,13 @@
     // Get current theme from container
     const currentTheme = container.getAttribute('data-theme') || 'dark';
 
+    const orgCatalogHref = getOrganizationCatalogDeepLink(getWalletOrgIdForDeepLink(wallet), ORGANIZATION_CATALOG_PAGE_URL);
+    const providerDisplayName = getWalletProviderDisplayName(wallet);
+    const providerNameHtml = orgCatalogHref && providerDisplayName
+      ? `<a href="${escapeHtml(orgCatalogHref)}" class="fides-modal-link-inline" aria-label="View organization in organization catalog" title="Organization catalog" onclick="event.stopPropagation();"><span>${escapeHtml(providerDisplayName)}</span></a>`
+      : escapeHtml(providerDisplayName);
+    const bluePagesHref = getBluePagesUrlForWallet(wallet.provider && wallet.provider.did);
+
     const modalHtml = `
       <div class="fides-modal-overlay" id="fides-modal-overlay" data-theme="${currentTheme}">
         <div class="fides-modal" role="dialog" aria-modal="true" aria-labelledby="fides-modal-title">
@@ -1616,7 +1683,7 @@
               }
               <div class="fides-modal-title-wrap">
                 <h2 class="fides-modal-title" id="fides-modal-title">${escapeHtml(wallet.name)}</h2>
-                <p class="fides-modal-provider">${icons.building} ${escapeHtml(wallet.provider.name)}</p>
+                <p class="fides-modal-provider">${icons.building} ${providerNameHtml}${bluePagesHref ? ` <a href="${escapeHtml(bluePagesHref)}" target="_blank" rel="noopener" class="fides-modal-provider-link">${icons.externalLink} View in Blue Pages</a>` : ''}</p>
               </div>
             </div>
             <div class="fides-modal-header-actions">
@@ -1775,6 +1842,16 @@
                   </div>
                 </div>
               ` : ''}
+              ${wallet.releaseDate ? `
+                <div class="fides-modal-grid-item">
+                  <div class="fides-modal-grid-label">
+                    ${icons.calendar} Release date
+                  </div>
+                  <div class="fides-modal-grid-value">
+                    ${escapeHtml(new Date(wallet.releaseDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }))}
+                  </div>
+                </div>
+              ` : ''}
             </div>
 
             <!-- Features -->
@@ -1806,29 +1883,6 @@
                   ${icons.book} Documentation
                 </a>
               ` : ''}
-            </div>
-
-            <!-- Provider info -->
-            <div class="fides-modal-provider-section">
-              <h4 class="fides-modal-section-title">Provider Information</h4>
-              <div class="fides-modal-provider-info">
-                <div class="fides-modal-provider-detail">
-                  <span class="fides-modal-provider-label">Organization:</span>
-                  <span class="fides-modal-provider-value">${escapeHtml(wallet.provider.name)}</span>
-                </div>
-                ${wallet.provider.did ? `
-                  <div class="fides-modal-provider-detail">
-                    <span class="fides-modal-provider-label">DID:</span>
-                    <code class="fides-modal-provider-did">${escapeHtml(wallet.provider.did)}</code>
-                  </div>
-                ` : ''}
-                ${wallet.releaseDate ? `
-                  <div class="fides-modal-provider-detail">
-                    <span class="fides-modal-provider-label">Release Date:</span>
-                    <span class="fides-modal-provider-value">${new Date(wallet.releaseDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                  </div>
-                ` : ''}
-              </div>
             </div>
           </div>
         </div>
@@ -2030,6 +2084,8 @@
       if (window.FidesCatalogUI && typeof window.FidesCatalogUI.openWalletModal === 'function') {
         window.FidesCatalogUI.openWalletModal(wallet, {
           theme: container ? (container.getAttribute('data-theme') || 'dark') : 'dark',
+          organizationCatalogUrl: ORGANIZATION_CATALOG_PAGE_URL,
+          bluePagesUrl: BLUE_PAGES_URL,
           onOpen: function(openedWallet) {
             (window.FidesCatalogUI && window.FidesCatalogUI.trackMatomoEvent) && window.FidesCatalogUI.trackMatomoEvent('Wallet Catalog', 'Modal Open', openedWallet.name);
           }
@@ -2315,6 +2371,15 @@
     });
   }
 
+  /** Label text for a filter row, without the facet count span. */
+  function filterCheckboxLabelTextWithoutCount(label) {
+    const span = label.querySelector('span');
+    if (!span) return label.textContent.trim();
+    const clone = span.cloneNode(true);
+    clone.querySelectorAll('.fides-filter-option-count').forEach((el) => el.remove());
+    return clone.textContent.trim();
+  }
+
   function showVocabularyPopup(button, groupEl, vocabKey) {
     hideVocabularyPopup();
     const groupTerm = vocabulary[vocabKey];
@@ -2334,7 +2399,7 @@
         labels.forEach(label => {
           const input = label.querySelector('input[data-value]');
           const value = input ? input.dataset.value : '';
-          const labelText = (label.querySelector('span') || label).textContent.trim();
+          const labelText = filterCheckboxLabelTextWithoutCount(label);
           const optionVocabKey = (WALLET_OPTION_TO_VOCAB[vocabKey] && WALLET_OPTION_TO_VOCAB[vocabKey][value] !== undefined)
             ? WALLET_OPTION_TO_VOCAB[vocabKey][value] : value;
           const term = optionVocabKey ? vocabulary[optionVocabKey] : null;

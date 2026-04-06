@@ -1,26 +1,24 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "A3BC",
-    "website": "https://www.a3bc.io/",
-    "country": "FR"
-  },
   "wallets": [
     {
       "id": "trustme-wallet",
       "name": "TrustMe",
       "description": "TrustMe is a mobile application for a digital identity wallet that allows users to securely create and manage their identity attributes. Users can register their ID card as well as other attributes, such as proof of address. TrustMe is also available through FranceConnect, enabling secure authentication across supported services.TrustMe prioritizes data privacy, ensuring that personal information remains under the user’s control. It is designed for simplicity, speed, and secure digital interactions..",
       "logo": "https://www.trustmeid.io/img/Trustme-SYMBOLE-RVB-vert.jpg",
-	  "type": "personal",
+      "type": "personal",
       "status": "production",
       "website": "https://www.trustmeid.io/",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/us/app/trustme-your-digital-identity/id1634176820",
         "android": "https://play.google.com/store/apps/details?id=org.a3bc.trustme"
       },
       "releaseDate": "2022-06-01"
     }
-  ]
+  ],
+  "orgId": "org:a3bc"
 }
-

@@ -1,11 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Credenco",
-    "website": "https://www.credenco.com",
-    "logo": "https://wallet.acc.credenco.com/logo_white_background.png",
-    "country": "NL"
-  },
   "wallets": [
     {
       "id": "credenco-business-wallet",
@@ -14,20 +8,58 @@
       "logo": "https://wallet.acc.credenco.com/logo_white_background.png",
       "website": "https://www.credenco.com",
       "type": "organizational",
-      "capabilities": ["holder", "issuer", "verifier"],
-      "platforms": ["Web"],
-      "credentialFormats": ["SD-JWT-VC","JWT-VC","JSON-LD VC","mDL/mDoc"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
-      "keyStorage": ["Software", "HSM", "Cloud KMS"],
-      "supportedIdentifiers": ["did:jwk", "did:web", "did:ebsi"],
-      "credentialStatusMethods": ["StatusList2021", "Token Status List"],
-      "interoperabilityProfiles": ["DIIP v4", "DIIP v5"],
-      "features": ["Universal OID4VP API", "Compliant with WE BUILD Interoperability Test Bed (ITB)", "Integration with FIDES Credential Catalog and BluePages", "EBSI Integration", "Public Profile", "Inbox notifications", "Available as SaaS or on-premise deployment"],
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "JSON-LD VC",
+        "mDL/mDoc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "keyStorage": [
+        "Software",
+        "HSM",
+        "Cloud KMS"
+      ],
+      "supportedIdentifiers": [
+        "did:jwk",
+        "did:web",
+        "did:ebsi"
+      ],
+      "credentialStatusMethods": [
+        "StatusList2021",
+        "Token Status List"
+      ],
+      "interoperabilityProfiles": [
+        "DIIP v4",
+        "DIIP v5"
+      ],
+      "features": [
+        "Universal OID4VP API",
+        "Compliant with WE BUILD Interoperability Test Bed (ITB)",
+        "Integration with FIDES Credential Catalog and BluePages",
+        "EBSI Integration",
+        "Public Profile",
+        "Inbox notifications",
+        "Available as SaaS or on-premise deployment"
+      ],
       "documentation": "https://docs.acc.credenco.com",
       "openSource": false,
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-03-26T12:00:00Z"
+  "lastUpdated": "2026-03-26T12:00:00Z",
+  "orgId": "org:credenco"
 }

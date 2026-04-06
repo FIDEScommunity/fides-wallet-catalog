@@ -1,11 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Scytales",
-    "website": "https://scytales.com",
-    "logo": "https://www.google.com/s2/favicons?domain=scytales.com&sz=128",
-    "country": "SE"
-  },
   "wallets": [
     {
       "id": "scytales-id-wallet",
@@ -13,10 +7,20 @@
       "logo": "https://www.google.com/s2/favicons?domain=scytales.com&sz=128",
       "description": "An enterprise-grade digital identity wallet for secure credential management, supporting various verifiable credential formats.",
       "type": "personal",
-      "platforms": ["iOS", "Android"],
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
       "website": "https://scytales.com",
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/app/scytales-id/id1526508103",
@@ -31,15 +35,29 @@
       "logo": "https://www.google.com/s2/favicons?domain=scytales.com&sz=128",
       "description": "An organizational platform based on the EU Digital Identity Wallet reference implementation, providing issuer and verifier capabilities.",
       "type": "organizational",
-      "capabilities": ["issuer", "verifier"],
-      "platforms": ["Web"],
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "mDL/mDoc"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
+      "capabilities": [
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "mDL/mDoc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
       "website": "https://www.scytales.com",
       "openSource": false,
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-01-06T12:00:00Z"
+  "lastUpdated": "2026-01-06T12:00:00Z",
+  "orgId": "org:scytales"
 }

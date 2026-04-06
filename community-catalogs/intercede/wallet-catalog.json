@@ -1,11 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Intercede",
-    "website": "https://www.intercede.com/",
-    "logo": "https://www.google.com/s2/favicons?domain=intercede.com&sz=128",
-    "country": "GB"
-  },
   "wallets": [
     {
       "id": "intercede-myid-identity-wallet",
@@ -18,11 +12,19 @@
         "android": "https://play.google.com/store/apps/details?id=com.intercede.MyIDWallet"
       },
       "logo": "https://www.google.com/s2/favicons?domain=intercede.com&sz=128",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "openSource": false,
-      "credentialFormats": ["mDL/mDoc"],
-      "standards": ["ISO/IEC 18013-5"],
+      "credentialFormats": [
+        "mDL/mDoc"
+      ],
+      "standards": [
+        "ISO/IEC 18013-5"
+      ],
       "status": "production"
     }
-  ]
+  ],
+  "orgId": "org:intercede"
 }

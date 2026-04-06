@@ -1,13 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Blockchain HELIX AG",
-    "website": "https://helixid.io",
-    "country": "DE",
-    "contact": {
-      "email": "oliver@blockchain-helix.com"
-    }
-  },
   "wallets": [
     {
       "id": "helix-id-wallet",
@@ -71,5 +63,6 @@
       ],
       "releaseDate": "2020-01-01"
     }
-  ]
+  ],
+  "orgId": "org:helixid"
 }

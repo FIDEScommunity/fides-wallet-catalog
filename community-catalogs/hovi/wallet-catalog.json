@@ -1,14 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Hovi",
-    "website": "https://www.hovi.id/",
-    "logo": "https://cdn.prod.website-files.com/659dad70ef0ae858f66ae208/6966ba7d3a1f6bb1adf4a924_hovi-logo-white.png",
-    "country": "FI",
-    "contact": {
-      "email": "contact@hovi.id"
-    }
-  },
   "wallets": [
     {
       "id": "hovi-wallet",
@@ -17,15 +8,48 @@
       "logo": "https://cdn.prod.website-files.com/659dad70ef0ae858f66ae208/6966ba7d633e575933328227_hovi-app-icon.png",
       "website": "https://www.hovi.id/wallet",
       "type": "personal",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "openSource": false,
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "mDL/mDoc", "JSON-LD VC", "AnonCreds"],
-      "issuanceProtocols": ["OpenID4VCI", "DIDComm Issue Credential v2"],
-      "presentationProtocols": ["OpenID4VP", "DIDComm Present Proof v2", "SIOPv2"],
-      "supportedIdentifiers": ["did:key", "did:peer", "did:indy", "did:cheqd", "did:jwk", "x509"],
-      "credentialStatusMethods": ["IETF Token Status List","StatusList2021"],
-      "keyStorage": ["Secure Enclave (iOS)", "StrongBox (Android)", "Software"],
-      "signingAlgorithms": ["ES256", "EdDSA"],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "mDL/mDoc",
+        "JSON-LD VC",
+        "AnonCreds"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI",
+        "DIDComm Issue Credential v2"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "DIDComm Present Proof v2",
+        "SIOPv2"
+      ],
+      "supportedIdentifiers": [
+        "did:key",
+        "did:peer",
+        "did:indy",
+        "did:cheqd",
+        "did:jwk",
+        "x509"
+      ],
+      "credentialStatusMethods": [
+        "IETF Token Status List",
+        "StatusList2021"
+      ],
+      "keyStorage": [
+        "Secure Enclave (iOS)",
+        "StrongBox (Android)",
+        "Software"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "EdDSA"
+      ],
       "features": [
         "Multi-language support",
         "Biometric authentication",
@@ -47,24 +71,69 @@
       "description": "Hovi Business Wallet is an enterprise grade organizational wallet designed for issuing, holding, and verifying verifiable credentials at scale. It enables businesses to manage decentralized identifiers, cryptographic keys, and credential lifecycles for employees, partners, devices, and automated agents. The wallet supports W3C Verifiable Credentials, policy based verification, selective disclosure, and zero knowledge proof flows, and integrates via APIs and webhooks into existing identity, compliance, and business systems. Built to align with eIDAS 2.0 and EUDI wallet ecosystems, Hovi Business Wallet provides auditable, secure, and interoperable digital trust infrastructure for cross border and regulated use cases.",
       "logo": "https://cdn.prod.website-files.com/659dad70ef0ae858f66ae208/6966ba7db9a130a7b508f415_hovi-logo-color.png",
       "website": "https://www.hovi.id",
-      "capabilities": ["holder", "issuer", "verifier"],
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
       "type": "organizational",
-      "platforms": ["Web"],
+      "platforms": [
+        "Web"
+      ],
       "openSource": false,
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "mDL/mDoc", "JSON-LD VC", "AnonCreds"],
-      "supportedIdentifiers": ["did:key", "did:peer", "did:indy", "did:cheqd", "did:web", "did:polygon", "did:jwk", "x509"],
-      "credentialStatusMethods": ["IETF Token Status List"],
-      "keyStorage": ["Cloud KMS"],
-      "issuanceProtocols": ["OpenID4VCI", "DIDComm Issue Credential v2"],
-      "interoperabilityProfiles": ["DIIP v5", "EUDI Wallet ARF"],
-      "presentationProtocols": ["OpenID4VP", "DIDComm Present Proof v2", "ISO 18013-5"],
-      "standards": ["EUDI ARF", "W3C Verifiable Credentials", "OpenID for Verifiable Credentials"],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "mDL/mDoc",
+        "JSON-LD VC",
+        "AnonCreds"
+      ],
+      "supportedIdentifiers": [
+        "did:key",
+        "did:peer",
+        "did:indy",
+        "did:cheqd",
+        "did:web",
+        "did:polygon",
+        "did:jwk",
+        "x509"
+      ],
+      "credentialStatusMethods": [
+        "IETF Token Status List"
+      ],
+      "keyStorage": [
+        "Cloud KMS"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI",
+        "DIDComm Issue Credential v2"
+      ],
+      "interoperabilityProfiles": [
+        "DIIP v5",
+        "EUDI Wallet ARF"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "DIDComm Present Proof v2",
+        "ISO 18013-5"
+      ],
+      "standards": [
+        "EUDI ARF",
+        "W3C Verifiable Credentials",
+        "OpenID for Verifiable Credentials"
+      ],
       "documentation": "https://docs.hovi.id/api/open-id",
       "status": "production",
       "features": [
-        "Ready for France Identité EUDIW", "OID4VCI 1.0", "OID4VP 1.0", "DCQL", "EUDI Ready","Multi-language support"
+        "Ready for France Identité EUDIW",
+        "OID4VCI 1.0",
+        "OID4VP 1.0",
+        "DCQL",
+        "EUDI Ready",
+        "Multi-language support"
       ]
     }
   ],
-  "lastUpdated": "2026-03-31T12:00:00Z"
+  "lastUpdated": "2026-03-31T12:00:00Z",
+  "orgId": "org:hovi"
 }

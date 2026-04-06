@@ -1,10 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Yoti Ltd.",
-    "website": "https://www.yoti.com/",
-    "country": "GB"
-  },
   "wallets": [
     {
       "id": "yoti",
@@ -14,12 +9,16 @@
       "openSource": false,
       "status": "production",
       "website": "https://www.yoti.com/",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/gb/app/yoti-your-digital-identity/id983980808",
         "android": "https://play.google.com/store/apps/details?id=com.yoti.mobile.android.live"
       },
       "releaseDate": "2014-01-01"
     }
-  ]
+  ],
+  "orgId": "org:yoti"
 }

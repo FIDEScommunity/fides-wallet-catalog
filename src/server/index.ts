@@ -128,8 +128,9 @@ app.get('/api/wallets/:providerId/:walletId', async (req, res) => {
     });
   }
   
+  const orgIdParam = decodeURIComponent(req.params.providerId);
   const wallet = data.wallets.find(
-    w => w.provider.did.includes(req.params.providerId) && w.id === req.params.walletId
+    w => w.orgId === orgIdParam && w.id === req.params.walletId
   );
   
   if (!wallet) {
@@ -202,7 +203,7 @@ app.get('/api/filters', async (req, res) => {
     wallet.credentialFormats?.forEach(f => credentialFormats.add(f));
     wallet.issuanceProtocols?.forEach(p => protocols.add(p));
     wallet.presentationProtocols?.forEach(p => protocols.add(p));
-    wallet.supportedDIDMethods?.forEach(m => didMethods.add(m));
+    wallet.supportedIdentifiers?.forEach(m => didMethods.add(m));
     wallet.certifications?.forEach(c => certifications.add(c));
   });
   

@@ -23,13 +23,12 @@ community-catalogs/
 
 Create `community-catalogs/my-company/wallet-catalog.json`:
 
+Add your organization to the [organization catalog](https://github.com/FIDEScommunity/fides-organization-catalog) first, then reference it by `orgId` (same value as there, e.g. `org:my-company`).
+
 ```json
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "My Company",
-    "did": "did:web:my-company.com"
-  },
+  "orgId": "org:my-company",
   "wallets": [
     {
       "id": "my-wallet",

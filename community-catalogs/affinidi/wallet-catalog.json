@@ -1,11 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Affinidi",
-    "website": "https://www.affinidi.com",
-    "logo": "https://www.google.com/s2/favicons?domain=affinidi.com&sz=256",
-    "country": "SG"
-  },
   "wallets": [
     {
       "id": "affinidi-portal",
@@ -14,15 +8,28 @@
       "logo": "https://www.google.com/s2/favicons?domain=affinidi.com&sz=256",
       "website": "https://www.affinidi.com",
       "type": "organizational",
-      "capabilities": ["verifier", "issuer"],
-      "platforms": ["Web"],
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "JSON-LD VC"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
+      "capabilities": [
+        "verifier",
+        "issuer"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "JSON-LD VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
       "openSource": false,
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-01-06T12:00:00Z"
+  "lastUpdated": "2026-01-06T12:00:00Z",
+  "orgId": "org:affinidi"
 }
-

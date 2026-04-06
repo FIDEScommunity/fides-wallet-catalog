@@ -1,10 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Finnish Government",
-    "website": "https://dvv.fi/en/european-digital-identity-wallet",
-    "country": "FI"
-  },
   "wallets": [
     {
       "id": "national-eudi-wallet-finland",
@@ -13,10 +8,16 @@
       "type": "personal",
       "status": "development",
       "website": "https://dvv.fi/en/european-digital-identity-wallet",
-      "platforms": ["iOS", "Android"],
-      "interoperabilityProfiles": ["EUDI Wallet ARF"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
       "logo": "https://flagcdn.com/w80/fi.png",
       "releaseDate": "2026-01-01"
     }
-  ]
+  ],
+  "orgId": "org:finland"
 }

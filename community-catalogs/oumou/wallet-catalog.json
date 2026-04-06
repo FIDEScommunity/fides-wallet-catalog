@@ -1,11 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Oumou Group",
-    "website": "https://oumougroup.com",
-    "logo": "https://www.google.com/s2/favicons?domain=oumougroup.com&sz=128",
-    "country": "SN"
-  },
   "wallets": [
     {
       "id": "uwangu",
@@ -27,5 +21,6 @@
         "holder"
       ]
     }
-  ]
+  ],
+  "orgId": "org:oumou"
 }

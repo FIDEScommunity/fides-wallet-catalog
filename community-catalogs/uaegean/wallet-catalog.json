@@ -1,11 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "University of the Aegean",
-    "website": "https://www.aegean.gr",
-    "logo": "https://www.google.com/s2/favicons?domain=aegean.gr&sz=128",
-    "country": "GR"
-  },
   "wallets": [
     {
       "id": "uaegean-stack",
@@ -14,16 +8,31 @@
       "logo": "https://www.google.com/s2/favicons?domain=aegean.gr&sz=128",
       "website": "https://www.aegean.gr",
       "type": "organizational",
-      "capabilities": ["holder", "issuer", "verifier"],
-      "platforms": ["Web"],
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
-      "interoperabilityProfiles": ["EWC v3"],
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "interoperabilityProfiles": [
+        "EWC v3"
+      ],
       "openSource": false,
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-01-06T12:00:00Z"
+  "lastUpdated": "2026-01-06T12:00:00Z",
+  "orgId": "org:uaegean"
 }
-

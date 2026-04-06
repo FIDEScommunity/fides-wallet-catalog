@@ -15,17 +15,11 @@ Quick reference for wallet providers to see which fields accept fixed values (en
 
 ---
 
-## Provider Fields
+## Catalog root
 
 | Field | Required | Type | Valid Values |
 |-------|----------|------|--------------|
-| `provider.name` | ✅ | 📝 | Any text |
-| `provider.did` | | 🆔 | `did:method:...` |
-| `provider.website` | | 🔗 | URL |
-| `provider.logo` | | 🔗 | URL |
-| `provider.country` | | 🆔 | ISO 3166-1 alpha-2 (`NL`, `DE`, `US`, ...) |
-| `provider.contact.email` | | 📧 | Email |
-| `provider.contact.support` | | 🔗 | URL |
+| `orgId` | ✅ | 🆔 | Organization catalog id: `org:` + slug (e.g. `org:animo`). Must exist in the FIDES organization catalog. Name, DID, website, logo, country, and contact are resolved at crawl time from there — not duplicated in this file. |
 
 ---
 

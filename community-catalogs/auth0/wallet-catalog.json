@@ -1,11 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Auth0 (Okta)",
-    "website": "https://auth0.com",
-    "logo": "https://www.google.com/s2/favicons?domain=auth0.com&sz=128",
-    "country": "US"
-  },
   "wallets": [
     {
       "id": "auth0-platform",
@@ -14,15 +8,27 @@
       "logo": "https://www.google.com/s2/favicons?domain=auth0.com&sz=128",
       "website": "https://lab.auth0.com",
       "type": "organizational",
-      "capabilities": ["issuer", "verifier"],
-      "platforms": ["Web"],
-      "credentialFormats": ["mDL/mDoc","JWT-VC"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
+      "capabilities": [
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
       "openSource": false,
       "status": "beta"
     }
   ],
-  "lastUpdated": "2026-01-06T12:00:00Z"
+  "lastUpdated": "2026-01-06T12:00:00Z",
+  "orgId": "org:auth0"
 }
-

@@ -129,14 +129,12 @@ See [docs/GITHUB_REPO_STRUCTURE.md](docs/GITHUB_REPO_STRUCTURE.md) for detailed 
 
 ### Minimal Example
 
+Organization details (name, DID, website, logo, country) live in the [FIDES Organization Catalog](https://github.com/FIDEScommunity/fides-organization-catalog). Your `wallet-catalog.json` only references that record via `orgId` (for example `org:your-org` — the same id as in the organization catalog).
+
 ```json
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Your Organization",
-    "website": "https://yourdomain.com",
-    "country": "NL"
-  },
+  "orgId": "org:your-org",
   "wallets": [
     {
       "id": "my-wallet",
@@ -167,6 +165,7 @@ npm run validate
 
 Each wallet in `data/aggregated.json` now includes:
 
+- `orgId` - organization catalog id (`org:…`); `provider` on each wallet is merged from the [organization catalog](https://github.com/FIDEScommunity/fides-organization-catalog) at crawl time
 - `updatedAt` - semantic update timestamp used for "Last updated" sorting
 - `firstSeenAt` - stable first time this wallet was seen in the FIDES catalog
 - `fetchedAt` - technical crawl timestamp (still present for backwards compatibility)
@@ -199,7 +198,7 @@ npm run serve
 | Endpoint | Description |
 |----------|-------------|
 | `GET /api/wallets` | All wallets, with optional filters |
-| `GET /api/wallets/:providerId/:walletId` | Specific wallet |
+| `GET /api/wallets/:orgId/:walletId` | Specific wallet (`orgId` URL-encoded, e.g. `org%3Aanimo`) |
 | `GET /api/providers` | All providers |
 | `GET /api/stats` | Statistics |
 

@@ -1,10 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Polish Government",
-    "website": "https://www.gov.pl/mobywatel",
-    "country": "PL"
-  },
   "wallets": [
     {
       "id": "mobywatel",
@@ -13,15 +8,23 @@
       "type": "personal",
       "status": "production",
       "website": "https://www.gov.pl/mobywatel",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/pl/app/apple-store/id1339613469",
         "android": "https://play.google.com/store/apps/details?id=pl.nask.mobywatel"
       },
-      "credentialFormats": ["mDL/mDoc"],
+      "credentialFormats": [
+        "mDL/mDoc"
+      ],
       "logo": "https://www.google.com/s2/favicons?domain=gov.pl&sz=128",
-      "certifications": ["eIDAS notified"],
+      "certifications": [
+        "eIDAS notified"
+      ],
       "releaseDate": "2018-01-01"
     }
-  ]
+  ],
+  "orgId": "org:poland"
 }

@@ -1,16 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Animo Solutions",
-    "did": "did:web:animo.id",
-    "website": "https://animo.id",
-    "logo": "https://www.google.com/s2/favicons?domain=animo.id&sz=128",
-    "country": "NL",
-    "contact": {
-      "email": "info@animo.id",
-      "support": "https://animo.id/support"
-    }
-  },
   "wallets": [
     {
       "id": "paradym-wallet",
@@ -19,20 +8,53 @@
       "logo": "https://play-lh.googleusercontent.com/QHFxEvBMYuMoHg-ha_YEdzryqnogR80FIpDI5I_DBJCD-3FiK3MK9bJvEsthhf7IBsg=w240-h480-rw",
       "website": "https://paradym.id",
       "type": "personal",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "openSource": true,
       "license": "Apache-2.0",
       "repository": "https://github.com/animo/paradym-wallet",
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "AnonCreds", "mDL/mDoc"],
-      "issuanceProtocols": ["OpenID4VCI", "DIDComm Issue Credential v2"],
-      "presentationProtocols": ["OpenID4VP", "DIDComm Present Proof v2", "SIOPv2"],
-      "supportedIdentifiers": ["did:web", "did:key", "did:jwk", "did:peer"],
-      "keyStorage": ["Secure Enclave (iOS)", "StrongBox (Android)", "Software"],
-      "signingAlgorithms": ["ES256", "EdDSA"],
-      "credentialStatusMethods": ["StatusList2021"],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "AnonCreds",
+        "mDL/mDoc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI",
+        "DIDComm Issue Credential v2"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "DIDComm Present Proof v2",
+        "SIOPv2"
+      ],
+      "supportedIdentifiers": [
+        "did:web",
+        "did:key",
+        "did:jwk",
+        "did:peer"
+      ],
+      "keyStorage": [
+        "Secure Enclave (iOS)",
+        "StrongBox (Android)",
+        "Software"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "EdDSA"
+      ],
+      "credentialStatusMethods": [
+        "StatusList2021"
+      ],
       "certifications": [],
-      "interoperabilityProfiles": ["DIIP v4"],
-      "standards": ["ARF 1.4"],
+      "interoperabilityProfiles": [
+        "DIIP v4"
+      ],
+      "standards": [
+        "ARF 1.4"
+      ],
       "features": [
         "Biometric authentication",
         "QR code scanning",
@@ -55,16 +77,38 @@
       "logo": "https://play-lh.googleusercontent.com/QHFxEvBMYuMoHg-ha_YEdzryqnogR80FIpDI5I_DBJCD-3FiK3MK9bJvEsthhf7IBsg=w240-h480-rw",
       "website": "https://paradym.id",
       "type": "organizational",
-      "capabilities": ["verifier", "issuer"],
-      "platforms": ["Web"],
+      "capabilities": [
+        "verifier",
+        "issuer"
+      ],
+      "platforms": [
+        "Web"
+      ],
       "openSource": false,
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "AnonCreds", "mDL/mDoc"],
-      "issuanceProtocols": ["OpenID4VCI", "DIDComm Issue Credential v2"],
-      "presentationProtocols": ["OpenID4VP", "DIDComm Present Proof v2"],
-      "supportedIdentifiers": ["did:web", "did:key", "did:jwk", "did:cheqd"],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "AnonCreds",
+        "mDL/mDoc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI",
+        "DIDComm Issue Credential v2"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "DIDComm Present Proof v2"
+      ],
+      "supportedIdentifiers": [
+        "did:web",
+        "did:key",
+        "did:jwk",
+        "did:cheqd"
+      ],
       "documentation": "https://docs.paradym.id",
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-01-06T12:00:00Z"
+  "lastUpdated": "2026-01-06T12:00:00Z",
+  "orgId": "org:animo"
 }

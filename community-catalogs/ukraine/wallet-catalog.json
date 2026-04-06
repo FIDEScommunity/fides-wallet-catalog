@@ -1,10 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Ukrainian Government",
-    "website": "https://diia.gov.ua/",
-    "country": "UA"
-  },
   "wallets": [
     {
       "id": "diia",
@@ -13,7 +8,10 @@
       "type": "personal",
       "status": "production",
       "website": "https://diia.gov.ua/",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/nl/app/%D0%B4%D1%96%D1%8F/id1489717872",
         "android": "https://play.google.com/store/apps/details?id=ua.gov.diia.app"
@@ -21,5 +19,6 @@
       "logo": "https://www.google.com/s2/favicons?domain=diia.gov.ua&sz=128",
       "releaseDate": "2020-01-01"
     }
-  ]
+  ],
+  "orgId": "org:ukraine"
 }

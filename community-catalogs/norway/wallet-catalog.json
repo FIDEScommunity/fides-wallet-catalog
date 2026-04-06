@@ -1,10 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Norwegian Government",
-    "website": "https://www.digdir.no/",
-    "country": "NO"
-  },
   "wallets": [
     {
       "id": "national-eudi-wallet-norway",
@@ -12,10 +7,16 @@
       "description": "Norway as European Economic Area (EEA) country alongside Iceland and Liechtenstein has December 2027 deadline (one-year extension compared to EU member states' December 2026 requirement) to offer citizens EU Digital Identity Wallet, led by Digdir (Norwegian Digitalisation Agency) coordinating NOBID (Nordic-Baltic eID Project) multi-country consortium including Denmark, Germany, Iceland, Italy, and Latvia focusing on payments use case leveraging existing payment infrastructure. BankID participates in first phase of European Identity Wallet work through involvement in two consortia (EUDI Wallet Consortium EWC and Digital Credentials for Europe DC4EU) piloting EUDI wallet functionality, building on Norway's advanced digital infrastructure where more than 90% of citizens have access to eID with millions using digital services daily and 75% (4.1 million) Norwegians using Vipps payment tool, positioning Norway as leader in digital payments and eID adoption preparing for EUDI wallet integration with financial institutions obliged to accept wallet as official identification method from end of 2027.",
       "type": "personal",
       "status": "development",
-      "platforms": ["iOS", "Android"],
-      "interoperabilityProfiles": ["EUDI Wallet ARF"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
       "logo": "https://flagcdn.com/w80/no.png",
       "releaseDate": "2027-01-01"
     }
-  ]
+  ],
+  "orgId": "org:norway"
 }

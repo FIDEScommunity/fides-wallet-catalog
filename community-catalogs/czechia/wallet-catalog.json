@@ -1,10 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Czech Government",
-    "website": "https://www.edoklady.cz/",
-    "country": "CZ"
-  },
   "wallets": [
     {
       "id": "edoklady",
@@ -13,7 +8,10 @@
       "type": "personal",
       "status": "production",
       "website": "https://www.edoklady.cz/",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/us/app/edoklady/id6470912982",
         "android": "https://play.google.com/store/apps/details?id=cz.gov.edoklady"
@@ -21,5 +19,6 @@
       "logo": "https://www.google.com/s2/favicons?domain=edoklady.cz&sz=128",
       "releaseDate": "2022-01-01"
     }
-  ]
+  ],
+  "orgId": "org:czechia"
 }

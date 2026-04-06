@@ -3,14 +3,22 @@ import path from 'path';
 import { execFileSync } from 'child_process';
 
 interface WalletCatalogFile {
-  provider?: {
-    did?: string;
-    name?: string;
-  };
+  orgId?: string;
   wallets?: Array<{
     id: string;
   }>;
   lastUpdated?: string;
+}
+
+/** Folder name on disk → org id when orgId is missing from JSON (same rules as community contribution layout). */
+const FOLDER_TO_ORG_OVERRIDES: Record<string, string> = {
+  CA: 'org:ca-dmv',
+  che: 'org:swiyu'
+};
+
+function folderNameToOrgId(folderName: string): string {
+  if (FOLDER_TO_ORG_OVERRIDES[folderName]) return FOLDER_TO_ORG_OVERRIDES[folderName];
+  return `org:${folderName.toLowerCase()}`;
 }
 
 interface WalletHistoryEntry {
@@ -103,7 +111,7 @@ async function backfillFirstSeen(): Promise<void> {
     const catalog = JSON.parse(catalogRaw) as WalletCatalogFile;
     if (!Array.isArray(catalog.wallets) || catalog.wallets.length === 0) continue;
 
-    const providerKey = catalog.provider?.did || catalog.provider?.name || providerDir;
+    const orgId = catalog.orgId || folderNameToOrgId(providerDir);
     const relativePath = path.relative(repoRoot, catalogFilePath).replace(/\\/g, '/');
     const fileAddedDate = gitFirstDateForFile(relativePath);
     const catalogLastUpdated = parseIsoOrNull(catalog.lastUpdated);
@@ -111,7 +119,7 @@ async function backfillFirstSeen(): Promise<void> {
     for (const wallet of catalog.wallets) {
       if (!wallet?.id) continue;
 
-      const historyKey = `${providerKey}:${wallet.id}`;
+      const historyKey = `${orgId}:${wallet.id}`;
       if (historyState[historyKey]?.firstSeenAt) {
         skipped += 1;
         continue;
@@ -123,7 +131,7 @@ async function backfillFirstSeen(): Promise<void> {
       historyState[historyKey] = {
         firstSeenAt,
         lastSeenAt: nowIso,
-        providerKey,
+        providerKey: orgId,
         walletId: wallet.id,
         sourcePath: relativePath
       };

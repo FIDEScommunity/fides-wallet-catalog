@@ -1,11 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Moldova e-Governance Agency",
-    "website": "https://www.egov.md/en",
-    "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/61/6f/66/616f66c0-047b-eb22-8bb3-0d3a82b3edb2/app_logo_ios-1x_U007emarketing-0-8-0-85-220-0.png/400x400ia-75.webp",
-    "country": "MD"
-  },
   "wallets": [
     {
       "id": "moldova-ega-evo",
@@ -43,5 +37,6 @@
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-03-23T00:00:00Z"
+  "lastUpdated": "2026-03-23T00:00:00Z",
+  "orgId": "org:moldova"
 }

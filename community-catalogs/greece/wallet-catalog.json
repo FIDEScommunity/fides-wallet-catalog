@@ -1,10 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Greek Government",
-    "website": "https://wallet.gov.gr/",
-    "country": "GR"
-  },
   "wallets": [
     {
       "id": "govgr-wallet",
@@ -13,7 +8,10 @@
       "type": "personal",
       "status": "production",
       "website": "https://wallet.gov.gr/",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/gr/app/gov-gr-wallet/id1605614816",
         "android": "https://play.google.com/store/apps/details?id=gr.gov.wallet"
@@ -27,10 +25,16 @@
       "description": "Launch expected in November 2026. Builds on Gov.gr Wallet. Planned use cases: eGov, banking, SIM registration, mobile DL, QES, eRx, travel, education. Participation in EWC and DC4EU pilot projects. Pilot test at Thessaloniki Airport for travel credentials.",
       "type": "personal",
       "status": "development",
-      "platforms": ["iOS", "Android"],
-      "interoperabilityProfiles": ["EUDI Wallet ARF"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
       "logo": "https://flagcdn.com/w80/gr.png",
       "releaseDate": "2026-01-01"
     }
-  ]
+  ],
+  "orgId": "org:greece"
 }

@@ -24,6 +24,11 @@ This document describes the key architecture and design decisions for the FIDES 
   - No central bottleneck for updates
 - **Implementation**: `community-catalogs/{provider}/wallet-catalog.json`
 
+### 1.2b Wallet catalog `orgId` (organization profile centralization)
+- **Decision**: Wallet source catalogs reference the FIDES organization catalog via `orgId` instead of embedding a `provider` object (aligned with the RP catalog).
+- **Rationale**: Single source of truth for legal entity name, DID, website, logo, country, and contact; avoids drift between catalogs.
+- **Implementation**: Crawler loads `fides-organization-catalog` aggregated JSON and merges `orgEntryToWalletProvider` into each normalized wallet; dedupe key `orgId:walletId`.
+
 ### 1.3 Aggregated Data Generation
 - **Decision**: Crawler script generates central `data/aggregated.json`
 - **Rationale**:

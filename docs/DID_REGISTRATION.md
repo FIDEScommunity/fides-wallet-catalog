@@ -45,14 +45,12 @@ Host your DID document at:
 
 Create a `wallet-catalog.json` file at the URL specified in your DID document's service endpoint:
 
+Register your organization in the [organization catalog](https://github.com/FIDEScommunity/fides-organization-catalog) and use the same `orgId` here (e.g. `org:your-org`).
+
 ```json
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Your Organization",
-    "did": "did:web:your-domain.com",
-    "website": "https://your-domain.com"
-  },
+  "orgId": "org:your-org",
   "wallets": [
     {
       "id": "your-wallet",

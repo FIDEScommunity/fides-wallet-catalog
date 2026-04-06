@@ -1,11 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "DataKeeper",
-    "website": "https://www.datakeeper.nl/",
-    "logo": "https://www.google.com/s2/favicons?domain=datakeeper.nl&sz=128",
-    "country": "NL"
-  },
   "wallets": [
     {
       "id": "datakeeper-personal-wallet",
@@ -14,12 +8,16 @@
       "logo": "https://www.google.com/s2/favicons?domain=datakeeper.nl&sz=128",
       "description": "The DataKeeper Wallet is a personal digital wallet that allows individuals to securely store, manage, and share personal data and credentials, with a strong focus on privacy, consent, and user control.",
       "website": "https://www.datakeeper.nl/",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/nl/app/datakeeper/id1546059184",
         "android": "https://play.google.com/store/search?q=datakeeper&c=apps&hl=en"
       },
       "openSource": false
     }
-  ]
+  ],
+  "orgId": "org:datakeeper"
 }

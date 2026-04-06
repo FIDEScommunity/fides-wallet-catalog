@@ -1,11 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "India Government",
-    "website": "https://www.digilocker.gov.in/",
-    "logo": "https://www.google.com/s2/favicons?domain=uidai.gov.in&sz=128",
-    "country": "IN"
-  },
   "wallets": [
     {
       "id": "digilocker",
@@ -14,7 +8,11 @@
       "logo": "https://www.google.com/s2/favicons?domain=digilocker.gov.in&sz=128",
       "website": "https://www.digilocker.gov.in/",
       "type": "personal",
-      "platforms": ["Web", "iOS", "Android"],
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android"
+      ],
       "status": "production",
       "appStoreLinks": {
         "web": "https://www.digilocker.gov.in/web/login",
@@ -30,16 +28,25 @@
       "logo": "https://play-lh.googleusercontent.com/j7kM2-v1QBN5YO167Si_6YEmLc2A-f_4vaMyf-imZjwIkV83IkWm6U7NYfOdTbNGyaQ=w480-h960-rw",
       "website": "https://uidai.gov.in/",
       "type": "personal",
-      "platforms": ["Android"],
+      "platforms": [
+        "Android"
+      ],
       "status": "production",
       "appStoreLinks": {
         "android": "https://play.google.com/store/apps/details?id=in.gov.uidai.mAadhaarPlus&hl=en"
       },
-      "credentialFormats": ["mDL/mDoc"],
-      "presentationProtocols": ["OpenID4VP"],
-      "features": ["OpenID4VP 1.0"],
+      "credentialFormats": [
+        "mDL/mDoc"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "features": [
+        "OpenID4VP 1.0"
+      ],
       "documentation": "https://uidai.gov.in/"
     }
   ],
-  "lastUpdated": "2026-02-18T08:15:00Z"
+  "lastUpdated": "2026-02-18T08:15:00Z",
+  "orgId": "org:india"
 }

@@ -42,11 +42,14 @@ export type WalletCapability = 'holder' | 'issuer' | 'verifier';
 export type InteroperabilityProfile = 'DIIP v4' | 'DIIP v5' | 'EWC v3' | 'EUDI Wallet ARF' | 'HAIP v1';
 
 export interface WalletProvider {
+  /** Organization catalog id (matches source catalog orgId). */
+  orgId: string;
   name: string;
   did?: string; // Optional - not all providers have a DID yet
   website?: string;
   logo?: string;
   country?: string; // ISO 3166-1 alpha-2 country code
+  fidesManifestoSupporter?: boolean;
   contact?: {
     email?: string;
     support?: string;
@@ -93,13 +96,14 @@ export interface Wallet {
 
 export interface WalletCatalog {
   $schema: string;
-  provider: WalletProvider;
+  orgId: string;
   wallets: Wallet[];
   lastUpdated?: string;
 }
 
 // Normalized wallet with provider info (for display)
 export interface NormalizedWallet extends Wallet {
+  orgId: string;
   provider: WalletProvider;
   catalogUrl: string;
   fetchedAt: string;

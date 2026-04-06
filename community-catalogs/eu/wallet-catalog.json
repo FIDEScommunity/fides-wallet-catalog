@@ -1,11 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "European Commission - Government",
-    "website": "https://github.com/eu-digital-identity-wallet",
-    "logo": "https://www.google.com/s2/favicons?domain=ec.europa.eu&sz=128",
-    "country": "BE"
-  },
   "wallets": [
     {
       "id": "eudi-reference-personal-wallet",
@@ -16,12 +10,17 @@
       "website": "https://github.com/eu-digital-identity-wallet/",
       "openSource": true,
       "repository": "https://github.com/eu-digital-identity-wallet/",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "credentialFormats": [
         "mDL/mDoc",
         "SD-JWT-VC"
       ],
-      "issuanceProtocols": ["OpenID4VCI"],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
       "presentationProtocols": [
         "OpenID4VP",
         "ISO 18013-5"
@@ -36,11 +35,15 @@
       "website": "https://github.com/eu-digital-identity-wallet/av-app-ios-wallet-ui",
       "openSource": true,
       "repository": "https://github.com/eu-digital-identity-wallet/av-app-ios-wallet-ui",
-      "platforms": ["iOS"],
+      "platforms": [
+        "iOS"
+      ],
       "credentialFormats": [
         "mDL/mDoc"
       ],
-      "issuanceProtocols": ["OpenID4VCI"],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
       "presentationProtocols": [
         "OpenID4VP",
         "ISO 18013-5"
@@ -55,12 +58,16 @@
       "website": "https://issuer.eudiw.dev/",
       "openSource": true,
       "repository": "https://github.com/eu-digital-identity-wallet/eudi-srv-web-issuing-eudiw-py",
-      "platforms": ["Web"],
+      "platforms": [
+        "Web"
+      ],
       "credentialFormats": [
         "mDL/mDoc",
         "SD-JWT-VC"
       ],
-      "issuanceProtocols": ["OpenID4VCI"]
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ]
     },
     {
       "id": "eudi-reference-verifier",
@@ -71,7 +78,9 @@
       "website": "https://verifier.eudiw.dev/home",
       "openSource": true,
       "repository": "https://github.com/eu-digital-identity-wallet/eudi-srv-verifier-endpoint",
-      "platforms": ["Web"],
+      "platforms": [
+        "Web"
+      ],
       "credentialFormats": [
         "mDL/mDoc",
         "SD-JWT-VC"
@@ -81,5 +90,6 @@
         "ISO 18013-5"
       ]
     }
-  ]
+  ],
+  "orgId": "org:eu"
 }

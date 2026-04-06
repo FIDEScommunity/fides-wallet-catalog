@@ -1,10 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Albanian Government",
-    "website": "https://me.rks-gov.net",
-    "country": "AL"
-  },
   "wallets": [
     {
       "id": "e-albania-digital-id",
@@ -16,5 +11,6 @@
       "platforms": [],
       "logo": "https://flagcdn.com/w80/al.png"
     }
-  ]
+  ],
+  "orgId": "org:albania"
 }

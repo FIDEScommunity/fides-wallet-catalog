@@ -1,11 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Meeco",
-    "website": "https://www.meeco.me",
-    "logo": "https://www.google.com/s2/favicons?domain=meeco.me&sz=128",
-    "country": "AU"
-  },
   "wallets": [
     {
       "id": "meeco-svx-platform",
@@ -14,11 +8,25 @@
       "logo": "https://www.google.com/s2/favicons?domain=meeco.me&sz=128",
       "website": "https://www.meeco.me",
       "type": "organizational",
-      "capabilities": ["holder", "issuer"],
-      "platforms": ["Web", "iOS", "Android"],
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC"],
-      "issuanceProtocols": ["OpenID4VCI"],
-      "presentationProtocols": ["OpenID4VP"],
+      "capabilities": [
+        "holder",
+        "issuer"
+      ],
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
       "openSource": false,
       "status": "production"
     },
@@ -29,7 +37,10 @@
       "logo": "https://www.google.com/s2/favicons?domain=meeco.me&sz=128",
       "website": "https://www.meeco.me",
       "type": "personal",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/pk/app/meeco-wallet/id1570355469"
       },
@@ -37,5 +48,6 @@
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-01-06T12:00:00Z"
+  "lastUpdated": "2026-01-06T12:00:00Z",
+  "orgId": "org:meeco"
 }

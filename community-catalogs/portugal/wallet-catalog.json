@@ -1,10 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Portuguese Government",
-    "website": "https://eportugal.gov.pt",
-    "country": "PT"
-  },
   "wallets": [
     {
       "id": "govpt",
@@ -13,9 +8,16 @@
       "type": "personal",
       "status": "production",
       "website": "https://eportugal.gov.pt",
-      "platforms": ["iOS", "Android"],
-      "credentialFormats": ["mDL/mDoc"],
-      "presentationProtocols": ["ISO 18013-5"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "credentialFormats": [
+        "mDL/mDoc"
+      ],
+      "presentationProtocols": [
+        "ISO 18013-5"
+      ],
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/nl/app/gov-pt/id1384884826",
         "android": "https://play.google.com/store/apps/details?id=id.gov.pt"
@@ -23,5 +25,6 @@
       "logo": "https://www.google.com/s2/favicons?domain=eportugal.gov.pt&sz=128",
       "releaseDate": "2019-01-01"
     }
-  ]
+  ],
+  "orgId": "org:portugal"
 }

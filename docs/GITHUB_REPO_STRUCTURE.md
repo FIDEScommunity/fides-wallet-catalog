@@ -65,14 +65,12 @@ Each `wallet-catalog.json` must conform to the FIDES Wallet Catalog Schema: [wal
 
 ### Minimal Example
 
+Add or reuse an entry in the [organization catalog](https://github.com/FIDEScommunity/fides-organization-catalog); use the same `orgId` here.
+
 ```json
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Your Organization",
-    "website": "https://your-domain.com",
-    "country": "NL"
-  },
+  "orgId": "org:your-org",
   "wallets": [
     {
       "id": "your-wallet",
@@ -89,16 +87,7 @@ Each `wallet-catalog.json` must conform to the FIDES Wallet Catalog Schema: [wal
 ```json
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "Your Organization",
-    "website": "https://your-domain.com",
-    "logo": "https://your-domain.com/logo.png",
-    "country": "NL",
-    "contact": {
-      "email": "info@your-domain.com",
-      "support": "https://your-domain.com/support"
-    }
-  },
+  "orgId": "org:your-org",
   "wallets": [
     {
       "id": "your-wallet",
@@ -145,7 +134,7 @@ Each `wallet-catalog.json` must conform to the FIDES Wallet Catalog Schema: [wal
 | Field | Description |
 |-------|-------------|
 | `$schema` | Must be `https://fides.community/schemas/wallet-catalog/v1` |
-| `provider.name` | Your organization name |
+| `orgId` | Organization catalog id (e.g. `org:animo`); organization name, website, logo, and country come from there |
 | `wallets[].id` | Unique wallet identifier (lowercase, alphanumeric, hyphens) |
 | `wallets[].name` | Display name of the wallet |
 | `wallets[].type` | Either `personal` or `organizational` |
@@ -154,8 +143,6 @@ Each `wallet-catalog.json` must conform to the FIDES Wallet Catalog Schema: [wal
 
 | Field | Description |
 |-------|-------------|
-| `provider.logo` | URL to organization logo (displayed in catalog) |
-| `provider.country` | ISO 3166-1 alpha-2 country code (e.g., "NL", "DE", "US") |
 | `wallets[].logo` | URL to wallet logo (displayed in catalog) |
 | `wallets[].description` | Short description of the wallet |
 | `wallets[].platforms` | `["iOS", "Android", "Web", "Windows", "macOS", "Linux", "CLI"]` |

@@ -1,14 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "K4-Security",
-    "website": "https://www.k4-security.com/",
-    "logo": "https://www.google.com/s2/favicons?domain=k4-security.com&sz=128",
-    "country": "KR",
-    "contact": {
-      "email": "contact@k4-security.com"
-    }
-  },
   "wallets": [
     {
       "id": "ksid-wallet",
@@ -49,5 +40,6 @@
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-03-03T00:00:00Z"
+  "lastUpdated": "2026-03-03T00:00:00Z",
+  "orgId": "org:k4security"
 }

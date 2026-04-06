@@ -1,15 +1,5 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
-  "provider": {
-    "name": "iGrant.io",
-    "did": "did:web:igrant.io",
-    "website": "https://igrant.io",
-    "logo": "https://www.google.com/s2/favicons?domain=igrant.io&sz=128",
-    "country": "SE",
-    "contact": {
-      "email": "support@igrant.io"
-    }
-  },
   "wallets": [
     {
       "id": "igrant-data-wallet",
@@ -18,20 +8,63 @@
       "logo": "https://www.google.com/s2/favicons?domain=igrant.io&sz=128",
       "website": "https://igrant.io/datawallet",
       "type": "personal",
-      "platforms": ["iOS", "Android"],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
       "openSource": true,
       "license": "Apache-2.0",
       "repository": "https://docs.igrant.io/docs/data-wallet-overview/",
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "AnonCreds", "mDL/mDoc"],
-      "issuanceProtocols": ["OpenID4VCI", "DIDComm Issue Credential v2"],
-      "presentationProtocols": ["OpenID4VP", "DIDComm Present Proof v2", "SIOPv2"],
-      "supportedIdentifiers": ["did:key", "did:web", "did:webvh", "did:jwk", "x509", "did:ebsi", "jwk"],
-      "keyStorage": ["Secure Enclave (iOS)", "StrongBox (Android)", "Software"],
-      "signingAlgorithms": ["ES256", "EdDSA"],
-      "credentialStatusMethods": ["IETF Token Status List", "W3C Verifiable Credentials Status List v2021"],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "AnonCreds",
+        "mDL/mDoc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI",
+        "DIDComm Issue Credential v2"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "DIDComm Present Proof v2",
+        "SIOPv2"
+      ],
+      "supportedIdentifiers": [
+        "did:key",
+        "did:web",
+        "did:webvh",
+        "did:jwk",
+        "x509",
+        "did:ebsi",
+        "jwk"
+      ],
+      "keyStorage": [
+        "Secure Enclave (iOS)",
+        "StrongBox (Android)",
+        "Software"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "EdDSA"
+      ],
+      "credentialStatusMethods": [
+        "IETF Token Status List",
+        "W3C Verifiable Credentials Status List v2021"
+      ],
       "certifications": [],
-      "interoperabilityProfiles": ["DIIP v4", "EWC v3", "HAIP v1", "EUDI Wallet ARF"],
-      "standards": ["ARF 2.7.3", "W3C Verifiable Credentials", "OpenID for Verifiable Credentials", "HAIP v1"],
+      "interoperabilityProfiles": [
+        "DIIP v4",
+        "EWC v3",
+        "HAIP v1",
+        "EUDI Wallet ARF"
+      ],
+      "standards": [
+        "ARF 2.7.3",
+        "W3C Verifiable Credentials",
+        "OpenID for Verifiable Credentials",
+        "HAIP v1"
+      ],
       "features": [
         "Strong Customer Authentication",
         "Payments (Production Proven)",
@@ -57,19 +90,64 @@
       "logo": "https://www.google.com/s2/favicons?domain=igrant.io&sz=128",
       "website": "https://igrant.io",
       "type": "organizational",
-      "capabilities": ["holder", "issuer", "verifier"],
-      "platforms": ["Web"],
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web"
+      ],
       "openSource": false,
-      "credentialFormats": ["SD-JWT-VC", "JWT-VC", "AnonCreds", "mDL/mDoc"],
-      "issuanceProtocols": ["OpenID4VCI", "DIDComm Issue Credential v2"],
-      "presentationProtocols": ["OpenID4VP", "DIDComm Present Proof v2", "SIOPv2"],
-      "supportedIdentifiers": ["did:key", "did:web", "did:webvh", "did:jwk", "x509", "did:ebsi", "jwk"],
-      "keyStorage": ["HSM", "Cloud KMS"],
-      "signingAlgorithms": ["ES256", "EdDSA"],
-      "credentialStatusMethods": ["IETF Token Status List", "W3C Verifiable Credentials Status List v2021"],
+      "credentialFormats": [
+        "SD-JWT-VC",
+        "JWT-VC",
+        "AnonCreds",
+        "mDL/mDoc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI",
+        "DIDComm Issue Credential v2"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "DIDComm Present Proof v2",
+        "SIOPv2"
+      ],
+      "supportedIdentifiers": [
+        "did:key",
+        "did:web",
+        "did:webvh",
+        "did:jwk",
+        "x509",
+        "did:ebsi",
+        "jwk"
+      ],
+      "keyStorage": [
+        "HSM",
+        "Cloud KMS"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "EdDSA"
+      ],
+      "credentialStatusMethods": [
+        "IETF Token Status List",
+        "W3C Verifiable Credentials Status List v2021"
+      ],
       "certifications": [],
-      "interoperabilityProfiles": ["DIIP v4", "EWC v3", "HAIP v1", "EUDI Wallet ARF"],
-      "standards": ["ARF 2.7.3", "W3C Verifiable Credentials", "OpenID for Verifiable Credentials", "HAIP v1"],
+      "interoperabilityProfiles": [
+        "DIIP v4",
+        "EWC v3",
+        "HAIP v1",
+        "EUDI Wallet ARF"
+      ],
+      "standards": [
+        "ARF 2.7.3",
+        "W3C Verifiable Credentials",
+        "OpenID for Verifiable Credentials",
+        "HAIP v1"
+      ],
       "features": [
         "Strong Customer Authentication",
         "Payments (Production Proven)",
@@ -84,5 +162,6 @@
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-01-06T12:00:00Z"
+  "lastUpdated": "2026-01-06T12:00:00Z",
+  "orgId": "org:igrant"
 }
