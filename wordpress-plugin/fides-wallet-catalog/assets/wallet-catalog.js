@@ -180,6 +180,13 @@
     return '';
   }
 
+  /** ISO 3166-1 alpha-2 for ?country= (country explorer deep links). */
+  function normalizeCountryFilterCode(raw) {
+    if (raw == null || typeof raw !== 'string') return '';
+    const s = String(raw).trim().replace(/[^a-z]/gi, '').toUpperCase();
+    return s.length === 2 ? s : '';
+  }
+
   // Vocabulary for [i] info popups (loaded from interop-profiles)
   let vocabulary = null;
 
@@ -533,6 +540,7 @@
    * Supports:
    *   ?profile=Profile Name     — pre-filter by interoperability profile
    *   ?wallets=id1,id2,...      — show only specific wallets (comma-separated IDs)
+   *   ?country=NL               — pre-filter by provider country (ISO 3166-1 alpha-2)
    */
   function readQueryParams() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -547,6 +555,12 @@
     if (walletsParam) {
       originalIds = walletsParam.split(',').map(s => s.trim()).filter(Boolean);
       filters.ids = [...originalIds];
+    }
+
+    const countryCode = normalizeCountryFilterCode(urlParams.get('country') || '');
+    if (countryCode) {
+      filters.countries = [countryCode];
+      document.body.classList.add('filters-visible');
     }
   }
 
@@ -2258,6 +2272,9 @@
         if (action === 'clear-country-filter') {
           if (filters.countries.length > 0) {
             filters.countries = [];
+            const url = new URL(window.location.href);
+            url.searchParams.delete('country');
+            history.replaceState(null, '', url.toString());
             render();
           }
           return;
@@ -2300,8 +2317,16 @@
         // Clear the deep-link pre-filter entirely (checkbox will disappear)
         originalIds = [];
         const url = new URL(window.location.href);
+        let urlChanged = false;
         if (url.searchParams.has('wallets')) {
           url.searchParams.delete('wallets');
+          urlChanged = true;
+        }
+        if (url.searchParams.has('country')) {
+          url.searchParams.delete('country');
+          urlChanged = true;
+        }
+        if (urlChanged) {
           history.replaceState(null, '', url.toString());
         }
         render();

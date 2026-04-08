@@ -3,7 +3,7 @@
  * Plugin Name: FIDES Wallet Catalog
  * Plugin URI: https://fides.community
  * Description: Displays the FIDES Wallet Catalog with search and filter functionality
- * Version: 2.5.6
+ * Version: 2.5.8
  * Author: FIDES Labs BV
  * Author URI: https://fides.community
  * License: Apache-2.0
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
 class FIDES_Wallet_Catalog {
     
     private static $instance = null;
-    private const VERSION = '2.5.6';
+    private const VERSION = '2.5.8';
     private $plugin_url;
     private $plugin_path;
     
@@ -38,6 +38,7 @@ class FIDES_Wallet_Catalog {
         add_action('init', array($this, 'register_shortcode'));
         add_action('wp_enqueue_scripts', array($this, 'register_assets'));
         add_action('admin_menu', array($this, 'add_admin_menu'));
+        add_action('admin_init', array($this, 'register_settings'));
     }
     
     /**
@@ -143,6 +144,27 @@ class FIDES_Wallet_Catalog {
     }
     
     /**
+     * Register options (Settings → FIDES Wallet Catalog)
+     */
+    public function register_settings() {
+        register_setting('fides_wallet_catalog_settings', 'fides_wallet_catalog_map_url', array(
+            'type' => 'string',
+            'default' => 'https://fides.community/community-tools/map/',
+            'sanitize_callback' => 'esc_url_raw',
+        ));
+        register_setting('fides_wallet_catalog_settings', 'fides_wallet_catalog_organization_catalog_url', array(
+            'type' => 'string',
+            'default' => 'https://fides.community/ecosystem-explorer/organization-catalog/',
+            'sanitize_callback' => 'esc_url_raw',
+        ));
+        register_setting('fides_wallet_catalog_settings', 'fides_wallet_catalog_blue_pages_url', array(
+            'type' => 'string',
+            'default' => 'https://fides.community/community-tools/blue-pages',
+            'sanitize_callback' => 'esc_url_raw',
+        ));
+    }
+
+    /**
      * Admin menu
      */
     public function add_admin_menu() {
@@ -164,7 +186,44 @@ class FIDES_Wallet_Catalog {
             <h1>FIDES Wallet Catalog</h1>
             
             <p>This plugin displays the FIDES Wallet Catalog on your website. Data is automatically loaded from the <a href="https://github.com/FIDEScommunity/fides-wallet-catalog" target="_blank">FIDES GitHub repository</a>.</p>
-            
+
+            <form method="post" action="options.php">
+                <?php settings_fields('fides_wallet_catalog_settings'); ?>
+                <h2>Settings</h2>
+                <table class="form-table" role="presentation">
+                    <tr>
+                        <th scope="row"><label for="fides_wallet_catalog_map_url">Map page URL</label></th>
+                        <td>
+                            <input type="url" id="fides_wallet_catalog_map_url" name="fides_wallet_catalog_map_url"
+                                   value="<?php echo esc_attr(get_option('fides_wallet_catalog_map_url', 'https://fides.community/community-tools/map/')); ?>"
+                                   class="regular-text">
+                            <p class="description">URL of the FIDES catalog map page. Used for the &quot;Show on map&quot; link.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="fides_wallet_catalog_organization_catalog_url">Organization catalog URL</label></th>
+                        <td>
+                            <input type="url" id="fides_wallet_catalog_organization_catalog_url" name="fides_wallet_catalog_organization_catalog_url"
+                                   value="<?php echo esc_attr(get_option('fides_wallet_catalog_organization_catalog_url', 'https://fides.community/ecosystem-explorer/organization-catalog/')); ?>"
+                                   class="regular-text">
+                            <p class="description">Page URL of the FIDES Organization Catalog. Used for <code>?org=org:…</code> deep links when opening a wallet modal (provider name). Use the same value as in the RP Catalog settings if both plugins are installed.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="fides_wallet_catalog_blue_pages_url">Blue Pages URL</label></th>
+                        <td>
+                            <input type="url" id="fides_wallet_catalog_blue_pages_url" name="fides_wallet_catalog_blue_pages_url"
+                                   value="<?php echo esc_attr(get_option('fides_wallet_catalog_blue_pages_url', 'https://fides.community/community-tools/blue-pages')); ?>"
+                                   class="regular-text">
+                            <p class="description">Base URL for Blue Pages DID lookups (trailing slash optional).</p>
+                        </td>
+                    </tr>
+                </table>
+                <?php submit_button(); ?>
+            </form>
+
+            <hr>
+
             <h2>Shortcode Usage</h2>
                 <p>Use the following shortcode to display the wallet catalog:</p>
                 <code>[fides_wallet_catalog]</code>
