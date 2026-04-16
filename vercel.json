@@ -7,7 +7,7 @@
     "api/**/*.ts": {
       "memory": 256,
       "maxDuration": 10,
-      "includeFiles": ["api/lib/aggregated.deploy.json", "data/aggregated.json"]
+      "includeFiles": "data/**"
     }
   }
 }
