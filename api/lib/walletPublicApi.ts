@@ -1,5 +1,6 @@
 /**
  * Shared logic for the wallet catalog HTTP API (local Express + Vercel serverless).
+ * Kept under api/ so Vercel bundles it with serverless routes.
  */
 
 import fs from "fs";
@@ -14,7 +15,7 @@ import type {
   Platform,
   WalletStatus,
   WalletType,
-} from "../src/types/wallet";
+} from "../../src/types/wallet";
 
 export const AGGREGATED_JSON = path.join(process.cwd(), "data", "aggregated.json");
 

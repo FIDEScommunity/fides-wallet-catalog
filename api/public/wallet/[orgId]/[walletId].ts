@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { loadAggregatedDataSync } from "../../../../lib/walletPublicApi";
+import { loadAggregatedDataSync } from "../../../lib/walletPublicApi";
 
 export default function handler(req: VercelRequest, res: VercelResponse): void {
   res.setHeader("Access-Control-Allow-Origin", "*");

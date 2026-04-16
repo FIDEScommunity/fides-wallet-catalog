@@ -7,7 +7,7 @@ import {
   parsePagination,
   parseSort,
   paginateWallets,
-} from "../../../lib/walletPublicApi";
+} from "../../lib/walletPublicApi";
 
 export default function handler(req: VercelRequest, res: VercelResponse): void {
   res.setHeader("Access-Control-Allow-Origin", "*");
