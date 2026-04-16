@@ -14,7 +14,7 @@ import {
   parsePagination,
   parseSort,
   paginateWallets,
-} from "../../api/public/lib/walletPublicApi";
+} from "../../api/public/walletPublicApi";
 
 const app = express();
 const PORT = process.env.PORT || 3001;

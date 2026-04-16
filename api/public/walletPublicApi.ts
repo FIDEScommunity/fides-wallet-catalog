@@ -1,6 +1,6 @@
 /**
  * Shared logic for the wallet catalog HTTP API (local Express + Vercel serverless).
- * Kept under api/public/lib so Vercel bundles it with route handlers.
+ * Lives next to route files under api/public/ (avoid an api/public/lib/ folder on Vercel).
  */
 
 import fs from "fs";
@@ -15,18 +15,18 @@ import type {
   Platform,
   WalletStatus,
   WalletType,
-} from "../types/wallet";
+} from "./httpWalletTypes";
 
 /**
  * Resolve aggregated.json without importing it as a module: Vercel's TS pipeline
  * may emit require() to a separate JSON file that is not shipped, which crashes
  * the function at load time. A deploy-time copy (see vercel.json buildCommand)
- * plus includeFiles makes the file available under api/public/lib on Vercel.
+ * plus includeFiles makes the file available under api/public on Vercel.
  */
 function resolveAggregatedJsonPath(): string | null {
   // Vercel bundles api/*.ts as CJS; avoid import.meta (can break at load time).
   const candidates = [
-    path.join(process.cwd(), "api", "public", "lib", "aggregated.deploy.json"),
+    path.join(process.cwd(), "api", "public", "aggregated.deploy.json"),
     path.join(process.cwd(), "data", "aggregated.json"),
   ];
   for (const p of candidates) {

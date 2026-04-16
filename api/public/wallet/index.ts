@@ -7,7 +7,7 @@ import {
   parsePagination,
   parseSort,
   paginateWallets,
-} from "../lib/walletPublicApi";
+} from "../walletPublicApi";
 
 export default function handler(req: VercelRequest, res: VercelResponse): void {
   try {
