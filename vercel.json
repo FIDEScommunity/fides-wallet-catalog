@@ -1,5 +1,5 @@
 {
-  "buildCommand": "cp data/aggregated.json api/public/aggregated.deploy.json && echo 'API data staged'",
+  "buildCommand": "cp data/aggregated.json lib/aggregated.deploy.json && echo 'API data staged'",
   "installCommand": "npm ci",
   "framework": null,
   "outputDirectory": "public",

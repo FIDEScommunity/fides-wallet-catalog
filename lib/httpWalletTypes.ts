@@ -1,5 +1,5 @@
 // Types for the FIDES Wallet Catalog (HTTP API bundle).
-// Keep in sync with src/types/wallet.ts — lives under api/public/ with handlers.
+// Keep in sync with src/types/wallet.ts (duplicated for Vercel helpers in lib/).
 
 export type WalletType = 'personal' | 'organizational';
 export type WalletStatus = 'development' | 'beta' | 'production' | 'deprecated';

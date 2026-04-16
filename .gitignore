@@ -5,7 +5,7 @@ node_modules/
 dist/
 
 # Staged for Vercel serverless (see vercel.json buildCommand)
-api/public/aggregated.deploy.json
+lib/aggregated.deploy.json
 
 # IDE
 .vscode/
