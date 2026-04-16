@@ -29,7 +29,7 @@ wallet-catalog/
 │   └── httpWalletTypes.ts        # Types for the HTTP API helpers
 ├── api/
 │   └── public/                   # Vercel serverless routes only (each *.ts is an endpoint)
-│       ├── wallet/
+│       ├── wallet/[[...slug]].ts  # List + detail (single Vercel function)
 │       └── api-docs.ts
 ├── public/                       # Static landing + Swagger UI for the API
 ├── vercel.json
