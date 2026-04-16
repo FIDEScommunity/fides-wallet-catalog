@@ -5,6 +5,7 @@
 
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 import type {
   AggregatedCatalog,
   NormalizedWallet,
@@ -16,26 +17,46 @@ import type {
   WalletStatus,
   WalletType,
 } from "../../src/types/wallet";
-import bundledAggregated from "../../data/aggregated.json";
 
-/** Local Express: read from disk so crawls are visible without restart. */
-const AGGREGATED_JSON = path.join(process.cwd(), "data", "aggregated.json");
+/**
+ * Resolve aggregated.json without importing it as a module: Vercel's TS pipeline
+ * may emit require() to a separate JSON file that is not shipped, which crashes
+ * the function at load time. A deploy-time copy (see vercel.json buildCommand)
+ * plus includeFiles makes the file available next to api/lib on Vercel.
+ */
+function resolveAggregatedJsonPath(): string | null {
+  const candidates: string[] = [
+    path.join(process.cwd(), "api", "lib", "aggregated.deploy.json"),
+    path.join(process.cwd(), "data", "aggregated.json"),
+  ];
+  try {
+    const dir = path.dirname(fileURLToPath(import.meta.url));
+    candidates.unshift(
+      path.join(dir, "aggregated.deploy.json"),
+      path.join(dir, "..", "..", "data", "aggregated.json"),
+    );
+  } catch {
+    /* import.meta unavailable in some tooling */
+  }
+  for (const p of candidates) {
+    if (fs.existsSync(p)) return p;
+  }
+  return null;
+}
 
 let cache: AggregatedCatalog | null = null;
 let cacheTime = 0;
 const CACHE_TTL_MS = 60_000;
 
 export function loadAggregatedDataSync(): AggregatedCatalog | null {
-  if (process.env.VERCEL) {
-    return bundledAggregated as AggregatedCatalog;
-  }
-
   const now = Date.now();
   if (cache && now - cacheTime < CACHE_TTL_MS) {
     return cache;
   }
+  const file = resolveAggregatedJsonPath();
+  if (!file) return null;
   try {
-    const raw = fs.readFileSync(AGGREGATED_JSON, "utf-8");
+    const raw = fs.readFileSync(file, "utf-8");
     cache = JSON.parse(raw) as AggregatedCatalog;
     cacheTime = now;
     return cache;
