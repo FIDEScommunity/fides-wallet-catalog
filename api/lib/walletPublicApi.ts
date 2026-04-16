@@ -16,14 +16,20 @@ import type {
   WalletStatus,
   WalletType,
 } from "../../src/types/wallet";
+import bundledAggregated from "../../data/aggregated.json";
 
-export const AGGREGATED_JSON = path.join(process.cwd(), "data", "aggregated.json");
+/** Local Express: read from disk so crawls are visible without restart. */
+const AGGREGATED_JSON = path.join(process.cwd(), "data", "aggregated.json");
 
 let cache: AggregatedCatalog | null = null;
 let cacheTime = 0;
 const CACHE_TTL_MS = 60_000;
 
 export function loadAggregatedDataSync(): AggregatedCatalog | null {
+  if (process.env.VERCEL) {
+    return bundledAggregated as AggregatedCatalog;
+  }
+
   const now = Date.now();
   if (cache && now - cacheTime < CACHE_TTL_MS) {
     return cache;
