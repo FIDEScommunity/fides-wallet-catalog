@@ -15,7 +15,7 @@ import type {
   Platform,
   WalletStatus,
   WalletType,
-} from "../../src/types/wallet";
+} from "../types/wallet";
 
 /**
  * Resolve aggregated.json without importing it as a module: Vercel's TS pipeline

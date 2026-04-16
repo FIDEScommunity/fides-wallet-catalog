@@ -10,5 +10,5 @@
     "resolveJsonModule": true,
     "types": ["node"]
   },
-  "include": ["api/**/*.ts", "src/types/wallet.ts"]
+  "include": ["api/**/*.ts"]
 }
