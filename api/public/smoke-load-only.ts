@@ -3,5 +3,6 @@ import { loadAggregatedDataSync } from "../lib/walletLoadOnly";
 
 export default function handler(_req: VercelRequest, res: VercelResponse): void {
   const data = loadAggregatedDataSync();
-  res.status(200).json({ count: data?.wallets?.length ?? null });
+  const wallets = data?.wallets as unknown[] | undefined;
+  res.status(200).json({ count: wallets?.length ?? null });
 }
