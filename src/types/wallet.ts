@@ -140,6 +140,8 @@ export interface AggregatedCatalog {
 // Filter options
 export interface WalletFilters {
   search?: string;
+  /** When set, only wallets for this organization catalog id (e.g. org:animo). */
+  orgId?: string;
   type?: WalletType[];
   capabilities?: WalletCapability[];
   platforms?: Platform[];

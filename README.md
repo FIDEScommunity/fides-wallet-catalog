@@ -17,13 +17,23 @@ The FIDES Wallet Catalog provides a standardized, searchable database of digital
 The catalog is available as:
 - **Website** - Interactive catalog at fides.community
 - **WordPress plugin** - Embed the catalog on your own site
-- **API** - JSON data at `data/aggregated.json`
+- **API** - JSON data at `data/aggregated.json`, optional [HTTP API](docs/API.md) on Vercel
 
 ## 📁 Project Structure
 
 ```
 wallet-catalog/
 ├── CONCEPT.md                    # Conceptual design
+├── lib/
+│   └── walletPublicApi.ts        # Shared list/filter logic (Express + Vercel)
+├── api/public/                   # Vercel serverless public API
+│   ├── wallet/
+│   ├── providers.ts
+│   ├── stats.ts
+│   ├── filter-options.ts
+│   └── api-docs.ts
+├── public/                       # Static landing + Swagger UI for the API
+├── vercel.json
 ├── schemas/
 │   └── wallet-catalog.schema.json  # JSON Schema for wallet descriptors
 ├── community-catalogs/           # All wallet catalogs (add yours here!)
@@ -50,6 +60,7 @@ wallet-catalog/
 │   ├── wallet-history-state.json # Stable first-seen state across crawler runs
 │   └── did-registry.json         # Registered DIDs for automatic crawling
 └── docs/                         # Documentation
+    ├── API.md                    # Public HTTP API (Vercel)
     ├── DID_REGISTRATION.md       # How to register your DID
     ├── GITHUB_REPO_STRUCTURE.md  # Repository structure
     ├── DESIGN_DECISIONS.md       # Architecture and design choices
@@ -100,7 +111,7 @@ Open http://localhost:5173 in your browser.
 npm run serve
 ```
 
-The API runs on http://localhost:3001
+The API runs on http://localhost:3001 — same data and filters as `GET /api/public/wallet` on Vercel (see [docs/API.md](docs/API.md)).
 
 ## 🌍 Data Sources
 
@@ -197,15 +208,20 @@ npm run serve
 
 | Endpoint | Description |
 |----------|-------------|
-| `GET /api/wallets` | All wallets, with optional filters |
-| `GET /api/wallets/:orgId/:walletId` | Specific wallet (`orgId` URL-encoded, e.g. `org%3Aanimo`) |
+| `GET /api/wallets` | Paginated list (`content`, `totalElements`, `page`/`number`, `size`) + filters |
+| `GET /api/wallets/:orgId/:walletId` | One wallet (`orgId` URL-encoded, e.g. `org%3Aanimo`) |
 | `GET /api/providers` | All providers |
 | `GET /api/stats` | Statistics |
+| `GET /api/filters` | Facet values for filter UIs (same payload as `/api/public/filter-options` on Vercel) |
 
 Example with filters:
 ```
-GET /api/wallets?search=paradym&type=personal&platforms=iOS,Android&credentialFormats=SD-JWT-VC
+GET /api/wallets?search=paradym&type=personal&platforms=iOS,Android&credentialFormats=SD-JWT-VC&page=0&size=20
 ```
+
+### Public HTTP API (Vercel)
+
+Deploy this repository to Vercel (root = repo root; settings from `vercel.json`) to expose `GET /api/public/wallet`, providers, stats, filter options, and OpenAPI — see **[docs/API.md](docs/API.md)**. For a single hostname with other FIDES catalogs, use the [FIDES API Gateway](https://github.com/FIDEScommunity/fides-api-gateway) and set `FIDES_WALLET_CATALOG_ORIGIN` to this project’s `*.vercel.app` URL.
 
 ## 📊 Wallet Properties
 

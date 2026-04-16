@@ -4,6 +4,9 @@
   "description": "FIDES Community Wallet Catalog - Decentralized wallet registration and display",
   "license": "Apache-2.0",
   "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -11,6 +14,7 @@
     "crawl": "tsx src/crawler/index.ts",
     "backfill:first-seen": "tsx src/crawler/backfill-first-seen.ts",
     "serve": "tsx src/server/index.ts",
+    "typecheck:api": "tsc -p tsconfig.api.json",
     "validate": "ajv validate --spec=draft2020 -c ajv-formats -s schemas/wallet-catalog.schema.json -d 'community-catalogs/**/wallet-catalog.json' --strict=false",
     "check-links": "tsx scripts/check-links.ts"
   },
@@ -26,7 +30,8 @@
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
-    "@types/node": "^20.10.0",
+    "@types/node": "^24.0.0",
+    "@vercel/node": "^3.0.0",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@vitejs/plugin-react": "^4.2.1",

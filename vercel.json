@@ -1,0 +1,12 @@
+{
+  "buildCommand": "echo 'No build step; API only'",
+  "installCommand": "npm ci",
+  "framework": null,
+  "outputDirectory": "public",
+  "functions": {
+    "api/**/*.ts": {
+      "memory": 256,
+      "maxDuration": 10
+    }
+  }
+}
