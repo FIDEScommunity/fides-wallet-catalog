@@ -5,7 +5,6 @@
 
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
 import type {
   AggregatedCatalog,
   NormalizedWallet,
@@ -25,19 +24,11 @@ import type {
  * plus includeFiles makes the file available next to api/lib on Vercel.
  */
 function resolveAggregatedJsonPath(): string | null {
-  const candidates: string[] = [
+  // Vercel bundles api/*.ts as CJS; avoid import.meta (can break at load time).
+  const candidates = [
     path.join(process.cwd(), "api", "lib", "aggregated.deploy.json"),
     path.join(process.cwd(), "data", "aggregated.json"),
   ];
-  try {
-    const dir = path.dirname(fileURLToPath(import.meta.url));
-    candidates.unshift(
-      path.join(dir, "aggregated.deploy.json"),
-      path.join(dir, "..", "..", "data", "aggregated.json"),
-    );
-  } catch {
-    /* import.meta unavailable in some tooling */
-  }
   for (const p of candidates) {
     if (fs.existsSync(p)) return p;
   }
