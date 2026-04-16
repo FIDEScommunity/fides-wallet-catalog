@@ -1,8 +1,5 @@
 /**
- * Vercel wallet routes (list + detail) in one file.
- * Vercel compiles each TypeScript file under api/ as its own serverless entry;
- * runtime imports from project lib/ are not reliably bundled, so this file
- * duplicates lib/walletPublicApi.ts. Keep in sync with lib/walletPublicApi.ts.
+ * Wallet list — logic inlined for Vercel (see lib/walletPublicApi.ts for Express; keep in sync).
  */
 
 import type { VercelRequest, VercelResponse } from "@vercel/node";
@@ -252,14 +249,6 @@ function sortWallets(
   });
 }
 
-function parseSlugParam(
-  raw: string | string[] | undefined,
-): string[] | undefined {
-  if (raw === undefined) return undefined;
-  if (Array.isArray(raw)) return raw;
-  return [raw];
-}
-
 export default function handler(req: VercelRequest, res: VercelResponse): void {
   try {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -281,9 +270,6 @@ export default function handler(req: VercelRequest, res: VercelResponse): void {
       return;
     }
 
-    const slug = parseSlugParam(req.query.slug);
-    const isList = !slug || slug.length === 0;
-
     const data = loadAggregatedDataSync();
     if (!data) {
       res.status(503).json({
@@ -293,46 +279,18 @@ export default function handler(req: VercelRequest, res: VercelResponse): void {
       return;
     }
 
-    if (isList) {
-      const q = req.query as Record<string, string | string[] | undefined>;
-      const filters = parseWalletFiltersFromQuery(q);
-      let list = filterWallets(data.wallets, filters);
-      const { field, desc } = parseSort(q);
-      sortWallets(list, field, desc);
-      const { page, size } = parsePagination(q);
-      const paged = paginateWallets(list, page, size);
+    const q = req.query as Record<string, string | string[] | undefined>;
+    const filters = parseWalletFiltersFromQuery(q);
+    let list = filterWallets(data.wallets, filters);
+    const { field, desc } = parseSort(q);
+    sortWallets(list, field, desc);
+    const { page, size } = parsePagination(q);
+    const paged = paginateWallets(list, page, size);
 
-      res.status(200).json({
-        ...paged,
-        lastUpdated: data.lastUpdated,
-      });
-      return;
-    }
-
-    if (slug.length !== 2) {
-      res.status(404).json({
-        message: "Not found",
-        timestamp: new Date().toISOString(),
-      });
-      return;
-    }
-
-    const orgId = decodeURIComponent(slug[0]);
-    const walletId = decodeURIComponent(slug[1]);
-
-    const wallet = data.wallets.find(
-      (w) => w.orgId === orgId && w.id === walletId,
-    );
-
-    if (!wallet) {
-      res.status(404).json({
-        message: "Wallet not found",
-        timestamp: new Date().toISOString(),
-      });
-      return;
-    }
-
-    res.status(200).json(wallet);
+    res.status(200).json({
+      ...paged,
+      lastUpdated: data.lastUpdated,
+    });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Unexpected error";
     res.status(500).json({
