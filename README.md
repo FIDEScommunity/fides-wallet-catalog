@@ -25,8 +25,9 @@ The catalog is available as:
 wallet-catalog/
 ├── CONCEPT.md                    # Conceptual design
 ├── api/
-│   ├── lib/walletPublicApi.ts    # Shared list/filter logic (Express + Vercel)
 │   └── public/                   # Vercel serverless public API
+│       ├── lib/walletPublicApi.ts  # Shared list/filter logic (Express + Vercel)
+│       ├── types/wallet.ts         # Types for the HTTP API bundle
 │       ├── wallet/
 │       └── api-docs.ts
 ├── public/                       # Static landing + Swagger UI for the API
