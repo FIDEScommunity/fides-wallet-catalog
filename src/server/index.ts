@@ -14,7 +14,6 @@ import {
   parsePagination,
   parseSort,
   paginateWallets,
-  buildFilterOptionsPayload,
 } from "../../lib/walletPublicApi";
 
 const app = express();
@@ -73,52 +72,8 @@ app.get('/api/wallets/:providerId/:walletId', (req, res) => {
   res.json(wallet);
 });
 
-app.get('/api/providers', (req, res) => {
-  const data = loadAggregatedDataSync();
-
-  if (!data) {
-    return res.status(503).json({
-      error: 'Data not available',
-    });
-  }
-
-  res.json({
-    providers: data.providers,
-    total: data.providers.length,
-  });
-});
-
-app.get('/api/stats', (req, res) => {
-  const data = loadAggregatedDataSync();
-
-  if (!data) {
-    return res.status(503).json({
-      error: 'Data not available',
-    });
-  }
-
-  res.json({
-    stats: data.stats,
-    lastUpdated: data.lastUpdated,
-  });
-});
-
-app.get('/api/filters', (req, res) => {
-  const data = loadAggregatedDataSync();
-
-  if (!data) {
-    return res.status(503).json({
-      error: 'Data not available',
-    });
-  }
-
-  res.json(buildFilterOptionsPayload(data));
-});
-
 app.listen(PORT, () => {
   console.log(`FIDES Wallet Catalog API running on http://localhost:${PORT}`);
   console.log('  GET /api/wallets       - List wallets (filters + pagination)');
-  console.log('  GET /api/providers     - List providers');
-  console.log('  GET /api/stats         - Statistics');
-  console.log('  GET /api/filters       - Filter facet options');
+  console.log('  GET /api/wallets/:orgId/:walletId - One wallet');
 });

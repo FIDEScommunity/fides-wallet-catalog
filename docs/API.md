@@ -46,25 +46,13 @@ Paginated, filterable list of wallets.
 
 Returns a single wallet. Encode `orgId` for the path (e.g. `org:animo` → `org%3Aanimo`).
 
-### `GET /api/public/providers`
-
-Returns `{ "providers": [], "total": n }`.
-
-### `GET /api/public/stats`
-
-Returns `{ "stats": { ... }, "lastUpdated": "..." }`.
-
-### `GET /api/public/filter-options`
-
-Returns facet lists (`platforms`, `credentialFormats`, `protocols`, etc.) for building UIs.
-
 ### `GET /api/public/api-docs`
 
 OpenAPI 3.1 specification (JSON).
 
 ## Local development server
 
-`npm run serve` exposes the same data with legacy paths: `/api/wallets`, `/api/providers`, `/api/stats`, `/api/filters` (see script output). List responses use the same pagination shape as `/api/public/wallet`.
+`npm run serve` exposes `/api/wallets` (list) and `/api/wallets/:orgId/:walletId` (detail) with the same pagination and filters as `/api/public/wallet` on Vercel.
 
 ## Deployment
 

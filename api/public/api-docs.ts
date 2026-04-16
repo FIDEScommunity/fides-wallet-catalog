@@ -6,7 +6,7 @@ const spec = {
     title: "FIDES Wallet Catalog API",
     version: "1.0.0",
     description:
-      "Public read-only API over data/aggregated.json — wallets, providers, stats, and filter facets.",
+      "Public read-only API over data/aggregated.json — list wallets and fetch one wallet by org + id.",
   },
   servers: [{ url: "/api/public" }],
   paths: {
@@ -60,66 +60,6 @@ const spec = {
             },
           },
           "404": { description: "Not found" },
-        },
-      },
-    },
-    "/providers": {
-      get: {
-        summary: "List wallet providers",
-        operationId: "listProviders",
-        responses: {
-          "200": {
-            description: "Providers array",
-            content: {
-              "application/json": {
-                schema: {
-                  type: "object",
-                  properties: {
-                    providers: { type: "array", items: { type: "object", additionalProperties: true } },
-                    total: { type: "integer" },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-    "/stats": {
-      get: {
-        summary: "Catalog statistics",
-        operationId: "getStats",
-        responses: {
-          "200": {
-            description: "Stats + lastUpdated",
-            content: {
-              "application/json": {
-                schema: {
-                  type: "object",
-                  properties: {
-                    stats: { type: "object", additionalProperties: true },
-                    lastUpdated: { type: "string" },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-    "/filter-options": {
-      get: {
-        summary: "Facet values for building filters",
-        operationId: "getFilterOptions",
-        responses: {
-          "200": {
-            description: "Distinct values for platforms, formats, protocols, etc.",
-            content: {
-              "application/json": {
-                schema: { type: "object", additionalProperties: true },
-              },
-            },
-          },
         },
       },
     },

@@ -28,9 +28,6 @@ wallet-catalog/
 │   └── walletPublicApi.ts        # Shared list/filter logic (Express + Vercel)
 ├── api/public/                   # Vercel serverless public API
 │   ├── wallet/
-│   ├── providers.ts
-│   ├── stats.ts
-│   ├── filter-options.ts
 │   └── api-docs.ts
 ├── public/                       # Static landing + Swagger UI for the API
 ├── vercel.json
@@ -210,9 +207,6 @@ npm run serve
 |----------|-------------|
 | `GET /api/wallets` | Paginated list (`content`, `totalElements`, `page`/`number`, `size`) + filters |
 | `GET /api/wallets/:orgId/:walletId` | One wallet (`orgId` URL-encoded, e.g. `org%3Aanimo`) |
-| `GET /api/providers` | All providers |
-| `GET /api/stats` | Statistics |
-| `GET /api/filters` | Facet values for filter UIs (same payload as `/api/public/filter-options` on Vercel) |
 
 Example with filters:
 ```
@@ -221,7 +215,7 @@ GET /api/wallets?search=paradym&type=personal&platforms=iOS,Android&credentialFo
 
 ### Public HTTP API (Vercel)
 
-Deploy this repository to Vercel (root = repo root; settings from `vercel.json`) to expose `GET /api/public/wallet`, providers, stats, filter options, and OpenAPI — see **[docs/API.md](docs/API.md)**. For a single hostname with other FIDES catalogs, use the [FIDES API Gateway](https://github.com/FIDEScommunity/fides-api-gateway) and set `FIDES_WALLET_CATALOG_ORIGIN` to this project’s `*.vercel.app` URL.
+Deploy this repository to Vercel (root = repo root; settings from `vercel.json`) to expose `GET /api/public/wallet`, wallet detail, and OpenAPI — see **[docs/API.md](docs/API.md)**. For a single hostname with other FIDES catalogs, use the [FIDES API Gateway](https://github.com/FIDEScommunity/fides-api-gateway) and set `FIDES_WALLET_CATALOG_ORIGIN` to this project’s `*.vercel.app` URL.
 
 ## 📊 Wallet Properties
 

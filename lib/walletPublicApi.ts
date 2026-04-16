@@ -158,41 +158,6 @@ export function filterWallets(
   });
 }
 
-export function buildFilterOptionsPayload(data: AggregatedCatalog): {
-  types: string[];
-  platforms: string[];
-  credentialFormats: string[];
-  protocols: string[];
-  didMethods: string[];
-  certifications: string[];
-  statuses: string[];
-} {
-  const platforms = new Set<string>();
-  const credentialFormats = new Set<string>();
-  const protocols = new Set<string>();
-  const didMethods = new Set<string>();
-  const certifications = new Set<string>();
-
-  for (const wallet of data.wallets) {
-    wallet.platforms?.forEach((p) => platforms.add(p));
-    wallet.credentialFormats?.forEach((f) => credentialFormats.add(f));
-    wallet.issuanceProtocols?.forEach((p) => protocols.add(p));
-    wallet.presentationProtocols?.forEach((p) => protocols.add(p));
-    wallet.supportedIdentifiers?.forEach((m) => didMethods.add(m));
-    wallet.certifications?.forEach((c) => certifications.add(c));
-  }
-
-  return {
-    types: ["personal", "organizational", "both"],
-    platforms: Array.from(platforms).sort(),
-    credentialFormats: Array.from(credentialFormats).sort(),
-    protocols: Array.from(protocols).sort(),
-    didMethods: Array.from(didMethods).sort(),
-    certifications: Array.from(certifications).sort(),
-    statuses: ["development", "beta", "production", "deprecated"],
-  };
-}
-
 function toPageNumber(val: unknown, fallback: number): number {
   const n = Number(val);
   return Number.isNaN(n) || n < 0 ? fallback : Math.floor(n);
