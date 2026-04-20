@@ -480,6 +480,19 @@
 
     if (wallets.length === 0) {
       console.error('Failed to load wallets from any source');
+      // If a server-side fallback is present (Fase 2 SSR), reveal it and
+      // remove the loading spinner instead of overwriting the container with
+      // an empty interactive UI. Crawlers and users on flaky networks then
+      // still see real content.
+      const ssrFallback = container && container.querySelector('[data-fides-ssr="wallet"]');
+      if (ssrFallback) {
+        console.warn('Revealing server-rendered fallback because no wallets were loaded.');
+        ssrFallback.style.display = '';
+        ssrFallback.removeAttribute('aria-hidden');
+        const spinner = container.querySelector('[data-fides-ssr-spinner="1"]');
+        if (spinner) spinner.remove();
+        return;
+      }
     } else {
       const walletsForFacets = settings.type ? wallets.filter(w => w.type === settings.type) : wallets;
       filterFacets = computeFilterFacets(walletsForFacets);

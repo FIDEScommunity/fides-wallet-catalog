@@ -2,8 +2,8 @@
 /**
  * Plugin Name: FIDES Wallet Catalog
  * Plugin URI: https://fides.community
- * Description: Displays the FIDES Wallet Catalog with search and filter functionality
- * Version: 2.5.8
+ * Description: Displays the FIDES Wallet Catalog with search and filter functionality. When the master fides_catalog_ssr_enabled flag (provided by FIDES Community Tools Tiles ≥ 1.6.0) is enabled, the plugin also emits a server-rendered listing fallback, per-deeplink SEO meta tags and a SoftwareApplication JSON-LD payload so wallet detail URLs become indexable by search engines.
+ * Version: 2.7.1
  * Author: FIDES Labs BV
  * Author URI: https://fides.community
  * License: Apache-2.0
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
 class FIDES_Wallet_Catalog {
     
     private static $instance = null;
-    private const VERSION = '2.5.8';
+    private const VERSION = '2.7.1';
     private $plugin_url;
     private $plugin_path;
     
@@ -39,6 +39,12 @@ class FIDES_Wallet_Catalog {
         add_action('wp_enqueue_scripts', array($this, 'register_assets'));
         add_action('admin_menu', array($this, 'add_admin_menu'));
         add_action('admin_init', array($this, 'register_settings'));
+
+        // Load the optional SSR module. It silently no-ops if the shared
+        // catalog SEO core (provided by fides-community-tools-tiles ≥ 1.6.0)
+        // is not present.
+        require_once $this->plugin_path . 'includes/class-fides-wallet-catalog-ssr.php';
+        Fides_Wallet_Catalog_SSR::bootstrap();
     }
     
     /**
@@ -131,15 +137,26 @@ class FIDES_Wallet_Catalog {
             esc_attr($atts['theme'])
         );
         
-        // Container where React mounts
-        return sprintf(
-            '<div id="fides-wallet-catalog-root" class="fides-wallet-catalog" %s>
-                <div class="fides-loading">
+        // Build the initial HTML inside the root container. When the master
+        // SSR switch is on, this returns: a hidden SSR fallback (visible to
+        // crawlers in the raw HTML and to no-JS visitors via a <noscript>
+        // <style> rule) plus the visible loading spinner that JS users see
+        // until wallet-catalog.js mounts and replaces innerHTML.
+        $initial_html = '';
+        if (class_exists('Fides_Wallet_Catalog_SSR')) {
+            $initial_html = Fides_Wallet_Catalog_SSR::build_initial_html($atts);
+        }
+        if ($initial_html === '') {
+            $initial_html = '<div class="fides-loading">
                     <div class="fides-spinner"></div>
                     <p>Loading wallet catalog...</p>
-                </div>
-            </div>',
-            $data_attrs
+                </div>';
+        }
+
+        return sprintf(
+            '<div id="fides-wallet-catalog-root" class="fides-wallet-catalog" %s>%s</div>',
+            $data_attrs,
+            $initial_html
         );
     }
     
@@ -216,6 +233,24 @@ class FIDES_Wallet_Catalog {
                                    value="<?php echo esc_attr(get_option('fides_wallet_catalog_blue_pages_url', 'https://fides.community/community-tools/blue-pages')); ?>"
                                    class="regular-text">
                             <p class="description">Base URL for Blue Pages DID lookups (trailing slash optional).</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="<?php echo esc_attr(Fides_Wallet_Catalog_SSR::OPTION_PERSONAL_URL); ?>">Personal wallets page path</label></th>
+                        <td>
+                            <input type="text" id="<?php echo esc_attr(Fides_Wallet_Catalog_SSR::OPTION_PERSONAL_URL); ?>" name="<?php echo esc_attr(Fides_Wallet_Catalog_SSR::OPTION_PERSONAL_URL); ?>"
+                                   value="<?php echo esc_attr(get_option(Fides_Wallet_Catalog_SSR::OPTION_PERSONAL_URL, Fides_Wallet_Catalog_SSR::DEFAULT_PERSONAL_PATH)); ?>"
+                                   class="regular-text">
+                            <p class="description">Absolute path of the page hosting <code>[fides_wallet_catalog type="personal"]</code>. Used by the SSR / SEO core to build canonical deeplink URLs and the sitemap. Default: <code><?php echo esc_html(Fides_Wallet_Catalog_SSR::DEFAULT_PERSONAL_PATH); ?></code></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="<?php echo esc_attr(Fides_Wallet_Catalog_SSR::OPTION_BUSINESS_URL); ?>">Business wallets page path</label></th>
+                        <td>
+                            <input type="text" id="<?php echo esc_attr(Fides_Wallet_Catalog_SSR::OPTION_BUSINESS_URL); ?>" name="<?php echo esc_attr(Fides_Wallet_Catalog_SSR::OPTION_BUSINESS_URL); ?>"
+                                   value="<?php echo esc_attr(get_option(Fides_Wallet_Catalog_SSR::OPTION_BUSINESS_URL, Fides_Wallet_Catalog_SSR::DEFAULT_BUSINESS_PATH)); ?>"
+                                   class="regular-text">
+                            <p class="description">Absolute path of the page hosting <code>[fides_wallet_catalog type="organizational"]</code>. Default: <code><?php echo esc_html(Fides_Wallet_Catalog_SSR::DEFAULT_BUSINESS_PATH); ?></code></p>
                         </td>
                     </tr>
                 </table>

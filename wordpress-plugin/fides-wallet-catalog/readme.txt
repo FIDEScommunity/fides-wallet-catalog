@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.5.6
+Stable tag: 2.7.1
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -90,6 +90,26 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.7.0 =
+* Refactor: `Fides_Wallet_Catalog_SSR` now extends the shared `Fides_Catalog_SSR_Renderer` base class shipped by fides-community-tools-tiles ≥ 1.6.2. The wallet-specific class shrunk by ~270 lines (no behaviour change) — all noscript wrapper, listing grid, detail-block shell and CollectionPage JSON-LD output now live in the base class. The wallet plugin still owns: catalog registration, `type` based URL routing, render-gate per page, JSON-LD enrichment with wallet fields, dl meta rows, app-store + chip sections.
+* When the shared core is missing (tiles plugin disabled), the wallet SSR class falls back to a no-op shim with the same public surface so the main plugin file keeps working.
+* No deprecations: the static `bootstrap()`, `build_initial_html()` and four `OPTION_* / DEFAULT_*_PATH` constants stay in place.
+
+= 2.6.1 =
+* Expanded the SSR detail block so search engines see the full wallet record, not just the basics:
+  * New visible sections for Features, Credential formats, Issuance protocols, Presentation protocols, Signing algorithms, Credential status methods, App store links, Repository, Open source, Provider country and Last updated.
+  * `SoftwareApplication` JSON-LD enriched with `featureList`, `keywords`, `softwareRequirements`, `installUrl`, `dateModified`, `sameAs` (repository) and a free `offers` block. The JSON-LD now uses the full description (no longer truncated to 160 characters).
+
+= 2.6.0 =
+* SEO / SSR integration with the shared FIDES catalog SEO core (requires fides-community-tools-tiles ≥ 1.6.0; gated behind the master `fides_catalog_ssr_enabled` switch).
+  * Server-rendered listing fallback: up to 30 wallets are rendered as static HTML inside the shortcode container so search engines (and visitors with JavaScript disabled) see real content immediately. JS replaces the fallback on mount.
+  * Server-rendered detail block: when a deeplink such as `?wallet=helix-id-wallet` is present, the matching wallet is rendered as a static `<article>` above the listing.
+  * Per-deeplink SEO meta tags: `<title>`, meta description, canonical, Open Graph, Twitter and a `SoftwareApplication` JSON-LD payload with `operatingSystem`, `applicationCategory`, `downloadUrl` and `publisher`.
+  * Listing pages emit a `CollectionPage` JSON-LD with the first 50 wallets as `ItemList` entries.
+  * Detail SEO is correctly gated per page: an organizational wallet won't render its SEO on `/personal-wallets/` and vice versa.
+  * Two new admin settings (Settings → FIDES Wallet Catalog) to override the personal/business page paths if your URL structure differs from the defaults.
+* JavaScript safety net: when no wallets can be loaded (e.g. GitHub temporarily unreachable), the server-rendered fallback is preserved instead of being overwritten with an empty interactive UI.
 
 = 1.8.0 =
 * Added deep link support: wallets can now be opened directly via URL parameter (e.g., `?wallet=sphereon-wallet`)

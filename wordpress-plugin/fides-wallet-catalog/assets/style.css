@@ -2616,3 +2616,198 @@ span.fides-tag.platform {
   background: rgba(6, 182, 212, 0.1);
   color: #0891b2;
 }
+
+/* ==========================================================================
+ * SSR fallback (Fase 2)
+ * Server-rendered content shown until wallet-catalog.js mounts and replaces
+ * the contents of #fides-wallet-catalog-root. Crawlers see this content;
+ * users see it briefly during initial paint before the interactive UI arrives.
+ * ========================================================================== */
+
+.fides-ssr-fallback {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #1f2937;
+}
+
+.fides-ssr-detail {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 0 0 24px 0;
+  background: #ffffff;
+}
+.fides-ssr-detail__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.fides-ssr-detail__logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: #f9fafb;
+  border: 1px solid #f3f4f6;
+}
+.fides-ssr-detail__name {
+  font-size: 1.4rem;
+  margin: 0;
+  line-height: 1.2;
+}
+.fides-ssr-detail__provider {
+  margin: 4px 0 0 0;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+.fides-ssr-detail__description {
+  margin: 0 0 16px 0;
+  line-height: 1.55;
+}
+.fides-ssr-detail__meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px 24px;
+  margin: 0;
+}
+.fides-ssr-detail__meta > div { margin: 0; }
+.fides-ssr-detail__meta dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6b7280;
+  margin-bottom: 2px;
+}
+.fides-ssr-detail__meta dd {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.fides-ssr-listing__title {
+  font-size: 1.1rem;
+  margin: 0 0 16px 0;
+  color: #4b5563;
+  font-weight: 500;
+}
+.fides-ssr-listing__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.fides-ssr-listing__card {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #ffffff;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.fides-ssr-listing__card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+.fides-ssr-listing__link {
+  display: block;
+  padding: 16px;
+  text-decoration: none;
+  color: inherit;
+}
+.fides-ssr-listing__logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: contain;
+  background: #f9fafb;
+  border: 1px solid #f3f4f6;
+  margin-bottom: 10px;
+}
+.fides-ssr-listing__name {
+  font-size: 1rem;
+  margin: 0 0 6px 0;
+  font-weight: 600;
+}
+.fides-ssr-listing__excerpt {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #6b7280;
+  line-height: 1.45;
+}
+
+.fides-ssr-note {
+  margin: 16px 0 0 0;
+  padding: 8px 12px;
+  background: #f3f4f6;
+  color: #6b7280;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* Dark theme — only when the parent shortcode container uses dark theme. */
+.fides-wallet-catalog[data-theme="dark"] .fides-ssr-fallback,
+.fides-wallet-catalog[data-theme="dark"] .fides-ssr-detail,
+.fides-wallet-catalog[data-theme="dark"] .fides-ssr-listing__card {
+  background: #1f2937;
+  border-color: #374151;
+  color: #f3f4f6;
+}
+.fides-wallet-catalog[data-theme="dark"] .fides-ssr-detail__provider,
+.fides-wallet-catalog[data-theme="dark"] .fides-ssr-listing__title,
+.fides-wallet-catalog[data-theme="dark"] .fides-ssr-detail__meta dt,
+.fides-wallet-catalog[data-theme="dark"] .fides-ssr-listing__excerpt,
+.fides-wallet-catalog[data-theme="dark"] .fides-ssr-note {
+  color: #9ca3af;
+}
+.fides-wallet-catalog[data-theme="dark"] .fides-ssr-note {
+  background: #111827;
+}
+
+/* Detail sub-sections (features, formats, protocols, app links). */
+.fides-ssr-detail__section {
+  margin-top: 16px;
+}
+.fides-ssr-detail__section-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: #1f2937;
+}
+.fides-ssr-detail__chips,
+.fides-ssr-detail__app-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.fides-ssr-detail__chip {
+  display: inline-block;
+  padding: 4px 10px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: #374151;
+}
+.fides-ssr-detail__app-links a {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #2563eb;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.fides-ssr-detail__app-links a:hover {
+  background: #1d4ed8;
+}
+.fides-wallet-catalog[data-theme="dark"] .fides-ssr-detail__section-title {
+  color: #f3f4f6;
+}
+.fides-wallet-catalog[data-theme="dark"] .fides-ssr-detail__chip {
+  background: #111827;
+  border-color: #374151;
+  color: #d1d5db;
+}
