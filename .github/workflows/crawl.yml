@@ -64,3 +64,27 @@ jobs:
           git commit -m "chore: update aggregated wallet data [skip ci]"
           git push
 
+      # Tells the production WordPress site to flush its aggregated.json cache
+      # (Fides_Catalog_Source transient + options-backup) so freshly crawled
+      # wallets show up in seconds instead of after the 6h TTL.
+      # Set both `vars.WP_INVALIDATE_URL` and `secrets.WP_INVALIDATE_SECRET`
+      # in the repo settings to enable. Forks / unconfigured repos skip
+      # silently. A failed call does not break the workflow — production
+      # falls back to its 6h TTL.
+      - name: Notify production WordPress to flush catalog cache
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          WP_INVALIDATE_URL: ${{ vars.WP_INVALIDATE_URL }}
+          WP_INVALIDATE_SECRET: ${{ secrets.WP_INVALIDATE_SECRET }}
+          CATALOG_TYPE: wallet
+        run: |
+          if [ -z "${WP_INVALIDATE_URL}" ] || [ -z "${WP_INVALIDATE_SECRET}" ]; then
+            echo "Skipping: WP_INVALIDATE_URL/SECRET not configured for this repo."
+            exit 0
+          fi
+          echo "Notifying ${WP_INVALIDATE_URL} (type=${CATALOG_TYPE})..."
+          curl -fsS -X POST "${WP_INVALIDATE_URL}" \
+            -H "X-FIDES-Catalog-Secret: ${WP_INVALIDATE_SECRET}" \
+            --data-urlencode "type=${CATALOG_TYPE}" \
+            -w '\nHTTP %{http_code}\n' \
+            || echo "WP invalidate failed (non-fatal; production has 6h TTL fallback)"
