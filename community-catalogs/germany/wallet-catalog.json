@@ -19,9 +19,9 @@
       "issuanceProtocols": [
         "OpenID4VCI"
       ],
-      "credentialFormats": [
-        "mDL/mDoc",
-        "SD-JWT-VC"
+      "vcFormat": [
+        "mdoc",
+        "sd_jwt_vc"
       ],
       "interoperabilityProfiles": [
         "EUDI Wallet ARF"

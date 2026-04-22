@@ -16,11 +16,11 @@
         "iOS": "https://apps.apple.com/nl/app/procivis-one-wallet/id6480111491",
         "android": "https://play.google.com/store/apps/details?id=ch.procivis.one.wallet.trial"
       },
-      "credentialFormats": [
-        "SD-JWT-VC",
-        "JWT-VC",
-        "mDL/mDoc",
-        "JSON-LD VC"
+      "vcFormat": [
+        "sd_jwt_vc",
+        "jwt_vc",
+        "mdoc",
+        "vcdm_2_0"
       ],
       "issuanceProtocols": [
         "OpenID4VCI"
@@ -75,11 +75,11 @@
       "platforms": [
         "Web"
       ],
-      "credentialFormats": [
-        "SD-JWT-VC",
-        "JWT-VC",
-        "mDL/mDoc",
-        "JSON-LD VC"
+      "vcFormat": [
+        "sd_jwt_vc",
+        "jwt_vc",
+        "mdoc",
+        "vcdm_2_0"
       ],
       "issuanceProtocols": [
         "OpenID4VCI"

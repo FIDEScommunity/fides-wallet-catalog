@@ -16,9 +16,9 @@
         "Android"
       ],
       "status": "production",
-      "credentialFormats": [
-        "JSON-LD VC",
-        "JWT-VC"
+      "vcFormat": [
+        "vcdm_2_0",
+        "jwt_vc"
       ],
       "presentationProtocols": [
         "OpenID4VP"
@@ -48,9 +48,9 @@
       "platforms": [
         "Web"
       ],
-      "credentialFormats": [
-        "JSON-LD VC",
-        "JWT-VC"
+      "vcFormat": [
+        "vcdm_2_0",
+        "jwt_vc"
       ],
       "issuanceProtocols": [
         "OpenID4VCI"

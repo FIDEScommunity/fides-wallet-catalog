@@ -4,17 +4,32 @@
   if (window.FidesCatalogUI) return;
 
   const CREDENTIAL_FORMAT_ORDER = [
-    'SD-JWT-VC',
-    'SD-JWT',
-    'mDL/mDoc',
-    'JWT-VC',
-    'JSON-LD VC',
-    'AnonCreds',
-    'Apple Wallet Pass',
-    'Google Wallet Pass',
-    'X.509',
-    'CBOR-LD'
+    'sd_jwt_vc',
+    'mdoc',
+    'jwt_vc',
+    'vcdm_1_1',
+    'vcdm_2_0',
+    'anoncreds',
+    'idemix',
+    'apple_wallet_pass',
+    'google_wallet_pass',
+    'acdc',
   ];
+  const CREDENTIAL_FORMAT_DISPLAY = {
+    sd_jwt_vc: 'SD-JWT VC',
+    mdoc: 'ISO mDoc',
+    jwt_vc: 'JWT VC',
+    vcdm_1_1: 'VCDM1.1',
+    vcdm_2_0: 'VCDM2.0',
+    anoncreds: 'AnonCreds',
+    idemix: 'Idemix',
+    apple_wallet_pass: 'Apple Wallet Pass',
+    google_wallet_pass: 'Google Wallet Pass',
+    acdc: 'ACDC',
+  };
+  function credentialFormatDisplayLabel(code) {
+    return CREDENTIAL_FORMAT_DISPLAY[code] || code;
+  }
 
   const icons = {
     wallet: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path></svg>',
@@ -288,7 +303,7 @@
       (wallet.video ? getVideoEmbedHtml(wallet.video) : '') +
       '<div class="fides-modal-grid">' +
       ((wallet.platforms && wallet.platforms.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.smartphone + ' Platforms ' + (wallet.type !== 'organizational' ? '<span class="fides-label-hint">(click to access)</span>' : '') + '</div><div class="fides-modal-grid-value">' + wallet.platforms.map(p => renderPlatformTag(wallet, p)).join('') + '</div></div>' : '') +
-      ((wallet.credentialFormats && wallet.credentialFormats.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.fileCheck + ' Credential Formats</div><div class="fides-modal-grid-value">' + sortCredentialFormats(wallet.credentialFormats).map(f => '<span class="fides-tag credential-format">' + escapeHtml(f) + '</span>').join('') + '</div></div>' : '') +
+      ((wallet.vcFormat && wallet.vcFormat.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.fileCheck + ' VC formats</div><div class="fides-modal-grid-value">' + sortCredentialFormats(wallet.vcFormat).map(f => '<span class="fides-tag credential-format">' + escapeHtml(credentialFormatDisplayLabel(f)) + '</span>').join('') + '</div></div>' : '') +
       (((wallet.issuanceProtocols || (wallet.protocols && wallet.protocols.issuance) || []).length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.download + ' Issuance Protocols</div><div class="fides-modal-grid-value">' + (wallet.issuanceProtocols || (wallet.protocols && wallet.protocols.issuance) || []).map(p => '<span class="fides-tag protocol-issuance">' + escapeHtml(p) + '</span>').join('') + '</div></div>' : '') +
       (((wallet.presentationProtocols || (wallet.protocols && wallet.protocols.presentation) || []).length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.shield + ' Presentation Protocols</div><div class="fides-modal-grid-value">' + (wallet.presentationProtocols || (wallet.protocols && wallet.protocols.presentation) || []).map(p => '<span class="fides-tag protocol-presentation">' + escapeHtml(p) + '</span>').join('') + '</div></div>' : '') +
       ((((wallet.supportedIdentifiers || wallet.didMethods) || []).length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.key + ' Identifiers</div><div class="fides-modal-grid-value">' + ((wallet.supportedIdentifiers || wallet.didMethods) || []).map(d => '<span class="fides-tag did-method">' + escapeHtml(d) + '</span>').join('') + '</div></div>' : '') +
@@ -474,7 +489,7 @@
       '<div class="fides-modal-grid">' +
       buildRpSectorsModalGridHtml(rp) +
       ((acceptedCredentialRows.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.fileCheck + ' Accepted Credentials</div><div class="fides-modal-grid-value">' + renderAcceptedCredentialTagsHtmlForRpModal(rp, credentialCatalogUrl) + '</div></div>' : '') +
-      ((rp.credentialFormats && rp.credentialFormats.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.fileCheck + ' Credential Formats</div><div class="fides-modal-grid-value">' + rp.credentialFormats.map(f => '<span class="fides-tag credential-format">' + escapeHtml(f) + '</span>').join('') + '</div></div>' : '') +
+      ((rp.vcFormat && rp.vcFormat.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.fileCheck + ' VC formats</div><div class="fides-modal-grid-value">' + sortCredentialFormats(rp.vcFormat).map(f => '<span class="fides-tag credential-format">' + escapeHtml(credentialFormatDisplayLabel(f)) + '</span>').join('') + '</div></div>' : '') +
       ((rp.presentationProtocols && rp.presentationProtocols.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.shield + ' Presentation Protocols</div><div class="fides-modal-grid-value">' + rp.presentationProtocols.map(p => '<span class="fides-tag protocol-presentation">' + escapeHtml(p) + '</span>').join('') + '</div></div>' : '') +
       ((rp.interoperabilityProfiles && rp.interoperabilityProfiles.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.shield + ' Interop Profiles</div><div class="fides-modal-grid-value">' + rp.interoperabilityProfiles.map(p => '<span class="fides-tag interop">' + escapeHtml(p) + '</span>').join('') + '</div></div>' : '') +
       ((rp.supportedWallets && rp.supportedWallets.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.wallet + ' Supported Wallets</div><div class="fides-modal-grid-value">' + supportedWalletsHtml + '</div></div>' : '') +

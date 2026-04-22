@@ -151,7 +151,7 @@ Organization details (name, DID, website, logo, country) live in the [FIDES Orga
       "name": "My Wallet",
       "type": "personal",
       "platforms": ["iOS", "Android"],
-      "credentialFormats": ["SD-JWT-VC", "mDL/mDoc"],
+      "vcFormat": ["sd_jwt_vc", "mdoc"],
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/app/...",
         "android": "https://play.google.com/store/apps/..."
@@ -212,7 +212,7 @@ npm run serve
 
 Example with filters:
 ```
-GET /api/wallets?search=paradym&type=personal&platforms=iOS,Android&credentialFormats=SD-JWT-VC&page=0&size=20
+GET /api/wallets?search=paradym&type=personal&platforms=iOS,Android&vcFormat=sd_jwt_vc&page=0&size=20
 ```
 
 ### Public HTTP API (Vercel)
@@ -226,7 +226,7 @@ The schema supports extensive wallet metadata:
 - **General**: name, description, logo, website, app store links
 - **Type**: personal or organizational
 - **Platforms**: iOS, Android, Web, Windows, macOS, Linux, CLI
-- **Credential Formats**: SD-JWT-VC, mDL/mDoc, AnonCreds, JWT-VC, Apple Wallet Pass, Google Wallet Pass, etc.
+- **VC formats** (field `vcFormat`): canonical codes such as `sd_jwt_vc`, `mdoc`, `anoncreds`, `apple_wallet_pass`, etc.
 - **Protocols**: OpenID4VCI, OpenID4VP, DIDComm, ISO 18013-5, SIOPv2
 - **Identifiers**: did:web, did:key, did:jwk, did:peer, X.509, etc.
 - **Key Storage**: Secure Enclave, StrongBox, HSM, TEE, Cloud KMS, FIDO2/WebAuthn

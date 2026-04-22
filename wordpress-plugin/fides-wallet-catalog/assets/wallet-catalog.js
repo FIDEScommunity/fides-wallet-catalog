@@ -50,7 +50,7 @@
     country: false,
     capabilities: true,
     interop: false,
-    credentialFormats: false,
+    vcFormat: false,
     issuanceProtocols: false,
     presentationProtocols: false,
     supportedIdentifiers: false,
@@ -60,19 +60,34 @@
     license: false
   };
 
-  // Credential format sort order (consistent ordering)
+  // Canonical vc format codes (same as credential / RP catalogs); order = filter UI order
   const CREDENTIAL_FORMAT_ORDER = [
-    'SD-JWT-VC',
-    'SD-JWT',
-    'mDL/mDoc',
-    'JWT-VC',
-    'JSON-LD VC',
-    'AnonCreds',
-    'Apple Wallet Pass',
-    'Google Wallet Pass',
-    'X.509',
-    'CBOR-LD'
+    'sd_jwt_vc',
+    'mdoc',
+    'jwt_vc',
+    'vcdm_1_1',
+    'vcdm_2_0',
+    'anoncreds',
+    'idemix',
+    'apple_wallet_pass',
+    'google_wallet_pass',
+    'acdc',
   ];
+  const CREDENTIAL_FORMAT_DISPLAY = {
+    sd_jwt_vc: 'SD-JWT VC',
+    mdoc: 'ISO mDoc',
+    jwt_vc: 'JWT VC',
+    vcdm_1_1: 'VCDM1.1',
+    vcdm_2_0: 'VCDM2.0',
+    anoncreds: 'AnonCreds',
+    idemix: 'Idemix',
+    apple_wallet_pass: 'Apple Wallet Pass',
+    google_wallet_pass: 'Google Wallet Pass',
+    acdc: 'ACDC',
+  };
+  function credentialFormatDisplayLabel(code) {
+    return CREDENTIAL_FORMAT_DISPLAY[code] || code;
+  }
 
   /** COSE algorithm integers from wallet / issuer metadata (IANA + common deployments). */
   const COSE_SIGNING_ALG_LABELS = {
@@ -199,7 +214,7 @@
     capabilities: 'capabilities',
     countries: 'country',
     interop: 'interopProfile',
-    credentialFormats: 'credentialFormat',
+    vcFormat: 'vcFormat',
     issuanceProtocols: 'issuanceProtocol',
     presentationProtocols: 'presentationProtocol',
     supportedIdentifiers: 'identifiers',
@@ -262,7 +277,7 @@
     capabilities: [],
     platforms: [],
     countries: [],
-    credentialFormats: [],
+    vcFormat: [],
     issuanceProtocols: [],
     presentationProtocols: [],
     supportedIdentifiers: [],
@@ -643,9 +658,9 @@
         if (!walletCountry || !filters.countries.includes(walletCountry)) return false;
       }
 
-      // Credential formats
-      if (filters.credentialFormats.length > 0) {
-        const hasMatch = filters.credentialFormats.some(f => (wallet.credentialFormats || []).includes(f));
+      // VC formats
+      if (filters.vcFormat.length > 0) {
+        const hasMatch = filters.vcFormat.some(f => (wallet.vcFormat || []).includes(f));
         if (!hasMatch) return false;
       }
 
@@ -761,7 +776,7 @@
     count += filters.capabilities.length;
     count += filters.platforms.length;
     count += filters.countries.length;
-    count += filters.credentialFormats.length;
+    count += filters.vcFormat.length;
     count += filters.issuanceProtocols.length;
     count += filters.presentationProtocols.length;
     count += filters.supportedIdentifiers.length;
@@ -802,7 +817,7 @@
     const platforms = {};
     const capabilities = {};
     const countryCount = {};
-    const credentialFormats = {};
+    const vcFormat = {};
     const issuanceProtocols = {};
     const presentationProtocols = {};
     const supportedIdentifiers = {};
@@ -832,8 +847,8 @@
       if (c) {
         countryCount[c] = (countryCount[c] || 0) + 1;
       }
-      (wallet.credentialFormats || []).forEach(f => {
-        credentialFormats[f] = (credentialFormats[f] || 0) + 1;
+      (wallet.vcFormat || []).forEach(f => {
+        vcFormat[f] = (vcFormat[f] || 0) + 1;
       });
       const issuance = wallet.issuanceProtocols || (wallet.protocols && wallet.protocols.issuance) || [];
       issuance.forEach(p => {
@@ -876,7 +891,7 @@
       platforms,
       capabilities,
       country,
-      credentialFormats,
+      vcFormat,
       issuanceProtocols,
       presentationProtocols,
       supportedIdentifiers,
@@ -1135,41 +1150,18 @@
                 </label>
               </div>
             </div>
-            <div class="fides-filter-group collapsible ${!filterGroupState.credentialFormats ? 'collapsed' : ''} ${filters.credentialFormats.length > 0 ? 'has-active' : ''}" data-filter-group="credentialFormats">
-              <button class="fides-filter-label-toggle" type="button" aria-expanded="${filterGroupState.credentialFormats}">
-                <span class="fides-filter-label">Credential Format</span>
+            <div class="fides-filter-group collapsible ${!filterGroupState.vcFormat ? 'collapsed' : ''} ${filters.vcFormat.length > 0 ? 'has-active' : ''}" data-filter-group="vcFormat">
+              <button class="fides-filter-label-toggle" type="button" aria-expanded="${filterGroupState.vcFormat}">
+                <span class="fides-filter-label">VC format</span>
                 <span class="fides-filter-active-indicator"></span>
                 ${icons.chevronDown}
               </button>
               <div class="fides-filter-options">
+                ${CREDENTIAL_FORMAT_ORDER.map((code) => `
                 <label class="fides-filter-checkbox">
-                  <input type="checkbox" data-filter="credentialFormats" data-value="SD-JWT-VC" ${filters.credentialFormats.includes('SD-JWT-VC') ? 'checked' : ''}>
-                  <span>SD-JWT-VC<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.credentialFormats['SD-JWT-VC'] || 0) : ''})</span></span>
-                </label>
-                <label class="fides-filter-checkbox">
-                  <input type="checkbox" data-filter="credentialFormats" data-value="mDL/mDoc" ${filters.credentialFormats.includes('mDL/mDoc') ? 'checked' : ''}>
-                  <span>mDL/mDoc<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.credentialFormats['mDL/mDoc'] || 0) : ''})</span></span>
-                </label>
-                <label class="fides-filter-checkbox">
-                  <input type="checkbox" data-filter="credentialFormats" data-value="JWT-VC" ${filters.credentialFormats.includes('JWT-VC') ? 'checked' : ''}>
-                  <span>JWT-VC<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.credentialFormats['JWT-VC'] || 0) : ''})</span></span>
-                </label>
-                <label class="fides-filter-checkbox">
-                  <input type="checkbox" data-filter="credentialFormats" data-value="AnonCreds" ${filters.credentialFormats.includes('AnonCreds') ? 'checked' : ''}>
-                  <span>AnonCreds<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.credentialFormats['AnonCreds'] || 0) : ''})</span></span>
-                </label>
-                <label class="fides-filter-checkbox">
-                  <input type="checkbox" data-filter="credentialFormats" data-value="JSON-LD VC" ${filters.credentialFormats.includes('JSON-LD VC') ? 'checked' : ''}>
-                  <span>JSON-LD VC<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.credentialFormats['JSON-LD VC'] || 0) : ''})</span></span>
-                </label>
-                <label class="fides-filter-checkbox">
-                  <input type="checkbox" data-filter="credentialFormats" data-value="Apple Wallet Pass" ${filters.credentialFormats.includes('Apple Wallet Pass') ? 'checked' : ''}>
-                  <span>Apple Wallet Pass<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.credentialFormats['Apple Wallet Pass'] || 0) : ''})</span></span>
-                </label>
-                <label class="fides-filter-checkbox">
-                  <input type="checkbox" data-filter="credentialFormats" data-value="Google Wallet Pass" ${filters.credentialFormats.includes('Google Wallet Pass') ? 'checked' : ''}>
-                  <span>Google Wallet Pass<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.credentialFormats['Google Wallet Pass'] || 0) : ''})</span></span>
-                </label>
+                  <input type="checkbox" data-filter="vcFormat" data-value="${escapeHtml(code)}" ${filters.vcFormat.includes(code) ? 'checked' : ''}>
+                  <span>${escapeHtml(credentialFormatDisplayLabel(code))}<span class="fides-filter-option-count">(${filterFacets ? (filterFacets.vcFormat[code] || 0) : ''})</span></span>
+                </label>`).join('')}
               </div>
             </div>
             <div class="fides-filter-group collapsible ${!filterGroupState.issuanceProtocols ? 'collapsed' : ''} ${filters.issuanceProtocols.length > 0 ? 'has-active' : ''}" data-filter-group="issuanceProtocols">
@@ -1597,11 +1589,11 @@
             </div>
           ` : ''}
           
-          ${wallet.credentialFormats && wallet.credentialFormats.length > 0 ? `
+          ${wallet.vcFormat && wallet.vcFormat.length > 0 ? `
             <div class="fides-wallet-section">
-              <h4 class="fides-wallet-section-title">Credential Formats</h4>
+              <h4 class="fides-wallet-section-title">VC formats</h4>
               <div class="fides-tags">
-                ${sortCredentialFormats(wallet.credentialFormats).map(f => `<span class="fides-tag">${escapeHtml(f)}</span>`).join('')}
+                ${sortCredentialFormats(wallet.vcFormat).map(f => `<span class="fides-tag">${escapeHtml(credentialFormatDisplayLabel(f))}</span>`).join('')}
               </div>
             </div>
           ` : ''}
@@ -1768,14 +1760,14 @@
                 </div>
               ` : ''}
 
-              <!-- Credential Formats -->
-              ${wallet.credentialFormats && wallet.credentialFormats.length > 0 ? `
+              <!-- VC formats -->
+              ${wallet.vcFormat && wallet.vcFormat.length > 0 ? `
                 <div class="fides-modal-grid-item">
                   <div class="fides-modal-grid-label">
-                    ${icons.fileCheck} Credential Formats
+                    ${icons.fileCheck} VC formats
                   </div>
                   <div class="fides-modal-grid-value">
-                    ${sortCredentialFormats(wallet.credentialFormats).map(f => `<span class="fides-tag credential-format">${escapeHtml(f)}</span>`).join('')}
+                    ${sortCredentialFormats(wallet.vcFormat).map(f => `<span class="fides-tag credential-format">${escapeHtml(credentialFormatDisplayLabel(f))}</span>`).join('')}
                   </div>
                 </div>
               ` : ''}
@@ -2312,7 +2304,7 @@
           capabilities: [],
           platforms: [],
           countries: [],
-          credentialFormats: [],
+          vcFormat: [],
           issuanceProtocols: [],
           presentationProtocols: [],
           supportedIdentifiers: [],

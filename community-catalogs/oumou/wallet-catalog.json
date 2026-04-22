@@ -10,8 +10,8 @@
       "platforms": [
         "Web"
       ],
-      "credentialFormats": [
-        "JSON-LD VC"
+      "vcFormat": [
+        "vcdm_2_0"
       ],
       "appStoreLinks": {
         "web": "https://uwangu.oumougroup.com/"

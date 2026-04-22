@@ -18,7 +18,7 @@ Paginated, filterable list of wallets.
 | `orgId` | Exact organization catalog id (e.g. `org:animo`) |
 | `type` | Comma-separated: `personal`, `organizational` |
 | `platforms` | Comma-separated platform names (e.g. `iOS`, `Android`) |
-| `credentialFormats` | Comma-separated |
+| `vcFormat` | Comma-separated canonical codes (e.g. `sd_jwt_vc`, `mdoc`, `vcdm_2_0`) |
 | `capabilities` | Comma-separated |
 | `interoperabilityProfiles` | Comma-separated |
 | `protocols` | Comma-separated; matches issuance or presentation protocols |

@@ -14,9 +14,9 @@
         "iOS",
         "Android"
       ],
-      "credentialFormats": [
-        "mDL/mDoc",
-        "SD-JWT-VC"
+      "vcFormat": [
+        "mdoc",
+        "sd_jwt_vc"
       ],
       "issuanceProtocols": [
         "OpenID4VCI"
@@ -38,8 +38,8 @@
       "platforms": [
         "iOS"
       ],
-      "credentialFormats": [
-        "mDL/mDoc"
+      "vcFormat": [
+        "mdoc"
       ],
       "issuanceProtocols": [
         "OpenID4VCI"
@@ -61,9 +61,9 @@
       "platforms": [
         "Web"
       ],
-      "credentialFormats": [
-        "mDL/mDoc",
-        "SD-JWT-VC"
+      "vcFormat": [
+        "mdoc",
+        "sd_jwt_vc"
       ],
       "issuanceProtocols": [
         "OpenID4VCI"
@@ -81,9 +81,9 @@
       "platforms": [
         "Web"
       ],
-      "credentialFormats": [
-        "mDL/mDoc",
-        "SD-JWT-VC"
+      "vcFormat": [
+        "mdoc",
+        "sd_jwt_vc"
       ],
       "presentationProtocols": [
         "OpenID4VP",

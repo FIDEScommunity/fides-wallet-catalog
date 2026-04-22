@@ -12,8 +12,8 @@
         "iOS",
         "Android"
       ],
-      "credentialFormats": [
-        "mDL/mDoc"
+      "vcFormat": [
+        "mdoc"
       ],
       "presentationProtocols": [
         "ISO 18013-5"

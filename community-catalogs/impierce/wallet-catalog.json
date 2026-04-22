@@ -11,10 +11,10 @@
         "iOS",
         "Android"
       ],
-      "credentialFormats": [
-        "SD-JWT-VC",
-        "JSON-LD VC",
-        "JWT-VC"
+      "vcFormat": [
+        "sd_jwt_vc",
+        "vcdm_2_0",
+        "jwt_vc"
       ],
       "signingAlgorithms": [
         "EdDSA",
@@ -50,10 +50,10 @@
       "platforms": [
         "Web"
       ],
-      "credentialFormats": [
-        "SD-JWT-VC",
-        "JSON-LD VC",
-        "JWT-VC"
+      "vcFormat": [
+        "sd_jwt_vc",
+        "vcdm_2_0",
+        "jwt_vc"
       ],
       "signingAlgorithms": [
         "EdDSA",

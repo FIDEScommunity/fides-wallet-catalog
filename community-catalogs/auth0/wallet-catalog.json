@@ -15,9 +15,9 @@
       "platforms": [
         "Web"
       ],
-      "credentialFormats": [
-        "mDL/mDoc",
-        "JWT-VC"
+      "vcFormat": [
+        "mdoc",
+        "jwt_vc"
       ],
       "issuanceProtocols": [
         "OpenID4VCI"

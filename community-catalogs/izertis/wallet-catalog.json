@@ -10,10 +10,10 @@
         "iOS",
         "Android"
       ],
-      "credentialFormats": [
-        "SD-JWT-VC",
-        "mDL/mDoc",
-        "JWT-VC"
+      "vcFormat": [
+        "sd_jwt_vc",
+        "mdoc",
+        "jwt_vc"
       ],
       "issuanceProtocols": [
         "OpenID4VCI"
@@ -76,10 +76,10 @@
       "platforms": [
         "Web"
       ],
-      "credentialFormats": [
-        "SD-JWT-VC",
-        "mDL/mDoc",
-        "JWT-VC"
+      "vcFormat": [
+        "sd_jwt_vc",
+        "mdoc",
+        "jwt_vc"
       ],
       "issuanceProtocols": [
         "OpenID4VCI"

@@ -55,14 +55,16 @@ Quick reference for wallet providers to see which fields accept fixed values (en
 
 ---
 
-## Credential Formats & Protocols
+## VC formats & protocols
 
 | Field | Type | Valid Values |
 |-------|------|--------------|
-| `credentialFormats` | 🔒 | `SD-JWT`, `SD-JWT-VC`, `mDL/mDoc`, `AnonCreds`, `Idemix`, `JWT-VC`, `JSON-LD VC`, `Apple Wallet Pass`, `Google Wallet Pass`, `X.509`, `CBOR-LD` |
+| `vcFormat` | 🔒 | `sd_jwt_vc`, `mdoc`, `jwt_vc`, `vcdm_1_1`, `vcdm_2_0`, `anoncreds`, `idemix`, `apple_wallet_pass`, `google_wallet_pass`, `acdc` |
 | `issuanceProtocols` | 🔒 | `OpenID4VCI`, `DIDComm Issue Credential v1`, `DIDComm Issue Credential v2`, `ISO 18013-5 (Device Retrieval)` |
 | `presentationProtocols` | 🔒 | `OpenID4VP`, `DIDComm Present Proof v1`, `DIDComm Present Proof v2`, `ISO 18013-5`, `SIOPv2` |
 | `interoperabilityProfiles` | 🔒 | `DIIP v4`, `EWC v3`, `EUDI Wallet ARF`, `HAIP v1` |
+
+**Crawler note:** Until `main` on GitHub contains the same format codes, run `FIDES_WALLET_SKIP_GITHUB_CRAWL=1 npm run crawl` to rebuild `data/aggregated.json` from the local `community-catalogs/` tree only (avoids validating remote JSON against the new schema).
 
 ---
 
@@ -113,7 +115,7 @@ Quick reference for wallet providers to see which fields accept fixed values (en
       "name": "My Wallet",
       "type": "personal",
       "platforms": ["iOS", "Android"],
-      "credentialFormats": ["SD-JWT-VC", "mDL/mDoc"],
+      "vcFormat": ["sd_jwt_vc", "mdoc"],
       "issuanceProtocols": ["OpenID4VCI"],
       "presentationProtocols": ["OpenID4VP"],
       "status": "production"
@@ -152,7 +154,7 @@ Quick reference for wallet providers to see which fields accept fixed values (en
       "openSource": true,
       "license": "Apache-2.0",
       "repository": "https://github.com/example/wallet",
-      "credentialFormats": ["SD-JWT-VC", "mDL/mDoc"],
+      "vcFormat": ["sd_jwt_vc", "mdoc"],
       "issuanceProtocols": ["OpenID4VCI"],
       "presentationProtocols": ["OpenID4VP", "ISO 18013-5"],
       "keyStorage": ["Secure Enclave (iOS)", "StrongBox (Android)"],

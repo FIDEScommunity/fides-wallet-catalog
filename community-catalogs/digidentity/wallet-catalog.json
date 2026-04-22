@@ -11,8 +11,8 @@
         "iOS",
         "Android"
       ],
-      "credentialFormats": [
-        "SD-JWT-VC"
+      "vcFormat": [
+        "sd_jwt_vc"
       ],
       "protocols": {
         "issuance": [

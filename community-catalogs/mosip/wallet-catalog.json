@@ -16,10 +16,10 @@
         "iOS",
         "Android"
       ],
-      "credentialFormats": [
-        "SD-JWT-VC",
-        "JWT-VC",
-        "mDL/mDoc"
+      "vcFormat": [
+        "sd_jwt_vc",
+        "jwt_vc",
+        "mdoc"
       ],
       "issuanceProtocols": [
         "OpenID4VCI"
@@ -49,10 +49,10 @@
       "platforms": [
         "Web"
       ],
-      "credentialFormats": [
-        "SD-JWT-VC",
-        "JWT-VC",
-        "mDL/mDoc"
+      "vcFormat": [
+        "sd_jwt_vc",
+        "jwt_vc",
+        "mdoc"
       ],
       "issuanceProtocols": [
         "OpenID4VCI"
@@ -76,10 +76,10 @@
       "platforms": [
         "Web"
       ],
-      "credentialFormats": [
-        "SD-JWT-VC",
-        "JWT-VC",
-        "mDL/mDoc"
+      "vcFormat": [
+        "sd_jwt_vc",
+        "jwt_vc",
+        "mdoc"
       ],
       "presentationProtocols": [
         "OpenID4VP"

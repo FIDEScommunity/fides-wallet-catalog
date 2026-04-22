@@ -77,9 +77,7 @@ export function parseWalletFiltersFromQuery(q: {
 
   const type = splitComma(q.type) as WalletType[] | undefined;
   const platforms = splitComma(q.platforms) as Platform[] | undefined;
-  const credentialFormats = splitComma(q.credentialFormats) as
-    | CredentialFormat[]
-    | undefined;
+  const vcFormat = splitComma(q.vcFormat) as CredentialFormat[] | undefined;
   const status = splitComma(q.status) as WalletStatus[] | undefined;
   const capabilities = splitComma(q.capabilities) as
     | WalletCapability[]
@@ -96,7 +94,7 @@ export function parseWalletFiltersFromQuery(q: {
     orgId,
     type,
     platforms,
-    credentialFormats,
+    vcFormat,
     openSource,
     status,
     capabilities,
@@ -135,10 +133,8 @@ export function filterWallets(
       if (!ok) return false;
     }
 
-    if (filters.credentialFormats?.length) {
-      const ok = filters.credentialFormats.some((f) =>
-        wallet.credentialFormats?.includes(f),
-      );
+    if (filters.vcFormat?.length) {
+      const ok = filters.vcFormat.some((f) => wallet.vcFormat?.includes(f));
       if (!ok) return false;
     }
 

@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.7.1
+Stable tag: 2.7.2
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 

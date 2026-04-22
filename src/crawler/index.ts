@@ -324,8 +324,14 @@ function findWalletCatalogEndpoint(didDocument: DIDDocument): string | null {
       if (Array.isArray(service.serviceEndpoint) && service.serviceEndpoint.length > 0) {
         return service.serviceEndpoint[0];
       }
-      if (typeof service.serviceEndpoint === 'object' && service.serviceEndpoint.uri) {
-        return service.serviceEndpoint.uri;
+      if (
+        typeof service.serviceEndpoint === 'object' &&
+        service.serviceEndpoint !== null &&
+        !Array.isArray(service.serviceEndpoint) &&
+        'uri' in service.serviceEndpoint &&
+        typeof (service.serviceEndpoint as { uri?: string }).uri === 'string'
+      ) {
+        return (service.serviceEndpoint as { uri: string }).uri;
       }
     }
   }
@@ -806,7 +812,7 @@ function calculateStats(wallets: NormalizedWallet[]): AggregatedCatalog['stats']
     CLI: 0
   };
   
-  const byCredentialFormat: Record<string, number> = {};
+  const byVcFormat: Record<string, number> = {};
   
   wallets.forEach(wallet => {
     // By type
@@ -821,9 +827,9 @@ function calculateStats(wallets: NormalizedWallet[]): AggregatedCatalog['stats']
       }
     });
     
-    // By credential format
-    wallet.credentialFormats?.forEach(format => {
-      byCredentialFormat[format] = (byCredentialFormat[format] || 0) + 1;
+    // By VC format
+    wallet.vcFormat?.forEach(format => {
+      byVcFormat[format] = (byVcFormat[format] || 0) + 1;
     });
   });
   
@@ -832,7 +838,7 @@ function calculateStats(wallets: NormalizedWallet[]): AggregatedCatalog['stats']
     totalProviders: new Set(wallets.map(w => w.orgId)).size,
     byType,
     byPlatform,
-    byCredentialFormat
+    byVcFormat
   };
 }
 
@@ -878,11 +884,17 @@ async function crawl(): Promise<void> {
   const allWallets: NormalizedWallet[] = [];
   const allProviders = new Map<string, WalletProvider>();
 
-  // 1. Crawl GitHub repository first (highest priority)
-  if (CONFIG.githubRepo.enabled) {
+  // 1. Crawl GitHub repository first (highest priority). Skip when building from local-only
+  // (e.g. schema migration before remote main is updated): FIDES_WALLET_SKIP_GITHUB_CRAWL=1
+  const skipGithubCrawl =
+    process.env.FIDES_WALLET_SKIP_GITHUB_CRAWL === '1' ||
+    process.env.FIDES_WALLET_SKIP_GITHUB_CRAWL === 'true';
+  if (CONFIG.githubRepo.enabled && !skipGithubCrawl) {
     const github = await crawlGitHubRepo(walletHistoryState, organizationById);
     allWallets.push(...github.wallets);
     github.providers.forEach((v, k) => allProviders.set(k, v));
+  } else if (CONFIG.githubRepo.enabled && skipGithubCrawl) {
+    console.log('\n⏭️  Skipping GitHub remote crawl (FIDES_WALLET_SKIP_GITHUB_CRAWL set)');
   }
 
   // 2. Crawl community catalogs (including EU landscape)

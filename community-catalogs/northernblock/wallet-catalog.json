@@ -15,10 +15,10 @@
       "platforms": [
         "Web"
       ],
-      "credentialFormats": [
-        "SD-JWT-VC",
-        "JWT-VC",
-        "AnonCreds"
+      "vcFormat": [
+        "sd_jwt_vc",
+        "jwt_vc",
+        "anoncreds"
       ],
       "issuanceProtocols": [
         "OpenID4VCI",

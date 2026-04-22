@@ -13,12 +13,12 @@
         "Android"
       ],
       "openSource": false,
-      "credentialFormats": [
-        "SD-JWT-VC",
-        "JWT-VC",
-        "mDL/mDoc",
-        "JSON-LD VC",
-        "AnonCreds"
+      "vcFormat": [
+        "sd_jwt_vc",
+        "jwt_vc",
+        "mdoc",
+        "vcdm_2_0",
+        "anoncreds"
       ],
       "issuanceProtocols": [
         "OpenID4VCI",
@@ -81,12 +81,12 @@
         "Web"
       ],
       "openSource": false,
-      "credentialFormats": [
-        "SD-JWT-VC",
-        "JWT-VC",
-        "mDL/mDoc",
-        "JSON-LD VC",
-        "AnonCreds"
+      "vcFormat": [
+        "sd_jwt_vc",
+        "jwt_vc",
+        "mdoc",
+        "vcdm_2_0",
+        "anoncreds"
       ],
       "supportedIdentifiers": [
         "did:key",

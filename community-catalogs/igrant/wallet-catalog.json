@@ -15,11 +15,11 @@
       "openSource": true,
       "license": "Apache-2.0",
       "repository": "https://docs.igrant.io/docs/data-wallet-overview/",
-      "credentialFormats": [
-        "SD-JWT-VC",
-        "JWT-VC",
-        "AnonCreds",
-        "mDL/mDoc"
+      "vcFormat": [
+        "sd_jwt_vc",
+        "jwt_vc",
+        "anoncreds",
+        "mdoc"
       ],
       "issuanceProtocols": [
         "OpenID4VCI",
@@ -99,11 +99,11 @@
         "Web"
       ],
       "openSource": false,
-      "credentialFormats": [
-        "SD-JWT-VC",
-        "JWT-VC",
-        "AnonCreds",
-        "mDL/mDoc"
+      "vcFormat": [
+        "sd_jwt_vc",
+        "jwt_vc",
+        "anoncreds",
+        "mdoc"
       ],
       "issuanceProtocols": [
         "OpenID4VCI",

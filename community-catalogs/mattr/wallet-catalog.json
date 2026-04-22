@@ -15,11 +15,11 @@
       "platforms": [
         "Web"
       ],
-      "credentialFormats": [
-        "SD-JWT-VC",
-        "JWT-VC",
-        "JSON-LD VC",
-        "mDL/mDoc"
+      "vcFormat": [
+        "sd_jwt_vc",
+        "jwt_vc",
+        "vcdm_2_0",
+        "mdoc"
       ],
       "issuanceProtocols": [
         "OpenID4VCI"

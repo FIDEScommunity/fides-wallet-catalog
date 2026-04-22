@@ -5,15 +5,18 @@ export type WalletType = 'personal' | 'organizational';
 export type WalletStatus = 'development' | 'beta' | 'production' | 'deprecated';
 export type Platform = 'iOS' | 'Android' | 'Web' | 'Windows' | 'macOS' | 'Linux' | 'CLI';
 
-export type CredentialFormat = 
-  | 'SD-JWT'
-  | 'SD-JWT-VC'
-  | 'mDL/mDoc'
-  | 'AnonCreds'
-  | 'JWT-VC'
-  | 'JSON-LD VC'
-  | 'X.509'
-  | 'CBOR-LD';
+/** Canonical codes — aligned with credential-catalog and rp-catalog `vcFormat`. */
+export type CredentialFormat =
+  | 'sd_jwt_vc'
+  | 'mdoc'
+  | 'jwt_vc'
+  | 'vcdm_1_1'
+  | 'vcdm_2_0'
+  | 'anoncreds'
+  | 'idemix'
+  | 'apple_wallet_pass'
+  | 'google_wallet_pass'
+  | 'acdc';
 
 export type IssuanceProtocol = 
   | 'OpenID4VCI'
@@ -70,7 +73,7 @@ export interface Wallet {
   openSource?: boolean;
   license?: string;
   repository?: string;
-  credentialFormats?: CredentialFormat[];
+  vcFormat?: CredentialFormat[];
   issuanceProtocols?: IssuanceProtocol[];
   presentationProtocols?: PresentationProtocol[];
   supportedIdentifiers?: string[];
@@ -81,6 +84,8 @@ export interface Wallet {
   interoperabilityProfiles?: InteroperabilityProfile[];
   standards?: string[];
   features?: string[];
+  supportedDIDMethods?: string[];
+  keyManagement?: string[];
   documentation?: string;
   appStoreLinks?: {
     iOS?: string;
@@ -134,7 +139,7 @@ export interface AggregatedCatalog {
     totalProviders: number;
     byType: Record<WalletType, number>;
     byPlatform: Record<Platform, number>;
-    byCredentialFormat: Record<string, number>;
+    byVcFormat: Record<string, number>;
   };
 }
 
@@ -146,7 +151,7 @@ export interface WalletFilters {
   type?: WalletType[];
   capabilities?: WalletCapability[];
   platforms?: Platform[];
-  credentialFormats?: CredentialFormat[];
+  vcFormat?: CredentialFormat[];
   interoperabilityProfiles?: InteroperabilityProfile[];
   protocols?: string[];
   openSource?: boolean;

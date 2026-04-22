@@ -11,8 +11,8 @@
         "iOS",
         "Android"
       ],
-      "credentialFormats": [
-        "mDL/mDoc"
+      "vcFormat": [
+        "mdoc"
       ],
       "website": "https://www.oesterreich.gv.at",
       "appStoreLinks": {
@@ -32,8 +32,8 @@
         "iOS",
         "Android"
       ],
-      "credentialFormats": [
-        "mDL/mDoc"
+      "vcFormat": [
+        "mdoc"
       ],
       "website": "https://www.llv.li",
       "appStoreLinks": {

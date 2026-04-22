@@ -17,8 +17,8 @@
         "android": "https://play.google.com/store/apps/details?id=gov.ca.dmv.wallet",
         "iOS": "https://apps.apple.com/us/app/ca-dmv-wallet/id6449002508"
       },
-      "credentialFormats": [
-        "mDL/mDoc"
+      "vcFormat": [
+        "mdoc"
       ],
       "presentationProtocols": [
         "ISO 18013-5"

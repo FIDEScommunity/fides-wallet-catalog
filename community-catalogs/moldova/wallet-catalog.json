@@ -12,9 +12,9 @@
         "iOS",
         "Android"
       ],
-      "credentialFormats": [
-        "SD-JWT-VC",
-        "mDL/mDoc"
+      "vcFormat": [
+        "sd_jwt_vc",
+        "mdoc"
       ],
       "issuanceProtocols": [
         "OpenID4VCI"

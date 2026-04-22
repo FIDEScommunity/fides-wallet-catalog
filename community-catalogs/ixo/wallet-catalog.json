@@ -12,8 +12,8 @@
         "iOS",
         "Android"
       ],
-      "credentialFormats": [
-        "JSON-LD VC"
+      "vcFormat": [
+        "vcdm_2_0"
       ],
       "openSource": false,
       "appStoreLinks": {

@@ -14,9 +14,9 @@
       "openSource": true,
       "license": "EUPL-1.2",
       "repository": "https://github.com/Authbound/eudi-app-android-wallet",
-      "credentialFormats": [
-        "SD-JWT-VC",
-        "mDL/mDoc"
+      "vcFormat": [
+        "sd_jwt_vc",
+        "mdoc"
       ],
       "issuanceProtocols": [
         "OpenID4VCI"

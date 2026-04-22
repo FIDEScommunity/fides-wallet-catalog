@@ -13,10 +13,10 @@
         "Android"
       ],
       "openSource": false,
-      "credentialFormats": [
-        "SD-JWT-VC",
-        "AnonCreds",
-        "JWT-VC"
+      "vcFormat": [
+        "sd_jwt_vc",
+        "anoncreds",
+        "jwt_vc"
       ],
       "issuanceProtocols": [
         "OpenID4VCI",
@@ -83,10 +83,10 @@
         "Web"
       ],
       "openSource": false,
-      "credentialFormats": [
-        "SD-JWT-VC",
-        "AnonCreds",
-        "JWT-VC"
+      "vcFormat": [
+        "sd_jwt_vc",
+        "anoncreds",
+        "jwt_vc"
       ],
       "issuanceProtocols": [
         "OpenID4VCI",

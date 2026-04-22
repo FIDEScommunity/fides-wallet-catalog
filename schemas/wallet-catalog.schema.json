@@ -87,22 +87,21 @@
           "type": "string",
           "format": "uri"
         },
-        "credentialFormats": {
+        "vcFormat": {
           "type": "array",
           "items": {
             "type": "string",
             "enum": [
-              "SD-JWT",
-              "SD-JWT-VC",
-              "mDL/mDoc",
-              "AnonCreds",
-              "Idemix",
-              "JWT-VC",
-              "JSON-LD VC",
-              "Apple Wallet Pass",
-              "Google Wallet Pass",
-              "X.509",
-              "CBOR-LD"
+              "sd_jwt_vc",
+              "mdoc",
+              "jwt_vc",
+              "vcdm_1_1",
+              "vcdm_2_0",
+              "anoncreds",
+              "idemix",
+              "apple_wallet_pass",
+              "google_wallet_pass",
+              "acdc"
             ]
           }
         },

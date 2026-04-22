@@ -57,7 +57,7 @@ Register your organization in the [organization catalog](https://github.com/FIDE
       "name": "Your Wallet Name",
       "type": "personal",
       "platforms": ["iOS", "Android"],
-      "credentialFormats": ["SD-JWT-VC", "mDL/mDoc"]
+      "vcFormat": ["sd_jwt_vc", "mdoc"]
     }
   ],
   "lastUpdated": "2025-01-06T10:00:00Z"

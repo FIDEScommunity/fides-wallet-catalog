@@ -10,9 +10,9 @@
       "platforms": [
         "Android"
       ],
-      "credentialFormats": [
-        "mDL/mDoc",
-        "Google Wallet Pass"
+      "vcFormat": [
+        "mdoc",
+        "google_wallet_pass"
       ],
       "website": "https://wallet.google.com/",
       "appStoreLinks": {

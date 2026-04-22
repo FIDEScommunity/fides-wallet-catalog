@@ -16,8 +16,8 @@
         "iOS": "https://apps.apple.com/pl/app/apple-store/id1339613469",
         "android": "https://play.google.com/store/apps/details?id=pl.nask.mobywatel"
       },
-      "credentialFormats": [
-        "mDL/mDoc"
+      "vcFormat": [
+        "mdoc"
       ],
       "logo": "https://www.google.com/s2/favicons?domain=gov.pl&sz=128",
       "certifications": [

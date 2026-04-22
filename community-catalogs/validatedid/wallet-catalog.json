@@ -11,9 +11,9 @@
         "iOS",
         "Android"
       ],
-      "credentialFormats": [
-        "SD-JWT-VC",
-        "JWT-VC"
+      "vcFormat": [
+        "sd_jwt_vc",
+        "jwt_vc"
       ],
       "issuanceProtocols": [
         "OpenID4VCI"
@@ -52,9 +52,9 @@
       "platforms": [
         "Web"
       ],
-      "credentialFormats": [
-        "SD-JWT-VC",
-        "JWT-VC"
+      "vcFormat": [
+        "sd_jwt_vc",
+        "jwt_vc"
       ],
       "issuanceProtocols": [
         "OpenID4VCI"

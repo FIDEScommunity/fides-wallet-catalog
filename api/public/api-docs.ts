@@ -19,7 +19,7 @@ const spec = {
           { name: "orgId", in: "query", schema: { type: "string" }, description: "Exact organization catalog id filter" },
           { name: "type", in: "query", schema: { type: "string" }, description: "Comma-separated: personal, organizational" },
           { name: "platforms", in: "query", schema: { type: "string" }, description: "Comma-separated platform names" },
-          { name: "credentialFormats", in: "query", schema: { type: "string" }, description: "Comma-separated formats" },
+          { name: "vcFormat", in: "query", schema: { type: "string" }, description: "Comma-separated canonical format codes (e.g. sd_jwt_vc,mdoc,vcdm_2_0)" },
           { name: "capabilities", in: "query", schema: { type: "string" } },
           { name: "interoperabilityProfiles", in: "query", schema: { type: "string" } },
           { name: "protocols", in: "query", schema: { type: "string" }, description: "Comma-separated issuance/presentation protocol names" },

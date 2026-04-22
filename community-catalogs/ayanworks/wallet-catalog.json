@@ -11,10 +11,10 @@
         "iOS",
         "Android"
       ],
-      "credentialFormats": [
-        "JSON-LD VC",
-        "AnonCreds",
-        "SD-JWT-VC"
+      "vcFormat": [
+        "vcdm_2_0",
+        "anoncreds",
+        "sd_jwt_vc"
       ],
       "protocols": {
         "issuance": [
@@ -41,10 +41,10 @@
       "platforms": [
         "Web"
       ],
-      "credentialFormats": [
-        "JSON-LD VC",
-        "AnonCreds",
-        "SD-JWT-VC"
+      "vcFormat": [
+        "vcdm_2_0",
+        "anoncreds",
+        "sd_jwt_vc"
       ],
       "protocols": {
         "issuance": [

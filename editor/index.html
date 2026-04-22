@@ -142,7 +142,7 @@
     walletType: ["personal","organizational"],
     platforms: ["iOS","Android","Web","Windows","macOS","Linux","CLI"],
     status: ["development","beta","production","deprecated"],
-    credentialFormats: ["SD-JWT","SD-JWT-VC","mDL/mDoc","AnonCreds","JWT-VC","JSON-LD VC","Apple Wallet Pass","Google Wallet Pass","X.509","CBOR-LD"],
+    vcFormat: ["sd_jwt_vc","mdoc","jwt_vc","vcdm_1_1","vcdm_2_0","anoncreds","idemix","apple_wallet_pass","google_wallet_pass","acdc"],
     issuanceProtocols: ["OpenID4VCI","DIDComm Issue Credential v1","DIDComm Issue Credential v2","ISO 18013-5 (Device Retrieval)"],
     presentationProtocols: ["OpenID4VP","DIDComm Present Proof v1","DIDComm Present Proof v2","ISO 18013-5","SIOPv2"],
     interoperabilityProfiles: ["DIIP v4","EWC v3","EUDI Wallet ARF"],
@@ -427,11 +427,11 @@
       adv.innerHTML = `<summary>Advanced (formats, protocols, profiles, capabilities)</summary>`;
 
       const cf = document.createElement("div");
-      cf.innerHTML = `<label>Credential formats</label>`;
-      cf.appendChild(checkboxGroup(ENUMS.credentialFormats, w.credentialFormats || [], (val, checked) => {
-        w.credentialFormats = w.credentialFormats || [];
-        if (checked) { if (!w.credentialFormats.includes(val)) w.credentialFormats.push(val); }
-        else w.credentialFormats = w.credentialFormats.filter(x => x !== val);
+      cf.innerHTML = `<label>VC formats</label>`;
+      cf.appendChild(checkboxGroup(ENUMS.vcFormat, w.vcFormat || [], (val, checked) => {
+        w.vcFormat = w.vcFormat || [];
+        if (checked) { if (!w.vcFormat.includes(val)) w.vcFormat.push(val); }
+        else w.vcFormat = w.vcFormat.filter(x => x !== val);
         generate();
       }));
 
@@ -512,7 +512,7 @@
       logo: seed.logo || "",
       website: seed.website || "",
       appStoreLinks: seed.appStoreLinks || {},
-      credentialFormats: seed.credentialFormats || [],
+      vcFormat: seed.vcFormat || seed.credentialFormats || [],
       issuanceProtocols: seed.issuanceProtocols || [],
       presentationProtocols: seed.presentationProtocols || [],
       interoperabilityProfiles: seed.interoperabilityProfiles || [],
@@ -565,7 +565,7 @@
       openSource: w.openSource,
       license: w.license,
       repository: w.repository,
-      credentialFormats: w.credentialFormats,
+      vcFormat: w.vcFormat,
       issuanceProtocols: w.issuanceProtocols,
       presentationProtocols: w.presentationProtocols,
       supportedIdentifiers: w.supportedIdentifiers,

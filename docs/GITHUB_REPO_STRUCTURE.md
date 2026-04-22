@@ -100,7 +100,7 @@ Add or reuse an entry in the [organization catalog](https://github.com/FIDEScomm
       "openSource": true,
       "license": "Apache-2.0",
       "repository": "https://github.com/your-org/your-wallet",
-      "credentialFormats": ["SD-JWT-VC", "mDL/mDoc", "Apple Wallet Pass", "Google Wallet Pass"],
+      "vcFormat": ["sd_jwt_vc", "mdoc", "apple_wallet_pass", "google_wallet_pass"],
       "issuanceProtocols": ["OpenID4VCI"],
       "presentationProtocols": ["OpenID4VP", "SIOPv2"],
       "supportedIdentifiers": ["did:web", "did:key", "did:jwk"],
@@ -147,7 +147,7 @@ Add or reuse an entry in the [organization catalog](https://github.com/FIDEScomm
 | `wallets[].description` | Short description of the wallet |
 | `wallets[].platforms` | `["iOS", "Android", "Web", "Windows", "macOS", "Linux", "CLI"]` |
 | `wallets[].appStoreLinks` | Links to app stores (`iOS`, `android`, `web`) |
-| `wallets[].credentialFormats` | Supported formats (e.g., `SD-JWT-VC`, `mDL/mDoc`, `Apple Wallet Pass`) |
+| `wallets[].vcFormat` | Supported formats as canonical codes (e.g. `sd_jwt_vc`, `mdoc`, `apple_wallet_pass`; same set as credential-catalog `vcFormat`) |
 | `wallets[].issuanceProtocols` | Issuance protocols (e.g., `OpenID4VCI`) |
 | `wallets[].presentationProtocols` | Presentation protocols (e.g., `OpenID4VP`, `ISO 18013-5`) |
 | `wallets[].interoperabilityProfiles` | `["DIIP v4", "EWC v3", "EUDI Wallet ARF"]` |

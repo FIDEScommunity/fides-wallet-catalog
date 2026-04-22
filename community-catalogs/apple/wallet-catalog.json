@@ -10,9 +10,9 @@
       "platforms": [
         "iOS"
       ],
-      "credentialFormats": [
-        "mDL/mDoc",
-        "Apple Wallet Pass"
+      "vcFormat": [
+        "mdoc",
+        "apple_wallet_pass"
       ],
       "website": "https://www.apple.com/wallet/",
       "appStoreLinks": {

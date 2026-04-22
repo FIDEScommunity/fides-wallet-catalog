@@ -35,8 +35,8 @@
       "appStoreLinks": {
         "android": "https://play.google.com/store/apps/details?id=in.gov.uidai.mAadhaarPlus&hl=en"
       },
-      "credentialFormats": [
-        "mDL/mDoc"
+      "vcFormat": [
+        "mdoc"
       ],
       "presentationProtocols": [
         "OpenID4VP"

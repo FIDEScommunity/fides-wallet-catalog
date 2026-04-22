@@ -17,8 +17,8 @@
         "Android"
       ],
       "openSource": false,
-      "credentialFormats": [
-        "mDL/mDoc"
+      "vcFormat": [
+        "mdoc"
       ],
       "standards": [
         "ISO/IEC 18013-5"

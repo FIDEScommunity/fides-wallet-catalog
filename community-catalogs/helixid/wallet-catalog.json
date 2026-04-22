@@ -14,9 +14,9 @@
         "iOS",
         "Android"
       ],
-      "credentialFormats": [
-        "JWT-VC",
-        "JSON-LD VC"
+      "vcFormat": [
+        "jwt_vc",
+        "vcdm_2_0"
       ],
       "supportedIdentifiers": [
         "did:eth",

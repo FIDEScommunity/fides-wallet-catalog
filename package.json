@@ -12,6 +12,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "crawl": "tsx src/crawler/index.ts",
+    "crawl:local-community": "FIDES_WALLET_SKIP_GITHUB_CRAWL=1 tsx src/crawler/index.ts",
     "backfill:first-seen": "tsx src/crawler/backfill-first-seen.ts",
     "serve": "tsx src/server/index.ts",
     "typecheck:api": "tsc -p tsconfig.api.json",

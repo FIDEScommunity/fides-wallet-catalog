@@ -6,8 +6,30 @@ import type { NormalizedWallet, WalletFilters, Platform, CredentialFormat, Walle
 import demoData from '../data/aggregated.json';
 
 const PLATFORMS: Platform[] = ['iOS', 'Android', 'Web', 'Windows', 'macOS', 'Linux'];
-const CREDENTIAL_FORMATS: CredentialFormat[] = ['SD-JWT-VC', 'SD-JWT', 'mDL/mDoc', 'JWT-VC', 'JSON-LD VC', 'AnonCreds', 'X.509'];
-const CREDENTIAL_FORMAT_ORDER: string[] = ['SD-JWT-VC', 'SD-JWT', 'mDL/mDoc', 'JWT-VC', 'JSON-LD VC', 'AnonCreds', 'X.509', 'CBOR-LD'];
+const CREDENTIAL_FORMAT_ORDER: CredentialFormat[] = [
+  'sd_jwt_vc',
+  'mdoc',
+  'jwt_vc',
+  'vcdm_1_1',
+  'vcdm_2_0',
+  'anoncreds',
+  'idemix',
+  'apple_wallet_pass',
+  'google_wallet_pass',
+  'acdc',
+];
+const CREDENTIAL_FORMAT_LABEL: Record<string, string> = {
+  sd_jwt_vc: 'SD-JWT VC',
+  mdoc: 'ISO mDoc',
+  jwt_vc: 'JWT VC',
+  vcdm_1_1: 'VCDM1.1',
+  vcdm_2_0: 'VCDM2.0',
+  anoncreds: 'AnonCreds',
+  idemix: 'Idemix',
+  apple_wallet_pass: 'Apple Wallet Pass',
+  google_wallet_pass: 'Google Wallet Pass',
+  acdc: 'ACDC',
+};
 const INTEROPERABILITY_PROFILES: InteroperabilityProfile[] = ['DIIP v4', 'EWC v3', 'EUDI Wallet ARF'];
 const WALLET_TYPES: { value: WalletType; label: string; icon: typeof Users }[] = [
   { value: 'personal', label: 'Personal', icon: Users },
@@ -16,9 +38,10 @@ const WALLET_TYPES: { value: WalletType; label: string; icon: typeof Users }[] =
 
 function sortCredentialFormats(formats: string[] | undefined): string[] {
   if (!formats) return [];
+  const order = CREDENTIAL_FORMAT_ORDER as readonly string[];
   return [...formats].sort((a, b) => {
-    const indexA = CREDENTIAL_FORMAT_ORDER.indexOf(a);
-    const indexB = CREDENTIAL_FORMAT_ORDER.indexOf(b);
+    const indexA = order.indexOf(a);
+    const indexB = order.indexOf(b);
     const orderA = indexA === -1 ? 999 : indexA;
     const orderB = indexB === -1 ? 999 : indexB;
     return orderA - orderB;
@@ -84,16 +107,16 @@ function WalletCard({ wallet, index }: { wallet: NormalizedWallet; index: number
           </div>
         )}
         
-        {/* Credential Formats */}
-        {wallet.credentialFormats && wallet.credentialFormats.length > 0 && (
+        {/* VC formats */}
+        {wallet.vcFormat && wallet.vcFormat.length > 0 && (
           <div>
             <h4 className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2 flex items-center gap-1.5">
               <FileCheck className="w-3.5 h-3.5" />
-              Credential Formats
+              VC formats
             </h4>
             <div className="flex flex-wrap gap-1.5">
-              {sortCredentialFormats(wallet.credentialFormats).map(format => (
-                <span key={format} className="tag text-xs">{format}</span>
+              {sortCredentialFormats(wallet.vcFormat).map(format => (
+                <span key={format} className="tag text-xs">{CREDENTIAL_FORMAT_LABEL[format] || format}</span>
               ))}
             </div>
           </div>
@@ -128,7 +151,7 @@ function WalletCard({ wallet, index }: { wallet: NormalizedWallet; index: number
                   DID Methods
                 </h4>
                 <div className="flex flex-wrap gap-1.5">
-                  {wallet.supportedDIDMethods.map(method => (
+                  {wallet.supportedDIDMethods.map((method: string) => (
                     <span key={method} className="px-2 py-0.5 rounded bg-white/5 text-xs text-gray-400 font-mono">{method}</span>
                   ))}
                 </div>
@@ -140,7 +163,7 @@ function WalletCard({ wallet, index }: { wallet: NormalizedWallet; index: number
               <div>
                 <h4 className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">Key Management</h4>
                 <div className="flex flex-wrap gap-1.5">
-                  {wallet.keyManagement.map(km => (
+                  {wallet.keyManagement.map((km: string) => (
                     <span key={km} className="tag text-xs">{km}</span>
                   ))}
                 </div>
@@ -218,16 +241,18 @@ function WalletCard({ wallet, index }: { wallet: NormalizedWallet; index: number
   );
 }
 
-function FilterSection({ 
-  title, 
-  options, 
-  selected, 
-  onChange 
-}: { 
-  title: string; 
-  options: string[]; 
-  selected: string[]; 
+function FilterSection({
+  title,
+  options,
+  selected,
+  onChange,
+  getOptionLabel,
+}: {
+  title: string;
+  options: string[];
+  selected: string[];
   onChange: (value: string[]) => void;
+  getOptionLabel?: (option: string) => string;
 }) {
   const toggleOption = (option: string) => {
     if (selected.includes(option)) {
@@ -236,7 +261,7 @@ function FilterSection({
       onChange([...selected, option]);
     }
   };
-  
+
   return (
     <div>
       <h3 className="text-sm font-medium text-gray-400 mb-2">{title}</h3>
@@ -247,7 +272,7 @@ function FilterSection({
             onClick={() => toggleOption(option)}
             className={`filter-btn ${selected.includes(option) ? 'active' : ''}`}
           >
-            {option}
+            {getOptionLabel ? getOptionLabel(option) : option}
           </button>
         ))}
       </div>
@@ -261,7 +286,7 @@ export default function App() {
     search: '',
     type: [],
     platforms: [],
-    credentialFormats: [],
+    vcFormat: [],
     interoperabilityProfiles: [],
     openSource: undefined,
   });
@@ -296,9 +321,9 @@ export default function App() {
         if (!hasMatch) return false;
       }
       
-      // Credential formats
-      if (filters.credentialFormats && filters.credentialFormats.length > 0) {
-        const hasMatch = filters.credentialFormats.some(f => wallet.credentialFormats?.includes(f as CredentialFormat));
+      // VC formats
+      if (filters.vcFormat && filters.vcFormat.length > 0) {
+        const hasMatch = filters.vcFormat.some(f => wallet.vcFormat?.includes(f as CredentialFormat));
         if (!hasMatch) return false;
       }
 
@@ -320,7 +345,7 @@ export default function App() {
   const activeFilterCount =
     (filters.type?.length || 0) +
     (filters.platforms?.length || 0) +
-    (filters.credentialFormats?.length || 0) +
+    (filters.vcFormat?.length || 0) +
     (filters.interoperabilityProfiles?.length || 0) +
     (filters.openSource !== undefined ? 1 : 0);
   
@@ -329,7 +354,7 @@ export default function App() {
       search: filters.search,
       type: [],
       platforms: [],
-      credentialFormats: [],
+      vcFormat: [],
       interoperabilityProfiles: [],
       openSource: undefined,
     });
@@ -475,12 +500,13 @@ export default function App() {
                 onChange={(platforms) => setFilters({ ...filters, platforms: platforms as Platform[] })}
               />
               
-              {/* Credential format filter */}
+              {/* VC format filter */}
               <FilterSection
-                title="Credential Format"
-                options={CREDENTIAL_FORMATS}
-                selected={filters.credentialFormats || []}
-                onChange={(formats) => setFilters({ ...filters, credentialFormats: formats as CredentialFormat[] })}
+                title="VC format"
+                options={CREDENTIAL_FORMAT_ORDER}
+                selected={filters.vcFormat || []}
+                onChange={(formats) => setFilters({ ...filters, vcFormat: formats as CredentialFormat[] })}
+                getOptionLabel={(o) => CREDENTIAL_FORMAT_LABEL[o] || o}
               />
 
               {/* Interoperability profiles filter */}

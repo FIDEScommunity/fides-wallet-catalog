@@ -11,8 +11,8 @@
         "iOS",
         "Android"
       ],
-      "credentialFormats": [
-        "Idemix"
+      "vcFormat": [
+        "idemix"
       ],
       "protocols": {
         "presentation": [

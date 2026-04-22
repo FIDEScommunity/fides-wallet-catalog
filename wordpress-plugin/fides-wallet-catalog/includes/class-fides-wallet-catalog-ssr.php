@@ -216,7 +216,7 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
                 }
 
                 $keyword_pool = array_merge(
-                    $this->list_field($item, 'credentialFormats'),
+                    $this->list_field($item, 'vcFormat'),
                     $this->list_field($item, 'issuanceProtocols'),
                     $this->list_field($item, 'presentationProtocols'),
                     $this->list_field($item, 'signingAlgorithms'),
@@ -377,7 +377,7 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
 
                 $td = 'fides-wallet-catalog';
                 echo $this->render_chip_section($this->list_field($item, 'features'),                __('Features', $td));
-                echo $this->render_chip_section($this->list_field($item, 'credentialFormats'),       __('Credential formats', $td));
+                echo $this->render_chip_section($this->list_field($item, 'vcFormat'),       __('VC formats', $td));
                 echo $this->render_chip_section($this->list_field($item, 'issuanceProtocols'),       __('Issuance protocols', $td));
                 echo $this->render_chip_section($this->list_field($item, 'presentationProtocols'),   __('Presentation protocols', $td));
                 echo $this->render_chip_section($this->list_field($item, 'signingAlgorithms'),       __('Signing algorithms', $td));

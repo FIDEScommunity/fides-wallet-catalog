@@ -65,20 +65,32 @@
     "credentialFormat": {
       "description": "The technical format in which credentials are encoded. Different formats support different features like selective disclosure, privacy protection, or compatibility with specific standards."
     },
-    "SD-JWT-VC": {
-      "description": "IETF JWT-based format allowing holders to selectively reveal only necessary claims using cryptographic hashing."
+    "vcFormat": {
+      "description": "The technical format in which credentials are encoded. Different formats support different features like selective disclosure, privacy protection, or compatibility with specific standards."
     },
-    "mDL/mDoc": {
-      "description": "ISO (18013-5) binary (CBOR) format for mobile documents with strong authentication and selective disclosure."
+    "sd_jwt_vc": {
+      "description": "IETF SD-JWT-based verifiable credential format with selective disclosure via salted hashes."
     },
-    "JWT-VC": {
-      "description": "W3C credential format using JSON Web Tokens for signing and verification."
+    "mdoc": {
+      "description": "ISO (18013-5 style) mobile document encoding (CBOR/COSE), often used for mDL and similar credentials."
     },
-    "AnonCreds": {
+    "jwt_vc": {
+      "description": "Verifiable credential encoded as a JWT for signing and verification."
+    },
+    "vcdm_1_1": {
+      "description": "W3C Verifiable Credentials Data Model 1.1."
+    },
+    "vcdm_2_0": {
+      "description": "W3C Verifiable Credentials Data Model 2.0 (includes JSON-LD, SD-JWT VC, and related proof encodings in this catalog taxonomy)."
+    },
+    "anoncreds": {
       "description": "Privacy-preserving format using zero-knowledge proofs for selective disclosure without correlatable identifiers."
     },
-    "JSON-LD VC": {
-      "description": "Supports rich semantic data with linked data capabilities."
+    "idemix": {
+      "description": "Idemix privacy-preserving attribute-based credentials."
+    },
+    "acdc": {
+      "description": "Authentic Chained Data Container (KERI-related) credential representation."
     },
     "issuanceProtocol": {
       "description": "The protocol used to issue credentials from an issuer to a wallet. Defines how authentication, credential request, and delivery work."
@@ -191,11 +203,11 @@
     "ecdsaEs256": {
       "description": "Elliptic curve signature algorithm providing strong security with efficient key sizes."
     },
-    "Apple Wallet Pass": {
-      "description": "Apple's pass format for storing credentials, tickets, and keys in the Wallet app on iOS and macOS."
+    "apple_wallet_pass": {
+      "description": "Apple Wallet Pass (PassKit) format for passes stored in Apple Wallet."
     },
-    "Google Wallet Pass": {
-      "description": "Google's pass format for storing credentials and passes in the Google Wallet app on Android and the web."
+    "google_wallet_pass": {
+      "description": "Google Wallet generic pass / save-to-wallet style credentials."
     },
     "DIDComm v2": {
       "description": "Secure messaging protocol for DID-based communication; used for agent-to-agent credential exchange and notifications."
