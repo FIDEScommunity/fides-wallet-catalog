@@ -26,965 +26,9 @@
         "country": "EE"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/2060/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:33.549Z",
+      "fetchedAt": "2026-04-22T05:26:46.326Z",
       "updatedAt": "2026-04-06T19:44:12.000Z",
       "firstSeenAt": "2026-01-13T19:28:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "tsg-mobile-wallet",
-      "type": "personal",
-      "name": "TSG Mobile Wallet",
-      "description": "Personal SSI wallet for receiving, storing and presenting Verifiable Credentials within the TNO Security Gateway (TSG) ecosystem. Supports OpenID4VCI for issuance and OpenID4VP for presentations.",
-      "logo": "https://www.google.com/s2/favicons?domain=tsg.dataspac.es&sz=128",
-      "website": "https://tsg.dataspac.es/docs/apps/wallet/",
-      "platforms": [
-        "iOS"
-      ],
-      "issuanceProtocols": [
-        "OpenID4VCI"
-      ],
-      "presentationProtocols": [
-        "OpenID4VP"
-      ],
-      "appStoreLinks": {
-        "iOS": "https://apps.apple.com/pk/app/tsg-mobile-wallet/id6741323068"
-      },
-      "status": "beta",
-      "releaseDate": "2025-06-06",
-      "orgId": "org:tno",
-      "provider": {
-        "orgId": "org:tno",
-        "name": "TNO",
-        "website": "https://tsg.dataspac.es/",
-        "logo": "https://www.google.com/s2/favicons?domain=tno.nl&sz=128",
-        "country": "NL",
-        "fidesManifestoSupporter": true
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/TNO/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:34.243Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2025-06-06T00:00:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "trustme-wallet",
-      "name": "TrustMe",
-      "description": "TrustMe is a mobile application for a digital identity wallet that allows users to securely create and manage their identity attributes. Users can register their ID card as well as other attributes, such as proof of address. TrustMe is also available through FranceConnect, enabling secure authentication across supported services.TrustMe prioritizes data privacy, ensuring that personal information remains under the user’s control. It is designed for simplicity, speed, and secure digital interactions..",
-      "logo": "https://www.trustmeid.io/img/Trustme-SYMBOLE-RVB-vert.jpg",
-      "type": "personal",
-      "status": "production",
-      "website": "https://www.trustmeid.io/",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "appStoreLinks": {
-        "iOS": "https://apps.apple.com/us/app/trustme-your-digital-identity/id1634176820",
-        "android": "https://play.google.com/store/apps/details?id=org.a3bc.trustme"
-      },
-      "releaseDate": "2022-06-01",
-      "orgId": "org:a3bc",
-      "provider": {
-        "orgId": "org:a3bc",
-        "name": "A3BC",
-        "website": "https://www.a3bc.io/",
-        "country": "FR"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/a3bc/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:34.463Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2022-06-01T00:00:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "e-albania-digital-id",
-      "name": "e-Albania Digital ID",
-      "description": "Launch announced for 2026, to be introduced one year before the EU Digital ID Wallet (2027). Technology partner: Idemia. Biometric identification (fingerprint, facial recognition). Goal: Modernization of administration and preparation for EU accession.",
-      "type": "personal",
-      "status": "development",
-      "website": "https://me.rks-gov.net",
-      "platforms": [],
-      "logo": "https://flagcdn.com/w80/al.png",
-      "orgId": "org:albania",
-      "provider": {
-        "orgId": "org:albania",
-        "name": "Albanian Government",
-        "website": "https://me.rks-gov.net",
-        "country": "AL"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/albania/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:34.933Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2026-01-12T16:03:07.000Z",
-      "source": "github"
-    },
-    {
-      "id": "bc-wallet",
-      "name": "BC Wallet",
-      "description": "BC Wallet is the official digital identity wallet of the Government of British Columbia. It allows residents to securely store and present government-issued credentials and access provincial digital services.",
-      "logo": "https://www.google.com/s2/favicons?domain=gov.bc.ca&sz=256",
-      "website": "https://www2.gov.bc.ca/gov/content/governments/government-id/bc-wallet",
-      "type": "personal",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "openSource": true,
-      "repository": "https://github.com/bcgov/bc-wallet-mobile",
-      "status": "production",
-      "appStoreLinks": {
-        "iOS": "https://apps.apple.com/ca/app/bc-wallet/id1587380443",
-        "android": "https://play.google.com/store/apps/details?id=ca.bc.gov.BCWallet&hl=en"
-      },
-      "orgId": "org:bcgov",
-      "provider": {
-        "orgId": "org:bcgov",
-        "name": "Government of British Columbia",
-        "website": "https://www2.gov.bc.ca/",
-        "logo": "https://www.google.com/s2/favicons?domain=gov.bc.ca&sz=256",
-        "country": "CA"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/bcgov/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:36.544Z",
-      "updatedAt": "2026-01-12T00:00:00.000Z",
-      "firstSeenAt": "2026-01-12T00:00:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "national-eudi-wallet-belgium",
-      "name": "National EUDI Wallet (MyGov.be)",
-      "description": "Belgium's MyGov.be national EUDI wallet went live in May 2024 following publication of eIDAS 2.0, becoming one of nine EU countries (Austria, Belgium, Cyprus, Czech Republic, France, Hungary, Italy, Poland, Portugal) with deployed digital identity wallet solutions at national level ahead of the December 2026 mandatory deadline for all EU member states. The wallet builds on existing digital identity infrastructure including the eID system and itsme, enabling Belgian residents to register using identity cards or existing authentication methods, with planned expansion to incorporate mobile driving licenses by 2025 and European Health Insurance Card by 2026.",
-      "type": "personal",
-      "status": "development",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "interoperabilityProfiles": [
-        "EUDI Wallet ARF"
-      ],
-      "logo": "https://flagcdn.com/w80/be.png",
-      "releaseDate": "2025-01-01",
-      "orgId": "org:belgium",
-      "provider": {
-        "orgId": "org:belgium",
-        "name": "Belgian Government",
-        "website": "https://www.belgium.be",
-        "country": "BE"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/belgium/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:36.754Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2025-01-01T00:00:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "bhutan-ndi-mobile-wallet",
-      "type": "personal",
-      "name": "Bhutan NDI Mobile Wallet",
-      "description": "Official mobile wallet for Bhutan’s National Digital Identity (NDI) program, enabling citizens to hold and present digital identity credentials securely.",
-      "logo": "https://www.google.com/s2/favicons?domain=bhutanndi.com&sz=128",
-      "website": "https://bhutanndi.com/",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "appStoreLinks": {
-        "iOS": "https://apps.apple.com/gb/app/bhutan-ndi/id1645493166",
-        "android": "https://play.google.com/store/apps/details?id=com.bhutanndi"
-      },
-      "openSource": false,
-      "status": "production",
-      "orgId": "org:buthan",
-      "provider": {
-        "orgId": "org:buthan",
-        "name": "Bhutan Government",
-        "website": "https://bhutanndi.com/",
-        "logo": "https://www.google.com/s2/favicons?domain=bhutanndi.com&sz=128",
-        "country": "BT"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/buthan/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:36.968Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2026-01-13T19:56:51.000Z",
-      "source": "github"
-    },
-    {
-      "id": "digital-citizen-cyprus",
-      "name": "Digital Citizen",
-      "description": "Cyprus's Digital Citizen mobile app launched December 12, 2024, following the broader Digital Citizen program initiative, enables citizens to securely store and present biometric identity cards, driving licenses, and vehicle roadworthiness certificates on smartphones using QR code verification technology for scanning and authenticating digital documents with citizen authorization, achieving over 10,000 downloads in initial rollout. The app requires users to have activated and verified CY Login profiles to access government systems and services along with two-factor authentication enabled, working alongside Cyprus's IDMe.cy digital ID system as the country fulfills eIDAS 2.0 requirements mandating EU member states to offer digital wallet options by 2026.",
-      "type": "personal",
-      "status": "production",
-      "website": "https://www.digital-citizen.gov.cy/",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "appStoreLinks": {
-        "iOS": "https://apps.apple.com/app/id6737911057",
-        "android": "https://play.google.com/store/apps/details?id=cy.gov.digital.citizen"
-      },
-      "logo": "https://www.google.com/s2/favicons?domain=digital-citizen.gov.cy&sz=128",
-      "releaseDate": "2024-01-01",
-      "orgId": "org:cyprus",
-      "provider": {
-        "orgId": "org:cyprus",
-        "name": "Government of Cyprus",
-        "website": "https://www.cygov.gov.cy/",
-        "country": "CY"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/cyprus/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:37.473Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2024-01-01T00:00:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "edoklady",
-      "name": "eDoklady",
-      "description": "Czech Republic's eDoklady mobile wallet application launched January 20, 2024, developed by the Digital and Information Agency (DIA) and National Agency for Communication and Information Technology, serves as \"an important intermediate step\" towards full EU Digital Identity Wallet (EUDI) implementation by enabling citizens to store ID cards, passports, driving licenses, health documentation, professional qualifications, and education certificates on mobile devices with over 70,000 downloads on first day. The app provides real electronic documents compatible with pending EUDI Wallet framework rather than mere document images, with central administrative authorities required to accept digital eDoklady credentials from January 2024, other government bodies from July 1, 2024, and all entities performing identity verification from January 1, 2025, positioning Czech Republic as one of the first nine EU countries to deploy national digital identity wallet solutions ahead of the 2026 mandatory deadline.",
-      "type": "personal",
-      "status": "production",
-      "website": "https://www.edoklady.cz/",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "appStoreLinks": {
-        "iOS": "https://apps.apple.com/us/app/edoklady/id6470912982",
-        "android": "https://play.google.com/store/apps/details?id=cz.gov.edoklady"
-      },
-      "logo": "https://www.google.com/s2/favicons?domain=edoklady.cz&sz=128",
-      "releaseDate": "2022-01-01",
-      "orgId": "org:czechia",
-      "provider": {
-        "orgId": "org:czechia",
-        "name": "Czech Government",
-        "website": "https://www.edoklady.cz/",
-        "country": "CZ"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/czechia/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:37.695Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2022-01-01T00:00:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "datakeeper-personal-wallet",
-      "name": "DataKeeper Wallet",
-      "type": "personal",
-      "logo": "https://www.google.com/s2/favicons?domain=datakeeper.nl&sz=128",
-      "description": "The DataKeeper Wallet is a personal digital wallet that allows individuals to securely store, manage, and share personal data and credentials, with a strong focus on privacy, consent, and user control.",
-      "website": "https://www.datakeeper.nl/",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "appStoreLinks": {
-        "iOS": "https://apps.apple.com/nl/app/datakeeper/id1546059184",
-        "android": "https://play.google.com/store/search?q=datakeeper&c=apps&hl=en"
-      },
-      "openSource": false,
-      "orgId": "org:datakeeper",
-      "provider": {
-        "orgId": "org:datakeeper",
-        "name": "DataKeeper",
-        "website": "https://www.datakeeper.nl/",
-        "logo": "https://www.google.com/s2/favicons?domain=datakeeper.nl&sz=128",
-        "country": "NL"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/datakeeper/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:37.916Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2026-01-12T19:50:41.000Z",
-      "source": "github"
-    },
-    {
-      "id": "national-eudi-wallet-denmark",
-      "name": "National EUDI Wallet (Denmark)",
-      "description": "Denmark's National EUDI Wallet awarded to Nine (Trifork Group subsidiary) by the Danish Agency for Digital Government in a DKK 29 million Phase 1 contract encompasses development starting April 2025, Q1 2026 go-live, and two years of support and continued development. The Digital Identity Wallet will initially enable citizens to obtain digital proof of age and digital ID credentials usable both physically and online without sharing unnecessary personal information, building upon Denmark's existing MitID system that completed transition at the end of 2023. Subsequent project phases will expand functionality to include a wide range of digital credentials complying with EU eIDAS2 regulation requirements.",
-      "type": "personal",
-      "status": "development",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "interoperabilityProfiles": [
-        "EUDI Wallet ARF"
-      ],
-      "logo": "https://flagcdn.com/w80/dk.png",
-      "releaseDate": "2026-01-01",
-      "orgId": "org:denmark",
-      "provider": {
-        "orgId": "org:denmark",
-        "name": "Danish Government",
-        "website": "https://www.digst.dk/",
-        "country": "DK"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/denmark/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:38.131Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2026-01-01T00:00:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "national-eudi-wallet-estonia",
-      "name": "National EUDI Wallet (Estonia)",
-      "description": "Estonia's National EUDI Wallet is in development for 2026-2027 deployment to comply with eIDAS 2.0 regulation mandating EU member states to provide European Digital Identity Wallets, building upon Estonia's world-leading e-ID infrastructure established since 2002 with the pioneering national electronic identity card. The wallet will leverage Estonia's extensive digital government experience including RIA's (Information System Authority) coordination of electronic identity and cybersecurity, integrating with existing eID solutions like ID cards, Mobile-ID, and Smart-ID. Estonia's implementation will continue the country's e-governance leadership by enabling citizens to securely store and share verified digital credentials across EU member states while maintaining interoperability with Estonia's established digital ecosystem that has processed over 600 million digital signatures and achieved \"high\" eIDAS certification.",
-      "type": "personal",
-      "status": "development",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "interoperabilityProfiles": [
-        "EUDI Wallet ARF"
-      ],
-      "logo": "https://flagcdn.com/w80/ee.png",
-      "orgId": "org:estonia",
-      "provider": {
-        "orgId": "org:estonia",
-        "name": "Estonian Government",
-        "website": "https://www.ria.ee/",
-        "country": "EE"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/estonia/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:39.029Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2026-01-12T15:59:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "fayda-id",
-      "name": "Fayda ID",
-      "description": "Official digital identity wallet of Ethiopia's National ID Program (Fayda). Enables citizens to view, verify, download and manage their Fayda digital ID credentials.",
-      "logo": "https://play-lh.googleusercontent.com/tx1qrpGe0b6uBTadJqLqF64_HW-ehqnH_00J5L5CxjtDPu84eDgnDvSD5d9OTHe3Suw=w480-h960-rw",
-      "website": "https://id.gov.et/",
-      "type": "personal",
-      "platforms": [
-        "Android",
-        "iOS"
-      ],
-      "status": "production",
-      "appStoreLinks": {
-        "android": "https://play.google.com/store/apps/details?id=et.fayda.nidfaydaApp&hl=en",
-        "iOS": "https://apps.apple.com/nl/app/fayda-id/id6740314990"
-      },
-      "documentation": "https://id.gov.et/",
-      "orgId": "org:ethiopia",
-      "provider": {
-        "orgId": "org:ethiopia",
-        "name": "National ID Program (NIDP), Ethiopia",
-        "website": "https://id.gov.et/",
-        "logo": "https://www.google.com/s2/favicons?domain=id.gov.et&sz=128",
-        "country": "ET"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/ethiopia/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:39.267Z",
-      "updatedAt": "2026-02-18T09:00:00.000Z",
-      "firstSeenAt": "2026-02-18T09:00:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "national-eudi-wallet-finland",
-      "name": "National EUDI Wallet (Finland)",
-      "description": "Developed by DVV, coordinated by the Ministry of Finance. Launch end of 2026. Features: eID, QES, later expanded to include various certificates and documents. Participation in POTENTIAL, EWC, and DC4EU pilots.",
-      "type": "personal",
-      "status": "development",
-      "website": "https://dvv.fi/en/european-digital-identity-wallet",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "interoperabilityProfiles": [
-        "EUDI Wallet ARF"
-      ],
-      "logo": "https://flagcdn.com/w80/fi.png",
-      "releaseDate": "2026-01-01",
-      "orgId": "org:finland",
-      "provider": {
-        "orgId": "org:finland",
-        "name": "Finnish Government",
-        "website": "https://dvv.fi/en/european-digital-identity-wallet",
-        "country": "FI"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/finland/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:39.736Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2026-01-01T00:00:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "france-identite",
-      "name": "France Identité",
-      "description": "France Identité app launched by French Ministry of Interior entered beta in May 2022 before full public rollout February 14, 2024, with no user limits, enabling citizens to create dematerialized versions of identity cards and driving licenses on smartphones using NFC readers to scan biometric identity cards requiring Android 11 or iOS 16 minimum software. The state-provided digital identity platform generates electronically signed proofs of identity to prevent fraud, authenticates users for FranceConnect government services access, and displays identity cards and Carte Vitale health insurance cards, with plans to expand health card functionality in 2025, positioning France among early adopters of EUDI Wallet-compatible infrastructure preparing for EU Digital Identity Wallet framework implementation by 2030 for uniform mobile driving licenses across Europe aligned with eIDAS 2.0 regulation.",
-      "type": "personal",
-      "status": "production",
-      "website": "https://france-identite.gouv.fr/",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "appStoreLinks": {
-        "iOS": "https://apps.apple.com/fr/app/france-identit%C3%A9/id1590142959",
-        "android": "https://play.google.com/store/apps/details?id=fr.gouv.franceidentite"
-      },
-      "logo": "https://www.google.com/s2/favicons?domain=france-identite.gouv.fr&sz=128",
-      "releaseDate": "2024-01-01",
-      "orgId": "org:france",
-      "provider": {
-        "orgId": "org:france",
-        "name": "French Government",
-        "website": "https://france-identite.gouv.fr/",
-        "country": "FR"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/france/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:40.208Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2024-01-01T00:00:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "govgr-wallet",
-      "name": "Gov.gr Wallet",
-      "description": "Official Greek wallet app since July 2022. Enables digital ID cards, driver's licenses, disability cards, DYPA cards, and other documents. Fully valid within Greece (not for international travel). Login via TaxisNet or online banking. Under development into the EUDI Wallet.",
-      "type": "personal",
-      "status": "production",
-      "website": "https://wallet.gov.gr/",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "appStoreLinks": {
-        "iOS": "https://apps.apple.com/gr/app/gov-gr-wallet/id1605614816",
-        "android": "https://play.google.com/store/apps/details?id=gr.gov.wallet"
-      },
-      "logo": "https://www.google.com/s2/favicons?domain=wallet.gov.gr&sz=128",
-      "releaseDate": "2022-01-01",
-      "orgId": "org:greece",
-      "provider": {
-        "orgId": "org:greece",
-        "name": "Greek Government",
-        "website": "https://wallet.gov.gr/",
-        "country": "GR"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/greece/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:41.156Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2022-01-01T00:00:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "national-eudi-wallet-greece",
-      "name": "National EUDI Wallet (Greece)",
-      "description": "Launch expected in November 2026. Builds on Gov.gr Wallet. Planned use cases: eGov, banking, SIM registration, mobile DL, QES, eRx, travel, education. Participation in EWC and DC4EU pilot projects. Pilot test at Thessaloniki Airport for travel credentials.",
-      "type": "personal",
-      "status": "development",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "interoperabilityProfiles": [
-        "EUDI Wallet ARF"
-      ],
-      "logo": "https://flagcdn.com/w80/gr.png",
-      "releaseDate": "2026-01-01",
-      "orgId": "org:greece",
-      "provider": {
-        "orgId": "org:greece",
-        "name": "Greek Government",
-        "website": "https://wallet.gov.gr/",
-        "country": "GR"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/greece/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:41.156Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2026-01-01T00:00:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "bien",
-      "name": "Bien",
-      "description": "A self-sovereign, identity-based digital wallet for citizens to securely store and manage credentials on their smartphone, with RNP as the root of trust.",
-      "logo": "https://play-lh.googleusercontent.com/ZCotfBIRuTIBXCOZIDkTWtwJfiCv1sf3YGef5BuOzWOQAlM6vO0Q5yNw2usjvR7d8PzkIL45_z9Pc5F4H1VmlA=w480-h960-rw",
-      "website": "https://www.rnp.hn/",
-      "type": "personal",
-      "platforms": [
-        "Android",
-        "iOS"
-      ],
-      "status": "production",
-      "appStoreLinks": {
-        "android": "https://play.google.com/store/apps/details?id=com.honduras.bien",
-        "iOS": "https://apps.apple.com/us/app/bien/id6754266435"
-      },
-      "orgId": "org:honduras",
-      "provider": {
-        "orgId": "org:honduras",
-        "name": "RNP HN (Registro Nacional de las Personas), Honduras",
-        "website": "https://www.rnp.hn/",
-        "logo": "https://www.google.com/s2/favicons?domain=rnp.hn&sz=128",
-        "country": "HN"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/honduras/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:41.667Z",
-      "updatedAt": "2026-02-18T10:15:00.000Z",
-      "firstSeenAt": "2026-02-18T10:15:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "national-eudi-wallet-hungary",
-      "name": "National EUDI Wallet (Hungary)",
-      "description": "Hungary deployed national EUDI Wallet in 2024 as one of nine EU countries (Austria, Belgium, Cyprus, Czech Republic, France, Hungary, Italy, Poland, and Portugal) with digital identity wallet solutions at national level ahead of December 2026 mandatory deadline when all 27 EU member states must ensure European Digital Identity Wallet availability to citizens following implementing acts adopted November 28, 2024. The Hungarian wallet builds on eSzemélyi (electronic personal identity card) infrastructure introduced January 1, 2016, and issued in current form since August 2, 2021, incorporating electronic chip storing biometric data (photo, fingerprints and signature for those over 12) enabling electronic public identification and qualified electronic signatures.",
-      "type": "personal",
-      "status": "production",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "interoperabilityProfiles": [
-        "EUDI Wallet ARF"
-      ],
-      "logo": "https://flagcdn.com/w80/hu.png",
-      "releaseDate": "2024-01-01",
-      "orgId": "org:hungary",
-      "provider": {
-        "orgId": "org:hungary",
-        "name": "Hungarian Government",
-        "website": "https://www.kormany.hu/",
-        "country": "HU"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/hungary/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:42.097Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2024-01-01T00:00:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "national-eudi-wallet-iceland",
-      "name": "National EUDI Wallet (Iceland)",
-      "description": "Iceland as European Economic Area (EEA) country alongside Liechtenstein and Norway has been granted one-year extension for EUDI Wallet implementation with December 2027 deadline compared to EU member states' December 2026 requirement, positioning Iceland among thirteen countries embarked on digital ID wallet development journeys at different stages including development, beta testing, or pre-production. The Icelandic government participates in pilot projects involving more than 250 private and public organizations across almost every EU member state as well as Norway, Iceland, and Ukraine to test EUDI Wallet enabling citizens to digitally prove identity and share verified attributes across EU/EEA in secure, user-controlled manner, building on Iceland's existing advanced electronic identification infrastructure including Auðkenni system achieving 97% adoption among eligible population for transition to European Digital Identity Wallet framework under eIDAS 2.0 regulation.",
-      "type": "personal",
-      "status": "development",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "interoperabilityProfiles": [
-        "EUDI Wallet ARF"
-      ],
-      "logo": "https://flagcdn.com/w80/is.png",
-      "releaseDate": "2027-01-01",
-      "orgId": "org:iceland",
-      "provider": {
-        "orgId": "org:iceland",
-        "name": "Icelandic Government",
-        "website": "https://www.government.is/",
-        "country": "IS"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/iceland/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:42.345Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2027-01-01T00:00:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "national-eudi-wallet-ireland",
-      "name": "National EUDI Wallet (Ireland)",
-      "description": "Ireland's National EUDI Wallet is in development to comply with eIDAS 2.0 regulation, which mandates all EU member states to provide European Digital Identity Wallets by 2026. The wallet will enable Irish citizens to securely store and share verified digital credentials, access online services across the EU, and authenticate their identity for both public and private sector services. Ireland's implementation will integrate with the country's existing MyGovID authentication system and align with the EU-wide interoperability framework for cross-border digital identity recognition established under eIDAS Regulation 2024/1183.",
-      "type": "personal",
-      "status": "development",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "interoperabilityProfiles": [
-        "EUDI Wallet ARF"
-      ],
-      "logo": "https://flagcdn.com/w80/ie.png",
-      "orgId": "org:ireland",
-      "provider": {
-        "orgId": "org:ireland",
-        "name": "Irish Government",
-        "website": "https://www.gov.ie/",
-        "country": "IE"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/ireland/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:43.677Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2026-01-12T15:28:59.000Z",
-      "source": "github"
-    },
-    {
-      "id": "it-wallet",
-      "name": "IT Wallet",
-      "description": "Italy's IT-Wallet pilot launched October 23, 2024, with 50,000 users selected through IO app, achieving full nationwide deployment December 4, 2024, making Italy the first EU member state to fully deploy an EUDI Wallet under eIDAS 2.0 framework with 1.76 million digital driving licenses and 2.04 million digital health cards added within the first week. The comprehensive digital identity wallet integrated into PagoPa's IO app enables Italian citizens to securely store and present digital versions of identity cards, driving licenses, health cards, and European Disability Cards on smartphones, with plans to expand to educational qualifications and professional licenses while serving as foundation for Italy's digital government modernization strategy aligned with EU Digital Identity Wallet Architecture Reference Framework specifications.",
-      "type": "personal",
-      "status": "production",
-      "website": "https://io.italia.it/",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "appStoreLinks": {
-        "iOS": "https://apps.apple.com/us/app/io/id1501681835",
-        "android": "https://play.google.com/store/apps/details?id=it.pagopa.io.app"
-      },
-      "logo": "https://www.google.com/s2/favicons?domain=io.italia.it&sz=128",
-      "releaseDate": "2024-01-01",
-      "orgId": "org:italy",
-      "provider": {
-        "orgId": "org:italy",
-        "name": "Italian Government",
-        "website": "https://io.italia.it/",
-        "country": "IT"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/italy/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:43.896Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2024-01-01T00:00:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "national-eudi-wallet-latvia",
-      "name": "National EUDI Wallet (Latvia)",
-      "description": "Latvia's National EUDI Wallet is in development to comply with eIDAS 2.0 regulation mandating EU member states to provide European Digital Identity Wallets by 2026-2027. The wallet will build upon Latvia's existing eID infrastructure including the Personas apliecība (eID card) and eParaksts services, enabling citizens to securely store and share verified digital credentials across EU member states. Latvia's implementation will integrate with the cross-border eIDAS ecosystem, leveraging the country's experience as the second Nordic-Baltic state to achieve EU-wide e-service recognition and continuing Latvia's leadership in digital identity interoperability.",
-      "type": "personal",
-      "status": "development",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "interoperabilityProfiles": [
-        "EUDI Wallet ARF"
-      ],
-      "logo": "https://flagcdn.com/w80/lv.png",
-      "orgId": "org:latvia",
-      "provider": {
-        "orgId": "org:latvia",
-        "name": "Latvian Government",
-        "website": "https://www.latvija.lv/",
-        "country": "LV"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/latvia/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:44.817Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2026-01-12T16:00:02.000Z",
-      "source": "github"
-    },
-    {
-      "id": "neoke-wallet",
-      "type": "personal",
-      "name": "Neoke",
-      "description": "Travel wallet for storing and securely sharing travel-related identity documents and preferences, designed to streamline trusted digital journeys.",
-      "logo": "https://www.google.com/s2/favicons?domain=neoke.com&sz=128",
-      "website": "https://www.neoke.com/platform/identity-wallets",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "openSource": false,
-      "appStoreLinks": {
-        "iOS": "https://apps.apple.com/au/app/neoke/id6462846673",
-        "android": "https://play.google.com/store/apps/details?id=neoke.cloud.wallet"
-      },
-      "status": "production",
-      "orgId": "org:neoke",
-      "provider": {
-        "orgId": "org:neoke",
-        "name": "Neoke",
-        "website": "https://www.neoke.com/",
-        "logo": "https://www.google.com/s2/favicons?domain=neoke.com&sz=128",
-        "country": "NL"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/neoke/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:54:47.067Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2026-01-13T19:11:36.000Z",
-      "source": "github"
-    },
-    {
-      "id": "national-eudi-wallet-norway",
-      "name": "National EUDI Wallet (Norway)",
-      "description": "Norway as European Economic Area (EEA) country alongside Iceland and Liechtenstein has December 2027 deadline (one-year extension compared to EU member states' December 2026 requirement) to offer citizens EU Digital Identity Wallet, led by Digdir (Norwegian Digitalisation Agency) coordinating NOBID (Nordic-Baltic eID Project) multi-country consortium including Denmark, Germany, Iceland, Italy, and Latvia focusing on payments use case leveraging existing payment infrastructure. BankID participates in first phase of European Identity Wallet work through involvement in two consortia (EUDI Wallet Consortium EWC and Digital Credentials for Europe DC4EU) piloting EUDI wallet functionality, building on Norway's advanced digital infrastructure where more than 90% of citizens have access to eID with millions using digital services daily and 75% (4.1 million) Norwegians using Vipps payment tool, positioning Norway as leader in digital payments and eID adoption preparing for EUDI wallet integration with financial institutions obliged to accept wallet as official identification method from end of 2027.",
-      "type": "personal",
-      "status": "development",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "interoperabilityProfiles": [
-        "EUDI Wallet ARF"
-      ],
-      "logo": "https://flagcdn.com/w80/no.png",
-      "releaseDate": "2027-01-01",
-      "orgId": "org:norway",
-      "provider": {
-        "orgId": "org:norway",
-        "name": "Norwegian Government",
-        "website": "https://www.digdir.no/",
-        "country": "NO"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/norway/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:28.662Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2027-01-01T00:00:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "seviswallet",
-      "name": "SevisWallet",
-      "description": "Papua New Guinea’s official digital identity wallet for the SevisPass Digital ID ecosystem, enabling citizens and residents to securely store and manage identity credentials and access government and private services.",
-      "logo": "https://play-lh.googleusercontent.com/e6fcdFw8Fif5wYNmXbwEPKEVdLnWBiRbxzWViM6NmyU3SVjMKzr69Sf8RbnnlUPXzDqYWQ94dKbMqKXsQ3SV=w480-h960-rw",
-      "website": "https://www.sevis.gov.pg/",
-      "type": "personal",
-      "platforms": [
-        "Android"
-      ],
-      "status": "production",
-      "appStoreLinks": {
-        "android": "https://play.google.com/store/apps/details?id=com.png.sevispass"
-      },
-      "orgId": "org:png",
-      "provider": {
-        "orgId": "org:png",
-        "name": "Department of Information and Communications Technology, Papua New Guinea",
-        "website": "https://www.sevis.gov.pg/",
-        "logo": "https://www.google.com/s2/favicons?domain=sevis.gov.pg&sz=128",
-        "country": "PG"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/png/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:29.349Z",
-      "updatedAt": "2026-02-18T12:00:00.000Z",
-      "firstSeenAt": "2026-02-18T12:00:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "samsung-wallet",
-      "type": "personal",
-      "name": "Samsung Wallet",
-      "description": "Samsung’s consumer wallet for Galaxy devices, combining Samsung Pay and Samsung Pass. Supports payments and storing items like cards, passes, and digital keys (features vary by country).",
-      "logo": "https://www.google.com/s2/favicons?domain=samsung.com&sz=128",
-      "website": "https://www.samsung.com/us/apps/samsung-wallet/",
-      "openSource": false,
-      "platforms": [
-        "Android"
-      ],
-      "appStoreLinks": {
-        "android": "https://play.google.com/store/apps/details?id=com.samsung.android.spay"
-      },
-      "status": "production",
-      "orgId": "org:samsung",
-      "provider": {
-        "orgId": "org:samsung",
-        "name": "Samsung",
-        "website": "https://www.samsung.com/us/apps/samsung-wallet/",
-        "logo": "https://www.google.com/s2/favicons?domain=samsung.com&sz=128",
-        "country": "KR"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/samsung/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:30.514Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2026-01-13T18:47:53.000Z",
-      "source": "github"
-    },
-    {
-      "id": "national-eudi-wallet-slovakia",
-      "name": "National EUDI Wallet (Slovakia)",
-      "description": "Slovakia's National EUDI Wallet is in development to meet eIDAS 2.0 mandates requiring all EU member states to provide European Digital Identity Wallets by 2026-2027. The wallet will enable Slovak citizens to securely manage verified digital credentials, authenticate across EU services, and engage in secure digital transactions for both government and commercial applications. Slovakia's implementation will build upon the country's existing electronic identity infrastructure and integrate with the EU-wide EUDI Wallet ecosystem for seamless cross-border identity verification compliant with eIDAS Regulation 2024/1183.",
-      "type": "personal",
-      "status": "development",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "interoperabilityProfiles": [
-        "EUDI Wallet ARF"
-      ],
-      "logo": "https://flagcdn.com/w80/sk.png",
-      "orgId": "org:slovakia",
-      "provider": {
-        "orgId": "org:slovakia",
-        "name": "Slovak Government",
-        "website": "https://www.slovensko.sk/",
-        "country": "SK"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/slovakia/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:31.200Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2026-01-12T15:31:16.000Z",
-      "source": "github"
-    },
-    {
-      "id": "national-eudi-wallet-slovenia",
-      "name": "National EUDI Wallet (Slovenia)",
-      "description": "Slovenia develops national EUDI Wallet as one of thirteen EU countries (Denmark, Estonia, Finland, Germany, Greece, Iceland, Ireland, Latvia, Netherlands, Slovakia, Slovenia, Spain, Sweden) embarked on digital ID wallet development at various stages including development, beta testing, or pre-production, meeting December 2026 deadline for all 27 EU member states to ensure European Digital Identity Wallet availability to citizens following first implementing regulations published December 4, 2024, entering force 20 days later. The Slovenian wallet builds on existing smartcard ID infrastructure, mobile ID systems, and electronic certificates to support personal identification data, university diplomas, driver's licenses, electronic certificates and attestations of attributes with secure authentication, document storage, sharing capabilities, and digital signing, preparing for 2027 requirements when banks, telecom operators, and major online service providers must accept EUDI Wallet as valid authentication and identity verification across EU member states.",
-      "type": "personal",
-      "status": "development",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "interoperabilityProfiles": [
-        "EUDI Wallet ARF"
-      ],
-      "logo": "https://flagcdn.com/w80/si.png",
-      "orgId": "org:slovenia",
-      "provider": {
-        "orgId": "org:slovenia",
-        "name": "Slovenian Government",
-        "website": "https://www.gov.si/",
-        "country": "SI"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/slovenia/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:31.410Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2026-01-12T15:31:42.000Z",
-      "source": "github"
-    },
-    {
-      "id": "cartera-digital-beta",
-      "name": "Cartera Digital Beta",
-      "description": "Spain's Cartera Digital Beta presented by Minister José Luis Escrivá in July 2024 is a mobile digital wallet pilot implementing an age verification system for accessing adult content using government-issued age credentials based on users' ID cards stored in the system, with availability for all citizens by end of summer 2024. The wallet generates 30 pairs of keys monthly for one-time identity verification through a double-blind system protecting privacy with double authentication preventing minors from accessing through adult devices, selected by the EU for a pilot project due to Spain's advanced work in developing age-assurance applications. As part of eIDAS2 standard requiring content platforms to accept European digital identity wallets by October 2027, Cartera Digital Beta will expand beyond age assurance to store municipal registries, university/non-university degrees, and ID documents, positioning Spain among EU countries piloting EUDI wallet functionality ahead of mandatory implementation.",
-      "type": "personal",
-      "status": "development",
-      "website": "https://digital.gob.es/especificaciones_tecnicas.html",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "logo": "https://flagcdn.com/w80/es.png",
-      "releaseDate": "2024-01-01",
-      "orgId": "org:spain",
-      "provider": {
-        "orgId": "org:spain",
-        "name": "Spanish Government",
-        "website": "https://digital.gob.es/",
-        "country": "ES"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/spain/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:31.639Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2024-01-01T00:00:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "national-eudi-wallet-sweden",
-      "name": "National EUDI Wallet (Sweden)",
-      "description": "Sweden's national EUDI Wallet developed by DIGG (Agency for Digital Government) with recommended Swedish open model allowing both private and public operators as issuers of digital identity wallets, building on BankID infrastructure dominating market with over 8.5 million users as most widely used eID in Sweden and only one usable for identifying to payment service providers and authenticating payments. The EWC project co-founded by Swedish government agencies including DIGG, Companies Registration Office (Bolagsverket), Research Council (Vetenskapsrådet), and Sunet (University Computer Network) participates in two consortia (EUDI Wallet Consortium EWC and Digital Credentials for Europe DC4EU) piloting EU Digital Identity Wallet, positioning Sweden to meet December 2026 deadline for offering every citizen European Digital Identity Wallet with financial institutions, telecom operators, and major online service providers required to accept EUDI Wallet as valid authentication and identity verification from 2027 onward.",
-      "type": "personal",
-      "status": "development",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "interoperabilityProfiles": [
-        "EUDI Wallet ARF"
-      ],
-      "logo": "https://flagcdn.com/w80/se.png",
-      "orgId": "org:sweden",
-      "provider": {
-        "orgId": "org:sweden",
-        "name": "Swedish Government",
-        "website": "https://www.digg.se/",
-        "country": "SE"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/sweden/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:32.531Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2026-01-12T16:02:03.000Z",
-      "source": "github"
-    },
-    {
-      "id": "diia",
-      "name": "Diia (Дія)",
-      "description": "Ukraine's Diia (\"Action\" in Ukrainian) launched in 2020 by Ministry of Digital Transformation led by Minister Mykhailo Fedorov serves as mobile app and online portal acting as one-stop shop for public services and wallet for digital documents with same legal status as paper originals including digital passports and driving licenses, providing access to over 130 government services for approximately 18.5 million users (around half adult population). The comprehensive GovTech platform implemented by UNDP Ukraine with funding from Government of Sweden (SweMFA) through DIA Support Project builds on UNDP's experience in administrative service reform, digitalisation, and public administration process re-engineering, successfully demonstrating digital government resilience during crisis with Ukraine now exporting digital transformation know-how to other countries including Estonia adapting Diia to their needs, establishing Ukraine as leader in government digital innovation despite challenging circumstances.",
-      "type": "personal",
-      "status": "production",
-      "website": "https://diia.gov.ua/",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "appStoreLinks": {
-        "iOS": "https://apps.apple.com/nl/app/%D0%B4%D1%96%D1%8F/id1489717872",
-        "android": "https://play.google.com/store/apps/details?id=ua.gov.diia.app"
-      },
-      "logo": "https://www.google.com/s2/favicons?domain=diia.gov.ua&sz=128",
-      "releaseDate": "2020-01-01",
-      "orgId": "org:ukraine",
-      "provider": {
-        "orgId": "org:ukraine",
-        "name": "Ukrainian Government",
-        "website": "https://diia.gov.ua/",
-        "country": "UA"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/ukraine/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:33.803Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2020-01-01T00:00:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "verimi",
-      "name": "Verimi",
-      "description": "Verimi launched in 2017 in Berlin as a digital identity platform founded by a consortium of 25 major German companies including Deutsche Bank, Allianz, Axel Springer, Bundesdruckerei, Deutsche Bahn, Lufthansa, Deutsche Telekom, Volkswagen, Mercedes-Benz, Samsung, and insurance companies (via GMB Systems including Huk-Coburg, Provinzial, LVM, DEVK, Zurich). In November 2022, Verimi merged with Yes (supported by Sparkassen, Volksbanken, and Raiffeisenbanken savings/cooperative banks) to create Germany's unified digital identity ecosystem, combining forces with 25 companies and processing over 10 million transactions in 2022. The merged platform bundles services from both providers to accelerate growth and offer comprehensive identification, ID wallet, and identity verification services from a single source, working with both public institutions (AOK) and private sector partners.",
-      "type": "personal",
-      "openSource": false,
-      "status": "production",
-      "website": "https://verimi.de/",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "appStoreLinks": {
-        "iOS": "https://apps.apple.com/nl/app/verimi-id-wallet/id1361532848",
-        "android": "https://play.google.com/store/apps/details?id=com.verimi"
-      },
-      "logo": "https://flagcdn.com/w80/de.png",
-      "releaseDate": "2017-01-01",
-      "orgId": "org:verimi",
-      "provider": {
-        "orgId": "org:verimi",
-        "name": "Verimi GmbH",
-        "website": "https://verimi.de/",
-        "country": "DE"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/verimi/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:34.226Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2017-01-01T00:00:00.000Z",
-      "source": "github"
-    },
-    {
-      "id": "yoti",
-      "name": "Yoti",
-      "description": "Yoti founded in 2014 by three Oxford University students enables users to create reusable Digital IDs by adding government-issued identity documents and taking biometric selfies, protected by multi-factor authentication including phone linking, PIN protection, and personal biometrics. The UK's Proof of Age Standards Scheme (PASS) accredited Yoti ID in 2022 alongside Post Office EasyID and Lloyds Bank Smart ID as government-recognized proof of identity and age for buying restricted goods/services, with Yoti becoming one of the first certified Digital Identity Service Providers (IDSPs) under UK's digital identity framework in June 2022. Yoti technology enables Jersey islanders to prove identity for safely accessing government services online as fundamental infrastructure for Jersey's public sector modernization, while serving global markets through Digital ID Wallets and Connect apps supporting interoperable age verification across UK's expanding digital identity network.",
-      "type": "personal",
-      "openSource": false,
-      "status": "production",
-      "website": "https://www.yoti.com/",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "appStoreLinks": {
-        "iOS": "https://apps.apple.com/gb/app/yoti-your-digital-identity/id983980808",
-        "android": "https://play.google.com/store/apps/details?id=com.yoti.mobile.android.live"
-      },
-      "releaseDate": "2014-01-01",
-      "orgId": "org:yoti",
-      "provider": {
-        "orgId": "org:yoti",
-        "name": "Yoti Ltd.",
-        "website": "https://www.yoti.com/",
-        "country": "GB"
-      },
-      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/yoti/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:34.658Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
-      "firstSeenAt": "2014-01-01T00:00:00.000Z",
       "source": "github"
     },
     {
@@ -1024,11 +68,189 @@
           "support": "https://www.dmv.ca.gov/portal/contacting-dmv/"
         }
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/CA/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.112Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/CA/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:46.394Z",
       "updatedAt": "2026-02-18T00:00:00.000Z",
       "firstSeenAt": "2026-02-18T00:00:00.000Z",
-      "source": "local"
+      "source": "github"
+    },
+    {
+      "id": "swiyu-wallet",
+      "name": "SWIYU Wallet",
+      "description": "swiyu is the Swiss Confederation's wallet. It can be used to easily and securely request, store and present digital credentials and documents. swiyu can currently be used as part of Public Beta. The aim is to gain experience with the e-ID (digital identity) that will be issued by the Swiss Confederation.",
+      "logo": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/95/45/6f/95456f82-a1cb-79c7-5f89-7310844bea61/Placeholder.mill/400x400bb-75.webp",
+      "website": "https://www.swiyu.admin.ch/",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "vcFormat": [
+        "sd_jwt_vc"
+      ],
+      "status": "production",
+      "openSource": true,
+      "license": "MIT",
+      "repository": "https://github.com/swiyu-admin-ch",
+      "appStoreLinks": {
+        "web": "https://www.swiyu.admin.ch/",
+        "iOS": "https://apps.apple.com/ch/app/swiyu/id6737259614",
+        "android": "https://play.google.com/store/apps/details?id=ch.admin.foitt.swiyu"
+      },
+      "documentation": "https://www.swiyu.admin.ch/documentation",
+      "orgId": "org:swiyu",
+      "provider": {
+        "orgId": "org:swiyu",
+        "name": "Swiss Confederation",
+        "website": "https://www.eid.admin.ch/en",
+        "logo": "https://play-lh.googleusercontent.com/24M9nEXiuSVZAfEnkDzJ2koRLLfd7s_sSw3CgfzVeNfQjALW800TPcVB_mwDrKpJhz0V",
+        "country": "CH"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/CHE/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:46.455Z",
+      "updatedAt": "2026-01-10T12:00:00.000Z",
+      "firstSeenAt": "2026-01-10T12:00:00.000Z",
+      "source": "github"
+    },
+    {
+      "id": "swiyu-generic-issuer",
+      "name": "SWIYU Generic Issuer",
+      "description": "Generic issuer component of the SWIYU ecosystem, enabling organizations to issue verifiable credentials to compatible wallets within the Swiss e-ID infrastructure.",
+      "type": "organizational",
+      "platforms": [
+        "Web"
+      ],
+      "website": "https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-issuer/",
+      "documentation": "https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-issuer/",
+      "openSource": true,
+      "license": "MIT",
+      "repository": "https://github.com/swiyu-admin-ch/swiyu-issuer",
+      "vcFormat": [
+        "sd_jwt_vc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "status": "development",
+      "capabilities": [
+        "issuer"
+      ],
+      "orgId": "org:swiyu",
+      "provider": {
+        "orgId": "org:swiyu",
+        "name": "Swiss Confederation",
+        "website": "https://www.eid.admin.ch/en",
+        "logo": "https://play-lh.googleusercontent.com/24M9nEXiuSVZAfEnkDzJ2koRLLfd7s_sSw3CgfzVeNfQjALW800TPcVB_mwDrKpJhz0V",
+        "country": "CH"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/CHE/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:46.455Z",
+      "updatedAt": "2026-01-10T12:00:00.000Z",
+      "firstSeenAt": "2026-01-10T12:00:00.000Z",
+      "source": "github"
+    },
+    {
+      "id": "swiyu-generic-verifier",
+      "name": "SWIYU Generic Verifier",
+      "description": "Generic verifier component of the SWIYU ecosystem, enabling organizations to request and verify verifiable presentations from compatible wallets within the Swiss e-ID infrastructure.",
+      "type": "organizational",
+      "platforms": [
+        "Web"
+      ],
+      "website": "https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-verifier/",
+      "documentation": "https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-verifier/",
+      "openSource": true,
+      "license": "MIT",
+      "repository": "https://github.com/swiyu-admin-ch/swiyu-verifier",
+      "vcFormat": [
+        "sd_jwt_vc"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "status": "development",
+      "capabilities": [
+        "verifier"
+      ],
+      "orgId": "org:swiyu",
+      "provider": {
+        "orgId": "org:swiyu",
+        "name": "Swiss Confederation",
+        "website": "https://www.eid.admin.ch/en",
+        "logo": "https://play-lh.googleusercontent.com/24M9nEXiuSVZAfEnkDzJ2koRLLfd7s_sSw3CgfzVeNfQjALW800TPcVB_mwDrKpJhz0V",
+        "country": "CH"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/CHE/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:46.455Z",
+      "updatedAt": "2026-01-10T12:00:00.000Z",
+      "firstSeenAt": "2026-01-10T12:00:00.000Z",
+      "source": "github"
+    },
+    {
+      "id": "tsg-mobile-wallet",
+      "type": "personal",
+      "name": "TSG Mobile Wallet",
+      "description": "Personal SSI wallet for receiving, storing and presenting Verifiable Credentials within the TNO Security Gateway (TSG) ecosystem. Supports OpenID4VCI for issuance and OpenID4VP for presentations.",
+      "logo": "https://www.google.com/s2/favicons?domain=tsg.dataspac.es&sz=128",
+      "website": "https://tsg.dataspac.es/docs/apps/wallet/",
+      "platforms": [
+        "iOS"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/pk/app/tsg-mobile-wallet/id6741323068"
+      },
+      "status": "beta",
+      "releaseDate": "2025-06-06",
+      "orgId": "org:tno",
+      "provider": {
+        "orgId": "org:tno",
+        "name": "TNO",
+        "website": "https://tsg.dataspac.es/",
+        "logo": "https://www.google.com/s2/favicons?domain=tno.nl&sz=128",
+        "country": "NL",
+        "fidesManifestoSupporter": true
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/TNO/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:46.537Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2025-06-06T00:00:00.000Z",
+      "source": "github"
+    },
+    {
+      "id": "trustme-wallet",
+      "name": "TrustMe",
+      "description": "TrustMe is a mobile application for a digital identity wallet that allows users to securely create and manage their identity attributes. Users can register their ID card as well as other attributes, such as proof of address. TrustMe is also available through FranceConnect, enabling secure authentication across supported services.TrustMe prioritizes data privacy, ensuring that personal information remains under the user’s control. It is designed for simplicity, speed, and secure digital interactions..",
+      "logo": "https://www.trustmeid.io/img/Trustme-SYMBOLE-RVB-vert.jpg",
+      "type": "personal",
+      "status": "production",
+      "website": "https://www.trustmeid.io/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/us/app/trustme-your-digital-identity/id1634176820",
+        "android": "https://play.google.com/store/apps/details?id=org.a3bc.trustme"
+      },
+      "releaseDate": "2022-06-01",
+      "orgId": "org:a3bc",
+      "provider": {
+        "orgId": "org:a3bc",
+        "name": "A3BC",
+        "website": "https://www.a3bc.io/",
+        "country": "FR"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/a3bc/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:46.616Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2022-06-01T00:00:00.000Z",
+      "source": "github"
     },
     {
       "id": "affinidi-portal",
@@ -1065,11 +287,33 @@
         "logo": "https://www.google.com/s2/favicons?domain=affinidi.com&sz=256",
         "country": "SG"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/affinidi/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.113Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/affinidi/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:46.676Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
+    },
+    {
+      "id": "e-albania-digital-id",
+      "name": "e-Albania Digital ID",
+      "description": "Launch announced for 2026, to be introduced one year before the EU Digital ID Wallet (2027). Technology partner: Idemia. Biometric identification (fingerprint, facial recognition). Goal: Modernization of administration and preparation for EU accession.",
+      "type": "personal",
+      "status": "development",
+      "website": "https://me.rks-gov.net",
+      "platforms": [],
+      "logo": "https://flagcdn.com/w80/al.png",
+      "orgId": "org:albania",
+      "provider": {
+        "orgId": "org:albania",
+        "name": "Albanian Government",
+        "website": "https://me.rks-gov.net",
+        "country": "AL"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/albania/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:46.750Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2026-01-12T16:03:07.000Z",
+      "source": "github"
     },
     {
       "id": "paradym-wallet",
@@ -1152,11 +396,11 @@
         },
         "fidesManifestoSupporter": true
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/animo/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.114Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/animo/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:46.810Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2023-06-01T00:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "paradym-platform",
@@ -1208,11 +452,11 @@
         },
         "fidesManifestoSupporter": true
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/animo/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.114Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/animo/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:46.810Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "apple-wallet",
@@ -1241,11 +485,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=apple.com&sz=128",
         "country": "US"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/apple/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.114Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/apple/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:46.882Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "national-eudi-wallet-austria",
@@ -1282,11 +526,11 @@
         "website": "https://plus.a-sit.at/open-source.html",
         "country": "AT"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/austria/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.115Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/austria/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:46.945Z",
+      "updatedAt": "2026-04-22T05:25:25.000Z",
       "firstSeenAt": "2024-01-01T00:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "auth0-platform",
@@ -1322,11 +566,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=auth0.com&sz=128",
         "country": "US"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/auth0/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.116Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/auth0/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:47.013Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "authbound-wallet",
@@ -1384,11 +628,11 @@
           "support": "https://authbound.io/contact"
         }
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/authbound/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.116Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/authbound/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:47.075Z",
       "updatedAt": "2026-02-17T12:00:00.000Z",
       "firstSeenAt": "2026-02-17T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "sovio-adeva-wallet",
@@ -1428,11 +672,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=credebl.id&sz=128",
         "country": "IN"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/ayanworks/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.116Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/ayanworks/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:47.146Z",
       "updatedAt": "2026-01-19T00:00:00.000Z",
       "firstSeenAt": "2026-01-19T00:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "credebl-organizational-wallet",
@@ -1467,123 +711,102 @@
         "logo": "https://www.google.com/s2/favicons?domain=credebl.id&sz=128",
         "country": "IN"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/ayanworks/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.116Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/ayanworks/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:47.146Z",
       "updatedAt": "2026-01-19T00:00:00.000Z",
       "firstSeenAt": "2026-01-19T00:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
-      "id": "swiyu-wallet",
-      "name": "SWIYU Wallet",
-      "description": "swiyu is the Swiss Confederation's wallet. It can be used to easily and securely request, store and present digital credentials and documents. swiyu can currently be used as part of Public Beta. The aim is to gain experience with the e-ID (digital identity) that will be issued by the Swiss Confederation.",
-      "logo": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/95/45/6f/95456f82-a1cb-79c7-5f89-7310844bea61/Placeholder.mill/400x400bb-75.webp",
-      "website": "https://www.swiyu.admin.ch/",
+      "id": "bc-wallet",
+      "name": "BC Wallet",
+      "description": "BC Wallet is the official digital identity wallet of the Government of British Columbia. It allows residents to securely store and present government-issued credentials and access provincial digital services.",
+      "logo": "https://www.google.com/s2/favicons?domain=gov.bc.ca&sz=256",
+      "website": "https://www2.gov.bc.ca/gov/content/governments/government-id/bc-wallet",
       "type": "personal",
       "platforms": [
         "iOS",
         "Android"
       ],
-      "vcFormat": [
-        "sd_jwt_vc"
-      ],
+      "openSource": true,
+      "repository": "https://github.com/bcgov/bc-wallet-mobile",
       "status": "production",
-      "openSource": true,
-      "license": "MIT",
-      "repository": "https://github.com/swiyu-admin-ch",
       "appStoreLinks": {
-        "web": "https://www.swiyu.admin.ch/",
-        "iOS": "https://apps.apple.com/ch/app/swiyu/id6737259614",
-        "android": "https://play.google.com/store/apps/details?id=ch.admin.foitt.swiyu"
+        "iOS": "https://apps.apple.com/ca/app/bc-wallet/id1587380443",
+        "android": "https://play.google.com/store/apps/details?id=ca.bc.gov.BCWallet&hl=en"
       },
-      "documentation": "https://www.swiyu.admin.ch/documentation",
-      "orgId": "org:swiyu",
+      "orgId": "org:bcgov",
       "provider": {
-        "orgId": "org:swiyu",
-        "name": "Swiss Confederation",
-        "website": "https://www.eid.admin.ch/en",
-        "logo": "https://play-lh.googleusercontent.com/24M9nEXiuSVZAfEnkDzJ2koRLLfd7s_sSw3CgfzVeNfQjALW800TPcVB_mwDrKpJhz0V",
-        "country": "CH"
+        "orgId": "org:bcgov",
+        "name": "Government of British Columbia",
+        "website": "https://www2.gov.bc.ca/",
+        "logo": "https://www.google.com/s2/favicons?domain=gov.bc.ca&sz=256",
+        "country": "CA"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/che/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.351Z",
-      "updatedAt": "2026-01-10T12:00:00.000Z",
-      "firstSeenAt": "2026-01-10T12:00:00.000Z",
-      "source": "local"
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/bcgov/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:47.214Z",
+      "updatedAt": "2026-01-12T00:00:00.000Z",
+      "firstSeenAt": "2026-01-12T00:00:00.000Z",
+      "source": "github"
     },
     {
-      "id": "swiyu-generic-issuer",
-      "name": "SWIYU Generic Issuer",
-      "description": "Generic issuer component of the SWIYU ecosystem, enabling organizations to issue verifiable credentials to compatible wallets within the Swiss e-ID infrastructure.",
-      "type": "organizational",
-      "platforms": [
-        "Web"
-      ],
-      "website": "https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-issuer/",
-      "documentation": "https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-issuer/",
-      "openSource": true,
-      "license": "MIT",
-      "repository": "https://github.com/swiyu-admin-ch/swiyu-issuer",
-      "vcFormat": [
-        "sd_jwt_vc"
-      ],
-      "issuanceProtocols": [
-        "OpenID4VCI"
-      ],
+      "id": "national-eudi-wallet-belgium",
+      "name": "National EUDI Wallet (MyGov.be)",
+      "description": "Belgium's MyGov.be national EUDI wallet went live in May 2024 following publication of eIDAS 2.0, becoming one of nine EU countries (Austria, Belgium, Cyprus, Czech Republic, France, Hungary, Italy, Poland, Portugal) with deployed digital identity wallet solutions at national level ahead of the December 2026 mandatory deadline for all EU member states. The wallet builds on existing digital identity infrastructure including the eID system and itsme, enabling Belgian residents to register using identity cards or existing authentication methods, with planned expansion to incorporate mobile driving licenses by 2025 and European Health Insurance Card by 2026.",
+      "type": "personal",
       "status": "development",
-      "capabilities": [
-        "issuer"
+      "platforms": [
+        "iOS",
+        "Android"
       ],
-      "orgId": "org:swiyu",
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/be.png",
+      "releaseDate": "2025-01-01",
+      "orgId": "org:belgium",
       "provider": {
-        "orgId": "org:swiyu",
-        "name": "Swiss Confederation",
-        "website": "https://www.eid.admin.ch/en",
-        "logo": "https://play-lh.googleusercontent.com/24M9nEXiuSVZAfEnkDzJ2koRLLfd7s_sSw3CgfzVeNfQjALW800TPcVB_mwDrKpJhz0V",
-        "country": "CH"
+        "orgId": "org:belgium",
+        "name": "Belgian Government",
+        "website": "https://www.belgium.be",
+        "country": "BE"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/che/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.351Z",
-      "updatedAt": "2026-01-10T12:00:00.000Z",
-      "firstSeenAt": "2026-01-10T12:00:00.000Z",
-      "source": "local"
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/belgium/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:47.277Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2025-01-01T00:00:00.000Z",
+      "source": "github"
     },
     {
-      "id": "swiyu-generic-verifier",
-      "name": "SWIYU Generic Verifier",
-      "description": "Generic verifier component of the SWIYU ecosystem, enabling organizations to request and verify verifiable presentations from compatible wallets within the Swiss e-ID infrastructure.",
-      "type": "organizational",
+      "id": "bhutan-ndi-mobile-wallet",
+      "type": "personal",
+      "name": "Bhutan NDI Mobile Wallet",
+      "description": "Official mobile wallet for Bhutan’s National Digital Identity (NDI) program, enabling citizens to hold and present digital identity credentials securely.",
+      "logo": "https://www.google.com/s2/favicons?domain=bhutanndi.com&sz=128",
+      "website": "https://bhutanndi.com/",
       "platforms": [
-        "Web"
+        "iOS",
+        "Android"
       ],
-      "website": "https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-verifier/",
-      "documentation": "https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-verifier/",
-      "openSource": true,
-      "license": "MIT",
-      "repository": "https://github.com/swiyu-admin-ch/swiyu-verifier",
-      "vcFormat": [
-        "sd_jwt_vc"
-      ],
-      "presentationProtocols": [
-        "OpenID4VP"
-      ],
-      "status": "development",
-      "capabilities": [
-        "verifier"
-      ],
-      "orgId": "org:swiyu",
-      "provider": {
-        "orgId": "org:swiyu",
-        "name": "Swiss Confederation",
-        "website": "https://www.eid.admin.ch/en",
-        "logo": "https://play-lh.googleusercontent.com/24M9nEXiuSVZAfEnkDzJ2koRLLfd7s_sSw3CgfzVeNfQjALW800TPcVB_mwDrKpJhz0V",
-        "country": "CH"
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/gb/app/bhutan-ndi/id1645493166",
+        "android": "https://play.google.com/store/apps/details?id=com.bhutanndi"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/che/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.351Z",
-      "updatedAt": "2026-01-10T12:00:00.000Z",
-      "firstSeenAt": "2026-01-10T12:00:00.000Z",
-      "source": "local"
+      "openSource": false,
+      "status": "production",
+      "orgId": "org:buthan",
+      "provider": {
+        "orgId": "org:buthan",
+        "name": "Bhutan Government",
+        "website": "https://bhutanndi.com/",
+        "logo": "https://www.google.com/s2/favicons?domain=bhutanndi.com&sz=128",
+        "country": "BT"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/buthan/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:47.342Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2026-01-13T19:56:51.000Z",
+      "source": "github"
     },
     {
       "id": "credenco-business-wallet",
@@ -1651,11 +874,129 @@
         "country": "NL",
         "fidesManifestoSupporter": true
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/credenco/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.351Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/credenco/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:47.403Z",
       "updatedAt": "2026-03-26T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
+    },
+    {
+      "id": "digital-citizen-cyprus",
+      "name": "Digital Citizen",
+      "description": "Cyprus's Digital Citizen mobile app launched December 12, 2024, following the broader Digital Citizen program initiative, enables citizens to securely store and present biometric identity cards, driving licenses, and vehicle roadworthiness certificates on smartphones using QR code verification technology for scanning and authenticating digital documents with citizen authorization, achieving over 10,000 downloads in initial rollout. The app requires users to have activated and verified CY Login profiles to access government systems and services along with two-factor authentication enabled, working alongside Cyprus's IDMe.cy digital ID system as the country fulfills eIDAS 2.0 requirements mandating EU member states to offer digital wallet options by 2026.",
+      "type": "personal",
+      "status": "production",
+      "website": "https://www.digital-citizen.gov.cy/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/id6737911057",
+        "android": "https://play.google.com/store/apps/details?id=cy.gov.digital.citizen"
+      },
+      "logo": "https://www.google.com/s2/favicons?domain=digital-citizen.gov.cy&sz=128",
+      "releaseDate": "2024-01-01",
+      "orgId": "org:cyprus",
+      "provider": {
+        "orgId": "org:cyprus",
+        "name": "Government of Cyprus",
+        "website": "https://www.cygov.gov.cy/",
+        "country": "CY"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/cyprus/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:47.467Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2024-01-01T00:00:00.000Z",
+      "source": "github"
+    },
+    {
+      "id": "edoklady",
+      "name": "eDoklady",
+      "description": "Czech Republic's eDoklady mobile wallet application launched January 20, 2024, developed by the Digital and Information Agency (DIA) and National Agency for Communication and Information Technology, serves as \"an important intermediate step\" towards full EU Digital Identity Wallet (EUDI) implementation by enabling citizens to store ID cards, passports, driving licenses, health documentation, professional qualifications, and education certificates on mobile devices with over 70,000 downloads on first day. The app provides real electronic documents compatible with pending EUDI Wallet framework rather than mere document images, with central administrative authorities required to accept digital eDoklady credentials from January 2024, other government bodies from July 1, 2024, and all entities performing identity verification from January 1, 2025, positioning Czech Republic as one of the first nine EU countries to deploy national digital identity wallet solutions ahead of the 2026 mandatory deadline.",
+      "type": "personal",
+      "status": "production",
+      "website": "https://www.edoklady.cz/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/us/app/edoklady/id6470912982",
+        "android": "https://play.google.com/store/apps/details?id=cz.gov.edoklady"
+      },
+      "logo": "https://www.google.com/s2/favicons?domain=edoklady.cz&sz=128",
+      "releaseDate": "2022-01-01",
+      "orgId": "org:czechia",
+      "provider": {
+        "orgId": "org:czechia",
+        "name": "Czech Government",
+        "website": "https://www.edoklady.cz/",
+        "country": "CZ"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/czechia/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:47.524Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2022-01-01T00:00:00.000Z",
+      "source": "github"
+    },
+    {
+      "id": "datakeeper-personal-wallet",
+      "name": "DataKeeper Wallet",
+      "type": "personal",
+      "logo": "https://www.google.com/s2/favicons?domain=datakeeper.nl&sz=128",
+      "description": "The DataKeeper Wallet is a personal digital wallet that allows individuals to securely store, manage, and share personal data and credentials, with a strong focus on privacy, consent, and user control.",
+      "website": "https://www.datakeeper.nl/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/nl/app/datakeeper/id1546059184",
+        "android": "https://play.google.com/store/search?q=datakeeper&c=apps&hl=en"
+      },
+      "openSource": false,
+      "orgId": "org:datakeeper",
+      "provider": {
+        "orgId": "org:datakeeper",
+        "name": "DataKeeper",
+        "website": "https://www.datakeeper.nl/",
+        "logo": "https://www.google.com/s2/favicons?domain=datakeeper.nl&sz=128",
+        "country": "NL"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/datakeeper/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:47.587Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2026-01-12T19:50:41.000Z",
+      "source": "github"
+    },
+    {
+      "id": "national-eudi-wallet-denmark",
+      "name": "National EUDI Wallet (Denmark)",
+      "description": "Denmark's National EUDI Wallet awarded to Nine (Trifork Group subsidiary) by the Danish Agency for Digital Government in a DKK 29 million Phase 1 contract encompasses development starting April 2025, Q1 2026 go-live, and two years of support and continued development. The Digital Identity Wallet will initially enable citizens to obtain digital proof of age and digital ID credentials usable both physically and online without sharing unnecessary personal information, building upon Denmark's existing MitID system that completed transition at the end of 2023. Subsequent project phases will expand functionality to include a wide range of digital credentials complying with EU eIDAS2 regulation requirements.",
+      "type": "personal",
+      "status": "development",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/dk.png",
+      "releaseDate": "2026-01-01",
+      "orgId": "org:denmark",
+      "provider": {
+        "orgId": "org:denmark",
+        "name": "Danish Government",
+        "website": "https://www.digst.dk/",
+        "country": "DK"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/denmark/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:47.675Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2026-01-01T00:00:00.000Z",
+      "source": "github"
     },
     {
       "id": "digidentity-wallet",
@@ -1697,11 +1038,11 @@
         "country": "NL",
         "fidesManifestoSupporter": true
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/digidentity/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.352Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/digidentity/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:47.769Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "veres-wallet",
@@ -1751,11 +1092,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=digitalbazaar.com&sz=128",
         "country": "US"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/digitalbazaar/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.353Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/digitalbazaar/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:47.829Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "truvera-wallet",
@@ -1797,11 +1138,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=dock.io&sz=128",
         "country": "CH"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/docklabs/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.353Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/docklabs/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:47.890Z",
       "updatedAt": "2026-01-10T12:00:00.000Z",
       "firstSeenAt": "2026-01-10T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "truvera-platform",
@@ -1849,11 +1190,69 @@
         "logo": "https://www.google.com/s2/favicons?domain=dock.io&sz=128",
         "country": "CH"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/docklabs/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.353Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/docklabs/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:47.890Z",
       "updatedAt": "2026-01-10T12:00:00.000Z",
       "firstSeenAt": "2026-01-10T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
+    },
+    {
+      "id": "national-eudi-wallet-estonia",
+      "name": "National EUDI Wallet (Estonia)",
+      "description": "Estonia's National EUDI Wallet is in development for 2026-2027 deployment to comply with eIDAS 2.0 regulation mandating EU member states to provide European Digital Identity Wallets, building upon Estonia's world-leading e-ID infrastructure established since 2002 with the pioneering national electronic identity card. The wallet will leverage Estonia's extensive digital government experience including RIA's (Information System Authority) coordination of electronic identity and cybersecurity, integrating with existing eID solutions like ID cards, Mobile-ID, and Smart-ID. Estonia's implementation will continue the country's e-governance leadership by enabling citizens to securely store and share verified digital credentials across EU member states while maintaining interoperability with Estonia's established digital ecosystem that has processed over 600 million digital signatures and achieved \"high\" eIDAS certification.",
+      "type": "personal",
+      "status": "development",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/ee.png",
+      "orgId": "org:estonia",
+      "provider": {
+        "orgId": "org:estonia",
+        "name": "Estonian Government",
+        "website": "https://www.ria.ee/",
+        "country": "EE"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/estonia/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:47.949Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2026-01-12T15:59:00.000Z",
+      "source": "github"
+    },
+    {
+      "id": "fayda-id",
+      "name": "Fayda ID",
+      "description": "Official digital identity wallet of Ethiopia's National ID Program (Fayda). Enables citizens to view, verify, download and manage their Fayda digital ID credentials.",
+      "logo": "https://play-lh.googleusercontent.com/tx1qrpGe0b6uBTadJqLqF64_HW-ehqnH_00J5L5CxjtDPu84eDgnDvSD5d9OTHe3Suw=w480-h960-rw",
+      "website": "https://id.gov.et/",
+      "type": "personal",
+      "platforms": [
+        "Android",
+        "iOS"
+      ],
+      "status": "production",
+      "appStoreLinks": {
+        "android": "https://play.google.com/store/apps/details?id=et.fayda.nidfaydaApp&hl=en",
+        "iOS": "https://apps.apple.com/nl/app/fayda-id/id6740314990"
+      },
+      "documentation": "https://id.gov.et/",
+      "orgId": "org:ethiopia",
+      "provider": {
+        "orgId": "org:ethiopia",
+        "name": "National ID Program (NIDP), Ethiopia",
+        "website": "https://id.gov.et/",
+        "logo": "https://www.google.com/s2/favicons?domain=id.gov.et&sz=128",
+        "country": "ET"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/ethiopia/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:48.015Z",
+      "updatedAt": "2026-02-18T09:00:00.000Z",
+      "firstSeenAt": "2026-02-18T09:00:00.000Z",
+      "source": "github"
     },
     {
       "id": "eudi-reference-personal-wallet",
@@ -1887,11 +1286,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=ec.europa.eu&sz=128",
         "country": "EU"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/eu/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.354Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/eu/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:48.068Z",
+      "updatedAt": "2026-04-22T05:25:25.000Z",
       "firstSeenAt": "2026-01-13T19:41:01.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "eudi-age-verification-wallet",
@@ -1923,11 +1322,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=ec.europa.eu&sz=128",
         "country": "EU"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/eu/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.354Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/eu/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:48.068Z",
+      "updatedAt": "2026-04-22T05:25:25.000Z",
       "firstSeenAt": "2026-01-13T19:41:01.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "eudi-reference-issuer",
@@ -1956,11 +1355,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=ec.europa.eu&sz=128",
         "country": "EU"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/eu/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.354Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/eu/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:48.068Z",
+      "updatedAt": "2026-04-22T05:25:25.000Z",
       "firstSeenAt": "2026-01-13T19:41:01.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "eudi-reference-verifier",
@@ -1990,11 +1389,40 @@
         "logo": "https://www.google.com/s2/favicons?domain=ec.europa.eu&sz=128",
         "country": "EU"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/eu/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.354Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/eu/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:48.068Z",
+      "updatedAt": "2026-04-22T05:25:25.000Z",
       "firstSeenAt": "2026-01-13T19:41:01.000Z",
-      "source": "local"
+      "source": "github"
+    },
+    {
+      "id": "national-eudi-wallet-finland",
+      "name": "National EUDI Wallet (Finland)",
+      "description": "Developed by DVV, coordinated by the Ministry of Finance. Launch end of 2026. Features: eID, QES, later expanded to include various certificates and documents. Participation in POTENTIAL, EWC, and DC4EU pilots.",
+      "type": "personal",
+      "status": "development",
+      "website": "https://dvv.fi/en/european-digital-identity-wallet",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/fi.png",
+      "releaseDate": "2026-01-01",
+      "orgId": "org:finland",
+      "provider": {
+        "orgId": "org:finland",
+        "name": "Finnish Government",
+        "website": "https://dvv.fi/en/european-digital-identity-wallet",
+        "country": "FI"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/finland/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:48.174Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2026-01-01T00:00:00.000Z",
+      "source": "github"
     },
     {
       "id": "didroom",
@@ -2032,11 +1460,11 @@
         "country": "NL",
         "fidesManifestoSupporter": true
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/forkbomb/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.354Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/forkbomb/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:48.233Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "didroom-wallet",
@@ -2063,11 +1491,41 @@
         "country": "NL",
         "fidesManifestoSupporter": true
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/forkbomb/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.354Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/forkbomb/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:48.233Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
+    },
+    {
+      "id": "france-identite",
+      "name": "France Identité",
+      "description": "France Identité app launched by French Ministry of Interior entered beta in May 2022 before full public rollout February 14, 2024, with no user limits, enabling citizens to create dematerialized versions of identity cards and driving licenses on smartphones using NFC readers to scan biometric identity cards requiring Android 11 or iOS 16 minimum software. The state-provided digital identity platform generates electronically signed proofs of identity to prevent fraud, authenticates users for FranceConnect government services access, and displays identity cards and Carte Vitale health insurance cards, with plans to expand health card functionality in 2025, positioning France among early adopters of EUDI Wallet-compatible infrastructure preparing for EU Digital Identity Wallet framework implementation by 2030 for uniform mobile driving licenses across Europe aligned with eIDAS 2.0 regulation.",
+      "type": "personal",
+      "status": "production",
+      "website": "https://france-identite.gouv.fr/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/fr/app/france-identit%C3%A9/id1590142959",
+        "android": "https://play.google.com/store/apps/details?id=fr.gouv.franceidentite"
+      },
+      "logo": "https://www.google.com/s2/favicons?domain=france-identite.gouv.fr&sz=128",
+      "releaseDate": "2024-01-01",
+      "orgId": "org:france",
+      "provider": {
+        "orgId": "org:france",
+        "name": "French Government",
+        "website": "https://france-identite.gouv.fr/",
+        "country": "FR"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/france/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:48.288Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2024-01-01T00:00:00.000Z",
+      "source": "github"
     },
     {
       "id": "gataca-wallet",
@@ -2160,11 +1618,11 @@
           "email": "samuel@gataca.io"
         }
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/gataca/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.355Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/gataca/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:48.343Z",
       "updatedAt": "2026-03-27T12:00:00.000Z",
       "firstSeenAt": "2026-01-15T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "gataca-studio",
@@ -2262,11 +1720,11 @@
           "email": "samuel@gataca.io"
         }
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/gataca/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.355Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/gataca/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:48.343Z",
       "updatedAt": "2026-03-27T12:00:00.000Z",
       "firstSeenAt": "2026-01-15T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "national-eudi-wallet-germany",
@@ -2301,11 +1759,11 @@
         "website": "https://www.sprind.org/eudi-wallet",
         "country": "DE"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/germany/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.355Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/germany/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:48.411Z",
+      "updatedAt": "2026-04-22T05:25:25.000Z",
       "firstSeenAt": "2026-01-11T10:29:32.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "google-wallet",
@@ -2334,11 +1792,69 @@
         "logo": "https://www.google.com/s2/favicons?domain=google.com&sz=128",
         "country": "US"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/google/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.356Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/google/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:48.477Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
+    },
+    {
+      "id": "govgr-wallet",
+      "name": "Gov.gr Wallet",
+      "description": "Official Greek wallet app since July 2022. Enables digital ID cards, driver's licenses, disability cards, DYPA cards, and other documents. Fully valid within Greece (not for international travel). Login via TaxisNet or online banking. Under development into the EUDI Wallet.",
+      "type": "personal",
+      "status": "production",
+      "website": "https://wallet.gov.gr/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/gr/app/gov-gr-wallet/id1605614816",
+        "android": "https://play.google.com/store/apps/details?id=gr.gov.wallet"
+      },
+      "logo": "https://www.google.com/s2/favicons?domain=wallet.gov.gr&sz=128",
+      "releaseDate": "2022-01-01",
+      "orgId": "org:greece",
+      "provider": {
+        "orgId": "org:greece",
+        "name": "Greek Government",
+        "website": "https://wallet.gov.gr/",
+        "country": "GR"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/greece/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:48.543Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2022-01-01T00:00:00.000Z",
+      "source": "github"
+    },
+    {
+      "id": "national-eudi-wallet-greece",
+      "name": "National EUDI Wallet (Greece)",
+      "description": "Launch expected in November 2026. Builds on Gov.gr Wallet. Planned use cases: eGov, banking, SIM registration, mobile DL, QES, eRx, travel, education. Participation in EWC and DC4EU pilot projects. Pilot test at Thessaloniki Airport for travel credentials.",
+      "type": "personal",
+      "status": "development",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/gr.png",
+      "releaseDate": "2026-01-01",
+      "orgId": "org:greece",
+      "provider": {
+        "orgId": "org:greece",
+        "name": "Greek Government",
+        "website": "https://wallet.gov.gr/",
+        "country": "GR"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/greece/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:48.543Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2026-01-01T00:00:00.000Z",
+      "source": "github"
     },
     {
       "id": "helix-id-wallet",
@@ -2411,11 +1927,41 @@
           "email": "oliver@blockchain-helix.com"
         }
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/helixid/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.356Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/helixid/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:48.601Z",
+      "updatedAt": "2026-04-22T05:25:25.000Z",
       "firstSeenAt": "2020-01-01T00:00:00.000Z",
-      "source": "local"
+      "source": "github"
+    },
+    {
+      "id": "bien",
+      "name": "Bien",
+      "description": "A self-sovereign, identity-based digital wallet for citizens to securely store and manage credentials on their smartphone, with RNP as the root of trust.",
+      "logo": "https://play-lh.googleusercontent.com/ZCotfBIRuTIBXCOZIDkTWtwJfiCv1sf3YGef5BuOzWOQAlM6vO0Q5yNw2usjvR7d8PzkIL45_z9Pc5F4H1VmlA=w480-h960-rw",
+      "website": "https://www.rnp.hn/",
+      "type": "personal",
+      "platforms": [
+        "Android",
+        "iOS"
+      ],
+      "status": "production",
+      "appStoreLinks": {
+        "android": "https://play.google.com/store/apps/details?id=com.honduras.bien",
+        "iOS": "https://apps.apple.com/us/app/bien/id6754266435"
+      },
+      "orgId": "org:honduras",
+      "provider": {
+        "orgId": "org:honduras",
+        "name": "RNP HN (Registro Nacional de las Personas), Honduras",
+        "website": "https://www.rnp.hn/",
+        "logo": "https://www.google.com/s2/favicons?domain=rnp.hn&sz=128",
+        "country": "HN"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/honduras/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:48.662Z",
+      "updatedAt": "2026-02-18T10:15:00.000Z",
+      "firstSeenAt": "2026-02-18T10:15:00.000Z",
+      "source": "github"
     },
     {
       "id": "hovi-wallet",
@@ -2492,11 +2038,11 @@
         },
         "fidesManifestoSupporter": true
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/hovi/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.357Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/hovi/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:48.738Z",
       "updatedAt": "2026-03-31T12:00:00.000Z",
       "firstSeenAt": "2024-10-01T00:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "hovi-business-wallet",
@@ -2577,11 +2123,67 @@
         },
         "fidesManifestoSupporter": true
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/hovi/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.357Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/hovi/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:48.738Z",
       "updatedAt": "2026-03-31T12:00:00.000Z",
       "firstSeenAt": "2024-10-01T00:00:00.000Z",
-      "source": "local"
+      "source": "github"
+    },
+    {
+      "id": "national-eudi-wallet-hungary",
+      "name": "National EUDI Wallet (Hungary)",
+      "description": "Hungary deployed national EUDI Wallet in 2024 as one of nine EU countries (Austria, Belgium, Cyprus, Czech Republic, France, Hungary, Italy, Poland, and Portugal) with digital identity wallet solutions at national level ahead of December 2026 mandatory deadline when all 27 EU member states must ensure European Digital Identity Wallet availability to citizens following implementing acts adopted November 28, 2024. The Hungarian wallet builds on eSzemélyi (electronic personal identity card) infrastructure introduced January 1, 2016, and issued in current form since August 2, 2021, incorporating electronic chip storing biometric data (photo, fingerprints and signature for those over 12) enabling electronic public identification and qualified electronic signatures.",
+      "type": "personal",
+      "status": "production",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/hu.png",
+      "releaseDate": "2024-01-01",
+      "orgId": "org:hungary",
+      "provider": {
+        "orgId": "org:hungary",
+        "name": "Hungarian Government",
+        "website": "https://www.kormany.hu/",
+        "country": "HU"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/hungary/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:48.821Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2024-01-01T00:00:00.000Z",
+      "source": "github"
+    },
+    {
+      "id": "national-eudi-wallet-iceland",
+      "name": "National EUDI Wallet (Iceland)",
+      "description": "Iceland as European Economic Area (EEA) country alongside Liechtenstein and Norway has been granted one-year extension for EUDI Wallet implementation with December 2027 deadline compared to EU member states' December 2026 requirement, positioning Iceland among thirteen countries embarked on digital ID wallet development journeys at different stages including development, beta testing, or pre-production. The Icelandic government participates in pilot projects involving more than 250 private and public organizations across almost every EU member state as well as Norway, Iceland, and Ukraine to test EUDI Wallet enabling citizens to digitally prove identity and share verified attributes across EU/EEA in secure, user-controlled manner, building on Iceland's existing advanced electronic identification infrastructure including Auðkenni system achieving 97% adoption among eligible population for transition to European Digital Identity Wallet framework under eIDAS 2.0 regulation.",
+      "type": "personal",
+      "status": "development",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/is.png",
+      "releaseDate": "2027-01-01",
+      "orgId": "org:iceland",
+      "provider": {
+        "orgId": "org:iceland",
+        "name": "Icelandic Government",
+        "website": "https://www.government.is/",
+        "country": "IS"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/iceland/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:48.930Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2027-01-01T00:00:00.000Z",
+      "source": "github"
     },
     {
       "id": "igrant-data-wallet",
@@ -2675,11 +2277,11 @@
           "email": "support@igrant.io"
         }
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/igrant/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.360Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/igrant/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.001Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2021-06-01T00:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "igrant-organization-wallet",
@@ -2769,11 +2371,11 @@
           "email": "support@igrant.io"
         }
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/igrant/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.360Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/igrant/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.001Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "unime-wallet",
@@ -2818,11 +2420,11 @@
         "country": "NL",
         "fidesManifestoSupporter": true
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/impierce/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.361Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/impierce/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.081Z",
       "updatedAt": "2026-02-16T12:00:00.000Z",
       "firstSeenAt": "2026-02-16T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "impierce-unitrust",
@@ -2869,11 +2471,11 @@
         "country": "NL",
         "fidesManifestoSupporter": true
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/impierce/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.361Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/impierce/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.081Z",
       "updatedAt": "2026-02-16T12:00:00.000Z",
       "firstSeenAt": "2026-02-16T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "digilocker",
@@ -2902,11 +2504,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=uidai.gov.in&sz=128",
         "country": "IN"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/india/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.361Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/india/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.142Z",
       "updatedAt": "2026-02-18T08:15:00.000Z",
       "firstSeenAt": "2026-02-18T08:15:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "maadhaar",
@@ -2940,11 +2542,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=uidai.gov.in&sz=128",
         "country": "IN"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/india/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.361Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/india/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.142Z",
       "updatedAt": "2026-02-18T08:15:00.000Z",
       "firstSeenAt": "2026-02-18T08:15:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "miio-wallet",
@@ -2980,11 +2582,11 @@
         "website": "https://www.inetum.com/es/es.html",
         "country": "ES"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/inetum/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.361Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/inetum/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.210Z",
       "updatedAt": "2026-03-05T12:00:00.000Z",
       "firstSeenAt": "2026-03-05T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "dalion-org-wallet",
@@ -3025,11 +2627,11 @@
         "website": "https://www.inetum.com/es/es.html",
         "country": "ES"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/inetum/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.361Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/inetum/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.210Z",
       "updatedAt": "2026-03-05T12:00:00.000Z",
       "firstSeenAt": "2026-03-05T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "intercede-myid-identity-wallet",
@@ -3062,11 +2664,68 @@
         "logo": "https://www.google.com/s2/favicons?domain=intercede.com&sz=128",
         "country": "GB"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/intercede/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.361Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/intercede/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.283Z",
+      "updatedAt": "2026-04-22T05:25:25.000Z",
       "firstSeenAt": "2026-01-19T11:32:53.000Z",
-      "source": "local"
+      "source": "github"
+    },
+    {
+      "id": "national-eudi-wallet-ireland",
+      "name": "National EUDI Wallet (Ireland)",
+      "description": "Ireland's National EUDI Wallet is in development to comply with eIDAS 2.0 regulation, which mandates all EU member states to provide European Digital Identity Wallets by 2026. The wallet will enable Irish citizens to securely store and share verified digital credentials, access online services across the EU, and authenticate their identity for both public and private sector services. Ireland's implementation will integrate with the country's existing MyGovID authentication system and align with the EU-wide interoperability framework for cross-border digital identity recognition established under eIDAS Regulation 2024/1183.",
+      "type": "personal",
+      "status": "development",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/ie.png",
+      "orgId": "org:ireland",
+      "provider": {
+        "orgId": "org:ireland",
+        "name": "Irish Government",
+        "website": "https://www.gov.ie/",
+        "country": "IE"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/ireland/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.346Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2026-01-12T15:28:59.000Z",
+      "source": "github"
+    },
+    {
+      "id": "it-wallet",
+      "name": "IT Wallet",
+      "description": "Italy's IT-Wallet pilot launched October 23, 2024, with 50,000 users selected through IO app, achieving full nationwide deployment December 4, 2024, making Italy the first EU member state to fully deploy an EUDI Wallet under eIDAS 2.0 framework with 1.76 million digital driving licenses and 2.04 million digital health cards added within the first week. The comprehensive digital identity wallet integrated into PagoPa's IO app enables Italian citizens to securely store and present digital versions of identity cards, driving licenses, health cards, and European Disability Cards on smartphones, with plans to expand to educational qualifications and professional licenses while serving as foundation for Italy's digital government modernization strategy aligned with EU Digital Identity Wallet Architecture Reference Framework specifications.",
+      "type": "personal",
+      "status": "production",
+      "website": "https://io.italia.it/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/us/app/io/id1501681835",
+        "android": "https://play.google.com/store/apps/details?id=it.pagopa.io.app"
+      },
+      "logo": "https://www.google.com/s2/favicons?domain=io.italia.it&sz=128",
+      "releaseDate": "2024-01-01",
+      "orgId": "org:italy",
+      "provider": {
+        "orgId": "org:italy",
+        "name": "Italian Government",
+        "website": "https://io.italia.it/",
+        "country": "IT"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/italy/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.405Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2024-01-01T00:00:00.000Z",
+      "source": "github"
     },
     {
       "id": "ixo-portal",
@@ -3096,11 +2755,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=ixo.world&sz=128",
         "country": "CH"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/ixo/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.362Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/ixo/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.476Z",
+      "updatedAt": "2026-04-22T05:25:25.000Z",
       "firstSeenAt": "2026-01-13T19:07:51.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "identfy-personal-wallet",
@@ -3171,11 +2830,11 @@
         "website": "https://www.izertis.com/",
         "country": "ES"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/izertis/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.362Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/izertis/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.534Z",
       "updatedAt": "2026-03-16T12:00:00.000Z",
       "firstSeenAt": "2026-03-16T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "identfy-business-wallet",
@@ -3248,11 +2907,11 @@
         "website": "https://www.izertis.com/",
         "country": "ES"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/izertis/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.362Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/izertis/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.534Z",
       "updatedAt": "2026-03-16T12:00:00.000Z",
       "firstSeenAt": "2026-03-16T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "ksid-wallet",
@@ -3302,11 +2961,38 @@
           "email": "contact@k4-security.com"
         }
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/k4security/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.363Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/k4security/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.600Z",
       "updatedAt": "2026-03-03T00:00:00.000Z",
       "firstSeenAt": "2026-03-03T00:00:00.000Z",
-      "source": "local"
+      "source": "github"
+    },
+    {
+      "id": "national-eudi-wallet-latvia",
+      "name": "National EUDI Wallet (Latvia)",
+      "description": "Latvia's National EUDI Wallet is in development to comply with eIDAS 2.0 regulation mandating EU member states to provide European Digital Identity Wallets by 2026-2027. The wallet will build upon Latvia's existing eID infrastructure including the Personas apliecība (eID card) and eParaksts services, enabling citizens to securely store and share verified digital credentials across EU member states. Latvia's implementation will integrate with the cross-border eIDAS ecosystem, leveraging the country's experience as the second Nordic-Baltic state to achieve EU-wide e-service recognition and continuing Latvia's leadership in digital identity interoperability.",
+      "type": "personal",
+      "status": "development",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/lv.png",
+      "orgId": "org:latvia",
+      "provider": {
+        "orgId": "org:latvia",
+        "name": "Latvian Government",
+        "website": "https://www.latvija.lv/",
+        "country": "LV"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/latvia/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.659Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2026-01-12T16:00:02.000Z",
+      "source": "github"
     },
     {
       "id": "lissi-wallet",
@@ -3384,11 +3070,11 @@
           "email": "info@lissi.id"
         }
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/lissi/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.363Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/lissi/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.717Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2021-01-15T00:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "lissi-id-wallet-connector",
@@ -3440,11 +3126,11 @@
           "email": "info@lissi.id"
         }
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/lissi/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.363Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/lissi/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.717Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "mattr-vii",
@@ -3497,11 +3183,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=mattr.global&sz=128",
         "country": "NZ"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/mattr/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.364Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/mattr/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.795Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "mattr-go-hold",
@@ -3528,11 +3214,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=mattr.global&sz=128",
         "country": "NZ"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/mattr/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.364Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/mattr/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.795Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "meeco-svx-platform",
@@ -3570,11 +3256,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=meeco.me&sz=128",
         "country": "AU"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/meeco/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.364Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/meeco/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.863Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "meeco-personal-wallet",
@@ -3600,11 +3286,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=meeco.me&sz=128",
         "country": "AU"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/meeco/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.364Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/meeco/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.863Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "microsoft-authenticator",
@@ -3642,11 +3328,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=microsoft.com&sz=128",
         "country": "US"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/microsoft/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.364Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/microsoft/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:49.957Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "mini-wallet-finland",
@@ -3682,11 +3368,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=minisuomi.fi&sz=128",
         "country": "FI"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/minisuomi/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.364Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/minisuomi/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:50.020Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "moldova-ega-evo",
@@ -3730,11 +3416,11 @@
         "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/61/6f/66/616f66c0-047b-eb22-8bb3-0d3a82b3edb2/app_logo_ios-1x_U007emarketing-0-8-0-85-220-0.png/400x400ia-75.webp",
         "country": "MD"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/moldova/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.364Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/moldova/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:50.107Z",
       "updatedAt": "2026-03-23T00:00:00.000Z",
       "firstSeenAt": "2026-03-23T00:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "inji-wallet",
@@ -3779,11 +3465,11 @@
         "country": "IN",
         "fidesManifestoSupporter": true
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/mosip/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.364Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/mosip/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:50.173Z",
       "updatedAt": "2026-02-18T07:45:00.000Z",
       "firstSeenAt": "2026-02-18T07:45:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "inji-certifier",
@@ -3820,11 +3506,11 @@
         "country": "IN",
         "fidesManifestoSupporter": true
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/mosip/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.364Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/mosip/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:50.173Z",
       "updatedAt": "2026-02-18T07:45:00.000Z",
       "firstSeenAt": "2026-02-18T07:45:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "inji-verifier",
@@ -3861,11 +3547,11 @@
         "country": "IN",
         "fidesManifestoSupporter": true
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/mosip/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.364Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/mosip/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:50.173Z",
       "updatedAt": "2026-02-18T07:45:00.000Z",
       "firstSeenAt": "2026-02-18T07:45:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "namirial-wallet",
@@ -3930,11 +3616,11 @@
           "support": "https://servicedesk.namirial.com/hc/en-gb"
         }
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/namirial/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.365Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/namirial/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:50.234Z",
       "updatedAt": "2026-03-10T19:00:00.000Z",
       "firstSeenAt": "2026-03-10T19:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "namirial-wallet-enterprise",
@@ -3986,11 +3672,42 @@
           "support": "https://servicedesk.namirial.com/hc/en-gb"
         }
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/namirial/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.365Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/namirial/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:50.234Z",
       "updatedAt": "2026-03-10T19:00:00.000Z",
       "firstSeenAt": "2026-03-10T19:00:00.000Z",
-      "source": "local"
+      "source": "github"
+    },
+    {
+      "id": "neoke-wallet",
+      "type": "personal",
+      "name": "Neoke",
+      "description": "Travel wallet for storing and securely sharing travel-related identity documents and preferences, designed to streamline trusted digital journeys.",
+      "logo": "https://www.google.com/s2/favicons?domain=neoke.com&sz=128",
+      "website": "https://www.neoke.com/platform/identity-wallets",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "openSource": false,
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/au/app/neoke/id6462846673",
+        "android": "https://play.google.com/store/apps/details?id=neoke.cloud.wallet"
+      },
+      "status": "production",
+      "orgId": "org:neoke",
+      "provider": {
+        "orgId": "org:neoke",
+        "name": "Neoke",
+        "website": "https://www.neoke.com/",
+        "logo": "https://www.google.com/s2/favicons?domain=neoke.com&sz=128",
+        "country": "NL"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/neoke/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:50.358Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2026-01-13T19:11:36.000Z",
+      "source": "github"
     },
     {
       "id": "national-eudi-wallet-netherlands",
@@ -4026,11 +3743,11 @@
         "website": "https://www.nldigitalgovernment.nl/",
         "country": "NL"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/netherlands/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.365Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/netherlands/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:50.419Z",
+      "updatedAt": "2026-04-22T05:25:25.000Z",
       "firstSeenAt": "2026-01-13T16:28:39.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "orbit-enterprise",
@@ -4069,11 +3786,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=northernblock.io&sz=128",
         "country": "CA"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/northernblock/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.365Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/northernblock/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:50.489Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "orbit-edge",
@@ -4099,11 +3816,39 @@
         "logo": "https://www.google.com/s2/favicons?domain=northernblock.io&sz=128",
         "country": "CA"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/northernblock/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.365Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/northernblock/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:50.489Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
+    },
+    {
+      "id": "national-eudi-wallet-norway",
+      "name": "National EUDI Wallet (Norway)",
+      "description": "Norway as European Economic Area (EEA) country alongside Iceland and Liechtenstein has December 2027 deadline (one-year extension compared to EU member states' December 2026 requirement) to offer citizens EU Digital Identity Wallet, led by Digdir (Norwegian Digitalisation Agency) coordinating NOBID (Nordic-Baltic eID Project) multi-country consortium including Denmark, Germany, Iceland, Italy, and Latvia focusing on payments use case leveraging existing payment infrastructure. BankID participates in first phase of European Identity Wallet work through involvement in two consortia (EUDI Wallet Consortium EWC and Digital Credentials for Europe DC4EU) piloting EUDI wallet functionality, building on Norway's advanced digital infrastructure where more than 90% of citizens have access to eID with millions using digital services daily and 75% (4.1 million) Norwegians using Vipps payment tool, positioning Norway as leader in digital payments and eID adoption preparing for EUDI wallet integration with financial institutions obliged to accept wallet as official identification method from end of 2027.",
+      "type": "personal",
+      "status": "development",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/no.png",
+      "releaseDate": "2027-01-01",
+      "orgId": "org:norway",
+      "provider": {
+        "orgId": "org:norway",
+        "name": "Norwegian Government",
+        "website": "https://www.digdir.no/",
+        "country": "NO"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/norway/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:50.553Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2027-01-01T00:00:00.000Z",
+      "source": "github"
     },
     {
       "id": "credissuer",
@@ -4140,11 +3885,11 @@
           "email": "info@oouru.io"
         }
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/ooru/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.365Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/ooru/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:50.616Z",
       "updatedAt": "2026-02-18T07:25:00.000Z",
       "firstSeenAt": "2026-02-18T07:25:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "snapkyc",
@@ -4181,11 +3926,11 @@
           "email": "info@oouru.io"
         }
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/ooru/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.365Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/ooru/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:50.616Z",
       "updatedAt": "2026-02-18T07:25:00.000Z",
       "firstSeenAt": "2026-02-18T07:25:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "uwangu",
@@ -4214,11 +3959,39 @@
         "logo": "https://www.google.com/s2/favicons?domain=oumougroup.com&sz=128",
         "country": "SN"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/oumou/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.366Z",
-      "updatedAt": "2026-04-06T20:50:00.000Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/oumou/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:50.680Z",
+      "updatedAt": "2026-04-22T05:25:25.000Z",
       "firstSeenAt": "2026-04-06T19:44:12.000Z",
-      "source": "local"
+      "source": "github"
+    },
+    {
+      "id": "seviswallet",
+      "name": "SevisWallet",
+      "description": "Papua New Guinea’s official digital identity wallet for the SevisPass Digital ID ecosystem, enabling citizens and residents to securely store and manage identity credentials and access government and private services.",
+      "logo": "https://play-lh.googleusercontent.com/e6fcdFw8Fif5wYNmXbwEPKEVdLnWBiRbxzWViM6NmyU3SVjMKzr69Sf8RbnnlUPXzDqYWQ94dKbMqKXsQ3SV=w480-h960-rw",
+      "website": "https://www.sevis.gov.pg/",
+      "type": "personal",
+      "platforms": [
+        "Android"
+      ],
+      "status": "production",
+      "appStoreLinks": {
+        "android": "https://play.google.com/store/apps/details?id=com.png.sevispass"
+      },
+      "orgId": "org:png",
+      "provider": {
+        "orgId": "org:png",
+        "name": "Department of Information and Communications Technology, Papua New Guinea",
+        "website": "https://www.sevis.gov.pg/",
+        "logo": "https://www.google.com/s2/favicons?domain=sevis.gov.pg&sz=128",
+        "country": "PG"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/png/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:50.748Z",
+      "updatedAt": "2026-02-18T12:00:00.000Z",
+      "firstSeenAt": "2026-02-18T12:00:00.000Z",
+      "source": "github"
     },
     {
       "id": "mobywatel",
@@ -4250,11 +4023,11 @@
         "website": "https://www.gov.pl/mobywatel",
         "country": "PL"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/poland/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.366Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/poland/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:50.804Z",
+      "updatedAt": "2026-04-22T05:25:25.000Z",
       "firstSeenAt": "2018-01-01T00:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "govpt",
@@ -4286,11 +4059,11 @@
         "website": "https://eportugal.gov.pt",
         "country": "PT"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/portugal/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.366Z",
-      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/portugal/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:50.864Z",
+      "updatedAt": "2026-04-22T05:25:25.000Z",
       "firstSeenAt": "2019-01-01T00:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "yivi",
@@ -4326,11 +4099,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=yivi.app&sz=128",
         "country": "NL"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/privacybydesign/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.366Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/privacybydesign/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:50.922Z",
       "updatedAt": "2026-01-22T12:00:00.000Z",
       "firstSeenAt": "2026-01-22T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "procivis-one-wallet",
@@ -4398,11 +4171,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=procivis.ch&sz=128",
         "country": "CH"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/procivis/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.367Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/procivis/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:50.988Z",
       "updatedAt": "2026-02-04T12:00:00.000Z",
       "firstSeenAt": "2026-02-04T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "procivis-one",
@@ -4466,11 +4239,40 @@
         "logo": "https://www.google.com/s2/favicons?domain=procivis.ch&sz=128",
         "country": "CH"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/procivis/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.367Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/procivis/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:50.988Z",
       "updatedAt": "2026-02-04T12:00:00.000Z",
       "firstSeenAt": "2026-02-04T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
+    },
+    {
+      "id": "samsung-wallet",
+      "type": "personal",
+      "name": "Samsung Wallet",
+      "description": "Samsung’s consumer wallet for Galaxy devices, combining Samsung Pay and Samsung Pass. Supports payments and storing items like cards, passes, and digital keys (features vary by country).",
+      "logo": "https://www.google.com/s2/favicons?domain=samsung.com&sz=128",
+      "website": "https://www.samsung.com/us/apps/samsung-wallet/",
+      "openSource": false,
+      "platforms": [
+        "Android"
+      ],
+      "appStoreLinks": {
+        "android": "https://play.google.com/store/apps/details?id=com.samsung.android.spay"
+      },
+      "status": "production",
+      "orgId": "org:samsung",
+      "provider": {
+        "orgId": "org:samsung",
+        "name": "Samsung",
+        "website": "https://www.samsung.com/us/apps/samsung-wallet/",
+        "logo": "https://www.google.com/s2/favicons?domain=samsung.com&sz=128",
+        "country": "KR"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/samsung/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:51.058Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2026-01-13T18:47:53.000Z",
+      "source": "github"
     },
     {
       "id": "scytales-id-wallet",
@@ -4507,11 +4309,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=scytales.com&sz=128",
         "country": "SE"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/scytales/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.367Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/scytales/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:51.126Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "scytales-eu-reference-wallet",
@@ -4548,11 +4350,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=scytales.com&sz=128",
         "country": "SE"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/scytales/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.367Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/scytales/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:51.126Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "sicpa-digital-trust-suite",
@@ -4588,11 +4390,91 @@
         "logo": "https://www.google.com/s2/favicons?domain=sicpa.com&sz=128",
         "country": "CH"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/sicpa/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.367Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/sicpa/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:51.194Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
+    },
+    {
+      "id": "national-eudi-wallet-slovakia",
+      "name": "National EUDI Wallet (Slovakia)",
+      "description": "Slovakia's National EUDI Wallet is in development to meet eIDAS 2.0 mandates requiring all EU member states to provide European Digital Identity Wallets by 2026-2027. The wallet will enable Slovak citizens to securely manage verified digital credentials, authenticate across EU services, and engage in secure digital transactions for both government and commercial applications. Slovakia's implementation will build upon the country's existing electronic identity infrastructure and integrate with the EU-wide EUDI Wallet ecosystem for seamless cross-border identity verification compliant with eIDAS Regulation 2024/1183.",
+      "type": "personal",
+      "status": "development",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/sk.png",
+      "orgId": "org:slovakia",
+      "provider": {
+        "orgId": "org:slovakia",
+        "name": "Slovak Government",
+        "website": "https://www.slovensko.sk/",
+        "country": "SK"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/slovakia/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:51.271Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2026-01-12T15:31:16.000Z",
+      "source": "github"
+    },
+    {
+      "id": "national-eudi-wallet-slovenia",
+      "name": "National EUDI Wallet (Slovenia)",
+      "description": "Slovenia develops national EUDI Wallet as one of thirteen EU countries (Denmark, Estonia, Finland, Germany, Greece, Iceland, Ireland, Latvia, Netherlands, Slovakia, Slovenia, Spain, Sweden) embarked on digital ID wallet development at various stages including development, beta testing, or pre-production, meeting December 2026 deadline for all 27 EU member states to ensure European Digital Identity Wallet availability to citizens following first implementing regulations published December 4, 2024, entering force 20 days later. The Slovenian wallet builds on existing smartcard ID infrastructure, mobile ID systems, and electronic certificates to support personal identification data, university diplomas, driver's licenses, electronic certificates and attestations of attributes with secure authentication, document storage, sharing capabilities, and digital signing, preparing for 2027 requirements when banks, telecom operators, and major online service providers must accept EUDI Wallet as valid authentication and identity verification across EU member states.",
+      "type": "personal",
+      "status": "development",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/si.png",
+      "orgId": "org:slovenia",
+      "provider": {
+        "orgId": "org:slovenia",
+        "name": "Slovenian Government",
+        "website": "https://www.gov.si/",
+        "country": "SI"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/slovenia/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:51.334Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2026-01-12T15:31:42.000Z",
+      "source": "github"
+    },
+    {
+      "id": "cartera-digital-beta",
+      "name": "Cartera Digital Beta",
+      "description": "Spain's Cartera Digital Beta presented by Minister José Luis Escrivá in July 2024 is a mobile digital wallet pilot implementing an age verification system for accessing adult content using government-issued age credentials based on users' ID cards stored in the system, with availability for all citizens by end of summer 2024. The wallet generates 30 pairs of keys monthly for one-time identity verification through a double-blind system protecting privacy with double authentication preventing minors from accessing through adult devices, selected by the EU for a pilot project due to Spain's advanced work in developing age-assurance applications. As part of eIDAS2 standard requiring content platforms to accept European digital identity wallets by October 2027, Cartera Digital Beta will expand beyond age assurance to store municipal registries, university/non-university degrees, and ID documents, positioning Spain among EU countries piloting EUDI wallet functionality ahead of mandatory implementation.",
+      "type": "personal",
+      "status": "development",
+      "website": "https://digital.gob.es/especificaciones_tecnicas.html",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "logo": "https://flagcdn.com/w80/es.png",
+      "releaseDate": "2024-01-01",
+      "orgId": "org:spain",
+      "provider": {
+        "orgId": "org:spain",
+        "name": "Spanish Government",
+        "website": "https://digital.gob.es/",
+        "country": "ES"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/spain/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:51.403Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2024-01-01T00:00:00.000Z",
+      "source": "github"
     },
     {
       "id": "sphereon-wallet",
@@ -4676,11 +4558,11 @@
         },
         "fidesManifestoSupporter": true
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/sphereon/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.368Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/sphereon/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:51.463Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2022-03-15T00:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "sphereon-vdx-platform",
@@ -4730,11 +4612,11 @@
         },
         "fidesManifestoSupporter": true
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/sphereon/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.368Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/sphereon/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:51.463Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "spherity-business-wallet",
@@ -4778,11 +4660,11 @@
         "country": "DE",
         "fidesManifestoSupporter": true
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/spherity/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.368Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/spherity/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:51.528Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "sprucekit-showcase",
@@ -4829,11 +4711,38 @@
         "logo": "https://www.google.com/s2/favicons?domain=spruceid.com&sz=128",
         "country": "US"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/spruce/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.369Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/spruce/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:51.591Z",
       "updatedAt": "2026-01-10T12:00:00.000Z",
       "firstSeenAt": "2026-01-10T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
+    },
+    {
+      "id": "national-eudi-wallet-sweden",
+      "name": "National EUDI Wallet (Sweden)",
+      "description": "Sweden's national EUDI Wallet developed by DIGG (Agency for Digital Government) with recommended Swedish open model allowing both private and public operators as issuers of digital identity wallets, building on BankID infrastructure dominating market with over 8.5 million users as most widely used eID in Sweden and only one usable for identifying to payment service providers and authenticating payments. The EWC project co-founded by Swedish government agencies including DIGG, Companies Registration Office (Bolagsverket), Research Council (Vetenskapsrådet), and Sunet (University Computer Network) participates in two consortia (EUDI Wallet Consortium EWC and Digital Credentials for Europe DC4EU) piloting EU Digital Identity Wallet, positioning Sweden to meet December 2026 deadline for offering every citizen European Digital Identity Wallet with financial institutions, telecom operators, and major online service providers required to accept EUDI Wallet as valid authentication and identity verification from 2027 onward.",
+      "type": "personal",
+      "status": "development",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/se.png",
+      "orgId": "org:sweden",
+      "provider": {
+        "orgId": "org:sweden",
+        "name": "Swedish Government",
+        "website": "https://www.digg.se/",
+        "country": "SE"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/sweden/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:51.659Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2026-01-12T16:02:03.000Z",
+      "source": "github"
     },
     {
       "id": "altme-wallet",
@@ -4888,11 +4797,11 @@
         "country": "FR",
         "fidesManifestoSupporter": true
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/talao/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.369Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/talao/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:51.717Z",
       "updatedAt": "2026-03-26T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "wallet4agent",
@@ -4956,11 +4865,11 @@
         "country": "FR",
         "fidesManifestoSupporter": true
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/talao/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.369Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/talao/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:51.717Z",
       "updatedAt": "2026-03-26T12:00:00.000Z",
       "firstSeenAt": "2026-03-26T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "talao-wallet",
@@ -5015,11 +4924,11 @@
         "country": "FR",
         "fidesManifestoSupporter": true
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/talao/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.369Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/talao/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:51.717Z",
       "updatedAt": "2026-03-26T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "toppan-wallet",
@@ -5061,11 +4970,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=toppan.com&sz=128",
         "country": "JP"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/toppan/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.370Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/toppan/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:51.806Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "uaegean-stack",
@@ -5105,11 +5014,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=aegean.gr&sz=128",
         "country": "GR"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/uaegean/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.370Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/uaegean/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:51.886Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "heidi-wallet",
@@ -5152,11 +5061,41 @@
         "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/13/2d/44/132d44a4-424b-3dfc-174e-541248ef421b/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/400x400ia-75.webp",
         "country": "CH"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/ubique/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.370Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/ubique/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:51.954Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
+    },
+    {
+      "id": "diia",
+      "name": "Diia (Дія)",
+      "description": "Ukraine's Diia (\"Action\" in Ukrainian) launched in 2020 by Ministry of Digital Transformation led by Minister Mykhailo Fedorov serves as mobile app and online portal acting as one-stop shop for public services and wallet for digital documents with same legal status as paper originals including digital passports and driving licenses, providing access to over 130 government services for approximately 18.5 million users (around half adult population). The comprehensive GovTech platform implemented by UNDP Ukraine with funding from Government of Sweden (SweMFA) through DIA Support Project builds on UNDP's experience in administrative service reform, digitalisation, and public administration process re-engineering, successfully demonstrating digital government resilience during crisis with Ukraine now exporting digital transformation know-how to other countries including Estonia adapting Diia to their needs, establishing Ukraine as leader in government digital innovation despite challenging circumstances.",
+      "type": "personal",
+      "status": "production",
+      "website": "https://diia.gov.ua/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/nl/app/%D0%B4%D1%96%D1%8F/id1489717872",
+        "android": "https://play.google.com/store/apps/details?id=ua.gov.diia.app"
+      },
+      "logo": "https://www.google.com/s2/favicons?domain=diia.gov.ua&sz=128",
+      "releaseDate": "2020-01-01",
+      "orgId": "org:ukraine",
+      "provider": {
+        "orgId": "org:ukraine",
+        "name": "Ukrainian Government",
+        "website": "https://diia.gov.ua/",
+        "country": "UA"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/ukraine/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:52.020Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2020-01-01T00:00:00.000Z",
+      "source": "github"
     },
     {
       "id": "vidwallet",
@@ -5202,11 +5141,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=validatedid.com&sz=128",
         "country": "ES"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/validatedid/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.371Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/validatedid/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:52.100Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "validatedid-platform",
@@ -5252,11 +5191,42 @@
         "logo": "https://www.google.com/s2/favicons?domain=validatedid.com&sz=128",
         "country": "ES"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/validatedid/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.371Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/validatedid/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:52.100Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
+    },
+    {
+      "id": "verimi",
+      "name": "Verimi",
+      "description": "Verimi launched in 2017 in Berlin as a digital identity platform founded by a consortium of 25 major German companies including Deutsche Bank, Allianz, Axel Springer, Bundesdruckerei, Deutsche Bahn, Lufthansa, Deutsche Telekom, Volkswagen, Mercedes-Benz, Samsung, and insurance companies (via GMB Systems including Huk-Coburg, Provinzial, LVM, DEVK, Zurich). In November 2022, Verimi merged with Yes (supported by Sparkassen, Volksbanken, and Raiffeisenbanken savings/cooperative banks) to create Germany's unified digital identity ecosystem, combining forces with 25 companies and processing over 10 million transactions in 2022. The merged platform bundles services from both providers to accelerate growth and offer comprehensive identification, ID wallet, and identity verification services from a single source, working with both public institutions (AOK) and private sector partners.",
+      "type": "personal",
+      "openSource": false,
+      "status": "production",
+      "website": "https://verimi.de/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/nl/app/verimi-id-wallet/id1361532848",
+        "android": "https://play.google.com/store/apps/details?id=com.verimi"
+      },
+      "logo": "https://flagcdn.com/w80/de.png",
+      "releaseDate": "2017-01-01",
+      "orgId": "org:verimi",
+      "provider": {
+        "orgId": "org:verimi",
+        "name": "Verimi GmbH",
+        "website": "https://verimi.de/",
+        "country": "DE"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/verimi/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:52.168Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2017-01-01T00:00:00.000Z",
+      "source": "github"
     },
     {
       "id": "wwwallet",
@@ -5294,11 +5264,41 @@
         "logo": "https://avatars.githubusercontent.com/u/126908515",
         "country": "GR"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/wwwallet/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.372Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/wwwallet/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:52.226Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
+    },
+    {
+      "id": "yoti",
+      "name": "Yoti",
+      "description": "Yoti founded in 2014 by three Oxford University students enables users to create reusable Digital IDs by adding government-issued identity documents and taking biometric selfies, protected by multi-factor authentication including phone linking, PIN protection, and personal biometrics. The UK's Proof of Age Standards Scheme (PASS) accredited Yoti ID in 2022 alongside Post Office EasyID and Lloyds Bank Smart ID as government-recognized proof of identity and age for buying restricted goods/services, with Yoti becoming one of the first certified Digital Identity Service Providers (IDSPs) under UK's digital identity framework in June 2022. Yoti technology enables Jersey islanders to prove identity for safely accessing government services online as fundamental infrastructure for Jersey's public sector modernization, while serving global markets through Digital ID Wallets and Connect apps supporting interoperable age verification across UK's expanding digital identity network.",
+      "type": "personal",
+      "openSource": false,
+      "status": "production",
+      "website": "https://www.yoti.com/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/gb/app/yoti-your-digital-identity/id983980808",
+        "android": "https://play.google.com/store/apps/details?id=com.yoti.mobile.android.live"
+      },
+      "releaseDate": "2014-01-01",
+      "orgId": "org:yoti",
+      "provider": {
+        "orgId": "org:yoti",
+        "name": "Yoti Ltd.",
+        "website": "https://www.yoti.com/",
+        "country": "GB"
+      },
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/yoti/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:52.292Z",
+      "updatedAt": "2026-04-06T19:44:12.000Z",
+      "firstSeenAt": "2014-01-01T00:00:00.000Z",
+      "source": "github"
     },
     {
       "id": "eausweise",
@@ -5328,11 +5328,11 @@
         "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/41/f7/85/41f78596-1cab-3d90-4fe9-98977dd360e1/AppIcon-0-1x_U007emarketing-0-6-0-85-220-0.png/400x400ia-75.webp",
         "country": "AT"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/youniqx/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.372Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/youniqx/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:52.352Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "eid-li",
@@ -5362,11 +5362,11 @@
         "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/41/f7/85/41f78596-1cab-3d90-4fe9-98977dd360e1/AppIcon-0-1x_U007emarketing-0-6-0-85-220-0.png/400x400ia-75.webp",
         "country": "AT"
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/youniqx/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.372Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/youniqx/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:52.352Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "yourd-data-wallet",
@@ -5411,11 +5411,11 @@
         "country": "KR",
         "fidesManifestoSupporter": true
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/yourd/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.373Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/yourd/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:52.433Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     },
     {
       "id": "yourd-business-wallet",
@@ -5455,11 +5455,11 @@
         "country": "KR",
         "fidesManifestoSupporter": true
       },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/yourd/wallet-catalog.json",
-      "fetchedAt": "2026-04-21T12:58:35.373Z",
+      "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/yourd/wallet-catalog.json",
+      "fetchedAt": "2026-04-22T05:26:52.433Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
-      "source": "local"
+      "source": "github"
     }
   ],
   "providers": [
@@ -5469,6 +5469,22 @@
       "website": "https://2060.io",
       "logo": "https://www.google.com/s2/favicons?domain=2060.io&sz=128",
       "country": "EE"
+    },
+    {
+      "orgId": "org:ca-dmv",
+      "name": "California Department of Motor Vehicles (CA DMV)",
+      "website": "https://www.dmv.ca.gov/portal/",
+      "country": "US",
+      "contact": {
+        "support": "https://www.dmv.ca.gov/portal/contacting-dmv/"
+      }
+    },
+    {
+      "orgId": "org:swiyu",
+      "name": "Swiss Confederation",
+      "website": "https://www.eid.admin.ch/en",
+      "logo": "https://play-lh.googleusercontent.com/24M9nEXiuSVZAfEnkDzJ2koRLLfd7s_sSw3CgfzVeNfQjALW800TPcVB_mwDrKpJhz0V",
+      "country": "CH"
     },
     {
       "orgId": "org:tno",
@@ -5485,208 +5501,17 @@
       "country": "FR"
     },
     {
-      "orgId": "org:albania",
-      "name": "Albanian Government",
-      "website": "https://me.rks-gov.net",
-      "country": "AL"
-    },
-    {
-      "orgId": "org:bcgov",
-      "name": "Government of British Columbia",
-      "website": "https://www2.gov.bc.ca/",
-      "logo": "https://www.google.com/s2/favicons?domain=gov.bc.ca&sz=256",
-      "country": "CA"
-    },
-    {
-      "orgId": "org:belgium",
-      "name": "Belgian Government",
-      "website": "https://www.belgium.be",
-      "country": "BE"
-    },
-    {
-      "orgId": "org:buthan",
-      "name": "Bhutan Government",
-      "website": "https://bhutanndi.com/",
-      "logo": "https://www.google.com/s2/favicons?domain=bhutanndi.com&sz=128",
-      "country": "BT"
-    },
-    {
-      "orgId": "org:cyprus",
-      "name": "Government of Cyprus",
-      "website": "https://www.cygov.gov.cy/",
-      "country": "CY"
-    },
-    {
-      "orgId": "org:czechia",
-      "name": "Czech Government",
-      "website": "https://www.edoklady.cz/",
-      "country": "CZ"
-    },
-    {
-      "orgId": "org:datakeeper",
-      "name": "DataKeeper",
-      "website": "https://www.datakeeper.nl/",
-      "logo": "https://www.google.com/s2/favicons?domain=datakeeper.nl&sz=128",
-      "country": "NL"
-    },
-    {
-      "orgId": "org:denmark",
-      "name": "Danish Government",
-      "website": "https://www.digst.dk/",
-      "country": "DK"
-    },
-    {
-      "orgId": "org:estonia",
-      "name": "Estonian Government",
-      "website": "https://www.ria.ee/",
-      "country": "EE"
-    },
-    {
-      "orgId": "org:ethiopia",
-      "name": "National ID Program (NIDP), Ethiopia",
-      "website": "https://id.gov.et/",
-      "logo": "https://www.google.com/s2/favicons?domain=id.gov.et&sz=128",
-      "country": "ET"
-    },
-    {
-      "orgId": "org:finland",
-      "name": "Finnish Government",
-      "website": "https://dvv.fi/en/european-digital-identity-wallet",
-      "country": "FI"
-    },
-    {
-      "orgId": "org:france",
-      "name": "French Government",
-      "website": "https://france-identite.gouv.fr/",
-      "country": "FR"
-    },
-    {
-      "orgId": "org:greece",
-      "name": "Greek Government",
-      "website": "https://wallet.gov.gr/",
-      "country": "GR"
-    },
-    {
-      "orgId": "org:honduras",
-      "name": "RNP HN (Registro Nacional de las Personas), Honduras",
-      "website": "https://www.rnp.hn/",
-      "logo": "https://www.google.com/s2/favicons?domain=rnp.hn&sz=128",
-      "country": "HN"
-    },
-    {
-      "orgId": "org:hungary",
-      "name": "Hungarian Government",
-      "website": "https://www.kormany.hu/",
-      "country": "HU"
-    },
-    {
-      "orgId": "org:iceland",
-      "name": "Icelandic Government",
-      "website": "https://www.government.is/",
-      "country": "IS"
-    },
-    {
-      "orgId": "org:ireland",
-      "name": "Irish Government",
-      "website": "https://www.gov.ie/",
-      "country": "IE"
-    },
-    {
-      "orgId": "org:italy",
-      "name": "Italian Government",
-      "website": "https://io.italia.it/",
-      "country": "IT"
-    },
-    {
-      "orgId": "org:latvia",
-      "name": "Latvian Government",
-      "website": "https://www.latvija.lv/",
-      "country": "LV"
-    },
-    {
-      "orgId": "org:neoke",
-      "name": "Neoke",
-      "website": "https://www.neoke.com/",
-      "logo": "https://www.google.com/s2/favicons?domain=neoke.com&sz=128",
-      "country": "NL"
-    },
-    {
-      "orgId": "org:norway",
-      "name": "Norwegian Government",
-      "website": "https://www.digdir.no/",
-      "country": "NO"
-    },
-    {
-      "orgId": "org:png",
-      "name": "Department of Information and Communications Technology, Papua New Guinea",
-      "website": "https://www.sevis.gov.pg/",
-      "logo": "https://www.google.com/s2/favicons?domain=sevis.gov.pg&sz=128",
-      "country": "PG"
-    },
-    {
-      "orgId": "org:samsung",
-      "name": "Samsung",
-      "website": "https://www.samsung.com/us/apps/samsung-wallet/",
-      "logo": "https://www.google.com/s2/favicons?domain=samsung.com&sz=128",
-      "country": "KR"
-    },
-    {
-      "orgId": "org:slovakia",
-      "name": "Slovak Government",
-      "website": "https://www.slovensko.sk/",
-      "country": "SK"
-    },
-    {
-      "orgId": "org:slovenia",
-      "name": "Slovenian Government",
-      "website": "https://www.gov.si/",
-      "country": "SI"
-    },
-    {
-      "orgId": "org:spain",
-      "name": "Spanish Government",
-      "website": "https://digital.gob.es/",
-      "country": "ES"
-    },
-    {
-      "orgId": "org:sweden",
-      "name": "Swedish Government",
-      "website": "https://www.digg.se/",
-      "country": "SE"
-    },
-    {
-      "orgId": "org:ukraine",
-      "name": "Ukrainian Government",
-      "website": "https://diia.gov.ua/",
-      "country": "UA"
-    },
-    {
-      "orgId": "org:verimi",
-      "name": "Verimi GmbH",
-      "website": "https://verimi.de/",
-      "country": "DE"
-    },
-    {
-      "orgId": "org:yoti",
-      "name": "Yoti Ltd.",
-      "website": "https://www.yoti.com/",
-      "country": "GB"
-    },
-    {
-      "orgId": "org:ca-dmv",
-      "name": "California Department of Motor Vehicles (CA DMV)",
-      "website": "https://www.dmv.ca.gov/portal/",
-      "country": "US",
-      "contact": {
-        "support": "https://www.dmv.ca.gov/portal/contacting-dmv/"
-      }
-    },
-    {
       "orgId": "org:affinidi",
       "name": "Affinidi",
       "website": "https://www.affinidi.com",
       "logo": "https://www.google.com/s2/favicons?domain=affinidi.com&sz=256",
       "country": "SG"
+    },
+    {
+      "orgId": "org:albania",
+      "name": "Albanian Government",
+      "website": "https://me.rks-gov.net",
+      "country": "AL"
     },
     {
       "orgId": "org:animo",
@@ -5739,11 +5564,24 @@
       "country": "IN"
     },
     {
-      "orgId": "org:swiyu",
-      "name": "Swiss Confederation",
-      "website": "https://www.eid.admin.ch/en",
-      "logo": "https://play-lh.googleusercontent.com/24M9nEXiuSVZAfEnkDzJ2koRLLfd7s_sSw3CgfzVeNfQjALW800TPcVB_mwDrKpJhz0V",
-      "country": "CH"
+      "orgId": "org:bcgov",
+      "name": "Government of British Columbia",
+      "website": "https://www2.gov.bc.ca/",
+      "logo": "https://www.google.com/s2/favicons?domain=gov.bc.ca&sz=256",
+      "country": "CA"
+    },
+    {
+      "orgId": "org:belgium",
+      "name": "Belgian Government",
+      "website": "https://www.belgium.be",
+      "country": "BE"
+    },
+    {
+      "orgId": "org:buthan",
+      "name": "Bhutan Government",
+      "website": "https://bhutanndi.com/",
+      "logo": "https://www.google.com/s2/favicons?domain=bhutanndi.com&sz=128",
+      "country": "BT"
     },
     {
       "orgId": "org:credenco",
@@ -5752,6 +5590,31 @@
       "logo": "https://wallet.acc.credenco.com/logo_white_background.png",
       "country": "NL",
       "fidesManifestoSupporter": true
+    },
+    {
+      "orgId": "org:cyprus",
+      "name": "Government of Cyprus",
+      "website": "https://www.cygov.gov.cy/",
+      "country": "CY"
+    },
+    {
+      "orgId": "org:czechia",
+      "name": "Czech Government",
+      "website": "https://www.edoklady.cz/",
+      "country": "CZ"
+    },
+    {
+      "orgId": "org:datakeeper",
+      "name": "DataKeeper",
+      "website": "https://www.datakeeper.nl/",
+      "logo": "https://www.google.com/s2/favicons?domain=datakeeper.nl&sz=128",
+      "country": "NL"
+    },
+    {
+      "orgId": "org:denmark",
+      "name": "Danish Government",
+      "website": "https://www.digst.dk/",
+      "country": "DK"
     },
     {
       "orgId": "org:digidentity",
@@ -5776,11 +5639,30 @@
       "country": "CH"
     },
     {
+      "orgId": "org:estonia",
+      "name": "Estonian Government",
+      "website": "https://www.ria.ee/",
+      "country": "EE"
+    },
+    {
+      "orgId": "org:ethiopia",
+      "name": "National ID Program (NIDP), Ethiopia",
+      "website": "https://id.gov.et/",
+      "logo": "https://www.google.com/s2/favicons?domain=id.gov.et&sz=128",
+      "country": "ET"
+    },
+    {
       "orgId": "org:eu",
       "name": "European Commission - Government",
       "website": "https://github.com/eu-digital-identity-wallet",
       "logo": "https://www.google.com/s2/favicons?domain=ec.europa.eu&sz=128",
       "country": "EU"
+    },
+    {
+      "orgId": "org:finland",
+      "name": "Finnish Government",
+      "website": "https://dvv.fi/en/european-digital-identity-wallet",
+      "country": "FI"
     },
     {
       "orgId": "org:forkbomb",
@@ -5789,6 +5671,12 @@
       "logo": "https://www.google.com/s2/favicons?domain=forkbomb.solutions&sz=128",
       "country": "NL",
       "fidesManifestoSupporter": true
+    },
+    {
+      "orgId": "org:france",
+      "name": "French Government",
+      "website": "https://france-identite.gouv.fr/",
+      "country": "FR"
     },
     {
       "orgId": "org:gataca",
@@ -5814,6 +5702,12 @@
       "country": "US"
     },
     {
+      "orgId": "org:greece",
+      "name": "Greek Government",
+      "website": "https://wallet.gov.gr/",
+      "country": "GR"
+    },
+    {
       "orgId": "org:helixid",
       "name": "Blockchain HELIX AG",
       "website": "https://helixid.io",
@@ -5821,6 +5715,13 @@
       "contact": {
         "email": "oliver@blockchain-helix.com"
       }
+    },
+    {
+      "orgId": "org:honduras",
+      "name": "RNP HN (Registro Nacional de las Personas), Honduras",
+      "website": "https://www.rnp.hn/",
+      "logo": "https://www.google.com/s2/favicons?domain=rnp.hn&sz=128",
+      "country": "HN"
     },
     {
       "orgId": "org:hovi",
@@ -5832,6 +5733,18 @@
         "email": "contact@hovi.id"
       },
       "fidesManifestoSupporter": true
+    },
+    {
+      "orgId": "org:hungary",
+      "name": "Hungarian Government",
+      "website": "https://www.kormany.hu/",
+      "country": "HU"
+    },
+    {
+      "orgId": "org:iceland",
+      "name": "Icelandic Government",
+      "website": "https://www.government.is/",
+      "country": "IS"
     },
     {
       "orgId": "org:igrant",
@@ -5872,6 +5785,18 @@
       "country": "GB"
     },
     {
+      "orgId": "org:ireland",
+      "name": "Irish Government",
+      "website": "https://www.gov.ie/",
+      "country": "IE"
+    },
+    {
+      "orgId": "org:italy",
+      "name": "Italian Government",
+      "website": "https://io.italia.it/",
+      "country": "IT"
+    },
+    {
       "orgId": "org:ixo",
       "name": "IXO World AG",
       "website": "https://www.ixo.world/",
@@ -5893,6 +5818,12 @@
       "contact": {
         "email": "contact@k4-security.com"
       }
+    },
+    {
+      "orgId": "org:latvia",
+      "name": "Latvian Government",
+      "website": "https://www.latvija.lv/",
+      "country": "LV"
     },
     {
       "orgId": "org:lissi",
@@ -5959,6 +5890,13 @@
       }
     },
     {
+      "orgId": "org:neoke",
+      "name": "Neoke",
+      "website": "https://www.neoke.com/",
+      "logo": "https://www.google.com/s2/favicons?domain=neoke.com&sz=128",
+      "country": "NL"
+    },
+    {
       "orgId": "org:netherlands",
       "name": "Dutch Government",
       "website": "https://www.nldigitalgovernment.nl/",
@@ -5970,6 +5908,12 @@
       "website": "https://northernblock.io",
       "logo": "https://www.google.com/s2/favicons?domain=northernblock.io&sz=128",
       "country": "CA"
+    },
+    {
+      "orgId": "org:norway",
+      "name": "Norwegian Government",
+      "website": "https://www.digdir.no/",
+      "country": "NO"
     },
     {
       "orgId": "org:ooru",
@@ -5986,6 +5930,13 @@
       "website": "https://oumougroup.com",
       "logo": "https://www.google.com/s2/favicons?domain=oumougroup.com&sz=128",
       "country": "SN"
+    },
+    {
+      "orgId": "org:png",
+      "name": "Department of Information and Communications Technology, Papua New Guinea",
+      "website": "https://www.sevis.gov.pg/",
+      "logo": "https://www.google.com/s2/favicons?domain=sevis.gov.pg&sz=128",
+      "country": "PG"
     },
     {
       "orgId": "org:poland",
@@ -6014,6 +5965,13 @@
       "country": "CH"
     },
     {
+      "orgId": "org:samsung",
+      "name": "Samsung",
+      "website": "https://www.samsung.com/us/apps/samsung-wallet/",
+      "logo": "https://www.google.com/s2/favicons?domain=samsung.com&sz=128",
+      "country": "KR"
+    },
+    {
       "orgId": "org:scytales",
       "name": "Scytales",
       "website": "https://scytales.com",
@@ -6026,6 +5984,24 @@
       "website": "https://www.sicpa.com",
       "logo": "https://www.google.com/s2/favicons?domain=sicpa.com&sz=128",
       "country": "CH"
+    },
+    {
+      "orgId": "org:slovakia",
+      "name": "Slovak Government",
+      "website": "https://www.slovensko.sk/",
+      "country": "SK"
+    },
+    {
+      "orgId": "org:slovenia",
+      "name": "Slovenian Government",
+      "website": "https://www.gov.si/",
+      "country": "SI"
+    },
+    {
+      "orgId": "org:spain",
+      "name": "Spanish Government",
+      "website": "https://digital.gob.es/",
+      "country": "ES"
     },
     {
       "orgId": "org:sphereon",
@@ -6052,6 +6028,12 @@
       "website": "https://spruceid.com/products/sprucekit",
       "logo": "https://www.google.com/s2/favicons?domain=spruceid.com&sz=128",
       "country": "US"
+    },
+    {
+      "orgId": "org:sweden",
+      "name": "Swedish Government",
+      "website": "https://www.digg.se/",
+      "country": "SE"
     },
     {
       "orgId": "org:talao",
@@ -6083,6 +6065,12 @@
       "country": "CH"
     },
     {
+      "orgId": "org:ukraine",
+      "name": "Ukrainian Government",
+      "website": "https://diia.gov.ua/",
+      "country": "UA"
+    },
+    {
       "orgId": "org:validatedid",
       "name": "Validated ID",
       "website": "https://www.validatedid.com",
@@ -6090,11 +6078,23 @@
       "country": "ES"
     },
     {
+      "orgId": "org:verimi",
+      "name": "Verimi GmbH",
+      "website": "https://verimi.de/",
+      "country": "DE"
+    },
+    {
       "orgId": "org:wwwallet",
       "name": "wwWallet.org",
       "website": "https://wwwallet.org",
       "logo": "https://avatars.githubusercontent.com/u/126908515",
       "country": "GR"
+    },
+    {
+      "orgId": "org:yoti",
+      "name": "Yoti Ltd.",
+      "website": "https://www.yoti.com/",
+      "country": "GB"
     },
     {
       "orgId": "org:youniqx",
@@ -6112,7 +6112,7 @@
       "fidesManifestoSupporter": true
     }
   ],
-  "lastUpdated": "2026-04-21T12:58:35.375Z",
+  "lastUpdated": "2026-04-22T05:26:52.473Z",
   "stats": {
     "totalWallets": 123,
     "totalProviders": 90,
