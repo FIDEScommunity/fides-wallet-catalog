@@ -1,1 +1,35 @@
- 
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "orgId": "org:digiyatra",
+  "wallets": [
+    {
+      "id": "digiyatra",
+      "name": "DigiYatra",
+      "description": "Personal wallet application for seamless air travel in India, enabling passengers to use digital identity and biometric verification during airport journeys.",
+      "logo": "https://raw.githubusercontent.com/FIDEScommunity/fides-wallet-catalog/main/community-catalogs/digiyatra/digiyatra_app_icon.webp",
+      "website": "https://www.digiyatra.org/",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/nl/app/digi-yatra/id6479873321",
+        "android": "https://play.google.com/store/apps/details?id=org.digiyatra.org"
+      },
+      "vcFormat": [
+        "mdoc"
+      ],
+      "features": [
+        "digital identity for air travel",
+        "biometric passenger flow",
+        "boarding pass integration",
+        "paperless airport journey"
+      ],
+      "status": "production",
+      "capabilities": [
+        "holder"
+      ]
+    }
+  ]
+} 
