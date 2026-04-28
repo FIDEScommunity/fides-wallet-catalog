@@ -999,6 +999,284 @@
 .fides-wallet-grid[data-columns="3"] { grid-template-columns: repeat(3, 1fr); }
 .fides-wallet-grid[data-columns="4"] { grid-template-columns: repeat(4, 1fr); }
 
+/* ============================================================
+ * VIEW TOGGLE + LIST VIEW
+ * ============================================================ */
+
+.fides-view-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: var(--fides-bg-secondary);
+  padding: 0 0.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--fides-border);
+  flex-shrink: 0;
+  height: 2.25rem;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.fides-view-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.625rem;
+  height: 1.625rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: var(--fides-text-muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.fides-view-btn:hover {
+  background: var(--fides-border);
+  color: var(--fides-text-primary);
+}
+
+.fides-view-btn.active {
+  background: var(--fides-accent);
+  color: #fff;
+}
+
+.fides-view-btn.active:hover {
+  background: var(--fides-accent-hover, var(--fides-accent));
+  color: #fff;
+}
+
+@media (max-width: 1023px) {
+  .fides-view-toggle {
+    display: none;
+  }
+}
+
+.fides-wallet-grid[data-view="list"] {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--fides-border);
+  border-radius: var(--fides-radius);
+  overflow: hidden;
+}
+
+.fides-wallet-list-header,
+.fides-wallet-grid[data-view="list"] .fides-wallet-card {
+  grid-template-columns: 32px 2fr 2.2fr minmax(74px, 96px) minmax(118px, 150px);
+  gap: 0.75rem;
+  padding: 0.625rem 1rem;
+}
+
+.fides-wallet-list-header {
+  display: none;
+  align-items: center;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--fides-text-muted);
+  background: var(--fides-bg-secondary);
+  border-bottom: 1px solid var(--fides-border);
+}
+
+.fides-wallet-grid[data-view="list"] .fides-wallet-list-header {
+  display: grid;
+}
+
+.fides-list-col-updated {
+  padding-left: 0.2rem;
+}
+
+.fides-list-col-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 0.5rem;
+}
+
+.fides-list-col-right svg {
+  width: 13px;
+  height: 13px;
+}
+
+.fides-wallet-grid[data-view="list"] .fides-wallet-card {
+  display: grid;
+  align-items: center;
+  min-height: unset;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid var(--fides-border);
+  box-shadow: none;
+  animation: none;
+  background: var(--fides-bg-card);
+  transition: background 0.15s;
+}
+
+.fides-wallet-grid[data-view="list"] .fides-wallet-card:last-child {
+  border-bottom: none;
+}
+
+.fides-wallet-grid[data-view="list"] .fides-wallet-card:nth-child(even) {
+  background: var(--fides-bg-primary);
+}
+
+.fides-wallet-grid[data-view="list"] .fides-wallet-card:hover {
+  transform: none;
+  background: rgba(59, 130, 246, 0.04);
+  box-shadow: none;
+}
+
+.fides-row-icon,
+.fides-row-name,
+.fides-row-provider,
+.fides-row-platforms,
+.fides-row-updated {
+  display: none;
+}
+
+.fides-wallet-grid[data-view="list"] .fides-row-icon,
+.fides-wallet-grid[data-view="list"] .fides-row-name,
+.fides-wallet-grid[data-view="list"] .fides-row-provider,
+.fides-wallet-grid[data-view="list"] .fides-row-platforms,
+.fides-wallet-grid[data-view="list"] .fides-row-updated {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.fides-row-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 7px;
+  background: var(--fides-bg-secondary);
+  border: 1px solid var(--fides-border);
+  color: var(--fides-accent);
+  flex-shrink: 0;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.fides-row-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.fides-row-name {
+  overflow: hidden;
+  min-width: 0;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.fides-row-name-text {
+  display: block;
+  width: 100%;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--fides-text-primary);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.fides-row-provider {
+  font-size: 0.8125rem;
+  color: var(--fides-text-secondary);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.fides-row-platforms {
+  justify-content: flex-start;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.fides-row-platform-link,
+.fides-row-platform-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 1px solid transparent;
+}
+
+.fides-row-platform-link {
+  background: #16a34a;
+  border-color: #15803d;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.fides-row-platform-link:hover {
+  background: #15803d;
+  border-color: #166534;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(22, 163, 74, 0.35);
+}
+
+.fides-row-platform-icon {
+  background: var(--fides-bg-secondary);
+  border-color: var(--fides-border);
+  color: var(--fides-text-muted);
+  opacity: 0.55;
+  cursor: default;
+}
+
+.fides-row-platform-link svg,
+.fides-row-platform-icon svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* Guard against aggressive theme CSS on production that recolors inline SVGs. */
+.fides-wallet-catalog .fides-row-platform-link,
+.fides-wallet-catalog a.fides-row-platform-link {
+  color: #ffffff !important;
+}
+
+.fides-wallet-catalog .fides-row-platform-link svg {
+  color: #ffffff !important;
+}
+
+/* Keep fill-based icons (Apple/Play) white even when theme CSS overrides SVG fills. */
+.fides-wallet-catalog .fides-row-platform-link svg[fill="currentColor"],
+.fides-wallet-catalog .fides-row-platform-link svg[fill="currentColor"] * {
+  fill: currentColor !important;
+}
+
+/* Keep stroke-based icons (Web globe) white without filling the interior. */
+.fides-wallet-catalog .fides-row-platform-link svg[fill="none"],
+.fides-wallet-catalog .fides-row-platform-link svg[fill="none"] * {
+  fill: none !important;
+  stroke: currentColor !important;
+}
+
+.fides-row-platform-empty {
+  font-size: 0.75rem;
+  color: var(--fides-text-muted);
+}
+
+.fides-row-updated {
+  font-size: 0.75rem;
+  color: var(--fides-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  padding-left: 0.2rem;
+  max-width: 100%;
+}
+
 /* ==========================================================================
    RESPONSIVE LAYOUT
    ========================================================================== */

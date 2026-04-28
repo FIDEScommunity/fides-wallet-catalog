@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.7.2
+Stable tag: 2.7.5
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -90,6 +90,18 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.7.5 =
+* Fixed list-view Web platform icon rendering so globe stroke icons keep their shape while linked platform icons remain high-contrast across themes.
+
+= 2.7.4 =
+* Fixed production theme CSS override issue where list-view platform icons in clickable buttons could render with dark fill; icons are now force-rendered white for consistent contrast.
+
+= 2.7.3 =
+* Added desktop list view toggle (grid/list) for the wallet overview, aligned with issuer/credential catalogs.
+* Added wallet list rows with columns for Name, Provider, Platforms and Updated date.
+* Platforms in list view now show icon buttons with clear visual distinction between clickable store links and non-clickable icons.
+* Improved list layout/alignment (name left align, provider width, compact platforms column) and fixed updated-date overflow at row boundaries.
 
 = 2.7.0 =
 * Refactor: `Fides_Wallet_Catalog_SSR` now extends the shared `Fides_Catalog_SSR_Renderer` base class shipped by fides-community-tools-tiles ≥ 1.6.2. The wallet-specific class shrunk by ~270 lines (no behaviour change) — all noscript wrapper, listing grid, detail-block shell and CollectionPage JSON-LD output now live in the base class. The wallet plugin still owns: catalog registration, `type` based URL routing, render-gate per page, JSON-LD enrichment with wallet fields, dl meta rows, app-store + chip sections.
