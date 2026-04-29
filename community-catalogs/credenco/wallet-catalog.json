@@ -20,7 +20,7 @@
       "issuanceProtocols": ["OpenID4VCI"],
       "presentationProtocols": ["OpenID4VP"],
       "keyStorage": ["Software", "HSM", "Cloud KMS"],
-      "supportedIdentifiers": ["did:jwk", "did:web", "did:ebsi"],
+      "supportedIdentifiers": ["x509", "did:jwk", "did:web", "did:webvh", "did:ebsi", "jwk"],
       "credentialStatusMethods": ["StatusList2021", "Token Status List"],
       "interoperabilityProfiles": ["DIIP v4", "DIIP v5"],
       "features": ["Universal OID4VP API", "Compliant with WE BUILD Interoperability Test Bed (ITB)", "Integration with FIDES Credential Catalog and BluePages", "EBSI Integration", "Public Profile", "Inbox notifications", "Available as SaaS or on-premise deployment"],
