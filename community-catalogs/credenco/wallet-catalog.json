@@ -34,10 +34,12 @@
         "Cloud KMS"
       ],
       "supportedIdentifiers": [
-        "did:jwk",
-        "did:web",
-        "did:ebsi"
-      ],
+        "x509", 
+        "did:jwk", 
+        "did:web", 
+        "did:webvh", 
+        "did:ebsi", 
+        "jwk"],
       "credentialStatusMethods": [
         "StatusList2021",
         "Token Status List"
