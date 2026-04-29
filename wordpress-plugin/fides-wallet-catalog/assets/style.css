@@ -478,13 +478,8 @@
   background: var(--fides-bg-secondary);
   color: var(--fides-text-primary);
   text-align: left;
-  cursor: pointer;
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.fides-kpi-card:hover {
-  border-color: var(--fides-accent);
-  transform: translateY(-1px);
+  cursor: default;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .fides-kpi-card.active {
