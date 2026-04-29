@@ -487,12 +487,16 @@
     const activityLabel = isWithinLastDays(addedDate, 30) && addedDate
       ? `Added ${addedDate.toLocaleDateString('en-US')}`
       : (formatUpdatedLabel(updatedDate) || '—');
+    const activityDateLabel = isWithinLastDays(addedDate, 30) && addedDate
+      ? addedDate.toLocaleDateString('en-US')
+      : (updatedDate ? updatedDate.toLocaleDateString('en-US') : (addedDate ? addedDate.toLocaleDateString('en-US') : '—'));
     const platforms = Array.isArray(wallet.platforms) ? wallet.platforms : [];
     const vcFormats = Array.isArray(wallet.vcFormat) ? wallet.vcFormat : [];
     return {
       displayName,
       providerName,
       activityLabel,
+      activityDateLabel,
       platformCount: platforms.length,
       vcFormatCount: vcFormats.length
     };
@@ -525,7 +529,7 @@
         </div>
         <div class="fides-row-provider" title="${escapeHtml(d.providerName)}">${escapeHtml(d.providerName)}</div>
         <div class="fides-row-platforms">${renderWalletRowPlatforms(wallet)}</div>
-        <div class="fides-row-updated">${escapeHtml(d.activityLabel)}</div>
+        <div class="fides-row-updated">${escapeHtml(d.activityDateLabel)}</div>
       </div>
     `;
   }

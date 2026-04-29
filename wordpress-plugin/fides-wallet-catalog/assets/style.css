@@ -1064,7 +1064,7 @@
 
 .fides-wallet-list-header,
 .fides-wallet-grid[data-view="list"] .fides-wallet-card {
-  grid-template-columns: 32px 2fr 2.2fr minmax(74px, 96px) minmax(118px, 150px);
+  grid-template-columns: 32px 2fr 3fr minmax(74px, 96px) minmax(84px, 108px);
   gap: 0.75rem;
   padding: 0.625rem 1rem;
 }

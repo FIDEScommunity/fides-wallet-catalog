@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.7.5
+Stable tag: 2.7.6
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -90,6 +90,9 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.7.6 =
+* Refined wallet list-view table density: removed "Updated/Added" prefixes from the Updated column and rebalanced column widths to give more space to Provider.
 
 = 2.7.5 =
 * Fixed list-view Web platform icon rendering so globe stroke icons keep their shape while linked platform icons remain high-contrast across themes.
