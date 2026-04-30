@@ -1,106 +1,323 @@
+/* ==========================================================================
+   WALLET DETAIL MODAL
+   ========================================================================== */
+
+/* Modal overlay */
 .fides-modal-overlay {
   position: fixed;
-  inset: 0;
-  z-index: 999999;
-  background: rgba(15, 23, 42, 0.72);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  z-index: 999999;
+  padding: 1rem;
+  animation: fides-modal-fade-in 0.2s ease;
 }
 
 .fides-modal-overlay.closing {
-  opacity: 0;
-  transition: opacity 0.2s ease;
+  animation: fides-modal-fade-out 0.2s ease forwards;
 }
 
+@keyframes fides-modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fides-modal-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* Modal container */
 .fides-modal {
-  width: min(900px, 96vw);
-  max-height: 92vh;
-  overflow: hidden;
-  border-radius: 14px;
-  background: #ffffff;
-  color: #0f172a;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-  display: flex;
-  flex-direction: column;
+  background: var(--fides-bg-secondary, #1e293b);
+  border-radius: var(--fides-radius-lg, 16px);
+  max-width: 900px;
+  width: 95%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+  animation: fides-modal-slide-up 0.3s ease;
 }
 
+.fides-modal-overlay.closing .fides-modal {
+  animation: fides-modal-slide-down 0.2s ease forwards;
+}
+
+@keyframes fides-modal-slide-up {
+  from { 
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fides-modal-slide-down {
+  from { 
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to { 
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+}
+
+/* Modal header */
 .fides-modal-header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 12px;
-  padding: 16px 18px;
-  border-bottom: 1px solid #e5e7eb;
+  padding: 1.5rem 1.5rem 1rem;
+  border-bottom: 1px solid var(--fides-border, rgba(255, 255, 255, 0.1));
 }
 
 .fides-modal-header-content {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 1rem;
+  flex: 1;
+  min-width: 0;
 }
 
-.fides-modal-logo,
+.fides-modal-logo {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-sizing: border-box;
+  padding: 0.5rem;
+  flex-shrink: 0;
+}
+
 .fides-modal-logo-placeholder {
-  width: 56px;
-  height: 56px;
-  border-radius: 10px;
-  object-fit: cover;
-  background: #f3f4f6;
+  width: 64px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--fides-accent, #3b82f6), #8b5cf6);
+  color: white;
+  flex-shrink: 0;
+}
+
+.fides-modal-logo-placeholder svg {
+  width: 32px;
+  height: 32px;
+}
+
+.fides-modal-title-wrap {
+  min-width: 0;
 }
 
 .fides-modal-title {
-  margin: 0;
-  font-size: 20px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+  color: var(--fides-text-primary, #f1f5f9);
   line-height: 1.2;
 }
 
 .fides-modal-provider {
-  margin: 4px 0 0 0;
-  font-size: 14px;
-  color: #475569;
+  font-size: 0.9375rem;
+  color: var(--fides-text-secondary, #94a3b8);
+  margin: 0;
   display: flex;
-  gap: 6px;
   align-items: center;
+  gap: 0.5rem;
 }
 
-.fides-modal-header-actions {
+.fides-modal-provider svg {
+  flex-shrink: 0;
+}
+
+.fides-modal-provider-link {
+  color: var(--fides-accent, #3b82f6);
+  text-decoration: none;
+  font-size: inherit;
+  margin-left: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.fides-modal-provider-link:hover {
+  color: var(--fides-accent-hover, #60a5fa);
+  text-decoration: underline;
+}
+
+.fides-modal-provider-link svg {
+  opacity: 0.7;
+  width: 14px;
+  height: 14px;
+}
+
+/* Organization catalog deep link in modal header (same pattern as RP catalog) */
+.fides-modal-link-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.8125rem;
+  color: var(--fides-accent, #3b82f6);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in srgb, var(--fides-accent, #3b82f6) 50%, transparent);
+  border-radius: 2px;
+  transition:
+    text-decoration-thickness 0.12s ease,
+    text-decoration-color 0.12s ease,
+    color 0.12s ease;
+}
+
+.fides-modal-provider .fides-modal-link-inline {
+  font-size: inherit;
+}
+
+.fides-modal-link-inline:hover {
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--fides-accent, #3b82f6);
+  color: color-mix(in srgb, var(--fides-accent, #3b82f6) 88%, black);
+}
+
+.fides-modal-link-inline:focus-visible {
+  outline: 2px solid var(--fides-accent, #3b82f6);
+  outline-offset: 2px;
+}
+
+@supports not (color: color-mix(in srgb, red 50%, transparent)) {
+  .fides-modal-link-inline {
+    text-decoration-color: rgba(59, 130, 246, 0.45);
+  }
+
+  .fides-modal-link-inline:hover {
+    text-decoration-color: #3b82f6;
+    color: #2563eb;
+  }
+}
+
+.fides-modal-link-inline svg {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+}
+
+/* Toast notification */
+.fides-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--fides-bg-secondary, #1e293b);
+  color: var(--fides-text-primary, #f1f5f9);
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
   display: flex;
-  gap: 8px;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 1000000;
+  animation: fides-toast-in 0.3s ease-out;
+  pointer-events: auto;
+  border: 1px solid var(--fides-border, rgba(255, 255, 255, 0.1));
+  max-width: 90vw;
+  isolation: isolate;
 }
 
-.fides-modal-copy-link,
-.fides-modal-close {
-  border: 1px solid #d1d5db;
-  background: #fff;
-  border-radius: 8px;
-  width: 36px;
-  height: 36px;
-  cursor: pointer;
+.fides-toast.fides-toast-out {
+  animation: fides-toast-out 0.3s ease-in forwards;
 }
 
+.fides-toast-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--fides-accent, #22c55e);
+  color: white;
+  flex-shrink: 0;
+}
+
+.fides-toast-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.fides-toast-message {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+@keyframes fides-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fides-toast-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.98);
+  }
+}
+
+/* Toast theme overrides */
+.fides-toast[data-theme="fides"],
+.fides-toast[data-theme="light"] {
+  background: #ffffff;
+  color: #000000;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .fides-toast {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    max-width: none;
+  }
+}
+
+/* Modal body */
 .fides-modal-body {
-  overflow: auto;
-  padding: 16px 18px 20px;
+  padding: 1.5rem;
 }
 
+/* Badges row */
 .fides-modal-badges {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
-  gap: 1rem;
+  gap: 0.5rem;
   margin-bottom: 1.25rem;
 }
 
-.fides-modal-badges-with-action {
-  justify-content: space-between;
-}
-
+/* RP modal compatibility: keep badge group left and CTA on the right */
 .fides-modal-badges-left {
   display: flex;
   flex-wrap: wrap;
@@ -108,37 +325,437 @@
   align-items: center;
 }
 
+.fides-modal-visit-button {
+  margin-left: auto;
+}
+
 .fides-modal-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
-  border-radius: 999px;
   padding: 0.375rem 0.75rem;
+  border-radius: 9999px;
   font-size: 0.8125rem;
   font-weight: 500;
-  background: #e2e8f0;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .fides-modal-badge.type-personal {
-  background: #dbeafe;
-  color: #1d4ed8;
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
 }
 
 .fides-modal-badge.type-organizational {
-  background: #ffedd5;
-  color: #c2410c;
+  background: rgba(139, 92, 246, 0.15);
+  color: #a78bfa;
 }
+
 
 .fides-modal-badge.open-source {
   background: rgba(34, 197, 94, 0.15);
-  color: #16a34a;
+  color: #4ade80;
 }
 
 .fides-modal-badge.proprietary {
-  background: rgba(107, 114, 128, 0.2);
-  color: #4b5563;
+  background: rgba(148, 163, 184, 0.15);
+  color: var(--fides-text-secondary, #94a3b8);
 }
 
+/* Description */
+.fides-modal-section {
+  margin-bottom: 1.5rem;
+}
+
+.fides-modal-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--fides-text-secondary, #94a3b8);
+  margin: 0;
+}
+
+/* Video embed container - responsive 16:9 */
+.fides-video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  margin: 1.5rem 0;
+  border-radius: var(--fides-radius, 12px);
+  background: #000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.fides-video-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Fallback for unsupported video providers */
+.fides-video-fallback {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+/* FIDES/Light theme adjustments */
+.fides-modal-overlay[data-theme="fides"] .fides-video-container,
+.fides-modal-overlay[data-theme="light"] .fides-video-container {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Info grid */
+.fides-modal-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 480px) {
+  .fides-modal-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.fides-modal-grid-item {
+  background: var(--fides-bg-primary, #0f172a);
+  border-radius: var(--fides-radius, 12px);
+  padding: 1rem;
+}
+
+.fides-modal-grid-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--fides-text-muted, #64748b);
+  margin-bottom: 0.75rem;
+}
+
+.fides-modal-grid-label svg {
+  flex-shrink: 0;
+}
+
+.fides-label-hint {
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: 0.75rem;
+  margin-left: 0.25rem;
+}
+
+.fides-modal-grid-value {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.fides-modal-grid-value .fides-tag {
+  font-size: 0.8125rem;
+}
+
+.fides-modal-grid-value .fides-tag.certification {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+}
+
+/* Links section */
+.fides-modal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.fides-modal-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  background: var(--fides-border, rgba(255, 255, 255, 0.1));
+  color: var(--fides-text-primary, #f1f5f9);
+}
+
+.fides-modal-link:hover {
+  background: var(--fides-accent, #3b82f6);
+  color: white;
+}
+
+.fides-modal-link.primary {
+  background: var(--fides-accent, #3b82f6);
+  color: white;
+}
+
+.fides-modal-link.primary:hover {
+  background: var(--fides-accent-hover, #60a5fa);
+}
+
+/* Provider section */
+.fides-modal-provider-section {
+  border-top: 1px solid var(--fides-border, rgba(255, 255, 255, 0.1));
+  padding-top: 1.25rem;
+}
+
+.fides-modal-section-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--fides-text-muted, #64748b);
+  margin: 0 0 0.75rem 0;
+}
+
+.fides-modal-provider-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fides-modal-provider-detail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.fides-modal-provider-label {
+  color: var(--fides-text-muted, #64748b);
+}
+
+.fides-modal-provider-value {
+  color: var(--fides-text-primary, #f1f5f9);
+}
+
+.fides-modal-provider-did {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  background: var(--fides-bg-primary, #0f172a);
+  padding: 0.375rem 0.625rem;
+  border-radius: 6px;
+  color: var(--fides-text-secondary, #94a3b8);
+  word-break: break-all;
+}
+
+/* FIDES/Light theme modal adjustments */
+.fides-modal-overlay[data-theme="fides"] .fides-modal,
+.fides-modal-overlay[data-theme="light"] .fides-modal {
+  background: #ffffff;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-grid-item,
+.fides-modal-overlay[data-theme="light"] .fides-modal-grid-item {
+  background: #f1f5f9;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-title,
+.fides-modal-overlay[data-theme="light"] .fides-modal-title,
+.fides-modal-overlay[data-theme="fides"] .fides-modal-provider-value,
+.fides-modal-overlay[data-theme="light"] .fides-modal-provider-value {
+  color: #000000;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-provider,
+.fides-modal-overlay[data-theme="light"] .fides-modal-provider,
+.fides-modal-overlay[data-theme="fides"] .fides-modal-description,
+.fides-modal-overlay[data-theme="light"] .fides-modal-description {
+  color: #374151;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-provider-link,
+.fides-modal-overlay[data-theme="light"] .fides-modal-provider-link {
+  color: #0A6EF3;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-provider-link:hover,
+.fides-modal-overlay[data-theme="light"] .fides-modal-provider-link:hover {
+  color: #0858c4;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-link-inline,
+.fides-modal-overlay[data-theme="light"] .fides-modal-link-inline {
+  color: #0A6EF3;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-link-inline:hover,
+.fides-modal-overlay[data-theme="light"] .fides-modal-link-inline:hover {
+  color: #0858c4;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-header,
+.fides-modal-overlay[data-theme="light"] .fides-modal-header {
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.type-personal,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.type-personal {
+  background: rgba(10, 110, 243, 0.1);
+  color: #0A6EF3;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.type-organizational,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.type-organizational {
+  background: rgba(124, 58, 237, 0.1);
+  color: #7c3aed;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.open-source,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.open-source {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.proprietary,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.proprietary {
+  background: rgba(0, 0, 0, 0.05);
+  color: #6b7280;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-grid-label,
+.fides-modal-overlay[data-theme="light"] .fides-modal-grid-label {
+  color: #6b7280;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-section-title,
+.fides-modal-overlay[data-theme="light"] .fides-modal-section-title {
+  color: #6b7280;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-provider-section,
+.fides-modal-overlay[data-theme="light"] .fides-modal-provider-section {
+  border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-provider-label,
+.fides-modal-overlay[data-theme="light"] .fides-modal-provider-label {
+  color: #6b7280;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-provider-did,
+.fides-modal-overlay[data-theme="light"] .fides-modal-provider-did {
+  background: #f1f5f9;
+  color: #374151;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-link,
+.fides-modal-overlay[data-theme="light"] .fides-modal-link {
+  background: rgba(0, 0, 0, 0.05);
+  color: #000000;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-link:hover,
+.fides-modal-overlay[data-theme="light"] .fides-modal-link:hover {
+  background: #0A6EF3;
+  color: #ffffff;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-link.primary,
+.fides-modal-overlay[data-theme="light"] .fides-modal-link.primary {
+  background: #0A6EF3;
+  color: #ffffff;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-link.primary:hover,
+.fides-modal-overlay[data-theme="light"] .fides-modal-link.primary:hover {
+  background: #0858c4;
+}
+
+/* FIDES theme tags in modal */
+.fides-modal-overlay[data-theme="fides"] .fides-tag,
+.fides-modal-overlay[data-theme="light"] .fides-tag {
+  background: rgba(0, 0, 0, 0.05);
+  color: #374151;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-tag.platform,
+.fides-modal-overlay[data-theme="light"] .fides-tag.platform {
+  background: rgba(10, 110, 243, 0.1);
+  color: #0A6EF3;
+}
+
+.fides-tag.sector {
+  background: rgba(168, 85, 247, 0.15);
+  color: #c4b5fd;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-tag.sector,
+.fides-modal-overlay[data-theme="light"] .fides-tag.sector {
+  background: rgba(124, 58, 237, 0.1);
+  color: #7c3aed;
+  border-color: rgba(124, 58, 237, 0.3);
+}
+
+/* ==========================================================================
+   EXTENDED MODAL STYLES
+   ========================================================================== */
+
+/* App Store buttons */
+.fides-modal-app-stores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.fides-app-store-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  min-width: 140px;
+}
+
+.fides-app-store-btn.ios {
+  background: #000000;
+  color: #ffffff;
+}
+
+.fides-app-store-btn.android {
+  background: #01875f;
+  color: #ffffff;
+}
+
+.fides-app-store-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.fides-app-store-btn svg {
+  flex-shrink: 0;
+}
+
+.fides-app-store-btn span {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.fides-app-store-btn small {
+  font-size: 0.625rem;
+  opacity: 0.8;
+}
+
+.fides-app-store-btn strong {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+/* Status badges */
 .fides-modal-badge.status-dev {
   background: rgba(234, 179, 8, 0.15);
   color: #eab308;
@@ -149,17 +766,18 @@
   color: #f97316;
 }
 
-.fides-modal-badge.status-prod,
-.fides-modal-badge.status-live {
+.fides-modal-badge.status-prod {
   background: rgba(34, 197, 94, 0.15);
-  color: #4ade80;
+  color: #22c55e;
 }
 
 .fides-modal-badge.status-deprecated {
-  background: rgba(107, 114, 128, 0.2);
-  color: #9ca3af;
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
 }
 
+/* RP modal fallback coloring by semantic classes (keeps colors even if an older
+   JS bundle does not add the RP overlay scope class yet). */
 .fides-modal-badge.readiness-technical-demo {
   background: rgba(245, 158, 11, 0.15);
   color: #fbbf24;
@@ -180,112 +798,621 @@
   color: #4ade80;
 }
 
-.fides-modal-visit-button {
-  display: inline-flex;
+.fides-modal-badge.status-live {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+}
+
+.fides-modal-badge.interaction-mode.interaction-proximity {
+  background: rgba(14, 165, 233, 0.18);
+  color: #38bdf8;
+}
+
+.fides-modal-badge.interaction-mode.interaction-remote {
+  background: rgba(99, 102, 241, 0.18);
+  color: #a5b4fc;
+}
+
+.fides-modal-badge.interaction-mode.interaction-both {
+  background: rgba(168, 85, 247, 0.18);
+  color: #d8b4fe;
+}
+
+.fides-tag.accepted-credential {
+  background: rgba(59, 130, 246, 0.1);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.fides-tag.supported-wallet,
+.fides-tag.wallet-link {
+  background: rgba(22, 163, 74, 0.1);
+  color: #16a34a;
+  border: 1px solid rgba(22, 163, 74, 0.2);
+}
+
+a.fides-tag.wallet-link:hover {
+  background: #16a34a;
+  color: #ffffff;
+  border-color: #16a34a;
+}
+
+.fides-tag.interaction-mode-tag.interaction-proximity {
+  background: rgba(14, 165, 233, 0.18);
+  color: #38bdf8;
+}
+
+.fides-tag.interaction-mode-tag.interaction-remote {
+  background: rgba(99, 102, 241, 0.18);
+  color: #a5b4fc;
+}
+
+.fides-tag.interaction-mode-tag.interaction-both {
+  background: rgba(168, 85, 247, 0.18);
+  color: #d8b4fe;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-tag.interaction-mode-tag.interaction-proximity,
+.fides-modal-overlay[data-theme="light"] .fides-tag.interaction-mode-tag.interaction-proximity {
+  background: rgba(14, 165, 233, 0.12);
+  color: #0369a1;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-tag.interaction-mode-tag.interaction-remote,
+.fides-modal-overlay[data-theme="light"] .fides-tag.interaction-mode-tag.interaction-remote {
+  background: rgba(99, 102, 241, 0.12);
+  color: #4338ca;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-tag.interaction-mode-tag.interaction-both,
+.fides-modal-overlay[data-theme="light"] .fides-tag.interaction-mode-tag.interaction-both {
+  background: rgba(168, 85, 247, 0.12);
+  color: #7e22ce;
+}
+
+/* RP modal specific badges/tags (scoped to RP overlay to prevent cross-type drift) */
+.fides-modal-overlay.fides-modal-overlay--rp .fides-modal-badge.readiness-technical-demo {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp .fides-modal-badge.readiness-use-case-demo {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp .fides-modal-badge.readiness-production-pilot {
+  background: rgba(139, 92, 246, 0.15);
+  color: #a78bfa;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp .fides-modal-badge.readiness-production {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp .fides-modal-badge.status-live {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp .fides-modal-badge.status-beta {
+  background: rgba(249, 115, 22, 0.15);
+  color: #f97316;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp .fides-modal-badge.status-dev {
+  background: rgba(234, 179, 8, 0.15);
+  color: #eab308;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp .fides-modal-badge.interaction-mode.interaction-proximity {
+  background: rgba(14, 165, 233, 0.18);
+  color: #38bdf8;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp .fides-modal-badge.interaction-mode.interaction-remote {
+  background: rgba(99, 102, 241, 0.18);
+  color: #a5b4fc;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp .fides-modal-badge.interaction-mode.interaction-both {
+  background: rgba(168, 85, 247, 0.18);
+  color: #d8b4fe;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp .fides-tag.accepted-credential {
+  background: rgba(59, 130, 246, 0.1);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp .fides-tag.supported-wallet,
+.fides-modal-overlay.fides-modal-overlay--rp .fides-tag.wallet-link {
+  background: rgba(22, 163, 74, 0.1);
+  color: #16a34a;
+  border: 1px solid rgba(22, 163, 74, 0.2);
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp a.fides-tag.wallet-link:hover {
+  background: #16a34a;
+  color: white;
+  border-color: #16a34a;
+}
+
+/* Clickable platform tags (has app store link) */
+a.fides-tag.platform.clickable {
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  background: #16a34a;
+  color: white;
+  border: 1px solid #15803d;
+  font-weight: 500;
+}
+
+a.fides-tag.platform.clickable:hover {
+  background: #15803d;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.4);
+}
+
+/* Non-clickable platform tags (no link) */
+span.fides-tag.platform {
+  opacity: 0.6;
+}
+
+/* Light/FIDES theme clickable platform tags */
+.fides-wallet-catalog[data-theme="fides"] a.fides-tag.platform.clickable,
+.fides-wallet-catalog[data-theme="light"] a.fides-tag.platform.clickable {
+  background: #16a34a;
+  color: white;
+  border: 1px solid #15803d;
+}
+
+.fides-wallet-catalog[data-theme="fides"] a.fides-tag.platform.clickable:hover,
+.fides-wallet-catalog[data-theme="light"] a.fides-tag.platform.clickable:hover {
+  background: #15803d;
+  color: white;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+}
+
+/* Protocol tags (dark catalog chrome) — align with FIDES blue vs VP purple used in light theme */
+.fides-tag.protocol-issuance {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.35);
+}
+
+.fides-tag.protocol-presentation {
+  background: rgba(139, 92, 246, 0.15);
+  color: #a78bfa;
+  border: 1px solid rgba(139, 92, 246, 0.35);
+}
+
+/* DID method tags */
+.fides-tag.did-method {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--fides-text-secondary, #94a3b8);
+}
+
+/* Standard tags */
+.fides-tag.standard {
+  background: rgba(6, 182, 212, 0.15);
+  color: #22d3ee;
+}
+
+/* Features list */
+.fides-modal-features {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--fides-bg-primary, #0f172a);
+  border-radius: var(--fides-radius, 12px);
+}
+
+.fides-features-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.5rem;
+}
+
+.fides-features-list li {
+  display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.625rem 1.25rem;
-  background: #3b82f6;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
   font-size: 0.875rem;
-  font-weight: 600;
-  white-space: nowrap;
+  color: var(--fides-text-secondary, #94a3b8);
+  padding: 0.375rem 0;
 }
 
-.fides-modal-visit-button:hover {
-  background: #2563eb;
+.fides-features-list li svg {
+  flex-shrink: 0;
+  color: var(--fides-success, #22c55e);
 }
 
-.fides-modal-section {
-  margin-bottom: 12px;
+/* FIDES/Light theme - Extended modal adjustments */
+.fides-modal-overlay[data-theme="fides"] .fides-tag.did-method,
+.fides-modal-overlay[data-theme="light"] .fides-tag.did-method {
+  background: rgba(0, 0, 0, 0.05);
+  color: #374151;
 }
 
-.fides-modal-description {
-  margin: 0;
-  color: #334155;
+.fides-modal-overlay[data-theme="fides"] .fides-tag.protocol-issuance,
+.fides-modal-overlay[data-theme="light"] .fides-tag.protocol-issuance {
+  background: rgba(10, 110, 243, 0.1);
+  color: #0a6ef3;
+  border: 1px solid rgba(10, 110, 243, 0.25);
 }
 
-.fides-video-container {
-  margin: 12px 0;
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%;
-  background: #0f172a;
-  border-radius: 10px;
-  overflow: hidden;
+.fides-modal-overlay[data-theme="fides"] .fides-tag.protocol-presentation,
+.fides-modal-overlay[data-theme="light"] .fides-tag.protocol-presentation {
+  background: rgba(124, 58, 237, 0.1);
+  color: #7c3aed;
+  border: 1px solid rgba(124, 58, 237, 0.25);
 }
 
-.fides-video-iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+.fides-modal-overlay[data-theme="fides"] .fides-tag.standard,
+.fides-modal-overlay[data-theme="light"] .fides-tag.standard {
+  background: rgba(6, 182, 212, 0.1);
+  color: #0891b2;
 }
 
-.fides-modal-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 12px;
-  margin: 12px 0;
+.fides-modal-overlay[data-theme="fides"] .fides-tag.certification,
+.fides-modal-overlay[data-theme="light"] .fides-tag.certification {
+  background: rgba(245, 158, 11, 0.1);
+  color: #d97706;
 }
 
-.fides-modal-grid-item {
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 10px;
+.fides-modal-overlay[data-theme="fides"] .fides-tag.key-mgmt,
+.fides-modal-overlay[data-theme="light"] .fides-tag.key-mgmt {
+  background: rgba(0, 0, 0, 0.05);
+  color: #374151;
 }
 
-.fides-modal-grid-label {
-  font-weight: 600;
-  margin-bottom: 8px;
-  font-size: 13px;
-  color: #334155;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.fides-modal-grid-value {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.fides-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  border-radius: 999px;
-  padding: 3px 8px;
-  font-size: 12px;
+.fides-modal-overlay[data-theme="fides"] .fides-modal-features,
+.fides-modal-overlay[data-theme="light"] .fides-modal-features {
   background: #f1f5f9;
-  color: #0f172a;
-  border: 1px solid #e2e8f0;
 }
 
-.fides-modal-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
+.fides-modal-overlay[data-theme="fides"] .fides-modal-features-title,
+.fides-modal-overlay[data-theme="light"] .fides-modal-features-title {
+  color: #000000;
 }
 
-.fides-modal-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+.fides-modal-overlay[data-theme="fides"] .fides-features-list li,
+.fides-modal-overlay[data-theme="light"] .fides-features-list li {
+  color: #374151;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.status-dev,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.status-dev {
+  background: rgba(234, 179, 8, 0.1);
+  color: #ca8a04;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.status-beta,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.status-beta {
+  background: rgba(249, 115, 22, 0.1);
+  color: #ea580c;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.status-prod,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.status-prod {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.status-deprecated,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.status-deprecated {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.readiness-technical-demo,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.readiness-technical-demo {
+  background: rgba(245, 158, 11, 0.1);
+  color: #d97706;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.readiness-use-case-demo,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.readiness-use-case-demo {
+  background: rgba(10, 110, 243, 0.1);
+  color: #0A6EF3;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.readiness-production-pilot,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.readiness-production-pilot {
+  background: rgba(139, 92, 246, 0.1);
+  color: #7c3aed;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.readiness-production,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.readiness-production {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.status-live,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.status-live {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.interaction-mode.interaction-proximity,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.interaction-mode.interaction-proximity {
+  background: rgba(14, 165, 233, 0.12);
+  color: #0369a1;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.interaction-mode.interaction-remote,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.interaction-mode.interaction-remote {
+  background: rgba(99, 102, 241, 0.12);
+  color: #4338ca;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.interaction-mode.interaction-both,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.interaction-mode.interaction-both {
+  background: rgba(168, 85, 247, 0.12);
+  color: #7e22ce;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-tag.accepted-credential,
+.fides-modal-overlay[data-theme="light"] .fides-tag.accepted-credential {
+  background: rgba(10, 110, 243, 0.1);
+  color: #0A6EF3;
+  border: 1px solid rgba(10, 110, 243, 0.2);
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-tag.supported-wallet,
+.fides-modal-overlay[data-theme="light"] .fides-tag.supported-wallet,
+.fides-modal-overlay[data-theme="fides"] .fides-tag.wallet-link,
+.fides-modal-overlay[data-theme="light"] .fides-tag.wallet-link {
+  background: rgba(22, 163, 74, 0.1);
+  color: #16a34a;
+  border: 1px solid rgba(22, 163, 74, 0.2);
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="fides"] .fides-modal-badge.readiness-technical-demo,
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="light"] .fides-modal-badge.readiness-technical-demo {
+  background: rgba(245, 158, 11, 0.1);
+  color: #d97706;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="fides"] .fides-modal-badge.readiness-use-case-demo,
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="light"] .fides-modal-badge.readiness-use-case-demo {
+  background: rgba(10, 110, 243, 0.1);
+  color: #0A6EF3;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="fides"] .fides-modal-badge.readiness-production-pilot,
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="light"] .fides-modal-badge.readiness-production-pilot {
+  background: rgba(139, 92, 246, 0.1);
+  color: #7c3aed;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="fides"] .fides-modal-badge.readiness-production,
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="light"] .fides-modal-badge.readiness-production {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="fides"] .fides-modal-badge.status-live,
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="light"] .fides-modal-badge.status-live {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="fides"] .fides-modal-badge.status-beta,
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="light"] .fides-modal-badge.status-beta {
+  background: rgba(249, 115, 22, 0.1);
+  color: #ea580c;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="fides"] .fides-modal-badge.status-dev,
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="light"] .fides-modal-badge.status-dev {
+  background: rgba(234, 179, 8, 0.1);
+  color: #ca8a04;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="fides"] .fides-modal-badge.interaction-mode.interaction-proximity,
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="light"] .fides-modal-badge.interaction-mode.interaction-proximity {
+  background: rgba(14, 165, 233, 0.12);
+  color: #0369a1;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="fides"] .fides-modal-badge.interaction-mode.interaction-remote,
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="light"] .fides-modal-badge.interaction-mode.interaction-remote {
+  background: rgba(99, 102, 241, 0.12);
+  color: #4338ca;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="fides"] .fides-modal-badge.interaction-mode.interaction-both,
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="light"] .fides-modal-badge.interaction-mode.interaction-both {
+  background: rgba(168, 85, 247, 0.12);
+  color: #7e22ce;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="fides"] .fides-tag.accepted-credential,
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="light"] .fides-tag.accepted-credential {
+  background: rgba(10, 110, 243, 0.1);
+  color: #0A6EF3;
+  border: 1px solid rgba(10, 110, 243, 0.2);
+}
+
+/* FIDES theme - Logo placeholder in modal */
+.fides-modal-overlay[data-theme="fides"] .fides-modal-logo-placeholder,
+.fides-modal-overlay[data-theme="light"] .fides-modal-logo-placeholder {
+  background: #f1f5f9;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-logo-placeholder svg,
+.fides-modal-overlay[data-theme="light"] .fides-modal-logo-placeholder svg {
+  color: #0A6EF3;
+}
+
+/* FIDES theme - Credential format tags in modal */
+.fides-modal-overlay[data-theme="fides"] .fides-tag.credential-format,
+.fides-modal-overlay[data-theme="light"] .fides-tag.credential-format {
+  background: rgba(10, 110, 243, 0.1);
+  color: #0A6EF3;
+}
+
+/* FIDES theme - Platform tags in modal */
+/* Modal platform tags - clickable (solid green, app store buttons) */
+.fides-modal-overlay a.fides-tag.platform.clickable {
+  background: #16a34a;
+  color: white;
+  border: 1px solid #15803d;
   text-decoration: none;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  padding: 8px 10px;
-  color: #0f172a;
-  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
 }
 
-.fides-modal-link.primary {
-  background: #1d4ed8;
-  color: #fff;
-  border-color: #1d4ed8;
+.fides-modal-overlay a.fides-tag.platform.clickable:hover {
+  background: #15803d;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.4);
+}
+
+/* Modal platform tags - non-clickable (dimmed) */
+.fides-modal-overlay span.fides-tag.platform {
+  opacity: 0.6;
+}
+
+/* FIDES/Light theme - Modal platform tags */
+.fides-modal-overlay[data-theme="fides"] a.fides-tag.platform.clickable,
+.fides-modal-overlay[data-theme="light"] a.fides-tag.platform.clickable {
+  background: #16a34a;
+  color: white;
+  border: 1px solid #15803d;
+}
+
+.fides-modal-overlay[data-theme="fides"] a.fides-tag.platform.clickable:hover,
+.fides-modal-overlay[data-theme="light"] a.fides-tag.platform.clickable:hover {
+  background: #15803d;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+}
+
+/* FIDES theme - Features checkmark color */
+.fides-modal-overlay[data-theme="fides"] .fides-features-list li svg,
+.fides-modal-overlay[data-theme="light"] .fides-features-list li svg {
+  color: #16a34a;
+}
+
+/* ==========================================================================
+   CAPABILITIES & INTEROP PROFILES STYLING
+   ========================================================================== */
+
+/* Capability tags */
+.fides-tag.capability {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+}
+
+.fides-tag.capability-holder {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.fides-tag.capability-issuer {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.fides-tag.capability-verifier {
+  background: rgba(168, 85, 247, 0.15);
+  color: #a78bfa;
+  border-color: rgba(168, 85, 247, 0.3);
+}
+
+/* Interop profile tags */
+.fides-tag.interop {
+  background: rgba(6, 182, 212, 0.15);
+  color: #22d3ee;
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+/* Capability tags - Light/FIDES theme */
+.fides-wallet-catalog[data-theme="fides"] .fides-tag.capability-holder,
+.fides-wallet-catalog[data-theme="light"] .fides-tag.capability-holder {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.fides-wallet-catalog[data-theme="fides"] .fides-tag.capability-issuer,
+.fides-wallet-catalog[data-theme="light"] .fides-tag.capability-issuer {
+  background: rgba(10, 110, 243, 0.1);
+  color: #0A6EF3;
+  border-color: rgba(10, 110, 243, 0.3);
+}
+
+.fides-wallet-catalog[data-theme="fides"] .fides-tag.capability-verifier,
+.fides-wallet-catalog[data-theme="light"] .fides-tag.capability-verifier {
+  background: rgba(124, 58, 237, 0.1);
+  color: #7c3aed;
+  border-color: rgba(124, 58, 237, 0.3);
+}
+
+.fides-wallet-catalog[data-theme="fides"] .fides-tag.interop,
+.fides-wallet-catalog[data-theme="light"] .fides-tag.interop {
+  background: rgba(6, 182, 212, 0.1);
+  color: #0891b2;
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+/* Modal capability badges */
+.fides-modal-badge.capability-holder {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+}
+
+.fides-modal-badge.capability-issuer {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+}
+
+.fides-modal-badge.capability-verifier {
+  background: rgba(168, 85, 247, 0.15);
+  color: #a78bfa;
+}
+
+/* Modal capability badges - Light/FIDES theme */
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.capability-holder,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.capability-holder {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.capability-issuer,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.capability-issuer {
+  background: rgba(10, 110, 243, 0.1);
+  color: #0A6EF3;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-badge.capability-verifier,
+.fides-modal-overlay[data-theme="light"] .fides-modal-badge.capability-verifier {
+  background: rgba(124, 58, 237, 0.1);
+  color: #7c3aed;
+}
+
+/* Interop tags in modal - Light/FIDES theme */
+.fides-modal-overlay[data-theme="fides"] .fides-tag.interop,
+.fides-modal-overlay[data-theme="light"] .fides-tag.interop {
+  background: rgba(6, 182, 212, 0.1);
+  color: #0891b2;
 }

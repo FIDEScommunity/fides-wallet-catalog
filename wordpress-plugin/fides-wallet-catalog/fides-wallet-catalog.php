@@ -3,7 +3,7 @@
  * Plugin Name: FIDES Wallet Catalog
  * Plugin URI: https://fides.community
  * Description: Displays the FIDES Wallet Catalog with search and filter functionality. When the master fides_catalog_ssr_enabled flag (provided by FIDES Community Tools Tiles ≥ 1.6.0) is enabled, the plugin also emits a server-rendered listing fallback, per-deeplink SEO meta tags and a SoftwareApplication JSON-LD payload so wallet detail URLs become indexable by search engines.
- * Version: 2.7.6
+ * Version: 2.7.8
  * Author: FIDES Labs BV
  * Author URI: https://fides.community
  * License: Apache-2.0
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
 class FIDES_Wallet_Catalog {
     
     private static $instance = null;
-    private const VERSION = '2.7.6';
+    private const VERSION = '2.7.8';
     private $plugin_url;
     private $plugin_path;
     
@@ -124,6 +124,7 @@ class FIDES_Wallet_Catalog {
         
         // Enqueue assets
         wp_enqueue_style('fides-wallet-catalog');
+        wp_enqueue_style('fides-wallet-catalog-ui-lib');
         wp_enqueue_script('fides-wallet-catalog-ui-lib');
         wp_enqueue_script('fides-wallet-catalog');
         

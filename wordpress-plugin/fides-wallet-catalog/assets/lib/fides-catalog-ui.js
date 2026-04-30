@@ -50,7 +50,8 @@
     check: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
     download: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>',
     penLine: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
-    play: '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>'
+    play: '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>',
+    laptop: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></svg>'
   };
 
   let selectedContext = null;
@@ -126,9 +127,9 @@
     { classes: 'fides-modal-visit-button', name: 'Visit website' },
     { classes: 'fides-modal-provider-link', name: 'Blue Pages' },
     { classes: 'fides-modal-provider-value', name: 'Provider website' },
+    { classes: 'fides-modal-link-inline', name: 'Organization catalog' },
     { classes: 'wallet-link', name: 'Wallet catalog' },
     { classes: 'credential-catalog-link', name: 'Credential catalog' },
-    { classes: 'organization-catalog-link', name: 'Organization catalog' },
     { classes: 'fides-wallet-link', name: 'Repository' },
     { classes: 'fides-tag platform clickable', name: 'Platform' }
   ];
@@ -195,6 +196,8 @@
     const url = new URL(window.location.href);
     if (contextType === 'wallet') url.searchParams.set('wallet', item.id);
     if (contextType === 'rp') url.searchParams.set('rp', item.id);
+    if (contextType === 'issuer') url.searchParams.set('issuer', item.id);
+    if (contextType === 'organization') url.searchParams.set('org', item.id);
     return url.toString();
   }
 
@@ -249,19 +252,6 @@
     attachModalListeners();
   }
 
-  function getOrganizationCatalogDeepLink(orgId, catalogBase) {
-    if (!orgId || typeof orgId !== 'string' || orgId.indexOf('org:') !== 0) return null;
-    const base = (catalogBase || '').trim();
-    if (!base) return null;
-    try {
-      const u = new URL(base);
-      u.searchParams.set('org', orgId);
-      return u.toString();
-    } catch (e) {
-      return null;
-    }
-  }
-
   function openWalletModal(wallet, options) {
     if (!wallet) return;
     const theme = (options && options.theme) || 'dark';
@@ -271,7 +261,6 @@
     const typeLabels = { personal: 'Personal', organizational: 'Organizational' };
     const statusLabels = { development: 'In Development', beta: 'Beta', production: 'Production', deprecated: 'Deprecated' };
     const statusClasses = { development: 'status-dev', beta: 'status-beta', production: 'status-prod', deprecated: 'status-deprecated' };
-    const protocolsObj = wallet.protocols || {};
     const organizationCatalogUrl = (options && options.organizationCatalogUrl) || 'https://fides.community/ecosystem-explorer/organization-catalog/';
     const effectiveWalletOrgId = (wallet.orgId && String(wallet.orgId).trim()) ||
       (wallet.provider && wallet.provider.orgId && String(wallet.provider.orgId).trim()) || '';
@@ -286,7 +275,7 @@
       ? ''
       : '<button type="button" class="fides-modal-copy-link" id="fides-modal-copy-link" aria-label="Copy link">' + icons.share + '</button>';
 
-    const modalHtml = '<div class="fides-modal-overlay" id="fides-modal-overlay" data-theme="' + escapeHtml(theme) + '">' +
+    const modalHtml = '<div class="fides-modal-overlay fides-modal-overlay--rp" id="fides-modal-overlay" data-theme="' + escapeHtml(theme) + '">' +
       '<div class="fides-modal" role="dialog" aria-modal="true">' +
       '<div class="fides-modal-header"><div class="fides-modal-header-content">' +
       (wallet.logo ? '<img src="' + escapeHtml(wallet.logo) + '" alt="' + escapeHtml(wallet.name) + '" class="fides-modal-logo">' : '<div class="fides-modal-logo-placeholder">' + icons.wallet + '</div>') +
@@ -380,6 +369,18 @@
     return code.replace(/[-_]+/g, ' ').replace(/\b\w/g, function(ch) { return ch.toUpperCase(); });
   }
 
+  const INTERACTION_MODE_LABELS = {
+    proximity: 'Proximity',
+    remote: 'Remote',
+    both: 'Both'
+  };
+
+  function getRpInteractionMode(rp) {
+    const m = rp && rp.interactionMode;
+    if (m === 'proximity' || m === 'remote' || m === 'both') return m;
+    return 'remote';
+  }
+
   function buildRpSectorsModalGridHtml(rp) {
     const raw = Array.isArray(rp.sectors) ? rp.sectors : [];
     const sectorCodes = raw.filter(function(s) { return typeof s === 'string' && s.length > 0; }).slice().sort(function(a, b) {
@@ -431,6 +432,19 @@
     }
   }
 
+  function getOrganizationCatalogDeepLink(orgId, catalogBase) {
+    if (!orgId || typeof orgId !== 'string' || orgId.indexOf('org:') !== 0) return null;
+    const base = (catalogBase || '').trim();
+    if (!base) return null;
+    try {
+      const u = new URL(base);
+      u.searchParams.set('org', orgId);
+      return u.toString();
+    } catch (e) {
+      return null;
+    }
+  }
+
   function renderAcceptedCredentialTagsHtmlForRpModal(rp, catalogBase) {
     const rows = getAcceptedCredentialRows(rp);
     return rows.map(function(row) {
@@ -453,9 +467,18 @@
     const statusLabels = { development: 'In Development', beta: 'Beta', live: 'Live', deprecated: 'Deprecated' };
     const walletCatalogUrl = (options && options.walletCatalogUrl) || '';
     const credentialCatalogUrl = (options && options.credentialCatalogUrl) || 'https://fides.community/ecosystem-explorer/credential-catalog/';
+    const organizationCatalogUrl = (options && options.organizationCatalogUrl) || 'https://fides.community/ecosystem-explorer/organization-catalog/';
+    const providerOrgId = String(rp.orgId || '').trim();
+    const orgCatalogHref = getOrganizationCatalogDeepLink(providerOrgId, organizationCatalogUrl);
+    const providerDisplayName = rp.provider && rp.provider.name ? String(rp.provider.name) : '';
+    const providerNameInHeader = orgCatalogHref && providerDisplayName
+      ? '<a href="' + escapeHtml(orgCatalogHref) + '" class="fides-modal-link-inline" aria-label="View organization in organization catalog" title="Organization catalog" onclick="event.stopPropagation();"><span>' + escapeHtml(providerDisplayName) + '</span></a>'
+      : escapeHtml(providerDisplayName);
     const bluePagesUrl = getBluePagesUrl(rp.provider && rp.provider.did, options);
     const modalLogoUrl = rp.logo || (rp.country ? 'https://flagcdn.com/w80/' + String(rp.country).toLowerCase() + '.png' : null);
     const acceptedCredentialRows = getAcceptedCredentialRows(rp);
+    const interactionMode = getRpInteractionMode(rp);
+    const interactionModeLabel = INTERACTION_MODE_LABELS[interactionMode] || interactionMode;
 
     const supportedWalletsHtml = (rp.supportedWallets || []).map(w => {
       const name = typeof w === 'string' ? w : w.name;
@@ -475,11 +498,12 @@
       '<div class="fides-modal" role="dialog" aria-modal="true">' +
       '<div class="fides-modal-header"><div class="fides-modal-header-content">' +
       (modalLogoUrl ? '<img src="' + escapeHtml(modalLogoUrl) + '" alt="' + escapeHtml(rp.name) + '" class="fides-modal-logo">' : '<div class="fides-modal-logo-placeholder">' + icons.globe + '</div>') +
-      '<div class="fides-modal-title-wrap"><h2 class="fides-modal-title">' + escapeHtml(rp.name) + '</h2><p class="fides-modal-provider">' + icons.building + ' ' + escapeHtml(rp.provider && rp.provider.name) + (bluePagesUrl ? ' <a href="' + escapeHtml(bluePagesUrl) + '" target="_blank" rel="noopener" class="fides-modal-provider-link">' + icons.externalLink + ' View in Blue Pages</a>' : '') + '</p></div>' +
+      '<div class="fides-modal-title-wrap"><h2 class="fides-modal-title">' + escapeHtml(rp.name) + '</h2><p class="fides-modal-provider">' + icons.building + ' ' + providerNameInHeader + (bluePagesUrl ? ' <a href="' + escapeHtml(bluePagesUrl) + '" target="_blank" rel="noopener" class="fides-modal-provider-link">' + icons.externalLink + ' View in Blue Pages</a>' : '') + '</p></div>' +
       '</div><div class="fides-modal-header-actions">' + shareButtonHtml + '<button class="fides-modal-close" id="fides-modal-close" aria-label="Close modal">' + icons.xLarge + '</button></div></div>' +
       '<div class="fides-modal-body">' +
       '<div class="fides-modal-badges fides-modal-badges-with-action"><div class="fides-modal-badges-left">' +
       (rp.readiness ? '<span class="fides-modal-badge readiness-' + escapeHtml(rp.readiness) + '">' + escapeHtml(readinessLabels[rp.readiness] || rp.readiness) + '</span>' : '') +
+      '<span class="fides-modal-badge interaction-mode interaction-' + escapeHtml(interactionMode) + '">' + escapeHtml(interactionModeLabel) + '</span>' +
       (rp.status ? '<span class="fides-modal-badge status-' + escapeHtml(rp.status) + '">' + escapeHtml(statusLabels[rp.status] || rp.status) + '</span>' : '') +
       '</div>' +
       (rp.website ? '<a href="' + escapeHtml(rp.website) + '" target="_blank" rel="noopener" class="fides-modal-visit-button">' + icons.externalLink + ' Visit Website</a>' : '') +
@@ -487,6 +511,7 @@
       (rp.description ? '<div class="fides-modal-section"><p class="fides-modal-description">' + escapeHtml(rp.description) + '</p></div>' : '') +
       (rp.video ? getVideoEmbedHtml(rp.video) : '') +
       '<div class="fides-modal-grid">' +
+      '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.laptop + ' Interaction mode</div><div class="fides-modal-grid-value"><span class="fides-tag interaction-mode-tag interaction-' + escapeHtml(interactionMode) + '">' + escapeHtml(interactionModeLabel) + '</span></div></div>' +
       buildRpSectorsModalGridHtml(rp) +
       ((acceptedCredentialRows.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.fileCheck + ' Accepted Credentials</div><div class="fides-modal-grid-value">' + renderAcceptedCredentialTagsHtmlForRpModal(rp, credentialCatalogUrl) + '</div></div>' : '') +
       ((rp.vcFormat && rp.vcFormat.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.fileCheck + ' VC formats</div><div class="fides-modal-grid-value">' + sortCredentialFormats(rp.vcFormat).map(f => '<span class="fides-tag credential-format">' + escapeHtml(credentialFormatDisplayLabel(f)) + '</span>').join('') + '</div></div>' : '') +
@@ -499,10 +524,143 @@
       (rp.documentation ? '<a href="' + escapeHtml(rp.documentation) + '" target="_blank" rel="noopener" class="fides-modal-link" data-matomo-name="Documentation">' + icons.book + ' Documentation</a>' : '') +
       (rp.testCredentials ? '<a href="' + escapeHtml(rp.testCredentials) + '" target="_blank" rel="noopener" class="fides-modal-link" data-matomo-name="Test credentials">' + icons.fileCheck + ' Test Credentials</a>' : '') +
       '</div>' +
-      '<div class="fides-modal-provider-section"><h4 class="fides-modal-section-title">Provider Information</h4><div class="fides-modal-provider-info">' +
-      '<div class="fides-modal-provider-detail"><span class="fides-modal-provider-label">Organization:</span><span class="fides-modal-provider-value">' + escapeHtml(rp.provider && rp.provider.name) + '</span></div>' +
-      ((rp.provider && rp.provider.website) ? '<div class="fides-modal-provider-detail"><span class="fides-modal-provider-label">Website:</span><a href="' + escapeHtml(rp.provider.website) + '" target="_blank" rel="noopener" class="fides-modal-provider-value">' + escapeHtml(rp.provider.website) + '</a></div>' : '') +
-      '</div></div>' +
+      '</div></div></div>';
+
+    mountModal(modalHtml);
+  }
+
+  function arrayValues(input) {
+    return Array.isArray(input) ? input : [];
+  }
+
+  function renderTagList(values, className) {
+    return arrayValues(values).filter(function(v) { return typeof v === 'string' && v.trim() !== ''; }).map(function(v) {
+      return '<span class="fides-tag ' + escapeHtml(className || '') + '">' + escapeHtml(v) + '</span>';
+    }).join('');
+  }
+
+  function openIssuerModal(issuer, options) {
+    if (!issuer) return;
+    const theme = (options && options.theme) || 'dark';
+    selectedContext = { type: 'issuer', item: issuer, options: options || {}, theme: theme };
+    if (options && typeof options.onOpen === 'function') options.onOpen(issuer);
+
+    const provider = issuer.organization || {};
+    const providerName = provider.name ? String(provider.name) : 'Unknown organization';
+    const orgCatalogHref = getOrganizationCatalogDeepLink((issuer.orgId || '').trim(), (options && options.organizationCatalogUrl) || 'https://fides.community/ecosystem-explorer/organization-catalog/');
+    const providerInHeader = orgCatalogHref
+      ? '<a href="' + escapeHtml(orgCatalogHref) + '" class="fides-modal-link-inline" aria-label="View organization in organization catalog" title="Organization catalog" onclick="event.stopPropagation();"><span>' + escapeHtml(providerName) + '</span></a>'
+      : escapeHtml(providerName);
+    const logo = issuer.logoUri || provider.logoUri || '';
+    const vcFormatTags = arrayValues(issuer.credentialConfigurations).map(function(conf) {
+      return conf && conf.vcFormat ? credentialFormatDisplayLabel(conf.vcFormat) : '';
+    }).filter(Boolean);
+    const credentialTypeTags = arrayValues(issuer.credentialConfigurations).map(function(conf) {
+      return conf && conf.displayName ? conf.displayName : '';
+    }).filter(Boolean);
+
+    const shareButtonHtml = (options && options.showShare === false)
+      ? ''
+      : '<button type="button" class="fides-modal-copy-link" id="fides-modal-copy-link" aria-label="Copy link">' + icons.share + '</button>';
+
+    const modalHtml = '<div class="fides-modal-overlay" id="fides-modal-overlay" data-theme="' + escapeHtml(theme) + '">' +
+      '<div class="fides-modal" role="dialog" aria-modal="true">' +
+      '<div class="fides-modal-header"><div class="fides-modal-header-content">' +
+      (logo ? '<img src="' + escapeHtml(logo) + '" alt="' + escapeHtml(issuer.displayName || issuer.id) + '" class="fides-modal-logo">' : '<div class="fides-modal-logo-placeholder">' + icons.building + '</div>') +
+      '<div class="fides-modal-title-wrap"><h2 class="fides-modal-title">' + escapeHtml(issuer.displayName || issuer.id) + '</h2><p class="fides-modal-provider">' + icons.building + ' ' + providerInHeader + '</p></div>' +
+      '</div><div class="fides-modal-header-actions">' + shareButtonHtml + '<button class="fides-modal-close" id="fides-modal-close" aria-label="Close modal">' + icons.xLarge + '</button></div></div>' +
+      '<div class="fides-modal-body">' +
+      '<div class="fides-modal-badges">' +
+      (issuer.environment ? '<span class="fides-modal-badge">' + escapeHtml(issuer.environment) + '</span>' : '') +
+      (issuer.issuanceProtocol ? '<span class="fides-modal-badge">' + escapeHtml(String(issuer.issuanceProtocol).toUpperCase()) + '</span>' : '') +
+      '</div>' +
+      (issuer.description ? '<div class="fides-modal-section"><p class="fides-modal-description">' + escapeHtml(issuer.description) + '</p></div>' : '') +
+      '<div class="fides-modal-grid">' +
+      (vcFormatTags.length ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.fileCheck + ' VC formats</div><div class="fides-modal-grid-value">' + renderTagList(vcFormatTags, 'credential-format') + '</div></div>' : '') +
+      (credentialTypeTags.length ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.shield + ' Credential types</div><div class="fides-modal-grid-value">' + renderTagList(credentialTypeTags, '') + '</div></div>' : '') +
+      '</div>' +
+      '<div class="fides-modal-links">' +
+      (issuer.issuerWebsiteUrl ? '<a href="' + escapeHtml(issuer.issuerWebsiteUrl) + '" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Issuer website">' + icons.externalLink + ' Issuer Website</a>' : '') +
+      (issuer.oid4vciMetadataUrl ? '<a href="' + escapeHtml(issuer.oid4vciMetadataUrl) + '" target="_blank" rel="noopener" class="fides-modal-link" data-matomo-name="Issuer metadata">' + icons.book + ' OID4VCI metadata</a>' : '') +
+      '</div>' +
+      '</div></div></div>';
+
+    mountModal(modalHtml);
+  }
+
+  function openOrganizationModal(org, options) {
+    if (!org) return;
+    const theme = (options && options.theme) || 'dark';
+    selectedContext = { type: 'organization', item: org, options: options || {}, theme: theme };
+    if (options && typeof options.onOpen === 'function') options.onOpen(org);
+
+    const logo = org.logo || '';
+    const country = org.country || '';
+    const issuerCatalogBase = (options && options.issuerCatalogUrl) || 'https://fides.community/ecosystem-explorer/issuer-catalog/';
+    const rpCatalogBase = (options && options.rpCatalogUrl) || 'https://fides.community/ecosystem-explorer/relying-party-catalog/';
+    const walletCatalogBase = (options && options.walletCatalogUrl) || 'https://fides.community/community-tools/personal-wallets/';
+    const credentialCatalogBase = (options && options.credentialCatalogUrl) || 'https://fides.community/ecosystem-explorer/credential-catalog/';
+
+    const issuerLinks = arrayValues(org.issuers).map(function(i) {
+      const issuerId = i && i.id ? i.id : '';
+      if (!issuerId) return '';
+      const href = issuerCatalogBase ? issuerCatalogBase.replace(/\/$/, '') + '?issuer=' + encodeURIComponent(issuerId) : null;
+      const label = i.displayName || issuerId;
+      if (href) return '<a href="' + escapeHtml(href) + '" class="fides-tag" target="_blank" rel="noopener">' + escapeHtml(label) + ' ' + icons.externalLinkSmall + '</a>';
+      return '<span class="fides-tag">' + escapeHtml(label) + '</span>';
+    }).filter(Boolean).join('');
+
+    const walletLinks = arrayValues(org.wallets).map(function(w) {
+      const walletId = w && w.id ? w.id : '';
+      const href = walletCatalogBase && walletId ? walletCatalogBase.replace(/\/$/, '') + '?wallet=' + encodeURIComponent(walletId) : null;
+      const label = (w && w.name) ? w.name : walletId;
+      if (!label) return '';
+      if (href) return '<a href="' + escapeHtml(href) + '" class="fides-tag wallet-link" target="_blank" rel="noopener">' + escapeHtml(label) + ' ' + icons.externalLinkSmall + '</a>';
+      return '<span class="fides-tag wallet-link">' + escapeHtml(label) + '</span>';
+    }).filter(Boolean).join('');
+
+    const rpLinks = arrayValues(org.relyingParties).map(function(rp) {
+      const rpId = rp && rp.id ? rp.id : '';
+      const href = rpCatalogBase && rpId ? rpCatalogBase.replace(/\/$/, '') + '?rp=' + encodeURIComponent(rpId) : null;
+      const label = (rp && rp.name) ? rp.name : rpId;
+      if (!label) return '';
+      if (href) return '<a href="' + escapeHtml(href) + '" class="fides-tag" target="_blank" rel="noopener">' + escapeHtml(label) + ' ' + icons.externalLinkSmall + '</a>';
+      return '<span class="fides-tag">' + escapeHtml(label) + '</span>';
+    }).filter(Boolean).join('');
+
+    const credentialLinks = arrayValues(org.credentials).map(function(c) {
+      const credentialId = c && c.id ? c.id : '';
+      const href = credentialCatalogBase && credentialId ? credentialCatalogBase.replace(/\/$/, '') + '?credential=' + encodeURIComponent(credentialId) : null;
+      const label = (c && c.displayName) ? c.displayName : credentialId;
+      if (!label) return '';
+      if (href) return '<a href="' + escapeHtml(href) + '" class="fides-tag credential-catalog-link" target="_blank" rel="noopener">' + escapeHtml(label) + ' ' + icons.externalLinkSmall + '</a>';
+      return '<span class="fides-tag credential-catalog-link">' + escapeHtml(label) + '</span>';
+    }).filter(Boolean).join('');
+
+    const shareButtonHtml = (options && options.showShare === false)
+      ? ''
+      : '<button type="button" class="fides-modal-copy-link" id="fides-modal-copy-link" aria-label="Copy link">' + icons.share + '</button>';
+
+    const modalHtml = '<div class="fides-modal-overlay" id="fides-modal-overlay" data-theme="' + escapeHtml(theme) + '">' +
+      '<div class="fides-modal" role="dialog" aria-modal="true">' +
+      '<div class="fides-modal-header"><div class="fides-modal-header-content">' +
+      (logo ? '<img src="' + escapeHtml(logo) + '" alt="' + escapeHtml(org.name || org.id) + '" class="fides-modal-logo">' : '<div class="fides-modal-logo-placeholder">' + icons.building + '</div>') +
+      '<div class="fides-modal-title-wrap"><h2 class="fides-modal-title">' + escapeHtml(org.name || org.id) + '</h2><p class="fides-modal-provider">' + icons.globe + ' ' + escapeHtml(country || 'Country unknown') + '</p></div>' +
+      '</div><div class="fides-modal-header-actions">' + shareButtonHtml + '<button class="fides-modal-close" id="fides-modal-close" aria-label="Close modal">' + icons.xLarge + '</button></div></div>' +
+      '<div class="fides-modal-body">' +
+      '<div class="fides-modal-badges">' +
+      (org.sectors && org.sectors.length ? org.sectors.slice(0, 3).map(function(s) { return '<span class="fides-modal-badge">' + escapeHtml(s) + '</span>'; }).join('') : '') +
+      '</div>' +
+      (org.description ? '<div class="fides-modal-section"><p class="fides-modal-description">' + escapeHtml(org.description) + '</p></div>' : '') +
+      '<div class="fides-modal-grid">' +
+      (issuerLinks ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.building + ' Issuers</div><div class="fides-modal-grid-value">' + issuerLinks + '</div></div>' : '') +
+      (walletLinks ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.wallet + ' Wallets</div><div class="fides-modal-grid-value">' + walletLinks + '</div></div>' : '') +
+      (rpLinks ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.laptop + ' Relying Parties</div><div class="fides-modal-grid-value">' + rpLinks + '</div></div>' : '') +
+      (credentialLinks ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.fileCheck + ' Credentials</div><div class="fides-modal-grid-value">' + credentialLinks + '</div></div>' : '') +
+      '</div>' +
+      '<div class="fides-modal-links">' +
+      (org.website ? '<a href="' + escapeHtml(org.website) + '" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Organization website">' + icons.externalLink + ' Visit Website</a>' : '') +
+      '</div>' +
       '</div></div></div>';
 
     mountModal(modalHtml);
@@ -511,6 +669,8 @@
   window.FidesCatalogUI = {
     openWalletModal,
     openRpModal,
+    openIssuerModal,
+    openOrganizationModal,
     closeModal,
     trackMatomoEvent,
     initMatomoLinkTracking
