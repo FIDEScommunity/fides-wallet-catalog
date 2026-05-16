@@ -26,11 +26,12 @@
       },
       "interoperabilityProfiles": [
         "DIIP v4",
+        "DIIP v5",
         "EWC v3"
       ],
       "website": "https://yourd.xyz",
       "appStoreLinks": {
-        "iOS": "https://apps.apple.com/app/yourd/id6477564824",
+        "iOS": "https://apps.apple.com/app/id6745907268",
         "android": "https://play.google.com/store/apps/details?id=com.yourd.connect"
       },
       "openSource": false,
