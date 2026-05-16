@@ -24,6 +24,9 @@
         "OpenID4VCI",
         "DIDComm Issue Credential v2"
       ],
+      "interoperabilityProfiles": [
+        "DIIP v5"
+      ],      
       "presentationProtocols": [
         "OpenID4VP",
         "DIDComm Present Proof v2",
