@@ -25,7 +25,8 @@
         ]
       },
       "interoperabilityProfiles": [
-        "DIIP v4"
+        "DIIP v4",
+        "DIIP v5"
       ],
       "website": "https://ubique.ch",
       "appStoreLinks": {
