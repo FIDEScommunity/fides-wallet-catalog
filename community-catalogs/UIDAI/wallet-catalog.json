@@ -1,8 +1,9 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "orgId": "org:uidai",
   "wallets": [
     {
-      "id": "Aadhaar",
+      "id": "aadhaar",
       "name": "Aadhaar",
       "description": "Official UIDAI mobile wallet for Aadhaar digital identity credentials. Uses ISO mDL/mDoc and supports OpenID4VP (v1.0) presentation flows.",
       "logo": "https://play-lh.googleusercontent.com/j7kM2-v1QBN5YO167Si_6YEmLc2A-f_4vaMyf-imZjwIkV83IkWm6U7NYfOdTbNGyaQ=w480-h960-rw",
@@ -27,6 +28,5 @@
       "documentation": "https://uidai.gov.in/"
     }
   ],
-  "lastUpdated": "2026-02-18T08:15:00Z",
-  "orgId": "org:india"
+  "lastUpdated": "2026-02-18T08:15:00Z"
 }
