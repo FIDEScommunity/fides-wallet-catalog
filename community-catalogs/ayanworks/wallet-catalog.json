@@ -4,7 +4,7 @@
     {
       "id": "sovio-adeva-wallet",
       "name": "Sovio Wallet (ADEYA Wallet)",
-      "logo": "https://www.google.com/s2/favicons?domain=sovio.id&sz=128",
+      "logo": "https://sovio.id/assets/images/sovio_logo.svg",
       "description": "SSI-based personal mobile wallet for receiving, storing, and presenting verifiable credentials, designed to work with CREDEBL organizational infrastructure.",
       "type": "personal",
       "platforms": [
@@ -35,7 +35,7 @@
     {
       "id": "credebl-organizational-wallet",
       "name": "CREDEBL",
-      "logo": "https://www.google.com/s2/favicons?domain=credebl.id&sz=128",
+      "logo": "https://credebl.id/_next/image?url=%2Fassets%2Fimages%2FCREDEBL_ICON.png&w=64&q=75",
       "description": "Platform enabling companies and institutions to issue, manage, and verify verifiable credentials, commonly used in combination with the Sovio (ADEYA) personal wallet.",
       "type": "organizational",
       "platforms": [
