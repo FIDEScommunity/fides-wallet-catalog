@@ -329,6 +329,68 @@
   margin-left: auto;
 }
 
+.fides-modal-rating {
+  margin-bottom: 1.25rem;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.fides-modal-rating-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.fides-modal-rating-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--fides-text-primary, #f1f5f9);
+}
+
+.fides-modal-rating-count {
+  font-size: 0.8125rem;
+  color: var(--fides-text-secondary, #94a3b8);
+}
+
+.fides-rating-star {
+  border: 0;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 1.3rem;
+  line-height: 1;
+  padding: 0;
+}
+
+.fides-rating-star.is-filled {
+  color: #facc15;
+}
+
+.fides-rating-star.is-readonly {
+  cursor: default;
+}
+
+.fides-modal-rating-note {
+  font-size: 0.8125rem;
+  color: var(--fides-text-secondary, #94a3b8);
+}
+
+.fides-modal-rating-note-inline {
+  margin-left: 0.4rem;
+}
+
+.fides-modal-rating-login {
+  color: var(--fides-accent, #3b82f6);
+  text-decoration: none;
+}
+
+.fides-modal-rating-login:hover {
+  color: #0858c4;
+  text-decoration: underline;
+}
+
 .fides-modal-badge {
   display: inline-flex;
   align-items: center;
@@ -559,6 +621,11 @@
   background: #f1f5f9;
 }
 
+.fides-modal-overlay[data-theme="fides"] .fides-modal-rating,
+.fides-modal-overlay[data-theme="light"] .fides-modal-rating {
+  background: transparent;
+}
+
 .fides-modal-overlay[data-theme="fides"] .fides-modal-title,
 .fides-modal-overlay[data-theme="light"] .fides-modal-title,
 .fides-modal-overlay[data-theme="fides"] .fides-modal-provider-value,
@@ -571,6 +638,20 @@
 .fides-modal-overlay[data-theme="fides"] .fides-modal-description,
 .fides-modal-overlay[data-theme="light"] .fides-modal-description {
   color: #374151;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-rating-value,
+.fides-modal-overlay[data-theme="light"] .fides-modal-rating-value {
+  color: #000000;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-rating-label,
+.fides-modal-overlay[data-theme="light"] .fides-modal-rating-label,
+.fides-modal-overlay[data-theme="fides"] .fides-modal-rating-count,
+.fides-modal-overlay[data-theme="light"] .fides-modal-rating-count,
+.fides-modal-overlay[data-theme="fides"] .fides-modal-rating-note,
+.fides-modal-overlay[data-theme="light"] .fides-modal-rating-note {
+  color: #6b7280;
 }
 
 .fides-modal-overlay[data-theme="fides"] .fides-modal-provider-link,

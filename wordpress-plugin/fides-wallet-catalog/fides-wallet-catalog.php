@@ -3,7 +3,7 @@
  * Plugin Name: FIDES Wallet Catalog
  * Plugin URI: https://fides.community
  * Description: Displays the FIDES Wallet Catalog with search and filter functionality. When the master fides_catalog_ssr_enabled flag (provided by FIDES Community Tools Tiles ≥ 1.6.0) is enabled, the plugin also emits a server-rendered listing fallback, per-deeplink SEO meta tags and a SoftwareApplication JSON-LD payload so wallet detail URLs become indexable by search engines.
- * Version: 2.7.8
+ * Version: 2.7.11
  * Author: FIDES Labs BV
  * Author URI: https://fides.community
  * License: Apache-2.0
@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
 class FIDES_Wallet_Catalog {
     
     private static $instance = null;
-    private const VERSION = '2.7.8';
+    private const VERSION = '2.7.11';
     private $plugin_url;
     private $plugin_path;
     
@@ -92,6 +92,18 @@ class FIDES_Wallet_Catalog {
             true
         );
         
+        $current_request_uri = isset($_SERVER['REQUEST_URI']) ? wp_unslash($_SERVER['REQUEST_URI']) : '';
+        $current_host = isset($_SERVER['HTTP_HOST']) ? sanitize_text_field(wp_unslash($_SERVER['HTTP_HOST'])) : '';
+        $current_url = $current_host !== ''
+            ? ((is_ssl() ? 'https://' : 'http://') . $current_host . $current_request_uri)
+            : home_url('/');
+        $oid4vp_options = get_option('universal_openid4vp_options', array());
+        $oid4vp_login_url = '';
+        if (is_array($oid4vp_options) && ! empty($oid4vp_options['loginUrl'])) {
+            $oid4vp_login_url = esc_url_raw((string) $oid4vp_options['loginUrl']);
+        }
+        $ratings_login_url = $oid4vp_login_url !== '' ? $oid4vp_login_url : wp_login_url($current_url);
+
         // Pass data to JavaScript
         wp_localize_script('fides-wallet-catalog', 'fidesWalletCatalog', array(
             'pluginUrl' => $this->plugin_url,
@@ -107,6 +119,10 @@ class FIDES_Wallet_Catalog {
                 'fides_wallet_catalog_blue_pages_url',
                 'https://fides.community/community-tools/blue-pages'
             ),
+            'ratingsApiBase' => rest_url('fides-catalog/v1'),
+            'ratingsNonce' => wp_create_nonce('wp_rest'),
+            'ratingsIsLoggedIn' => is_user_logged_in(),
+            'ratingsLoginUrl' => $ratings_login_url,
         ));
     }
     

@@ -160,6 +160,17 @@
   const BLUE_PAGES_URL = (window.fidesWalletCatalog && window.fidesWalletCatalog.bluePagesUrl)
     ? String(window.fidesWalletCatalog.bluePagesUrl).trim()
     : '';
+  const RATINGS_API_BASE = (window.fidesWalletCatalog && window.fidesWalletCatalog.ratingsApiBase)
+    ? String(window.fidesWalletCatalog.ratingsApiBase).trim().replace(/\/$/, '')
+    : '';
+  const RATINGS_NONCE = (window.fidesWalletCatalog && window.fidesWalletCatalog.ratingsNonce)
+    ? String(window.fidesWalletCatalog.ratingsNonce)
+    : '';
+  const RATINGS_IS_LOGGED_IN = !!(window.fidesWalletCatalog && window.fidesWalletCatalog.ratingsIsLoggedIn);
+  const RATINGS_LOGIN_URL = (window.fidesWalletCatalog && window.fidesWalletCatalog.ratingsLoginUrl)
+    ? String(window.fidesWalletCatalog.ratingsLoginUrl)
+    : '';
+  const RATINGS_BATCH_LIMIT = 100;
 
   function getBluePagesUrlForWallet(did) {
     const base = BLUE_PAGES_URL;
@@ -268,12 +279,13 @@
 
   // State
   let wallets = [];
+  let ratingSummariesByWalletId = Object.create(null);
   /** Precomputed counts per filter option (set after load, over walletsForFacets) */
   let filterFacets = null;
   const SORT_PREFERENCE_STORAGE_KEY = 'fidesWalletCatalogSortBy';
   const VIEW_PREFERENCE_STORAGE_KEY = 'fides-wallet-view';
   const LIST_BREAKPOINT = 1024;
-  let sortBy = 'lastUpdated';
+  let sortBy = 'rating';
   let viewMode = 'grid';
   let originalIds = []; // IDs from ?wallets= URL param; preserved so the filter can be toggled back on
   let filters = {
@@ -377,7 +389,7 @@
     // Restore persisted sort preference (if supported)
     try {
       const savedSort = window.localStorage.getItem(SORT_PREFERENCE_STORAGE_KEY);
-      if (savedSort === 'az' || savedSort === 'lastUpdated') {
+      if (savedSort === 'az' || savedSort === 'lastUpdated' || savedSort === 'rating') {
         sortBy = savedSort;
       }
       const savedView = window.localStorage.getItem(VIEW_PREFERENCE_STORAGE_KEY);
@@ -507,6 +519,7 @@
       <div class="fides-wallet-list-header" aria-hidden="true">
         <div></div>
         <div>Name</div>
+        <div class="fides-list-col-likes"></div>
         <div>Provider</div>
         <div>Platforms</div>
         <div class="fides-list-col-updated">Updated</div>
@@ -527,6 +540,7 @@
         <div class="fides-row-name">
           <span class="fides-row-name-text" title="${escapeHtml(d.displayName)}">${escapeHtml(d.displayName)}</span>
         </div>
+        <div class="fides-row-likes">${renderWalletListLikeSummary(wallet.id)}</div>
         <div class="fides-row-provider" title="${escapeHtml(d.providerName)}">${escapeHtml(d.providerName)}</div>
         <div class="fides-row-platforms">${renderWalletRowPlatforms(wallet)}</div>
         <div class="fides-row-updated">${escapeHtml(d.activityDateLabel)}</div>
@@ -548,6 +562,114 @@
       }
       return `<span class="fides-row-platform-icon" title="${platformLabel}" aria-label="${platformLabel}">${icon}</span>`;
     }).join('');
+  }
+
+  function setWalletRatingSummary(walletId, rawSummary) {
+    if (!walletId || !rawSummary) return;
+    const likeCount = Number(rawSummary.likes);
+    ratingSummariesByWalletId[walletId] = {
+      avg: Number(rawSummary.avg) || 0,
+      count: isFinite(likeCount) ? likeCount : (Number(rawSummary.count) || 0),
+      myRating: Number(rawSummary.my_like) > 0 || Number(rawSummary.my_rating) > 0 ? 1 : null
+    };
+  }
+
+  function renderWalletRatingSummary(walletId) {
+    const summary = ratingSummariesByWalletId[walletId];
+    if (!summary || summary.count < 1) {
+      return '<span class="fides-item-rating fides-item-rating-empty"><span class="fides-item-rating-text">No likes yet</span></span>';
+    }
+    const label = summary.count + ' like' + (summary.count === 1 ? '' : 's');
+    const likedClass = summary.myRating === 1 ? ' is-liked' : '';
+    return '<span class="fides-item-rating' + likedClass + '" title="Community likes">' +
+      '<span class="fides-item-rating-star">★</span><span class="fides-item-rating-text">' + escapeHtml(label) + '</span>' +
+      '</span>';
+  }
+
+  function renderWalletListLikeSummary(walletId) {
+    const summary = ratingSummariesByWalletId[walletId];
+    const count = summary ? (Number(summary.count) || 0) : 0;
+    if (count < 1) return '';
+    const likedClass = summary && summary.myRating === 1 ? ' is-liked' : '';
+    return '<span class="fides-list-like' + likedClass + '" title="Community likes">' +
+      '<span class="fides-list-like-star">★</span><span class="fides-list-like-count">' + escapeHtml(count) + '</span>' +
+      '</span>';
+  }
+
+  function updateWalletLikeInPlace(walletId) {
+    if (!walletId || !container) return;
+    const cards = container.querySelectorAll('.fides-wallet-card[data-wallet-id]');
+    if (!cards.length) return;
+    cards.forEach((card) => {
+      if ((card.getAttribute('data-wallet-id') || '') !== walletId) return;
+      const cardSummary = card.querySelector('.fides-wallet-rating-summary');
+      if (cardSummary) cardSummary.innerHTML = renderWalletRatingSummary(walletId);
+      const rowSummary = card.querySelector('.fides-row-likes');
+      if (rowSummary) rowSummary.innerHTML = renderWalletListLikeSummary(walletId);
+    });
+  }
+
+  function walletRatingSortValue(wallet) {
+    const summary = wallet && wallet.id ? ratingSummariesByWalletId[wallet.id] : null;
+    return {
+      stars: summary ? (Number(summary.count) || 0) : 0
+    };
+  }
+
+  function buildRatingsEndpoint(baseUrl, path, queryParams) {
+    const rawBase = String(baseUrl || '').trim();
+    const safePath = String(path || '').replace(/^\/+/, '');
+    if (!rawBase) return '';
+    try {
+      const url = new URL(rawBase, window.location.origin);
+      if (url.origin !== window.location.origin) {
+        url.protocol = window.location.protocol;
+        url.host = window.location.host;
+      }
+      if (url.searchParams.has('rest_route')) {
+        const currentRoute = String(url.searchParams.get('rest_route') || '').replace(/\/+$/, '');
+        url.searchParams.set('rest_route', currentRoute + '/' + safePath);
+      } else {
+        const basePath = url.pathname.replace(/\/+$/, '');
+        url.pathname = basePath + '/' + safePath;
+      }
+      if (queryParams && typeof queryParams === 'object') {
+        Object.keys(queryParams).forEach((key) => {
+          const value = queryParams[key];
+          if (value === null || value === undefined || value === '') return;
+          url.searchParams.set(key, String(value));
+        });
+      }
+      return url.toString();
+    } catch (e) {
+      return '';
+    }
+  }
+
+  async function loadWalletRatingSummaries(items) {
+    ratingSummariesByWalletId = Object.create(null);
+    if (!RATINGS_API_BASE || !Array.isArray(items) || items.length === 0) return;
+    const ids = Array.from(new Set(items.map((wallet) => wallet && wallet.id).filter(Boolean)));
+    for (let i = 0; i < ids.length; i += RATINGS_BATCH_LIMIT) {
+      const chunk = ids.slice(i, i + RATINGS_BATCH_LIMIT);
+      const url = buildRatingsEndpoint(RATINGS_API_BASE, 'ratings/batch', {
+        type: 'wallet',
+        ids: chunk.join(','),
+        _wpnonce: RATINGS_NONCE || ''
+      });
+      if (!url) continue;
+      const response = await fetch(url, {
+        method: 'GET',
+        credentials: 'same-origin',
+        headers: {
+          'X-WP-Nonce': RATINGS_NONCE || ''
+        }
+      });
+      if (!response.ok) continue;
+      const data = await response.json();
+      const results = data && data.results ? data.results : {};
+      Object.keys(results).forEach((walletId) => setWalletRatingSummary(walletId, results[walletId]));
+    }
   }
 
   function renderViewToggle() {
@@ -593,6 +715,11 @@
         if (response.ok) {
           const data = await response.json();
           wallets = source.transform(data);
+          try {
+            await loadWalletRatingSummaries(wallets);
+          } catch (ratingsError) {
+            console.warn('Failed to load wallet likes:', ratingsError.message);
+          }
           console.log(`✅ Loaded ${wallets.length} wallets from ${source.name}`);
           break;
         }
@@ -621,11 +748,6 @@
       filterFacets = computeFilterFacets(walletsForFacets);
     }
 
-    // Load vocabulary for [i] info popups (primary = GitHub, fallback = local assets)
-    if (config.vocabularyUrl || config.vocabularyFallbackUrl) {
-      vocabulary = await loadVocabulary(config.vocabularyUrl, config.vocabularyFallbackUrl);
-    }
-
     // Read query parameters for filtering
     readQueryParams();
     normalizeWalletSigningAlgorithmFilters();
@@ -634,6 +756,18 @@
     
     // Check for deep link after render
     checkDeepLink();
+
+    // Load vocabulary after first render to avoid delaying initial paint.
+    if (config.vocabularyUrl || config.vocabularyFallbackUrl) {
+      loadVocabulary(config.vocabularyUrl, config.vocabularyFallbackUrl)
+        .then((terms) => {
+          vocabulary = terms;
+          if (vocabulary) initVocabularyInfo(container);
+        })
+        .catch((vocabError) => {
+          console.warn('Wallet vocabulary load failed:', vocabError.message);
+        });
+    }
   }
 
   /**
@@ -868,6 +1002,15 @@
         const timeA = dateA ? dateA.getTime() : 0;
         const timeB = dateB ? dateB.getTime() : 0;
         if (timeB !== timeA) return timeB - timeA;
+        return a.name.localeCompare(b.name);
+      });
+    }
+
+    if (sortBy === 'rating') {
+      return filtered.sort((a, b) => {
+        const aRating = walletRatingSortValue(a);
+        const bRating = walletRatingSortValue(b);
+        if (bRating.stars !== aRating.stars) return bRating.stars - aRating.stars;
         return a.name.localeCompare(b.name);
       });
     }
@@ -1460,6 +1603,7 @@
           <span class="fides-sort-text">Sort by:</span>
           <select id="fides-sort-select" class="fides-sort-select">
             <option value="lastUpdated" ${sortBy === 'lastUpdated' ? 'selected' : ''}>Last updated</option>
+            <option value="rating" ${sortBy === 'rating' ? 'selected' : ''}>Likes</option>
             <option value="az" ${sortBy === 'az' ? 'selected' : ''}>A-Z</option>
           </select>
         </label>
@@ -1662,7 +1806,6 @@
     };
     const displayData = getWalletDisplayData(wallet);
     const displayName = displayData.displayName;
-    const activityLabel = displayData.activityLabel === '—' ? '' : displayData.activityLabel;
 
     return `
       <div class="fides-wallet-card" data-wallet-id="${wallet.id}" role="button" tabindex="0">
@@ -1677,7 +1820,7 @@
           </div>
         </div>
         <div class="fides-wallet-body">
-          ${activityLabel ? `<p class="fides-wallet-updated">${escapeHtml(activityLabel)}</p>` : ''}
+          <p class="fides-wallet-rating-summary">${renderWalletRatingSummary(wallet.id)}</p>
           ${wallet.description ? `<p class="fides-wallet-description">${escapeHtml(wallet.description)}</p>` : ''}
           
           ${wallet.type === 'organizational' && wallet.capabilities && wallet.capabilities.length > 0 ? `
@@ -2222,8 +2365,22 @@
           theme: container ? (container.getAttribute('data-theme') || 'dark') : 'dark',
           organizationCatalogUrl: ORGANIZATION_CATALOG_PAGE_URL,
           bluePagesUrl: BLUE_PAGES_URL,
+          ratingsApiBase: RATINGS_API_BASE,
+          ratingsNonce: RATINGS_NONCE,
+          ratingsIsLoggedIn: RATINGS_IS_LOGGED_IN,
+          ratingsLoginUrl: RATINGS_LOGIN_URL,
           onOpen: function(openedWallet) {
             (window.FidesCatalogUI && window.FidesCatalogUI.trackMatomoEvent) && window.FidesCatalogUI.trackMatomoEvent('Wallet Catalog', 'Modal Open', openedWallet.name);
+          },
+          onRatingUpdate: function(updated) {
+            if (!updated || updated.itemId !== wallet.id) return;
+            setWalletRatingSummary(wallet.id, {
+              avg: updated.avg,
+              count: updated.count,
+              my_rating: updated.myRating
+            });
+            if (sortBy === 'rating') renderWalletGridOnly();
+            else updateWalletLikeInPlace(wallet.id);
           }
         });
         return;
@@ -2361,7 +2518,9 @@
     const sortSelect = document.getElementById('fides-sort-select');
     if (sortSelect) {
       sortSelect.addEventListener('change', () => {
-        const nextSort = sortSelect.value === 'az' ? 'az' : 'lastUpdated';
+        const nextSort = sortSelect.value === 'az'
+          ? 'az'
+          : (sortSelect.value === 'rating' ? 'rating' : 'lastUpdated');
         sortBy = nextSort;
         try {
           window.localStorage.setItem(SORT_PREFERENCE_STORAGE_KEY, sortBy);

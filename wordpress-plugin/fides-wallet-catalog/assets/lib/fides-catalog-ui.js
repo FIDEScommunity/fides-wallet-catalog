@@ -201,6 +201,21 @@
     return url.toString();
   }
 
+  function buildLoginUrlWithReturnTo(loginUrl, returnToUrl) {
+    const base = String(loginUrl || '').trim();
+    const returnTo = String(returnToUrl || '').trim();
+    if (!base) return '';
+    if (!returnTo) return base;
+    try {
+      const u = new URL(base, window.location.origin);
+      u.searchParams.set('return_to', returnTo);
+      return u.toString();
+    } catch (e) {
+      const sep = base.indexOf('?') === -1 ? '?' : '&';
+      return base + sep + 'return_to=' + encodeURIComponent(returnTo);
+    }
+  }
+
   function copySelectedLink() {
     if (!selectedContext) return;
     const url = getDirectLink(selectedContext.type, selectedContext.item, selectedContext.options || {});
@@ -252,6 +267,242 @@
     attachModalListeners();
   }
 
+  function boolFromMixed(value) {
+    if (value === true || value === 1 || value === '1') return true;
+    if (typeof value === 'string') {
+      const v = value.trim().toLowerCase();
+      return v === 'true' || v === 'yes' || v === 'on';
+    }
+    return false;
+  }
+
+  function getRatingsClient(options) {
+    const ratings = (options && options.ratings) || {};
+    const apiBase = (ratings.apiBase || options && options.ratingsApiBase || '').trim().replace(/\/$/, '');
+    const nonce = String(ratings.nonce || options && options.ratingsNonce || '').trim();
+    const loginUrl = String(ratings.loginUrl || options && options.ratingsLoginUrl || options && options.loginUrl || '').trim();
+    return {
+      apiBase: apiBase,
+      nonce: nonce,
+      loginUrl: loginUrl,
+      isLoggedIn: boolFromMixed(ratings.isLoggedIn != null ? ratings.isLoggedIn : (options && options.ratingsIsLoggedIn))
+    };
+  }
+
+  function buildRatingsEndpoint(client, path, queryParams) {
+    const safePath = String(path || '').replace(/^\/+/, '');
+    const rawBase = String(client && client.apiBase ? client.apiBase : '').trim();
+    if (!rawBase) return '';
+    try {
+      const url = new URL(rawBase, window.location.origin);
+      if (url.origin !== window.location.origin) {
+        url.protocol = window.location.protocol;
+        url.host = window.location.host;
+      }
+      if (url.searchParams.has('rest_route')) {
+        const currentRoute = String(url.searchParams.get('rest_route') || '').replace(/\/+$/, '');
+        url.searchParams.set('rest_route', currentRoute + '/' + safePath);
+      } else {
+        const basePath = url.pathname.replace(/\/+$/, '');
+        url.pathname = basePath + '/' + safePath;
+      }
+      if (queryParams && typeof queryParams === 'object') {
+        Object.keys(queryParams).forEach(function(key) {
+          const value = queryParams[key];
+          if (value === null || value === undefined || value === '') return;
+          url.searchParams.set(key, String(value));
+        });
+      }
+      return url.toString();
+    } catch (e) {
+      return '';
+    }
+  }
+
+  function formatLikeCount(count) {
+    const n = Number(count) || 0;
+    if (n <= 0) return 'No likes yet';
+    return n + ' like' + (n === 1 ? '' : 's');
+  }
+
+  async function fetchRatingSummary(client, contextType, itemId) {
+    const url = buildRatingsEndpoint(client, 'ratings/batch', {
+      type: String(contextType || '').trim(),
+      ids: String(itemId || '').slice(0, 512),
+      _wpnonce: client.nonce || ''
+    });
+    if (!url) throw new Error('ratings_url_invalid');
+    const res = await fetch(url, {
+      method: 'GET',
+      credentials: 'same-origin',
+      headers: {
+        'X-WP-Nonce': client.nonce || ''
+      }
+    });
+    if (!res.ok) throw new Error('ratings_batch_failed');
+    const data = await res.json();
+    const result = data && data.results && data.results[itemId] ? data.results[itemId] : { avg: 0, count: 0, likes: 0, my_rating: null, my_like: null };
+    const likeCount = Number(result.likes);
+    return {
+      avg: Number(result.avg) || 0,
+      count: isFinite(likeCount) ? likeCount : (Number(result.count) || 0),
+      myRating: Number(result.my_like) > 0 || Number(result.my_rating) > 0 ? 1 : null
+    };
+  }
+
+  async function submitRating(client, contextType, itemId) {
+    const url = buildRatingsEndpoint(client, 'ratings', {
+      _wpnonce: client.nonce || ''
+    });
+    if (!url) throw new Error('ratings_url_invalid');
+    const res = await fetch(url, {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-WP-Nonce': client.nonce || ''
+      },
+      body: JSON.stringify({
+        type: contextType,
+        item_id: itemId,
+        rating: 1
+      })
+    });
+    let payload = null;
+    try {
+      payload = await res.json();
+    } catch (e) {
+      payload = null;
+    }
+    if (!res.ok) {
+      const reason = payload && (payload.error || payload.code || payload.message);
+      throw new Error(reason || 'like_submit_failed');
+    }
+    return payload || {};
+  }
+
+  async function deleteRating(client, contextType, itemId) {
+    const url = buildRatingsEndpoint(client, 'ratings', {
+      _wpnonce: client.nonce || '',
+      type: contextType,
+      item_id: itemId
+    });
+    if (!url) throw new Error('ratings_url_invalid');
+    const res = await fetch(url, {
+      method: 'DELETE',
+      credentials: 'same-origin',
+      headers: {
+        'X-WP-Nonce': client.nonce || ''
+      }
+    });
+    let payload = null;
+    try {
+      payload = await res.json();
+    } catch (e) {
+      payload = null;
+    }
+    if (!res.ok) {
+      const reason = payload && (payload.error || payload.code || payload.message);
+      throw new Error(reason || 'like_delete_failed');
+    }
+    return payload || {};
+  }
+
+  function renderRatingSlot(slot, state, client) {
+    if (!slot) return;
+    const summaryLabel = formatLikeCount(state.count);
+    const isStarred = state.myRating === 1;
+    const starButton = client.isLoggedIn
+      ? '<button type="button" class="fides-rating-star fides-rating-star-single' + (isStarred ? ' is-filled' : '') + '" data-rating-toggle="1" ' + (state.saving ? 'disabled' : '') + ' aria-label="' + (isStarred ? 'Remove your like' : 'Like this item') + '">★</button>'
+      : '<button type="button" class="fides-rating-star fides-rating-star-single is-readonly' + (isStarred ? ' is-filled' : '') + '" disabled aria-hidden="true">★</button>';
+    const actionLine = client.isLoggedIn
+      ? '<span class="fides-modal-rating-note fides-modal-rating-note-inline">' + (state.saving ? 'Updating like...' : (isStarred ? 'You like this item. Click again to remove.' : 'Click the star to like this item.')) + '</span>'
+      : (client.loginUrl
+          ? '<span class="fides-modal-rating-note fides-modal-rating-note-inline"><a href="' + escapeHtml(client.loginUrl) + '" class="fides-modal-rating-login">Sign in to like</a></span>'
+          : '<span class="fides-modal-rating-note fides-modal-rating-note-inline">Sign in to like</span>');
+    slot.innerHTML =
+      '<div class="fides-modal-rating">' +
+        '<div class="fides-modal-rating-summary">' +
+          starButton +
+          '<span class="fides-modal-rating-value">' + escapeHtml(summaryLabel) + '</span>' +
+          actionLine +
+        '</div>' +
+      '</div>';
+  }
+
+  async function attachModalRating(overlay, contextType, itemId, options, item) {
+    if (!overlay) return;
+    const slot = overlay.querySelector('#fides-modal-rating-slot');
+    if (!slot) return;
+    const client = getRatingsClient(options || {});
+    const deepLinkUrl = getDirectLink(contextType, item || { id: itemId }, options || {});
+    const clientForUi = Object.assign({}, client, {
+      loginUrl: buildLoginUrlWithReturnTo(client.loginUrl, deepLinkUrl)
+    });
+    if (!client.apiBase || !contextType || !itemId) {
+      slot.innerHTML = '';
+      return;
+    }
+    let state = { avg: 0, count: 0, myRating: null, saving: false };
+    renderRatingSlot(slot, state, clientForUi);
+    try {
+      state = Object.assign(state, await fetchRatingSummary(client, contextType, itemId));
+      renderRatingSlot(slot, state, clientForUi);
+    } catch (e) {
+      state = Object.assign(state, { avg: 0, count: 0, myRating: null });
+      renderRatingSlot(slot, state, clientForUi);
+    }
+    if (!client.isLoggedIn) return;
+    slot.addEventListener('click', async function(e) {
+      const btn = e.target && e.target.closest ? e.target.closest('[data-rating-toggle]') : null;
+      if (!btn) return;
+      if (state.saving) return;
+      const previousState = {
+        avg: state.avg,
+        count: state.count,
+        myRating: state.myRating
+      };
+      const removing = state.myRating === 1;
+      state = Object.assign(state, {
+        saving: true,
+        myRating: removing ? null : 1
+      });
+      renderRatingSlot(slot, state, clientForUi);
+      try {
+        const data = removing
+          ? await deleteRating(client, contextType, itemId)
+          : await submitRating(client, contextType, itemId);
+        const summary = data && data.summary ? data.summary : {};
+        state = {
+          avg: Number(summary.avg) || 0,
+          count: Number(summary.likes) || Number(summary.count) || 0,
+          myRating: Number(data && data.my_like) > 0 || Number(data && data.my_rating) > 0 ? 1 : null,
+          saving: false
+        };
+        renderRatingSlot(slot, state, clientForUi);
+        if (options && typeof options.onRatingUpdate === 'function') {
+          options.onRatingUpdate({
+            type: contextType,
+            itemId: itemId,
+            avg: state.avg,
+            count: state.count,
+            myRating: state.myRating
+          });
+        }
+      } catch (err) {
+        state = Object.assign(state, {
+          avg: previousState.avg,
+          count: previousState.count,
+          myRating: previousState.myRating,
+          saving: false
+        });
+        renderRatingSlot(slot, state, clientForUi);
+        const reason = (err && err.message) ? String(err.message) : 'save_failed';
+        showToast('Failed to update like (' + reason + ')', 'error', (options && options.theme) || 'dark');
+      }
+    });
+  }
+
   function openWalletModal(wallet, options) {
     if (!wallet) return;
     const theme = (options && options.theme) || 'dark';
@@ -282,6 +533,7 @@
       '<div class="fides-modal-title-wrap"><h2 class="fides-modal-title">' + escapeHtml(wallet.name) + '</h2><p class="fides-modal-provider">' + icons.building + ' ' + providerNameInHeader + (bluePagesUrl ? ' <a href="' + escapeHtml(bluePagesUrl) + '" target="_blank" rel="noopener" class="fides-modal-provider-link">' + icons.externalLink + ' View in Blue Pages</a>' : '') + '</p></div>' +
       '</div><div class="fides-modal-header-actions">' + shareButtonHtml + '<button class="fides-modal-close" id="fides-modal-close" aria-label="Close modal">' + icons.xLarge + '</button></div></div>' +
       '<div class="fides-modal-body">' +
+      '<div id="fides-modal-rating-slot"></div>' +
       '<div class="fides-modal-badges">' +
       '<span class="fides-modal-badge type-' + escapeHtml(wallet.type) + '">' + escapeHtml(typeLabels[wallet.type]) + '</span>' +
       ((wallet.type === 'organizational' && wallet.capabilities) ? wallet.capabilities.map(c => '<span class="fides-modal-badge capability-' + escapeHtml(c) + '">' + escapeHtml(c.charAt(0).toUpperCase() + c.slice(1)) + '</span>').join('') : '') +
@@ -311,6 +563,8 @@
       '</div></div></div>';
 
     mountModal(modalHtml);
+    const walletOverlay = document.getElementById('fides-modal-overlay');
+    if (walletOverlay) attachModalRating(walletOverlay, 'wallet', wallet.id, options || {}, wallet);
   }
 
   function getBluePagesUrl(did, options) {
@@ -501,6 +755,7 @@
       '<div class="fides-modal-title-wrap"><h2 class="fides-modal-title">' + escapeHtml(rp.name) + '</h2><p class="fides-modal-provider">' + icons.building + ' ' + providerNameInHeader + (bluePagesUrl ? ' <a href="' + escapeHtml(bluePagesUrl) + '" target="_blank" rel="noopener" class="fides-modal-provider-link">' + icons.externalLink + ' View in Blue Pages</a>' : '') + '</p></div>' +
       '</div><div class="fides-modal-header-actions">' + shareButtonHtml + '<button class="fides-modal-close" id="fides-modal-close" aria-label="Close modal">' + icons.xLarge + '</button></div></div>' +
       '<div class="fides-modal-body">' +
+      '<div id="fides-modal-rating-slot"></div>' +
       '<div class="fides-modal-badges fides-modal-badges-with-action"><div class="fides-modal-badges-left">' +
       (rp.readiness ? '<span class="fides-modal-badge readiness-' + escapeHtml(rp.readiness) + '">' + escapeHtml(readinessLabels[rp.readiness] || rp.readiness) + '</span>' : '') +
       '<span class="fides-modal-badge interaction-mode interaction-' + escapeHtml(interactionMode) + '">' + escapeHtml(interactionModeLabel) + '</span>' +
@@ -527,6 +782,8 @@
       '</div></div></div>';
 
     mountModal(modalHtml);
+    const rpOverlay = document.getElementById('fides-modal-overlay');
+    if (rpOverlay) attachModalRating(rpOverlay, 'rp', rp.id, options || {}, rp);
   }
 
   function arrayValues(input) {

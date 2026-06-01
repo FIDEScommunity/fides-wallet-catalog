@@ -1,3 +1,66 @@
+.fides-item-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--fides-text-secondary, #94a3b8);
+}
+
+.fides-item-rating-count {
+  opacity: 0.9;
+}
+
+.fides-item-rating-empty {
+  opacity: 0.75;
+}
+
+.fides-wallet-rating-summary {
+  margin: 0 0 0.75rem;
+  font-size: 0.84rem;
+}
+
+.fides-wallet-rating-summary .fides-item-rating {
+  margin-left: 0;
+  font-weight: 700;
+  color: var(--fides-text-primary, #0f172a);
+  gap: 0.35rem;
+}
+
+.fides-wallet-rating-summary .fides-item-rating-star {
+  color: #111827;
+  font-size: 0.95em;
+  line-height: 1;
+}
+
+.fides-wallet-rating-summary .fides-item-rating.is-liked .fides-item-rating-star {
+  color: #facc15;
+}
+
+.fides-wallet-rating-summary .fides-item-rating-empty {
+  color: var(--fides-text-muted, #64748b);
+  font-weight: 600;
+}
+
+.fides-wallet-catalog[data-theme="fides"] .fides-item-rating,
+.fides-wallet-catalog[data-theme="light"] .fides-item-rating {
+  color: #6b7280;
+}
+
+.fides-wallet-catalog[data-theme="fides"] .fides-wallet-rating-summary .fides-item-rating,
+.fides-wallet-catalog[data-theme="light"] .fides-wallet-rating-summary .fides-item-rating {
+  color: #374151;
+}
+
+.fides-wallet-catalog[data-theme="fides"] .fides-wallet-rating-summary .fides-item-rating-star,
+.fides-wallet-catalog[data-theme="light"] .fides-wallet-rating-summary .fides-item-rating-star {
+  color: #111827;
+}
+
+.fides-wallet-catalog[data-theme="fides"] .fides-wallet-rating-summary .fides-item-rating.is-liked .fides-item-rating-star,
+.fides-wallet-catalog[data-theme="light"] .fides-wallet-rating-summary .fides-item-rating.is-liked .fides-item-rating-star {
+  color: #facc15;
+}
 /**
  * FIDES Wallet Catalog - WordPress Plugin Styles
  */
@@ -1059,7 +1122,7 @@
 
 .fides-wallet-list-header,
 .fides-wallet-grid[data-view="list"] .fides-wallet-card {
-  grid-template-columns: 32px 2fr 3fr minmax(74px, 96px) minmax(84px, 108px);
+  grid-template-columns: 32px 2fr minmax(54px, 64px) 3fr minmax(74px, 96px) minmax(84px, 108px);
   gap: 0.75rem;
   padding: 0.625rem 1rem;
 }
@@ -1082,6 +1145,10 @@
 
 .fides-list-col-updated {
   padding-left: 0.2rem;
+}
+
+.fides-list-col-likes {
+  min-height: 1px;
 }
 
 .fides-list-col-right {
@@ -1127,6 +1194,7 @@
 .fides-row-name,
 .fides-row-provider,
 .fides-row-platforms,
+.fides-row-likes,
 .fides-row-updated {
   display: none;
 }
@@ -1135,10 +1203,38 @@
 .fides-wallet-grid[data-view="list"] .fides-row-name,
 .fides-wallet-grid[data-view="list"] .fides-row-provider,
 .fides-wallet-grid[data-view="list"] .fides-row-platforms,
+.fides-wallet-grid[data-view="list"] .fides-row-likes,
 .fides-wallet-grid[data-view="list"] .fides-row-updated {
   display: flex;
   align-items: center;
   min-width: 0;
+}
+
+.fides-row-likes {
+  justify-content: flex-start;
+  min-height: 1rem;
+}
+
+.fides-list-like {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--fides-text-secondary);
+}
+
+.fides-list-like-star {
+  color: #111827;
+  line-height: 1;
+}
+
+.fides-list-like.is-liked .fides-list-like-star {
+  color: #facc15;
+}
+
+.fides-list-like-count {
+  font-variant-numeric: tabular-nums;
 }
 
 .fides-row-icon {
