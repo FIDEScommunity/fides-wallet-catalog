@@ -147,9 +147,14 @@ function filterWallets(
     }
 
     if (filters.interoperabilityProfiles?.length) {
-      const ok = filters.interoperabilityProfiles.some((p) =>
-        wallet.interoperabilityProfiles?.includes(p),
+      // Case-insensitive partial match so e.g. "HAIP" matches "HAIP v1".
+      const walletProfiles = (wallet.interoperabilityProfiles ?? []).map((wp) =>
+        String(wp).toLowerCase(),
       );
+      const ok = filters.interoperabilityProfiles.some((p) => {
+        const needle = String(p).toLowerCase();
+        return walletProfiles.some((wp) => wp.includes(needle));
+      });
       if (!ok) return false;
     }
 
