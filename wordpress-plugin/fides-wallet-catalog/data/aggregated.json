@@ -5578,64 +5578,6 @@
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "github"
-    },
-    {
-      "id": "fides-wallet",
-      "name": "FIDES Wallet",
-      "description": "The first FIDES Wallet",
-      "type": "personal",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "openSource": true,
-      "vcFormat": [
-        "sd_jwt_vc",
-        "mdoc"
-      ],
-      "issuanceProtocols": [
-        "OpenID4VCI"
-      ],
-      "presentationProtocols": [
-        "OpenID4VP"
-      ],
-      "supportedIdentifiers": [
-        "did:key",
-        "did:jwk"
-      ],
-      "keyStorage": [
-        "Software"
-      ],
-      "signingAlgorithms": [
-        "ES256"
-      ],
-      "credentialStatusMethods": [
-        "StatusList2021"
-      ],
-      "interoperabilityProfiles": [
-        "DIIP v5",
-        "HAIP v1"
-      ],
-      "status": "production",
-      "releaseDate": "0026-01-01",
-      "capabilities": [
-        "holder"
-      ],
-      "orgId": "org:fides",
-      "provider": {
-        "orgId": "org:fides",
-        "name": "FIDES Labs",
-        "did": "did:web:fides.acc.credenco.com:did:da5a3c99-d45c-4ce2-8065-9db36c98868c",
-        "website": "https://fides.community",
-        "logo": "https://avatars.githubusercontent.com/u/119322214?v=4",
-        "country": "NL",
-        "fidesManifestoSupporter": true
-      },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/fides/wallet-catalog.json",
-      "fetchedAt": "2026-06-23T15:05:47.757Z",
-      "updatedAt": "2026-06-23T15:05:23.173Z",
-      "firstSeenAt": "0026-01-01T00:00:00.000Z",
-      "source": "local"
     }
   ],
   "providers": [

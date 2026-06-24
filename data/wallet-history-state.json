@@ -1426,11 +1426,5 @@
     "lastSeenAt": "2026-06-23T15:05:47.652Z",
     "providerKey": "org:digiyatra",
     "walletId": "digiyatra"
-  },
-  "org:fides:fides-wallet": {
-    "firstSeenAt": "0026-01-01T00:00:00.000Z",
-    "lastSeenAt": "2026-06-23T15:05:47.757Z",
-    "providerKey": "org:fides",
-    "walletId": "fides-wallet"
   }
 }
