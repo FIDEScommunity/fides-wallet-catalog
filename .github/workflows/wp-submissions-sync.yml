@@ -33,6 +33,10 @@ jobs:
         run: npm run validate
 
       - name: Rebuild aggregated data
+        env:
+          # Use the checkout working tree only — remote main still has the pre-push
+          # community-catalog state until this job commits (GitHub crawl would re-import pruned wallets).
+          FIDES_WALLET_SKIP_GITHUB_CRAWL: '1'
         run: npm run crawl
 
       - name: Check for changes
