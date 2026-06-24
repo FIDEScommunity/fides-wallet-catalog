@@ -198,11 +198,27 @@ export async function fetchWpExport(wpUrl: string, secret: string): Promise<WpEx
     headers: { Accept: 'application/json', [SECRET_HEADER]: secret },
     signal: AbortSignal.timeout(60_000),
   });
+  const contentType = response.headers.get('content-type') ?? '';
+  const body = await response.text();
   if (!response.ok) {
-    const body = await response.text();
-    throw new Error(`WP export failed (${response.status}): ${body.slice(0, 300)}`);
+    throw new Error(
+      `WP export failed (HTTP ${response.status}, ${contentType}): ${body.slice(0, 300)}`,
+    );
   }
-  const payload = (await response.json()) as WpExportPayload;
+  if (!contentType.includes('json')) {
+    throw new Error(
+      `WP export returned non-JSON (HTTP ${response.status}, ${contentType}). `
+      + `Body starts with: ${body.slice(0, 200).replace(/\s+/g, ' ')}`,
+    );
+  }
+  let payload: WpExportPayload;
+  try {
+    payload = JSON.parse(body) as WpExportPayload;
+  } catch {
+    throw new Error(
+      `WP export JSON parse failed (HTTP ${response.status}). Body starts with: ${body.slice(0, 200).replace(/\s+/g, ' ')}`,
+    );
+  }
   if (!payload?.entries) throw new Error('WP export response is missing entries array.');
   return payload;
 }
