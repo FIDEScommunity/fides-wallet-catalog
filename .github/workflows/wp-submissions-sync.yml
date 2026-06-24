@@ -38,7 +38,7 @@ jobs:
       - name: Check for changes
         id: changes
         run: |
-          if [ -n "$(git status --porcelain community-catalogs/ data/aggregated.json data/wallet-history-state.json data/wp-submission-state.json data/registry.json data/did-registry.json)" ]; then
+          if [ -n "$(git status --porcelain community-catalogs/ data/aggregated.json data/wallet-history-state.json data/wp-submission-state.json)" ]; then
             echo "changed=true" >> $GITHUB_OUTPUT
           else
             echo "changed=false" >> $GITHUB_OUTPUT
@@ -50,9 +50,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add community-catalogs/ data/aggregated.json data/wallet-history-state.json data/wp-submission-state.json data/registry.json data/did-registry.json
+          git add community-catalogs/ data/aggregated.json data/wallet-history-state.json data/wp-submission-state.json
           git commit -m "chore: sync WordPress wallet submissions [skip ci]"
-          git pull --rebase origin main
           git push
 
       - name: Notify production WordPress to flush catalog cache
