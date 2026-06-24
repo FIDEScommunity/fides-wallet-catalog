@@ -133,7 +133,29 @@
         "supportedIdentifiers": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "did:web",
+              "did:key",
+              "did:jwk",
+              "did:peer",
+              "did:ebsi",
+              "did:ion",
+              "did:cheqd",
+              "did:webvh",
+              "did:indy",
+              "did:ethr",
+              "did:polygon",
+              "did:dock",
+              "did:eth",
+              "did:gatc",
+              "did:isbe",
+              "did:kscirc",
+              "x509",
+              "X.509",
+              "X509",
+              "jwk"
+            ]
           }
         },
         "keyStorage": {
@@ -155,13 +177,35 @@
         "signingAlgorithms": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "ES256",
+              "ES384",
+              "ES512",
+              "ES256K",
+              "EdDSA",
+              "RS256",
+              "PS256",
+              "BBS+",
+              "ML-DSA (FIPS 204)"
+            ]
           }
         },
         "credentialStatusMethods": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "StatusList2021",
+              "RevocationList2020",
+              "OCSP",
+              "CRL",
+              "IETF Token Status List",
+              "Token Status List",
+              "W3C Verifiable Credentials Status List v2021",
+              "Bitstring Status List",
+              "BitstringStatusList v1.0"
+            ]
           }
         },
         "certifications": {

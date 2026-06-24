@@ -35,6 +35,7 @@
     play: '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>',
     link: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>',
     share: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg>',
+    pencil: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>',
     viewGrid: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>',
     viewList: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>'
   };
@@ -170,7 +171,27 @@
   const RATINGS_LOGIN_URL = (window.fidesWalletCatalog && window.fidesWalletCatalog.ratingsLoginUrl)
     ? String(window.fidesWalletCatalog.ratingsLoginUrl)
     : '';
+  const UPDATE_FORM_URL = (window.fidesWalletCatalog && window.fidesWalletCatalog.updateFormUrl)
+    ? String(window.fidesWalletCatalog.updateFormUrl).trim()
+    : '';
   const RATINGS_BATCH_LIMIT = 100;
+
+  function walletUpdateFormUrl(walletId) {
+    if (!RATINGS_IS_LOGGED_IN || !UPDATE_FORM_URL || !walletId) return '';
+    try {
+      const url = new URL(UPDATE_FORM_URL, window.location.origin);
+      url.searchParams.set('wallet', String(walletId));
+      return url.toString();
+    } catch {
+      return '';
+    }
+  }
+
+  function renderModalEditAction(wallet) {
+    const href = walletUpdateFormUrl(wallet && wallet.id);
+    if (!href) return '';
+    return `<a href="${escapeHtml(href)}" class="fides-modal-copy-link fides-modal-edit-link" aria-label="Suggest an update" title="Suggest an update">${icons.pencil}</a>`;
+  }
 
   function getBluePagesUrlForWallet(did) {
     const base = BLUE_PAGES_URL;
@@ -1966,6 +1987,7 @@
               </div>
             </div>
             <div class="fides-modal-header-actions">
+              ${renderModalEditAction(wallet)}
               <button type="button" class="fides-modal-copy-link" id="fides-modal-copy-link" aria-label="Copy link to this wallet" title="Copy link to this wallet">
                 ${icons.share}
               </button>
@@ -2365,6 +2387,8 @@
           theme: container ? (container.getAttribute('data-theme') || 'dark') : 'dark',
           organizationCatalogUrl: ORGANIZATION_CATALOG_PAGE_URL,
           bluePagesUrl: BLUE_PAGES_URL,
+          updateFormUrl: UPDATE_FORM_URL,
+          isLoggedIn: RATINGS_IS_LOGGED_IN,
           ratingsApiBase: RATINGS_API_BASE,
           ratingsNonce: RATINGS_NONCE,
           ratingsIsLoggedIn: RATINGS_IS_LOGGED_IN,

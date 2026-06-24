@@ -3,7 +3,7 @@
  * Plugin Name: FIDES Wallet Catalog
  * Plugin URI: https://fides.community
  * Description: Displays the FIDES Wallet Catalog with search and filter functionality. When the master fides_catalog_ssr_enabled flag (provided by FIDES Community Tools Tiles ≥ 1.6.0) is enabled, the plugin also emits a server-rendered listing fallback, per-deeplink SEO meta tags and a SoftwareApplication JSON-LD payload so wallet detail URLs become indexable by search engines.
- * Version: 2.7.11
+ * Version: 2.8.0
  * Author: FIDES Labs BV
  * Author URI: https://fides.community
  * License: Apache-2.0
@@ -17,10 +17,19 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+require_once plugin_dir_path(__FILE__) . 'includes/class-fides-wallet-catalog-ssr.php';
+require_once plugin_dir_path(__FILE__) . 'includes/class-fides-wallet-catalog-submission-adapter.php';
+require_once plugin_dir_path(__FILE__) . 'includes/class-fides-wallet-catalog-submission-forms.php';
+Fides_Wallet_Catalog_SSR::bootstrap();
+Fides_Wallet_Catalog_Submission_Adapter::bootstrap();
+Fides_Wallet_Catalog_Submission_Forms::bootstrap();
+
 class FIDES_Wallet_Catalog {
     
     private static $instance = null;
-    private const VERSION = '2.7.11';
+    private const VERSION = '2.8.0';
+    /** @var string Site path for the wallet update submission form page. */
+    const DEFAULT_UPDATE_FORM_PATH = '/wallets-update/';
     private $plugin_url;
     private $plugin_path;
     
@@ -39,12 +48,6 @@ class FIDES_Wallet_Catalog {
         add_action('wp_enqueue_scripts', array($this, 'register_assets'));
         add_action('admin_menu', array($this, 'add_admin_menu'));
         add_action('admin_init', array($this, 'register_settings'));
-
-        // Load the optional SSR module. It silently no-ops if the shared
-        // catalog SEO core (provided by fides-community-tools-tiles ≥ 1.6.0)
-        // is not present.
-        require_once $this->plugin_path . 'includes/class-fides-wallet-catalog-ssr.php';
-        Fides_Wallet_Catalog_SSR::bootstrap();
     }
     
     /**
@@ -123,7 +126,25 @@ class FIDES_Wallet_Catalog {
             'ratingsNonce' => wp_create_nonce('wp_rest'),
             'ratingsIsLoggedIn' => is_user_logged_in(),
             'ratingsLoginUrl' => $ratings_login_url,
+            'updateFormUrl' => $this->resolve_update_form_url(''),
         ));
+    }
+
+    /**
+     * Resolve the public wallet update form URL (shortcode attr, option, or default path).
+     *
+     * @param string $override Non-empty shortcode attribute value.
+     */
+    private function resolve_update_form_url($override = '') {
+        $override = trim((string) $override);
+        if ($override !== '') {
+            return esc_url_raw($override);
+        }
+        $option = trim((string) get_option('fides_wallet_catalog_update_form_url', ''));
+        if ($option !== '') {
+            return esc_url_raw($option);
+        }
+        return home_url(self::DEFAULT_UPDATE_FORM_PATH);
     }
     
     /**
@@ -136,6 +157,7 @@ class FIDES_Wallet_Catalog {
             'show_search' => 'true',
             'columns' => '3',
             'theme' => 'fides', // fides, light, or dark
+            'update_form_url' => '',
         ), $atts);
         
         // Enqueue assets
@@ -143,6 +165,13 @@ class FIDES_Wallet_Catalog {
         wp_enqueue_style('fides-wallet-catalog-ui-lib');
         wp_enqueue_script('fides-wallet-catalog-ui-lib');
         wp_enqueue_script('fides-wallet-catalog');
+
+        $update_form_url = $this->resolve_update_form_url((string) $atts['update_form_url']);
+        wp_add_inline_script(
+            'fides-wallet-catalog',
+            'window.fidesWalletCatalog = window.fidesWalletCatalog || {}; window.fidesWalletCatalog.updateFormUrl = ' . wp_json_encode($update_form_url) . ';',
+            'before'
+        );
         
         // Data attributes for configuration
         $data_attrs = sprintf(
@@ -194,6 +223,11 @@ class FIDES_Wallet_Catalog {
         register_setting('fides_wallet_catalog_settings', 'fides_wallet_catalog_blue_pages_url', array(
             'type' => 'string',
             'default' => 'https://fides.community/community-tools/blue-pages',
+            'sanitize_callback' => 'esc_url_raw',
+        ));
+        register_setting('fides_wallet_catalog_settings', 'fides_wallet_catalog_update_form_url', array(
+            'type' => 'string',
+            'default' => '',
             'sanitize_callback' => 'esc_url_raw',
         ));
     }
@@ -250,6 +284,16 @@ class FIDES_Wallet_Catalog {
                                    value="<?php echo esc_attr(get_option('fides_wallet_catalog_blue_pages_url', 'https://fides.community/community-tools/blue-pages')); ?>"
                                    class="regular-text">
                             <p class="description">Base URL for Blue Pages DID lookups (trailing slash optional).</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="fides_wallet_catalog_update_form_url">Wallet update form page URL</label></th>
+                        <td>
+                            <input type="url" id="fides_wallet_catalog_update_form_url" name="fides_wallet_catalog_update_form_url"
+                                   value="<?php echo esc_attr(get_option('fides_wallet_catalog_update_form_url', '')); ?>"
+                                   class="regular-text"
+                                   placeholder="<?php echo esc_attr(home_url(self::DEFAULT_UPDATE_FORM_PATH)); ?>">
+                            <p class="description">Page with <code>[fides_wallet_update_form]</code>. Used for the &quot;Suggest an update&quot; pencil in the wallet modal (logged-in users only).</p>
                         </td>
                     </tr>
                     <tr>
@@ -314,6 +358,11 @@ class FIDES_Wallet_Catalog {
                             <td><code>theme</code></td>
                             <td>fides, light, dark</td>
                             <td>Color theme (fides = FIDES brand colors)</td>
+                        </tr>
+                        <tr>
+                            <td><code>update_form_url</code></td>
+                            <td>URL</td>
+                            <td>Override wallet update form page URL for modal edit links</td>
                         </tr>
                     </tbody>
                 </table>

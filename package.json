@@ -13,11 +13,17 @@
     "preview": "vite preview",
     "crawl": "tsx src/crawler/index.ts",
     "crawl:local-community": "FIDES_WALLET_SKIP_GITHUB_CRAWL=1 tsx src/crawler/index.ts",
+    "sync-local": "bash scripts/sync-plugin-local.sh",
+    "crawl:sync": "npm run crawl && npm run sync-local",
     "backfill:first-seen": "tsx src/crawler/backfill-first-seen.ts",
     "serve": "tsx src/server/index.ts",
     "typecheck:api": "tsc -p tsconfig.api.json",
     "validate": "ajv validate --spec=draft2020 -c ajv-formats -s schemas/wallet-catalog.schema.json -d 'community-catalogs/**/wallet-catalog.json' --strict=false",
-    "check-links": "tsx scripts/check-links.ts"
+    "check-links": "tsx scripts/check-links.ts",
+    "import-wp-submissions": "tsx scripts/import-wp-submissions.ts",
+    "import-wp-submissions:apply": "tsx scripts/import-wp-submissions.ts --apply",
+    "wp-sync:local": "FIDES_CATALOG_SECRET=$(php scripts/read-wp-catalog-secret.php 2>/dev/null) tsx scripts/import-wp-submissions.ts --apply --wp-url http://utrecht-demo.local/wp-json/fides-catalog/v1/export/wallet && npm run validate && npm run crawl && npm run sync-local",
+    "test:import": "node --import tsx --test src/import-wp-submissions.test.ts"
   },
   "dependencies": {
     "ajv": "^8.12.0",

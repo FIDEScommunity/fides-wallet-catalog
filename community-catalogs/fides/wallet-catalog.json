@@ -1,0 +1,50 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "orgId": "org:fides",
+  "wallets": [
+    {
+      "id": "fides-wallet",
+      "name": "FIDES Wallet",
+      "description": "The first FIDES Wallet",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "openSource": true,
+      "vcFormat": [
+        "sd_jwt_vc",
+        "mdoc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "supportedIdentifiers": [
+        "did:key",
+        "did:jwk"
+      ],
+      "keyStorage": [
+        "Software"
+      ],
+      "signingAlgorithms": [
+        "ES256"
+      ],
+      "credentialStatusMethods": [
+        "StatusList2021"
+      ],
+      "interoperabilityProfiles": [
+        "DIIP v5",
+        "HAIP v1"
+      ],
+      "status": "production",
+      "releaseDate": "0026-01-01",
+      "capabilities": [
+        "holder"
+      ]
+    }
+  ],
+  "lastUpdated": "2026-06-23T15:05:23.173Z"
+}

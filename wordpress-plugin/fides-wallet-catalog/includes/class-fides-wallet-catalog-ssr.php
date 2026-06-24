@@ -98,6 +98,7 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
                 Fides_Catalog_Registry::register(self::TYPE, array(
                     'label'             => __('Wallets', 'fides-wallet-catalog'),
                     'json_url'          => 'https://raw.githubusercontent.com/FIDEScommunity/fides-wallet-catalog/main/data/aggregated.json',
+                    'local_json_path'   => dirname(__DIR__) . '/data/aggregated.json',
                     'collection_key'    => 'wallets',
                     'id_field'          => 'id',
                     'name_field'        => 'name',

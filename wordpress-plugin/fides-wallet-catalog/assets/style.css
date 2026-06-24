@@ -1962,6 +1962,76 @@
   height: 14px;
 }
 
+.fides-modal-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+  margin: -0.5rem -0.5rem 0 0;
+}
+
+.fides-modal-copy-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--fides-text-secondary, #94a3b8);
+  cursor: pointer;
+  padding: 0.375rem;
+  margin: 0;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+a.fides-modal-copy-link {
+  text-decoration: none;
+}
+
+.fides-modal-copy-link:hover {
+  background: var(--fides-border, rgba(255, 255, 255, 0.1));
+  color: var(--fides-text-primary, #f1f5f9);
+  opacity: 1;
+}
+
+.fides-modal-copy-link.copied {
+  color: var(--fides-accent, #22c55e);
+  opacity: 1;
+}
+
+.fides-modal-copy-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+.fides-modal-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--fides-text-primary, #f1f5f9);
+  cursor: pointer;
+  padding: 0.375rem;
+  margin: 0;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.fides-modal-close:hover {
+  background: var(--fides-border, rgba(255, 255, 255, 0.1));
+  opacity: 1;
+}
+
+.fides-modal-close svg {
+  width: 24px;
+  height: 24px;
+}
+
 /* Organization catalog deep link in modal header (same pattern as RP catalog) */
 .fides-modal-link-inline {
   display: inline-flex;

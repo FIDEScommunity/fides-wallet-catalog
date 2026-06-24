@@ -73,9 +73,9 @@ Quick reference for wallet providers to see which fields accept fixed values (en
 | Field | Type | Valid Values |
 |-------|------|--------------|
 | `keyStorage` | 🔒 | `Software`, `Secure Enclave (iOS)`, `StrongBox (Android)`, `TEE`, `HSM`, `Cloud KMS`, `Smart Card`, `FIDO2/WebAuthn` |
-| `signingAlgorithms` | 📝 | Common: `ES256`, `ES384`, `ES512`, `EdDSA`, `RS256`, `PS256` |
-| `supportedIdentifiers` | 📝 | Common: `did:web`, `did:key`, `did:jwk`, `did:peer`, `did:ion`, `did:ebsi`, `X.509` |
-| `credentialStatusMethods` | 📝 | Common: `StatusList2021`, `RevocationList2020`, `OCSP`, `CRL` |
+| `signingAlgorithms` | 🔒 | `ES256`, `ES384`, `ES512`, `ES256K`, `EdDSA`, `RS256`, `PS256`, `BBS+`, `ML-DSA (FIPS 204)` |
+| `supportedIdentifiers` | 🔒 | Canonical: `did:web`, `did:key`, `did:jwk`, `did:peer`, `did:ebsi`, `did:ion`, `did:cheqd`, `did:webvh`, `did:indy`, `did:ethr`, `did:polygon`, `did:dock`, `did:eth`, `did:gatc`, `did:isbe`, `did:kscirc`, `x509`. Legacy aliases accepted in catalog JSON: `X.509`/`X509` → `x509`, `jwk` → `did:jwk`. |
+| `credentialStatusMethods` | 🔒 | Canonical: `StatusList2021`, `RevocationList2020`, `OCSP`, `CRL`, `IETF Token Status List`, `Bitstring Status List`. Legacy aliases: `W3C Verifiable Credentials Status List v2021` → `StatusList2021`, `Token Status List` → `IETF Token Status List`, `BitstringStatusList v1.0` → `Bitstring Status List`. |
 
 ---
 

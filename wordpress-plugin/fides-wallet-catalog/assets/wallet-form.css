@@ -1,0 +1,789 @@
+.fides-use-case-card {
+  border: 1px solid #d4d7dd;
+  border-radius: 12px;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.06);
+  color: #0f172a;
+}
+
+.fides-use-case-card h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #0f172a;
+  cursor: default !important;
+}
+
+.fides-use-case-card p {
+  margin: 0 0 8px;
+  color: #334155;
+}
+
+.fides-use-case-form {
+  margin-top: 14px;
+  --fides-field-gap: 6px;
+  --fides-field-stack-gap: 28px;
+  --fides-section-block-gap: 32px;
+}
+
+/* Equal space between every field group (previous control → next label) */
+.fides-use-case-form .fides-form-section-body,
+.fides-use-case-form .fides-media-section-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fides-field-stack-gap);
+}
+
+.fides-use-case-form .fides-form-section-body > *,
+.fides-use-case-form .fides-media-section-body > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Consistent label → help → control spacing across form variants */
+.fides-use-case-form .fides-form-row,
+.fides-use-case-form .fides-linked-field,
+.fides-use-case-form .fides-media-col {
+  display: grid;
+  gap: var(--fides-field-gap);
+}
+
+.fides-use-case-form .fides-form-row > label,
+.fides-use-case-form .fides-linked-field > label,
+.fides-use-case-form .fides-media-col > label {
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.25;
+  cursor: default !important;
+  display: block;
+}
+
+.fides-use-case-form .fides-form-row > .fides-help,
+.fides-use-case-form .fides-linked-field > .fides-help,
+.fides-use-case-form .fides-linked-field-intro,
+.fides-use-case-form .fides-media-col-help,
+.fides-use-case-form .fides-submitter-hint,
+.fides-use-case-form .fides-contact-email-hint {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.35;
+  color: #64748b;
+}
+
+.fides-use-case-form .fides-form-row {
+  margin-bottom: 0;
+}
+
+.fides-form-row input,
+.fides-form-row select,
+.fides-form-row textarea {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 15px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  color: #0f172a;
+}
+
+.fides-use-case-form .fides-form-row select {
+  --fides-select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  padding-right: 2.5rem;
+  background-image: var(--fides-select-chevron);
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.fides-use-case-form .fides-form-row select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+.fides-use-case-form .fides-form-row select:disabled {
+  --fides-select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  cursor: not-allowed;
+}
+
+.fides-form-row input::placeholder,
+.fides-form-row textarea::placeholder {
+  color: #64748b;
+}
+
+.fides-form-row textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.fides-form-choices {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: #ffffff;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+/* Match vertical rhythm of lookup fields (chip list margin-top). */
+.fides-taxonomy-field > .fides-form-choices {
+  margin-bottom: 8px;
+}
+
+.fides-form-choices .fides-form-choice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #334155;
+  cursor: pointer;
+  margin: 0;
+}
+
+.fides-form-choice input[type="checkbox"],
+.fides-form-choice input[type="radio"] {
+  width: auto;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.fides-form-choices-inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 32px;
+  min-height: 44px;
+}
+
+.fides-form-choices-inline .fides-form-choice {
+  flex: 0 0 auto;
+}
+
+.fides-form-label {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #0f172a;
+}
+
+.fides-form-choice span {
+  line-height: 1.35;
+}
+
+.fides-form-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.fides-form-grid-pair {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 16px;
+  margin-bottom: 0;
+}
+
+.fides-form-grid-pair .fides-form-row {
+  margin-bottom: 0;
+  min-width: 0;
+}
+
+/* Align label → help → control across both columns so the fields line up,
+   regardless of how many lines the help text wraps to. */
+.fides-form-grid-pair--aligned {
+  grid-template-rows: auto auto auto;
+  row-gap: var(--fides-field-gap);
+  align-items: start;
+}
+
+.fides-form-grid-pair--aligned .fides-form-row {
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  height: 100%;
+}
+
+.fides-form-grid-pair--aligned .fides-form-row > .fides-help {
+  align-self: start;
+}
+
+.fides-form-grid-pair--aligned .fides-form-choices-inline {
+  align-self: stretch;
+}
+
+.fides-form-row textarea.fides-user-journey {
+  min-height: 132px;
+  white-space: pre-wrap;
+}
+
+.fides-form-row textarea.fides-user-journey::placeholder {
+  white-space: pre-line;
+}
+
+.fides-help {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.fides-use-case-form .fides-linked-field {
+  margin-bottom: 0;
+}
+
+.fides-linked-inputs {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.fides-linked-inputs input {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 15px;
+  box-sizing: border-box;
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.fides-linked-inputs input::placeholder {
+  color: #64748b;
+}
+
+.fides-secondary-btn {
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
+  color: #0f172a;
+  padding: 10px 12px;
+  font-size: 14px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.fides-linked-inputs .fides-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  font-size: 15px;
+  line-height: 1.4;
+  border-radius: 8px;
+  font-weight: 500;
+  box-sizing: border-box;
+  align-self: stretch;
+  height: 100%;
+}
+
+.fides-secondary-btn:hover {
+  background: #f8fafc;
+}
+
+.fides-lookup-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.fides-lookup-panel:empty,
+.fides-lookup-panel:not(:has(.fides-lookup-hint:not([hidden]))):not(:has(.fides-lookup-results:not(:empty))) {
+  display: none;
+  margin: 0;
+}
+
+.fides-lookup-panel .fides-lookup-hint {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: #2563eb;
+  line-height: 1.35;
+}
+
+.fides-lookup-hint[hidden] {
+  display: none;
+}
+
+.fides-lookup-panel .fides-lookup-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 168px;
+  overflow-y: auto;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+.fides-lookup-results:empty {
+  display: none;
+  border: 0;
+  box-shadow: none;
+}
+
+.fides-lookup-results li {
+  margin: 0;
+}
+
+.fides-lookup-results li + li {
+  border-top: 1px solid #e2e8f0;
+}
+
+.fides-lookup-results .fides-lookup-option {
+  width: 100%;
+  border: 0;
+  background: #ffffff;
+  color: #0f172a;
+  border-radius: 0;
+  text-align: left;
+  padding: 8px 12px;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.35;
+  transition: background 0.15s ease;
+}
+
+.fides-lookup-results .fides-lookup-option:hover,
+.fides-lookup-results .fides-lookup-option:focus-visible {
+  background: #eff6ff;
+  outline: none;
+}
+
+.fides-lookup-option-main {
+  min-width: 0;
+  flex: 1;
+}
+
+.fides-lookup-option-title {
+  display: block;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.fides-lookup-option-subtitle {
+  display: block;
+  margin-top: 1px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #64748b;
+}
+
+.fides-lookup-option-action {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #2563eb;
+}
+
+.fides-lookup-empty span {
+  display: block;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.fides-lookup-more span {
+  display: block;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #64748b;
+  background: #f8fafc;
+}
+
+.fides-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.fides-chip-list:not(:empty) {
+  margin-top: 8px;
+}
+
+.fides-chip-list:empty {
+  display: none;
+}
+
+.fides-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  padding: 4px 8px 4px 10px;
+  background: #f8fafc;
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.fides-chip .fides-chip-source {
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.fides-chip button {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: #475569;
+}
+
+.fides-consent {
+  margin: 14px 0;
+  display: grid;
+  gap: 8px;
+}
+
+.fides-consent label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #0f172a;
+}
+
+.fides-form-actions button {
+  border: 0;
+  border-radius: 8px;
+  background: #0f172a;
+  color: #fff;
+  padding: 11px 14px;
+  cursor: pointer;
+}
+
+.fides-form-message {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.fides-form-message.is-error {
+  color: #b91c1c;
+}
+
+.fides-form-message.is-success {
+  color: #166534;
+}
+
+.fides-form-account-email {
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: #374151;
+}
+
+
+/* Catalog submission form specifics (organization + wallet) */
+.fides-org-fields[hidden],
+.fides-wallet-fields[hidden],
+.fides-wallet-optional-sections[hidden] {
+  display: none !important;
+}
+
+.fides-org-form .fides-org-update-picker-body + .fides-org-fields:not([hidden]),
+.fides-wallet-form .fides-org-update-picker-body + .fides-wallet-fields:not([hidden]) {
+  margin-top: var(--fides-field-stack-gap);
+  padding-top: var(--fides-field-stack-gap);
+  border-top: 1px solid #e2e8f0;
+}
+
+.fides-org-form .fides-org-update-picker-body,
+.fides-wallet-form .fides-org-update-picker-body {
+  margin-bottom: 0;
+}
+
+.fides-org-form .fides-update-banner-row[hidden],
+.fides-org-form #fides-org-search-block[hidden],
+.fides-org-form .fides-org-submit-block[hidden],
+.fides-wallet-form .fides-update-banner-row[hidden],
+.fides-wallet-form #fides-wallet-search-block[hidden],
+.fides-wallet-form #fides-wallet-org-search-block[hidden],
+.fides-wallet-form .fides-org-submit-block[hidden] {
+  display: none !important;
+}
+
+.fides-org-form .fides-update-banner-row:not([hidden]),
+.fides-wallet-form .fides-update-banner-row:not([hidden]) {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+  gap: 8px;
+  flex-wrap: nowrap;
+  margin-bottom: 4px;
+  box-sizing: border-box;
+}
+
+.fides-org-form .fides-update-banner,
+.fides-wallet-form .fides-update-banner {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  min-width: 0;
+  gap: 0.35em;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e3a8a;
+  font-size: 14px;
+  line-height: 1.35;
+  box-sizing: border-box;
+}
+
+.fides-org-form .fides-update-banner-label,
+.fides-wallet-form .fides-update-banner-label {
+  flex-shrink: 0;
+}
+
+.fides-org-form .fides-update-banner-row .fides-secondary-btn,
+.fides-wallet-form .fides-update-banner-row .fides-secondary-btn {
+  flex: 0 0 auto;
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  font-size: 15px;
+  line-height: 1.35;
+  box-sizing: border-box;
+}
+
+.fides-org-form .fides-update-banner code,
+.fides-wallet-form .fides-update-banner code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.65);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 0.15em;
+}
+
+.fides-org-form .fides-id-preview {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+  color: #475569;
+  padding: 10px 12px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+}
+
+.fides-org-submission-root .fides-org-form-login-link {
+  font-weight: 600;
+}
+
+/* Theme-safe colors (WP themes sometimes force white headings/inputs). */
+.fides-org-submission-root .fides-use-case-card,
+.fides-org-submission-root .fides-use-case-form,
+.fides-org-submission-root .fides-form-section {
+  color: #0f172a;
+}
+
+.fides-org-submission-root .fides-form-section-title,
+.fides-org-submission-root .fides-form-section h3,
+.fides-org-submission-root .fides-use-case-card h3 {
+  color: #0f172a !important;
+}
+
+.fides-org-submission-root .fides-use-case-form label,
+.fides-org-submission-root .fides-use-case-form .fides-form-label {
+  color: #0f172a !important;
+}
+
+.fides-org-submission-root .fides-use-case-form input:not([type="checkbox"]):not([type="radio"]),
+.fides-org-submission-root .fides-use-case-form select,
+.fides-org-submission-root .fides-use-case-form textarea,
+.fides-org-submission-root .fides-linked-inputs input {
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+.fides-org-submission-root .fides-use-case-form input::placeholder,
+.fides-org-submission-root .fides-use-case-form textarea::placeholder {
+  color: #64748b !important;
+  opacity: 1;
+}
+
+.fides-org-submission-root .fides-form-choices {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+}
+.fides-submitter-grid {
+  align-items: stretch;
+}
+
+/* Keep side-by-side controls aligned when hint text wraps unevenly */
+.fides-submitter-grid > .fides-form-row {
+  grid-template-rows: auto auto 1fr;
+  height: 100%;
+  min-height: 0;
+}
+
+.fides-submitter-grid > .fides-form-row > select,
+.fides-submitter-grid > .fides-form-row > input {
+  align-self: end;
+}
+
+.fides-submitter-block .fides-form-row select,
+.fides-submitter-block .fides-form-row input.fides-input-locked[readonly] {
+  min-height: 42px;
+  padding: 10px 12px;
+  line-height: 1.4;
+  box-sizing: border-box;
+}
+
+.fides-submitter-block .fides-form-row select {
+  padding-right: 2.5rem;
+}
+
+.fides-submitter-block select:disabled {
+  background: #f1f5f9;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.fides-input-locked,
+.fides-form-row input.fides-input-locked[readonly] {
+  background: #f1f5f9;
+  color: #334155;
+  cursor: default;
+}
+.fides-form-section {
+  margin: var(--fides-section-block-gap) 0 12px;
+  padding: 18px 16px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.fides-form-section-first {
+  margin-top: 0;
+}
+
+.fides-form-section-body > .fides-form-account-email:last-child {
+  margin-bottom: 0;
+}
+
+.fides-form-section-title {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #0f172a;
+}
+
+.fides-form-section-intro {
+  margin: 0 0 14px;
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.45;
+}
+
+.fides-form-accordion {
+  padding: 0;
+  overflow: hidden;
+}
+
+.fides-form-accordion-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.fides-form-accordion-summary::-webkit-details-marker {
+  display: none;
+}
+
+.fides-form-accordion-summary::marker {
+  content: "";
+}
+
+.fides-form-accordion-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.fides-form-accordion .fides-form-section-title,
+.fides-form-section > .fides-form-accordion-heading .fides-form-section-title {
+  margin: 0;
+}
+
+.fides-form-section > .fides-form-accordion-heading {
+  margin-bottom: 6px;
+}
+
+.fides-form-accordion-badge {
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+  background: #e2e8f0;
+  border-radius: 9999px;
+  padding: 2px 8px;
+  line-height: 1.4;
+}
+
+.fides-form-accordion-chevron {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #475569;
+  border-bottom: 2px solid #475569;
+  transform: rotate(45deg);
+  transition: transform 0.15s ease;
+  margin-top: -4px;
+}
+
+.fides-form-accordion[open] .fides-form-accordion-chevron {
+  transform: rotate(-135deg);
+  margin-top: 4px;
+}
+
+.fides-form-accordion-summary:hover {
+  background: rgba(59, 130, 246, 0.04);
+}
+
+.fides-form-accordion-summary:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: -2px;
+}
+
+.fides-form-accordion-panel {
+  padding: 0 16px 16px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.fides-form-accordion-panel .fides-form-section-intro {
+  margin-top: 14px;
+}
+
+.fides-wallet-capabilities-row[hidden],
+.fides-wallet-capabilities-row.is-hidden {
+  display: none !important;
+}

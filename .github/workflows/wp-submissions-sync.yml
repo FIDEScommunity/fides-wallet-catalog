@@ -1,0 +1,73 @@
+name: WP Submissions Sync
+
+on:
+  schedule:
+    - cron: '30 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync-wp-submissions:
+    if: github.repository == 'FIDEScommunity/fides-wallet-catalog'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Import published WordPress submissions
+        env:
+          FIDES_WP_EXPORT_URL: ${{ vars.WP_EXPORT_URL }}
+          FIDES_CATALOG_SECRET: ${{ secrets.WP_INVALIDATE_SECRET }}
+        run: npm run import-wp-submissions:apply
+
+      - name: Validate catalog files
+        run: npm run validate
+
+      - name: Rebuild aggregated data
+        run: npm run crawl
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if [ -n "$(git status --porcelain community-catalogs/ data/ wordpress-plugin/fides-wallet-catalog/data/)" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No changes to commit."
+          fi
+
+      - name: Commit WP submission updates
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add community-catalogs/ data/aggregated.json data/wallet-history-state.json data/wp-submission-state.json wordpress-plugin/fides-wallet-catalog/data/aggregated.json
+          git commit -m "chore: sync WordPress wallet submissions [skip ci]"
+          git push
+
+      - name: Notify production WordPress to flush catalog cache
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          WP_INVALIDATE_URL: ${{ vars.WP_INVALIDATE_URL }}
+          WP_INVALIDATE_SECRET: ${{ secrets.WP_INVALIDATE_SECRET }}
+          CATALOG_TYPE: wallet
+        run: |
+          if [ -z "${WP_INVALIDATE_URL}" ] || [ -z "${WP_INVALIDATE_SECRET}" ]; then
+            echo "Skipping: WP_INVALIDATE_URL/SECRET not configured for this repo."
+            exit 0
+          fi
+          echo "Notifying ${WP_INVALIDATE_URL} (type=${CATALOG_TYPE})..."
+          curl -fsS -X POST "${WP_INVALIDATE_URL}" \
+            -H "X-FIDES-Catalog-Secret: ${WP_INVALIDATE_SECRET}" \
+            --data-urlencode "type=${CATALOG_TYPE}" \
+            -w '\nHTTP %{http_code}\n' \
+            || echo "WP invalidate failed (non-fatal; production has cache TTL fallback)"

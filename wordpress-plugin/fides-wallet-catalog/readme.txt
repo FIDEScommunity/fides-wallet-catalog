@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.7.6
+Stable tag: 2.8.0
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -31,6 +31,7 @@ Wallet providers contribute their wallet information via GitHub Pull Requests to
 * Automatic daily updates from GitHub repository
 * Detailed wallet information including app store links, certifications, and technical specs
 * Semantic date display on cards ("Added" for new wallets, "Updated" otherwise)
+* WordPress submission forms for adding wallets and suggesting updates (requires fides-community-tools-tiles with catalog submissions enabled)
 
 == Installation ==
 
@@ -57,6 +58,13 @@ With options:
 * `columns` - Number of columns: 1, 2, 3 (default), 4
 * `theme` - Color theme: dark (default) or light
 
+**Submission forms (logged-in users only, requires fides-community-tools-tiles):**
+
+* `[fides_wallet_submit_form]` — add a new wallet to the catalog (moderated before publish)
+* `[fides_wallet_update_form]` — suggest changes to an existing wallet (`?wallet=` pre-selects the wallet)
+
+Configure the update form page URL under Settings → FIDES Wallet Catalog so the pencil icon in the wallet modal links to your update page.
+
 == Frequently Asked Questions ==
 
 = How is the wallet data updated? =
@@ -65,7 +73,9 @@ The plugin fetches data from the FIDES Community GitHub repository (https://gith
 
 = How can I add my wallet to the catalog? =
 
-Submit a Pull Request to the FIDES Wallet Catalog repository with your wallet information in JSON format. See the repository documentation for the full schema and examples.
+On a FIDES WordPress site with this plugin and fides-community-tools-tiles, sign in and use the page with `[fides_wallet_submit_form]`. Your submission is reviewed in **Tools → Catalog Submissions** before it is published and synced to the community GitHub catalog.
+
+You can also submit a Pull Request to the FIDES Wallet Catalog repository with your wallet information in JSON format. See the repository documentation for the full schema and examples.
 
 = Can I customize the styling? =
 
@@ -90,6 +100,11 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.8.0 =
+* Added WordPress submission flow: `[fides_wallet_submit_form]` and `[fides_wallet_update_form]` shortcodes (shared moderation in fides-community-tools-tiles).
+* Modal “Suggest an update” pencil links to the configured update form page with `?wallet=` pre-filled.
+* Published submissions export to the community catalog via the GitHub import pipeline (`npm run import-wp-submissions`).
 
 = 2.7.6 =
 * Refined wallet list-view table density: removed "Updated/Added" prefixes from the Updated column and rebalanced column widths to give more space to Provider.
