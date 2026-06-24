@@ -1,6 +1,11 @@
 {
   "schemaVersion": "1.0.0",
   "catalogType": "wallet",
-  "lastImportAt": null,
-  "managedWallets": []
+  "lastImportAt": "2026-06-24T18:16:54.933Z",
+  "managedWallets": [
+    {
+      "slug": "fides",
+      "walletId": "fides-wallet"
+    }
+  ]
 }

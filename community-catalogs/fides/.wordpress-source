@@ -1,0 +1,11 @@
+{
+  "source": "wordpress",
+  "slug": "fides",
+  "wallets": {
+    "fides-wallet": {
+      "itemId": "fides-wallet",
+      "publishedAt": "2026-06-24 17:41:18"
+    }
+  },
+  "importedAt": "2026-06-24T18:16:54.932Z"
+}
