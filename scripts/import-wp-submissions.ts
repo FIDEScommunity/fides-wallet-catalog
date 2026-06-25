@@ -16,7 +16,7 @@ const STATE_PATH = path.join(ROOT, 'data/wp-submission-state.json');
 const MARKER_FILENAME = '.wordpress-source';
 const COMMUNITY_FILENAME = 'wallet-catalog.json';
 const SECRET_HEADER = 'X-FIDES-Catalog-Secret';
-const USER_AGENT = 'FIDES-Catalog-WP-Submissions-Sync/1.0 (+https://github.com/FIDEScommunity)';
+const USER_AGENT = 'FIDES-Catalog-Automation/1.0';
 
 function wpExportBlockHint(body: string, status: number): string | null {
   if (body.includes('sgcaptcha') || body.includes('.well-known/captcha')) {

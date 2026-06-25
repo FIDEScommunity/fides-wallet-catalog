@@ -74,6 +74,7 @@ jobs:
           fi
           echo "Notifying ${WP_INVALIDATE_URL} (type=${CATALOG_TYPE})..."
           curl -fsS -X POST "${WP_INVALIDATE_URL}" \
+            -H "User-Agent: FIDES-Catalog-Automation/1.0" \
             -H "X-FIDES-Catalog-Secret: ${WP_INVALIDATE_SECRET}" \
             --data-urlencode "type=${CATALOG_TYPE}" \
             -w '\nHTTP %{http_code}\n' \
