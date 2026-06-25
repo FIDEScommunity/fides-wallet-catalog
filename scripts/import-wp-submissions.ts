@@ -16,6 +16,19 @@ const STATE_PATH = path.join(ROOT, 'data/wp-submission-state.json');
 const MARKER_FILENAME = '.wordpress-source';
 const COMMUNITY_FILENAME = 'wallet-catalog.json';
 const SECRET_HEADER = 'X-FIDES-Catalog-Secret';
+const USER_AGENT = 'FIDES-Catalog-WP-Submissions-Sync/1.0 (+https://github.com/FIDEScommunity)';
+
+function wpExportBlockHint(body: string, status: number): string | null {
+  if (body.includes('sgcaptcha') || body.includes('.well-known/captcha')) {
+    return [
+      `SiteGround Anti-Bot AI blocked this request (HTTP ${status}).`,
+      'GitHub Actions cannot solve the captcha challenge.',
+      'Fix: enable GitHub push sync in WP Settings → FIDES Catalog SEO (PAT with repo + workflow scope),',
+      'or ask SiteGround support to disable Anti-Bot AI for /wp-json/fides-catalog/.',
+    ].join(' ');
+  }
+  return null;
+}
 
 export type WpExportEntry = {
   itemId: string;
@@ -195,11 +208,19 @@ export async function fetchWpExport(wpUrl: string, secret: string): Promise<WpEx
   }
   const response = await fetch(wpUrl, {
     method: 'GET',
-    headers: { Accept: 'application/json', [SECRET_HEADER]: secret },
+    headers: {
+      Accept: 'application/json',
+      [SECRET_HEADER]: secret,
+      'User-Agent': USER_AGENT,
+    },
     signal: AbortSignal.timeout(60_000),
   });
   const contentType = response.headers.get('content-type') ?? '';
   const body = await response.text();
+  const blockHint = wpExportBlockHint(body, response.status);
+  if (blockHint) {
+    throw new Error(`${blockHint} Body starts with: ${body.slice(0, 160).replace(/\s+/g, ' ')}`);
+  }
   if (!response.ok) {
     throw new Error(
       `WP export failed (HTTP ${response.status}, ${contentType}): ${body.slice(0, 300)}`,
@@ -221,6 +242,31 @@ export async function fetchWpExport(wpUrl: string, secret: string): Promise<WpEx
   }
   if (!payload?.entries) throw new Error('WP export response is missing entries array.');
   return payload;
+}
+
+export function loadInlineExportPayload(): WpExportPayload | null {
+  const inline = process.env.FIDES_WP_EXPORT_JSON?.trim();
+  if (!inline) return null;
+  try {
+    const payload = JSON.parse(inline) as WpExportPayload;
+    if (!payload?.entries || !Array.isArray(payload.entries)) {
+      throw new Error('export_json is missing entries array.');
+    }
+    return payload;
+  } catch (err) {
+    throw new Error(
+      `Invalid FIDES_WP_EXPORT_JSON: ${err instanceof Error ? err.message : String(err)}`,
+    );
+  }
+}
+
+export async function loadExportPayload(wpUrl: string, secret: string): Promise<WpExportPayload> {
+  const inline = loadInlineExportPayload();
+  if (inline) {
+    console.log('Using inline export payload (WordPress push sync).');
+    return inline;
+  }
+  return fetchWpExport(wpUrl, secret);
 }
 
 async function readCatalogAt(slug: string): Promise<WalletCatalogDoc | null> {
@@ -353,7 +399,7 @@ async function main() {
   console.log(`Mode: ${apply ? 'apply' : 'dry-run (pass --apply to write)'}`);
 
   const previous = await readState();
-  const payload = await fetchWpExport(wpUrl, secret);
+  const payload = await loadExportPayload(wpUrl, secret);
   const plan = buildImportPlan(payload.entries, previous);
 
   console.log(`Export entries: ${payload.entries.length}`);

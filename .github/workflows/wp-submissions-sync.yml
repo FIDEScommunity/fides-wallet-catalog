@@ -1,6 +1,8 @@
 name: WP Submissions Sync
 
 on:
+  repository_dispatch:
+    types: [fides-catalog-export]
   schedule:
     - cron: '30 6 * * *'
   workflow_dispatch:
@@ -27,6 +29,7 @@ jobs:
         env:
           FIDES_WP_EXPORT_URL: ${{ vars.WP_EXPORT_URL }}
           FIDES_CATALOG_SECRET: ${{ secrets.WP_INVALIDATE_SECRET }}
+          FIDES_WP_EXPORT_JSON: ${{ github.event.client_payload.export_json }}
         run: npm run import-wp-submissions:apply
 
       - name: Validate catalog files

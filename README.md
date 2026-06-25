@@ -266,6 +266,12 @@ Each filter option shows a count of how many wallets match (e.g. "Personal (52)"
 
 The plugin automatically fetches data from the FIDES Community GitHub repository daily.
 
+### WordPress submissions (contributors & maintainers)
+
+Shortcodes: `[fides_wallet_submit_form]`, `[fides_wallet_update_form]`. Moderation lives in shared **fides-community-tools-tiles** (**Tools → Catalog Submissions**). Published entries sync via `.github/workflows/wp-submissions-sync.yml`.
+
+**Canonical docs:** `fides-community-tools-tiles/docs/CATALOG-SUBMISSION-GOVERNANCE.md` — §14 (CI + `FIDES_WALLET_SKIP_GITHUB_CRAWL`), §15 (production deploy), §16 (new catalog checklist).
+
 ### Plugin data fallback (local)
 
 The WordPress plugin tries GitHub first and falls back to:

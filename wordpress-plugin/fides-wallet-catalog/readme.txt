@@ -104,7 +104,7 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 = 2.8.0 =
 * Added WordPress submission flow: `[fides_wallet_submit_form]` and `[fides_wallet_update_form]` shortcodes (shared moderation in fides-community-tools-tiles).
 * Modal “Suggest an update” pencil links to the configured update form page with `?wallet=` pre-filled.
-* Published submissions export to the community catalog via the GitHub import pipeline (`npm run import-wp-submissions`).
+* Published submissions export to the community catalog via the GitHub import pipeline (`npm run import-wp-submissions`). See `fides-community-tools-tiles/docs/CATALOG-SUBMISSION-GOVERNANCE.md` (§14–16) for CI workflow, production deploy, and wallet-specific crawl env `FIDES_WALLET_SKIP_GITHUB_CRAWL`.
 
 = 2.7.6 =
 * Refined wallet list-view table density: removed "Updated/Added" prefixes from the Updated column and rebalanced column widths to give more space to Provider.
