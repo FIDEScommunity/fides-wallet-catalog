@@ -1,6 +1,11 @@
 {
   "schemaVersion": "1.0.0",
   "catalogType": "wallet",
-  "lastImportAt": "2026-06-24T18:20:58.748Z",
-  "managedWallets": []
+  "lastImportAt": "2026-06-25T08:58:31.413Z",
+  "managedWallets": [
+    {
+      "slug": "digitaliseringsstyrelsen",
+      "walletId": "altid"
+    }
+  ]
 }
