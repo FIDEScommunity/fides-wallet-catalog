@@ -266,6 +266,20 @@ export async function loadExportPayload(wpUrl: string, secret: string): Promise<
     console.log('Using inline export payload (WordPress push sync).');
     return inline;
   }
+
+  const event = process.env.GITHUB_EVENT_NAME?.trim();
+  if (event === 'repository_dispatch') {
+    throw new Error(
+      'Missing FIDES_WP_EXPORT_JSON on repository_dispatch. '
+      + 'Enable GitHub push sync in WP Settings → FIDES Catalog SEO, or run recovery via workflow_dispatch.',
+    );
+  }
+
+  console.log(
+    event === 'workflow_dispatch'
+      ? 'Recovery sync: pulling export via HTTP (manual workflow).'
+      : 'Pulling export via HTTP.',
+  );
   return fetchWpExport(wpUrl, secret);
 }
 

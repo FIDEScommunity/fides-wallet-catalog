@@ -1,10 +1,11 @@
 name: WP Submissions Sync
 
+# Push primary (repository_dispatch from WP publish/delete). HTTP export pull only
+# on workflow_dispatch (recovery). See fides-community-tools-tiles §14.1.
+
 on:
   repository_dispatch:
     types: [fides-catalog-export]
-  schedule:
-    - cron: '30 6 * * *'
   workflow_dispatch:
 
 jobs:
