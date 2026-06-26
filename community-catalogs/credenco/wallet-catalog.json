@@ -1,5 +1,6 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "orgId": "org:credenco",
   "wallets": [
     {
       "id": "credenco-business-wallet",
@@ -18,9 +19,9 @@
       ],
       "vcFormat": [
         "sd_jwt_vc",
+        "mdoc",
         "jwt_vc",
-        "vcdm_2_0",
-        "mdoc"
+        "vcdm_2_0"
       ],
       "issuanceProtocols": [
         "OpenID4VCI"
@@ -34,15 +35,15 @@
         "Cloud KMS"
       ],
       "supportedIdentifiers": [
-        "x509", 
-        "did:jwk", 
-        "did:web", 
-        "did:webvh", 
-        "did:ebsi", 
-        "jwk"],
+        "did:web",
+        "did:jwk",
+        "did:ebsi",
+        "did:webvh",
+        "x509"
+      ],
       "credentialStatusMethods": [
         "StatusList2021",
-        "Token Status List"
+        "IETF Token Status List"
       ],
       "interoperabilityProfiles": [
         "DIIP v4",
@@ -59,9 +60,9 @@
       ],
       "documentation": "https://docs.acc.credenco.com",
       "openSource": false,
-      "status": "production"
+      "status": "production",
+      "video": "https://www.youtube.com/watch?v=IIZ7dlF4gmM"
     }
   ],
-  "lastUpdated": "2026-03-26T12:00:00Z",
-  "orgId": "org:credenco"
+  "lastUpdated": "2026-06-26T10:26:51.586Z"
 }
