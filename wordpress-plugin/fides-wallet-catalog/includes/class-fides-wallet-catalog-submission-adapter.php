@@ -266,6 +266,26 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
         }
 
         /**
+         * Display labels for VC format codes (aligned with catalog filters).
+         *
+         * @return array<string, string>
+         */
+        public static function credential_format_labels(): array {
+            return array(
+                'sd_jwt_vc'          => 'SD-JWT VC',
+                'mdoc'               => 'ISO mDoc',
+                'jwt_vc'             => 'JWT VC',
+                'vcdm_1_1'           => 'VCDM1.1',
+                'vcdm_2_0'           => 'VCDM2.0',
+                'anoncreds'          => 'AnonCreds',
+                'idemix'             => 'Idemix',
+                'apple_wallet_pass'  => 'Apple Wallet Pass',
+                'google_wallet_pass' => 'Google Wallet Pass',
+                'acdc'               => 'ACDC',
+            );
+        }
+
+        /**
          * Human-readable labels for enum values in the submission form (stored values unchanged).
          *
          * @return array<string, array<string, string>>
@@ -276,6 +296,7 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
                     'personal'       => 'Personal',
                     'organizational' => 'Business',
                 ),
+                'vcFormat' => self::credential_format_labels(),
                 'credentialStatusMethods' => array(
                     'StatusList2021'         => 'W3C Status List 2021',
                     'RevocationList2020'     => 'W3C Revocation List 2020',

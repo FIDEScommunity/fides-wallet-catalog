@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.8.0
+Stable tag: 2.8.1
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -100,6 +100,11 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.8.1 =
+* Vocabulary (i) help popups on wallet submit/update forms for technical fields (formats, protocols, identifiers, etc.).
+* Human-readable VC format labels in submission forms, aligned with catalog filters.
+* Vocabulary popups show option descriptions only when available (no empty list entries).
 
 = 2.8.0 =
 * Added WordPress submission flow: `[fides_wallet_submit_form]` and `[fides_wallet_update_form]` shortcodes (shared moderation in fides-community-tools-tiles).

@@ -13,7 +13,7 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Forms')) {
 
     class Fides_Wallet_Catalog_Submission_Forms {
 
-        const VERSION = '2.8.3';
+        const VERSION = '2.8.1';
 
         /**
          * @param string $mode create|update.
@@ -143,12 +143,15 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Forms')) {
             wp_enqueue_script('fides-wallet-form');
 
             $user = wp_get_current_user();
+            $plugin_url = plugin_dir_url(dirname(__FILE__));
             $config = array_merge(
                 array(
-                    'mode'              => $mode === 'update' ? 'update' : 'create',
-                    'apiBase'           => esc_url_raw(rest_url('fides-catalog/v1')),
-                    'restNonce'         => wp_create_nonce('wp_rest'),
-                    'contactEmail'      => sanitize_email((string) $user->user_email),
+                    'mode'                  => $mode === 'update' ? 'update' : 'create',
+                    'apiBase'               => esc_url_raw(rest_url('fides-catalog/v1')),
+                    'restNonce'             => wp_create_nonce('wp_rest'),
+                    'vocabularyUrl'         => 'https://raw.githubusercontent.com/FIDEScommunity/fides-interop-profiles/main/data/vocabulary.json',
+                    'vocabularyFallbackUrl' => $plugin_url . 'assets/vocabulary.json',
+                    'contactEmail'          => sanitize_email((string) $user->user_email),
                     'enums'             => class_exists('Fides_Wallet_Catalog_Submission_Adapter')
                         ? Fides_Wallet_Catalog_Submission_Adapter::form_enums()
                         : array(),
