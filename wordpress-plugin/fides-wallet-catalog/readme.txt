@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.8.1
+Stable tag: 2.8.3
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -100,6 +100,14 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.8.3 =
+* Respects master switch `fides_catalog_tier_ui_enabled` from fides-community-tools-tiles (default off): Official filter/badges hidden until tier go-live.
+
+= 2.8.2 =
+* Mobile detail modal and filter layout aligned with shared `fides-catalog-ui` (requires fides-community-tools-tiles ≥ 1.7.8 when using the bundled UI library).
+* Official filter renamed to “Official listings only”; badge hover text uses “managed by the provider”.
+* Requires updated `assets/lib/fides-catalog-ui.css` and `.js` in sync with fides-community-tools-tiles 1.7.8.
 
 = 2.8.1 =
 * Vocabulary (i) help popups on wallet submit/update forms for technical fields (formats, protocols, identifiers, etc.).

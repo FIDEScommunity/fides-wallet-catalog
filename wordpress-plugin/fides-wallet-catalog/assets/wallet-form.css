@@ -575,6 +575,19 @@
   margin-left: 0.15em;
 }
 
+.fides-org-form .fides-update-banner-plan,
+.fides-wallet-form .fides-update-banner-plan {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.fides-org-form .fides-update-banner-plan.fides-pro-plan-badge,
+.fides-org-form .fides-update-banner-plan.fides-free-plan-badge,
+.fides-wallet-form .fides-update-banner-plan.fides-pro-plan-badge,
+.fides-wallet-form .fides-update-banner-plan.fides-free-plan-badge {
+  margin-left: 0;
+}
+
 .fides-org-form .fides-id-preview {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 13px;
@@ -901,4 +914,77 @@
     right: 12px;
     max-width: none;
   }
+}
+
+.fides-pro-plan-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  color: #6d28d9;
+  background: #f3e8ff;
+  border-radius: 999px;
+  vertical-align: middle;
+}
+
+.fides-pro-plan-badge:hover {
+  background: #e9d5ff;
+  color: #5b21b6;
+}
+
+.fides-free-plan-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #475569;
+  background: #e2e8f0;
+  border-radius: 999px;
+  vertical-align: middle;
+}
+
+.fides-field-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+}
+
+.fides-description-limit-notice {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.fides-description-limit-notice a {
+  color: #6d28d9;
+}
+
+.fides-description-counter {
+  margin: 0;
+  flex: 0 0 auto;
+  font-size: 12px;
+  color: #94a3b8;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.fides-form-row--pro-locked .fides-input-pro-locked,
+.fides-form-section--pro-locked .fides-input-pro-locked {
+  opacity: 0.72;
+  cursor: not-allowed;
+}
+
+.fides-description-counter {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #94a3b8;
+  text-align: right;
 }

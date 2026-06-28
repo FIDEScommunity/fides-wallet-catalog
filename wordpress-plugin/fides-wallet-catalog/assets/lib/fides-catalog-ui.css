@@ -129,6 +129,47 @@
   line-height: 1.2;
 }
 
+.fides-modal-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.fides-modal-title-row .fides-modal-title {
+  margin-bottom: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.fides-modal-header-official-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-shrink: 0;
+  padding: 0.18rem 0.55rem 0.18rem 0.4rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #6d28d9;
+  background: #f3e8ff;
+  border: 1px solid rgba(109, 40, 217, 0.35);
+}
+
+.fides-modal-header-official-badge svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.fides-modal-header-official-label {
+  white-space: nowrap;
+}
+
 .fides-modal-provider {
   font-size: 0.9375rem;
   color: var(--fides-text-secondary, #94a3b8);
@@ -1496,4 +1537,139 @@ span.fides-tag.platform {
 .fides-modal-overlay[data-theme="light"] .fides-tag.interop {
   background: rgba(6, 182, 212, 0.1);
   color: #0891b2;
+}
+
+/* ==========================================================================
+   MOBILE FILTER OVERLAY (listing catalog sidebars)
+   Canonical card: 420px wide, 12px radius, capped height, centered.
+   ========================================================================== */
+
+@media (max-width: 1023px) {
+  .fides-sidebar:not(.mobile-open) {
+    display: none !important;
+  }
+
+  .fides-sidebar-close {
+    display: flex;
+  }
+
+  .fides-sidebar.mobile-open {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed !important;
+    top: 100px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    max-height: calc(100dvh - 100px);
+    height: auto;
+    z-index: 9999999;
+    margin: 0 !important;
+    padding: 1.25rem 1rem 1rem !important;
+    box-sizing: border-box;
+    border: none !important;
+    border-radius: 0 !important;
+    background: rgba(15, 23, 42, 0.45) !important;
+    backdrop-filter: blur(4px);
+    box-shadow: none !important;
+    overflow: visible !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    align-items: stretch;
+    justify-content: flex-start;
+    align-self: auto !important;
+    animation: fides-modal-fade-in 0.2s ease;
+  }
+
+  .fides-sidebar.mobile-open .fides-sidebar-header,
+  .fides-sidebar.mobile-open .fides-sidebar-content {
+    width: min(420px, 100%) !important;
+    max-width: 420px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    background: #ffffff !important;
+    box-sizing: border-box;
+    border-left: 1px solid var(--fides-border, #e2e8f0) !important;
+    border-right: 1px solid var(--fides-border, #e2e8f0) !important;
+  }
+
+  .fides-sidebar.mobile-open .fides-sidebar-header {
+    flex-shrink: 0;
+    border-top: 1px solid var(--fides-border, #e2e8f0) !important;
+    border-bottom: 1px solid var(--fides-border, #e2e8f0) !important;
+    border-radius: 12px 12px 0 0 !important;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.12);
+  }
+
+  .fides-sidebar.mobile-open .fides-sidebar-content {
+    flex: 0 1 auto;
+    border-bottom: 1px solid var(--fides-border, #e2e8f0) !important;
+    border-top: none !important;
+    border-radius: 0 0 12px 12px !important;
+    max-height: min(65dvh, calc(100dvh - 240px)) !important;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+  }
+}
+
+/* ==========================================================================
+   MOBILE DETAIL MODAL — canonical floating sheet (≤760px)
+   All corners rounded; gap above home indicator; body scrolls with safe area.
+   ========================================================================== */
+
+@media (max-width: 760px) {
+  .fides-modal-overlay {
+    align-items: flex-end !important;
+    justify-content: center !important;
+    padding: 0.75rem 0.625rem !important;
+    padding-bottom: max(0.75rem, calc(0.5rem + env(safe-area-inset-bottom, 0px))) !important;
+  }
+
+  .fides-modal-overlay .fides-modal {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: min(88dvh, calc(100dvh - 120px)) !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.2) !important;
+  }
+
+  .fides-modal-overlay .fides-modal-header {
+    flex-shrink: 0;
+    padding: 1rem 1rem 0.75rem;
+  }
+
+  .fides-modal-overlay .fides-modal-title,
+  .fides-modal-overlay .fides-modal-title-row .fides-modal-title {
+    font-size: 1.125rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .fides-modal-overlay .fides-modal-logo,
+  .fides-modal-overlay .fides-modal-logo-placeholder {
+    width: 52px !important;
+    height: 52px !important;
+  }
+
+  .fides-modal-overlay .fides-modal-logo-placeholder svg {
+    width: 26px !important;
+    height: 26px !important;
+  }
+
+  .fides-modal-overlay .fides-modal-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    min-width: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 1rem;
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  }
 }

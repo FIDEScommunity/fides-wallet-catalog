@@ -52,8 +52,11 @@
     download: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>',
     penLine: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
     play: '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>',
-    laptop: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></svg>'
+    laptop: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></svg>',
+    official: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>'
   };
+
+  const OFFICIAL_LISTING_TITLE = 'Official listing — managed by the provider';
 
   let selectedContext = null;
 
@@ -84,11 +87,100 @@
     return null;
   }
 
-  function renderPlatformTag(wallet, platform) {
-    const link = getAppStoreLink(wallet, platform);
+  function renderPlatformTag(wallet, platform, labelsOnly) {
+    const link = labelsOnly ? null : getAppStoreLink(wallet, platform);
     const icon = platform === 'iOS' || platform === 'Android' ? icons.smartphone : icons.globe;
     if (link) return '<a href="' + escapeHtml(link) + '" target="_blank" rel="noopener" class="fides-tag platform clickable">' + icon + ' ' + escapeHtml(platform) + '</a>';
     return '<span class="fides-tag platform">' + icon + ' ' + escapeHtml(platform) + '</span>';
+  }
+
+  const CATALOG_TIER_COMMUNITY = 'Community';
+  const CATALOG_TIER_PRO = 'Pro';
+
+  /** Community vs Pro from export field; legacy gratis and missing catalogTier stay Pro. */
+  function resolveCatalogTier(item) {
+    if (!item || !item.catalogTier) return CATALOG_TIER_PRO;
+    const tier = String(item.catalogTier).toLowerCase();
+    if (tier === 'gratis' || tier === 'community') return CATALOG_TIER_COMMUNITY;
+    return CATALOG_TIER_PRO;
+  }
+
+  function itemIsCommunity(item) {
+    return resolveCatalogTier(item) === CATALOG_TIER_COMMUNITY;
+  }
+
+  /** Explicit Pro in export JSON only — missing catalogTier is not treated as official. */
+  function catalogTierIsProExplicit(item) {
+    if (!item || !item.catalogTier) return false;
+    return resolveCatalogTier(item) === CATALOG_TIER_PRO;
+  }
+
+  /** Whether Community vs Pro tier UI is active (master switch + options.tierUiEnabled). */
+  function optionsTierUiEnabled(options) {
+    return !!(options && options.tierUiEnabled);
+  }
+
+  /**
+   * Whether the signed-in user may open the update form for a catalog item.
+   * Pro orgs (ownership-linked) are owner-only; Community orgs allow any signed-in user.
+   *
+   * @param {object|null|undefined} editAccess { isLoggedIn, ownedOrgIds, proOrgIds }
+   * @param {string} orgId org:… anchor for organization or wallet provider
+   * @return {boolean}
+   */
+  function userCanEditCatalogItem(editAccess, orgId) {
+    if (!editAccess || !editAccess.isLoggedIn) return false;
+    if (editAccess.isAdmin) return true;
+    const org = String(orgId || '').trim();
+    if (!org) return true;
+    const proOrgIds = Array.isArray(editAccess.proOrgIds) ? editAccess.proOrgIds : [];
+    const ownedOrgIds = Array.isArray(editAccess.ownedOrgIds) ? editAccess.ownedOrgIds : [];
+    const isProOrg = proOrgIds.indexOf(org) >= 0;
+    if (!isProOrg) return true;
+    return ownedOrgIds.indexOf(org) >= 0;
+  }
+
+  function resolveWalletOrgId(wallet) {
+    if (!wallet || typeof wallet !== 'object') return '';
+    const top = wallet.orgId != null ? String(wallet.orgId).trim() : '';
+    if (top.indexOf('org:') === 0) return top;
+    const fromProvider = wallet.provider && wallet.provider.orgId != null
+      ? String(wallet.provider.orgId).trim()
+      : '';
+    return fromProvider.indexOf('org:') === 0 ? fromProvider : '';
+  }
+
+  function normalizeEditAccess(options) {
+    const raw = options && options.editAccess;
+    const editAccess = raw && typeof raw === 'object'
+      ? Object.assign({}, raw)
+      : { ownedOrgIds: [], proOrgIds: [] };
+    editAccess.isLoggedIn = !!(editAccess.isLoggedIn || boolFromMixed(options && options.isLoggedIn) || boolFromMixed(options && options.ratingsIsLoggedIn));
+    if (!Array.isArray(editAccess.ownedOrgIds)) editAccess.ownedOrgIds = [];
+    if (!Array.isArray(editAccess.proOrgIds)) editAccess.proOrgIds = [];
+    return editAccess;
+  }
+
+  function canEditOrganization(org, options) {
+    return userCanEditCatalogItem(normalizeEditAccess(options), org && org.id ? String(org.id).trim() : '');
+  }
+
+  function canEditWallet(wallet, options) {
+    return userCanEditCatalogItem(normalizeEditAccess(options), resolveWalletOrgId(wallet));
+  }
+
+  /** Pro listing for wallet UI when tier switch is on (explicit Pro tier or proOrgIds fallback). */
+  function walletListingTierIsPro(wallet, options) {
+    if (!optionsTierUiEnabled(options)) return true;
+    if (!wallet) return false;
+    if (wallet.catalogTier) {
+      return !itemIsCommunity(wallet);
+    }
+    const orgId = resolveWalletOrgId(wallet);
+    if (!orgId) return false;
+    const editAccess = normalizeEditAccess(options);
+    const proOrgIds = Array.isArray(editAccess.proOrgIds) ? editAccess.proOrgIds : [];
+    return proOrgIds.indexOf(orgId) >= 0;
   }
 
   function getVideoEmbedUrl(videoUrl) {
@@ -520,6 +612,7 @@
   }
 
   function buildWalletEditActionHtml(wallet, options) {
+    if (!canEditWallet(wallet, options)) return '';
     const href = buildWalletUpdateFormUrl(wallet && wallet.id, options);
     if (!href) return '';
     return '<a href="' + escapeHtml(href) + '" class="fides-modal-copy-link fides-modal-edit-link" aria-label="Suggest an update" title="Suggest an update">' + icons.pencil + '</a>';
@@ -528,6 +621,9 @@
   function openWalletModal(wallet, options) {
     if (!wallet) return;
     const theme = (options && options.theme) || 'dark';
+    const tierUi = optionsTierUiEnabled(options);
+    const isCommunity = tierUi && itemIsCommunity(wallet);
+    const platformLabelsOnly = tierUi && !walletListingTierIsPro(wallet, options);
     selectedContext = { type: 'wallet', item: wallet, options: options || {}, theme: theme };
     if (options && typeof options.onOpen === 'function') options.onOpen(wallet);
 
@@ -548,12 +644,15 @@
     const shareButtonHtml = (options && options.showShare === false)
       ? ''
       : '<button type="button" class="fides-modal-copy-link" id="fides-modal-copy-link" aria-label="Copy link">' + icons.share + '</button>';
+    const officialHeaderBadge = tierUi && catalogTierIsProExplicit(wallet)
+      ? '<span class="fides-modal-header-official-badge" role="status" title="' + escapeHtml(OFFICIAL_LISTING_TITLE) + '">' + icons.official + '<span class="fides-modal-header-official-label">Official</span></span>'
+      : '';
 
     const modalHtml = '<div class="fides-modal-overlay fides-modal-overlay--rp" id="fides-modal-overlay" data-theme="' + escapeHtml(theme) + '">' +
       '<div class="fides-modal" role="dialog" aria-modal="true">' +
       '<div class="fides-modal-header"><div class="fides-modal-header-content">' +
       (wallet.logo ? '<img src="' + escapeHtml(wallet.logo) + '" alt="' + escapeHtml(wallet.name) + '" class="fides-modal-logo">' : '<div class="fides-modal-logo-placeholder">' + icons.wallet + '</div>') +
-      '<div class="fides-modal-title-wrap"><h2 class="fides-modal-title">' + escapeHtml(wallet.name) + '</h2><p class="fides-modal-provider">' + icons.building + ' ' + providerNameInHeader + (bluePagesUrl ? ' <a href="' + escapeHtml(bluePagesUrl) + '" target="_blank" rel="noopener" class="fides-modal-provider-link">' + icons.externalLink + ' View in Blue Pages</a>' : '') + '</p></div>' +
+      '<div class="fides-modal-title-wrap"><div class="fides-modal-title-row"><h2 class="fides-modal-title">' + escapeHtml(wallet.name) + '</h2>' + officialHeaderBadge + '</div><p class="fides-modal-provider">' + icons.building + ' ' + providerNameInHeader + (bluePagesUrl ? ' <a href="' + escapeHtml(bluePagesUrl) + '" target="_blank" rel="noopener" class="fides-modal-provider-link">' + icons.externalLink + ' View in Blue Pages</a>' : '') + '</p></div>' +
       '</div><div class="fides-modal-header-actions">' + editActionHtml + shareButtonHtml + '<button class="fides-modal-close" id="fides-modal-close" aria-label="Close modal">' + icons.xLarge + '</button></div></div>' +
       '<div class="fides-modal-body">' +
       '<div id="fides-modal-rating-slot"></div>' +
@@ -564,9 +663,9 @@
       '<span class="fides-modal-badge ' + (wallet.openSource ? 'open-source' : 'proprietary') + '">' + (wallet.openSource ? (icons.github + ' Open Source' + (wallet.license ? ' (' + escapeHtml(wallet.license) + ')' : '')) : 'Proprietary') + '</span>' +
       '</div>' +
       (wallet.description ? '<div class="fides-modal-section"><p class="fides-modal-description">' + escapeHtml(wallet.description) + '</p></div>' : '') +
-      (wallet.video ? getVideoEmbedHtml(wallet.video) : '') +
+      (walletListingTierIsPro(wallet, options) && wallet.video ? getVideoEmbedHtml(wallet.video) : '') +
       '<div class="fides-modal-grid">' +
-      ((wallet.platforms && wallet.platforms.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.smartphone + ' Platforms ' + (wallet.type !== 'organizational' ? '<span class="fides-label-hint">(click to access)</span>' : '') + '</div><div class="fides-modal-grid-value">' + wallet.platforms.map(p => renderPlatformTag(wallet, p)).join('') + '</div></div>' : '') +
+      ((wallet.platforms && wallet.platforms.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.smartphone + ' Platforms ' + (wallet.type !== 'organizational' && !platformLabelsOnly ? '<span class="fides-label-hint">(click to access)</span>' : '') + '</div><div class="fides-modal-grid-value">' + wallet.platforms.map(p => renderPlatformTag(wallet, p, platformLabelsOnly)).join('') + '</div></div>' : '') +
       ((wallet.vcFormat && wallet.vcFormat.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.fileCheck + ' VC formats</div><div class="fides-modal-grid-value">' + sortCredentialFormats(wallet.vcFormat).map(f => '<span class="fides-tag credential-format">' + escapeHtml(credentialFormatDisplayLabel(f)) + '</span>').join('') + '</div></div>' : '') +
       (((wallet.issuanceProtocols || (wallet.protocols && wallet.protocols.issuance) || []).length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.download + ' Issuance Protocols</div><div class="fides-modal-grid-value">' + (wallet.issuanceProtocols || (wallet.protocols && wallet.protocols.issuance) || []).map(p => '<span class="fides-tag protocol-issuance">' + escapeHtml(p) + '</span>').join('') + '</div></div>' : '') +
       (((wallet.presentationProtocols || (wallet.protocols && wallet.protocols.presentation) || []).length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.shield + ' Presentation Protocols</div><div class="fides-modal-grid-value">' + (wallet.presentationProtocols || (wallet.protocols && wallet.protocols.presentation) || []).map(p => '<span class="fides-tag protocol-presentation">' + escapeHtml(p) + '</span>').join('') + '</div></div>' : '') +
@@ -577,11 +676,11 @@
       ((wallet.interoperabilityProfiles && wallet.interoperabilityProfiles.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.shield + ' Interop Profiles</div><div class="fides-modal-grid-value">' + wallet.interoperabilityProfiles.map(p => '<span class="fides-tag interop">' + escapeHtml(p) + '</span>').join('') + '</div></div>' : '') +
       (wallet.releaseDate ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.calendar + ' Release date</div><div class="fides-modal-grid-value">' + escapeHtml(new Date(wallet.releaseDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })) + '</div></div>' : '') +
       '</div>' +
-      ((wallet.features && wallet.features.length) ? '<div class="fides-modal-features"><h4 class="fides-modal-section-title">Features</h4><ul class="fides-features-list">' + wallet.features.map(f => '<li>' + icons.check + ' ' + escapeHtml(f) + '</li>').join('') + '</ul></div>' : '') +
+      ((wallet.features && wallet.features.length && walletListingTierIsPro(wallet, options)) ? '<div class="fides-modal-features"><h4 class="fides-modal-section-title">Features</h4><ul class="fides-features-list">' + wallet.features.map(f => '<li>' + icons.check + ' ' + escapeHtml(f) + '</li>').join('') + '</ul></div>' : '') +
       '<div class="fides-modal-links">' +
-      (wallet.website ? '<a href="' + escapeHtml(wallet.website) + '" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Visit website">' + icons.externalLink + ' Visit Website</a>' : '') +
-      (wallet.openSource && wallet.repository ? '<a href="' + escapeHtml(wallet.repository) + '" target="_blank" rel="noopener" class="fides-modal-link" data-matomo-name="Repository">' + icons.github + ' View Repository</a>' : '') +
-      (wallet.documentation ? '<a href="' + escapeHtml(wallet.documentation) + '" target="_blank" rel="noopener" class="fides-modal-link" data-matomo-name="Documentation">' + icons.book + ' Documentation</a>' : '') +
+      (walletListingTierIsPro(wallet, options) && wallet.website ? '<a href="' + escapeHtml(wallet.website) + '" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Visit website">' + icons.externalLink + ' Visit Website</a>' : '') +
+      (walletListingTierIsPro(wallet, options) && wallet.openSource && wallet.repository ? '<a href="' + escapeHtml(wallet.repository) + '" target="_blank" rel="noopener" class="fides-modal-link" data-matomo-name="Repository">' + icons.github + ' View Repository</a>' : '') +
+      (walletListingTierIsPro(wallet, options) && wallet.documentation ? '<a href="' + escapeHtml(wallet.documentation) + '" target="_blank" rel="noopener" class="fides-modal-link" data-matomo-name="Documentation">' + icons.book + ' Documentation</a>' : '') +
       '</div>' +
       '</div></div></div>';
 
@@ -871,6 +970,7 @@
   function openOrganizationModal(org, options) {
     if (!org) return;
     const theme = (options && options.theme) || 'dark';
+    const isCommunity = itemIsCommunity(org);
     selectedContext = { type: 'organization', item: org, options: options || {}, theme: theme };
     if (options && typeof options.onOpen === 'function') options.onOpen(org);
 
@@ -939,7 +1039,7 @@
       (credentialLinks ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.fileCheck + ' Credentials</div><div class="fides-modal-grid-value">' + credentialLinks + '</div></div>' : '') +
       '</div>' +
       '<div class="fides-modal-links">' +
-      (org.website ? '<a href="' + escapeHtml(org.website) + '" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Organization website">' + icons.externalLink + ' Visit Website</a>' : '') +
+      (!isCommunity && org.website ? '<a href="' + escapeHtml(org.website) + '" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Organization website">' + icons.externalLink + ' Visit Website</a>' : '') +
       '</div>' +
       '</div></div></div>';
 
@@ -953,6 +1053,10 @@
     openOrganizationModal,
     closeModal,
     trackMatomoEvent,
-    initMatomoLinkTracking
+    initMatomoLinkTracking,
+    userCanEditCatalogItem,
+    canEditOrganization,
+    canEditWallet,
+    resolveWalletOrgId
   };
 })();

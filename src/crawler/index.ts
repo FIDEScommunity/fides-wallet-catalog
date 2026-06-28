@@ -79,6 +79,8 @@ interface OrgCatalogEntry {
   country?: string;
   contact?: { email?: string; support?: string };
   fidesManifestoSupporter?: boolean;
+  /** Community or Pro — inherited onto wallets at crawl time when missing on wallet JSON. */
+  catalogTier?: string;
 }
 
 function isLocalDevHost(): boolean {
@@ -97,6 +99,23 @@ function orgEntryToWalletProvider(entry: OrgCatalogEntry, orgId: string): Wallet
   return p;
 }
 
+/** Resolve public catalogTier for a wallet (explicit wallet field, else organization catalog). */
+function resolveWalletCatalogTier(
+  wallet: Record<string, unknown>,
+  orgId: string,
+  organizationById: Map<string, OrgCatalogEntry>
+): string | undefined {
+  const walletTier = wallet.catalogTier;
+  if (typeof walletTier === 'string' && walletTier.trim()) {
+    return walletTier.trim();
+  }
+  const orgTier = organizationById.get(orgId)?.catalogTier;
+  if (typeof orgTier === 'string' && orgTier.trim()) {
+    return orgTier.trim();
+  }
+  return undefined;
+}
+
 async function loadOrganizationCatalogMap(): Promise<Map<string, OrgCatalogEntry>> {
   const tryParse = (raw: string): Map<string, OrgCatalogEntry> => {
     const data = JSON.parse(raw) as { organizations?: OrgCatalogEntry[] };
@@ -107,7 +126,7 @@ async function loadOrganizationCatalogMap(): Promise<Map<string, OrgCatalogEntry
     return map;
   };
 
-  if (isLocalDevHost()) {
+  const loadLocalOrgCatalog = async (): Promise<Map<string, OrgCatalogEntry> | null> => {
     for (const localPath of ORGANIZATION_CATALOG_LOCAL_PATHS) {
       if (localPath && existsSync(localPath)) {
         try {
@@ -120,7 +139,11 @@ async function loadOrganizationCatalogMap(): Promise<Map<string, OrgCatalogEntry
         }
       }
     }
-  }
+    return null;
+  };
+
+  const localMap = await loadLocalOrgCatalog();
+  if (localMap) return localMap;
 
   try {
     const res = await fetch(ORGANIZATION_CATALOG_URL);
@@ -508,7 +531,7 @@ async function crawlGitHubRepo(
         continue;
       }
       const catalogUrl = `https://github.com/${owner}/${repo}/blob/${branch}/${providerPath}/wallet-catalog.json`;
-      const normalizedWallets = normalizeWallets(catalog, resolvedProvider, catalogUrl, 'github', walletHistoryState, gitLastCommitAt);
+      const normalizedWallets = normalizeWallets(catalog, resolvedProvider, catalogUrl, 'github', walletHistoryState, gitLastCommitAt, organizationById);
       wallets.push(...normalizedWallets);
       providers.set(catalog.orgId, resolvedProvider);
       
@@ -577,7 +600,7 @@ async function crawlDIDProviders(
           console.error(`      ❌ ${entry.errorMessage}`);
           continue;
         }
-        const normalizedWallets = normalizeWallets(catalog, resolvedProvider, catalogUrl, 'did', walletHistoryState, null);
+        const normalizedWallets = normalizeWallets(catalog, resolvedProvider, catalogUrl, 'did', walletHistoryState, null, organizationById);
         wallets.push(...normalizedWallets);
         providers.set(catalog.orgId, resolvedProvider);
         
@@ -635,7 +658,7 @@ async function crawlLegacyRegistry(
         entry.status = 'error';
         continue;
       }
-      const normalizedWallets = normalizeWallets(catalog, resolvedProvider, entry.catalogUrl, 'did', walletHistoryState, null);
+      const normalizedWallets = normalizeWallets(catalog, resolvedProvider, entry.catalogUrl, 'did', walletHistoryState, null, organizationById);
       wallets.push(...normalizedWallets);
       providers.set(catalog.orgId, resolvedProvider);
       
@@ -710,7 +733,7 @@ async function crawlLocalDirectory(
             );
             continue;
           }
-          const normalizedWallets = normalizeWallets(catalog, resolvedProvider, catalogPath, source, walletHistoryState, gitLastCommitAt);
+          const normalizedWallets = normalizeWallets(catalog, resolvedProvider, catalogPath, source, walletHistoryState, gitLastCommitAt, organizationById);
           wallets.push(...normalizedWallets);
           providers.set(catalog.orgId, resolvedProvider);
           
@@ -747,7 +770,8 @@ function normalizeWallets(
   catalogUrl: string,
   source: 'local' | 'github' | 'did',
   walletHistoryState: WalletHistoryState,
-  gitLastCommitAt: string | null
+  gitLastCommitAt: string | null,
+  organizationById: Map<string, OrgCatalogEntry>
 ): NormalizedWallet[] {
   const fetchedAt = new Date().toISOString();
   const orgId = catalog.orgId;
@@ -780,8 +804,11 @@ function normalizeWallets(
       walletId: wallet.id
     };
 
+    const catalogTier = resolveWalletCatalogTier(walletAny, orgId, organizationById);
+
     return {
       ...walletRest,
+      ...(catalogTier ? { catalogTier } : {}),
       orgId,
       provider,
       catalogUrl,
@@ -845,6 +872,7 @@ function calculateStats(wallets: NormalizedWallet[]): AggregatedCatalog['stats']
 /**
  * Deduplicate wallets (same organization + wallet ID)
  * Priority: DID > GitHub > Local (non-EU landscape) > EU Landscape
+ * Preserve catalogTier from the lower-priority copy when the winner lacks it.
  */
 function deduplicateWallets(wallets: NormalizedWallet[]): NormalizedWallet[] {
   const seen = new Map<string, NormalizedWallet>();
@@ -861,12 +889,22 @@ function deduplicateWallets(wallets: NormalizedWallet[]): NormalizedWallet[] {
     return 0;
   };
 
+  const mergeCatalogTier = (
+    winner: NormalizedWallet,
+    loser: NormalizedWallet | undefined
+  ): NormalizedWallet => {
+    if (!loser?.catalogTier || winner.catalogTier) return winner;
+    return { ...winner, catalogTier: loser.catalogTier };
+  };
+
   for (const wallet of wallets) {
     const key = `${wallet.orgId}:${wallet.id}`;
     const existing = seen.get(key);
 
     if (!existing || getPriority(wallet) > getPriority(existing)) {
-      seen.set(key, wallet);
+      seen.set(key, mergeCatalogTier(wallet, existing));
+    } else {
+      seen.set(key, mergeCatalogTier(existing, wallet));
     }
   }
 
@@ -914,6 +952,7 @@ async function crawl(): Promise<void> {
 
   // Deduplicate (prefer DID > GitHub > EU Landscape > Local)
   const dedupedWallets = deduplicateWallets(allWallets);
+  const proWalletCount = dedupedWallets.filter((w) => w.catalogTier === 'Pro').length;
   
   // Create aggregated data
   const aggregated: AggregatedCatalog = {
@@ -933,6 +972,7 @@ async function crawl(): Promise<void> {
   console.log('\n📊 Aggregation complete:');
   console.log(`   Total wallets: ${aggregated.stats.totalWallets}`);
   console.log(`   Total providers: ${aggregated.stats.totalProviders}`);
+  console.log(`   Official (Pro) wallets: ${proWalletCount}`);
   console.log(`   Output: ${CONFIG.aggregatedPath}`);
   console.log(`   Plugin copy: ${CONFIG.wpPluginDataPath}`);
   console.log(`   History state: ${CONFIG.walletHistoryStatePath}`);

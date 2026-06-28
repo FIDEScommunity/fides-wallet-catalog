@@ -13,7 +13,7 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Forms')) {
 
     class Fides_Wallet_Catalog_Submission_Forms {
 
-        const VERSION = '2.8.1';
+        const VERSION = '2.8.3';
 
         /**
          * @param string $mode create|update.
@@ -56,7 +56,7 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Forms')) {
             'features'              => 'Notable product features (comma-separated).',
             'capabilities'          => 'Business wallet roles (holder, issuer, verifier).',
             'appStoreLinks'         => 'App store or web install links.',
-            'contactEmail'          => 'Taken from your FIDES account.',
+            'contactEmail'          => 'Taken from your FIDES account; used for submission review only, not published as the wallet contact.',
         );
 
         public static function bootstrap(): void {
@@ -139,10 +139,29 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Forms')) {
                 );
             }
 
+            $user = wp_get_current_user();
+            if ($mode === 'update' && ! empty($extra['preselectWalletId'])
+                && class_exists('Fides_Catalog_Org_Tier')) {
+                $wallet_id = (string) $extra['preselectWalletId'];
+                $existing  = class_exists('Fides_Catalog_Submission_Lookups')
+                    ? Fides_Catalog_Submission_Lookups::find_item_by_id('wallet', $wallet_id)
+                    : null;
+                if (! Fides_Catalog_Org_Tier::user_can_edit_item(
+                    'wallet',
+                    $wallet_id,
+                    (int) $user->ID,
+                    is_array($existing) ? $existing : null
+                )) {
+                    return '<div class="fides-use-case-card"><p>' . esc_html__(
+                        'This wallet belongs to a Pro organization. Only the linked owner can suggest updates.',
+                        'fides-wallet-catalog'
+                    ) . '</p></div>';
+                }
+            }
+
             wp_enqueue_style('fides-wallet-form');
             wp_enqueue_script('fides-wallet-form');
 
-            $user = wp_get_current_user();
             $plugin_url = plugin_dir_url(dirname(__FILE__));
             $config = array_merge(
                 array(
@@ -161,6 +180,15 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Forms')) {
                     'fieldHelp'         => self::FIELD_HELP,
                     'sectionIntro'      => self::section_intro_for_mode($mode),
                     'preselectWalletId' => '',
+                    'planTier'          => class_exists('Fides_Catalog_Org_Tier')
+                        ? Fides_Catalog_Org_Tier::form_config(self::plan_org_id_for_form($mode, $extra))
+                        : array(
+                            'tierUiEnabled'        => false,
+                            'tier'                 => 'Community',
+                            'isPro'                => true,
+                            'plansUrl'             => home_url('/plans/'),
+                            'descriptionMaxLength' => 2000,
+                        ),
                 ),
                 $extra
             );
@@ -197,6 +225,33 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Forms')) {
                 return '';
             }
             return Fides_Catalog_Submission_Registry::is_valid_item_id('wallet', $raw) ? $raw : '';
+        }
+
+        /**
+         * Resolve organization id for planTier / org-tier REST on wallet forms.
+         *
+         * @param string               $mode create|update.
+         * @param array<string, mixed> $extra Shortcode config (preselectWalletId).
+         */
+        private static function plan_org_id_for_form($mode, array $extra = array()): string {
+            if ($mode !== 'update' || empty($extra['preselectWalletId'])) {
+                return '';
+            }
+            if (! class_exists('Fides_Catalog_Submission_Lookups')) {
+                return '';
+            }
+            $wallet = Fides_Catalog_Submission_Lookups::find_item_by_id('wallet', (string) $extra['preselectWalletId']);
+            if (! is_array($wallet)) {
+                return '';
+            }
+            $org_id = trim((string) ($wallet['orgId'] ?? ''));
+            if ($org_id !== '') {
+                return $org_id;
+            }
+            if (isset($wallet['provider']) && is_array($wallet['provider'])) {
+                return trim((string) ($wallet['provider']['orgId'] ?? ''));
+            }
+            return '';
         }
     }
 }

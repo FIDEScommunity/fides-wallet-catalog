@@ -425,7 +425,11 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
             $normalized['issuanceProtocols'] = self::normalize_enum_list($payload['issuanceProtocols'] ?? array(), self::ISSUANCE_PROTOCOLS);
             $normalized['presentationProtocols'] = self::normalize_enum_list($payload['presentationProtocols'] ?? array(), self::PRESENTATION_PROTOCOLS);
             $normalized['interoperabilityProfiles'] = self::normalize_enum_list($payload['interoperabilityProfiles'] ?? array(), self::INTEROP_PROFILES);
-            $normalized['capabilities'] = self::normalize_enum_list($payload['capabilities'] ?? array(), self::CAPABILITIES);
+            if ($type === 'personal') {
+                $normalized['capabilities'] = array('holder');
+            } else {
+                $normalized['capabilities'] = self::normalize_enum_list($payload['capabilities'] ?? array(), self::CAPABILITIES);
+            }
             $normalized['keyStorage'] = self::normalize_enum_list($payload['keyStorage'] ?? array(), self::KEY_STORAGE);
             $normalized['supportedIdentifiers'] = self::normalize_canonical_enum_list(
                 $payload['supportedIdentifiers'] ?? array(),
@@ -445,6 +449,15 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
             $app_links = self::normalize_app_store_links($payload['appStoreLinks'] ?? array());
             if (! empty($app_links)) {
                 $normalized['appStoreLinks'] = $app_links;
+            }
+
+            $existing = null;
+            if ($action === 'update') {
+                $existing = self::find_catalog_item($item_id);
+            }
+
+            if (class_exists('Fides_Catalog_Org_Tier')) {
+                $normalized = Fides_Catalog_Org_Tier::constrain_wallet_submission($normalized, $org_id, $existing);
             }
 
             return self::strip_empty_wallet_fields($normalized);
@@ -474,6 +487,10 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
 
             if (! isset($wallet['id']) && isset($payload['id'])) {
                 $wallet['id'] = sanitize_text_field((string) $payload['id']);
+            }
+
+            if (class_exists('Fides_Catalog_Org_Tier') && $org_id !== '') {
+                $wallet = Fides_Catalog_Org_Tier::filter_wallet_export($wallet, $org_id);
             }
 
             return array(

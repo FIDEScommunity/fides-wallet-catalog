@@ -14,7 +14,7 @@
     "crawl": "tsx src/crawler/index.ts",
     "crawl:local-community": "FIDES_WALLET_SKIP_GITHUB_CRAWL=1 tsx src/crawler/index.ts",
     "sync-local": "bash scripts/sync-plugin-local.sh",
-    "crawl:sync": "npm run crawl && npm run sync-local",
+    "crawl:sync": "npm run crawl:local-community && npm run sync-local",
     "backfill:first-seen": "tsx src/crawler/backfill-first-seen.ts",
     "serve": "tsx src/server/index.ts",
     "typecheck:api": "tsc -p tsconfig.api.json",

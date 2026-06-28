@@ -98,6 +98,8 @@ export interface Wallet {
   updated?: string;
   updatedAt?: string;
   firstSeenAt?: string;
+  /** Community or Pro — set by WP export or inherited from organization at crawl time. */
+  catalogTier?: string;
 }
 
 export interface WalletCatalog {

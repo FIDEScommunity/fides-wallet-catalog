@@ -68,6 +68,154 @@
   let selectedWalletLabel = "";
   let selectedOrgId = "";
   let selectedOrgLabel = "";
+  let planTier =
+    config.planTier && typeof config.planTier === "object"
+      ? { ...config.planTier }
+      : { tierUiEnabled: false, tier: "Community", isPro: true, plansUrl: "/plans/", descriptionMaxLength: 2000 };
+
+  function tierUiEnabled() {
+    return planTier.tierUiEnabled === true;
+  }
+
+  const WALLET_PRO_FIELD_IDS = [
+    "fides-wallet-website",
+    "fides-wallet-video",
+    "fides-wallet-documentation",
+    "fides-wallet-repository",
+    "fides-wallet-features",
+    "fides-wallet-ios",
+    "fides-wallet-android",
+    "fides-wallet-web-install",
+  ];
+
+  function proBadgeHtml() {
+    const url = String(planTier.plansUrl || "/plans/");
+    return `<a href="${escapeHtml(url)}" class="fides-pro-plan-badge" target="_blank" rel="noopener">Pro plan</a>`;
+  }
+
+  function labelWithProIfNeeded(labelText, isProField) {
+    if (!tierUiEnabled() || planTier.isPro || !isProField) return labelText;
+    return `${labelText} ${proBadgeHtml()}`;
+  }
+
+  async function refreshPlanTier(orgId) {
+    const id = String(orgId || "").trim();
+    if (!id || !apiBase) {
+      planTier = {
+        tierUiEnabled: planTier.tierUiEnabled,
+        tier: "Community",
+        isPro: false,
+        plansUrl: planTier.plansUrl || "/plans/",
+        descriptionMaxLength: 200,
+      };
+      applyTierFieldState();
+      return;
+    }
+    const headers = {};
+    if (restNonce) headers["X-WP-Nonce"] = restNonce;
+    try {
+      const response = await fetch(`${apiBase}/org-tier?orgId=${encodeURIComponent(id)}`, {
+        credentials: "same-origin",
+        headers,
+      });
+      const json = await response.json().catch(() => ({}));
+      if (response.ok && json && typeof json === "object") {
+        planTier = { ...planTier, ...json };
+      }
+    } catch (_err) {
+      /* keep current tier */
+    }
+    applyTierFieldState();
+  }
+
+  const WALLET_DESC_MAX_COMMUNITY = 200;
+  const WALLET_DESC_MAX_PRO = 2000;
+
+  function walletDescriptionMaxLength() {
+    if (!tierUiEnabled()) {
+      return WALLET_DESC_MAX_PRO;
+    }
+    const fromConfig = Number(planTier.descriptionMaxLength);
+    if (fromConfig > 0) {
+      return fromConfig;
+    }
+    return planTier.isPro ? WALLET_DESC_MAX_PRO : WALLET_DESC_MAX_COMMUNITY;
+  }
+
+  function updateWalletDescriptionLimitUi() {
+    const maxLen = walletDescriptionMaxLength();
+    const isPro = !!planTier.isPro;
+    const descEl = root.querySelector("#fides-wallet-description");
+    const labelEl = root.querySelector("#fides-wallet-description-label");
+    const noticeEl = root.querySelector("#fides-wallet-description-limit-notice");
+    if (descEl) descEl.maxLength = maxLen;
+    if (labelEl) {
+      labelEl.textContent = "Description *";
+    }
+    if (noticeEl) {
+      const plansUrl = escapeHtml(String(planTier.plansUrl || "/plans/"));
+      if (!tierUiEnabled() || isPro) {
+        noticeEl.textContent = `You can use up to ${WALLET_DESC_MAX_PRO.toLocaleString("en-US")} characters in the published catalog description.`;
+      } else {
+        noticeEl.innerHTML = `Community plan: maximum ${WALLET_DESC_MAX_COMMUNITY} characters in the catalog. <a href="${plansUrl}" target="_blank" rel="noopener">Pro plan</a> allows up to ${WALLET_DESC_MAX_PRO.toLocaleString("en-US")} characters.`;
+      }
+    }
+    updateWalletDescriptionCounter();
+  }
+
+  function updateWalletDescriptionCounter() {
+    const descEl = root.querySelector("#fides-wallet-description");
+    const counterEl = root.querySelector("#fides-wallet-description-counter");
+    if (!descEl || !counterEl) return;
+    const maxLen = Number(descEl.maxLength) || walletDescriptionMaxLength();
+    const len = String(descEl.value || "").length;
+    counterEl.textContent = `${len.toLocaleString("en-US")} / ${maxLen.toLocaleString("en-US")} characters`;
+  }
+
+  function updatePlanTierBadgeEl(badge, visible) {
+    if (!badge) return;
+    if (!tierUiEnabled() || !visible) {
+      badge.hidden = true;
+      badge.textContent = "";
+      return;
+    }
+    const isPro = !!planTier.isPro;
+    badge.hidden = false;
+    badge.textContent = isPro ? "Pro plan" : "Community plan";
+    badge.className = `fides-update-banner-plan ${isPro ? "fides-pro-plan-badge" : "fides-free-plan-badge"}`;
+    badge.title = isPro
+      ? "This organization has a linked Pro account. Extended wallet catalog fields are enabled."
+      : "Community plan limits apply to fields published in the catalog.";
+  }
+
+  function updatePlanTierBanner() {
+    updatePlanTierBadgeEl(
+      root.querySelector("#fides-wallet-update-plan-tier-badge"),
+      mode === "update" && Boolean(selectedWalletId) && Boolean(selectedOrgId)
+    );
+    updatePlanTierBadgeEl(
+      root.querySelector("#fides-wallet-org-plan-tier-badge"),
+      mode === "create" && Boolean(selectedOrgId)
+    );
+  }
+
+  function applyTierFieldState() {
+    const isPro = !!planTier.isPro;
+    WALLET_PRO_FIELD_IDS.forEach((fieldId) => {
+      const el = root.querySelector(`#${fieldId}`);
+      if (!el) return;
+      el.disabled = !isPro;
+      el.readOnly = !isPro;
+      el.classList.toggle("fides-input-pro-locked", !isPro);
+      const row = el.closest(".fides-form-row");
+      if (row) row.classList.toggle("fides-form-row--pro-locked", !isPro);
+    });
+    root.querySelectorAll(".fides-form-section--pro-tier").forEach((section) => {
+      section.classList.toggle("fides-form-section--pro-locked", !isPro);
+    });
+    updateWalletDescriptionLimitUi();
+    updatePlanTierBanner();
+  }
 
   function escapeHtml(value) {
     return String(value)
@@ -146,10 +294,8 @@
       .join("");
   }
 
-  function accordionSection(title, bodyHtml, introText) {
-    const intro = introText
-      ? `<p class="fides-form-section-intro">${escapeHtml(introText)}</p>`
-      : "";
+  function accordionSection(title, intro, bodyHtml) {
+    const introHtml = intro ? `<p class="fides-form-section-intro">${escapeHtml(intro)}</p>` : "";
     return `
       <details class="fides-form-section fides-form-accordion">
         <summary class="fides-form-accordion-summary">
@@ -160,7 +306,7 @@
           <span class="fides-form-accordion-chevron" aria-hidden="true"></span>
         </summary>
         <div class="fides-form-accordion-panel">
-          ${intro}
+          ${introHtml}
           <div class="fides-form-section-body">
             ${bodyHtml}
           </div>
@@ -193,6 +339,7 @@
               <span class="fides-update-banner-label">Organization:</span>
               <strong id="fides-wallet-org-name"></strong>
               <code id="fides-wallet-org-id-display"></code>
+              <span id="fides-wallet-org-plan-tier-badge" class="fides-update-banner-plan" hidden></span>
             </div>
             <button type="button" class="fides-secondary-btn" id="fides-wallet-org-change">Choose different</button>
           </div>
@@ -233,9 +380,13 @@
           </div>
         </div>
         <div class="fides-form-row">
-          <label for="fides-wallet-description">Description *</label>
+          <label for="fides-wallet-description" id="fides-wallet-description-label">Description *</label>
           ${helpHtml("description")}
-          <textarea id="fides-wallet-description" name="description" required maxlength="4000"></textarea>
+          <textarea id="fides-wallet-description" name="description" required maxlength="2000" placeholder="Short description of the wallet and its purpose."></textarea>
+          <div class="fides-field-meta">
+            <p class="fides-description-limit-notice fides-pro-field-notice" id="fides-wallet-description-limit-notice"></p>
+            <p class="fides-description-counter" id="fides-wallet-description-counter" aria-live="polite"></p>
+          </div>
         </div>
         <div class="fides-form-row fides-wallet-capabilities-row" hidden>
           <span class="fides-form-label" id="fides-wallet-capabilities-label">Capabilities (business)</span>
@@ -253,7 +404,7 @@
         </div>
         <div class="fides-form-grid fides-form-grid-pair">
           <div class="fides-form-row">
-            <label for="fides-wallet-website">Website</label>
+            <label for="fides-wallet-website">${labelWithProIfNeeded("Website", true)}</label>
             ${helpHtml("website")}
             <input id="fides-wallet-website" name="website" type="url" placeholder="https://…" />
           </div>
@@ -265,12 +416,12 @@
         </div>
         <div class="fides-form-grid fides-form-grid-pair">
           <div class="fides-form-row">
-            <label for="fides-wallet-video">Video URL</label>
+            <label for="fides-wallet-video">${labelWithProIfNeeded("Video URL", true)}</label>
             ${helpHtml("video")}
             <input id="fides-wallet-video" name="video" type="url" placeholder="https://…" />
           </div>
           <div class="fides-form-row">
-            <label for="fides-wallet-documentation">Documentation URL</label>
+            <label for="fides-wallet-documentation">${labelWithProIfNeeded("Documentation URL", true)}</label>
             ${helpHtml("documentation")}
             <input id="fides-wallet-documentation" name="documentation" type="url" placeholder="https://…" />
           </div>
@@ -294,7 +445,7 @@
         </div>
         <div class="fides-form-grid fides-form-grid-pair">
           <div class="fides-form-row">
-            <label for="fides-wallet-repository">Repository URL</label>
+            <label for="fides-wallet-repository">${labelWithProIfNeeded("Repository URL", true)}</label>
             ${helpHtml("repository")}
             <input id="fides-wallet-repository" name="repository" type="url" placeholder="https://github.com/…" />
           </div>
@@ -322,6 +473,7 @@
     return `
         ${accordionSection(
           "Formats & protocols",
+          "Select the credential formats and protocols this wallet supports.",
           `
             <div class="fides-form-row" data-vocab-field="vcFormat">
               <span class="fides-form-label">VC formats</span>
@@ -338,10 +490,10 @@
               ${helpHtml("presentationProtocols")}
               <div class="fides-form-choices">${checkboxGroupHtml("presentationProtocols", enumList("presentationProtocols"), "presentationProtocols")}</div>
             </div>`,
-          "Select the credential formats and protocols this wallet supports."
         )}
         ${accordionSection(
           "Technical details",
+          "Cryptographic and identifier details for technical readers.",
           `
             <div class="fides-form-row" data-vocab-field="keyStorage">
               <span class="fides-form-label">Key storage</span>
@@ -374,10 +526,10 @@
                 )}
               </div>
             </div>`,
-          "Cryptographic and identifier details for technical readers."
         )}
         ${accordionSection(
           "Interop, standards & features",
+          "Profiles, standards, and features shown on the catalog detail page.",
           `
             <div class="fides-form-row" data-vocab-field="interoperabilityProfiles">
               <span class="fides-form-label">Interoperability profiles</span>
@@ -389,8 +541,8 @@
               ${helpHtml("standards")}
               <input id="fides-wallet-standards" name="standards" type="text" placeholder="ARF 1.4" />
             </div>
-            <div class="fides-form-row">
-              <label for="fides-wallet-features">Features</label>
+            <div class="fides-form-row fides-form-section--pro-tier">
+              <label for="fides-wallet-features">${labelWithProIfNeeded("Features", true)}</label>
               ${helpHtml("features")}
               <input id="fides-wallet-features" name="features" type="text" placeholder="Biometric authentication, QR scanning" />
             </div>
@@ -399,26 +551,25 @@
               ${helpHtml("certifications")}
               <input id="fides-wallet-certifications" name="certifications" type="text" />
             </div>`,
-          "Profiles, standards, and features shown on the catalog detail page."
         )}
         ${accordionSection(
           "App store links",
+          "Links where users can install or try the wallet.",
           `
-            <div class="fides-form-grid fides-form-grid-pair">
+            <div class="fides-form-grid fides-form-grid-pair fides-form-section--pro-tier">
               <div class="fides-form-row">
-                <label for="fides-wallet-ios">iOS App Store</label>
+                <label for="fides-wallet-ios">${labelWithProIfNeeded("iOS App Store", true)}</label>
                 <input id="fides-wallet-ios" name="appStoreIos" type="url" placeholder="https://apps.apple.com/…" />
               </div>
               <div class="fides-form-row">
-                <label for="fides-wallet-android">Google Play</label>
+                <label for="fides-wallet-android">${labelWithProIfNeeded("Google Play", true)}</label>
                 <input id="fides-wallet-android" name="appStoreAndroid" type="url" placeholder="https://play.google.com/…" />
               </div>
             </div>
             <div class="fides-form-row">
-              <label for="fides-wallet-web-install">Web install URL</label>
+              <label for="fides-wallet-web-install">${labelWithProIfNeeded("Web install URL", true)}</label>
               <input id="fides-wallet-web-install" name="appStoreWeb" type="url" placeholder="https://…" />
             </div>`,
-          "Links where users can install or try the wallet."
         )}
     `;
   }
@@ -455,6 +606,7 @@
                 <span class="fides-update-banner-label">Updating:</span>
                 <strong id="fides-wallet-update-name"></strong>
                 <code id="fides-wallet-update-id"></code>
+                <span id="fides-wallet-update-plan-tier-badge" class="fides-update-banner-plan" hidden></span>
               </div>
               <button type="button" class="fides-secondary-btn" id="fides-wallet-change">Choose different</button>
             </div>
@@ -496,6 +648,14 @@
   const updateNameEl = root.querySelector("#fides-wallet-update-name");
   const updateIdEl = root.querySelector("#fides-wallet-update-id");
   const changeBtn = root.querySelector("#fides-wallet-change");
+
+  applyTierFieldState();
+
+  const walletDescInput = root.querySelector("#fides-wallet-description");
+  if (walletDescInput) {
+    walletDescInput.addEventListener("input", updateWalletDescriptionCounter);
+    updateWalletDescriptionCounter();
+  }
 
   function setMessage(text, type) {
     if (!messageEl) return;
@@ -551,7 +711,10 @@
     if (statusEl) statusEl.value = payload.status || "production";
     updateCapabilitiesVisibility();
     const descEl = root.querySelector("#fides-wallet-description");
-    if (descEl) descEl.value = payload.description || "";
+    if (descEl) {
+      descEl.value = payload.description || "";
+      updateWalletDescriptionCounter();
+    }
     const setVal = (sel, key) => {
       const el = root.querySelector(sel);
       if (el) el.value = payload[key] || "";
@@ -636,6 +799,8 @@
     const walletType = payload.type;
     if (walletType === "organizational") {
       payload.capabilities = getCheckedValues("capabilities");
+    } else if (walletType === "personal") {
+      payload.capabilities = ["holder"];
     }
     Object.assign(payload, {
       keyStorage: getCheckedValues("keyStorage"),
@@ -669,6 +834,7 @@
     }
     if (updateNameEl) updateNameEl.textContent = selectedWalletLabel || selectedWalletId;
     if (updateIdEl) updateIdEl.textContent = selectedWalletId;
+    updatePlanTierBanner();
   }
 
   async function selectWallet(item) {
@@ -714,6 +880,7 @@
     if (nameEl) nameEl.textContent = selectedOrgLabel || selectedOrgId;
     if (idEl) idEl.textContent = selectedOrgId;
     revealFields(true);
+    updatePlanTierBanner();
   }
 
   async function loadItemPayload(walletId) {
@@ -734,6 +901,7 @@
       }
       fillForm(json.payload || {});
       selectedOrgId = json.payload?.orgId || selectedOrgId;
+      await refreshPlanTier(selectedOrgId);
       revealFields(true);
       setMessage("", "");
     } catch {
@@ -834,6 +1002,7 @@
         }
         const orgHint = root.querySelector("#fides-wallet-org-hint");
         if (orgHint) orgHint.hidden = true;
+        refreshPlanTier(selectedOrgId);
         showOrgSelectionUi();
       }
     );

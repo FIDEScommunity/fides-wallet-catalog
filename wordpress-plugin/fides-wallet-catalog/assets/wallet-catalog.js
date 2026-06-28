@@ -37,8 +37,13 @@
     share: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg>',
     pencil: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>',
     viewGrid: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>',
-    viewList: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>'
+    viewList: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>',
+    /** Lucide "circle-check" — official (Pro) listing managed by the provider */
+    official: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>'
   };
+
+  const OFFICIAL_ACCOUNT_TITLE = 'Official listing — managed by the provider';
+  const OFFICIAL_FILTER_LABEL = 'Official listings only';
 
   // Selected wallet for modal
   let selectedWallet = null;
@@ -174,10 +179,44 @@
   const UPDATE_FORM_URL = (window.fidesWalletCatalog && window.fidesWalletCatalog.updateFormUrl)
     ? String(window.fidesWalletCatalog.updateFormUrl).trim()
     : '';
+  const EDIT_ACCESS = (window.fidesWalletCatalog && window.fidesWalletCatalog.editAccess
+    && typeof window.fidesWalletCatalog.editAccess === 'object')
+    ? window.fidesWalletCatalog.editAccess
+    : { isLoggedIn: false, isAdmin: false, ownedOrgIds: [], proOrgIds: [] };
+  const TIER_UI_ENABLED = !!(window.fidesWalletCatalog && window.fidesWalletCatalog.tierUiEnabled);
   const RATINGS_BATCH_LIMIT = 100;
 
-  function walletUpdateFormUrl(walletId) {
-    if (!RATINGS_IS_LOGGED_IN || !UPDATE_FORM_URL || !walletId) return '';
+  function resolveWalletOrgIdForEdit(wallet) {
+    if (window.FidesCatalogUI && typeof window.FidesCatalogUI.resolveWalletOrgId === 'function') {
+      return window.FidesCatalogUI.resolveWalletOrgId(wallet);
+    }
+    return getWalletOrgIdForDeepLink(wallet);
+  }
+
+  function userCanEditWallet(wallet) {
+    if (!TIER_UI_ENABLED) {
+      if (EDIT_ACCESS.isAdmin) return true;
+      return RATINGS_IS_LOGGED_IN;
+    }
+    if (window.FidesCatalogUI && typeof window.FidesCatalogUI.canEditWallet === 'function') {
+      return window.FidesCatalogUI.canEditWallet(wallet, {
+        editAccess: EDIT_ACCESS,
+        isLoggedIn: RATINGS_IS_LOGGED_IN,
+      });
+    }
+    if (EDIT_ACCESS.isAdmin) return true;
+    const orgId = resolveWalletOrgIdForEdit(wallet);
+    if (!RATINGS_IS_LOGGED_IN) return false;
+    if (!orgId) return true;
+    const proOrgIds = Array.isArray(EDIT_ACCESS.proOrgIds) ? EDIT_ACCESS.proOrgIds : [];
+    const ownedOrgIds = Array.isArray(EDIT_ACCESS.ownedOrgIds) ? EDIT_ACCESS.ownedOrgIds : [];
+    if (proOrgIds.indexOf(orgId) < 0) return true;
+    return ownedOrgIds.indexOf(orgId) >= 0;
+  }
+
+  function walletUpdateFormUrl(wallet) {
+    const walletId = wallet && wallet.id ? String(wallet.id).trim() : '';
+    if (!userCanEditWallet(wallet) || !UPDATE_FORM_URL || !walletId) return '';
     try {
       const url = new URL(UPDATE_FORM_URL, window.location.origin);
       url.searchParams.set('wallet', String(walletId));
@@ -188,7 +227,7 @@
   }
 
   function renderModalEditAction(wallet) {
-    const href = walletUpdateFormUrl(wallet && wallet.id);
+    const href = walletUpdateFormUrl(wallet);
     if (!href) return '';
     return `<a href="${escapeHtml(href)}" class="fides-modal-copy-link fides-modal-edit-link" aria-label="Suggest an update" title="Suggest an update">${icons.pencil}</a>`;
   }
@@ -328,6 +367,7 @@
     governance: null, // 'government' or 'private'
     addedLast30Days: false,
     includesVideo: false,
+    officialOnly: false,
     ids: [] // pre-filter by wallet IDs (set via ?wallets= URL param)
   };
 
@@ -365,6 +405,52 @@
     return govKeywords.some(kw => 
       providerLower.includes(kw) || nameLower.includes(kw)
     );
+  }
+
+  function walletCatalogTierIsCommunity(wallet) {
+    if (!TIER_UI_ENABLED) return false;
+    if (!wallet || !wallet.catalogTier) return false;
+    const tier = String(wallet.catalogTier).toLowerCase();
+    return tier === 'gratis' || tier === 'community';
+  }
+
+  /** Official (Pro): explicit catalogTier Pro, or provider org linked in proOrgIds when tier field is absent. */
+  function walletCatalogTierIsPro(wallet) {
+    if (!TIER_UI_ENABLED) return false;
+    if (!wallet) return false;
+    if (wallet.catalogTier) {
+      return !walletCatalogTierIsCommunity(wallet);
+    }
+    const orgId = resolveWalletOrgIdForEdit(wallet);
+    const proOrgIds = Array.isArray(EDIT_ACCESS.proOrgIds) ? EDIT_ACCESS.proOrgIds : [];
+    return orgId !== '' && proOrgIds.indexOf(orgId) >= 0;
+  }
+
+  /** Pro-only catalog fields (app store links, video, features): legacy always on; tier UI limits to Pro. */
+  function walletShowsProCatalogContent(wallet) {
+    if (!TIER_UI_ENABLED) return true;
+    return walletCatalogTierIsPro(wallet);
+  }
+
+  function walletOfficialCardClass(wallet) {
+    return walletCatalogTierIsPro(wallet) ? ' fides-wallet-card--official' : '';
+  }
+
+  function renderWalletCardFooterBadges(wallet) {
+    if (!walletCatalogTierIsPro(wallet)) return '';
+    return `<div class="fides-wallet-card-footer-badges"><span class="fides-wallet-footer-badge fides-wallet-footer-badge--official" role="img" aria-label="Official account" title="${OFFICIAL_ACCOUNT_TITLE}">${icons.official}</span></div>`;
+  }
+
+  function renderWalletListBadges(wallet) {
+    if (!walletCatalogTierIsPro(wallet)) return '';
+    return `<div class="fides-row-badges"><span class="fides-row-badge-icon fides-row-badge-icon--official" role="img" aria-label="Official account" title="${OFFICIAL_ACCOUNT_TITLE}">${icons.official}</span></div>`;
+  }
+
+  function walletCardAriaLabel(wallet) {
+    const d = getWalletDisplayData(wallet);
+    const name = escapeHtml(d.displayName);
+    if (walletCatalogTierIsPro(wallet)) return `${name}, official account`;
+    return name;
   }
 
   // DOM Elements
@@ -550,8 +636,9 @@
 
   function renderWalletRow(wallet) {
     const d = getWalletDisplayData(wallet);
+    const officialClass = walletOfficialCardClass(wallet);
     return `
-      <div class="fides-wallet-card" data-wallet-id="${escapeHtml(wallet.id)}" role="button" tabindex="0" aria-label="${escapeHtml(d.providerName)} – ${escapeHtml(d.displayName)}">
+      <div class="fides-wallet-card${officialClass}" data-wallet-id="${escapeHtml(wallet.id)}" role="button" tabindex="0" aria-label="${walletCardAriaLabel(wallet)} – ${escapeHtml(d.providerName)}">
         <div class="fides-row-icon" aria-hidden="true">
           ${wallet.logo
             ? `<img src="${escapeHtml(wallet.logo)}" alt="${escapeHtml(wallet.name || d.displayName)}" style="width:22px;height:22px;object-fit:contain;border-radius:3px;">`
@@ -560,6 +647,7 @@
         </div>
         <div class="fides-row-name">
           <span class="fides-row-name-text" title="${escapeHtml(d.displayName)}">${escapeHtml(d.displayName)}</span>
+          ${renderWalletListBadges(wallet)}
         </div>
         <div class="fides-row-likes">${renderWalletListLikeSummary(wallet.id)}</div>
         <div class="fides-row-provider" title="${escapeHtml(d.providerName)}">${escapeHtml(d.providerName)}</div>
@@ -575,7 +663,7 @@
       return '<span class="fides-row-platform-empty">—</span>';
     }
     return platforms.map((platform) => {
-      const href = getAppStoreLink(wallet, platform);
+      const href = walletShowsProCatalogContent(wallet) ? getAppStoreLink(wallet, platform) : null;
       const icon = getAppStoreIcon(platform);
       const platformLabel = escapeHtml(platform);
       if (href) {
@@ -1013,6 +1101,9 @@
         if (!hasWalletVideo(wallet)) return false;
       }
 
+      // Official (Pro organization) accounts only
+      if (TIER_UI_ENABLED && filters.officialOnly && !walletCatalogTierIsPro(wallet)) return false;
+
       return true;
     });
 
@@ -1061,6 +1152,7 @@
     if (filters.governance !== null) count += 1;
     if (filters.addedLast30Days) count += 1;
     if (filters.includesVideo) count += 1;
+    if (filters.officialOnly) count += 1;
     if (filters.ids && filters.ids.length > 0) count += 1;
     return count;
   }
@@ -1100,6 +1192,7 @@
     const openSource = { true: 0, false: 0 };
     let addedLast30Days = 0;
     let includesVideo = 0;
+    let officialOnly = 0;
 
     walletList.forEach(wallet => {
       if (wallet.type) {
@@ -1150,6 +1243,7 @@
       else openSource.false += 1;
       if (isWithinLastDays(getWalletAddedDate(wallet), 30)) addedLast30Days += 1;
       if (hasWalletVideo(wallet)) includesVideo += 1;
+      if (walletCatalogTierIsPro(wallet)) officialOnly += 1;
     });
 
     const country = Object.entries(countryCount)
@@ -1173,7 +1267,8 @@
       interoperabilityProfiles,
       openSource,
       addedLast30Days,
-      includesVideo
+      includesVideo,
+      officialOnly
     };
   }
 
@@ -1240,7 +1335,7 @@
     let html = '';
 
     // Main layout with sidebar
-    html += `<div class="fides-main-layout">`;
+    html += `<div class="fides-main-layout fides-main ${settings.showFilters ? '' : 'no-filters'}">`;
 
     // Sidebar with search and filters
     if (settings.showFilters) {
@@ -1278,6 +1373,12 @@
                 <input type="checkbox" data-filter="includesVideo" data-value="true" ${filters.includesVideo ? 'checked' : ''}>
                 <span>Includes video<span class="fides-filter-option-count">(${filterFacets ? filterFacets.includesVideo : ''})</span></span>
               </label>
+              ${TIER_UI_ENABLED ? `
+              <label class="fides-filter-checkbox">
+                <input type="checkbox" data-filter="officialOnly" data-value="true" ${filters.officialOnly ? 'checked' : ''}>
+                <span>${OFFICIAL_FILTER_LABEL}<span class="fides-filter-option-count">(${filterFacets ? filterFacets.officialOnly : ''})</span></span>
+              </label>
+              ` : ''}
             </div>
             ${!settings.type ? `
               <div class="fides-filter-group collapsible ${!filterGroupState.type ? 'collapsed' : ''} ${filters.type.length > 0 ? 'has-active' : ''}" data-filter-group="type">
@@ -1620,24 +1721,25 @@
             </div>
           </div>
         ` : ''}
-        <label class="fides-sort-label" for="fides-sort-select">
-          <span class="fides-sort-text">Sort by:</span>
-          <select id="fides-sort-select" class="fides-sort-select">
-            <option value="lastUpdated" ${sortBy === 'lastUpdated' ? 'selected' : ''}>Last updated</option>
-            <option value="rating" ${sortBy === 'rating' ? 'selected' : ''}>Likes</option>
-            <option value="az" ${sortBy === 'az' ? 'selected' : ''}>A-Z</option>
-          </select>
-        </label>
+        <div class="fides-results-bar-actions">
+          ${settings.showFilters ? `
+            <button class="fides-mobile-filter-toggle" id="fides-mobile-filter-toggle">
+              ${icons.filter}
+              <span>Filters</span>
+              <span class="fides-filter-count ${activeFilterCount > 0 ? '' : 'hidden'}">${activeFilterCount || 0}</span>
+            </button>
+          ` : ''}
+          <label class="fides-sort-label" for="fides-sort-select">
+            <span class="fides-sort-text">Sort by:</span>
+            <select id="fides-sort-select" class="fides-sort-select">
+              <option value="lastUpdated" ${sortBy === 'lastUpdated' ? 'selected' : ''}>Last updated</option>
+              <option value="rating" ${sortBy === 'rating' ? 'selected' : ''}>Likes</option>
+              <option value="az" ${sortBy === 'az' ? 'selected' : ''}>A-Z</option>
+            </select>
+          </label>
+        </div>
         <a href="${MAP_PAGE_URL}" class="fides-show-on-map" target="_blank" rel="noopener" aria-label="Show on map (opens in new tab)">${icons.externalLink}<span class="fides-show-on-map-label fides-show-on-map-label--full">Show on map</span><span class="fides-show-on-map-label fides-show-on-map-label--short" aria-hidden="true">Map</span></a>
         ${renderViewToggle()}
-        <!-- Mobile filter toggle -->
-        ${settings.showFilters ? `
-          <button class="fides-mobile-filter-toggle" id="fides-mobile-filter-toggle">
-            ${icons.filter}
-            <span>Filters</span>
-            <span class="fides-filter-count ${activeFilterCount > 0 ? '' : 'hidden'}">${activeFilterCount || 0}</span>
-          </button>
-        ` : ''}
       </div>
     `;
     const walletsLabel = settings.type === 'personal' ? 'Personal Wallets' : settings.type === 'organizational' ? 'Business Wallets' : 'Wallets';
@@ -1827,9 +1929,10 @@
     };
     const displayData = getWalletDisplayData(wallet);
     const displayName = displayData.displayName;
+    const officialClass = walletOfficialCardClass(wallet);
 
     return `
-      <div class="fides-wallet-card" data-wallet-id="${wallet.id}" role="button" tabindex="0">
+      <div class="fides-wallet-card${officialClass}" data-wallet-id="${wallet.id}" role="button" tabindex="0" aria-label="${walletCardAriaLabel(wallet)}">
         <div class="fides-wallet-header type-${wallet.type}">
           ${wallet.logo 
             ? `<img src="${escapeHtml(wallet.logo)}" alt="${escapeHtml(wallet.name)}" class="fides-wallet-logo">`
@@ -1880,12 +1983,15 @@
           ` : ''}
         </div>
         <div class="fides-wallet-footer">
-          <div class="fides-wallet-links">
-            ${wallet.openSource ? (wallet.repository ? `
+          <div class="fides-wallet-card-footer-start">
+            ${renderWalletCardFooterBadges(wallet)}
+            <div class="fides-wallet-links">
+              ${wallet.openSource ? (wallet.repository ? `
               <a href="${escapeHtml(wallet.repository)}" target="_blank" rel="noopener" class="fides-wallet-link" onclick="event.stopPropagation();">
                 ${icons.github} Open Source
               </a>
             ` : `<span class="fides-wallet-link">${icons.github} Open Source</span>`) : ''}
+            </div>
           </div>
           <span class="fides-view-details">${icons.eye} View details</span>
         </div>
@@ -1919,7 +2025,7 @@
    * Render platform tag (clickable if app store link available)
    */
   function renderPlatformTag(wallet, platform) {
-    const link = getAppStoreLink(wallet, platform);
+    const link = walletShowsProCatalogContent(wallet) ? getAppStoreLink(wallet, platform) : null;
     const icon = platform === 'iOS' || platform === 'Android' ? icons.smartphone : icons.globe;
     
     if (link) {
@@ -1971,6 +2077,9 @@
       ? `<a href="${escapeHtml(orgCatalogHref)}" class="fides-modal-link-inline" aria-label="View organization in organization catalog" title="Organization catalog" onclick="event.stopPropagation();"><span>${escapeHtml(providerDisplayName)}</span></a>`
       : escapeHtml(providerDisplayName);
     const bluePagesHref = getBluePagesUrlForWallet(wallet.provider && wallet.provider.did);
+    const officialHeaderBadge = walletCatalogTierIsPro(wallet)
+      ? `<span class="fides-modal-header-official-badge" role="status" title="${OFFICIAL_ACCOUNT_TITLE}">${icons.official}<span class="fides-modal-header-official-label">Official</span></span>`
+      : '';
 
     const modalHtml = `
       <div class="fides-modal-overlay" id="fides-modal-overlay" data-theme="${currentTheme}">
@@ -1982,7 +2091,10 @@
                 : `<div class="fides-modal-logo-placeholder">${icons.wallet}</div>`
               }
               <div class="fides-modal-title-wrap">
-                <h2 class="fides-modal-title" id="fides-modal-title">${escapeHtml(wallet.name)}</h2>
+                <div class="fides-modal-title-row">
+                  <h2 class="fides-modal-title" id="fides-modal-title">${escapeHtml(wallet.name)}</h2>
+                  ${officialHeaderBadge}
+                </div>
                 <p class="fides-modal-provider">${icons.building} ${providerNameHtml}${bluePagesHref ? ` <a href="${escapeHtml(bluePagesHref)}" target="_blank" rel="noopener" class="fides-modal-provider-link">${icons.externalLink} View in Blue Pages</a>` : ''}</p>
               </div>
             </div>
@@ -2025,8 +2137,8 @@
               </div>
             ` : ''}
 
-            <!-- Video embed (if available) -->
-            ${wallet.video ? getVideoEmbedHtml(wallet.video) : ''}
+            <!-- Video embed (Pro listings only when tier UI is on) -->
+            ${walletShowsProCatalogContent(wallet) && wallet.video ? getVideoEmbedHtml(wallet.video) : ''}
 
             <!-- Quick info grid -->
             <div class="fides-modal-grid">
@@ -2034,7 +2146,7 @@
               ${wallet.platforms && wallet.platforms.length > 0 ? `
                 <div class="fides-modal-grid-item">
                   <div class="fides-modal-grid-label">
-                    ${icons.smartphone} Platforms ${wallet.type !== 'organizational' ? '<span class="fides-label-hint">(click to access)</span>' : ''}
+                    ${icons.smartphone} Platforms ${wallet.type !== 'organizational' && walletShowsProCatalogContent(wallet) ? '<span class="fides-label-hint">(click to access)</span>' : ''}
                   </div>
                   <div class="fides-modal-grid-value">
                     ${wallet.platforms.map(p => renderPlatformTag(wallet, p)).join('')}
@@ -2155,8 +2267,8 @@
               ` : ''}
             </div>
 
-            <!-- Features -->
-            ${wallet.features && wallet.features.length > 0 ? `
+            <!-- Features (Pro listings only when tier UI is on) -->
+            ${walletShowsProCatalogContent(wallet) && wallet.features && wallet.features.length > 0 ? `
               <div class="fides-modal-features">
                 <h4 class="fides-modal-section-title">Features</h4>
                 <ul class="fides-features-list">
@@ -2167,7 +2279,8 @@
               </div>
             ` : ''}
 
-            <!-- Links -->
+            <!-- Links (Pro listings only when tier UI is on) -->
+            ${walletShowsProCatalogContent(wallet) ? `
             <div class="fides-modal-links">
               ${wallet.website ? `
                 <a href="${escapeHtml(wallet.website)}" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Visit website">
@@ -2185,6 +2298,7 @@
                 </a>
               ` : ''}
             </div>
+            ` : ''}
           </div>
         </div>
       </div>
@@ -2385,10 +2499,12 @@
       if (window.FidesCatalogUI && typeof window.FidesCatalogUI.openWalletModal === 'function') {
         window.FidesCatalogUI.openWalletModal(wallet, {
           theme: container ? (container.getAttribute('data-theme') || 'dark') : 'dark',
+          tierUiEnabled: TIER_UI_ENABLED,
           organizationCatalogUrl: ORGANIZATION_CATALOG_PAGE_URL,
           bluePagesUrl: BLUE_PAGES_URL,
           updateFormUrl: UPDATE_FORM_URL,
           isLoggedIn: RATINGS_IS_LOGGED_IN,
+          editAccess: EDIT_ACCESS,
           ratingsApiBase: RATINGS_API_BASE,
           ratingsNonce: RATINGS_NONCE,
           ratingsIsLoggedIn: RATINGS_IS_LOGGED_IN,
@@ -2511,7 +2627,7 @@
         if (filterType === 'linkedWallets') {
           filters.ids = isChecked ? [...originalIds] : [];
         }
-        else if (filterType === 'addedLast30Days' || filterType === 'includesVideo') {
+        else if (filterType === 'addedLast30Days' || filterType === 'includesVideo' || filterType === 'officialOnly') {
           filters[filterType] = isChecked;
         }
         // Special handling for openSource (boolean toggle)
@@ -2598,6 +2714,7 @@
           governance: null,
           addedLast30Days: false,
           includesVideo: false,
+          officialOnly: false,
           ids: []
         };
         // Clear the deep-link pre-filter entirely (checkbox will disappear)
