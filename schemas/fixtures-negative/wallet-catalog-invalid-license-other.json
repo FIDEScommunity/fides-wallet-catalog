@@ -1,0 +1,13 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:example-invalid",
+  "wallets": [
+    {
+      "id": "invalid-license",
+      "name": "Invalid License Wallet",
+      "type": "personal",
+      "openSource": true,
+      "license": "other"
+    }
+  ]
+}

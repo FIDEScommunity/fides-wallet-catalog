@@ -572,7 +572,12 @@
       keyStorage: w.keyStorage,
       signingAlgorithms: w.signingAlgorithms,
       credentialStatusMethods: w.credentialStatusMethods,
-      certifications: w.certifications,
+      recognitions: w.recognitions,
+      deploymentModel: w.deploymentModel,
+      slaAvailable: w.slaAvailable,
+      pricing: w.pricing,
+      media: w.media,
+      licenseOther: w.licenseOther,
       interoperabilityProfiles: w.interoperabilityProfiles,
       standards: w.standards,
       features: w.features,
@@ -584,7 +589,7 @@
     }));
 
     const doc = pick({
-      $schema: "https://fides.community/schemas/wallet-catalog/v1",
+      $schema: "https://fides.community/schemas/wallet-catalog/v2",
       provider,
       wallets: wOut,
       lastUpdated: nowIso()

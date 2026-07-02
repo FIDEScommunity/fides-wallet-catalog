@@ -1,5 +1,5 @@
 {
-  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
   "wallets": [
     {
       "id": "lissi-wallet",
@@ -44,9 +44,6 @@
       "credentialStatusMethods": [
         "StatusList2021"
       ],
-      "certifications": [
-        "EUDI Wallet LSP"
-      ],
       "interoperabilityProfiles": [
         "EWC v3"
       ],
@@ -65,7 +62,14 @@
         "android": "https://play.google.com/store/apps/details?id=io.lissi.mobile.android"
       },
       "status": "production",
-      "releaseDate": "2021-01-15"
+      "releaseDate": "2021-01-15",
+      "recognitions": {
+        "certifications": [
+          {
+            "title": "EUDI Wallet LSP"
+          }
+        ]
+      }
     },
     {
       "id": "lissi-id-wallet-connector",

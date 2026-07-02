@@ -155,7 +155,7 @@ export function mergeWalletIntoCatalog(
     wallets.push(wallet);
   }
   return {
-    $schema: 'https://fides.community/schemas/wallet-catalog/v1',
+    $schema: 'https://fides.community/schemas/wallet-catalog/v2',
     orgId: orgId || base?.orgId,
     wallets,
     lastUpdated: new Date().toISOString(),

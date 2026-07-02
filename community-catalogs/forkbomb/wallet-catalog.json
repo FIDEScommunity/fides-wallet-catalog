@@ -1,5 +1,5 @@
 {
-  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
   "wallets": [
     {
       "id": "didroom",
@@ -26,7 +26,7 @@
         "OpenID4VP"
       ],
       "openSource": true,
-      "license": "AGPL-3.0",
+      "license": "AGPL-3.0-or-later",
       "status": "production"
     },
     {

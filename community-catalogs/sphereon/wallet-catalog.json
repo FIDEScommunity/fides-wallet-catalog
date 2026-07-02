@@ -1,5 +1,5 @@
 {
-  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
   "wallets": [
     {
       "id": "sphereon-wallet",
@@ -48,9 +48,6 @@
         "StatusList2021",
         "RevocationList2020"
       ],
-      "certifications": [
-        "EUDI Wallet LSP"
-      ],
       "interoperabilityProfiles": [
         "DIIP v4",
         "DIIP v5"
@@ -71,7 +68,14 @@
         "android": "https://play.google.com/store/apps/details?id=com.sphereon.wallet"
       },
       "status": "production",
-      "releaseDate": "2022-03-15"
+      "releaseDate": "2022-03-15",
+      "recognitions": {
+        "certifications": [
+          {
+            "title": "EUDI Wallet LSP"
+          }
+        ]
+      }
     },
     {
       "id": "sphereon-vdx-platform",

@@ -33,7 +33,10 @@ jobs:
       
       - name: Validate all wallet catalogs
         run: |
-          echo "🔍 Validating wallet catalogs against schema..."
-          npm run validate
-          echo "✅ All wallet catalogs are valid!"
+          echo "🔍 Validating community catalogs + fixtures (v2)..."
+          npm run validate:v2
+          echo "🔍 Running schema + migration unit tests..."
+          npm run test:schema
+          npm run test:migrate
+          echo "✅ Schema validation passed!"
 

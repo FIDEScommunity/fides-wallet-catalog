@@ -313,7 +313,8 @@
       'did:key': 'didKey',
       'did:jwk': 'didJwk',
       'did:peer': 'didPeer',
-      'did:ebsi': 'didEbsi'
+      'did:ebsi': 'didEbsi',
+      'did:webvh': 'didWebvh'
     },
     keyStorage: {
       'Secure Enclave (iOS)': 'secureEnclaveIos',
@@ -437,12 +438,17 @@
   }
 
   function renderWalletCardFooterBadges(wallet) {
+    if (TIER_UI_ENABLED && window.FidesCatalogUI && typeof window.FidesCatalogUI.buildCatalogListingHeaderBadgeHtml === 'function') {
+      const badge = window.FidesCatalogUI.buildCatalogListingHeaderBadgeHtml(wallet, { tierUiEnabled: TIER_UI_ENABLED });
+      if (!badge) return '';
+      return '<div class="fides-wallet-card-footer-badges fides-wallet-card-footer-listing">' + badge + '</div>';
+    }
     if (!walletCatalogTierIsPro(wallet)) return '';
     return `<div class="fides-wallet-card-footer-badges"><span class="fides-wallet-footer-badge fides-wallet-footer-badge--official" role="img" aria-label="Official account" title="${OFFICIAL_ACCOUNT_TITLE}">${icons.official}</span></div>`;
   }
 
   function renderWalletListBadges(wallet) {
-    if (!walletCatalogTierIsPro(wallet)) return '';
+    if (!TIER_UI_ENABLED || !walletCatalogTierIsPro(wallet)) return '';
     return `<div class="fides-row-badges"><span class="fides-row-badge-icon fides-row-badge-icon--official" role="img" aria-label="Official account" title="${OFFICIAL_ACCOUNT_TITLE}">${icons.official}</span></div>`;
   }
 
@@ -565,8 +571,20 @@
    * Whether wallet has a usable video URL
    */
   function hasWalletVideo(wallet) {
-    if (!wallet || !wallet.video || typeof wallet.video !== 'string') return false;
-    return wallet.video.trim().length > 0;
+    if (!wallet) return false;
+    if (wallet.video && typeof wallet.video === 'string' && wallet.video.trim()) return true;
+    const videos = wallet.media && Array.isArray(wallet.media.videos) ? wallet.media.videos : [];
+    return videos.some(function(u) { return String(u || '').trim().length > 0; });
+  }
+
+  function walletPrimaryVideoUrl(wallet) {
+    if (!wallet) return '';
+    const videos = wallet.media && Array.isArray(wallet.media.videos) ? wallet.media.videos : [];
+    for (let i = 0; i < videos.length; i += 1) {
+      const clean = String(videos[i] || '').trim();
+      if (clean) return clean;
+    }
+    return wallet.video && typeof wallet.video === 'string' ? wallet.video.trim() : '';
   }
 
   /**
@@ -806,6 +824,12 @@
     }
   }
 
+  function appendLocalCacheVersion(url, version) {
+    if (!url || !version) return url;
+    const sep = String(url).includes('?') ? '&' : '?';
+    return `${url}${sep}v=${encodeURIComponent(version)}`;
+  }
+
   /**
    * Load wallets from multiple sources (with fallbacks)
    * Default: GitHub/raw JSON first, then plugin data/aggregated.json.
@@ -813,7 +837,8 @@
    */
   async function loadWallets() {
     const remote = { name: 'GitHub', url: config.githubDataUrl, transform: (d) => d.wallets || [] };
-    const local = { name: 'Local', url: `${config.pluginUrl}data/aggregated.json`, transform: (d) => d.wallets || [] };
+    const localVersion = config.aggregatedDataVersion ? `?v=${encodeURIComponent(config.aggregatedDataVersion)}` : '';
+    const local = { name: 'Local', url: `${config.pluginUrl}data/aggregated.json${localVersion}`, transform: (d) => d.wallets || [] };
     const sources = isFidesLocalDevHost() ? [local, remote] : [remote, local];
 
     for (const source of sources) {
@@ -886,7 +911,7 @@
     let first = primaryUrl;
     let second = fallbackUrl;
     if (isFidesLocalDevHost() && primaryUrl && fallbackUrl) {
-      first = fallbackUrl;
+      first = appendLocalCacheVersion(fallbackUrl, config.vocabularyDataVersion);
       second = primaryUrl;
     }
     const tryLoad = async (url) => {
@@ -1919,79 +1944,39 @@
   }
 
   /**
-   * Render a single wallet card
+   * Render a single wallet card (grid view — aligned with organization catalog layout).
    */
+  function renderWalletCardLogoMain(wallet) {
+    const logo = wallet.logo ? String(wallet.logo).trim() : '';
+    if (logo) {
+      return '<img src="' + escapeHtml(logo) + '" alt="" width="64" height="64" loading="lazy" decoding="async">';
+    }
+    return icons.wallet;
+  }
+
   function renderWalletCard(wallet) {
-    const capabilityLabels = {
-      holder: 'Holder',
-      issuer: 'Issuer',
-      verifier: 'Verifier'
-    };
     const displayData = getWalletDisplayData(wallet);
     const displayName = displayData.displayName;
     const officialClass = walletOfficialCardClass(wallet);
+    const logoMain = renderWalletCardLogoMain(wallet);
 
     return `
       <div class="fides-wallet-card${officialClass}" data-wallet-id="${wallet.id}" role="button" tabindex="0" aria-label="${walletCardAriaLabel(wallet)}">
-        <div class="fides-wallet-header type-${wallet.type}">
-          ${wallet.logo 
-            ? `<img src="${escapeHtml(wallet.logo)}" alt="${escapeHtml(wallet.name)}" class="fides-wallet-logo">`
-            : `<div class="fides-wallet-logo-placeholder">${icons.wallet}</div>`
-          }
+        <header class="fides-wallet-header fides-wallet-card-header--text-only type-${wallet.type}">
           <div class="fides-wallet-info">
             <h3 class="fides-wallet-name" title="${escapeHtml(displayName)}">${escapeHtml(displayName)}</h3>
             <p class="fides-wallet-provider">${escapeHtml(getWalletProviderDisplayName(wallet))}</p>
           </div>
-        </div>
+        </header>
         <div class="fides-wallet-body">
           <p class="fides-wallet-rating-summary">${renderWalletRatingSummary(wallet.id)}</p>
-          ${wallet.description ? `<p class="fides-wallet-description">${escapeHtml(wallet.description)}</p>` : ''}
-          
-          ${wallet.type === 'organizational' && wallet.capabilities && wallet.capabilities.length > 0 ? `
-            <div class="fides-tags fides-capability-tags">
-              ${wallet.capabilities.map(c => `
-                <span class="fides-tag capability capability-${c}">
-                  ${capabilityLabels[c] || c}
-                </span>
-              `).join('')}
-            </div>
-          ` : ''}
-          
-          ${wallet.platforms && wallet.platforms.length > 0 ? `
-            <div class="fides-tags">
-              ${wallet.platforms
-                .filter(p => !(wallet.type === 'organizational' && p === 'Web'))
-                .map(p => renderPlatformTag(wallet, p)).join('')}
-            </div>
-          ` : ''}
-
-          ${wallet.interoperabilityProfiles && wallet.interoperabilityProfiles.length > 0 ? `
-            <div class="fides-tags">
-              ${wallet.interoperabilityProfiles.map(p => `
-                <span class="fides-tag interop">${escapeHtml(p)}</span>
-              `).join('')}
-            </div>
-          ` : ''}
-          
-          ${wallet.vcFormat && wallet.vcFormat.length > 0 ? `
-            <div class="fides-wallet-section">
-              <h4 class="fides-wallet-section-title">VC formats</h4>
-              <div class="fides-tags">
-                ${sortCredentialFormats(wallet.vcFormat).map(f => `<span class="fides-tag">${escapeHtml(credentialFormatDisplayLabel(f))}</span>`).join('')}
-              </div>
-            </div>
-          ` : ''}
+          <div class="fides-wallet-card-logo-panel" aria-hidden="true">
+            <div class="fides-wallet-card-logo-main">${logoMain}</div>
+          </div>
         </div>
         <div class="fides-wallet-footer">
           <div class="fides-wallet-card-footer-start">
             ${renderWalletCardFooterBadges(wallet)}
-            <div class="fides-wallet-links">
-              ${wallet.openSource ? (wallet.repository ? `
-              <a href="${escapeHtml(wallet.repository)}" target="_blank" rel="noopener" class="fides-wallet-link" onclick="event.stopPropagation();">
-                ${icons.github} Open Source
-              </a>
-            ` : `<span class="fides-wallet-link">${icons.github} Open Source</span>`) : ''}
-            </div>
           </div>
           <span class="fides-view-details">${icons.eye} View details</span>
         </div>
@@ -2077,9 +2062,13 @@
       ? `<a href="${escapeHtml(orgCatalogHref)}" class="fides-modal-link-inline" aria-label="View organization in organization catalog" title="Organization catalog" onclick="event.stopPropagation();"><span>${escapeHtml(providerDisplayName)}</span></a>`
       : escapeHtml(providerDisplayName);
     const bluePagesHref = getBluePagesUrlForWallet(wallet.provider && wallet.provider.did);
-    const officialHeaderBadge = walletCatalogTierIsPro(wallet)
-      ? `<span class="fides-modal-header-official-badge" role="status" title="${OFFICIAL_ACCOUNT_TITLE}">${icons.official}<span class="fides-modal-header-official-label">Official</span></span>`
-      : '';
+    const officialHeaderBadge = window.FidesCatalogUI && typeof window.FidesCatalogUI.buildCatalogListingHeaderBadgeHtml === 'function'
+      ? window.FidesCatalogUI.buildCatalogListingHeaderBadgeHtml(wallet, { tierUiEnabled: TIER_UI_ENABLED, editAccess: EDIT_ACCESS, isLoggedIn: RATINGS_IS_LOGGED_IN })
+      : (TIER_UI_ENABLED
+        ? (walletCatalogTierIsPro(wallet)
+          ? `<span class="fides-modal-header-official-badge fides-modal-header-listing-badge fides-modal-header-listing-badge--official" role="status" title="${OFFICIAL_ACCOUNT_TITLE}">${icons.official}<span class="fides-modal-header-official-label fides-modal-header-listing-label">Official Listing</span></span>`
+          : `<span class="fides-modal-header-official-badge fides-modal-header-listing-badge fides-modal-header-listing-badge--community" role="status" title="Community listing — contributed by the community"><span class="fides-modal-header-official-label fides-modal-header-listing-label">Community Listing</span></span>`)
+        : '');
 
     const modalHtml = `
       <div class="fides-modal-overlay" id="fides-modal-overlay" data-theme="${currentTheme}">
@@ -2138,7 +2127,7 @@
             ` : ''}
 
             <!-- Video embed (Pro listings only when tier UI is on) -->
-            ${walletShowsProCatalogContent(wallet) && wallet.video ? getVideoEmbedHtml(wallet.video) : ''}
+            ${walletShowsProCatalogContent(wallet) && walletPrimaryVideoUrl(wallet) ? getVideoEmbedHtml(walletPrimaryVideoUrl(wallet)) : ''}
 
             <!-- Quick info grid -->
             <div class="fides-modal-grid">
@@ -2255,16 +2244,7 @@
                   </div>
                 </div>
               ` : ''}
-              ${wallet.releaseDate ? `
-                <div class="fides-modal-grid-item">
-                  <div class="fides-modal-grid-label">
-                    ${icons.calendar} Release date
-                  </div>
-                  <div class="fides-modal-grid-value">
-                    ${escapeHtml(new Date(wallet.releaseDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }))}
-                  </div>
-                </div>
-              ` : ''}
+
             </div>
 
             <!-- Features (Pro listings only when tier UI is on) -->
@@ -2500,6 +2480,7 @@
         window.FidesCatalogUI.openWalletModal(wallet, {
           theme: container ? (container.getAttribute('data-theme') || 'dark') : 'dark',
           tierUiEnabled: TIER_UI_ENABLED,
+          vocabulary: vocabulary,
           organizationCatalogUrl: ORGANIZATION_CATALOG_PAGE_URL,
           bluePagesUrl: BLUE_PAGES_URL,
           updateFormUrl: UPDATE_FORM_URL,

@@ -13,7 +13,6 @@ import fs from 'fs/promises';
 import { existsSync } from 'fs';
 import path from 'path';
 import { execFileSync } from 'child_process';
-import { hostname } from 'os';
 import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 import type { 
@@ -77,15 +76,10 @@ interface OrgCatalogEntry {
   website?: string;
   logoUri?: string;
   country?: string;
-  contact?: { email?: string; support?: string };
+  contact?: { contactUrl?: string; bookMeetingUrl?: string };
   fidesManifestoSupporter?: boolean;
   /** Community or Pro — inherited onto wallets at crawl time when missing on wallet JSON. */
   catalogTier?: string;
-}
-
-function isLocalDevHost(): boolean {
-  const host = hostname();
-  return host !== '' && (host.endsWith('.local') || host === 'localhost');
 }
 
 function orgEntryToWalletProvider(entry: OrgCatalogEntry, orgId: string): WalletProvider {

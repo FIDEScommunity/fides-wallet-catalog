@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.8.3
+Stable tag: 2.9.0
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -100,6 +100,12 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.9.0 =
+* Wallet catalog schema v2: community catalogs migrated to v2 (`media`, structured `recognitions`, `license` enum); CI validates v2 only.
+* Submission forms: media (videos/images), recognitions, deployment model, SLA, pricing, and license dropdown with "Other" text.
+* Server-side v2 normalizer validates Pro field limits and tier export rules (requires fides-community-tools-tiles ≥ 1.8.0 for wallet v2 Pro export keys: `media`, `recognitions`, `pricing`).
+* Grid cards aligned with organization catalog (listing pills, logo/likes layout); list view official badge fix; requires synced `fides-catalog-ui` from tiles ≥ 1.8.3.
 
 = 2.8.3 =
 * Respects master switch `fides_catalog_tier_ui_enabled` from fides-community-tools-tiles (default off): Official filter/badges hidden until tier go-live.
