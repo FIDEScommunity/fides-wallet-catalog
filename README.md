@@ -6,13 +6,18 @@ A comprehensive, community-driven catalog of 70+ digital identity wallets from a
 
 ## 🎯 Concept
 
-The FIDES Wallet Catalog provides a standardized, searchable database of digital identity wallets. Wallet providers contribute their wallet information via GitHub Pull Requests, ensuring:
+The FIDES Wallet Catalog is a standardized, searchable database of digital identity wallets. Providers can contribute and update listings in two ways:
 
-1. **Standardized format** - All wallets follow a unified JSON schema
-2. **Community-maintained** - Providers manage their own information via PR
-3. **Automatic aggregation** - GitHub Actions daily aggregates all catalogs
-4. **Always up-to-date** - Changes are immediately reflected in the catalog
-5. **Open source** - Apache-2.0 license, fully transparent
+1. **WordPress forms** on [fides.community](https://fides.community) (recommended) — submit and update forms with moderation, then automatic sync to GitHub
+2. **GitHub Pull Requests** — edit `community-catalogs/*/wallet-catalog.json` directly (schema **v2**)
+
+Shared properties:
+
+1. **Standardized format** — unified JSON schema (v2)
+2. **Community-maintained** — providers own their data
+3. **Automatic aggregation** — crawler builds `data/aggregated.json`
+4. **Always up-to-date** — daily crawl plus WP publish sync
+5. **Open source** — Apache-2.0 license
 
 The catalog is available as:
 - **Website** - Interactive catalog at fides.community
@@ -114,36 +119,49 @@ The API runs on http://localhost:3001 — same data and filters as `GET /api/pub
 
 ## 🌍 Data Sources
 
-The FIDES Wallet Catalog aggregates wallet data from the `community-catalogs/` directory:
+Wallet data lives in `community-catalogs/` and is aggregated into `data/aggregated.json`. Sources include:
 
-### Community Contributions (Primary)
-Wallet providers submit their own `wallet-catalog.json` files via GitHub Pull Requests. The catalog includes:
-- **National EUDI Wallets** - 20+ EU member state wallets (Austria, Finland, Germany, Netherlands, Spain, etc.)
-- **Government Digital ID Apps** - France Identité, mObywatel, Diia, IT Wallet, etc.
-- **Commercial Wallet Providers** - 50+ vendors worldwide (Animo, Sphereon, Procivis, Lissi, etc.)
-- **Tech Giants** - Apple Wallet, Google Wallet
+- **WordPress submissions** — published entries from `[fides_wallet_submit_form]` / `[fides_wallet_update_form]` on fides.community (synced via GitHub Actions)
+- **Community Pull Requests** — direct JSON contributions to this repo
+- **National & commercial wallets** — 70+ providers (EUDI member states, government apps, vendors, tech giants)
 
-### DID-based Auto-discovery (Optional)
-Advanced feature: Wallet providers with DID infrastructure can host their catalog on their own domain and register their DID for automatic crawling. See [docs/DID_REGISTRATION.md](docs/DID_REGISTRATION.md).
+Organization metadata (`provider` name, logo, country, etc.) is merged from the [FIDES Organization Catalog](https://github.com/FIDEScommunity/fides-organization-catalog) at crawl time using `orgId`.
 
-## 📋 Add Your Wallet to the Catalog
+### DID-based auto-discovery (optional)
 
-### Quick Start (Recommended)
+Advanced: host a catalog on your domain and register a DID for automatic crawling. See [docs/DID_REGISTRATION.md](docs/DID_REGISTRATION.md).
+
+## 📋 Add or Update Your Wallet
+
+### Option A — WordPress forms (recommended)
+
+1. Ensure your organization exists in the [organization catalog](https://github.com/FIDEScommunity/fides-organization-catalog) (`orgId` e.g. `org:your-org`).
+2. Sign in on **fides.community** and open the **submit** or **update** wallet form page.
+3. Complete the form and submit. A maintainer reviews under **Tools → Catalog Submissions**.
+4. After **Publish**, data syncs to this repo and the public catalog updates.
+
+Shortcodes (site operators): `[fides_wallet_submit_form]`, `[fides_wallet_update_form]`. Requires **fides-community-tools-tiles** with catalog submissions enabled.
+
+**Governance:** [fides-community-tools-tiles/docs/CATALOG-SUBMISSION-GOVERNANCE.md](https://github.com/FIDEScommunity/fides-community-tools-tiles/blob/main/docs/CATALOG-SUBMISSION-GOVERNANCE.md) — §14 (CI), §15 (deploy).
+
+**Pro listings:** organizations with a linked WordPress account can publish richer fields (media, recognitions, pricing, store links, etc.) on export. See [schemas/README.md](schemas/README.md#v2-tier-notes-export).
+
+### Option B — GitHub Pull Request
 
 1. **Fork** this repository
-2. **Create** a folder in `community-catalogs/` with your organization/wallet name
-3. **Add** your `wallet-catalog.json` following the schema
-4. **Submit** a Pull Request
+2. **Create** a folder in `community-catalogs/` (lowercase, hyphenated slug)
+3. **Add** `wallet-catalog.json` with `"$schema": "https://fides.community/schemas/wallet-catalog/v2"`
+4. **Open a Pull Request**
 
-See [docs/GITHUB_REPO_STRUCTURE.md](docs/GITHUB_REPO_STRUCTURE.md) for detailed instructions and examples.
+Full contributor guide: [docs/GITHUB_REPO_STRUCTURE.md](docs/GITHUB_REPO_STRUCTURE.md).
 
-### Minimal Example
+### Minimal example (schema v2)
 
 Organization details (name, DID, website, logo, country) live in the [FIDES Organization Catalog](https://github.com/FIDEScommunity/fides-organization-catalog). Your `wallet-catalog.json` only references that record via `orgId` (for example `org:your-org` — the same id as in the organization catalog).
 
 ```json
 {
-  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
   "orgId": "org:your-org",
   "wallets": [
     {
@@ -161,9 +179,11 @@ Organization details (name, DID, website, logo, country) live in the [FIDES Orga
 }
 ```
 
+Schema reference (v2 fields, limits, tier export): [schemas/README.md](schemas/README.md).
+
 ### Validation
 
-Your PR will be automatically validated against the schema. To validate locally:
+PRs and community JSON are validated in CI. Locally:
 
 ```bash
 npm run validate
@@ -219,23 +239,23 @@ GET /api/wallets?search=paradym&type=personal&platforms=iOS,Android&vcFormat=sd_
 
 Deploy this repository to Vercel (root = repo root; settings from `vercel.json`) to expose `GET /api/public/wallet`, wallet detail, and OpenAPI — see **[docs/API.md](docs/API.md)**. For a single hostname with other FIDES catalogs, use the [FIDES API Gateway](https://github.com/FIDEScommunity/fides-api-gateway) and set `FIDES_WALLET_CATALOG_ORIGIN` to this project’s `*.vercel.app` URL.
 
-## 📊 Wallet Properties
+## 📊 Wallet Properties (schema v2)
 
-The schema supports extensive wallet metadata:
+The schema supports extensive metadata. Highlights:
 
-- **General**: name, description, logo, website, app store links
-- **Type**: personal or organizational
+- **General**: name, description, logo, website, documentation, repository
+- **Commercial (Pro export)**: `media` (videos/images), `recognitions`, `pricing`, `features`, `appStoreLinks`
+- **Deployment**: `deploymentModel` (`saas`, `on_premises`, `hybrid`), `slaAvailable`, `license` enum + `licenseOther`
+- **Type**: `personal` or `organizational`
 - **Platforms**: iOS, Android, Web, Windows, macOS, Linux, CLI
-- **VC formats** (field `vcFormat`): canonical codes such as `sd_jwt_vc`, `mdoc`, `anoncreds`, `apple_wallet_pass`, etc.
-- **Protocols**: OpenID4VCI, OpenID4VP, DIDComm, ISO 18013-5, SIOPv2
-- **Identifiers**: did:web, did:key, did:jwk, did:peer, X.509, etc.
-- **Key Storage**: Secure Enclave, StrongBox, HSM, TEE, Cloud KMS, FIDO2/WebAuthn
-- **Signing Algorithms**: ES256, ES384, EdDSA, RS256, etc.
-- **Certifications**: EUDI Wallet LSP, ISO 27001, SOC 2, Common Criteria
-- **Interoperability**: DIIP v4, EWC v3, EUDI Wallet ARF
+- **VC formats** (`vcFormat`): `sd_jwt_vc`, `mdoc`, `apple_wallet_pass`, etc.
+- **Protocols**: OpenID4VCI, OpenID4VP, SIOPv2, ISO 18013-5, …
+- **Technical**: identifiers, key storage, signing algorithms, credential status, interoperability profiles
 - **Status**: development, beta, production, deprecated
 
-See the full schema: [schemas/wallet-catalog.schema.json](schemas/wallet-catalog.schema.json)
+**Removed in v2:** top-level `video`, string-array `certifications` — use `media.videos` and `recognitions.certifications`.
+
+Full reference: [schemas/README.md](schemas/README.md) and [schemas/wallet-catalog.schema.json](schemas/wallet-catalog.schema.json).
 
 ## 🔌 WordPress Integration
 
@@ -264,13 +284,18 @@ A WordPress plugin is included in `wordpress-plugin/fides-wallet-catalog/`.
 
 Each filter option shows a count of how many wallets match (e.g. "Personal (52)", "SD-JWT-VC (48)") so you can see the dataset distribution at a glance. Counts are computed over the visible set (e.g. when using `type="personal"`, only personal wallets are counted).
 
-The plugin automatically fetches data from the FIDES Community GitHub repository daily.
+The plugin fetches data from GitHub (`data/aggregated.json`) and supports on-site contributions when **fides-community-tools-tiles** is installed.
 
-### WordPress submissions (contributors & maintainers)
+### Contributor forms (logged-in users)
 
-Shortcodes: `[fides_wallet_submit_form]`, `[fides_wallet_update_form]`. Moderation lives in shared **fides-community-tools-tiles** (**Tools → Catalog Submissions**). Published entries sync via `.github/workflows/wp-submissions-sync.yml`.
+| Shortcode | Purpose |
+|-----------|---------|
+| `[fides_wallet_submit_form]` | Add a new wallet (moderated) |
+| `[fides_wallet_update_form]` | Suggest changes (`?wallet=` pre-selects from modal pencil) |
 
-**Canonical docs:** `fides-community-tools-tiles/docs/CATALOG-SUBMISSION-GOVERNANCE.md` — §14 (CI + `FIDES_WALLET_SKIP_GITHUB_CRAWL`), §15 (production deploy), §16 (new catalog checklist).
+Configure the update form URL under **Settings → FIDES Wallet Catalog**. Moderation: **Tools → Catalog Submissions** in tiles. Published rows sync to GitHub via `.github/workflows/wp-submissions-sync.yml`.
+
+**Docs:** [CATALOG-SUBMISSION-GOVERNANCE.md](https://github.com/FIDEScommunity/fides-community-tools-tiles/blob/main/docs/CATALOG-SUBMISSION-GOVERNANCE.md) (§14–16).
 
 ### Plugin data fallback (local)
 
