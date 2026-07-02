@@ -13,7 +13,7 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Forms')) {
 
     class Fides_Wallet_Catalog_Submission_Forms {
 
-        const VERSION = '2.8.3';
+        const VERSION = '2.9.0';
 
         /**
          * @param string $mode create|update.
@@ -35,14 +35,19 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Forms')) {
             'status'                => 'Deployment maturity of the wallet.',
             'description'           => 'Short description of the wallet and its purpose.',
             'platforms'             => 'Where the wallet is available.',
-            'website'               => 'Landing page or product website.',
-            'logo'                  => 'URL to a logo image.',
-            'video'                 => 'Optional demo or promotional video URL.',
-            'documentation'         => 'Link to technical or product documentation.',
+            'website'               => 'Official landing page where visitors can learn about the product, sign up, or download the wallet.',
+            'logo'                  => 'Direct URL to a logo image (PNG, SVG, or JPG) shown on catalog cards and the wallet detail page.',
+            'mediaVideos'           => 'Short product demos embedded on your public listing. Paste YouTube or Vimeo links — one per row (max 3).',
+            'mediaImages'           => 'Screenshots or product images visitors see on your wallet page. Upload a file or paste a URL — one per row (max 10).',
+            'documentation'         => 'Link to technical or product documentation — API references, integration guides, or user manuals.',
             'openSource'            => 'Whether the wallet implementation is open source.',
-            'license'               => 'SPDX or other license identifier when open source.',
-            'repository'            => 'Source code repository URL.',
-            'releaseDate'           => 'When the wallet was first publicly released (optional). Not the same as catalog sync timestamps.',
+            'license'               => 'Software license under which the wallet is distributed. The catalog shows open vs closed source based on this choice.',
+            'licenseOther'          => 'Exact license name when none of the standard options apply. Required if you selected Other (max 50 characters).',
+            'deploymentModel'       => 'How business customers run this wallet: vendor-hosted cloud (SaaS), fully on-premises, or a hybrid of both.',
+            'slaAvailable'          => 'Check if you offer a formal service level agreement (uptime, support response times, etc.) to business customers.',
+            'pricing'               => 'Explain how this wallet is priced — free, subscription tiers, per-seat, enterprise quotes, and so on. Shown on your public listing to help evaluators compare options (max 1000 characters).',
+            'repository'            => 'Public source code repository, if applicable — for example GitHub or GitLab.',
+            'releaseDate'           => 'Date this wallet product was first shipped or made publicly available (optional). Not when the catalog entry was last updated.',
             'vcFormat'              => 'Supported verifiable credential formats.',
             'issuanceProtocols'     => 'Protocols used to issue credentials.',
             'presentationProtocols' => 'Protocols used to present credentials.',
@@ -50,19 +55,94 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Forms')) {
             'keyStorage'            => 'Where keys are stored on device or in the cloud.',
             'signingAlgorithms'     => 'Supported signing algorithms (used by catalog filters).',
             'credentialStatusMethods' => 'Credential status / revocation methods (used by catalog filters).',
-            'certifications'        => 'Certification labels (comma-separated).',
+            'eidasTrustServices'    => 'Qualified eIDAS trust services this wallet integrates with or relies on. Shown as checkboxes in the Specifications section of the wallet modal.',
+            'recognitionsCustomerStories' => 'Organizations or programmes using this wallet — enter a short title and optionally link to a case study or pilot announcement.',
+            'recognitionsCertifications'  => 'Certifications that apply to this wallet product — e.g. EUDI Wallet LSP, Common Criteria evaluation, or national eIDAS wallet conformity. Title required; link to the certificate optional.',
+            'recognitionsAwards'          => 'Awards or analyst recognition for this wallet product. Title required; link to the announcement optional.',
+            'additionalDocumentation'       => 'Extra documentation links shown in the wallet modal — e.g. API reference, integration guide, or developer docs. Title required; link optional.',
             'interoperabilityProfiles' => 'Interop profiles the wallet supports.',
-            'standards'             => 'Standards compliance labels (comma-separated).',
-            'features'              => 'Notable product features (comma-separated).',
-            'capabilities'          => 'Business wallet roles (holder, issuer, verifier).',
-            'appStoreLinks'         => 'App store or web install links.',
+            'standards'             => 'Standards or frameworks the wallet complies with (comma-separated), e.g. ARF 1.4 or eIDAS.',
+            'features'              => 'Stand-out product capabilities not covered elsewhere (comma-separated), e.g. biometric unlock or offline presentation.',
+            'capabilities'          => 'Roles this business wallet can perform: store credentials (holder), issue them (issuer), or verify them (verifier).',
+            'appStoreLinks'         => 'Links to download native apps or open the web wallet in a browser.',
+            'appStoreWeb'           => 'URL where users access this wallet in a browser — for personal or business web wallets. Use Website for your general product or marketing page.',
             'contactEmail'          => 'Taken from your FIDES account; used for submission review only, not published as the wallet contact.',
         );
 
         public static function bootstrap(): void {
             add_action('wp_enqueue_scripts', array(__CLASS__, 'register_assets'));
+            add_action('rest_api_init', array(__CLASS__, 'register_rest_routes'));
             add_shortcode('fides_wallet_submit_form', array(__CLASS__, 'render_submit_shortcode'));
             add_shortcode('fides_wallet_update_form', array(__CLASS__, 'render_update_shortcode'));
+        }
+
+        public static function register_rest_routes(): void {
+            register_rest_route(
+                'fides-catalog/v1',
+                '/submissions/card-image',
+                array(
+                    'methods'             => 'POST',
+                    'callback'            => array(__CLASS__, 'rest_upload_card_image'),
+                    'permission_callback' => function () {
+                        return is_user_logged_in();
+                    },
+                )
+            );
+        }
+
+        /**
+         * @param WP_REST_Request $request Request.
+         * @return WP_REST_Response
+         */
+        public static function rest_upload_card_image($request) {
+            $files = $request->get_file_params();
+            if (empty($files['file']) || ! is_array($files['file'])) {
+                return new WP_REST_Response(array('message' => 'No image file uploaded.'), 400);
+            }
+
+            $file = $files['file'];
+            if (! empty($file['error'])) {
+                return new WP_REST_Response(array('message' => 'Image upload failed.'), 400);
+            }
+
+            $allowed_types = array('image/jpeg', 'image/png', 'image/webp', 'image/gif');
+            $mime          = isset($file['type']) ? (string) $file['type'] : '';
+            if (! in_array($mime, $allowed_types, true)) {
+                return new WP_REST_Response(array('message' => 'Use JPEG, PNG, WebP, or GIF.'), 400);
+            }
+
+            $max_bytes = 2 * 1024 * 1024;
+            $size      = isset($file['size']) ? (int) $file['size'] : 0;
+            if ($size <= 0 || $size > $max_bytes) {
+                return new WP_REST_Response(array('message' => 'Image must be between 1 byte and 2 MB.'), 400);
+            }
+
+            require_once ABSPATH . 'wp-admin/includes/file.php';
+            require_once ABSPATH . 'wp-admin/includes/image.php';
+
+            $upload = wp_handle_upload(
+                $file,
+                array(
+                    'test_form' => false,
+                    'mimes'     => array(
+                        'jpg|jpeg|jpe' => 'image/jpeg',
+                        'png'          => 'image/png',
+                        'webp'         => 'image/webp',
+                        'gif'          => 'image/gif',
+                    ),
+                )
+            );
+
+            if (isset($upload['error'])) {
+                return new WP_REST_Response(array('message' => (string) $upload['error']), 400);
+            }
+
+            $url = isset($upload['url']) ? esc_url_raw((string) $upload['url']) : '';
+            if ($url === '') {
+                return new WP_REST_Response(array('message' => 'Upload succeeded but no URL was returned.'), 500);
+            }
+
+            return rest_ensure_response(array('url' => $url));
         }
 
         public static function register_assets(): void {
@@ -177,15 +257,26 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Forms')) {
                     'enumLabels'        => class_exists('Fides_Wallet_Catalog_Submission_Adapter')
                         ? Fides_Wallet_Catalog_Submission_Adapter::form_enum_labels()
                         : array(),
+                    'enumTitles'        => class_exists('Fides_Wallet_Catalog_Submission_Adapter')
+                        ? array(
+                            'eidasTrustServices' => Fides_Wallet_Catalog_Submission_Adapter::form_eidas_trust_service_full_labels(),
+                        )
+                        : array(),
+                    'eidasTrustServicesByType' => class_exists('Fides_Wallet_Catalog_Submission_Adapter')
+                        ? Fides_Wallet_Catalog_Submission_Adapter::form_eidas_trust_services_by_type()
+                        : array(),
                     'fieldHelp'         => self::FIELD_HELP,
                     'sectionIntro'      => self::section_intro_for_mode($mode),
+                    'v2Limits'          => class_exists('Fides_Wallet_Catalog_V2_Normalizer')
+                        ? Fides_Wallet_Catalog_V2_Normalizer::limits_for_form()
+                        : array(),
                     'preselectWalletId' => '',
                     'planTier'          => class_exists('Fides_Catalog_Org_Tier')
                         ? Fides_Catalog_Org_Tier::form_config(self::plan_org_id_for_form($mode, $extra))
                         : array(
                             'tierUiEnabled'        => false,
                             'tier'                 => 'Community',
-                            'isPro'                => true,
+                            'isPro'                => false,
                             'plansUrl'             => home_url('/plans/'),
                             'descriptionMaxLength' => 2000,
                         ),

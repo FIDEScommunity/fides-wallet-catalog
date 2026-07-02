@@ -1,5 +1,5 @@
 {
-  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
   "wallets": [
     {
       "id": "verimi",

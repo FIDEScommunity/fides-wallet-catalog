@@ -1,5 +1,5 @@
 {
-  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
   "orgId": "org:digiyatra",
   "wallets": [
     {
@@ -8,7 +8,6 @@
       "description": "Personal wallet application for seamless air travel in India, enabling passengers to use digital identity and biometric verification during airport journeys.",
       "logo": "https://raw.githubusercontent.com/FIDEScommunity/fides-wallet-catalog/main/community-catalogs/digiyatra/digiyatra_app_icon.webp",
       "website": "https://www.digiyatra.org/",
-      "video": "https://www.youtube.com/watch?v=y6xTGrpfAGs",
       "type": "personal",
       "platforms": [
         "iOS",
@@ -30,7 +29,12 @@
       "status": "production",
       "capabilities": [
         "holder"
-      ]
+      ],
+      "media": {
+        "videos": [
+          "https://www.youtube.com/watch?v=y6xTGrpfAGs"
+        ]
+      }
     }
   ]
 }

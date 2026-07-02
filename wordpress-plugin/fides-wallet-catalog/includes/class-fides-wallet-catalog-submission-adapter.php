@@ -15,7 +15,7 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
 
         const TYPE = 'wallet';
 
-        const SCHEMA = 'https://fides.community/schemas/wallet-catalog/v1';
+        const SCHEMA = 'https://fides.community/schemas/wallet-catalog/v2';
 
         /** @var string[] */
         const WALLET_TYPES = array('personal', 'organizational');
@@ -23,8 +23,11 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
         /** @var string[] */
         const STATUSES = array('development', 'beta', 'production', 'deprecated');
 
-        /** @var string[] */
+        /** @var string[] Full schema platform enum (validation / export). */
         const PLATFORMS = array('iOS', 'Android', 'Web', 'Windows', 'macOS', 'Linux', 'CLI');
+
+        /** @var string[] Platforms offered in submit/update forms (desktop/CLI hidden until used in catalog). */
+        const FORM_PLATFORMS = array('iOS', 'Android', 'Web');
 
         /** @var string[] */
         const VC_FORMATS = array(
@@ -125,6 +128,77 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
             'Bitstring Status List',
         );
 
+        /** @var string[] Qualified eIDAS trust service codes (aligned with organization QTSP catalog). */
+        const EIDAS_TRUST_SERVICES = array(
+            'Q_CERT_ESIG',
+            'Q_CERT_ESEAL',
+            'Q_TIMESTAMP',
+            'Q_ERDS',
+            'Q_WAC',
+            'Q_EARCH',
+            'Q_VC',
+            'Q_PRES',
+            'Q_PRES_ESEAL',
+            'Q_PRES_ESIG',
+            'Q_VAL_ESEAL',
+            'Q_VAL_ESIG',
+            'Q_REM_MANAGE_Q_SEAL_CD',
+            'Q_REM_MANAGE_Q_SIG_CD',
+            'QEAA',
+        );
+
+        /** @var string[] Personal wallets — excludes legal-entity seal services and QWAC. */
+        const EIDAS_TRUST_SERVICES_PERSONAL = array(
+            'Q_CERT_ESIG',
+            'Q_TIMESTAMP',
+            'Q_ERDS',
+            'Q_EARCH',
+            'Q_VC',
+            'Q_PRES',
+            'Q_PRES_ESIG',
+            'Q_VAL_ESIG',
+            'Q_REM_MANAGE_Q_SIG_CD',
+            'QEAA',
+        );
+
+        /** @var array<string, string> Display abbreviations for eIDAS trust service codes. */
+        const EIDAS_TRUST_SERVICE_ABBREVIATIONS = array(
+            'Q_CERT_ESIG'              => 'QESig',
+            'Q_CERT_ESEAL'             => 'QESeal',
+            'Q_TIMESTAMP'              => 'QTimestamp',
+            'Q_ERDS'                   => 'QERDS',
+            'Q_WAC'                    => 'QWAC',
+            'Q_EARCH'                  => 'QEArch',
+            'Q_VC'                     => 'QVal',
+            'Q_PRES'                   => 'QPres',
+            'Q_PRES_ESEAL'             => 'QPresSeal',
+            'Q_PRES_ESIG'              => 'QPresSig',
+            'Q_VAL_ESEAL'              => 'QValSeal',
+            'Q_VAL_ESIG'               => 'QValSig',
+            'Q_REM_MANAGE_Q_SEAL_CD'   => 'QRemSeal',
+            'Q_REM_MANAGE_Q_SIG_CD'    => 'QRemSig',
+            'QEAA'                     => 'QEAA',
+        );
+
+        /** @var array<string, string> Full eIDAS trust service labels (tooltips / diff). */
+        const EIDAS_TRUST_SERVICE_FULL_LABELS = array(
+            'Q_CERT_ESIG'              => 'Qualified electronic signature certificate',
+            'Q_CERT_ESEAL'             => 'Qualified electronic seal certificate',
+            'Q_TIMESTAMP'              => 'Qualified timestamp',
+            'Q_ERDS'                   => 'Qualified electronic registered delivery service',
+            'Q_WAC'                    => 'Qualified website authentication certificate',
+            'Q_EARCH'                  => 'Qualified electronic archiving',
+            'Q_VC'                     => 'Qualified validation service',
+            'Q_PRES'                   => 'Qualified preservation service',
+            'Q_PRES_ESEAL'             => 'Qualified preservation service for electronic seals',
+            'Q_PRES_ESIG'              => 'Qualified preservation service for electronic signatures',
+            'Q_VAL_ESEAL'              => 'Qualified validation service for electronic seals',
+            'Q_VAL_ESIG'               => 'Qualified validation service for electronic signatures',
+            'Q_REM_MANAGE_Q_SEAL_CD'   => 'Qualified management of remote seal creation devices',
+            'Q_REM_MANAGE_Q_SIG_CD'    => 'Qualified management of remote signature creation devices',
+            'QEAA'                     => 'Qualified electronic attestation of attributes',
+        );
+
         /** @var string[] Wallet object keys editable via the submission form. */
         const WALLET_PAYLOAD_KEYS = array(
             'id',
@@ -132,12 +206,18 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
             'description',
             'logo',
             'website',
-            'video',
             'type',
             'platforms',
             'openSource',
             'license',
+            'licenseOther',
             'repository',
+            'deploymentModel',
+            'slaAvailable',
+            'pricing',
+            'media',
+            'recognitions',
+            'additionalDocumentation',
             'vcFormat',
             'issuanceProtocols',
             'presentationProtocols',
@@ -145,7 +225,7 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
             'keyStorage',
             'signingAlgorithms',
             'credentialStatusMethods',
-            'certifications',
+            'eidasTrustServices',
             'interoperabilityProfiles',
             'standards',
             'features',
@@ -189,10 +269,15 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
                         'platforms'                  => 'Platforms',
                         'website'                    => 'Website',
                         'logo'                       => 'Logo URL',
-                        'video'                      => 'Video URL',
-                        'documentation'            => 'Documentation',
+                        'media.videos'               => 'Media videos',
+                        'media.images'               => 'Media images',
+                        'documentation'              => 'Documentation',
                         'openSource'                 => 'Open source',
                         'license'                    => 'License',
+                        'licenseOther'               => 'License (other)',
+                        'deploymentModel'            => 'Deployment model',
+                        'slaAvailable'               => 'SLA available',
+                        'pricing'                    => 'Pricing',
                         'repository'                 => 'Repository',
                         'releaseDate'                => 'Release date',
                         'vcFormat'                   => 'VC formats',
@@ -202,14 +287,18 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
                         'keyStorage'                 => 'Key storage',
                         'signingAlgorithms'          => 'Signing algorithms',
                         'credentialStatusMethods'    => 'Credential status methods',
-                        'certifications'             => 'Certifications',
+                        'eidasTrustServices'         => 'eIDAS trust services',
+                        'recognitions.customerStories' => 'Customer stories',
+                        'recognitions.certifications'  => 'Certifications',
+                        'recognitions.awardsAndRecognitions' => 'Awards & recognitions',
+                        'additionalDocumentation'          => 'Additional documentation',
                         'interoperabilityProfiles'   => 'Interop profiles',
                         'standards'                  => 'Standards',
                         'features'                   => 'Features',
                         'capabilities'               => 'Capabilities',
                         'appStoreLinks.iOS'          => 'iOS App Store',
                         'appStoreLinks.android'      => 'Google Play',
-                        'appStoreLinks.web'          => 'Web install URL',
+                        'appStoreLinks.web'          => 'Web wallet URL',
                     ),
                 )
             );
@@ -249,9 +338,9 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
          * @return array<string, array<int, string>>
          */
         public static function form_enums(): array {
-            return array(
+            $enums = array(
                 'walletType'              => self::WALLET_TYPES,
-                'platforms'                 => self::PLATFORMS,
+                'platforms'                 => self::FORM_PLATFORMS,
                 'status'                    => self::STATUSES,
                 'vcFormat'                  => self::VC_FORMATS,
                 'issuanceProtocols'         => self::ISSUANCE_PROTOCOLS,
@@ -262,7 +351,13 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
                 'supportedIdentifiers'      => self::SUPPORTED_IDENTIFIERS,
                 'signingAlgorithms'         => self::SIGNING_ALGORITHMS,
                 'credentialStatusMethods'   => self::CREDENTIAL_STATUS_METHODS,
+                'eidasTrustServices'        => self::EIDAS_TRUST_SERVICES,
             );
+            if (class_exists('Fides_Wallet_Catalog_V2_Normalizer')) {
+                $enums['license'] = Fides_Wallet_Catalog_V2_Normalizer::LICENSE_VALUES;
+                $enums['deploymentModel'] = Fides_Wallet_Catalog_V2_Normalizer::DEPLOYMENT_MODELS;
+            }
+            return $enums;
         }
 
         /**
@@ -291,7 +386,7 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
          * @return array<string, array<string, string>>
          */
         public static function form_enum_labels(): array {
-            return array(
+            $labels = array(
                 'walletType' => array(
                     'personal'       => 'Personal',
                     'organizational' => 'Business',
@@ -305,6 +400,33 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
                     'IETF Token Status List' => 'IETF Token Status List',
                     'Bitstring Status List'  => 'W3C Bitstring Status List',
                 ),
+                'eidasTrustServices' => self::EIDAS_TRUST_SERVICE_ABBREVIATIONS,
+            );
+            if (class_exists('Fides_Wallet_Catalog_V2_Normalizer')) {
+                $labels['deploymentModel'] = Fides_Wallet_Catalog_V2_Normalizer::deployment_model_labels();
+                $labels['license']         = Fides_Wallet_Catalog_V2_Normalizer::license_labels();
+            }
+            return $labels;
+        }
+
+        /**
+         * Full eIDAS trust service labels for tooltips and admin diff display.
+         *
+         * @return array<string, string>
+         */
+        public static function form_eidas_trust_service_full_labels(): array {
+            return self::EIDAS_TRUST_SERVICE_FULL_LABELS;
+        }
+
+        /**
+         * eIDAS trust service codes shown per wallet type in the submission form.
+         *
+         * @return array<string, string[]>
+         */
+        public static function form_eidas_trust_services_by_type(): array {
+            return array(
+                'personal'       => self::EIDAS_TRUST_SERVICES_PERSONAL,
+                'organizational' => self::EIDAS_TRUST_SERVICES,
             );
         }
 
@@ -378,7 +500,7 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
             }
 
             $platforms = self::normalize_enum_list($payload['platforms'] ?? array(), self::PLATFORMS);
-            if (empty($platforms)) {
+            if ($type === 'personal' && empty($platforms)) {
                 return new WP_Error('fides_wallet_invalid', __('Select at least one platform.', 'fides-wallet-catalog'));
             }
 
@@ -407,10 +529,13 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
                 'type'    => $type,
                 'description' => $description,
                 'status'  => $status,
-                'platforms' => $platforms,
             );
 
-            foreach (array('logo', 'website', 'video', 'documentation', 'license', 'repository', 'releaseDate') as $key) {
+            if ($type === 'personal' || ! empty($platforms)) {
+                $normalized['platforms'] = $platforms;
+            }
+
+            foreach (array('logo', 'website', 'documentation', 'repository', 'releaseDate') as $key) {
                 $value = self::optional_string_or_url($payload, $key);
                 if ($value !== '') {
                     $normalized[ $key ] = $value;
@@ -419,6 +544,38 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
 
             if (isset($payload['openSource'])) {
                 $normalized['openSource'] = (bool) $payload['openSource'];
+            }
+
+            if (class_exists('Fides_Wallet_Catalog_V2_Normalizer')) {
+                if (isset($payload['deploymentModel'])) {
+                    $normalized['deploymentModel'] = sanitize_key((string) $payload['deploymentModel']);
+                }
+                if (array_key_exists('slaAvailable', $payload)) {
+                    $normalized['slaAvailable'] = (bool) $payload['slaAvailable'];
+                }
+                if (isset($payload['pricing'])) {
+                    $normalized['pricing'] = trim((string) $payload['pricing']);
+                }
+                if (isset($payload['license'])) {
+                    $normalized['license'] = sanitize_text_field((string) $payload['license']);
+                }
+                if (isset($payload['licenseOther'])) {
+                    $normalized['licenseOther'] = sanitize_text_field((string) $payload['licenseOther']);
+                }
+                if (isset($payload['media'])) {
+                    $normalized['media'] = $payload['media'];
+                }
+                if (isset($payload['recognitions'])) {
+                    $normalized['recognitions'] = $payload['recognitions'];
+                }
+                if (isset($payload['additionalDocumentation'])) {
+                    $normalized['additionalDocumentation'] = $payload['additionalDocumentation'];
+                }
+                $normalized = Fides_Wallet_Catalog_V2_Normalizer::normalize_wallet($normalized);
+                $v2_check = Fides_Wallet_Catalog_V2_Normalizer::validate_wallet_v2_rules($normalized);
+                if (is_wp_error($v2_check)) {
+                    return $v2_check;
+                }
             }
 
             $normalized['vcFormat'] = self::normalize_enum_list($payload['vcFormat'] ?? array(), self::VC_FORMATS);
@@ -442,7 +599,10 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
                 self::credential_status_aliases(),
                 self::CREDENTIAL_STATUS_METHODS
             );
-            $normalized['certifications'] = self::normalize_string_list($payload['certifications'] ?? array());
+            $normalized['eidasTrustServices'] = self::normalize_enum_list(
+                $payload['eidasTrustServices'] ?? array(),
+                self::EIDAS_TRUST_SERVICES
+            );
             $normalized['standards'] = self::normalize_string_list($payload['standards'] ?? array());
             $normalized['features'] = self::normalize_string_list($payload['features'] ?? array());
 
@@ -544,6 +704,12 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
                     self::CREDENTIAL_STATUS_METHODS
                 );
             }
+            if (isset($payload['eidasTrustServices'])) {
+                $payload['eidasTrustServices'] = self::normalize_enum_list(
+                    $payload['eidasTrustServices'],
+                    self::EIDAS_TRUST_SERVICES
+                );
+            }
             if (isset($payload['signingAlgorithms'])) {
                 $payload['signingAlgorithms'] = self::normalize_enum_list(
                     $payload['signingAlgorithms'],
@@ -552,6 +718,10 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
             }
             if (isset($payload['platforms'])) {
                 $payload['platforms'] = self::normalize_enum_list($payload['platforms'], self::PLATFORMS);
+            }
+
+            if (class_exists('Fides_Wallet_Catalog_V2_Normalizer')) {
+                $payload = Fides_Wallet_Catalog_V2_Normalizer::normalize_wallet($payload);
             }
 
             return self::prepare_payload_for_diff($payload);
@@ -726,7 +896,7 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
             if ($raw === '') {
                 return '';
             }
-            if (in_array($key, array('website', 'logo', 'video', 'documentation', 'repository'), true)) {
+            if (in_array($key, array('website', 'logo', 'documentation', 'repository'), true)) {
                 return esc_url_raw($raw);
             }
             if ($key === 'releaseDate') {
@@ -740,10 +910,19 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Adapter')) {
          * @return array<string, mixed>
          */
         private static function strip_empty_wallet_fields(array $payload) {
-            foreach (array('vcFormat', 'issuanceProtocols', 'presentationProtocols', 'interoperabilityProfiles', 'capabilities', 'keyStorage', 'supportedIdentifiers', 'signingAlgorithms', 'credentialStatusMethods', 'certifications', 'standards', 'features') as $list_key) {
+            foreach (array('vcFormat', 'issuanceProtocols', 'presentationProtocols', 'interoperabilityProfiles', 'capabilities', 'keyStorage', 'supportedIdentifiers', 'signingAlgorithms', 'credentialStatusMethods', 'eidasTrustServices', 'standards', 'features') as $list_key) {
                 if (isset($payload[ $list_key ]) && $payload[ $list_key ] === array()) {
                     unset($payload[ $list_key ]);
                 }
+            }
+            if (isset($payload['media']) && $payload['media'] === array()) {
+                unset($payload['media']);
+            }
+            if (isset($payload['recognitions']) && $payload['recognitions'] === array()) {
+                unset($payload['recognitions']);
+            }
+            if (isset($payload['additionalDocumentation']) && $payload['additionalDocumentation'] === array()) {
+                unset($payload['additionalDocumentation']);
             }
             return $payload;
         }

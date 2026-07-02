@@ -41,7 +41,13 @@ interface WalletItem {
   logo?: string;
   repository?: string;
   documentation?: string;
-  video?: string;
+  media?: { videos?: string[]; images?: string[] };
+  recognitions?: {
+    customerStories?: Array<{ title: string; url?: string }>;
+    certifications?: Array<{ title: string; url?: string }>;
+    awardsAndRecognitions?: Array<{ title: string; url?: string }>;
+  };
+  additionalDocumentation?: Array<{ title: string; url?: string }>;
   appStoreLinks?: { iOS?: string; android?: string; web?: string };
 }
 
@@ -62,13 +68,27 @@ function collectWalletUrls(
     if (w.logo) addUrl(urlToContexts, w.logo, ctx('logo'));
     if (w.repository) addUrl(urlToContexts, w.repository, ctx('repository'));
     if (w.documentation) addUrl(urlToContexts, w.documentation, ctx('documentation'));
-    if (w.video) addUrl(urlToContexts, w.video, ctx('video'));
+    for (const url of w.media?.videos ?? []) {
+      if (url) addUrl(urlToContexts, url, ctx('media.videos'));
+    }
+    for (const url of w.media?.images ?? []) {
+      if (url) addUrl(urlToContexts, url, ctx('media.images'));
+    }
+    for (const group of [
+      ...(w.recognitions?.customerStories ?? []),
+      ...(w.recognitions?.certifications ?? []),
+      ...(w.recognitions?.awardsAndRecognitions ?? []),
+      ...(w.additionalDocumentation ?? []),
+    ]) {
+      if (group?.url) addUrl(urlToContexts, group.url, ctx('recognitions.url'));
+    }
     if (w.appStoreLinks?.iOS) addUrl(urlToContexts, w.appStoreLinks.iOS, ctx('appStoreLinks.iOS'));
     if (w.appStoreLinks?.android) addUrl(urlToContexts, w.appStoreLinks.android, ctx('appStoreLinks.android'));
     if (w.appStoreLinks?.web) addUrl(urlToContexts, w.appStoreLinks.web, ctx('appStoreLinks.web'));
     if (w.provider?.website) addUrl(urlToContexts, w.provider.website, ctx('provider.website'));
     if (w.provider?.logo) addUrl(urlToContexts, w.provider.logo, ctx('provider.logo'));
-    if (w.provider?.contact?.support) addUrl(urlToContexts, w.provider.contact.support, ctx('provider.contact.support'));
+    if (w.provider?.contact?.contactUrl) addUrl(urlToContexts, w.provider.contact.contactUrl, ctx('provider.contact.contactUrl'));
+    if (w.provider?.contact?.bookMeetingUrl) addUrl(urlToContexts, w.provider.contact.bookMeetingUrl, ctx('provider.contact.bookMeetingUrl'));
   }
 }
 

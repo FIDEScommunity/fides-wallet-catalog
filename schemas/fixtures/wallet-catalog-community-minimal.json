@@ -1,0 +1,22 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:example-community",
+  "wallets": [
+    {
+      "id": "community-wallet",
+      "name": "Community Wallet",
+      "description": "Minimal v2 wallet for Community tier export.",
+      "type": "personal",
+      "platforms": ["Android", "Web"],
+      "openSource": true,
+      "license": "MIT",
+      "deploymentModel": "on_premises",
+      "slaAvailable": false,
+      "vcFormat": ["sd_jwt_vc"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "status": "production"
+    }
+  ],
+  "lastUpdated": "2026-06-29T12:00:00.000Z"
+}

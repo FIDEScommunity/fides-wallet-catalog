@@ -1,0 +1,59 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:example-pro",
+  "wallets": [
+    {
+      "id": "pro-wallet",
+      "name": "Pro Wallet",
+      "description": "Full v2 wallet exercising Pro-tier fields.",
+      "type": "organizational",
+      "capabilities": ["holder", "issuer"],
+      "logo": "https://example.com/logo.png",
+      "website": "https://example.com/wallet",
+      "platforms": ["iOS", "Android", "Web"],
+      "openSource": true,
+      "license": "Apache-2.0",
+      "repository": "https://github.com/example/wallet",
+      "documentation": "https://docs.example.com/wallet",
+      "deploymentModel": "hybrid",
+      "slaAvailable": true,
+      "pricing": "Free tier for pilots. Enterprise pricing on request.",
+      "media": {
+        "videos": [
+          "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          "https://vimeo.com/123456789"
+        ],
+        "images": [
+          "https://example.com/screens/home.png",
+          "https://example.com/screens/scan.png"
+        ]
+      },
+      "recognitions": {
+        "customerStories": [
+          {
+            "title": "National bank rollout",
+            "url": "https://example.com/case-study"
+          }
+        ],
+        "certifications": [
+          { "title": "ISO 27001", "url": "https://example.com/iso" },
+          { "title": "SOC 2 Type II" }
+        ],
+        "awardsAndRecognitions": [
+          { "title": "EIC Innovation Award 2025" }
+        ]
+      },
+      "vcFormat": ["sd_jwt_vc", "mdoc"],
+      "issuanceProtocols": ["OpenID4VCI"],
+      "presentationProtocols": ["OpenID4VP"],
+      "interoperabilityProfiles": ["DIIP v5", "EUDI Wallet ARF"],
+      "features": ["Biometric authentication", "Offline presentation"],
+      "status": "production",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/example/id123",
+        "android": "https://play.google.com/store/apps/details?id=com.example"
+      }
+    }
+  ],
+  "lastUpdated": "2026-06-29T12:00:00.000Z"
+}

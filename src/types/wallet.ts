@@ -1,5 +1,12 @@
 // Types for the FIDES Wallet Catalog
 
+import type {
+  WalletDeploymentModel,
+  WalletLicense,
+} from '../constants/wallet-v2-limits';
+
+export type { WalletDeploymentModel, WalletLicense } from '../constants/wallet-v2-limits';
+
 export type WalletType = 'personal' | 'organizational';
 export type WalletStatus = 'development' | 'beta' | 'production' | 'deprecated';
 export type Platform = 'iOS' | 'Android' | 'Web' | 'Windows' | 'macOS' | 'Linux' | 'CLI';
@@ -44,6 +51,43 @@ export type WalletCapability = 'holder' | 'issuer' | 'verifier';
 
 export type InteroperabilityProfile = 'DIIP v4' | 'DIIP v5' | 'EWC v3' | 'EUDI Wallet ARF' | 'HAIP v1';
 
+/** Qualified eIDAS trust service codes (aligned with organization QTSP catalog). */
+export type EidasTrustService =
+  | 'Q_CERT_ESIG'
+  | 'Q_CERT_ESEAL'
+  | 'Q_TIMESTAMP'
+  | 'Q_ERDS'
+  | 'Q_WAC'
+  | 'Q_EARCH'
+  | 'Q_VC'
+  | 'Q_PRES'
+  | 'Q_PRES_ESEAL'
+  | 'Q_PRES_ESIG'
+  | 'Q_VAL_ESEAL'
+  | 'Q_VAL_ESIG'
+  | 'Q_REM_MANAGE_Q_SEAL_CD'
+  | 'Q_REM_MANAGE_Q_SIG_CD'
+  | 'QEAA';
+
+/** v2 — titled recognition entry with optional URL. */
+export interface RecognitionItem {
+  title: string;
+  url?: string;
+}
+
+/** v2 — promotional videos and images (Pro in public export). */
+export interface WalletMedia {
+  videos?: string[];
+  images?: string[];
+}
+
+/** v2 — customer stories, certifications, awards (Pro in public export). */
+export interface WalletRecognitions {
+  customerStories?: RecognitionItem[];
+  certifications?: RecognitionItem[];
+  awardsAndRecognitions?: RecognitionItem[];
+}
+
 export interface WalletProvider {
   /** Organization catalog id (matches source catalog orgId). */
   orgId: string;
@@ -65,13 +109,24 @@ export interface Wallet {
   description?: string;
   logo?: string;
   website?: string;
-  video?: string;
   type: WalletType;
   capabilities?: WalletCapability[]; // For organizational wallets: holder, issuer, verifier
   platforms?: Platform[];
   openSource?: boolean;
-  license?: string;
+  license?: WalletLicense;
+  /** Required when license is `other`. */
+  licenseOther?: string;
   repository?: string;
+  deploymentModel?: WalletDeploymentModel;
+  slaAvailable?: boolean;
+  /** Pro tier in public export. */
+  pricing?: string;
+  /** Pro tier in public export. */
+  media?: WalletMedia;
+  /** Pro tier in public export. */
+  recognitions?: WalletRecognitions;
+  /** Pro tier in public export. */
+  additionalDocumentation?: RecognitionItem[];
   vcFormat?: CredentialFormat[];
   issuanceProtocols?: IssuanceProtocol[];
   presentationProtocols?: PresentationProtocol[];
@@ -79,7 +134,7 @@ export interface Wallet {
   keyStorage?: KeyStorage[];
   signingAlgorithms?: string[];
   credentialStatusMethods?: string[];
-  certifications?: string[];
+  eidasTrustServices?: EidasTrustService[];
   interoperabilityProfiles?: InteroperabilityProfile[];
   standards?: string[];
   features?: string[];

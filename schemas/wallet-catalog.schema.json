@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://fides.community/schemas/wallet-catalog/v1",
-  "title": "FIDES Wallet Catalog Descriptor",
+  "$id": "https://fides.community/schemas/wallet-catalog/v2",
+  "title": "FIDES Wallet Catalog Descriptor (v2)",
   "description": "Schema for describing digital wallets for the FIDES Community catalog. Organization profile (name, DID, website, logo, country, contact) is defined in the FIDES organization catalog; this file references it via orgId (same pattern as RP, issuer, and credential catalogs).",
   "type": "object",
   "additionalProperties": false,
@@ -9,7 +9,7 @@
   "properties": {
     "$schema": {
       "type": "string",
-      "const": "https://fides.community/schemas/wallet-catalog/v1",
+      "const": "https://fides.community/schemas/wallet-catalog/v2",
       "description": "Schema identifier - must be this exact value"
     },
     "orgId": {
@@ -32,6 +32,97 @@
     }
   },
   "definitions": {
+    "RecognitionItem": {
+      "type": "object",
+      "description": "A titled recognition entry with optional link",
+      "additionalProperties": false,
+      "required": ["title"],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "description": "Display title"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Optional link to case study, certificate, or award page"
+        }
+      }
+    },
+    "WalletMedia": {
+      "type": "object",
+      "description": "Promotional media (Pro tier in public export)",
+      "additionalProperties": false,
+      "properties": {
+        "videos": {
+          "type": "array",
+          "maxItems": 3,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          },
+          "description": "Demo or promotional video URLs"
+        },
+        "images": {
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          },
+          "description": "Screenshot or product image URLs"
+        }
+      },
+      "anyOf": [
+        {
+          "required": ["videos"],
+          "properties": {
+            "videos": {
+              "minItems": 1
+            }
+          }
+        },
+        {
+          "required": ["images"],
+          "properties": {
+            "images": {
+              "minItems": 1
+            }
+          }
+        }
+      ]
+    },
+    "WalletRecognitions": {
+      "type": "object",
+      "description": "Customer stories, certifications, and awards (Pro tier in public export)",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "customerStories": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "$ref": "#/definitions/RecognitionItem"
+          }
+        },
+        "certifications": {
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "$ref": "#/definitions/RecognitionItem"
+          }
+        },
+        "awardsAndRecognitions": {
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "$ref": "#/definitions/RecognitionItem"
+          }
+        }
+      }
+    },
     "Wallet": {
       "type": "object",
       "description": "A digital identity wallet",
@@ -60,11 +151,6 @@
           "format": "uri",
           "description": "Landing page or website for the wallet"
         },
-        "video": {
-          "type": "string",
-          "format": "uri",
-          "description": "URL to a demo or promotional video showcasing the wallet"
-        },
         "type": {
           "type": "string",
           "enum": ["personal", "organizational"],
@@ -81,11 +167,50 @@
           "type": "boolean"
         },
         "license": {
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "MIT",
+            "Apache-2.0",
+            "GPL-3.0-or-later",
+            "AGPL-3.0-or-later",
+            "LGPL-3.0-or-later",
+            "EUPL-1.2",
+            "MPL-2.0",
+            "BSD-3-Clause",
+            "ISC",
+            "proprietary",
+            "other"
+          ],
+          "description": "Software license when openSource is true; use proprietary for closed-source wallets"
+        },
+        "licenseOther": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Required when license is other; free-text license name"
         },
         "repository": {
           "type": "string",
           "format": "uri"
+        },
+        "deploymentModel": {
+          "type": "string",
+          "enum": ["saas", "on_premises", "hybrid"],
+          "description": "How the wallet product is deployed for customers"
+        },
+        "slaAvailable": {
+          "type": "boolean",
+          "description": "Whether a service level agreement is available"
+        },
+        "pricing": {
+          "type": "string",
+          "maxLength": 1000,
+          "description": "Pricing summary (Pro tier in public export)"
+        },
+        "media": {
+          "$ref": "#/definitions/WalletMedia"
+        },
+        "recognitions": {
+          "$ref": "#/definitions/WalletRecognitions"
         },
         "vcFormat": {
           "type": "array",
@@ -208,12 +333,6 @@
             ]
           }
         },
-        "certifications": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
         "interoperabilityProfiles": {
           "type": "array",
           "items": {
@@ -239,9 +358,41 @@
             "type": "string"
           }
         },
+        "eidasTrustServices": {
+          "type": "array",
+          "description": "Qualified eIDAS trust services this wallet integrates with or relies on",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Q_CERT_ESIG",
+              "Q_CERT_ESEAL",
+              "Q_TIMESTAMP",
+              "Q_ERDS",
+              "Q_WAC",
+              "Q_EARCH",
+              "Q_VC",
+              "Q_PRES",
+              "Q_PRES_ESEAL",
+              "Q_PRES_ESIG",
+              "Q_VAL_ESEAL",
+              "Q_VAL_ESIG",
+              "Q_REM_MANAGE_Q_SEAL_CD",
+              "Q_REM_MANAGE_Q_SIG_CD",
+              "QEAA"
+            ]
+          }
+        },
         "documentation": {
           "type": "string",
           "format": "uri"
+        },
+        "additionalDocumentation": {
+          "type": "array",
+          "description": "Extra documentation links (Pro tier in public export)",
+          "maxItems": 10,
+          "items": {
+            "$ref": "#/definitions/RecognitionItem"
+          }
         },
         "appStoreLinks": {
           "type": "object",
@@ -287,7 +438,55 @@
             "enum": ["holder", "issuer", "verifier"]
           }
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "license": {
+                "const": "other"
+              }
+            },
+            "required": ["license"]
+          },
+          "then": {
+            "required": ["licenseOther"],
+            "properties": {
+              "licenseOther": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 50
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "license": {
+                "enum": [
+                  "MIT",
+                  "Apache-2.0",
+                  "GPL-3.0-or-later",
+                  "AGPL-3.0-or-later",
+                  "LGPL-3.0-or-later",
+                  "EUPL-1.2",
+                  "MPL-2.0",
+                  "BSD-3-Clause",
+                  "ISC",
+                  "proprietary"
+                ]
+              }
+            },
+            "required": ["license"]
+          },
+          "then": {
+            "not": {
+              "required": ["licenseOther"]
+            }
+          }
+        }
+      ]
     }
   }
 }

@@ -1,0 +1,293 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fides.community/schemas/wallet-catalog/v1",
+  "title": "FIDES Wallet Catalog Descriptor",
+  "description": "Schema for describing digital wallets for the FIDES Community catalog. Organization profile (name, DID, website, logo, country, contact) is defined in the FIDES organization catalog; this file references it via orgId (same pattern as RP, issuer, and credential catalogs).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "orgId", "wallets"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "const": "https://fides.community/schemas/wallet-catalog/v1",
+      "description": "Schema identifier - must be this exact value"
+    },
+    "orgId": {
+      "type": "string",
+      "pattern": "^org:[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "Organization catalog id (e.g. org:animo). Must exist in https://github.com/FIDEScommunity/fides-organization-catalog — canonical name, DID, website, logo, country, and contact are resolved at crawl time from there."
+    },
+    "wallets": {
+      "type": "array",
+      "description": "List of wallets offered by this provider",
+      "items": {
+        "$ref": "#/definitions/Wallet"
+      },
+      "minItems": 1
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of last update (ISO 8601)"
+    }
+  },
+  "definitions": {
+    "Wallet": {
+      "type": "object",
+      "description": "A digital identity wallet",
+      "required": ["id", "name", "type"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the wallet within this catalog (lowercase alphanumeric with hyphens)",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name of the wallet"
+        },
+        "description": {
+          "type": "string",
+          "description": "Short description of the wallet and its purpose"
+        },
+        "logo": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to the wallet's logo image"
+        },
+        "website": {
+          "type": "string",
+          "format": "uri",
+          "description": "Landing page or website for the wallet"
+        },
+        "video": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to a demo or promotional video showcasing the wallet"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["personal", "organizational"],
+          "description": "Wallet type"
+        },
+        "platforms": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["iOS", "Android", "Web", "Windows", "macOS", "Linux", "CLI"]
+          }
+        },
+        "openSource": {
+          "type": "boolean"
+        },
+        "license": {
+          "type": "string"
+        },
+        "repository": {
+          "type": "string",
+          "format": "uri"
+        },
+        "vcFormat": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "sd_jwt_vc",
+              "mdoc",
+              "jwt_vc",
+              "vcdm_1_1",
+              "vcdm_2_0",
+              "anoncreds",
+              "idemix",
+              "apple_wallet_pass",
+              "google_wallet_pass",
+              "acdc"
+            ]
+          }
+        },
+        "issuanceProtocols": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "OpenID4VCI",
+              "DIDComm Issue Credential v1",
+              "DIDComm Issue Credential v2",
+              "ISO 18013-5 (Device Retrieval)"
+            ]
+          }
+        },
+        "presentationProtocols": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "OpenID4VP",
+              "DIDComm Present Proof v1",
+              "DIDComm Present Proof v2",
+              "ISO 18013-5",
+              "SIOPv2"
+            ]
+          }
+        },
+        "supportedIdentifiers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "did:web",
+              "did:key",
+              "did:jwk",
+              "did:peer",
+              "did:ebsi",
+              "did:ion",
+              "did:cheqd",
+              "did:webvh",
+              "did:indy",
+              "did:ethr",
+              "did:polygon",
+              "did:dock",
+              "did:eth",
+              "did:gatc",
+              "did:isbe",
+              "did:kscirc",
+              "x509",
+              "X.509",
+              "X509",
+              "jwk"
+            ]
+          }
+        },
+        "keyStorage": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Software",
+              "Secure Enclave (iOS)",
+              "StrongBox (Android)",
+              "TEE",
+              "HSM",
+              "Cloud KMS",
+              "Smart Card",
+              "FIDO2/WebAuthn"
+            ]
+          }
+        },
+        "signingAlgorithms": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "ES256",
+              "ES384",
+              "ES512",
+              "ES256K",
+              "EdDSA",
+              "RS256",
+              "PS256",
+              "BBS+",
+              "ML-DSA (FIPS 204)"
+            ]
+          }
+        },
+        "credentialStatusMethods": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "StatusList2021",
+              "RevocationList2020",
+              "OCSP",
+              "CRL",
+              "IETF Token Status List",
+              "Token Status List",
+              "W3C Verifiable Credentials Status List v2021",
+              "Bitstring Status List",
+              "BitstringStatusList v1.0"
+            ]
+          }
+        },
+        "certifications": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "interoperabilityProfiles": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "DIIP v4",
+              "DIIP v5",
+              "EWC v3",
+              "EUDI Wallet ARF",
+              "HAIP v1"
+            ]
+          }
+        },
+        "standards": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "documentation": {
+          "type": "string",
+          "format": "uri"
+        },
+        "appStoreLinks": {
+          "type": "object",
+          "properties": {
+            "iOS": {
+              "type": "string",
+              "format": "uri"
+            },
+            "android": {
+              "type": "string",
+              "format": "uri"
+            },
+            "web": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        },
+        "status": {
+          "type": "string",
+          "enum": ["development", "beta", "production", "deprecated"]
+        },
+        "releaseDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["holder", "issuer", "verifier"]
+          }
+        }
+      }
+    }
+  }
+}

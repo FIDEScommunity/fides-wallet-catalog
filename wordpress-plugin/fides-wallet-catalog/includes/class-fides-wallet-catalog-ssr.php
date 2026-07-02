@@ -354,6 +354,21 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
                     ? $item['appStoreLinks']
                     : array();
 
+                if (
+                    isset($item['type']) && $item['type'] === 'personal'
+                    && self::item_has_web_platform($item)
+                ) {
+                    $web_url = isset($app_links['web']) && is_string($app_links['web'])
+                        ? trim($app_links['web'])
+                        : '';
+                    if ($web_url === '' && isset($item['website']) && is_string($item['website'])) {
+                        $web_url = trim($item['website']);
+                    }
+                    if ($web_url !== '') {
+                        $app_links['web'] = $web_url;
+                    }
+                }
+
                 ob_start();
 
                 if (! empty($app_links)) :
@@ -461,6 +476,18 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
                     default:
                         return ucfirst((string) $type);
                 }
+            }
+
+            private static function item_has_web_platform(array $item): bool {
+                if (! isset($item['platforms']) || ! is_array($item['platforms'])) {
+                    return false;
+                }
+                foreach ($item['platforms'] as $platform) {
+                    if (is_string($platform) && strcasecmp($platform, 'Web') === 0) {
+                        return true;
+                    }
+                }
+                return false;
             }
 
             private static function format_store_label($key): string {

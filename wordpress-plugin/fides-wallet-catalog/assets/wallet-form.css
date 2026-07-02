@@ -112,6 +112,38 @@
   cursor: not-allowed;
 }
 
+.fides-use-case-form .fides-form-row--invalid,
+.fides-use-case-form .fides-linked-field--invalid {
+  background: #fef2f2;
+  border-radius: 10px;
+  padding: 10px 12px 12px;
+  box-shadow: inset 3px 0 0 #dc2626;
+}
+
+.fides-use-case-form .fides-form-choices--invalid {
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: #fff1f2;
+  box-shadow: inset 0 0 0 1px #fecaca;
+}
+
+.fides-use-case-form .fides-consent--invalid {
+  background: #fef2f2;
+  border-radius: 8px;
+  padding: 10px 12px;
+  box-shadow: inset 3px 0 0 #dc2626;
+}
+
+.fides-use-case-form .fides-form-field-invalid {
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.18) !important;
+}
+
+.fides-use-case-form .fides-form-field-invalid:focus {
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.25) !important;
+}
+
 .fides-form-row input::placeholder,
 .fides-form-row textarea::placeholder {
   color: #64748b;
@@ -477,6 +509,7 @@
 
 .fides-form-message.is-error {
   color: #b91c1c;
+  font-weight: 600;
 }
 
 .fides-form-message.is-success {
@@ -639,6 +672,53 @@
   background: #ffffff !important;
   border: 1px solid #cbd5e1 !important;
 }
+
+/* Validation highlights must win over theme-safe input borders above. */
+.fides-org-submission-root .fides-use-case-form .fides-form-row--invalid,
+.fides-org-submission-root .fides-use-case-form .fides-linked-field--invalid,
+.fides-wallet-submission-root .fides-use-case-form .fides-form-row--invalid,
+.fides-wallet-submission-root .fides-use-case-form .fides-linked-field--invalid {
+  background: #fef2f2 !important;
+  border-radius: 10px;
+  padding: 10px 12px 12px;
+  box-shadow: inset 3px 0 0 #dc2626 !important;
+}
+
+.fides-org-submission-root .fides-use-case-form .fides-form-row--invalid > label,
+.fides-org-submission-root .fides-use-case-form .fides-form-row--invalid > .fides-form-label,
+.fides-wallet-submission-root .fides-use-case-form .fides-form-row--invalid > label,
+.fides-wallet-submission-root .fides-use-case-form .fides-form-row--invalid > .fides-form-label {
+  color: #b91c1c !important;
+}
+
+.fides-org-submission-root .fides-use-case-form .fides-form-row--invalid input:not([type="checkbox"]):not([type="radio"]),
+.fides-org-submission-root .fides-use-case-form .fides-form-row--invalid select,
+.fides-org-submission-root .fides-use-case-form .fides-form-row--invalid textarea,
+.fides-org-submission-root .fides-use-case-form input.fides-form-field-invalid,
+.fides-org-submission-root .fides-use-case-form select.fides-form-field-invalid,
+.fides-org-submission-root .fides-use-case-form textarea.fides-form-field-invalid,
+.fides-wallet-submission-root .fides-use-case-form .fides-form-row--invalid input:not([type="checkbox"]):not([type="radio"]),
+.fides-wallet-submission-root .fides-use-case-form .fides-form-row--invalid select,
+.fides-wallet-submission-root .fides-use-case-form .fides-form-row--invalid textarea,
+.fides-wallet-submission-root .fides-use-case-form input.fides-form-field-invalid,
+.fides-wallet-submission-root .fides-use-case-form select.fides-form-field-invalid,
+.fides-wallet-submission-root .fides-use-case-form textarea.fides-form-field-invalid {
+  border: 1px solid #dc2626 !important;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.18) !important;
+}
+
+.fides-org-submission-root .fides-use-case-form .fides-form-choices--invalid,
+.fides-wallet-submission-root .fides-use-case-form .fides-form-choices--invalid {
+  background: #fff1f2 !important;
+  border: 1px solid #fecaca !important;
+  box-shadow: inset 0 0 0 1px #fecaca !important;
+}
+
+.fides-org-submission-root .fides-use-case-form .fides-consent--invalid,
+.fides-wallet-submission-root .fides-use-case-form .fides-consent--invalid {
+  background: #fef2f2 !important;
+  box-shadow: inset 3px 0 0 #dc2626 !important;
+}
 .fides-submitter-grid {
   align-items: stretch;
 }
@@ -797,8 +877,47 @@
 }
 
 .fides-wallet-capabilities-row[hidden],
-.fides-wallet-capabilities-row.is-hidden {
+.fides-wallet-capabilities-row.is-hidden,
+.fides-wallet-business-fields-row[hidden],
+.fides-wallet-business-fields-row.is-hidden,
+#fides-wallet-license-other-row[hidden],
+#fides-wallet-license-other-row.is-hidden {
   display: none !important;
+}
+
+.fides-wallet-capabilities-platforms-grid {
+  width: 100%;
+}
+
+.fides-wallet-capabilities-platforms-grid--platforms-only,
+.fides-wallet-capabilities-platforms-grid--capabilities-only {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.fides-wallet-platforms-row[hidden],
+.fides-wallet-platforms-row.is-hidden {
+  display: none !important;
+}
+
+.fides-wallet-app-store-links-section[hidden],
+.fides-wallet-app-store-links-section.is-hidden {
+  display: none !important;
+}
+
+.fides-wallet-capabilities-platforms-grid .fides-form-choices {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 720px) {
+  .fides-wallet-capabilities-platforms-grid.fides-form-grid-pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .fides-wallet-capabilities-platforms-grid.fides-form-grid-pair--aligned .fides-form-row {
+    grid-row: auto;
+    grid-template-rows: none;
+    height: auto;
+  }
 }
 
 .fides-use-case-form .fides-form-label-with-info {
@@ -987,4 +1106,139 @@
   font-size: 12px;
   color: #94a3b8;
   text-align: right;
+}
+
+.fides-use-case-form .fides-recognition-group .fides-media-inputs .fides-recognition-title,
+.fides-use-case-form .fides-recognition-group .fides-media-inputs .fides-recognition-url {
+  min-width: 0;
+}
+
+.fides-media-section-body .fides-media-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 0;
+}
+
+.fides-media-col {
+  min-width: 0;
+  align-content: start;
+}
+
+.fides-use-case-form .fides-media-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.fides-use-case-form .fides-media-row .fides-media-inputs {
+  display: grid;
+  gap: 8px;
+  align-items: center;
+}
+
+.fides-use-case-form .fides-media-row .fides-media-inputs--image {
+  grid-template-columns: minmax(0, 1fr) 5.75rem 5.75rem;
+}
+
+.fides-use-case-form .fides-media-row .fides-media-inputs--video {
+  grid-template-columns: minmax(0, 1fr) 5.75rem;
+}
+
+.fides-use-case-form .fides-media-row .fides-media-inputs--recognition {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr) 5.75rem;
+}
+
+.fides-use-case-form .fides-media-row .fides-media-field-input,
+.fides-use-case-form .fides-media-row .fides-media-url-input {
+  width: 100%;
+  min-width: 0;
+  min-height: 42px;
+  margin: 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 15px;
+  line-height: 1.4;
+  box-sizing: border-box;
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.fides-use-case-form .fides-media-row .fides-media-field-input:focus,
+.fides-use-case-form .fides-media-row .fides-media-url-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+.fides-use-case-form .fides-media-row .fides-media-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.75rem;
+  min-width: 5.75rem;
+  min-height: 42px;
+  padding: 10px 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  border-radius: 8px;
+  font-weight: 500;
+  box-sizing: border-box;
+  margin: 0;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.fides-use-case-form .fides-media-row .fides-image-preview {
+  margin-top: 0.35rem;
+}
+
+.fides-use-case-form .fides-media-row .fides-image-preview img {
+  display: block;
+  max-width: 100%;
+  max-height: 160px;
+  width: auto;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.fides-use-case-form .fides-upload-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.fides-org-submission-root .fides-use-case-form .fides-media-row .fides-media-field-input,
+.fides-org-submission-root .fides-use-case-form .fides-media-row .fides-media-url-input,
+.fides-wallet-submission-root .fides-use-case-form .fides-media-row .fides-media-field-input,
+.fides-wallet-submission-root .fides-use-case-form .fides-media-row .fides-media-url-input {
+  background-color: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+.fides-org-submission-root .fides-use-case-form .fides-media-row .fides-media-action-btn,
+.fides-wallet-submission-root .fides-use-case-form .fides-media-row .fides-media-action-btn {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+@media (max-width: 768px) {
+  .fides-media-section-body .fides-media-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 540px) {
+  .fides-use-case-form .fides-media-row .fides-media-inputs--image,
+  .fides-use-case-form .fides-media-row .fides-media-inputs--video,
+  .fides-use-case-form .fides-media-row .fides-media-inputs--recognition {
+    grid-template-columns: 1fr;
+  }
+
+  .fides-use-case-form .fides-media-row .fides-media-action-btn {
+    width: 100%;
+    min-width: 0;
+  }
 }

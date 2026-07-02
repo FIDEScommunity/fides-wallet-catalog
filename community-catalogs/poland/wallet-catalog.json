@@ -1,5 +1,5 @@
 {
-  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
   "wallets": [
     {
       "id": "mobywatel",
@@ -20,10 +20,14 @@
         "mdoc"
       ],
       "logo": "https://www.google.com/s2/favicons?domain=gov.pl&sz=128",
-      "certifications": [
-        "eIDAS notified"
-      ],
-      "releaseDate": "2018-01-01"
+      "releaseDate": "2018-01-01",
+      "recognitions": {
+        "certifications": [
+          {
+            "title": "eIDAS notified"
+          }
+        ]
+      }
     }
   ],
   "orgId": "org:poland"

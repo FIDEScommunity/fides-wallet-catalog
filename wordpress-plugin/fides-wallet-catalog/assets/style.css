@@ -1289,6 +1289,12 @@
   text-align: left;
 }
 
+#fides-wallet-catalog-root .fides-wallet-grid[data-view="list"] .fides-row-name {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.35rem;
+}
+
 .fides-row-name-text {
   display: block;
   width: 100%;
@@ -1300,6 +1306,12 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   text-align: left;
+}
+
+#fides-wallet-catalog-root .fides-wallet-grid[data-view="list"] .fides-row-name-text {
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
 }
 
 .fides-row-provider {
@@ -1553,6 +1565,37 @@
   align-items: flex-start;
   gap: 1rem;
   min-height: 100px;
+  border-bottom: 1px solid var(--fides-border);
+}
+
+/* Grid card: header is name + provider only (logo lives in body) */
+.fides-wallet-card .fides-wallet-header.fides-wallet-card-header--text-only {
+  min-height: 0;
+  align-items: center;
+  gap: 0;
+  padding: 0.875rem 1.25rem;
+}
+
+.fides-wallet-card .fides-wallet-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.fides-wallet-card .fides-wallet-name {
+  margin: 0 0 0.2rem;
+  line-height: 1.25;
+  min-height: 0;
+  display: block;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: unset;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fides-wallet-card .fides-wallet-provider {
+  line-height: 1.3;
 }
 
 .fides-wallet-header.type-personal {
@@ -1651,6 +1694,79 @@
 
 .fides-wallet-body {
   padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+#fides-wallet-catalog-root .fides-wallet-grid[data-view="grid"] .fides-wallet-card > .fides-wallet-body {
+  min-height: 0;
+  align-items: stretch;
+  padding: 0.65rem 1.25rem 0.75rem;
+}
+
+#fides-wallet-catalog-root .fides-wallet-grid[data-view="grid"] .fides-wallet-card-logo-panel {
+  flex: 1;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 4.25rem;
+  padding: 0;
+}
+
+#fides-wallet-catalog-root .fides-wallet-grid[data-view="grid"] .fides-wallet-card .fides-wallet-footer {
+  border-radius: 0 0 var(--fides-radius-lg) var(--fides-radius-lg);
+  width: 100%;
+}
+
+#fides-wallet-catalog-root .fides-wallet-grid[data-view="grid"] .fides-wallet-rating-summary {
+  margin: 0 0 0.15rem;
+  text-align: left;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.fides-wallet-card-logo-main {
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  background: var(--fides-bg-secondary);
+  border: 1px solid var(--fides-border);
+  color: var(--fides-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
+}
+
+.fides-wallet-card-logo-main img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  border-radius: 8px;
+  display: block;
+}
+
+.fides-wallet-card-logo-main svg {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+#fides-wallet-catalog-root[data-theme="fides"] .fides-wallet-card-logo-main,
+#fides-wallet-catalog-root[data-theme="light"] .fides-wallet-card-logo-main {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+.fides-wallet-card-logo-panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 5.5rem;
+  padding: 0.15rem 0 0.35rem;
+  width: 100%;
 }
 
 .fides-wallet-description {
@@ -1758,6 +1874,20 @@
   flex-shrink: 0;
 }
 
+.fides-wallet-card-footer-listing .fides-modal-header-listing-badge {
+  font-size: 0.5625rem;
+  padding: 0.15rem 0.45rem 0.15rem 0.35rem;
+}
+
+.fides-wallet-card-footer-listing .fides-modal-header-listing-badge--community {
+  padding-left: 0.45rem;
+}
+
+.fides-wallet-card-footer-listing .fides-modal-header-listing-badge svg {
+  width: 12px;
+  height: 12px;
+}
+
 .fides-wallet-footer-badge {
   display: inline-flex;
   width: 22px;
@@ -1821,8 +1951,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
-  margin-left: 0.35rem;
-  vertical-align: middle;
+  flex-shrink: 0;
+  margin-left: 0;
 }
 
 #fides-wallet-catalog-root .fides-wallet-grid[data-view="list"] .fides-row-badge-icon {

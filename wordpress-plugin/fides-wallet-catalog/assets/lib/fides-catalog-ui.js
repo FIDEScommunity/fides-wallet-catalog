@@ -31,6 +31,73 @@
     return CREDENTIAL_FORMAT_DISPLAY[code] || code;
   }
 
+  /** Map filter option raw values to vocabulary.json keys (keep in sync with wallet-catalog.js). */
+  const WALLET_OPTION_TO_VOCAB = {
+    issuanceProtocol: {
+      'DIDComm Issue Credential v2': 'DIDComm v2',
+      'DIDComm Issue Credential v1': 'DIDComm v1'
+    },
+    presentationProtocol: {
+      'DIDComm Present Proof v2': 'DIDComm v2'
+    },
+    identifiers: {
+      'did:web': 'didWeb',
+      'did:key': 'didKey',
+      'did:jwk': 'didJwk',
+      'did:peer': 'didPeer',
+      'did:ebsi': 'didEbsi',
+      'did:webvh': 'didWebvh'
+    },
+    keyStorage: {
+      'Secure Enclave (iOS)': 'secureEnclaveIos',
+      'StrongBox (Android)': 'strongboxAndroid',
+      'Software': 'softwareKeyStorage',
+      'HSM': 'hsm',
+      'TEE': 'tee'
+    },
+    signingAlgorithm: {
+      'ECDSA ES256': 'ecdsaEs256',
+      'ES256': 'ecdsaEs256'
+    },
+    credentialStatus: {
+      'JWT Validity': 'jwtValidity',
+      'IETF Token Status List': 'ietfTokenStatusList',
+      'PKI Cert Validity': 'pkiCertValidity'
+    },
+    eidasTrustService: {
+      'Q_CERT_ESIG': 'QESig',
+      'Q_CERT_ESEAL': 'QESeal',
+      'Q_TIMESTAMP': 'QTimestamp',
+      'Q_ERDS': 'QERDS',
+      'Q_WAC': 'QWAC',
+      'Q_EARCH': 'QEArch',
+      'Q_VC': 'QVal',
+      'Q_PRES': 'QPres',
+      'Q_PRES_ESEAL': 'QPresSeal',
+      'Q_PRES_ESIG': 'QPresSig',
+      'Q_VAL_ESEAL': 'QValSeal',
+      'Q_VAL_ESIG': 'QValSig',
+      'Q_REM_MANAGE_Q_SEAL_CD': 'QRemSeal',
+      'Q_REM_MANAGE_Q_SIG_CD': 'QRemSig',
+      'QEAA': 'QEAA'
+    }
+  };
+
+  function resolveWalletVocabKey(groupKey, rawValue) {
+    const raw = String(rawValue);
+    const maps = WALLET_OPTION_TO_VOCAB[groupKey];
+    if (maps && maps[raw] !== undefined) return maps[raw];
+    return raw;
+  }
+
+  function walletVocabEntry(vocabulary, groupKey, rawValue) {
+    if (!vocabulary) return null;
+    const key = resolveWalletVocabKey(groupKey, rawValue);
+    const entry = vocabulary[key];
+    if (!entry || !entry.description) return null;
+    return { key: key, entry: entry };
+  }
+
   const icons = {
     wallet: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"></path><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"></path><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"></path></svg>',
     github: '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>',
@@ -51,12 +118,24 @@
     check: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
     download: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>',
     penLine: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
-    play: '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>',
+    play: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M8 5v14l11-7z"/></svg>',
+    chevronLeft: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>',
+    chevronRight: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>',
+    chevronDown: '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>',
+    maximize: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>',
     laptop: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></svg>',
-    official: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>'
+    tag: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></svg>',
+    official: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>',
+    mail: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
+    apple: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>',
+    playStore: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 9.99l-2.302 2.302-8.634-8.634z"/></svg>',
+    globeApp: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>'
   };
 
+  let currentModalMediaSlides = [];
+
   const OFFICIAL_LISTING_TITLE = 'Official listing — managed by the provider';
+  const COMMUNITY_LISTING_TITLE = 'Community listing — contributed by the community';
 
   let selectedContext = null;
 
@@ -115,6 +194,18 @@
     return resolveCatalogTier(item) === CATALOG_TIER_PRO;
   }
 
+  function buildCatalogListingHeaderBadgeHtml(item, options) {
+    if (!optionsTierUiEnabled(options)) return '';
+    if (walletListingTierIsPro(item, options)) {
+      return '<span class="fides-modal-header-official-badge fides-modal-header-listing-badge fides-modal-header-listing-badge--official" role="status" title="' +
+        escapeHtml(OFFICIAL_LISTING_TITLE) + '">' + icons.official +
+        '<span class="fides-modal-header-official-label fides-modal-header-listing-label">Official Listing</span></span>';
+    }
+    return '<span class="fides-modal-header-official-badge fides-modal-header-listing-badge fides-modal-header-listing-badge--community" role="status" title="' +
+      escapeHtml(COMMUNITY_LISTING_TITLE) +
+      '"><span class="fides-modal-header-official-label fides-modal-header-listing-label">Community Listing</span></span>';
+  }
+
   /** Whether Community vs Pro tier UI is active (master switch + options.tierUiEnabled). */
   function optionsTierUiEnabled(options) {
     return !!(options && options.tierUiEnabled);
@@ -150,6 +241,14 @@
     return fromProvider.indexOf('org:') === 0 ? fromProvider : '';
   }
 
+  /** org:… from catalog item id (organization) or wallet provider orgId. */
+  function resolveCatalogItemOrgId(item) {
+    if (!item || typeof item !== 'object') return '';
+    const directId = item.id != null ? String(item.id).trim() : '';
+    if (directId.indexOf('org:') === 0) return directId;
+    return resolveWalletOrgId(item);
+  }
+
   function normalizeEditAccess(options) {
     const raw = options && options.editAccess;
     const editAccess = raw && typeof raw === 'object'
@@ -169,26 +268,36 @@
     return userCanEditCatalogItem(normalizeEditAccess(options), resolveWalletOrgId(wallet));
   }
 
-  /** Pro listing for wallet UI when tier switch is on (explicit Pro tier or proOrgIds fallback). */
-  function walletListingTierIsPro(wallet, options) {
+  /** Pro listing for wallet/org UI when tier switch is on (explicit Pro tier or proOrgIds fallback). */
+  function walletListingTierIsPro(item, options) {
     if (!optionsTierUiEnabled(options)) return true;
-    if (!wallet) return false;
-    if (wallet.catalogTier) {
-      return !itemIsCommunity(wallet);
+    if (!item) return false;
+    if (item.catalogTier) {
+      return !itemIsCommunity(item);
     }
-    const orgId = resolveWalletOrgId(wallet);
+    const orgId = resolveCatalogItemOrgId(item);
     if (!orgId) return false;
     const editAccess = normalizeEditAccess(options);
     const proOrgIds = Array.isArray(editAccess.proOrgIds) ? editAccess.proOrgIds : [];
     return proOrgIds.indexOf(orgId) >= 0;
   }
 
+  function parseYoutubeVideoId(videoUrl) {
+    const match = String(videoUrl || '').match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([^&?/]+)/);
+    return match && match[1] ? match[1] : '';
+  }
+
+  function parseVimeoVideoId(videoUrl) {
+    const match = String(videoUrl || '').match(/(?:vimeo\.com\/|player\.vimeo\.com\/video\/)(\d+)/);
+    return match && match[1] ? match[1] : '';
+  }
+
   function getVideoEmbedUrl(videoUrl) {
     if (!videoUrl) return null;
-    const yt = videoUrl.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([^&?/]+)/);
-    if (yt && yt[1]) return 'https://www.youtube-nocookie.com/embed/' + yt[1] + '?rel=0&modestbranding=1';
-    const vimeo = videoUrl.match(/(?:vimeo\.com\/|player\.vimeo\.com\/video\/)(\d+)/);
-    if (vimeo && vimeo[1]) return 'https://player.vimeo.com/video/' + vimeo[1];
+    const ytId = parseYoutubeVideoId(videoUrl);
+    if (ytId) return 'https://www.youtube-nocookie.com/embed/' + ytId + '?rel=0&modestbranding=1';
+    const vimeoId = parseVimeoVideoId(videoUrl);
+    if (vimeoId) return 'https://player.vimeo.com/video/' + vimeoId;
     return null;
   }
 
@@ -198,6 +307,944 @@
       return '<div class="fides-video-container"><iframe src="' + escapeHtml(embedUrl) + '" frameborder="0" class="fides-video-iframe" title="Video player"></iframe></div>';
     }
     return '<div class="fides-video-fallback"><a href="' + escapeHtml(videoUrl) + '" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Video">' + icons.play + ' Watch Video (External)</a></div>';
+  }
+
+  const WALLET_DEPLOYMENT_MODEL_LABELS = {
+    saas: 'SaaS (cloud)',
+    on_premises: 'On-premises',
+    hybrid: 'Hybrid',
+  };
+
+  const WALLET_LICENSE_LABELS = {
+    MIT: 'MIT',
+    'Apache-2.0': 'Apache-2.0',
+    'GPL-3.0-or-later': 'GPL-3.0 or later',
+    'AGPL-3.0-or-later': 'AGPL-3.0 or later',
+    'LGPL-3.0-or-later': 'LGPL-3.0 or later',
+    'EUPL-1.2': 'EUPL-1.2',
+    'MPL-2.0': 'MPL-2.0',
+    'BSD-3-Clause': 'BSD-3-Clause',
+    ISC: 'ISC',
+    proprietary: 'Proprietary (closed source)',
+    other: 'Other',
+  };
+
+  function walletMediaVideos(wallet) {
+    if (!wallet) return [];
+    const urls = [];
+    if (wallet.media && Array.isArray(wallet.media.videos)) {
+      wallet.media.videos.forEach(function(url) {
+        const clean = String(url || '').trim();
+        if (clean && urls.indexOf(clean) === -1) urls.push(clean);
+      });
+    }
+    const legacy = wallet.video ? String(wallet.video).trim() : '';
+    if (legacy && urls.indexOf(legacy) === -1) urls.unshift(legacy);
+    return urls;
+  }
+
+  function walletMediaImages(wallet) {
+    if (!wallet || !wallet.media || !Array.isArray(wallet.media.images)) return [];
+    const urls = [];
+    wallet.media.images.forEach(function(url) {
+      const clean = String(url || '').trim();
+      if (clean && urls.indexOf(clean) === -1) urls.push(clean);
+    });
+    return urls;
+  }
+
+  function walletRecognitionItems(wallet, key) {
+    const rec = wallet && wallet.recognitions && typeof wallet.recognitions === 'object' ? wallet.recognitions : null;
+    if (rec && Array.isArray(rec[key])) {
+      return rec[key].filter(function(item) {
+        return item && String(item.title || '').trim();
+      });
+    }
+    if (key === 'certifications' && wallet && Array.isArray(wallet.certifications)) {
+      return wallet.certifications.map(function(title) {
+        return { title: String(title || '').trim(), url: '' };
+      }).filter(function(item) {
+        return item.title;
+      });
+    }
+    return [];
+  }
+
+  function walletAdditionalDocumentationItems(wallet) {
+    if (!wallet || !Array.isArray(wallet.additionalDocumentation)) return [];
+    return wallet.additionalDocumentation.filter(function(item) {
+      return item && String(item.title || '').trim();
+    });
+  }
+
+  function buildWalletAdditionalProductLinkRow(label, href, matomoName, linkText) {
+    const url = String(href || '').trim();
+    if (!url) return '';
+    const display = linkText != null && String(linkText).trim() ? String(linkText).trim() : url;
+    return '<div class="fides-additional-product-link-row">' +
+      '<span class="fides-additional-product-link-label">' + escapeHtml(label) + '</span>' +
+      '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer" class="fides-modal-link-inline fides-additional-product-link" data-matomo-name="' + escapeHtml(matomoName) + '">' +
+      escapeHtml(display) + ' ' + icons.externalLinkSmall + '</a></div>';
+  }
+
+  function buildWalletAdditionalProductInfoBodyHtml(wallet, options) {
+    if (!walletListingTierIsPro(wallet, options)) return '';
+    const linkRows = [];
+    const websiteRow = buildWalletAdditionalProductLinkRow('Product link', wallet.website, 'Product link');
+    if (websiteRow) linkRows.push(websiteRow);
+    const documentationRow = buildWalletAdditionalProductLinkRow('Documentation', wallet.documentation, 'Documentation');
+    if (documentationRow) linkRows.push(documentationRow);
+    const repositoryRow = buildWalletAdditionalProductLinkRow('Code Repository', wallet.repository, 'Code Repository');
+    if (repositoryRow) linkRows.push(repositoryRow);
+    walletAdditionalDocumentationItems(wallet).forEach(function(item) {
+      const row = buildWalletAdditionalProductLinkRow(
+        String(item.title || '').trim(),
+        item.url,
+        'Additional documentation'
+      );
+      if (row) linkRows.push(row);
+    });
+    if (!linkRows.length) return '';
+    return '<div class="fides-wallet-additional-product-info">' +
+      '<div class="fides-additional-product-links">' + linkRows.join('') + '</div></div>';
+  }
+
+  function walletAdditionalProductInfoCount(wallet, options) {
+    if (!walletListingTierIsPro(wallet, options)) return 0;
+    let count = 0;
+    if (wallet && String(wallet.website || '').trim()) count += 1;
+    if (wallet && String(wallet.documentation || '').trim()) count += 1;
+    if (wallet && String(wallet.repository || '').trim()) count += 1;
+    return count + walletAdditionalDocumentationItems(wallet).length;
+  }
+
+  function walletStandardsList(wallet) {
+    if (!wallet || !wallet.standards) return [];
+    if (Array.isArray(wallet.standards)) {
+      return wallet.standards.map(function(s) { return String(s || '').trim(); }).filter(Boolean);
+    }
+    return String(wallet.standards).split(/[,\n]/).map(function(s) { return s.trim(); }).filter(Boolean);
+  }
+
+  function walletLicenseDisplay(wallet) {
+    if (!wallet || !wallet.license) return '';
+    if (wallet.license === 'other') {
+      const other = wallet.licenseOther ? String(wallet.licenseOther).trim() : '';
+      return other || WALLET_LICENSE_LABELS.other;
+    }
+    return WALLET_LICENSE_LABELS[wallet.license] || String(wallet.license);
+  }
+
+  function walletStatusDisplay(wallet) {
+    if (!wallet || !wallet.status) return '';
+    const statusLabels = {
+      development: 'In Development',
+      beta: 'Beta',
+      production: 'Production',
+      deprecated: 'Deprecated',
+    };
+    return statusLabels[wallet.status] || String(wallet.status);
+  }
+
+  function walletLicenseKvDisplay(wallet) {
+    const licenseLabel = walletLicenseDisplay(wallet);
+    if (wallet.openSource) {
+      return 'Open Source' + (licenseLabel ? ' (' + licenseLabel + ')' : '');
+    }
+    return licenseLabel || 'Proprietary';
+  }
+
+  function walletDeploymentModelLabel(code) {
+    if (!code) return '';
+    return WALLET_DEPLOYMENT_MODEL_LABELS[code] || String(code);
+  }
+
+  const WALLET_CAPABILITY_LABELS = { holder: 'Holder', issuer: 'Issuer', verifier: 'Verifier' };
+  const WALLET_CAPABILITY_ORDER = ['holder', 'issuer', 'verifier'];
+
+  function walletCapabilityLabel(code) {
+    const key = String(code || '').toLowerCase();
+    if (WALLET_CAPABILITY_LABELS[key]) return WALLET_CAPABILITY_LABELS[key];
+    return key ? key.charAt(0).toUpperCase() + key.slice(1) : '';
+  }
+
+  function sortedWalletCapabilities(wallet) {
+    if (!wallet || !Array.isArray(wallet.capabilities)) return [];
+    const caps = wallet.capabilities.map(function(c) { return String(c || '').toLowerCase(); }).filter(Boolean);
+    return WALLET_CAPABILITY_ORDER.filter(function(c) { return caps.indexOf(c) >= 0; })
+      .concat(caps.filter(function(c) { return WALLET_CAPABILITY_ORDER.indexOf(c) < 0; }));
+  }
+
+  function walletCapabilitySet(wallet) {
+    if (!wallet || !Array.isArray(wallet.capabilities)) return new Set();
+    return new Set(wallet.capabilities.map(function(c) { return String(c || '').toLowerCase(); }).filter(Boolean));
+  }
+
+  function renderWalletCheckOption(label, active) {
+    return '<span class="fides-wallet-check-option' + (active ? ' is-active' : ' is-inactive') + '">' +
+      '<span class="fides-wallet-check-box" aria-hidden="true">' + (active ? icons.check : '') + '</span>' +
+      '<span class="fides-wallet-check-label">' + escapeHtml(label) + '</span></span>';
+  }
+
+  function renderWalletCheckGroup(options) {
+    return '<span class="fides-wallet-check-group">' + options.join('') + '</span>';
+  }
+
+  function buildWalletKeyCapabilitiesKvSection(wallet) {
+    if (walletIsPersonal(wallet)) return '';
+    const capSet = walletCapabilitySet(wallet);
+    const items = WALLET_CAPABILITY_ORDER.map(function(key) {
+      return renderWalletCheckOption(walletCapabilityLabel(key), capSet.has(key));
+    }).join('');
+    return '<div class="fides-kv-section" data-section="capabilities">' +
+      '<div class="fides-kv-section-title">Key capabilities</div>' +
+      '<div class="fides-wallet-key-capabilities fides-wallet-check-group-wrap">' + items + '</div></div>';
+  }
+
+  const EIDAS_TRUST_SERVICE_ORDER = [
+    'Q_CERT_ESIG',
+    'Q_CERT_ESEAL',
+    'Q_TIMESTAMP',
+    'Q_ERDS',
+    'Q_WAC',
+    'Q_EARCH',
+    'Q_VC',
+    'Q_PRES',
+    'Q_PRES_ESEAL',
+    'Q_PRES_ESIG',
+    'Q_VAL_ESEAL',
+    'Q_VAL_ESIG',
+    'Q_REM_MANAGE_Q_SEAL_CD',
+    'Q_REM_MANAGE_Q_SIG_CD',
+    'QEAA',
+  ];
+
+  const EIDAS_TRUST_SERVICES_PERSONAL = [
+    'Q_CERT_ESIG',
+    'Q_TIMESTAMP',
+    'Q_ERDS',
+    'Q_EARCH',
+    'Q_VC',
+    'Q_PRES',
+    'Q_PRES_ESIG',
+    'Q_VAL_ESIG',
+    'Q_REM_MANAGE_Q_SIG_CD',
+    'QEAA',
+  ];
+
+  const EIDAS_TRUST_SERVICE_ABBREVIATIONS = {
+    Q_CERT_ESIG: 'QESig',
+    Q_CERT_ESEAL: 'QESeal',
+    Q_TIMESTAMP: 'QTimestamp',
+    Q_ERDS: 'QERDS',
+    Q_WAC: 'QWAC',
+    Q_EARCH: 'QEArch',
+    Q_VC: 'QVal',
+    Q_PRES: 'QPres',
+    Q_PRES_ESEAL: 'QPresSeal',
+    Q_PRES_ESIG: 'QPresSig',
+    Q_VAL_ESEAL: 'QValSeal',
+    Q_VAL_ESIG: 'QValSig',
+    Q_REM_MANAGE_Q_SEAL_CD: 'QRemSeal',
+    Q_REM_MANAGE_Q_SIG_CD: 'QRemSig',
+    QEAA: 'QEAA',
+  };
+
+  const EIDAS_TRUST_SERVICE_FULL_LABELS = {
+    Q_CERT_ESIG: 'Qualified electronic signature certificate',
+    Q_CERT_ESEAL: 'Qualified electronic seal certificate',
+    Q_TIMESTAMP: 'Qualified timestamp',
+    Q_ERDS: 'Qualified electronic registered delivery service',
+    Q_WAC: 'Qualified website authentication certificate',
+    Q_EARCH: 'Qualified electronic archiving',
+    Q_VC: 'Qualified validation service',
+    Q_PRES: 'Qualified preservation service',
+    Q_PRES_ESEAL: 'Qualified preservation service for electronic seals',
+    Q_PRES_ESIG: 'Qualified preservation service for electronic signatures',
+    Q_VAL_ESEAL: 'Qualified validation service for electronic seals',
+    Q_VAL_ESIG: 'Qualified validation service for electronic signatures',
+    Q_REM_MANAGE_Q_SEAL_CD: 'Qualified management of remote seal creation devices',
+    Q_REM_MANAGE_Q_SIG_CD: 'Qualified management of remote signature creation devices',
+    QEAA: 'Qualified electronic attestation of attributes',
+  };
+
+  function walletEidasTrustServiceSet(wallet) {
+    if (!wallet || !Array.isArray(wallet.eidasTrustServices)) return new Set();
+    return new Set(wallet.eidasTrustServices.map(function(code) {
+      return String(code || '').trim();
+    }).filter(Boolean));
+  }
+
+  function eidasTrustServiceCodesForWallet(wallet) {
+    const allowed = walletIsPersonal(wallet) ? EIDAS_TRUST_SERVICES_PERSONAL : EIDAS_TRUST_SERVICE_ORDER;
+    const selected = walletEidasTrustServiceSet(wallet);
+    const codes = allowed.slice();
+    selected.forEach(function(code) {
+      if (codes.indexOf(code) === -1) codes.push(code);
+    });
+    return codes.sort(function(a, b) {
+      return EIDAS_TRUST_SERVICE_ORDER.indexOf(a) - EIDAS_TRUST_SERVICE_ORDER.indexOf(b);
+    });
+  }
+
+  function renderWalletEidasCheckOption(code, active, vocabulary) {
+    const abbrev = EIDAS_TRUST_SERVICE_ABBREVIATIONS[code] || code;
+    const full = EIDAS_TRUST_SERVICE_FULL_LABELS[code] || code;
+    const match = vocabulary ? walletVocabEntry(vocabulary, 'eidasTrustService', code) : null;
+    let labelHtml;
+    if (match) {
+      labelHtml = '<button type="button" class="fides-kv-glossary-link fides-wallet-check-vocab-link" data-vocab-key="' +
+        escapeHtml(match.key) + '" title="' + escapeHtml(full) + '" aria-label="Definition: ' + escapeHtml(full) + '">' +
+        escapeHtml(abbrev) + '</button>';
+    } else {
+      labelHtml = '<span class="fides-wallet-check-label" title="' + escapeHtml(full) + '">' + escapeHtml(abbrev) + '</span>';
+    }
+    return '<span class="fides-wallet-check-option' + (active ? ' is-active' : ' is-inactive') + '">' +
+      '<span class="fides-wallet-check-box" aria-hidden="true">' + (active ? icons.check : '') + '</span>' +
+      labelHtml + '</span>';
+  }
+
+  function buildWalletEidasTrustServicesKvSection(wallet, vocabulary) {
+    const selected = walletEidasTrustServiceSet(wallet);
+    const codes = eidasTrustServiceCodesForWallet(wallet);
+    const options = codes.map(function(code) {
+      return renderWalletEidasCheckOption(code, selected.has(code), vocabulary);
+    });
+    return '<div class="fides-kv-section" data-section="eidasTrustServices">' +
+      '<div class="fides-kv-section-title">eIDAS Trust Services</div>' +
+      '<div class="fides-wallet-check-group-wrap">' + renderWalletCheckGroup(options) + '</div></div>';
+  }
+
+  function renderWalletDeploymentChecksHtml(wallet) {
+    const model = String(wallet && wallet.deploymentModel || '').toLowerCase();
+    if (!model) return '';
+    const saas = model === 'saas' || model === 'hybrid';
+    const onPremises = model === 'on_premises' || model === 'hybrid';
+    return renderWalletCheckGroup([
+      renderWalletCheckOption('SaaS', saas),
+      renderWalletCheckOption('On-premises', onPremises),
+    ]);
+  }
+
+  function walletIsPersonal(wallet) {
+    return String(wallet && wallet.type || '').toLowerCase() === 'personal';
+  }
+
+  function walletHasWebPlatform(wallet) {
+    const platforms = wallet && wallet.platforms;
+    if (!Array.isArray(platforms)) return false;
+    return platforms.some(function(platform) {
+      return String(platform).toLowerCase() === 'web';
+    });
+  }
+
+  function resolveWalletWebUrl(wallet) {
+    const appLinks = wallet && wallet.appStoreLinks && typeof wallet.appStoreLinks === 'object' ? wallet.appStoreLinks : {};
+    return String(appLinks.web || wallet.website || '').trim();
+  }
+
+  function walletHasPlatform(wallet, platformName) {
+    const platforms = wallet && wallet.platforms;
+    if (!Array.isArray(platforms)) return false;
+    const needle = String(platformName).toLowerCase();
+    return platforms.some(function(platform) {
+      return String(platform).toLowerCase() === needle;
+    });
+  }
+
+  function renderWalletAppStoreButton(kind, iconHtml, smallText, strongText, url, isClickable, matomoName, ariaLabel) {
+    const className = 'fides-app-store-btn ' + kind + (isClickable ? '' : ' is-disabled');
+    const labelHtml = '<span><small>' + escapeHtml(smallText) + '</small><strong>' + escapeHtml(strongText) + '</strong></span>';
+    const content = iconHtml + labelHtml;
+    if (isClickable && url) {
+      return '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer" class="' + className + '" data-matomo-name="' + escapeHtml(matomoName) + '" aria-label="' + escapeHtml(ariaLabel) + '">' + content + '</a>';
+    }
+    return '<span class="' + className + '" role="img" aria-label="' + escapeHtml(ariaLabel) + ' (preview only)">' + content + '</span>';
+  }
+
+  function buildWalletAppStoreButtonsHtml(wallet, options) {
+    const isPro = walletListingTierIsPro(wallet, options);
+    const appLinks = wallet && wallet.appStoreLinks && typeof wallet.appStoreLinks === 'object' ? wallet.appStoreLinks : {};
+    const iosUrl = String(appLinks.iOS || appLinks.ios || '').trim();
+    const androidUrl = String(appLinks.android || '').trim();
+    const webUrl = resolveWalletWebUrl(wallet);
+    const buttons = [];
+    if (iosUrl || walletHasPlatform(wallet, 'iOS')) {
+      buttons.push(renderWalletAppStoreButton(
+        'ios',
+        icons.apple,
+        'Download on the',
+        'App Store',
+        iosUrl,
+        isPro && !!iosUrl,
+        'App Store',
+        'Download on the App Store'
+      ));
+    }
+    if (androidUrl || walletHasPlatform(wallet, 'Android')) {
+      buttons.push(renderWalletAppStoreButton(
+        'android',
+        icons.playStore,
+        'Get it on',
+        'Google Play',
+        androidUrl,
+        isPro && !!androidUrl,
+        'Google Play',
+        'Get it on Google Play'
+      ));
+    }
+    if (walletHasWebPlatform(wallet)) {
+      buttons.push(renderWalletAppStoreButton(
+        'web',
+        icons.globeApp,
+        'Use on the',
+        'Web',
+        webUrl,
+        isPro && !!webUrl,
+        'Web app',
+        'Open web app'
+      ));
+    }
+    if (!buttons.length) return '';
+    return '<div class="fides-wallet-capabilities fides-wallet-app-stores">' +
+      '<span class="fides-wallet-capabilities-label">Get the app</span>' +
+      '<div class="fides-wallet-capabilities-list fides-modal-app-stores">' + buttons.join('') + '</div></div>';
+  }
+
+  function buildWalletCapabilitiesOrAppStoresHtml(wallet, options) {
+    if (!walletIsPersonal(wallet)) return '';
+    return buildWalletAppStoreButtonsHtml(wallet, options);
+  }
+
+  function buildWalletModalMediaSlides(wallet) {
+    const title = wallet && wallet.name ? String(wallet.name) : 'Wallet preview';
+    const slides = [];
+
+    walletMediaVideos(wallet).forEach(function(url, index) {
+      const embedSrc = getVideoEmbedUrl(url);
+      if (!embedSrc) return;
+      const ytId = parseYoutubeVideoId(url);
+      const thumbUrl = ytId ? 'https://i.ytimg.com/vi/' + encodeURIComponent(ytId) + '/hqdefault.jpg' : '';
+      slides.push({
+        type: 'video',
+        label: index === 0 ? 'Demo video' : 'Demo video ' + (index + 1),
+        embedSrc: embedSrc,
+        videoTitle: index === 0 ? 'Demo video' : 'Demo video ' + (index + 1),
+        thumbUrl: thumbUrl
+      });
+    });
+
+    walletMediaImages(wallet).forEach(function(url, index) {
+      const imageUrl = String(url || '').trim();
+      if (!imageUrl) return;
+      slides.push({
+        type: 'image',
+        label: index === 0 ? 'Image' : 'Image ' + (index + 1),
+        imageUrl: imageUrl,
+        alt: index === 0 ? title : title + ' image ' + (index + 1)
+      });
+    });
+
+    return slides;
+  }
+
+  function modalMediaSlideThumbUrl(slide) {
+    if (slide.type === 'image') return slide.imageUrl;
+    return slide.thumbUrl || '';
+  }
+
+  function renderModalMediaSlideHtml(slide) {
+    if (slide.type === 'video') {
+      return '<div class="fides-use-case-modal-media fides-use-case-modal-media-video">' +
+        '<div class="fides-use-case-modal-media-frame" data-video-embed-src="' + escapeHtml(slide.embedSrc) + '" data-video-title="' + escapeHtml(slide.videoTitle) + '"></div>' +
+        '</div>';
+    }
+    return '<div class="fides-use-case-modal-media fides-use-case-modal-media-image">' +
+      '<img src="' + escapeHtml(slide.imageUrl) + '" alt="' + escapeHtml(slide.alt) + '" loading="lazy">' +
+      '</div>';
+  }
+
+  function renderModalMediaThumbsHtml(slides, context) {
+    if (slides.length < 2) return '';
+    return '<div class="fides-media-thumbs" data-media-thumbs="' + escapeHtml(context) + '">' +
+      slides.map(function(slide, index) {
+        const thumb = modalMediaSlideThumbUrl(slide);
+        const inner = thumb
+          ? '<img src="' + escapeHtml(thumb) + '" alt="" loading="lazy">'
+          : '<span class="fides-media-thumb-fallback">' + icons.play + '</span>';
+        const videoBadge = slide.type === 'video' ? '<span class="fides-media-thumb-play">' + icons.play + '</span>' : '';
+        return '<button type="button" class="fides-media-thumb' + (index === 0 ? ' is-active' : '') + '" data-thumb-index="' + index + '" aria-label="' + escapeHtml(slide.label) + '">' +
+          inner + videoBadge +
+          '</button>';
+      }).join('') +
+      '</div>';
+  }
+
+  function renderModalMediaCarouselHtml(slides, ariaLabel) {
+    if (!slides.length) return '';
+    currentModalMediaSlides = slides;
+    const multi = slides.length > 1;
+    const expandLabel = 'View larger';
+    return '<div class="fides-use-case-modal-media-wrap' + (multi ? ' is-multi' : '') + '">' +
+      '<div class="fides-use-case-modal-carousel" tabindex="0" aria-roledescription="carousel" aria-label="' + escapeHtml(ariaLabel || 'Media') + '">' +
+      '<div class="fides-use-case-modal-carousel-viewport">' +
+      '<div class="fides-use-case-modal-carousel-track" data-carousel-track style="transform: translateX(0);">' +
+      slides.map(function(slide, index) {
+        return '<div class="fides-use-case-modal-carousel-slide' + (index === 0 ? ' is-active' : '') + '" data-carousel-slide="' + index + '" aria-hidden="' + (index === 0 ? 'false' : 'true') + '">' +
+          '<button type="button" class="fides-media-expand-btn" data-media-expand="' + index + '" aria-label="' + escapeHtml(expandLabel) + '" title="' + escapeHtml(expandLabel) + '">' + icons.maximize + '</button>' +
+          renderModalMediaSlideHtml(slide) +
+          '</div>';
+      }).join('') +
+      '</div>' +
+      (multi
+        ? '<button type="button" class="fides-carousel-nav fides-carousel-nav-edge fides-carousel-prev" data-carousel-prev aria-label="Previous slide">' + icons.chevronLeft + '</button>' +
+          '<button type="button" class="fides-carousel-nav fides-carousel-nav-edge fides-carousel-next" data-carousel-next aria-label="Next slide">' + icons.chevronRight + '</button>' +
+          '<span class="fides-carousel-counter-overlay" data-carousel-counter>1 / ' + slides.length + '</span>'
+        : '') +
+      '</div>' +
+      renderModalMediaThumbsHtml(slides, 'modal') +
+      '</div>' +
+      '</div>';
+  }
+
+  function activateCarouselSlideMedia(slide) {
+    if (!slide) return;
+    slide.querySelectorAll('[data-video-embed-src]').forEach(function(frame) {
+      const src = frame.getAttribute('data-video-embed-src');
+      if (!src || frame.querySelector('iframe')) return;
+      const iframe = document.createElement('iframe');
+      iframe.src = src;
+      iframe.title = frame.getAttribute('data-video-title') || 'Demo video';
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('loading', 'lazy');
+      frame.appendChild(iframe);
+    });
+  }
+
+  function deactivateCarouselSlideMedia(slide) {
+    if (!slide) return;
+    slide.querySelectorAll('[data-video-embed-src]').forEach(function(frame) {
+      const iframe = frame.querySelector('iframe');
+      if (iframe) iframe.remove();
+    });
+  }
+
+  function bindModalMediaCarousel(carousel, options) {
+    const opts = options || {};
+    const slideEls = Array.from(carousel.querySelectorAll('[data-carousel-slide]'));
+    if (!slideEls.length) return null;
+
+    const track = carousel.querySelector('[data-carousel-track]');
+    const counter = carousel.querySelector('[data-carousel-counter]');
+    const thumbButtons = Array.from(carousel.querySelectorAll('[data-thumb-index]'));
+    const prevBtn = carousel.querySelector('[data-carousel-prev]');
+    const nextBtn = carousel.querySelector('[data-carousel-next]');
+    let index = Math.min(Math.max(opts.startIndex || 0, 0), slideEls.length - 1);
+
+    function applyIndex(skipActivate) {
+      slideEls.forEach(function(slide, slideIndex) {
+        const isActive = slideIndex === index;
+        slide.classList.toggle('is-active', isActive);
+        slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+      });
+      thumbButtons.forEach(function(btn) {
+        btn.classList.toggle('is-active', Number(btn.getAttribute('data-thumb-index')) === index);
+      });
+      if (track) track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      if (counter) counter.textContent = (index + 1) + ' / ' + slideEls.length;
+      if (!skipActivate) {
+        slideEls.forEach(function(slide, slideIndex) {
+          if (slideIndex !== index) deactivateCarouselSlideMedia(slide);
+        });
+        activateCarouselSlideMedia(slideEls[index]);
+      }
+    }
+
+    function goTo(nextIndex) {
+      index = (nextIndex + slideEls.length) % slideEls.length;
+      applyIndex(false);
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', function() { goTo(index - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function() { goTo(index + 1); });
+    thumbButtons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const thumbIndex = Number(btn.getAttribute('data-thumb-index'));
+        if (Number.isFinite(thumbIndex)) goTo(thumbIndex);
+      });
+    });
+    carousel.addEventListener('keydown', function(event) {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        goTo(index - 1);
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        goTo(index + 1);
+      }
+    });
+
+    applyIndex(false);
+    return { goTo: goTo, current: function() { return index; } };
+  }
+
+  function onMediaLightboxKeydown(event) {
+    if (event.key === 'Escape') {
+      event.stopPropagation();
+      closeMediaLightbox();
+    }
+  }
+
+  function closeMediaLightbox() {
+    const existing = document.getElementById('fides-media-lightbox');
+    if (!existing) return;
+    existing.querySelectorAll('[data-carousel-slide]').forEach(function(slide) {
+      deactivateCarouselSlideMedia(slide);
+    });
+    existing.remove();
+    document.removeEventListener('keydown', onMediaLightboxKeydown);
+  }
+
+  function openMediaLightbox(startIndex) {
+    const slides = currentModalMediaSlides;
+    if (!slides || !slides.length) return;
+    closeMediaLightbox();
+
+    const multi = slides.length > 1;
+    const html = '<div class="fides-media-lightbox" id="fides-media-lightbox" role="dialog" aria-modal="true" aria-label="Media viewer">' +
+      '<button type="button" class="fides-media-lightbox-close" data-lightbox-close aria-label="Close viewer">' + icons.xLarge + '</button>' +
+      '<div class="fides-media-lightbox-stage">' +
+      '<div class="fides-use-case-modal-carousel fides-media-lightbox-carousel" tabindex="0">' +
+      '<div class="fides-use-case-modal-carousel-viewport">' +
+      '<div class="fides-use-case-modal-carousel-track" data-carousel-track style="transform: translateX(0);">' +
+      slides.map(function(slide, index) {
+        return '<div class="fides-use-case-modal-carousel-slide' + (index === 0 ? ' is-active' : '') + '" data-carousel-slide="' + index + '" aria-hidden="' + (index === 0 ? 'false' : 'true') + '">' +
+          renderModalMediaSlideHtml(slide) +
+          '</div>';
+      }).join('') +
+      '</div>' +
+      (multi
+        ? '<button type="button" class="fides-carousel-nav fides-carousel-nav-edge fides-carousel-prev" data-carousel-prev aria-label="Previous slide">' + icons.chevronLeft + '</button>' +
+          '<button type="button" class="fides-carousel-nav fides-carousel-nav-edge fides-carousel-next" data-carousel-next aria-label="Next slide">' + icons.chevronRight + '</button>' +
+          '<span class="fides-carousel-counter-overlay" data-carousel-counter>1 / ' + slides.length + '</span>'
+        : '') +
+      '</div>' +
+      renderModalMediaThumbsHtml(slides, 'lightbox') +
+      '</div>' +
+      '</div>' +
+      '</div>';
+
+    document.body.insertAdjacentHTML('beforeend', html);
+
+    const lightbox = document.getElementById('fides-media-lightbox');
+    if (!lightbox) return;
+    const carousel = lightbox.querySelector('.fides-media-lightbox-carousel');
+    if (carousel) bindModalMediaCarousel(carousel, { startIndex: startIndex || 0 });
+
+    lightbox.addEventListener('click', function(event) {
+      if (event.target === lightbox) closeMediaLightbox();
+    });
+    const closeBtn = lightbox.querySelector('[data-lightbox-close]');
+    if (closeBtn) closeBtn.addEventListener('click', closeMediaLightbox);
+    document.addEventListener('keydown', onMediaLightboxKeydown);
+
+    const focusTarget = carousel || closeBtn;
+    if (focusTarget && typeof focusTarget.focus === 'function') focusTarget.focus();
+  }
+
+  function initModalMediaCarousels() {
+    const overlay = document.getElementById('fides-modal-overlay');
+    if (!overlay) return;
+    overlay.querySelectorAll('.fides-use-case-modal-carousel').forEach(function(carousel) {
+      bindModalMediaCarousel(carousel, { startIndex: 0 });
+    });
+    overlay.querySelectorAll('[data-media-expand]').forEach(function(btn) {
+      btn.addEventListener('click', function(event) {
+        event.stopPropagation();
+        const idx = Number(btn.getAttribute('data-media-expand'));
+        openMediaLightbox(Number.isFinite(idx) ? idx : 0);
+      });
+    });
+  }
+
+  function buildWalletHeroSectionHtml(wallet, options) {
+    const description = wallet && wallet.description ? String(wallet.description).trim() : '';
+    let mediaHtml = '';
+    if (walletListingTierIsPro(wallet, options)) {
+      const slides = buildWalletModalMediaSlides(wallet);
+      if (slides.length) mediaHtml = renderModalMediaCarouselHtml(slides, 'Wallet media');
+    }
+    if (!description && !mediaHtml) return '';
+    const layoutClass = mediaHtml ? 'fides-use-case-modal-hero has-media' : 'fides-use-case-modal-hero';
+    return '<section class="' + layoutClass + '">' +
+      (description ? '<div class="fides-use-case-modal-copy"><p class="fides-modal-description">' + escapeHtml(description) + '</p></div>' : '') +
+      mediaHtml +
+      '</section>';
+  }
+
+  function buildOrganizationHeroSectionHtml(org, options) {
+    const description = org && org.description ? String(org.description).trim() : '';
+    let mediaHtml = '';
+    if (walletListingTierIsPro(org, options)) {
+      const slides = buildWalletModalMediaSlides(org);
+      if (slides.length) mediaHtml = renderModalMediaCarouselHtml(slides, 'Organization media');
+    }
+    if (!description && !mediaHtml) return '';
+    const layoutClass = mediaHtml ? 'fides-use-case-modal-hero has-media' : 'fides-use-case-modal-hero';
+    return '<section class="' + layoutClass + '">' +
+      (description ? '<div class="fides-use-case-modal-copy"><p class="fides-modal-description">' + escapeHtml(description) + '</p></div>' : '') +
+      mediaHtml +
+      '</section>';
+  }
+
+  function buildWalletPricingBodyHtml(wallet, options) {
+    if (!walletListingTierIsPro(wallet, options)) return '';
+    if (walletIsPersonal(wallet)) return '';
+    const text = wallet.pricing ? String(wallet.pricing).trim() : '';
+    if (!text) {
+      return '<p class="fides-accordion-body-text fides-accordion-body-text--muted">No pricing information provided.</p>';
+    }
+    return '<p class="fides-accordion-body-text">' + escapeHtml(text) + '</p>';
+  }
+
+  function renderWalletRecognitionListItemHtml(item) {
+    const title = escapeHtml(String(item.title || '').trim());
+    const url = item.url ? String(item.url).trim() : '';
+    if (!title) return '';
+    if (url) {
+      return '<li class="fides-recognition-item">' +
+        '<span class="fides-recognition-item-title">' + title + '</span>' +
+        '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener" class="fides-modal-link-inline fides-recognition-item-link" data-matomo-name="Recognition link">' +
+        'Learn more ' + icons.externalLinkSmall + '</a></li>';
+    }
+    return '<li class="fides-recognition-item"><span class="fides-recognition-item-title">' + title + '</span></li>';
+  }
+
+  function buildWalletRecognitionsBodyHtml(wallet, options) {
+    if (!walletListingTierIsPro(wallet, options)) return '';
+    const sections = [
+      { key: 'customerStories', title: 'Customer stories' },
+      { key: 'awardsAndRecognitions', title: 'Awards & recognitions' },
+    ];
+    let html = '';
+    sections.forEach(function(section) {
+      const items = walletRecognitionItems(wallet, section.key);
+      if (!items.length) return;
+      html += '<div class="fides-recognitions-section" data-section="' + escapeHtml(section.key) + '">' +
+        '<div class="fides-recognitions-section-title">' + escapeHtml(section.title) + '</div>' +
+        '<ul class="fides-recognitions-list">' +
+        items.map(renderWalletRecognitionListItemHtml).filter(Boolean).join('') +
+        '</ul></div>';
+    });
+    return html;
+  }
+
+  function buildWalletCertificationsBodyHtml(wallet, options) {
+    if (!walletListingTierIsPro(wallet, options)) return '';
+    const items = walletRecognitionItems(wallet, 'certifications');
+    if (!items.length) return '';
+    return '<ul class="fides-recognitions-list">' +
+      items.map(renderWalletRecognitionListItemHtml).filter(Boolean).join('') +
+      '</ul>';
+  }
+
+  function buildWalletFeaturesBodyHtml(wallet, options) {
+    if (!walletListingTierIsPro(wallet, options)) return '';
+    if (!wallet.features || !wallet.features.length) return '';
+    return '<ul class="fides-features-list">' + wallet.features.map(function(f) {
+      return '<li>' + icons.check + ' ' + escapeHtml(f) + '</li>';
+    }).join('') + '</ul>';
+  }
+
+  function walletFeaturesCount(wallet, options) {
+    if (!walletListingTierIsPro(wallet, options)) return 0;
+    return wallet.features && wallet.features.length ? wallet.features.length : 0;
+  }
+
+  function walletRecognitionsCount(wallet, options) {
+    if (!walletListingTierIsPro(wallet, options)) return 0;
+    return ['customerStories', 'awardsAndRecognitions'].reduce(function(sum, key) {
+      return sum + walletRecognitionItems(wallet, key).length;
+    }, 0);
+  }
+
+  function walletCertificationsCount(wallet, options) {
+    if (!walletListingTierIsPro(wallet, options)) return 0;
+    return walletRecognitionItems(wallet, 'certifications').length;
+  }
+
+  function renderTechnicalKvRow(label, valueHtml) {
+    if (!valueHtml) return '';
+    return '<div class="fides-kv-row">' +
+      '<span class="fides-kv-key">' + escapeHtml(label) + '</span>' +
+      '<span class="fides-kv-val">' + valueHtml + '</span>' +
+      '</div>';
+  }
+
+  function renderTechnicalKvRowText(label, values, labelFn, vocabulary, vocabGroupKey) {
+    if (!values || !values.length) return '';
+    const items = values.map(function(v) {
+      const display = String(labelFn ? labelFn(v) : v);
+      const match = vocabulary && vocabGroupKey ? walletVocabEntry(vocabulary, vocabGroupKey, v) : null;
+      if (match) {
+        return '<button type="button" class="fides-kv-glossary-link" data-vocab-key="' +
+          escapeHtml(match.key) + '" aria-label="Definition: ' + escapeHtml(display) + '">' +
+          escapeHtml(display) + '</button>';
+      }
+      return escapeHtml(display);
+    });
+    const valueHtml = items.map(function(item, index) {
+      const comma = index < items.length - 1 ? ',' : '';
+      return '<span class="fides-kv-val-item">' + item + comma + '</span>';
+    }).join('');
+    return renderTechnicalKvRow(label, valueHtml);
+  }
+
+  function renderPlatformKvValue(wallet, platformLabelsOnly) {
+    if (!wallet.platforms || !wallet.platforms.length) return '';
+    return wallet.platforms.map(function(p) {
+      const link = platformLabelsOnly ? null : getAppStoreLink(wallet, p);
+      if (link) {
+        return '<a href="' + escapeHtml(link) + '" target="_blank" rel="noopener" class="fides-modal-link-inline">' +
+          escapeHtml(p) + ' ' + icons.externalLinkSmall + '</a>';
+      }
+      return escapeHtml(p);
+    }).join(', ');
+  }
+
+  function buildTechnicalKvSection(title, sectionKey, rows) {
+    const body = rows.filter(Boolean).join('');
+    if (!body) return '';
+    const keyAttr = sectionKey ? ' data-section="' + escapeHtml(sectionKey) + '"' : '';
+    return '<div class="fides-kv-section"' + keyAttr + '>' +
+      '<div class="fides-kv-section-title">' + escapeHtml(title) + '</div>' +
+      '<div class="fides-details-kv fides-details-kv--technical-grid">' + body + '</div>' +
+      '</div>';
+  }
+
+  function buildWalletTechnicalKvHtml(wallet, platformLabelsOnly, standardsList, vocabulary) {
+    const issuanceProtocols = wallet.issuanceProtocols || (wallet.protocols && wallet.protocols.issuance) || [];
+    const presentationProtocols = wallet.presentationProtocols || (wallet.protocols && wallet.protocols.presentation) || [];
+    const identifiers = (wallet.supportedIdentifiers || wallet.didMethods) || [];
+
+    const credentialsAndProtocols = buildTechnicalKvSection('Formats & protocols', 'compatibility', [
+      renderTechnicalKvRowText('VC formats', sortCredentialFormats(wallet.vcFormat || []), credentialFormatDisplayLabel, vocabulary, 'vcFormat'),
+      renderTechnicalKvRowText('Issuance protocols', issuanceProtocols, null, vocabulary, 'issuanceProtocol'),
+      renderTechnicalKvRowText('Presentation protocols', presentationProtocols, null, vocabulary, 'presentationProtocol'),
+      renderTechnicalKvRowText('Interop profiles', wallet.interoperabilityProfiles || [], null, vocabulary, 'interopProfile'),
+    ]);
+
+    const cryptography = buildTechnicalKvSection('Keys & identifiers', 'cryptography', [
+      renderTechnicalKvRowText('Identifiers', identifiers, null, vocabulary, 'identifiers'),
+      renderTechnicalKvRowText('Key storage', wallet.keyStorage || [], null, vocabulary, 'keyStorage'),
+      renderTechnicalKvRowText('Signing algorithms', wallet.signingAlgorithms || [], null, vocabulary, 'signingAlgorithm'),
+      renderTechnicalKvRowText('Credential status', wallet.credentialStatusMethods || [], null, vocabulary, 'credentialStatus'),
+    ]);
+
+    const deploymentChecks = renderWalletDeploymentChecksHtml(wallet);
+    const operations = buildTechnicalKvSection('Product & deployment', 'operations', [
+      deploymentChecks ? renderTechnicalKvRow('Deployment', deploymentChecks) : '',
+      renderTechnicalKvRow('Status', escapeHtml(walletStatusDisplay(wallet))),
+      renderTechnicalKvRow('License', escapeHtml(walletLicenseKvDisplay(wallet))),
+      renderTechnicalKvRowText('Standards', standardsList, null),
+      wallet.slaAvailable ? renderTechnicalKvRow('SLA', 'Available') : '',
+    ]);
+
+    const keyCapabilities = buildWalletKeyCapabilitiesKvSection(wallet);
+    const eidasTrustServices = buildWalletEidasTrustServicesKvSection(wallet, vocabulary);
+    return [keyCapabilities, operations, credentialsAndProtocols, cryptography, eidasTrustServices].filter(Boolean).join('');
+  }
+
+  function renderModalAccordion(id, title, iconSvg, bodyHtml, isOpen, count) {
+    if (!bodyHtml) return '';
+    const expanded = isOpen ? 'true' : 'false';
+    const openClass = isOpen ? ' is-open' : '';
+    const toggleLabel = 'Toggle ' + title + ' section';
+    const countNum = typeof count === 'number' && count > 0 ? count : 0;
+    const countHtml = countNum > 0 ? ' <span class="fides-accordion-count">' + countNum + '</span>' : '';
+    return '<div class="fides-accordion' + openClass + '" id="' + escapeHtml(id) + '">' +
+      '<div class="fides-accordion-header-bar">' +
+      '<button class="fides-accordion-header fides-accordion-toggle" type="button" aria-expanded="' + expanded + '">' +
+      '<span class="fides-accordion-title">' + iconSvg + ' ' + escapeHtml(title) + countHtml + '</span>' +
+      '</button>' +
+      '<button type="button" class="fides-accordion-chevron-btn fides-accordion-toggle" aria-expanded="' + expanded + '" aria-label="' + escapeHtml(toggleLabel) + '">' +
+      '<span class="fides-accordion-chevron">' + icons.chevronDown + '</span>' +
+      '</button>' +
+      '</div>' +
+      '<div class="fides-accordion-body">' + bodyHtml + '</div>' +
+      '</div>';
+  }
+
+  function buildWalletAccordionsHtml(wallet, options, platformLabelsOnly, standardsList) {
+    const vocabulary = options && options.vocabulary;
+    const technicalKv = buildWalletTechnicalKvHtml(wallet, platformLabelsOnly, standardsList, vocabulary);
+    const recognitionsBody = buildWalletRecognitionsBodyHtml(wallet, options);
+    const additionalProductBody = buildWalletAdditionalProductInfoBodyHtml(wallet, options);
+    const certificationsBody = buildWalletCertificationsBodyHtml(wallet, options);
+    const pricingBody = buildWalletPricingBodyHtml(wallet, options);
+    const accordions = [
+      renderModalAccordion(
+        'fides-accordion-wallet-technical',
+        'Specifications',
+        icons.fileCheck,
+        technicalKv ? '<div class="fides-wallet-technical-specs">' + technicalKv + '</div>' : '',
+        false
+      ),
+      renderModalAccordion(
+        'fides-accordion-wallet-features',
+        'Features',
+        icons.check,
+        buildWalletFeaturesBodyHtml(wallet, options),
+        false,
+        walletFeaturesCount(wallet, options)
+      ),
+      renderModalAccordion(
+        'fides-accordion-wallet-certifications',
+        'Certifications & Conformity',
+        icons.shield,
+        certificationsBody ? '<div class="fides-modal-recognitions fides-modal-recognitions--accordion">' + certificationsBody + '</div>' : '',
+        false,
+        walletCertificationsCount(wallet, options)
+      ),
+      renderModalAccordion(
+        'fides-accordion-wallet-recognitions',
+        'Recognitions',
+        icons.shield,
+        recognitionsBody ? '<div class="fides-modal-recognitions fides-modal-recognitions--accordion">' + recognitionsBody + '</div>' : '',
+        false,
+        walletRecognitionsCount(wallet, options)
+      ),
+      renderModalAccordion(
+        'fides-accordion-wallet-additional-product',
+        'Additional Product Information',
+        icons.book,
+        additionalProductBody,
+        false,
+        walletAdditionalProductInfoCount(wallet, options)
+      ),
+      renderModalAccordion(
+        'fides-accordion-wallet-pricing',
+        'Pricing',
+        icons.tag,
+        pricingBody,
+        false
+      ),
+    ].filter(Boolean).join('');
+    if (!accordions) return '';
+    return '<div class="fides-use-case-modal-accordions">' + accordions + '</div>';
+  }
+
+  function initModalAccordions() {
+    document.querySelectorAll('#fides-modal-overlay .fides-accordion-toggle[type="button"]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const accordion = btn.closest('.fides-accordion');
+        if (!accordion) return;
+        const isOpen = accordion.classList.toggle('is-open');
+        accordion.querySelectorAll('.fides-accordion-toggle[type="button"]').forEach(function(toggle) {
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      });
+    });
   }
 
   /**
@@ -272,7 +1319,18 @@
     }, 3000);
   }
 
+  function closeNestedVocabularyModal() {
+    const nested = document.getElementById('fides-nested-vocab-overlay');
+    if (!nested) return;
+    nested.classList.add('closing');
+    setTimeout(function() {
+      nested.remove();
+    }, 200);
+  }
+
   function closeModal() {
+    closeMediaLightbox();
+    closeNestedVocabularyModal();
     const overlay = document.getElementById('fides-modal-overlay');
     if (overlay) {
       overlay.classList.add('closing');
@@ -280,6 +1338,7 @@
         overlay.remove();
         document.body.style.overflow = '';
         selectedContext = null;
+        document.dispatchEvent(new CustomEvent('fides-catalog-modal-closed'));
       }, 200);
     }
   }
@@ -291,7 +1350,29 @@
     if (contextType === 'rp') url.searchParams.set('rp', item.id);
     if (contextType === 'issuer') url.searchParams.set('issuer', item.id);
     if (contextType === 'organization') url.searchParams.set('org', item.id);
+    if (contextType === 'vocabulary') url.searchParams.set('term', item.id);
     return url.toString();
+  }
+
+  function buildVocabularyUpdateFormUrl(termId, options) {
+    const updateFormUrl = (options && options.updateFormUrl) ? String(options.updateFormUrl).trim() : '';
+    const isLoggedIn = boolFromMixed(
+      options && (options.isLoggedIn != null ? options.isLoggedIn : options.ratingsIsLoggedIn)
+    );
+    if (!isLoggedIn || !updateFormUrl || !termId) return '';
+    try {
+      const url = new URL(updateFormUrl, window.location.origin);
+      url.searchParams.set('term', String(termId));
+      return url.toString();
+    } catch (e) {
+      return '';
+    }
+  }
+
+  function buildVocabularyEditActionHtml(term, options) {
+    const href = buildVocabularyUpdateFormUrl(term && term.id, options);
+    if (!href) return '';
+    return '<a href="' + escapeHtml(href) + '" class="fides-modal-copy-link fides-modal-edit-link" aria-label="Suggest an update" title="Suggest an update">' + icons.pencil + '</a>';
   }
 
   function buildLoginUrlWithReturnTo(loginUrl, returnToUrl) {
@@ -347,9 +1428,57 @@
     });
     document.addEventListener('keydown', function escHandler(e) {
       if (e.key === 'Escape') {
+        if (document.getElementById('fides-media-lightbox')) {
+          closeMediaLightbox();
+          return;
+        }
+        if (document.getElementById('fides-nested-vocab-overlay')) {
+          closeNestedVocabularyModal();
+          return;
+        }
         closeModal();
         document.removeEventListener('keydown', escHandler);
       }
+    });
+  }
+
+  function attachNestedVocabularyListeners() {
+    const nested = document.getElementById('fides-nested-vocab-overlay');
+    if (!nested) return;
+    const closeBtn = nested.querySelector('.fides-modal-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeNestedVocabularyModal();
+      });
+    }
+    nested.addEventListener('click', function(e) {
+      if (e.target === nested) closeNestedVocabularyModal();
+    });
+  }
+
+  function initWalletTechnicalGlossaryLinks(options) {
+    const overlay = document.getElementById('fides-modal-overlay');
+    const vocabulary = options && options.vocabulary;
+    if (!overlay || !vocabulary) return;
+    overlay.querySelectorAll('.fides-kv-glossary-link').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const key = btn.getAttribute('data-vocab-key');
+        if (!key) return;
+        const entry = vocabulary[key];
+        if (!entry || !entry.description) return;
+        const term = {
+          id: key,
+          name: (btn.textContent || '').trim() || key,
+          description: entry.description,
+          url: entry.url || '',
+          aliases: entry.aliases || []
+        };
+        const nestedOptions = Object.assign({}, options || {}, { nested: true, showShare: false });
+        openVocabularyModal(term, nestedOptions);
+      });
     });
   }
 
@@ -618,18 +1747,121 @@
     return '<a href="' + escapeHtml(href) + '" class="fides-modal-copy-link fides-modal-edit-link" aria-label="Suggest an update" title="Suggest an update">' + icons.pencil + '</a>';
   }
 
+  function normalizeWalletLinkKey(href) {
+    const raw = String(href || '').trim();
+    if (!raw) return '';
+    try {
+      const u = new URL(raw);
+      if (u.protocol === 'mailto:') {
+        return ('mailto:' + decodeURIComponent(u.pathname || u.href.replace(/^mailto:/i, ''))).toLowerCase();
+      }
+      const path = u.pathname.replace(/\/$/, '') || '/';
+      return (u.origin + path + u.search).toLowerCase();
+    } catch (e) {
+      return raw.toLowerCase().replace(/\/$/, '');
+    }
+  }
+
+  function buildWalletModalLinkButton(href, label, iconSvg, matomoName, isPrimary) {
+    return '<a href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer" class="fides-modal-link' +
+      (isPrimary ? ' primary' : '') + '" data-matomo-name="' + escapeHtml(matomoName) + '">' +
+      iconSvg + ' ' + escapeHtml(label) + '</a>';
+  }
+
+  function buildWalletModalLinksGroupHtml(sectionLabel, linkEntries, groupOptions) {
+    if (!linkEntries.length) return '';
+    const noPrimary = !!(groupOptions && groupOptions.noPrimary);
+    const buttons = linkEntries.map(function(entry, index) {
+      const isPrimary = !noPrimary && index === 0;
+      if (entry.type === 'mailto') {
+        return '<a href="mailto:' + escapeHtml(entry.href) + '" class="fides-modal-link' +
+          (isPrimary ? ' primary' : '') + '" data-matomo-name="' + escapeHtml(entry.matomoName) + '">' +
+          entry.icon + ' ' + escapeHtml(entry.label) + '</a>';
+      }
+      if (entry.type === 'internal') {
+        return '<a href="' + escapeHtml(entry.href) + '" class="fides-modal-link' +
+          (isPrimary ? ' primary' : '') + '" data-matomo-name="' + escapeHtml(entry.matomoName) +
+          '" onclick="event.stopPropagation();">' + entry.icon + ' ' + escapeHtml(entry.label) + '</a>';
+      }
+      return buildWalletModalLinkButton(entry.href, entry.label, entry.icon, entry.matomoName, isPrimary);
+    }).join('');
+    return '<div class="fides-modal-links-group">' +
+      '<div class="fides-modal-links-label">' + escapeHtml(sectionLabel) + '</div>' +
+      '<div class="fides-modal-links">' + buttons + '</div></div>';
+  }
+
+  function buildOrganizationContactFooterHtml(contact, options) {
+    const contactObj = contact && typeof contact === 'object' ? contact : {};
+    const contactUrl = contactObj.contactUrl ? String(contactObj.contactUrl).trim() : '';
+    const bookMeetingUrl = contactObj.bookMeetingUrl ? String(contactObj.bookMeetingUrl).trim() : '';
+    return buildCatalogContactFooterHtml(contactUrl, bookMeetingUrl, options);
+  }
+
+  function buildCatalogContactFooterHtml(contactUrl, bookMeetingUrl, options) {
+    if (options && options.tierUiEnabled === true && options.isCommunity === true) return '';
+    const buttons = [];
+    if (contactUrl) {
+      buttons.push(
+        '<a href="' + escapeHtml(contactUrl) + '" target="_blank" rel="noopener noreferrer" class="fides-modal-footer-btn fides-modal-footer-btn--accent" data-matomo-name="Contact">' +
+        icons.mail + ' Contact</a>'
+      );
+    }
+    if (bookMeetingUrl) {
+      buttons.push(
+        '<a href="' + escapeHtml(bookMeetingUrl) + '" target="_blank" rel="noopener noreferrer" class="fides-modal-footer-btn" data-matomo-name="Book a Meeting">' +
+        icons.externalLink + ' Book a Meeting</a>'
+      );
+    }
+    if (!buttons.length) return '';
+    return '<div class="fides-modal-footer">' + buttons.join('') + '</div>';
+  }
+
+  function buildWalletModalFooterHtml(wallet, options) {
+    if (!walletListingTierIsPro(wallet, options)) return '';
+    const provider = wallet.provider && typeof wallet.provider === 'object' ? wallet.provider : {};
+    const contact = provider.contact && typeof provider.contact === 'object' ? provider.contact : {};
+    return buildOrganizationContactFooterHtml(contact, { tierUiEnabled: optionsTierUiEnabled(options) });
+  }
+
+  function buildWalletModalLinksHtml(wallet, options) {
+    if (!walletListingTierIsPro(wallet, options)) return '';
+    const productSeen = new Set();
+    const productEntries = [];
+    const appLinks = wallet.appStoreLinks && typeof wallet.appStoreLinks === 'object' ? wallet.appStoreLinks : {};
+
+    function rememberHttp(href, seenSet) {
+      const url = String(href || '').trim();
+      if (!url) return '';
+      const key = normalizeWalletLinkKey(url);
+      if (!key || seenSet.has(key)) return '';
+      seenSet.add(key);
+      return url;
+    }
+
+    function pushProduct(href, label, icon, matomoName) {
+      const url = rememberHttp(href, productSeen);
+      if (!url) return;
+      productEntries.push({ type: 'http', href: url, label: label, icon: icon, matomoName: matomoName });
+    }
+
+    if (!walletIsPersonal(wallet)) {
+      pushProduct(appLinks.iOS || appLinks.ios, 'App Store', icons.smartphone, 'App Store');
+      pushProduct(appLinks.android, 'Google Play', icons.smartphone, 'Google Play');
+    }
+
+    const productHtml = buildWalletModalLinksGroupHtml('Product', productEntries);
+    if (!productHtml) return '';
+    return '<div class="fides-modal-links-sections">' + productHtml + '</div>';
+  }
+
   function openWalletModal(wallet, options) {
     if (!wallet) return;
     const theme = (options && options.theme) || 'dark';
     const tierUi = optionsTierUiEnabled(options);
-    const isCommunity = tierUi && itemIsCommunity(wallet);
     const platformLabelsOnly = tierUi && !walletListingTierIsPro(wallet, options);
     selectedContext = { type: 'wallet', item: wallet, options: options || {}, theme: theme };
     if (options && typeof options.onOpen === 'function') options.onOpen(wallet);
 
-    const typeLabels = { personal: 'Personal', organizational: 'Organizational' };
-    const statusLabels = { development: 'In Development', beta: 'Beta', production: 'Production', deprecated: 'Deprecated' };
-    const statusClasses = { development: 'status-dev', beta: 'status-beta', production: 'status-prod', deprecated: 'status-deprecated' };
     const organizationCatalogUrl = (options && options.organizationCatalogUrl) || 'https://fides.community/ecosystem-explorer/organization-catalog/';
     const effectiveWalletOrgId = (wallet.orgId && String(wallet.orgId).trim()) ||
       (wallet.provider && wallet.provider.orgId && String(wallet.provider.orgId).trim()) || '';
@@ -644,47 +1876,32 @@
     const shareButtonHtml = (options && options.showShare === false)
       ? ''
       : '<button type="button" class="fides-modal-copy-link" id="fides-modal-copy-link" aria-label="Copy link">' + icons.share + '</button>';
-    const officialHeaderBadge = tierUi && catalogTierIsProExplicit(wallet)
-      ? '<span class="fides-modal-header-official-badge" role="status" title="' + escapeHtml(OFFICIAL_LISTING_TITLE) + '">' + icons.official + '<span class="fides-modal-header-official-label">Official</span></span>'
-      : '';
+    const listingHeaderBadge = buildCatalogListingHeaderBadgeHtml(wallet, options);
+    const standardsList = walletStandardsList(wallet);
+    const capabilitiesHtml = buildWalletCapabilitiesOrAppStoresHtml(wallet, options);
+    const heroSectionHtml = buildWalletHeroSectionHtml(wallet, options);
+    const accordionsHtml = buildWalletAccordionsHtml(wallet, options, platformLabelsOnly, standardsList);
 
     const modalHtml = '<div class="fides-modal-overlay fides-modal-overlay--rp" id="fides-modal-overlay" data-theme="' + escapeHtml(theme) + '">' +
       '<div class="fides-modal" role="dialog" aria-modal="true">' +
       '<div class="fides-modal-header"><div class="fides-modal-header-content">' +
       (wallet.logo ? '<img src="' + escapeHtml(wallet.logo) + '" alt="' + escapeHtml(wallet.name) + '" class="fides-modal-logo">' : '<div class="fides-modal-logo-placeholder">' + icons.wallet + '</div>') +
-      '<div class="fides-modal-title-wrap"><div class="fides-modal-title-row"><h2 class="fides-modal-title">' + escapeHtml(wallet.name) + '</h2>' + officialHeaderBadge + '</div><p class="fides-modal-provider">' + icons.building + ' ' + providerNameInHeader + (bluePagesUrl ? ' <a href="' + escapeHtml(bluePagesUrl) + '" target="_blank" rel="noopener" class="fides-modal-provider-link">' + icons.externalLink + ' View in Blue Pages</a>' : '') + '</p></div>' +
+      '<div class="fides-modal-title-wrap"><div class="fides-modal-title-row"><h2 class="fides-modal-title">' + escapeHtml(wallet.name) + '</h2>' + listingHeaderBadge + '</div><p class="fides-modal-provider">' + icons.building + ' ' + providerNameInHeader + (bluePagesUrl ? ' <a href="' + escapeHtml(bluePagesUrl) + '" target="_blank" rel="noopener" class="fides-modal-provider-link">' + icons.externalLink + ' View in Blue Pages</a>' : '') + '</p></div>' +
       '</div><div class="fides-modal-header-actions">' + editActionHtml + shareButtonHtml + '<button class="fides-modal-close" id="fides-modal-close" aria-label="Close modal">' + icons.xLarge + '</button></div></div>' +
       '<div class="fides-modal-body">' +
       '<div id="fides-modal-rating-slot"></div>' +
-      '<div class="fides-modal-badges">' +
-      '<span class="fides-modal-badge type-' + escapeHtml(wallet.type) + '">' + escapeHtml(typeLabels[wallet.type]) + '</span>' +
-      ((wallet.type === 'organizational' && wallet.capabilities) ? wallet.capabilities.map(c => '<span class="fides-modal-badge capability-' + escapeHtml(c) + '">' + escapeHtml(c.charAt(0).toUpperCase() + c.slice(1)) + '</span>').join('') : '') +
-      (wallet.status ? '<span class="fides-modal-badge ' + escapeHtml(statusClasses[wallet.status] || '') + '">' + escapeHtml(statusLabels[wallet.status] || wallet.status) + '</span>' : '') +
-      '<span class="fides-modal-badge ' + (wallet.openSource ? 'open-source' : 'proprietary') + '">' + (wallet.openSource ? (icons.github + ' Open Source' + (wallet.license ? ' (' + escapeHtml(wallet.license) + ')' : '')) : 'Proprietary') + '</span>' +
+      heroSectionHtml +
+      capabilitiesHtml +
+      accordionsHtml +
+      buildWalletModalLinksHtml(wallet, options) +
       '</div>' +
-      (wallet.description ? '<div class="fides-modal-section"><p class="fides-modal-description">' + escapeHtml(wallet.description) + '</p></div>' : '') +
-      (walletListingTierIsPro(wallet, options) && wallet.video ? getVideoEmbedHtml(wallet.video) : '') +
-      '<div class="fides-modal-grid">' +
-      ((wallet.platforms && wallet.platforms.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.smartphone + ' Platforms ' + (wallet.type !== 'organizational' && !platformLabelsOnly ? '<span class="fides-label-hint">(click to access)</span>' : '') + '</div><div class="fides-modal-grid-value">' + wallet.platforms.map(p => renderPlatformTag(wallet, p, platformLabelsOnly)).join('') + '</div></div>' : '') +
-      ((wallet.vcFormat && wallet.vcFormat.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.fileCheck + ' VC formats</div><div class="fides-modal-grid-value">' + sortCredentialFormats(wallet.vcFormat).map(f => '<span class="fides-tag credential-format">' + escapeHtml(credentialFormatDisplayLabel(f)) + '</span>').join('') + '</div></div>' : '') +
-      (((wallet.issuanceProtocols || (wallet.protocols && wallet.protocols.issuance) || []).length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.download + ' Issuance Protocols</div><div class="fides-modal-grid-value">' + (wallet.issuanceProtocols || (wallet.protocols && wallet.protocols.issuance) || []).map(p => '<span class="fides-tag protocol-issuance">' + escapeHtml(p) + '</span>').join('') + '</div></div>' : '') +
-      (((wallet.presentationProtocols || (wallet.protocols && wallet.protocols.presentation) || []).length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.shield + ' Presentation Protocols</div><div class="fides-modal-grid-value">' + (wallet.presentationProtocols || (wallet.protocols && wallet.protocols.presentation) || []).map(p => '<span class="fides-tag protocol-presentation">' + escapeHtml(p) + '</span>').join('') + '</div></div>' : '') +
-      ((((wallet.supportedIdentifiers || wallet.didMethods) || []).length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.key + ' Identifiers</div><div class="fides-modal-grid-value">' + ((wallet.supportedIdentifiers || wallet.didMethods) || []).map(d => '<span class="fides-tag did-method">' + escapeHtml(d) + '</span>').join('') + '</div></div>' : '') +
-      ((wallet.keyStorage && wallet.keyStorage.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.key + ' Key Storage</div><div class="fides-modal-grid-value">' + wallet.keyStorage.map(k => '<span class="fides-tag">' + escapeHtml(k) + '</span>').join('') + '</div></div>' : '') +
-      ((wallet.signingAlgorithms && wallet.signingAlgorithms.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.penLine + ' Signing Algorithms</div><div class="fides-modal-grid-value">' + wallet.signingAlgorithms.map(a => '<span class="fides-tag">' + escapeHtml(a) + '</span>').join('') + '</div></div>' : '') +
-      ((wallet.credentialStatusMethods && wallet.credentialStatusMethods.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.shield + ' Credential Status</div><div class="fides-modal-grid-value">' + wallet.credentialStatusMethods.map(m => '<span class="fides-tag">' + escapeHtml(m) + '</span>').join('') + '</div></div>' : '') +
-      ((wallet.interoperabilityProfiles && wallet.interoperabilityProfiles.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.shield + ' Interop Profiles</div><div class="fides-modal-grid-value">' + wallet.interoperabilityProfiles.map(p => '<span class="fides-tag interop">' + escapeHtml(p) + '</span>').join('') + '</div></div>' : '') +
-      (wallet.releaseDate ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.calendar + ' Release date</div><div class="fides-modal-grid-value">' + escapeHtml(new Date(wallet.releaseDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })) + '</div></div>' : '') +
-      '</div>' +
-      ((wallet.features && wallet.features.length && walletListingTierIsPro(wallet, options)) ? '<div class="fides-modal-features"><h4 class="fides-modal-section-title">Features</h4><ul class="fides-features-list">' + wallet.features.map(f => '<li>' + icons.check + ' ' + escapeHtml(f) + '</li>').join('') + '</ul></div>' : '') +
-      '<div class="fides-modal-links">' +
-      (walletListingTierIsPro(wallet, options) && wallet.website ? '<a href="' + escapeHtml(wallet.website) + '" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Visit website">' + icons.externalLink + ' Visit Website</a>' : '') +
-      (walletListingTierIsPro(wallet, options) && wallet.openSource && wallet.repository ? '<a href="' + escapeHtml(wallet.repository) + '" target="_blank" rel="noopener" class="fides-modal-link" data-matomo-name="Repository">' + icons.github + ' View Repository</a>' : '') +
-      (walletListingTierIsPro(wallet, options) && wallet.documentation ? '<a href="' + escapeHtml(wallet.documentation) + '" target="_blank" rel="noopener" class="fides-modal-link" data-matomo-name="Documentation">' + icons.book + ' Documentation</a>' : '') +
-      '</div>' +
-      '</div></div></div>';
+      buildWalletModalFooterHtml(wallet, options) +
+      '</div></div>';
 
     mountModal(modalHtml);
+    initModalMediaCarousels();
+    initModalAccordions();
+    initWalletTechnicalGlossaryLinks(options || {});
     const walletOverlay = document.getElementById('fides-modal-overlay');
     if (walletOverlay) attachModalRating(walletOverlay, 'wallet', wallet.id, options || {}, wallet);
   }
@@ -1041,9 +2258,65 @@
       '<div class="fides-modal-links">' +
       (!isCommunity && org.website ? '<a href="' + escapeHtml(org.website) + '" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Organization website">' + icons.externalLink + ' Visit Website</a>' : '') +
       '</div>' +
-      '</div></div></div>';
+      '</div>' +
+      buildOrganizationContactFooterHtml(org.contact, { tierUiEnabled: optionsTierUiEnabled(options), isCommunity: isCommunity }) +
+      '</div></div>';
 
     mountModal(modalHtml);
+  }
+
+  function openVocabularyModal(term, options) {
+    if (!term) return;
+    const theme = (options && options.theme) || 'dark';
+    const nested = !!(options && options.nested);
+    if (!nested) {
+      selectedContext = { type: 'vocabulary', item: term, options: options || {}, theme: theme };
+      if (options && typeof options.onOpen === 'function') options.onOpen(term);
+    }
+
+    const name = term.name || term.id || '';
+    const description = term.description ? String(term.description) : '';
+    const aliases = arrayValues(term.aliases).filter(function (a) { return typeof a === 'string' && a.trim() !== ''; });
+    const sourceUrl = term.url ? String(term.url).trim() : '';
+    const editActionHtml = nested ? '' : buildVocabularyEditActionHtml(term, options);
+
+    const shareButtonHtml = (nested || (options && options.showShare === false))
+      ? ''
+      : '<button type="button" class="fides-modal-copy-link" id="fides-modal-copy-link" aria-label="Copy link">' + icons.share + '</button>';
+
+    const aliasesSection = aliases.length
+      ? '<div class="fides-modal-section"><h3 class="fides-modal-section-title">Aliases</h3><p class="fides-modal-description">' + escapeHtml(aliases.join(', ')) + '</p></div>'
+      : '';
+    const sourceSection = sourceUrl
+      ? '<div class="fides-modal-section"><h3 class="fides-modal-section-title">Source</h3><p class="fides-modal-description fides-modal-description--link"><a href="' + escapeHtml(sourceUrl) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(sourceUrl) + '</a></p></div>'
+      : '';
+
+    const overlayId = nested ? 'fides-nested-vocab-overlay' : 'fides-modal-overlay';
+    const closeBtnId = nested ? 'fides-nested-vocab-close' : 'fides-modal-close';
+    const modalHtml = '<div class="fides-modal-overlay fides-modal-overlay--vocabulary' +
+      (nested ? ' fides-modal-overlay--nested' : '') + '" id="' + overlayId + '" data-theme="' + escapeHtml(theme) + '">' +
+      '<div class="fides-modal fides-modal--vocabulary" role="dialog" aria-modal="true">' +
+      '<div class="fides-modal-header"><div class="fides-modal-header-content">' +
+      '<div class="fides-modal-title-wrap"><h2 class="fides-modal-title">' + escapeHtml(name) + '</h2></div>' +
+      '</div><div class="fides-modal-header-actions">' + editActionHtml + shareButtonHtml +
+      '<button class="fides-modal-close" id="' + closeBtnId + '" aria-label="Close modal">' + icons.xLarge + '</button></div></div>' +
+      '<div class="fides-modal-body">' +
+      (nested ? '' : '<div id="fides-modal-rating-slot" class="fides-modal-entity-like-slot"></div>') +
+      (description ? '<div class="fides-modal-section"><h3 class="fides-modal-section-title">Description</h3><p class="fides-modal-description">' + escapeHtml(description) + '</p></div>' : '') +
+      aliasesSection +
+      sourceSection +
+      '</div></div></div>';
+
+    if (nested) {
+      closeNestedVocabularyModal();
+      document.body.insertAdjacentHTML('beforeend', modalHtml);
+      attachNestedVocabularyListeners();
+      return;
+    }
+
+    mountModal(modalHtml);
+    const vocabularyOverlay = document.getElementById('fides-modal-overlay');
+    if (vocabularyOverlay) attachModalRating(vocabularyOverlay, 'vocabulary', term.id, options || {}, term);
   }
 
   window.FidesCatalogUI = {
@@ -1051,12 +2324,17 @@
     openRpModal,
     openIssuerModal,
     openOrganizationModal,
+    openVocabularyModal,
     closeModal,
     trackMatomoEvent,
     initMatomoLinkTracking,
     userCanEditCatalogItem,
     canEditOrganization,
     canEditWallet,
-    resolveWalletOrgId
+    resolveWalletOrgId,
+    buildCatalogListingHeaderBadgeHtml,
+    buildOrganizationContactFooterHtml,
+    buildOrganizationHeroSectionHtml,
+    initModalMediaCarousels
   };
 })();

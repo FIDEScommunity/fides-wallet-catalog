@@ -131,6 +131,69 @@
     "credentialStatus": {
       "description": "How the validity of credentials is checked: whether they are revoked, suspended, or still valid. Different methods use different technical approaches."
     },
+    "eidasTrustServices": {
+      "description": "Qualified trust services under eIDAS that a wallet may integrate with or rely on through Qualified Trust Service Providers (QTSPs)."
+    },
+    "QESig": {
+      "description": "Qualified electronic signature certificate — a QTSP-issued certificate enabling legally binding electronic signatures by natural persons.",
+      "aliases": ["Q_CERT_ESIG"]
+    },
+    "QESeal": {
+      "description": "Qualified electronic seal certificate — a QTSP-issued certificate enabling legally binding electronic seals for legal entities.",
+      "aliases": ["Q_CERT_ESEAL"]
+    },
+    "QTimestamp": {
+      "description": "Qualified timestamp — proof that data existed at a specific point in time, issued by a qualified trust service provider.",
+      "aliases": ["Q_TIMESTAMP"]
+    },
+    "QERDS": {
+      "description": "Qualified electronic registered delivery service — ensures secure delivery of data with proof of sending and receipt.",
+      "aliases": ["Q_ERDS"]
+    },
+    "QWAC": {
+      "description": "Qualified website authentication certificate — binds a legal entity to a website for TLS authentication under eIDAS.",
+      "aliases": ["Q_WAC"]
+    },
+    "QEArch": {
+      "description": "Qualified electronic archiving — long-term preservation of electronic documents with integrity and authenticity guarantees.",
+      "aliases": ["Q_EARCH"]
+    },
+    "QVal": {
+      "description": "Qualified validation service — verifies whether an electronic signature or seal is valid at a given time.",
+      "aliases": ["Q_VC"]
+    },
+    "QPres": {
+      "description": "Qualified preservation service — maintains the integrity and readability of qualified electronic signatures or seals over time.",
+      "aliases": ["Q_PRES"]
+    },
+    "QPresSeal": {
+      "description": "Qualified preservation service for electronic seals.",
+      "aliases": ["Q_PRES_ESEAL"]
+    },
+    "QPresSig": {
+      "description": "Qualified preservation service for electronic signatures.",
+      "aliases": ["Q_PRES_ESIG"]
+    },
+    "QValSeal": {
+      "description": "Qualified validation service for electronic seals.",
+      "aliases": ["Q_VAL_ESEAL"]
+    },
+    "QValSig": {
+      "description": "Qualified validation service for electronic signatures.",
+      "aliases": ["Q_VAL_ESIG"]
+    },
+    "QRemSeal": {
+      "description": "Qualified management of remote seal creation devices — cloud or server-based qualified seal creation under QTSP supervision.",
+      "aliases": ["Q_REM_MANAGE_Q_SEAL_CD"]
+    },
+    "QRemSig": {
+      "description": "Qualified management of remote signature creation devices — cloud or server-based qualified signature creation under QTSP supervision.",
+      "aliases": ["Q_REM_MANAGE_Q_SIG_CD"]
+    },
+    "QEAA": {
+      "description": "Qualified electronic attestation of attributes — a QTSP-issued attestation of person or object attributes; core building block alongside PID in the EUDI Wallet.",
+      "aliases": ["QEAA"]
+    },
     "license": {
       "description": "Software license type: open source (publicly available code) or proprietary (closed source)."
     },

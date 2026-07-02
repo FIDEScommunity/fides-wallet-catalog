@@ -171,15 +171,15 @@ function WalletCard({ wallet, index }: { wallet: NormalizedWallet; index: number
             )}
             
             {/* Standards & Certifications */}
-            {(wallet.standards?.length || wallet.certifications?.length) && (
+            {(wallet.standards?.length || wallet.recognitions?.certifications?.length) && (
               <div>
                 <h4 className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">Standards & Certifications</h4>
                 <div className="flex flex-wrap gap-1.5">
                   {wallet.standards?.map(s => (
                     <span key={s} className="tag text-xs">{s}</span>
                   ))}
-                  {wallet.certifications?.map(c => (
-                    <span key={c} className="tag tag-green text-xs">{c}</span>
+                  {wallet.recognitions?.certifications?.map(c => (
+                    <span key={c.title} className="tag tag-green text-xs">{c.title}</span>
                   ))}
                 </div>
               </div>

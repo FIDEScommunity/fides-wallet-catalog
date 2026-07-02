@@ -2,6 +2,52 @@
 
 Quick reference for wallet providers to see which fields accept fixed values (enums) vs free text.
 
+> **Schema v2** is current (`$schema`: `https://fides.community/schemas/wallet-catalog/v2`).
+> All `community-catalogs/*/wallet-catalog.json` files use v2. Archive: `schemas/wallet-catalog-v1.schema.json`.
+> See `docs/WALLET-CATALOG-V2-PLAN.md` for the full rollout plan.
+
+## v2 limits
+
+| Constraint | Max |
+|------------|-----|
+| `media.videos` | 3 |
+| `media.images` | 10 |
+| `recognitions.customerStories` | 5 |
+| `recognitions.certifications` | 10 |
+| `recognitions.awardsAndRecognitions` | 10 |
+| Recognition `title` | 100 chars |
+| `licenseOther` | 50 chars |
+| `pricing` | 1000 chars |
+
+## v2 tier notes (export)
+
+| Field | Community | Pro |
+|-------|-----------|-----|
+| `deploymentModel`, `slaAvailable`, `license` | ✓ | ✓ |
+| `media`, `recognitions`, `pricing` | stripped | ✓ |
+| `website`, `features`, `appStoreLinks`, `documentation`, `repository` | stripped (unchanged) | ✓ |
+
+## v2 new / changed wallet fields
+
+| Field | Type | Valid Values / notes |
+|-------|------|----------------------|
+| `deploymentModel` | 🔒 optional | `saas`, `on_premises`, `hybrid` |
+| `slaAvailable` | optional | `true`, `false` |
+| `license` | 🔒 optional | `MIT`, `Apache-2.0`, `GPL-3.0-or-later`, `AGPL-3.0-or-later`, `LGPL-3.0-or-later`, `EUPL-1.2`, `MPL-2.0`, `BSD-3-Clause`, `ISC`, `proprietary`, `other` |
+| `licenseOther` | 📝 | Required when `license` is `other` (max 50) |
+| `pricing` | 📝 | Free text (max 1000), Pro export |
+| `media.videos` | 🔗[] | Max 3 URLs, Pro export |
+| `media.images` | 🔗[] | Max 10 URLs, Pro export |
+| `recognitions.*` | object[] | `{ title, url? }` per item; Pro export |
+
+**Removed in v2:** `video`, `certifications` (string array) — use `media.videos` and `recognitions.certifications`.
+
+Fixtures: `schemas/fixtures/*.json`
+
+---
+
+## v1 reference (deprecated)
+
 ## Legend
 
 | Symbol | Meaning |
