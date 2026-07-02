@@ -434,7 +434,12 @@
   }
 
   function walletOfficialCardClass(wallet) {
-    return walletCatalogTierIsPro(wallet) ? ' fides-wallet-card--official' : '';
+    if (!walletCatalogTierIsPro(wallet)) return '';
+    const typeClass =
+      wallet.type === 'organizational'
+        ? 'fides-wallet-card--official-organizational'
+        : 'fides-wallet-card--official-personal';
+    return ` fides-wallet-card--official ${typeClass}`;
   }
 
   function renderWalletCardFooterBadges(wallet) {

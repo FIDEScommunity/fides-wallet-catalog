@@ -1909,42 +1909,79 @@
   background: rgba(109, 40, 217, 0.1);
 }
 
-.fides-wallet-footer-badge svg {
-  width: 10px;
-  height: 10px;
-}
-
 #fides-wallet-catalog-root .fides-wallet-card--official {
   border-width: 2px;
+}
+
+/* Pro organizational cards — purple accent (matches type-organizational header) */
+#fides-wallet-catalog-root .fides-wallet-card--official-organizational {
   border-color: rgba(109, 40, 217, 0.55);
   box-shadow: 0 0 0 1px rgba(109, 40, 217, 0.12), 0 1px 3px rgba(109, 40, 217, 0.08);
 }
 
-#fides-wallet-catalog-root .fides-wallet-card--official .fides-wallet-header {
+#fides-wallet-catalog-root .fides-wallet-card--official-organizational .fides-wallet-header {
   border-bottom: 1px solid rgba(109, 40, 217, 0.35);
 }
 
-#fides-wallet-catalog-root[data-theme="fides"] .fides-wallet-card--official,
-#fides-wallet-catalog-root[data-theme="light"] .fides-wallet-card--official {
+#fides-wallet-catalog-root[data-theme="fides"] .fides-wallet-card--official-organizational,
+#fides-wallet-catalog-root[data-theme="light"] .fides-wallet-card--official-organizational {
   border-color: rgba(109, 40, 217, 0.5);
   box-shadow: 0 0 0 1px rgba(109, 40, 217, 0.14), 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(109, 40, 217, 0.1);
 }
 
-#fides-wallet-catalog-root[data-theme="fides"] .fides-wallet-card--official:hover,
-#fides-wallet-catalog-root[data-theme="light"] .fides-wallet-card--official:hover {
+#fides-wallet-catalog-root[data-theme="fides"] .fides-wallet-card--official-organizational:hover,
+#fides-wallet-catalog-root[data-theme="light"] .fides-wallet-card--official-organizational:hover {
   box-shadow: 0 0 0 1px rgba(109, 40, 217, 0.22), 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1), 0 4px 18px -4px rgba(109, 40, 217, 0.2);
 }
 
-#fides-wallet-catalog-root:not([data-theme="fides"]):not([data-theme="light"]) .fides-wallet-card--official:hover {
+#fides-wallet-catalog-root:not([data-theme="fides"]):not([data-theme="light"]) .fides-wallet-card--official-organizational:hover {
   box-shadow: 0 0 0 1px rgba(109, 40, 217, 0.22), 0 12px 28px -8px rgba(109, 40, 217, 0.16), 0 8px 20px rgba(0, 0, 0, 0.22);
 }
 
-#fides-wallet-catalog-root .fides-wallet-grid[data-view="list"] .fides-wallet-card--official {
+#fides-wallet-catalog-root .fides-wallet-grid[data-view="list"] .fides-wallet-card--official-organizational {
   box-shadow: inset 5px 0 0 #7c3aed;
 }
 
-#fides-wallet-catalog-root .fides-wallet-grid[data-view="list"] .fides-wallet-card--official:hover {
+#fides-wallet-catalog-root .fides-wallet-grid[data-view="list"] .fides-wallet-card--official-organizational:hover {
   box-shadow: inset 5px 0 0 #7c3aed;
+}
+
+/* Pro personal cards — blue accent (matches type-personal header) */
+#fides-wallet-catalog-root .fides-wallet-card--official-personal {
+  border-color: rgba(59, 130, 246, 0.55);
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.12), 0 1px 3px rgba(59, 130, 246, 0.08);
+}
+
+#fides-wallet-catalog-root .fides-wallet-card--official-personal .fides-wallet-header {
+  border-bottom: 1px solid rgba(59, 130, 246, 0.35);
+}
+
+#fides-wallet-catalog-root[data-theme="fides"] .fides-wallet-card--official-personal,
+#fides-wallet-catalog-root[data-theme="light"] .fides-wallet-card--official-personal {
+  border-color: rgba(10, 110, 243, 0.5);
+  box-shadow: 0 0 0 1px rgba(10, 110, 243, 0.14), 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(10, 110, 243, 0.1);
+}
+
+#fides-wallet-catalog-root[data-theme="fides"] .fides-wallet-card--official-personal:hover,
+#fides-wallet-catalog-root[data-theme="light"] .fides-wallet-card--official-personal:hover {
+  box-shadow: 0 0 0 1px rgba(10, 110, 243, 0.22), 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1), 0 4px 18px -4px rgba(10, 110, 243, 0.2);
+}
+
+#fides-wallet-catalog-root:not([data-theme="fides"]):not([data-theme="light"]) .fides-wallet-card--official-personal:hover {
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.22), 0 12px 28px -8px rgba(59, 130, 246, 0.16), 0 8px 20px rgba(0, 0, 0, 0.22);
+}
+
+#fides-wallet-catalog-root .fides-wallet-grid[data-view="list"] .fides-wallet-card--official-personal {
+  box-shadow: inset 5px 0 0 #3b82f6;
+}
+
+#fides-wallet-catalog-root .fides-wallet-grid[data-view="list"] .fides-wallet-card--official-personal:hover {
+  box-shadow: inset 5px 0 0 #3b82f6;
+}
+
+.fides-wallet-footer-badge svg {
+  width: 10px;
+  height: 10px;
 }
 
 #fides-wallet-catalog-root .fides-wallet-grid[data-view="list"] .fides-row-badges {
