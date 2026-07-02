@@ -333,7 +333,8 @@ limitations under the License.
 
 - Website: [https://fides.community](https://fides.community)
 - GitHub: [https://github.com/FIDEScommunity](https://github.com/FIDEScommunity)
-- Contact: For questions or support, please open an issue in this repository
+- Catalog contributions: WordPress forms on [fides.community](https://fides.community) (recommended) or a Pull Request in this repo
+- Questions: [catalog@fides.community](mailto:catalog@fides.community) or open an issue in this repository
 
 ---
 

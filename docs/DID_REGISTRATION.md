@@ -1,6 +1,6 @@
 # DID Registration for Wallet Providers (Optional)
 
-**Note:** This is an **optional advanced feature**. Most wallet providers should contribute via Pull Request to the `community-catalogs/` folder instead. See [GITHUB_REPO_STRUCTURE.md](GITHUB_REPO_STRUCTURE.md).
+**Note:** This is an **optional advanced feature**. Most wallet providers should use the **WordPress submit/update forms** on [fides.community](https://fides.community) (see [GITHUB_REPO_STRUCTURE.md](GITHUB_REPO_STRUCTURE.md)). Use DID-based crawling only if you host your catalog on your own domain and reference it from your DID document.
 
 This document explains how wallet providers with existing DID infrastructure can have their wallet catalog automatically crawled from their own domain.
 
