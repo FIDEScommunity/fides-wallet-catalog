@@ -15,7 +15,7 @@ The FIDES Wallet Catalog plugin displays an interactive catalog of 70+ digital i
 
 **Developed and maintained by FIDES Labs BV**
 
-Wallet providers contribute their wallet information via GitHub Pull Requests to a community-maintained repository, ensuring up-to-date and reliable data.
+Wallet providers add and update listings on fides.community via WordPress submission forms (recommended), or contribute JSON via GitHub Pull Requests. Published data is aggregated into a community-maintained catalog updated daily.
 
 **Features:**
 
@@ -69,13 +69,15 @@ Configure the update form page URL under Settings → FIDES Wallet Catalog so th
 
 = How is the wallet data updated? =
 
-The plugin fetches data from the FIDES Community GitHub repository (https://github.com/FIDEScommunity/fides-wallet-catalog), where wallet providers contribute their information via Pull Requests. The aggregated data is automatically updated daily via GitHub Actions.
+The plugin loads `data/aggregated.json` from the FIDES Wallet Catalog GitHub repository (https://github.com/FIDEScommunity/fides-wallet-catalog). That file is rebuilt daily by GitHub Actions from community-catalog JSON, including entries published from WordPress submission forms on fides.community.
 
 = How can I add my wallet to the catalog? =
 
-On a FIDES WordPress site with this plugin and fides-community-tools-tiles, sign in and use the page with `[fides_wallet_submit_form]`. Your submission is reviewed in **Tools → Catalog Submissions** before it is published and synced to the community GitHub catalog.
+**Recommended:** Sign in on fides.community and use the page with `[fides_wallet_submit_form]` (your organization must already be listed in the organization catalog). Your submission is reviewed in **Tools → Catalog Submissions** before it is published and synced to GitHub.
 
-You can also submit a Pull Request to the FIDES Wallet Catalog repository with your wallet information in JSON format. See the repository documentation for the full schema and examples.
+**Alternative:** Submit a Pull Request to the FIDES Wallet Catalog repository with your `wallet-catalog.json` (schema v2). See the repository README and docs/GITHUB_REPO_STRUCTURE.md.
+
+Need help? Contact catalog@fides.community.
 
 = Can I customize the styling? =
 
