@@ -1,11 +1,15 @@
 {
   "schemaVersion": "1.0.0",
   "catalogType": "wallet",
-  "lastImportAt": "2026-06-26T10:26:51.588Z",
+  "lastImportAt": "2026-07-02T05:02:20.569Z",
   "managedWallets": [
     {
       "slug": "credenco",
       "walletId": "credenco-business-wallet"
+    },
+    {
+      "slug": "fides",
+      "walletId": "test"
     }
   ]
 }
