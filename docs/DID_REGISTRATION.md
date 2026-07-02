@@ -43,26 +43,30 @@ Host your DID document at:
 
 ## Step 2: Host Your Wallet Catalog
 
-Create a `wallet-catalog.json` file at the URL specified in your DID document's service endpoint:
+Create a `wallet-catalog.json` file at the URL specified in your DID document's service endpoint. It must validate against **schema v2** (`schemas/wallet-catalog.schema.json`). v1 is archived only (`schemas/wallet-catalog-v1.schema.json`).
 
 Register your organization in the [organization catalog](https://github.com/FIDEScommunity/fides-organization-catalog) and use the same `orgId` here (e.g. `org:your-org`).
 
 ```json
 {
-  "$schema": "https://fides.community/schemas/wallet-catalog/v1",
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
   "orgId": "org:your-org",
   "wallets": [
     {
       "id": "your-wallet",
       "name": "Your Wallet Name",
+      "description": "Brief description of your wallet.",
       "type": "personal",
       "platforms": ["iOS", "Android"],
-      "vcFormat": ["sd_jwt_vc", "mdoc"]
+      "vcFormat": ["sd_jwt_vc", "mdoc"],
+      "status": "production"
     }
   ],
-  "lastUpdated": "2025-01-06T10:00:00Z"
+  "lastUpdated": "2026-01-06T10:00:00Z"
 }
 ```
+
+**v2 notes:** use `media.videos` instead of top-level `video`; structured `recognitions` instead of a string-array `certifications`. See [schemas/README.md](../schemas/README.md).
 
 See the full schema: [wallet-catalog.schema.json](../schemas/wallet-catalog.schema.json)
 
@@ -115,7 +119,8 @@ Make sure your DID document includes a service with `type: "WalletCatalog"`.
 
 - Check that your `wallet-catalog.json` URL is accessible
 - Validate your JSON against the schema
-- Ensure `$schema` matches `https://fides.community/schemas/wallet-catalog/v1`
+- Ensure `$schema` is `https://fides.community/schemas/wallet-catalog/v2` (v1 catalogs are no longer accepted)
+- Run `npm run validate` locally against your file before registering
 
 ## Supported DID Methods
 
@@ -128,7 +133,7 @@ Coming soon:
 
 ## Questions?
 
-Open an issue or contact FIDES Labs BV at https://fides.community
+Open an issue, email [catalog@fides.community](mailto:catalog@fides.community), or visit https://fides.community
 
 ---
 
