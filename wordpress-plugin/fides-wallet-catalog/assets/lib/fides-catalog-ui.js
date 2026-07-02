@@ -1790,19 +1790,31 @@
       '<div class="fides-modal-links">' + buttons + '</div></div>';
   }
 
-  function buildOrganizationContactFooterHtml(contact, options) {
+  function resolveOrganizationContactEmail(contact) {
     const contactObj = contact && typeof contact === 'object' ? contact : {};
-    const contactUrl = contactObj.contactUrl ? String(contactObj.contactUrl).trim() : '';
-    const bookMeetingUrl = contactObj.bookMeetingUrl ? String(contactObj.bookMeetingUrl).trim() : '';
-    return buildCatalogContactFooterHtml(contactUrl, bookMeetingUrl, options);
+    const email = contactObj.email ? String(contactObj.email).trim() : '';
+    if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return email;
+    }
+    const legacyUrl = contactObj.contactUrl ? String(contactObj.contactUrl).trim() : '';
+    if (legacyUrl.toLowerCase().startsWith('mailto:')) {
+      const legacyEmail = legacyUrl.slice(7).split('?')[0].trim();
+      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(legacyEmail)) {
+        return legacyEmail;
+      }
+    }
+    return '';
   }
 
-  function buildCatalogContactFooterHtml(contactUrl, bookMeetingUrl, options) {
+  function buildOrganizationContactFooterHtml(contact, options) {
     if (options && options.tierUiEnabled === true && options.isCommunity === true) return '';
+    const contactObj = contact && typeof contact === 'object' ? contact : {};
+    const bookMeetingUrl = contactObj.bookMeetingUrl ? String(contactObj.bookMeetingUrl).trim() : '';
+    const email = resolveOrganizationContactEmail(contactObj);
     const buttons = [];
-    if (contactUrl) {
+    if (email) {
       buttons.push(
-        '<a href="' + escapeHtml(contactUrl) + '" target="_blank" rel="noopener noreferrer" class="fides-modal-footer-btn fides-modal-footer-btn--accent" data-matomo-name="Contact">' +
+        '<a href="mailto:' + escapeHtml(email) + '" class="fides-modal-footer-btn fides-modal-footer-btn--accent" data-matomo-name="Contact">' +
         icons.mail + ' Contact</a>'
       );
     }

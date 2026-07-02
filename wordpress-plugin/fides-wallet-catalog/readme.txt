@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.9.0
+Stable tag: 2.9.1
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -102,6 +102,10 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.9.1 =
+* Synced `fides-catalog-ui`: wallet modal Contact footer uses mailto from provider `contact.email`.
+* Requires fides-community-tools-tiles ≥ 1.8.4.
 
 = 2.9.0 =
 * Wallet catalog schema v2: community catalogs migrated to v2 (`media`, structured `recognitions`, `license` enum); CI validates v2 only.

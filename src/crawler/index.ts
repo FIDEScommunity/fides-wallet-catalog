@@ -76,7 +76,7 @@ interface OrgCatalogEntry {
   website?: string;
   logoUri?: string;
   country?: string;
-  contact?: { contactUrl?: string; bookMeetingUrl?: string };
+  contact?: { email?: string; bookMeetingUrl?: string; contactUrl?: string };
   fidesManifestoSupporter?: boolean;
   /** Community or Pro — inherited onto wallets at crawl time when missing on wallet JSON. */
   catalogTier?: string;
