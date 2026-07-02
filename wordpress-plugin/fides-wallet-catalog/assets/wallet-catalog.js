@@ -439,7 +439,11 @@
 
   function renderWalletCardFooterBadges(wallet) {
     if (TIER_UI_ENABLED && window.FidesCatalogUI && typeof window.FidesCatalogUI.buildCatalogListingHeaderBadgeHtml === 'function') {
-      const badge = window.FidesCatalogUI.buildCatalogListingHeaderBadgeHtml(wallet, { tierUiEnabled: TIER_UI_ENABLED });
+      const badge = window.FidesCatalogUI.buildCatalogListingHeaderBadgeHtml(wallet, {
+        tierUiEnabled: TIER_UI_ENABLED,
+        editAccess: EDIT_ACCESS,
+        isLoggedIn: RATINGS_IS_LOGGED_IN,
+      });
       if (!badge) return '';
       return '<div class="fides-wallet-card-footer-badges fides-wallet-card-footer-listing">' + badge + '</div>';
     }

@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.9.2
+Stable tag: 2.9.3
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -102,6 +102,9 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.9.3 =
+* Fix grid card listing badge: pass editAccess to shared badge helper so Pro wallets show Official Listing (was Community on cards while modal was correct).
 
 = 2.9.2 =
 * Synced `fides-catalog-ui` from tiles 1.8.5 (Community org contact footer gate in shared modal).
