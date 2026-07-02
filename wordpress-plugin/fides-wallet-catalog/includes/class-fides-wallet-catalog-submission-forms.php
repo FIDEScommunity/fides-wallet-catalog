@@ -13,7 +13,7 @@ if (! class_exists('Fides_Wallet_Catalog_Submission_Forms')) {
 
     class Fides_Wallet_Catalog_Submission_Forms {
 
-        const VERSION = '2.9.1';
+        const VERSION = '2.9.2';
 
         /**
          * @param string $mode create|update.

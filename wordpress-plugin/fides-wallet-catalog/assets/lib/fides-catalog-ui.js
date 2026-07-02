@@ -1807,7 +1807,11 @@
   }
 
   function buildOrganizationContactFooterHtml(contact, options) {
-    if (options && options.tierUiEnabled === true && options.isCommunity === true) return '';
+    const opts = options || {};
+    if (optionsTierUiEnabled(opts)) {
+      if (opts.item && !walletListingTierIsPro(opts.item, opts)) return '';
+      if (opts.isCommunity === true) return '';
+    }
     const contactObj = contact && typeof contact === 'object' ? contact : {};
     const bookMeetingUrl = contactObj.bookMeetingUrl ? String(contactObj.bookMeetingUrl).trim() : '';
     const email = resolveOrganizationContactEmail(contactObj);
@@ -2199,7 +2203,8 @@
   function openOrganizationModal(org, options) {
     if (!org) return;
     const theme = (options && options.theme) || 'dark';
-    const isCommunity = itemIsCommunity(org);
+    const tierUi = optionsTierUiEnabled(options);
+    const isCommunity = tierUi ? !walletListingTierIsPro(org, options) : itemIsCommunity(org);
     selectedContext = { type: 'organization', item: org, options: options || {}, theme: theme };
     if (options && typeof options.onOpen === 'function') options.onOpen(org);
 
@@ -2271,7 +2276,7 @@
       (!isCommunity && org.website ? '<a href="' + escapeHtml(org.website) + '" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Organization website">' + icons.externalLink + ' Visit Website</a>' : '') +
       '</div>' +
       '</div>' +
-      buildOrganizationContactFooterHtml(org.contact, { tierUiEnabled: optionsTierUiEnabled(options), isCommunity: isCommunity }) +
+      buildOrganizationContactFooterHtml(org.contact, { tierUiEnabled: optionsTierUiEnabled(options), isCommunity: isCommunity, item: org, editAccess: options && options.editAccess }) +
       '</div></div>';
 
     mountModal(modalHtml);
