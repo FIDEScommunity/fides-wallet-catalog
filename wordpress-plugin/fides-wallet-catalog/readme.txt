@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.9.4
+Stable tag: 2.9.5
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -102,6 +102,9 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.9.5 =
+* Submission form: show Pro plan badge on Pro-only field labels for Pro accounts too (static badge, no plans link).
 
 = 2.9.4 =
 * Pro listing cards: personal wallets use a blue accent border (grid and list view); business wallets keep purple. Pro badges stay purple on all types.

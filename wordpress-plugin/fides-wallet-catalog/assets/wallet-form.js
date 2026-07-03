@@ -116,12 +116,15 @@
   ];
 
   function proBadgeHtml() {
+    if (planTier.isPro) {
+      return '<span class="fides-pro-plan-badge fides-pro-plan-badge--label">Pro plan</span>';
+    }
     const url = String(planTier.plansUrl || "/plans/");
     return `<a href="${escapeHtml(url)}" class="fides-pro-plan-badge" target="_blank" rel="noopener">Pro plan</a>`;
   }
 
   function labelWithProIfNeeded(labelText, isProField) {
-    if (!tierUiEnabled() || planTier.isPro || !isProField) return labelText;
+    if (!tierUiEnabled() || !isProField) return labelText;
     return `${labelText} ${proBadgeHtml()}`;
   }
 

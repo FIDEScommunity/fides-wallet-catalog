@@ -1054,6 +1054,17 @@
   color: #5b21b6;
 }
 
+.fides-pro-plan-badge--label,
+span.fides-pro-plan-badge {
+  cursor: default;
+}
+
+.fides-pro-plan-badge--label:hover,
+span.fides-pro-plan-badge:hover {
+  background: #f3e8ff;
+  color: #6d28d9;
+}
+
 .fides-free-plan-badge {
   display: inline-block;
   padding: 2px 8px;
