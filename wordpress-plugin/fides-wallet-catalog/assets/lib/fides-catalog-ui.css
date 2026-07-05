@@ -159,6 +159,7 @@
   color: #6d28d9;
   background: #f3e8ff;
   border: 1px solid rgba(109, 40, 217, 0.35);
+  cursor: help;
 }
 
 .fides-modal-header-listing-badge--community {
@@ -210,6 +211,54 @@
   opacity: 0.7;
   width: 14px;
   height: 14px;
+}
+
+.fides-modal-country {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.35rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  color: var(--fides-text-muted, #64748b);
+}
+
+.fides-modal-provider-country {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 0.35rem;
+}
+
+.fides-modal-country-flag {
+  width: 18px;
+  height: 13px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.12);
+  flex-shrink: 0;
+}
+
+.fides-modal-country-label {
+  font-weight: 500;
+  color: var(--fides-text-secondary, #94a3b8);
+}
+
+.fides-wallet-country {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  margin-right: 0.35rem;
+  flex-shrink: 0;
+}
+
+.fides-wallet-country-flag {
+  width: 16px;
+  height: 12px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.12);
+  display: block;
 }
 
 /* Organization catalog deep link in modal header (same pattern as RP catalog) */
@@ -1184,6 +1233,16 @@
   gap: 0.375rem;
 }
 
+.fides-modal-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.fides-modal-tag-list .fides-tag {
+  font-size: 0.8125rem;
+}
+
 .fides-modal-grid-value .fides-tag {
   font-size: 0.8125rem;
 }
@@ -2148,6 +2207,11 @@
   margin-bottom: 1.5rem;
 }
 
+.fides-rp-action-bar .fides-modal-app-stores {
+  margin-bottom: 0;
+}
+
+
 .fides-app-store-btn {
   display: inline-flex;
   align-items: center;
@@ -2172,6 +2236,11 @@
 
 .fides-app-store-btn.web {
   background: #1e40af;
+  color: #ffffff;
+}
+
+.fides-app-store-btn.issuer {
+  background: #2563eb;
   color: #ffffff;
 }
 
@@ -2232,6 +2301,119 @@
 .fides-modal-badge.status-deprecated {
   background: rgba(239, 68, 68, 0.15);
   color: #ef4444;
+}
+
+/* iGrant EUDI landscape status badges (wallet modal accordion) */
+.fides-eudi-landscape-badge {
+  font-weight: 600;
+  white-space: normal;
+  text-align: left;
+  line-height: 1.35;
+}
+
+.fides-eudi-landscape-badge--prod-notified,
+.fides-eudi-landscape-badge--prod-pending {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+
+.fides-eudi-landscape-badge--public-pilot {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+}
+
+.fides-eudi-landscape-badge--closed-pilot {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+}
+
+.fides-eudi-landscape-badge--planned,
+.fides-eudi-landscape-badge--unknown {
+  background: rgba(148, 163, 184, 0.15);
+  color: #94a3b8;
+}
+
+.fides-eudi-landscape-badge--no-plans {
+  background: rgba(100, 116, 139, 0.12);
+  color: #64748b;
+}
+
+/* Full-width KV rows — same layout as wallet technical specs */
+.fides-modal-overlay .fides-wallet-eudi-landscape .fides-details-kv,
+.fides-modal-overlay .fides-wallet-eudi-landscape .fides-details-kv--technical-grid {
+  grid-template-columns: 1fr;
+  column-gap: 0;
+}
+
+.fides-modal-overlay .fides-wallet-eudi-landscape .fides-kv-row {
+  grid-column: 1 / -1;
+}
+
+.fides-modal-overlay .fides-wallet-eudi-landscape .fides-kv-val {
+  overflow: visible;
+}
+
+.fides-modal-overlay .fides-wallet-eudi-landscape .fides-eudi-landscape-badge {
+  white-space: normal;
+  flex-shrink: 1;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.fides-wallet-eudi-landscape-section {
+  margin-top: 1rem;
+}
+
+.fides-wallet-eudi-landscape-label {
+  margin: 0 0 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--fides-text-muted, #64748b);
+}
+
+.fides-wallet-eudi-landscape-label::after {
+  content: ":";
+}
+
+.fides-wallet-eudi-landscape-notes {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.fides-wallet-eudi-landscape-attribution {
+  margin-top: 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-wallet-eudi-landscape-chips .fides-tag-eudi-landscape,
+.fides-modal-overlay[data-theme="light"] .fides-wallet-eudi-landscape-chips .fides-tag-eudi-landscape {
+  background: rgba(10, 110, 243, 0.08);
+  color: #374151;
+  border-color: rgba(10, 110, 243, 0.18);
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-eudi-landscape-badge--prod-notified,
+.fides-modal-overlay[data-theme="light"] .fides-eudi-landscape-badge--prod-notified,
+.fides-modal-overlay[data-theme="fides"] .fides-eudi-landscape-badge--prod-pending,
+.fides-modal-overlay[data-theme="light"] .fides-eudi-landscape-badge--prod-pending {
+  background: rgba(22, 163, 74, 0.12);
+  color: #15803d;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-eudi-landscape-badge--public-pilot,
+.fides-modal-overlay[data-theme="light"] .fides-eudi-landscape-badge--public-pilot {
+  background: rgba(37, 99, 235, 0.12);
+  color: #1d4ed8;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-eudi-landscape-badge--closed-pilot,
+.fides-modal-overlay[data-theme="light"] .fides-eudi-landscape-badge--closed-pilot {
+  background: rgba(217, 119, 6, 0.12);
+  color: #b45309;
 }
 
 /* RP modal fallback coloring by semantic classes (keeps colors even if an older
@@ -3062,3 +3244,767 @@ span.fides-tag.platform {
   }
 }
 
+
+/* FIDES Ecosystem Model (shared modal) */
+.fides-modal-section-header {
+  cursor: default !important;
+  pointer-events: none;
+}
+
+.fides-modal-section-header--with-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.fides-eco-explain-link {
+  pointer-events: auto;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--fides-text-muted);
+  text-decoration: underline dashed currentColor;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+  flex-shrink: 0;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.fides-eco-explain-link:hover,
+.fides-eco-explain-link:focus-visible {
+  color: var(--fides-accent);
+  text-decoration-style: solid;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-eco-explain-link,
+.fides-modal-overlay[data-theme="light"] .fides-eco-explain-link {
+  color: #64748b;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-eco-explain-link:hover,
+.fides-modal-overlay[data-theme="light"] .fides-eco-explain-link:hover {
+  color: #0A6EF3;
+}
+
+.fides-modal-ecosystem-body {
+  padding: 0 !important;
+  display: block !important;
+  border-top: none !important;
+}
+
+/* Ecosystem flow */
+.fides-modal-ecosystem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  padding: 0.5rem;
+  background: var(--fides-bg-primary);
+  border-radius: 0 0 8px 8px;
+  /* Chip surface for wallet/stat boxes; light/fides override below — static hover must match */
+  --fides-eco-slot-surface: var(--fides-bg-secondary);
+}
+
+.fides-eco-wallet-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.fides-modal-ecosystem .fides-eco-wallet-box,
+.fides-modal-ecosystem .fides-eco-col-side {
+  background: var(--fides-eco-slot-surface);
+}
+
+.fides-eco-wallet-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.4rem 1.25rem;
+  min-width: 200px;
+  background: var(--fides-bg-secondary);
+  border: 1px solid var(--fides-border);
+  border-radius: 8px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.fides-eco-wallet-box--link {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.fides-eco-wallet-box--link:hover {
+  border-color: #7c3aed !important;
+  background: rgba(124, 58, 237, 0.06) !important;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.3) !important;
+}
+
+.fides-eco-wallet-label {
+  font-size: 0.8125rem;
+  color: var(--fides-text-secondary);
+  font-weight: 500;
+}
+
+.fides-eco-wallet-count {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--fides-text-primary);
+  line-height: 1;
+}
+
+.fides-eco-wallet-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fides-text-muted);
+  line-height: 1;
+  margin: 0.25rem 0;
+}
+
+.fides-eco-wallet-connector svg {
+  width: 18px;
+  height: 18px;
+}
+
+.fides-eco-main-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.25rem 0.75rem;
+}
+
+.fides-eco-main-row > .fides-eco-col {
+  padding: 0.25rem 0;
+  min-width: 0;
+}
+
+.fides-eco-main-row > .fides-eco-col.fides-eco-col-center {
+  padding: 0;
+}
+
+.fides-eco-col {
+  padding: 0.625rem 0.75rem;
+  min-width: 0;
+}
+
+.fides-eco-col-side {
+  background: var(--fides-bg-secondary);
+  border: 1px solid var(--fides-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+}
+
+.fides-eco-col-side--blue:hover {
+  border-color: #2563eb !important;
+  background: rgba(37, 99, 235, 0.06) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3) !important;
+}
+
+.fides-eco-col-side--green:hover {
+  border-color: #16a34a !important;
+  background: rgba(22, 163, 74, 0.06) !important;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.3) !important;
+}
+
+.fides-eco-col-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.fides-eco-col-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.375rem;
+  border-bottom: 1px solid var(--fides-border);
+}
+
+
+.fides-eco-count {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--fides-text-primary);
+  line-height: 1;
+}
+
+.fides-eco-label {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  color: var(--fides-text-muted);
+}
+
+.fides-eco-entities {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+}
+
+.fides-eco-entities .fides-eco-tag {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  max-width: 100%;
+}
+
+/* Last tag + "more" are wrapped together in a row */
+.fides-eco-tag-last-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.fides-eco-tag-last-row .fides-eco-tag {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fides-eco-tag-last-row .fides-eco-more {
+  flex-shrink: 0;
+  white-space: nowrap;
+  margin-top: 0;
+  padding: 0.2rem 0.1rem;
+}
+
+.fides-eco-entity {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--fides-text-secondary);
+  text-decoration: none;
+  border-radius: 6px;
+  padding: 0.3rem 0.4rem;
+  transition: background 0.15s, color 0.15s;
+  overflow: hidden;
+  max-width: 130px;
+}
+
+a.fides-eco-entity:hover {
+  background: rgba(59, 130, 246, 0.08);
+  color: var(--fides-accent);
+}
+
+a.fides-eco-entity svg {
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+
+.fides-eco-entity-icon {
+  flex-shrink: 0;
+  display: flex;
+  color: var(--fides-text-muted);
+}
+
+.fides-eco-entity-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.fides-eco-entity-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fides-eco-more {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: var(--fides-accent);
+  padding: 0.2rem 0.4rem;
+  margin-top: 0;
+  font-weight: 500;
+  cursor: default;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.fides-eco-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  color: var(--fides-text-muted);
+  flex-shrink: 0;
+}
+
+.fides-eco-arrow svg {
+  width: 18px;
+  height: 18px;
+  transform: rotate(-90deg);
+}
+
+.fides-eco-arrow-right svg {
+  transform: rotate(-90deg);
+}
+
+.fides-eco-center-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+  background: var(--fides-bg-primary);
+  border: 2px solid var(--fides-accent);
+  border-radius: 10px;
+  padding: 0.625rem 0.875rem;
+  width: 100%;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.08);
+}
+
+.fides-eco-entity-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.4rem;
+  background: var(--fides-eco-slot-surface, var(--fides-bg-secondary));
+  border: 1px solid var(--fides-border);
+  border-radius: 8px;
+  padding: 0.625rem 0.875rem;
+  width: 100%;
+  min-height: 5.5rem;
+  box-sizing: border-box;
+}
+
+.fides-eco-entity-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--fides-bg-primary);
+  border: 1px solid var(--fides-border);
+  color: var(--fides-text-muted);
+  flex-shrink: 0;
+  margin-bottom: 0.2rem;
+}
+
+.fides-eco-entity-icon svg {
+  width: 20px;
+  height: 20px;
+  color: var(--fides-text-muted);
+}
+
+.fides-eco-center-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--fides-accent, #3b82f6), #8b5cf6);
+  color: #fff;
+  flex-shrink: 0;
+  margin-bottom: 0.2rem;
+}
+
+.fides-eco-center-icon svg {
+  width: 20px;
+  height: 20px;
+  color: #fff;
+}
+
+.fides-eco-center-name {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--fides-text-primary);
+  line-height: 1.3;
+}
+
+.fides-eco-center-authority {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--fides-text-muted);
+}
+
+.fides-eco-center-format {
+  display: inline-block;
+  margin-top: 0.35rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--fides-accent);
+  border: 1px solid var(--fides-accent);
+  border-radius: 9999px;
+  padding: 0.1rem 0.5rem;
+  letter-spacing: 0.02em;
+  background: transparent;
+}
+
+/* Ecosystem stat boxes (issuer / RP counts + double chevron — aligned with issuer catalog modal) */
+.fides-eco-stat-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+  min-width: 0;
+}
+
+.fides-eco-wallet-box.fides-eco-stat-box {
+  cursor: pointer;
+  width: 100%;
+  max-width: 260px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 5.5rem;
+  padding: 0.65rem 1rem 0.85rem;
+}
+
+.fides-eco-stat-box-main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.fides-modal-ecosystem .fides-eco-wallet-box.fides-eco-stat-box--green:not(.fides-eco-stat-box--static) {
+  border-color: #16a34a;
+}
+
+.fides-modal-ecosystem .fides-eco-wallet-box.fides-eco-stat-box--blue:not(.fides-eco-stat-box--static) {
+  border-color: #93c5fd;
+}
+
+.fides-eco-stat-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  line-height: 0;
+  opacity: 0.92;
+}
+
+.fides-eco-stat-hint svg {
+  display: block;
+}
+
+.fides-eco-stat-box--green:not(.fides-eco-stat-box--static) .fides-eco-stat-hint {
+  color: #15803d;
+}
+
+.fides-eco-stat-box--blue:not(.fides-eco-stat-box--static) .fides-eco-stat-hint {
+  color: #2563eb;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-eco-stat-box--green:not(.fides-eco-stat-box--static) .fides-eco-stat-hint,
+.fides-modal-overlay[data-theme="light"] .fides-eco-stat-box--green:not(.fides-eco-stat-box--static) .fides-eco-stat-hint {
+  color: #16a34a;
+}
+
+.fides-eco-wallet-box.fides-eco-stat-box--static {
+  cursor: default;
+}
+
+.fides-eco-wallet-box.fides-eco-stat-box--green:hover:not(.fides-eco-stat-box--static) {
+  border-color: #16a34a !important;
+  background: rgba(22, 163, 74, 0.06) !important;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.3) !important;
+}
+
+.fides-eco-wallet-box.fides-eco-stat-box--blue:hover:not(.fides-eco-stat-box--static) {
+  border-color: #2563eb !important;
+  background: rgba(37, 99, 235, 0.06) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3) !important;
+}
+
+.fides-eco-stat-box--static:hover {
+  border-color: var(--fides-border) !important;
+  background: var(--fides-eco-slot-surface, var(--fides-bg-secondary)) !important;
+  box-shadow: none !important;
+}
+.fides-modal-overlay[data-theme="fides"] .fides-modal-ecosystem,
+.fides-modal-overlay[data-theme="light"] .fides-modal-ecosystem {
+  background: #ffffff;
+  --fides-eco-slot-surface: #f8fafc;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-ecosystem .fides-eco-wallet-box,
+.fides-modal-overlay[data-theme="light"] .fides-modal-ecosystem .fides-eco-wallet-box,
+.fides-modal-overlay[data-theme="fides"] .fides-modal-ecosystem .fides-eco-col-side,
+.fides-modal-overlay[data-theme="light"] .fides-modal-ecosystem .fides-eco-col-side,
+.fides-modal-overlay[data-theme="fides"] .fides-modal-ecosystem .fides-eco-entity-card,
+.fides-modal-overlay[data-theme="light"] .fides-modal-ecosystem .fides-eco-entity-card {
+  border-color: #e2e8f0;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-eco-center-card,
+.fides-modal-overlay[data-theme="light"] .fides-eco-center-card {
+  background: #ffffff;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-eco-entity-card,
+.fides-modal-overlay[data-theme="light"] .fides-eco-entity-card {
+  background: #f8fafc;
+}
+
+#fides-accordion-rp-issuers,
+#fides-accordion-rp-accepted-credentials,
+#fides-accordion-rp-supported-wallets {
+  scroll-margin-top: 0.75rem;
+}
+
+/* RP modal entity tables + explore links (shared with credential catalog pattern) */
+.fides-modal-overlay .fides-modal-empty {
+.fides-modal-overlay   margin: 0;
+.fides-modal-overlay   font-size: 0.875rem;
+.fides-modal-overlay   color: var(--fides-text-muted);
+.fides-modal-overlay }
+.fides-modal-overlay 
+.fides-modal-overlay .fides-modal-links {
+.fides-attributes-table .fides-col-type {
+  width: 6rem;
+  white-space: nowrap;
+}
+
+/* Issuers + Relying parties modal tables: same column split so dividers line up */
+.fides-modal-overlay .fides-modal-entity-table {
+  table-layout: fixed;
+}
+
+/* Let fixed-layout columns shrink below content min-width (avoids phantom horizontal scroll) */
+.fides-modal-overlay .fides-modal-entity-table th,
+.fides-modal-overlay .fides-modal-entity-table td {
+  min-width: 0;
+}
+
+.fides-modal-overlay .fides-modal-entity-table th:nth-child(1),
+.fides-modal-overlay .fides-modal-entity-table td:nth-child(1) {
+  width: 52%;
+}
+
+.fides-modal-overlay .fides-modal-entity-table th:nth-child(2),
+.fides-modal-overlay .fides-modal-entity-table td:nth-child(2) {
+  width: 48%;
+}
+
+.fides-modal-overlay .fides-modal-entity-table th.fides-modal-entity-col-likes,
+.fides-modal-overlay .fides-modal-entity-table td.fides-modal-entity-col-likes {
+  width: 88px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.fides-modal-overlay .fides-attributes-table th.fides-modal-entity-col-likes,
+.fides-modal-overlay .fides-attributes-table td.fides-modal-entity-col-likes {
+  width: 88px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.fides-modal-overlay .fides-modal-entity-table td {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Single-column variant (no Organization): full width */
+.fides-modal-overlay .fides-modal-entity-table thead tr th:only-child,
+.fides-modal-overlay .fides-modal-entity-table tbody tr td:only-child {
+  width: 100%;
+}
+
+@media (max-width: 560px) {
+  .fides-modal-overlay .fides-modal-entity-table th:nth-child(1),
+  .fides-modal-overlay .fides-modal-entity-table td:nth-child(1) {
+    width: 40%;
+  }
+
+  .fides-modal-overlay .fides-modal-entity-table th:nth-child(2),
+  .fides-modal-overlay .fides-modal-entity-table td:nth-child(2) {
+    width: 60%;
+  }
+
+  .fides-modal-overlay .fides-modal-entity-table th.fides-modal-entity-col-likes,
+  .fides-modal-overlay .fides-modal-entity-table td.fides-modal-entity-col-likes {
+    width: 68px;
+  }
+
+  .fides-modal-overlay .fides-attributes-table th.fides-modal-entity-col-likes,
+  .fides-modal-overlay .fides-attributes-table td.fides-modal-entity-col-likes {
+    width: 68px;
+  }
+
+  .fides-modal-overlay .fides-modal-entity-table th {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
+
+/* Modal tables: first column (names / field names) wraps instead of stretching the table */
+.fides-modal-overlay .fides-attributes-table td:nth-child(1) {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.fides-modal-overlay .fides-attributes-table td:nth-child(1) code {
+  word-break: break-word;
+}
+
+/* Scroll wrapper + table fit modal width (no extra min-content overflow) */
+.fides-modal-overlay .fides-attributes-table-wrap {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.fides-modal-overlay .fides-attributes-table {
+  max-width: 100%;
+  min-width: 0;
+}
+
+/*
+ * .fides-modal-link-inline uses inline-flex; default flex items do not shrink, so link text
+ * stayed on one line and forced the table wider than the viewport. Use inline flow in cells.
+ */
+.fides-modal-overlay .fides-attributes-table td .fides-modal-link-inline {
+  display: inline;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  vertical-align: baseline;
+}
+
+.fides-modal-entity-like {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--fides-text-secondary);
+  min-width: 2.5rem;
+}
+
+.fides-modal-entity-like-star {
+  color: #111827;
+  line-height: 1;
+}
+
+.fides-modal-entity-like.is-liked .fides-modal-entity-like-star {
+  color: #facc15;
+}
+
+.fides-modal-entity-like-empty {
+  color: var(--fides-text-muted);
+}
+/* Chevron column: separated from title row (and optional catalog link) on every accordion */
+.fides-accordion-header-bar .fides-accordion-chevron-btn {
+  padding: 0.75rem 0.85rem;
+  border-left: 1px solid var(--fides-border);
+}
+
+/* Filled button-style control (not a pill) — distinct from accordion title + chevron */
+.fides-accordion-header-bar .fides-accordion-explore-link {
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: 6px;
+  border: 1px solid var(--fides-accent);
+  background: var(--fides-accent);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
+}
+
+.fides-accordion-header-bar .fides-accordion-explore-link:hover {
+  background: color-mix(in srgb, var(--fides-accent) 82%, black);
+  border-color: color-mix(in srgb, var(--fides-accent) 82%, black);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.14);
+}
+
+.fides-accordion-header-bar .fides-accordion-explore-link:focus-visible {
+  outline: 2px solid var(--fides-accent);
+  outline-offset: 2px;
+}
+
+@supports not (background: color-mix(in srgb, red 82%, black)) {
+  .fides-accordion-header-bar .fides-accordion-explore-link:hover {
+    filter: brightness(0.88);
+  }
+}
+
+/*
+ * Narrow viewports: keep title + chevron on one row (flex-wrap let the chevron wrap alone on iOS).
+ * Grid pins header to col1 row1, chevron to col2 row1, catalog CTA spans row2 (DOM: title, link, chevron).
+ */
+@media (max-width: 560px) {
+  .fides-accordion-header-bar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto;
+    gap: 0.35rem 0.35rem;
+    align-items: stretch;
+  }
+
+  .fides-accordion-header-bar .fides-accordion-header {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .fides-accordion-header-bar .fides-accordion-title {
+    min-width: 0;
+  }
+
+  .fides-accordion-header-bar .fides-accordion-chevron-btn {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .fides-accordion-header-bar .fides-accordion-explore-link {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    justify-self: stretch;
+    justify-content: center;
+    margin: 0;
+  }
+}

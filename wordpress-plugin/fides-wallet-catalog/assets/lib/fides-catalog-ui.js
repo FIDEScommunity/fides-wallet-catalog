@@ -115,6 +115,7 @@
     book: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>',
     calendar: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>',
     building: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>',
+    server: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>',
     check: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
     download: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>',
     penLine: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
@@ -122,6 +123,8 @@
     chevronLeft: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>',
     chevronRight: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>',
     chevronDown: '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>',
+    chevronUp: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"></path></svg>',
+    chevronDoubleDown: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 8 6 6 6-6"></path><path d="m6 14 6 6 6-6"></path></svg>',
     maximize: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>',
     laptop: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></svg>',
     tag: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></svg>',
@@ -206,28 +209,124 @@
       '"><span class="fides-modal-header-official-label fides-modal-header-listing-label">Community Listing</span></span>';
   }
 
+  function normalizeIsoCountryCode(code) {
+    const raw = String(code || '').trim().toUpperCase();
+    if (raw.length !== 2 || !/^[A-Z]{2}$/.test(raw)) return '';
+    return raw;
+  }
+
+  function resolveWalletCountryCode(wallet) {
+    if (!wallet || typeof wallet !== 'object') return '';
+    const provider = wallet.provider && typeof wallet.provider === 'object' ? wallet.provider : {};
+    const fromProvider = normalizeIsoCountryCode(provider.country);
+    if (fromProvider) return fromProvider;
+    const tracker = wallet.eudiTracker && typeof wallet.eudiTracker === 'object' ? wallet.eudiTracker : {};
+    return normalizeIsoCountryCode(tracker.isoAlpha2);
+  }
+
+  function resolveWalletCountryLabel(wallet, countryCode, options) {
+    const code = countryCode || resolveWalletCountryCode(wallet);
+    if (!code) return '';
+    const names = options && options.countryNames && typeof options.countryNames === 'object' ? options.countryNames : {};
+    if (names[code]) return String(names[code]);
+    const tracker = wallet && wallet.eudiTracker && typeof wallet.eudiTracker === 'object' ? wallet.eudiTracker : {};
+    if (tracker.countryName) return String(tracker.countryName);
+    return code;
+  }
+
+  function buildWalletCountryFlagImgHtml(countryCode, flagClass) {
+    const code = normalizeIsoCountryCode(countryCode);
+    if (!code) return '';
+    const cls = flagClass || 'fides-modal-country-flag';
+    return '<img src="https://flagcdn.com/w40/' + encodeURIComponent(code.toLowerCase()) + '.png" alt="" class="' +
+      escapeHtml(cls) + '" width="18" height="13" loading="lazy" decoding="async" />';
+  }
+
+  function buildWalletCountryModalFlagHtml(wallet, options) {
+    const code = resolveWalletCountryCode(wallet);
+    if (!code) return '';
+    const label = resolveWalletCountryLabel(wallet, code, options);
+    return ' <span class="fides-modal-provider-country" title="' + escapeHtml(label) + '" aria-label="' + escapeHtml(label) + '">' +
+      buildWalletCountryFlagImgHtml(code, 'fides-modal-country-flag') + '</span>';
+  }
+
+  function resolveOrganizationCountryCode(org) {
+    if (!org || typeof org !== 'object') return '';
+    return normalizeIsoCountryCode(org.country);
+  }
+
+  function resolveOrganizationCountryLabel(org, countryCode, options) {
+    const code = countryCode || resolveOrganizationCountryCode(org);
+    if (!code) return '';
+    const names = options && options.countryNames && typeof options.countryNames === 'object' ? options.countryNames : {};
+    if (names[code]) return String(names[code]);
+    return code;
+  }
+
+  function buildOrganizationCountryFlagHtml(org, options) {
+    const code = resolveOrganizationCountryCode(org);
+    if (!code) return '';
+    const label = resolveOrganizationCountryLabel(org, code, options);
+    return '<span class="fides-wallet-country" title="' + escapeHtml(label) + '" aria-label="' + escapeHtml(label) + '">' +
+      buildWalletCountryFlagImgHtml(code, 'fides-wallet-country-flag') + '</span>';
+  }
+
+  function buildOrganizationCountryModalFlagHtml(org, options) {
+    const code = resolveOrganizationCountryCode(org);
+    if (!code) return '';
+    const label = resolveOrganizationCountryLabel(org, code, options);
+    return ' <span class="fides-modal-provider-country" title="' + escapeHtml(label) + '" aria-label="' + escapeHtml(label) + '">' +
+      buildWalletCountryFlagImgHtml(code, 'fides-modal-country-flag') + '</span>';
+  }
+
+  function buildWalletCountryFlagHtml(wallet, options) {
+    const code = resolveWalletCountryCode(wallet);
+    if (!code) return '';
+    const label = resolveWalletCountryLabel(wallet, code, options);
+    return '<span class="fides-wallet-country" title="' + escapeHtml(label) + '" aria-label="' + escapeHtml(label) + '">' +
+      buildWalletCountryFlagImgHtml(code, 'fides-wallet-country-flag') +
+      '</span>';
+  }
+
   /** Whether Community vs Pro tier UI is active (master switch + options.tierUiEnabled). */
   function optionsTierUiEnabled(options) {
     return !!(options && options.tierUiEnabled);
   }
 
   /**
-   * Whether the signed-in user may open the update form for a catalog item.
-   * Pro orgs (ownership-linked) are owner-only; Community orgs allow any signed-in user.
+   * Whether a catalog listing is Pro for edit-access checks (explicit catalogTier or linked proOrgIds fallback).
    *
-   * @param {object|null|undefined} editAccess { isLoggedIn, ownedOrgIds, proOrgIds }
+   * @param {object|null|undefined} item Catalog item from aggregated.json
    * @param {string} orgId org:… anchor for organization or wallet provider
+   * @param {object|null|undefined} editAccess { ownedOrgIds, proOrgIds }
    * @return {boolean}
    */
-  function userCanEditCatalogItem(editAccess, orgId) {
+  function catalogListingIsPro(item, orgId, editAccess) {
+    if (item && item.catalogTier) {
+      return !itemIsCommunity(item);
+    }
+    const org = String(orgId || '').trim();
+    if (!org) return false;
+    const proOrgIds = Array.isArray(editAccess && editAccess.proOrgIds) ? editAccess.proOrgIds : [];
+    return proOrgIds.indexOf(org) >= 0;
+  }
+
+  /**
+   * Whether the signed-in user may open the update form for a catalog item.
+   * Pro listings: linked owner or site administrator only. Community listings: any signed-in user.
+   *
+   * @param {object|null|undefined} editAccess { isLoggedIn, isAdmin, ownedOrgIds, proOrgIds }
+   * @param {string} orgId org:… anchor for organization or wallet provider
+   * @param {object|null|undefined} item Optional catalog item (for catalogTier on Pro listings)
+   * @return {boolean}
+   */
+  function userCanEditCatalogItem(editAccess, orgId, item) {
     if (!editAccess || !editAccess.isLoggedIn) return false;
     if (editAccess.isAdmin) return true;
     const org = String(orgId || '').trim();
     if (!org) return true;
-    const proOrgIds = Array.isArray(editAccess.proOrgIds) ? editAccess.proOrgIds : [];
     const ownedOrgIds = Array.isArray(editAccess.ownedOrgIds) ? editAccess.ownedOrgIds : [];
-    const isProOrg = proOrgIds.indexOf(org) >= 0;
-    if (!isProOrg) return true;
+    if (!catalogListingIsPro(item, org, editAccess)) return true;
     return ownedOrgIds.indexOf(org) >= 0;
   }
 
@@ -261,11 +360,19 @@
   }
 
   function canEditOrganization(org, options) {
-    return userCanEditCatalogItem(normalizeEditAccess(options), org && org.id ? String(org.id).trim() : '');
+    return userCanEditCatalogItem(
+      normalizeEditAccess(options),
+      org && org.id ? String(org.id).trim() : '',
+      org
+    );
   }
 
   function canEditWallet(wallet, options) {
-    return userCanEditCatalogItem(normalizeEditAccess(options), resolveWalletOrgId(wallet));
+    return userCanEditCatalogItem(normalizeEditAccess(options), resolveWalletOrgId(wallet), wallet);
+  }
+
+  function canEditRp(rp, options) {
+    return userCanEditCatalogItem(normalizeEditAccess(options), resolveCatalogItemOrgId(rp), rp);
   }
 
   /** Pro listing for wallet/org UI when tier switch is on (explicit Pro tier or proOrgIds fallback). */
@@ -997,6 +1104,492 @@
       '</section>';
   }
 
+  function buildRpHeroSectionHtml(rp) {
+    const description = rp && rp.description ? String(rp.description).trim() : '';
+    const slides = buildWalletModalMediaSlides(rp);
+    const mediaHtml = slides.length ? renderModalMediaCarouselHtml(slides, 'Relying party media') : '';
+    if (!description && !mediaHtml) return '';
+    const layoutClass = mediaHtml ? 'fides-use-case-modal-hero has-media' : 'fides-use-case-modal-hero';
+    return '<section class="' + layoutClass + '">' +
+      (description ? '<div class="fides-use-case-modal-copy"><p class="fides-modal-description">' + escapeHtml(description) + '</p></div>' : '') +
+      mediaHtml +
+      '</section>';
+  }
+
+  function resolveRpCountryCode(rp) {
+    if (!rp || typeof rp !== 'object') return '';
+    return normalizeIsoCountryCode(rp.country);
+  }
+
+  function resolveRpCountryLabel(rp, countryCode, options) {
+    const code = countryCode || resolveRpCountryCode(rp);
+    if (!code) return '';
+    if (code === 'EU') return 'European Union';
+    const names = options && options.countryNames && typeof options.countryNames === 'object' ? options.countryNames : {};
+    if (names[code]) return String(names[code]);
+    return code;
+  }
+
+  function buildRpCountryModalFlagHtml(rp, options) {
+    const code = resolveRpCountryCode(rp);
+    if (!code) return '';
+    const label = resolveRpCountryLabel(rp, code, options);
+    if (code === 'EU') {
+      return ' <span class="fides-modal-provider-country" title="' + escapeHtml(label) + '" aria-label="' + escapeHtml(label) + '"><span class="fides-modal-country-label">EU</span></span>';
+    }
+    return ' <span class="fides-modal-provider-country" title="' + escapeHtml(label) + '" aria-label="' + escapeHtml(label) + '">' +
+      buildWalletCountryFlagImgHtml(code, 'fides-modal-country-flag') + '</span>';
+  }
+
+  const RP_READINESS_LABELS = {
+    'technical-demo': 'Technical Demo',
+    'use-case-demo': 'Use Case Demo',
+    'production-pilot': 'Production Pilot',
+    production: 'Production'
+  };
+
+  const RP_STATUS_LABELS = {
+    development: 'In Development',
+    beta: 'Beta',
+    live: 'Live',
+    deprecated: 'Deprecated'
+  };
+
+  function buildRpActionBarHtml(rp) {
+    if (!rp) return '';
+    const websiteUrl = rp.website ? String(rp.website).trim() : '';
+    const testCredentialsUrl = rp.testCredentials ? String(rp.testCredentials).trim() : '';
+    const buttons = [];
+    if (websiteUrl) {
+      buttons.push(renderWalletAppStoreButton(
+        'web',
+        icons.globeApp,
+        'Visit the',
+        'Website',
+        websiteUrl,
+        true,
+        'Website',
+        'Visit website'
+      ));
+    }
+    if (testCredentialsUrl) {
+      buttons.push(renderWalletAppStoreButton(
+        'issuer',
+        icons.fileCheck,
+        'Get',
+        'Test credentials',
+        testCredentialsUrl,
+        true,
+        'Test credentials',
+        'Get test credentials'
+      ));
+    }
+    if (!buttons.length) return '';
+    return '<div class="fides-wallet-capabilities fides-wallet-app-stores fides-rp-action-bar">' +
+      '<span class="fides-wallet-capabilities-label">Try it</span>' +
+      '<div class="fides-wallet-capabilities-list fides-modal-app-stores">' + buttons.join('') + '</div></div>';
+  }
+
+  function buildRpSectorLabelsText(rp) {
+    const raw = Array.isArray(rp.sectors) ? rp.sectors : [];
+    const sectorCodes = raw.filter(function(s) { return typeof s === 'string' && s.length > 0; }).slice().sort(function(a, b) {
+      return rpSectorDisplayLabel(a).localeCompare(rpSectorDisplayLabel(b), 'en', { sensitivity: 'base' });
+    });
+    if (!sectorCodes.length) return '';
+    return sectorCodes.map(function(s) { return rpSectorDisplayLabel(s); }).join(', ');
+  }
+
+  function buildRpSectorTagsHtml(rp) {
+    const raw = Array.isArray(rp.sectors) ? rp.sectors : [];
+    const sectorCodes = raw.filter(function(s) { return typeof s === 'string' && s.length > 0; }).slice().sort(function(a, b) {
+      return rpSectorDisplayLabel(a).localeCompare(rpSectorDisplayLabel(b), 'en', { sensitivity: 'base' });
+    });
+    if (!sectorCodes.length) return '';
+    return sectorCodes.map(function(s) {
+      return '<span class="fides-tag sector">' + escapeHtml(rpSectorDisplayLabel(s)) + '</span>';
+    }).join('');
+  }
+
+  function buildRpSpecificationsBodyHtml(rp, options) {
+    if (!rp) return '';
+    const vocabulary = options && options.vocabulary;
+    const rows = [
+      renderTechnicalKvRowText('VC formats', sortCredentialFormats(rp.vcFormat || []), credentialFormatDisplayLabel, vocabulary, 'vcFormat'),
+      renderTechnicalKvRowText('Presentation protocols', rp.presentationProtocols || [], null, vocabulary, 'presentationProtocol'),
+      renderTechnicalKvRowText('Interop profiles', rp.interoperabilityProfiles || [], null, vocabulary, 'interopProfile'),
+    ].filter(Boolean);
+    if (!rows.length) return '';
+    return '<div class="fides-details-kv fides-details-kv--technical-grid">' + rows.join('') + '</div>';
+  }
+
+  function buildRpWebsiteDetailsBodyHtml(rp) {
+    if (!rp) return '';
+    const interactionMode = getRpInteractionMode(rp);
+    const interactionModeLabel = INTERACTION_MODE_LABELS[interactionMode] || interactionMode;
+    const sectorLabels = buildRpSectorLabelsText(rp);
+    const rows = [
+      renderTechnicalKvRow('Interaction mode', escapeHtml(interactionModeLabel)),
+      rp.readiness
+        ? renderTechnicalKvRow('Readiness', escapeHtml(RP_READINESS_LABELS[rp.readiness] || rp.readiness))
+        : renderTechnicalKvRow('Readiness', '—'),
+      rp.status
+        ? renderTechnicalKvRow('Status', escapeHtml(RP_STATUS_LABELS[rp.status] || rp.status))
+        : renderTechnicalKvRow('Status', '—'),
+      sectorLabels ? renderTechnicalKvRow('Sectors', escapeHtml(sectorLabels)) : '',
+    ].filter(Boolean);
+    return '<div class="fides-details-kv">' + rows.join('') + '</div>';
+  }
+
+  function buildRpAcceptedCredentialsAccordionBody(rp, credentialCatalogUrl, options) {
+    const credById = (options && options.credentialById) || {};
+    const rows = getAcceptedCredentialRows(rp).map(function(row) {
+      const meta = row.credentialId && credById[row.credentialId] ? credById[row.credentialId] : null;
+      const name = meta && meta.displayName ? meta.displayName : row.label;
+      const organization = meta && meta.authorityName ? meta.authorityName : '';
+      const href = row.credentialId ? getCredentialCatalogDeepLink(row.credentialId, credentialCatalogUrl) : '';
+      return {
+        id: row.credentialId || row.label,
+        name: name,
+        organization: organization,
+        href: href || '',
+        ratingType: row.credentialId ? 'credential' : ''
+      };
+    });
+    return buildModalEntityTableHtml({
+      rows: rows,
+      nameColumnLabel: 'Credential type',
+      ariaLabel: 'Accepted credential types',
+      options: options,
+      emptyHtml: '<p class="fides-modal-empty">No credential types linked for this relying party.</p>'
+    });
+  }
+
+  function rpAcceptedCredentialsCount(rp) {
+    return getAcceptedCredentialRows(rp).length;
+  }
+
+  function buildRpSupportedWalletsAccordionBody(rp, walletCatalogUrl, options) {
+    const wallets = Array.isArray(rp.supportedWallets) ? rp.supportedWallets : [];
+    if (!wallets.length) return '';
+    const walletById = (options && options.walletById) || {};
+    const rows = wallets.map(function(w) {
+      const name = typeof w === 'string' ? w : (w.name || '');
+      const walletId = typeof w === 'object' ? (w.walletCatalogId || w.refId) : null;
+      const meta = walletId && walletById[walletId] ? walletById[walletId] : null;
+      const href = walletId && walletCatalogUrl
+        ? walletCatalogUrl.replace(/\/$/, '') + '/?wallet=' + encodeURIComponent(walletId)
+        : '';
+      return {
+        id: walletId || name,
+        name: (meta && meta.displayName) ? meta.displayName : name,
+        organization: meta && meta.providerName ? meta.providerName : '',
+        href: href,
+        ratingType: walletId ? 'wallet' : ''
+      };
+    }).filter(function(r) { return r.name; });
+    return buildModalEntityTableHtml({
+      rows: rows,
+      nameColumnLabel: 'Supported wallet',
+      organizationColumnLabel: 'Provider',
+      alwaysShowOrganizationColumn: true,
+      ariaLabel: 'Supported wallets',
+      options: options,
+      emptyHtml: '<p class="fides-modal-empty">No supported wallets listed.</p>'
+    });
+  }
+
+  function rpSupportedWalletsCount(rp) {
+    return Array.isArray(rp.supportedWallets) ? rp.supportedWallets.length : 0;
+  }
+
+  function rpSupportedWalletCatalogIds(rp) {
+    const wallets = Array.isArray(rp.supportedWallets) ? rp.supportedWallets : [];
+    const ids = [];
+    wallets.forEach(function(w) {
+      const id = typeof w === 'object' && w ? (w.walletCatalogId || w.refId) : null;
+      if (id && ids.indexOf(String(id)) < 0) ids.push(String(id));
+    });
+    return ids;
+  }
+
+  function buildRpIssuersAccordionBody(issuers, issuerCatalogUrl, options) {
+    const list = Array.isArray(issuers) ? issuers : [];
+    const rows = list.map(function(issuer) {
+      const id = issuer.id || '';
+      const href = id && issuerCatalogUrl
+        ? issuerCatalogUrl.replace(/\/$/, '') + '/?issuer=' + encodeURIComponent(id)
+        : '';
+      return {
+        id: id,
+        name: issuer.displayName || issuer.name || id,
+        organization: issuer.organizationName || '',
+        href: href,
+        ratingType: id ? 'issuer' : ''
+      };
+    }).filter(function(r) { return r.id || r.name; });
+    return buildModalEntityTableHtml({
+      rows: rows,
+      nameColumnLabel: 'Issuer',
+      ariaLabel: 'Issuers',
+      options: options,
+      emptyHtml: '<p class="fides-modal-empty">No issuers found in the issuer catalog data for this relying party.</p>'
+    });
+  }
+
+  function buildRpEcosystemEntityCardHtml(name, authority, logoUrl, iconFallback) {
+    const icon = logoUrl
+      ? '<img src="' + escapeHtml(logoUrl) + '" alt="" style="width:20px;height:20px;object-fit:contain;border-radius:4px;">'
+      : (iconFallback || icons.globeApp);
+    return '<div class="fides-eco-col fides-eco-col-center"><div class="fides-eco-center-card">' +
+      '<div class="fides-eco-center-icon">' + icon + '</div>' +
+      '<p class="fides-eco-center-name">' + escapeHtml(name || '—') + '</p>' +
+      (authority ? '<p class="fides-eco-center-authority">' + escapeHtml(authority) + '</p>' : '') +
+      '</div></div>';
+  }
+
+  function buildRpEcosystemModelHtml(rp, options) {
+    if (!rp) return '';
+    const credentialCount = rpAcceptedCredentialsCount(rp);
+    const walletIds = rpSupportedWalletCatalogIds(rp);
+    const walletCount = walletIds.length;
+    const issuers = (options && Array.isArray(options.ecosystemIssuers)) ? options.ecosystemIssuers : [];
+    const issuerCount = issuers.length;
+    const modalLogoUrl = rp.logo || (rp.country ? 'https://flagcdn.com/w80/' + String(rp.country).toLowerCase() + '.png' : '');
+    const providerName = rp.provider && rp.provider.name ? String(rp.provider.name) : '';
+    const personalWalletClass = 'fides-eco-wallet-box' + (walletCount > 0 ? ' fides-eco-wallet-box--link' : '');
+    const personalWalletTarget = walletCount > 0 ? ' data-fides-eco-target="fides-accordion-rp-supported-wallets"' : '';
+    const personalWalletHtml = '<div class="' + personalWalletClass + '"' + personalWalletTarget + '>' +
+      '<span class="fides-eco-wallet-count">' + (walletCount > 0 ? walletCount : '—') + '</span>' +
+      '<span class="fides-eco-wallet-label">' + (walletCount === 1 ? 'Personal Wallet' : 'Personal Wallets') + '</span></div>';
+    const issuerStatClass = 'fides-eco-wallet-box fides-eco-stat-box fides-eco-stat-box--green' + (issuerCount > 0 ? '' : ' fides-eco-stat-box--static');
+    const issuerTarget = issuerCount > 0 ? ' data-fides-eco-target="fides-accordion-rp-issuers"' : '';
+    const issuerHint = issuerCount > 0 ? '<span class="fides-eco-stat-hint" aria-hidden="true">' + icons.chevronDoubleDown + '</span>' : '';
+    const credentialStatClass = 'fides-eco-wallet-box fides-eco-stat-box fides-eco-stat-box--green' + (credentialCount > 0 ? '' : ' fides-eco-stat-box--static');
+    const credentialTarget = credentialCount > 0 ? ' data-fides-eco-target="fides-accordion-rp-accepted-credentials"' : '';
+    const credentialHint = credentialCount > 0 ? '<span class="fides-eco-stat-hint" aria-hidden="true">' + icons.chevronDoubleDown + '</span>' : '';
+
+    const explainUrl = (options && options.ecosystemExplorerUrl)
+      ? String(options.ecosystemExplorerUrl).trim()
+      : 'https://fides.community/topics/ecosystem-explorer/';
+    const explainLinkHtml = explainUrl
+      ? '<a href="' + escapeHtml(explainUrl) + '" class="fides-eco-explain-link" target="_blank" rel="noopener" onclick="event.stopPropagation();" aria-label="Explain the FIDES Ecosystem Model">Explain</a>'
+      : '';
+
+    return '<div class="fides-accordion fides-modal-section">' +
+      '<div class="fides-accordion-header fides-modal-section-header fides-modal-section-header--with-link">' +
+      '<span class="fides-accordion-title">' + icons.wallet + ' FIDES Ecosystem Model</span>' +
+      explainLinkHtml +
+      '</div>' +
+      '<div class="fides-accordion-body fides-modal-ecosystem-body">' +
+      '<div class="fides-modal-ecosystem">' +
+      '<div class="fides-eco-wallet-row">' + personalWalletHtml + '</div>' +
+      '<div class="fides-eco-wallet-connector">' + icons.chevronUp + '</div>' +
+      '<div class="fides-eco-main-row">' +
+      '<div class="fides-eco-col fides-eco-stat-wrap"><div class="' + issuerStatClass + '"' + issuerTarget + '>' +
+      '<div class="fides-eco-stat-box-main"><span class="fides-eco-wallet-count">' + issuerCount + '</span>' +
+      '<span class="fides-eco-wallet-label">' + (issuerCount === 1 ? 'Issuer' : 'Issuers') + '</span></div>' +
+      issuerHint + '</div></div>' +
+      '<div class="fides-eco-arrow">' + icons.chevronDown + '</div>' +
+      '<div class="fides-eco-col fides-eco-stat-wrap"><div class="' + credentialStatClass + '"' + credentialTarget + '>' +
+      '<div class="fides-eco-stat-box-main"><span class="fides-eco-wallet-count">' + credentialCount + '</span>' +
+      '<span class="fides-eco-wallet-label">' + (credentialCount === 1 ? 'Credential type' : 'Credential types') + '</span></div>' +
+      credentialHint + '</div></div>' +
+      '<div class="fides-eco-arrow fides-eco-arrow-right">' + icons.chevronDown + '</div>' +
+      buildRpEcosystemEntityCardHtml(rp.name || '', providerName, modalLogoUrl, icons.globeApp) +
+      '</div>' +
+      '<div class="fides-eco-wallet-connector">' + icons.chevronDown + '</div>' +
+      '<div class="fides-eco-wallet-row"><div class="fides-eco-wallet-box"><span class="fides-eco-wallet-count">—</span><span class="fides-eco-wallet-label">Business Wallets</span></div></div>' +
+      '</div></div></div>';
+  }
+
+  function getDerivedUseCases(options) {
+    const list = options && Array.isArray(options.derivedUseCases) ? options.derivedUseCases : [];
+    return list.filter(function(u) { return u && (u.id || u.title || u.name); });
+  }
+
+  function buildRpUseCasesAccordionBody(useCaseCatalogUrl, options) {
+    const useCases = getDerivedUseCases(options);
+    if (!useCases.length) return '';
+    const rows = useCases.map(function(uc) {
+      const id = uc.id || '';
+      const title = uc.title || uc.name || id;
+      const href = id && useCaseCatalogUrl
+        ? useCaseCatalogUrl.replace(/\/$/, '') + '/?usecase=' + encodeURIComponent(id)
+        : '';
+      return {
+        id: id,
+        name: title,
+        organization: uc.organizationName || uc.organization || '',
+        href: href
+      };
+    });
+    return buildModalEntityTableHtml({
+      rows: rows,
+      nameColumnLabel: 'Use case',
+      ariaLabel: 'Use cases',
+      options: options,
+      emptyHtml: '<p class="fides-modal-empty">No use cases linked from the use case catalog for this relying party.</p>'
+    });
+  }
+
+  function rpUseCasesCount(options) {
+    return getDerivedUseCases(options).length;
+  }
+
+  function buildRpFeaturesAccordionBody(rp) {
+    if (!rp || !Array.isArray(rp.features) || !rp.features.length) return '';
+    return '<ul class="fides-features-list">' + rp.features.map(function(f) {
+      return '<li>' + icons.check + ' ' + escapeHtml(f) + '</li>';
+    }).join('') + '</ul>';
+  }
+
+  function rpFeaturesCount(rp) {
+    return rp && Array.isArray(rp.features) ? rp.features.length : 0;
+  }
+
+  function buildRpAccordionsHtml(rp, options) {
+    if (!rp) return '';
+    const credentialCatalogUrl = (options && options.credentialCatalogUrl) || 'https://fides.community/ecosystem-explorer/credential-catalog/';
+    const issuerCatalogUrl = (options && options.issuerCatalogUrl) || 'https://fides.community/ecosystem-explorer/issuer-catalog/';
+    const walletCatalogUrl = (options && options.walletCatalogUrl) || '';
+    const useCaseCatalogUrl = (options && options.useCaseCatalogUrl) || 'https://fides.community/use-cases/';
+    const issuers = (options && Array.isArray(options.ecosystemIssuers)) ? options.ecosystemIssuers : [];
+    const specificationsBody = buildRpSpecificationsBodyHtml(rp, options);
+    const websiteDetailsBody = buildRpWebsiteDetailsBodyHtml(rp);
+    const issuersBody = buildRpIssuersAccordionBody(issuers, issuerCatalogUrl, options);
+    const acceptedBody = buildRpAcceptedCredentialsAccordionBody(rp, credentialCatalogUrl, options);
+    const walletsBody = buildRpSupportedWalletsAccordionBody(rp, walletCatalogUrl, options);
+    const useCasesBody = buildRpUseCasesAccordionBody(useCaseCatalogUrl, options);
+    const featuresBody = buildRpFeaturesAccordionBody(rp);
+
+    const issuerExploreHref = buildCatalogFilteredHref(
+      issuerCatalogUrl,
+      'issuer',
+      'issuers',
+      issuers.map(function(i) { return i.id; })
+    );
+    const credentialIds = getAcceptedCredentialRows(rp)
+      .map(function(row) { return row.credentialId; })
+      .filter(Boolean);
+    const credentialExploreHref = buildCatalogFilteredHref(
+      credentialCatalogUrl,
+      'credential',
+      'credentials',
+      credentialIds
+    );
+    const walletExploreHref = buildCatalogFilteredHref(
+      walletCatalogUrl,
+      'wallet',
+      'wallets',
+      rpSupportedWalletCatalogIds(rp)
+    );
+    const useCaseExploreHref = buildCatalogFilteredHref(
+      useCaseCatalogUrl,
+      'usecase',
+      'usecases',
+      getDerivedUseCases(options).map(function(u) { return u.id; }).filter(Boolean)
+    );
+
+    const ecosystemHtml = buildRpEcosystemModelHtml(rp, options);
+    const accordions = [
+      renderModalAccordion(
+        'fides-accordion-rp-specifications',
+        'Specifications',
+        icons.fileCheck,
+        specificationsBody,
+        false
+      ),
+      ecosystemHtml,
+      issuers.length ? renderModalAccordion(
+        'fides-accordion-rp-issuers',
+        'Issuers',
+        icons.server,
+        issuersBody,
+        false,
+        issuers.length,
+        issuerExploreHref
+      ) : '',
+      renderModalAccordion(
+        'fides-accordion-rp-accepted-credentials',
+        'Accepted credential types',
+        icons.fileCheck,
+        acceptedBody,
+        false,
+        rpAcceptedCredentialsCount(rp),
+        credentialExploreHref
+      ),
+      renderModalAccordion(
+        'fides-accordion-rp-supported-wallets',
+        'Supported wallets',
+        icons.wallet,
+        walletsBody,
+        false,
+        rpSupportedWalletsCount(rp),
+        walletExploreHref
+      ),
+      renderModalAccordion(
+        'fides-accordion-rp-use-cases',
+        'Use cases',
+        icons.check,
+        useCasesBody,
+        false,
+        rpUseCasesCount(options),
+        useCaseExploreHref
+      ),
+      renderModalAccordion(
+        'fides-accordion-rp-features',
+        'Features',
+        icons.check,
+        featuresBody,
+        false,
+        rpFeaturesCount(rp)
+      ),
+      renderModalAccordion(
+        'fides-accordion-rp-website-details',
+        'Relying party website details',
+        icons.shield,
+        websiteDetailsBody,
+        true
+      ),
+    ].filter(Boolean).join('');
+
+    if (!accordions) return '';
+    return '<div class="fides-use-case-modal-accordions">' + accordions + '</div>';
+  }
+
+  function buildRpModalLinksHtml(rp) {
+    if (!rp) return '';
+    const resourceEntries = [];
+    if (rp.documentation) {
+      resourceEntries.push({
+        type: 'http',
+        href: String(rp.documentation).trim(),
+        label: 'Documentation',
+        icon: icons.book,
+        matomoName: 'Documentation'
+      });
+    }
+    if (rp.apiEndpoint) {
+      resourceEntries.push({
+        type: 'http',
+        href: String(rp.apiEndpoint).trim(),
+        label: 'API endpoint',
+        icon: icons.externalLink,
+        matomoName: 'API endpoint'
+      });
+    }
+    const resourcesHtml = buildWalletModalLinksGroupHtml('Resources', resourceEntries, { noPrimary: true });
+    if (!resourcesHtml) return '';
+    return '<div class="fides-modal-links-sections">' + resourcesHtml + '</div>';
+  }
+
+  function buildRpModalFooterHtml(rp, options) {
+    if (!walletListingTierIsPro(rp, options)) return '';
+    const provider = rp && rp.provider && typeof rp.provider === 'object' ? rp.provider : {};
+    const contact = provider.contact && typeof provider.contact === 'object' ? provider.contact : {};
+    return buildOrganizationContactFooterHtml(contact, { tierUiEnabled: optionsTierUiEnabled(options) });
+  }
+
   function buildWalletPricingBodyHtml(wallet, options) {
     if (!walletListingTierIsPro(wallet, options)) return '';
     if (walletIsPersonal(wallet)) return '';
@@ -1155,24 +1748,146 @@
     return [keyCapabilities, operations, credentialsAndProtocols, cryptography, eidasTrustServices].filter(Boolean).join('');
   }
 
-  function renderModalAccordion(id, title, iconSvg, bodyHtml, isOpen, count) {
+  function buildCatalogFilteredHref(base, singularParam, pluralParam, ids) {
+    const list = (Array.isArray(ids) ? ids : []).map(String).filter(Boolean);
+    const root = (base || '').trim().replace(/\/$/, '');
+    if (!root || !list.length) return '';
+    if (list.length === 1) {
+      return root + '/?' + singularParam + '=' + encodeURIComponent(list[0]);
+    }
+    return root + '/?' + pluralParam + '=' + list.map(encodeURIComponent).join(',');
+  }
+
+  function getEntityRatingSummary(options, type, itemId) {
+    const maps = options && options.entityRatingSummaries;
+    if (!maps || !type || !itemId) return null;
+    const map = maps[type];
+    return map && map[itemId] ? map[itemId] : null;
+  }
+
+  function renderModalEntityLikeHtml(options, type, itemId) {
+    const summary = getEntityRatingSummary(options, type, itemId);
+    const count = summary ? (Number(summary.count) || 0) : 0;
+    if (count < 1) return '';
+    const likedClass = summary && summary.myRating === 1 ? ' is-liked' : '';
+    return '<span class="fides-modal-entity-like' + likedClass + '">' +
+      '<span class="fides-modal-entity-like-star">★</span>' +
+      '<span class="fides-modal-entity-like-count">' + escapeHtml(String(count)) + '</span></span>';
+  }
+
+  function buildModalEntityTableHtml(config) {
+    const cfg = config || {};
+    const rows = Array.isArray(cfg.rows) ? cfg.rows : [];
+    if (!rows.length) return cfg.emptyHtml || '<p class="fides-modal-empty">No items found.</p>';
+    const showOrgCol = cfg.alwaysShowOrganizationColumn === true ||
+      (cfg.showOrganizationColumn !== false && rows.some(function(r) { return r.organization; }));
+    const nameLabel = cfg.nameColumnLabel || 'Name';
+    const orgLabel = cfg.organizationColumnLabel || 'Organization';
+    const ariaLabel = cfg.ariaLabel || nameLabel;
+    const options = cfg.options || {};
+    const thead = showOrgCol
+      ? '<thead><tr><th>' + escapeHtml(nameLabel) + '</th>' +
+        '<th class="fides-modal-entity-col-likes" title="Likes"><span aria-label="Likes">★</span></th>' +
+        '<th>' + escapeHtml(orgLabel) + '</th></tr></thead>'
+      : '<thead><tr><th>' + escapeHtml(nameLabel) + '</th>' +
+        '<th class="fides-modal-entity-col-likes" title="Likes"><span aria-label="Likes">★</span></th></tr></thead>';
+    const tbody = rows.map(function(row) {
+      const label = escapeHtml(row.name || row.id || '');
+      const likeInner = row.ratingType && row.id
+        ? renderModalEntityLikeHtml(options, row.ratingType, row.id)
+        : '';
+      const likeCell = row.ratingType && row.id
+        ? '<td class="fides-modal-entity-col-likes" data-entity-like-type="' + escapeHtml(row.ratingType) + '" data-entity-like-id="' + escapeHtml(row.id) + '">' + likeInner + '</td>'
+        : '<td class="fides-modal-entity-col-likes"></td>';
+      const orgCell = showOrgCol
+        ? '<td>' + (row.organization ? escapeHtml(row.organization) : '—') + '</td>'
+        : '';
+      const nameCell = row.href
+        ? '<a href="' + escapeHtml(row.href) + '" class="fides-modal-link-inline" target="_blank" rel="noopener" onclick="event.stopPropagation();">' + label + '</a>'
+        : '<span>' + label + '</span>';
+      return '<tr><td>' + nameCell + '</td>' + likeCell + orgCell + '</tr>';
+    }).join('');
+    return '<div class="fides-attributes-table-wrap"><table class="fides-attributes-table fides-modal-rp-table fides-modal-entity-table" aria-label="' +
+      escapeHtml(ariaLabel) + '">' + thead + '<tbody>' + tbody + '</tbody></table></div>';
+  }
+
+  function renderModalAccordion(id, title, iconSvg, bodyHtml, isOpen, count, exploreLinkHref) {
     if (!bodyHtml) return '';
     const expanded = isOpen ? 'true' : 'false';
     const openClass = isOpen ? ' is-open' : '';
     const toggleLabel = 'Toggle ' + title + ' section';
     const countNum = typeof count === 'number' && count > 0 ? count : 0;
     const countHtml = countNum > 0 ? ' <span class="fides-accordion-count">' + countNum + '</span>' : '';
+    const exploreHtml = exploreLinkHref
+      ? '<a href="' + escapeHtml(exploreLinkHref) + '" class="fides-accordion-explore-link" target="_blank" rel="noopener" onclick="event.stopPropagation();" aria-label="' + escapeHtml(title) + ' catalog (filtered view)">Open in catalog</a>'
+      : '';
     return '<div class="fides-accordion' + openClass + '" id="' + escapeHtml(id) + '">' +
       '<div class="fides-accordion-header-bar">' +
       '<button class="fides-accordion-header fides-accordion-toggle" type="button" aria-expanded="' + expanded + '">' +
       '<span class="fides-accordion-title">' + iconSvg + ' ' + escapeHtml(title) + countHtml + '</span>' +
       '</button>' +
+      exploreHtml +
       '<button type="button" class="fides-accordion-chevron-btn fides-accordion-toggle" aria-expanded="' + expanded + '" aria-label="' + escapeHtml(toggleLabel) + '">' +
       '<span class="fides-accordion-chevron">' + icons.chevronDown + '</span>' +
       '</button>' +
       '</div>' +
       '<div class="fides-accordion-body">' + bodyHtml + '</div>' +
       '</div>';
+  }
+
+  function eudiTrackerStatusBadgeClass(status) {
+    const map = {
+      'Production (EU Notified)': 'fides-eudi-landscape-badge--prod-notified',
+      'Production (EU Notification Pending)': 'fides-eudi-landscape-badge--prod-pending',
+      'Public Pilot': 'fides-eudi-landscape-badge--public-pilot',
+      'Closed Pilot / LSP': 'fides-eudi-landscape-badge--closed-pilot',
+      'Planned for Production': 'fides-eudi-landscape-badge--planned',
+      'No plans': 'fides-eudi-landscape-badge--no-plans',
+    };
+    return map[status] || 'fides-eudi-landscape-badge--unknown';
+  }
+
+  function buildWalletEudiLandscapeBadgeHtml(wallet) {
+    const tracker = wallet && wallet.eudiTracker;
+    if (!tracker || !tracker.status) return '';
+    return '<span class="fides-modal-badge fides-eudi-landscape-badge ' +
+      escapeHtml(eudiTrackerStatusBadgeClass(tracker.status)) + '" role="status">' +
+      escapeHtml(tracker.status) + '</span>';
+  }
+
+  function buildWalletEudiLandscapeBodyHtml(wallet) {
+    const tracker = wallet && wallet.eudiTracker;
+    if (!tracker) return '';
+
+    const rows = [];
+    if (tracker.status) {
+      rows.push(renderTechnicalKvRow('Landscape status', buildWalletEudiLandscapeBadgeHtml(wallet)));
+    }
+    if (tracker.assuranceLevel) {
+      rows.push(renderTechnicalKvRow('Assurance level', escapeHtml(String(tracker.assuranceLevel))));
+    }
+    if (tracker.qtspPartner) {
+      rows.push(renderTechnicalKvRow('QTSP partner', escapeHtml(String(tracker.qtspPartner))));
+    }
+
+    let body = '<div class="fides-wallet-eudi-landscape">' +
+      '<div class="fides-details-kv fides-details-kv--technical-grid">' + rows.filter(Boolean).join('') + '</div>';
+
+    if (tracker.notes) {
+      body += '<div class="fides-wallet-eudi-landscape-section">' +
+        '<div class="fides-wallet-eudi-landscape-label">Landscape notes</div>' +
+        '<p class="fides-accordion-body-text fides-wallet-eudi-landscape-notes">' + escapeHtml(String(tracker.notes)) + '</p>' +
+        '</div>';
+    }
+
+    const updatedLabel = tracker.sourceLastUpdated ? ('Last updated ' + tracker.sourceLastUpdated + '. ') : '';
+    const trackerLink = tracker.trackerPageUrl || 'https://eudi-wallet-tracker.igrant.io/';
+    body += '<p class="fides-accordion-body-text fides-accordion-body-text--muted fides-wallet-eudi-landscape-attribution">' +
+      updatedLabel +
+      'Data from the <a href="' + escapeHtml(trackerLink) + '" target="_blank" rel="noopener noreferrer" class="fides-modal-link-inline">iGrant EUDI Wallet Tracker</a>.' +
+      '</p></div>';
+
+    return body;
   }
 
   function buildWalletAccordionsHtml(wallet, options, platformLabelsOnly, standardsList) {
@@ -1182,7 +1897,15 @@
     const additionalProductBody = buildWalletAdditionalProductInfoBodyHtml(wallet, options);
     const certificationsBody = buildWalletCertificationsBodyHtml(wallet, options);
     const pricingBody = buildWalletPricingBodyHtml(wallet, options);
+    const eudiLandscapeBody = buildWalletEudiLandscapeBodyHtml(wallet);
     const accordions = [
+      renderModalAccordion(
+        'fides-accordion-wallet-eudi-landscape',
+        'EUDI landscape status',
+        icons.globe,
+        eudiLandscapeBody,
+        false
+      ),
       renderModalAccordion(
         'fides-accordion-wallet-technical',
         'Specifications',
@@ -1243,6 +1966,27 @@
         accordion.querySelectorAll('.fides-accordion-toggle[type="button"]').forEach(function(toggle) {
           toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
+      });
+    });
+  }
+
+  function initModalEcosystemTargets() {
+    function openEcoTargetAccordion(accordionId) {
+      const acc = document.getElementById(accordionId);
+      if (!acc) return;
+      acc.classList.add('is-open');
+      acc.querySelectorAll('.fides-accordion-toggle[type="button"]').forEach(function(btn) {
+        btn.setAttribute('aria-expanded', 'true');
+      });
+      requestAnimationFrame(function() {
+        acc.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+    document.querySelectorAll('#fides-modal-overlay [data-fides-eco-target]').forEach(function(el) {
+      el.addEventListener('click', function(e) {
+        if (e.target.closest('a')) return;
+        const id = el.getAttribute('data-fides-eco-target');
+        if (id) openEcoTargetAccordion(id);
       });
     });
   }
@@ -1547,6 +2291,75 @@
     return n + ' like' + (n === 1 ? '' : 's');
   }
 
+  async function fetchRatingBatch(client, contextType, itemIds) {
+    const ids = (Array.isArray(itemIds) ? itemIds : []).map(String).filter(Boolean);
+    if (!ids.length) return {};
+    const url = buildRatingsEndpoint(client, 'ratings/batch', {
+      type: String(contextType || '').trim(),
+      ids: ids.join(',').slice(0, 512),
+      _wpnonce: client.nonce || ''
+    });
+    if (!url) return {};
+    const res = await fetch(url, {
+      method: 'GET',
+      credentials: 'same-origin',
+      headers: { 'X-WP-Nonce': client.nonce || '' }
+    });
+    if (!res.ok) return {};
+    const data = await res.json();
+    const results = data && data.results ? data.results : {};
+    const out = {};
+    ids.forEach(function(id) {
+      const result = results[id] || { avg: 0, count: 0, likes: 0, my_rating: null, my_like: null };
+      const likeCount = Number(result.likes);
+      out[id] = {
+        avg: Number(result.avg) || 0,
+        count: isFinite(likeCount) ? likeCount : (Number(result.count) || 0),
+        myRating: Number(result.my_like) > 0 || Number(result.my_rating) > 0 ? 1 : null
+      };
+    });
+    return out;
+  }
+
+  async function populateRpModalEntityRatings(overlay, rp, options) {
+    if (!overlay || !rp) return;
+    const client = getRatingsClient(options || {});
+    if (!client.apiBase) return;
+    const issuers = (options && Array.isArray(options.ecosystemIssuers)) ? options.ecosystemIssuers : [];
+    const credentialRows = getAcceptedCredentialRows(rp);
+    const walletIds = rpSupportedWalletCatalogIds(rp);
+    const batches = [
+      { type: 'issuer', ids: issuers.map(function(i) { return i.id; }).filter(Boolean) },
+      { type: 'credential', ids: credentialRows.map(function(r) { return r.credentialId; }).filter(Boolean) },
+      { type: 'wallet', ids: walletIds }
+    ];
+    const summaries = { issuer: {}, credential: {}, wallet: {} };
+    for (let i = 0; i < batches.length; i++) {
+      const batch = batches[i];
+      if (!batch.ids.length) continue;
+      try {
+        const result = await fetchRatingBatch(client, batch.type, batch.ids);
+        Object.assign(summaries[batch.type], result);
+      } catch (e) {
+        console.debug('RP modal entity ratings load failed:', batch.type, e);
+      }
+    }
+    overlay.querySelectorAll('[data-entity-like-type][data-entity-like-id]').forEach(function(cell) {
+      const type = cell.getAttribute('data-entity-like-type') || '';
+      const id = cell.getAttribute('data-entity-like-id') || '';
+      const summary = summaries[type] && summaries[type][id] ? summaries[type][id] : null;
+      const count = summary ? (Number(summary.count) || 0) : 0;
+      if (count < 1) {
+        cell.innerHTML = '';
+        return;
+      }
+      const likedClass = summary && summary.myRating === 1 ? ' is-liked' : '';
+      cell.innerHTML = '<span class="fides-modal-entity-like' + likedClass + '">' +
+        '<span class="fides-modal-entity-like-star">★</span>' +
+        '<span class="fides-modal-entity-like-count">' + escapeHtml(String(count)) + '</span></span>';
+    });
+  }
+
   async function fetchRatingSummary(client, contextType, itemId) {
     const url = buildRatingsEndpoint(client, 'ratings/batch', {
       type: String(contextType || '').trim(),
@@ -1747,6 +2560,28 @@
     return '<a href="' + escapeHtml(href) + '" class="fides-modal-copy-link fides-modal-edit-link" aria-label="Suggest an update" title="Suggest an update">' + icons.pencil + '</a>';
   }
 
+  function buildRpUpdateFormUrl(rpId, options) {
+    const updateFormUrl = (options && options.updateFormUrl) ? String(options.updateFormUrl).trim() : '';
+    const isLoggedIn = boolFromMixed(
+      options && (options.isLoggedIn != null ? options.isLoggedIn : options.ratingsIsLoggedIn)
+    );
+    if (!isLoggedIn || !updateFormUrl || !rpId) return '';
+    try {
+      const url = new URL(updateFormUrl, window.location.origin);
+      url.searchParams.set('rp', String(rpId));
+      return url.toString();
+    } catch (e) {
+      return '';
+    }
+  }
+
+  function buildRpEditActionHtml(rp, options) {
+    if (!canEditRp(rp, options)) return '';
+    const href = buildRpUpdateFormUrl(rp && rp.id, options);
+    if (!href) return '';
+    return '<a href="' + escapeHtml(href) + '" class="fides-modal-copy-link fides-modal-edit-link" aria-label="Suggest an update" title="Suggest an update">' + icons.pencil + '</a>';
+  }
+
   function normalizeWalletLinkKey(href) {
     const raw = String(href || '').trim();
     if (!raw) return '';
@@ -1893,6 +2728,7 @@
       ? ''
       : '<button type="button" class="fides-modal-copy-link" id="fides-modal-copy-link" aria-label="Copy link">' + icons.share + '</button>';
     const listingHeaderBadge = buildCatalogListingHeaderBadgeHtml(wallet, options);
+    const countryModalFlagHtml = buildWalletCountryModalFlagHtml(wallet, options);
     const standardsList = walletStandardsList(wallet);
     const capabilitiesHtml = buildWalletCapabilitiesOrAppStoresHtml(wallet, options);
     const heroSectionHtml = buildWalletHeroSectionHtml(wallet, options);
@@ -1902,7 +2738,7 @@
       '<div class="fides-modal" role="dialog" aria-modal="true">' +
       '<div class="fides-modal-header"><div class="fides-modal-header-content">' +
       (wallet.logo ? '<img src="' + escapeHtml(wallet.logo) + '" alt="' + escapeHtml(wallet.name) + '" class="fides-modal-logo">' : '<div class="fides-modal-logo-placeholder">' + icons.wallet + '</div>') +
-      '<div class="fides-modal-title-wrap"><div class="fides-modal-title-row"><h2 class="fides-modal-title">' + escapeHtml(wallet.name) + '</h2>' + listingHeaderBadge + '</div><p class="fides-modal-provider">' + icons.building + ' ' + providerNameInHeader + (bluePagesUrl ? ' <a href="' + escapeHtml(bluePagesUrl) + '" target="_blank" rel="noopener" class="fides-modal-provider-link">' + icons.externalLink + ' View in Blue Pages</a>' : '') + '</p></div>' +
+      '<div class="fides-modal-title-wrap"><div class="fides-modal-title-row"><h2 class="fides-modal-title">' + escapeHtml(wallet.name) + '</h2>' + listingHeaderBadge + '</div><p class="fides-modal-provider">' + icons.building + ' ' + providerNameInHeader + countryModalFlagHtml + buildModalBluePagesLinkHtml(bluePagesUrl) + '</p></div>' +
       '</div><div class="fides-modal-header-actions">' + editActionHtml + shareButtonHtml + '<button class="fides-modal-close" id="fides-modal-close" aria-label="Close modal">' + icons.xLarge + '</button></div></div>' +
       '<div class="fides-modal-body">' +
       '<div id="fides-modal-rating-slot"></div>' +
@@ -1926,6 +2762,14 @@
     const base = (options && options.bluePagesUrl) || '';
     if (!base || !did) return null;
     return base.replace(/\/$/, '') + '/' + encodeURIComponent(did) + '/';
+  }
+
+  /** Temporarily hide modal header Blue Pages link. Set true to restore. */
+  var MODAL_BLUE_PAGES_LINK_ENABLED = false;
+
+  function buildModalBluePagesLinkHtml(bluePagesUrl) {
+    if (!MODAL_BLUE_PAGES_LINK_ENABLED || !bluePagesUrl) return '';
+    return ' <a href="' + escapeHtml(bluePagesUrl) + '" target="_blank" rel="noopener" class="fides-modal-provider-link">' + icons.externalLink + ' View in Blue Pages</a>';
   }
 
   /** English labels — keep in sync with fides-rp-catalog assets/rp-catalog.js (SECTOR_LABELS). */
@@ -1990,16 +2834,60 @@
     return 'remote';
   }
 
-  function buildRpSectorsModalGridHtml(rp) {
-    const raw = Array.isArray(rp.sectors) ? rp.sectors : [];
-    const sectorCodes = raw.filter(function(s) { return typeof s === 'string' && s.length > 0; }).slice().sort(function(a, b) {
-      return rpSectorDisplayLabel(a).localeCompare(rpSectorDisplayLabel(b), 'en', { sensitivity: 'base' });
-    });
-    if (!sectorCodes.length) return '';
-    const inner = sectorCodes.map(function(s) {
-      return '<span class="fides-tag sector">' + escapeHtml(rpSectorDisplayLabel(s)) + '</span>';
-    }).join('');
-    return '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.building + ' Sectors</div><div class="fides-modal-grid-value">' + inner + '</div></div>';
+  function openRpModal(rp, options) {
+    if (!rp) return;
+    const theme = (options && options.theme) || 'dark';
+    selectedContext = { type: 'rp', item: rp, options: options || {}, theme: theme };
+    if (options && typeof options.onOpen === 'function') options.onOpen(rp);
+
+    const organizationCatalogUrl = (options && options.organizationCatalogUrl) || 'https://fides.community/ecosystem-explorer/organization-catalog/';
+    const providerOrgId = String(rp.orgId || '').trim();
+    const orgCatalogHref = getOrganizationCatalogDeepLink(providerOrgId, organizationCatalogUrl);
+    const providerDisplayName = rp.provider && rp.provider.name ? String(rp.provider.name) : '';
+    const providerNameInHeader = orgCatalogHref && providerDisplayName
+      ? '<a href="' + escapeHtml(orgCatalogHref) + '" class="fides-modal-link-inline" aria-label="View organization in organization catalog" title="Organization catalog" onclick="event.stopPropagation();"><span>' + escapeHtml(providerDisplayName) + '</span></a>'
+      : escapeHtml(providerDisplayName);
+    const bluePagesUrl = getBluePagesUrl(rp.provider && rp.provider.did, options);
+    const modalLogoUrl = rp.logo || (rp.country ? 'https://flagcdn.com/w80/' + String(rp.country).toLowerCase() + '.png' : null);
+    const countryModalFlagHtml = buildRpCountryModalFlagHtml(rp, options);
+    const heroSectionHtml = buildRpHeroSectionHtml(rp);
+    const actionBarHtml = buildRpActionBarHtml(rp);
+    const accordionsHtml = buildRpAccordionsHtml(rp, options);
+    const linksHtml = buildRpModalLinksHtml(rp);
+
+    const shareButtonHtml = (options && options.showShare === false)
+      ? ''
+      : '<button type="button" class="fides-modal-copy-link" id="fides-modal-copy-link" aria-label="Copy link">' + icons.share + '</button>';
+    const editActionHtml = buildRpEditActionHtml(rp, options);
+    const listingHeaderBadge = buildCatalogListingHeaderBadgeHtml(rp, options);
+
+    const modalHtml = '<div class="fides-modal-overlay fides-modal-overlay--rp" id="fides-modal-overlay" data-theme="' + escapeHtml(theme) + '">' +
+      '<div class="fides-modal" role="dialog" aria-modal="true">' +
+      '<div class="fides-modal-header"><div class="fides-modal-header-content">' +
+      (modalLogoUrl ? '<img src="' + escapeHtml(modalLogoUrl) + '" alt="' + escapeHtml(rp.name) + '" class="fides-modal-logo">' : '<div class="fides-modal-logo-placeholder">' + icons.globe + '</div>') +
+      '<div class="fides-modal-title-wrap"><div class="fides-modal-title-row"><h2 class="fides-modal-title">' + escapeHtml(rp.name) + '</h2>' + listingHeaderBadge + '</div><p class="fides-modal-provider">' +
+      icons.building + ' ' + providerNameInHeader + countryModalFlagHtml +
+      buildModalBluePagesLinkHtml(bluePagesUrl) +
+      '</p></div>' +
+      '</div><div class="fides-modal-header-actions">' + editActionHtml + shareButtonHtml + '<button class="fides-modal-close" id="fides-modal-close" aria-label="Close modal">' + icons.xLarge + '</button></div></div>' +
+      '<div class="fides-modal-body">' +
+      '<div id="fides-modal-rating-slot"></div>' +
+      heroSectionHtml +
+      actionBarHtml +
+      accordionsHtml +
+      linksHtml +
+      '</div>' +
+      buildRpModalFooterHtml(rp, options) +
+      '</div></div>';
+
+    mountModal(modalHtml);
+    initModalMediaCarousels();
+    initModalAccordions();
+    initModalEcosystemTargets();
+    initWalletTechnicalGlossaryLinks(options || {});
+    const rpOverlay = document.getElementById('fides-modal-overlay');
+    if (rpOverlay) attachModalRating(rpOverlay, 'rp', rp.id, options || {}, rp);
+    populateRpModalEntityRatings(rpOverlay, rp, options || {});
   }
 
   function getCredentialRefCatalogId(ref) {
@@ -2064,81 +2952,6 @@
       }
       return '<span class="fides-tag accepted-credential">' + safe + '</span>';
     }).join('');
-  }
-
-  function openRpModal(rp, options) {
-    if (!rp) return;
-    const theme = (options && options.theme) || 'dark';
-    selectedContext = { type: 'rp', item: rp, options: options || {}, theme: theme };
-    if (options && typeof options.onOpen === 'function') options.onOpen(rp);
-
-    const readinessLabels = { 'technical-demo': 'Technical Demo', 'use-case-demo': 'Use Case Demo', 'production-pilot': 'Production Pilot', 'production': 'Production' };
-    const statusLabels = { development: 'In Development', beta: 'Beta', live: 'Live', deprecated: 'Deprecated' };
-    const walletCatalogUrl = (options && options.walletCatalogUrl) || '';
-    const credentialCatalogUrl = (options && options.credentialCatalogUrl) || 'https://fides.community/ecosystem-explorer/credential-catalog/';
-    const organizationCatalogUrl = (options && options.organizationCatalogUrl) || 'https://fides.community/ecosystem-explorer/organization-catalog/';
-    const providerOrgId = String(rp.orgId || '').trim();
-    const orgCatalogHref = getOrganizationCatalogDeepLink(providerOrgId, organizationCatalogUrl);
-    const providerDisplayName = rp.provider && rp.provider.name ? String(rp.provider.name) : '';
-    const providerNameInHeader = orgCatalogHref && providerDisplayName
-      ? '<a href="' + escapeHtml(orgCatalogHref) + '" class="fides-modal-link-inline" aria-label="View organization in organization catalog" title="Organization catalog" onclick="event.stopPropagation();"><span>' + escapeHtml(providerDisplayName) + '</span></a>'
-      : escapeHtml(providerDisplayName);
-    const bluePagesUrl = getBluePagesUrl(rp.provider && rp.provider.did, options);
-    const modalLogoUrl = rp.logo || (rp.country ? 'https://flagcdn.com/w80/' + String(rp.country).toLowerCase() + '.png' : null);
-    const acceptedCredentialRows = getAcceptedCredentialRows(rp);
-    const interactionMode = getRpInteractionMode(rp);
-    const interactionModeLabel = INTERACTION_MODE_LABELS[interactionMode] || interactionMode;
-
-    const supportedWalletsHtml = (rp.supportedWallets || []).map(w => {
-      const name = typeof w === 'string' ? w : w.name;
-      const walletId = typeof w === 'object' ? w.walletCatalogId : null;
-      if (walletId && walletCatalogUrl) {
-        const walletUrl = walletCatalogUrl.replace(/\/$/, '') + '/?wallet=' + encodeURIComponent(walletId);
-        return '<a href="' + escapeHtml(walletUrl) + '" target="_blank" rel="noopener" class="fides-tag wallet-link">' + escapeHtml(name) + ' ' + icons.externalLinkSmall + '</a>';
-      }
-      return '<span class="fides-tag supported-wallet">' + escapeHtml(name) + '</span>';
-    }).join('');
-
-    const shareButtonHtml = (options && options.showShare === false)
-      ? ''
-      : '<button type="button" class="fides-modal-copy-link" id="fides-modal-copy-link" aria-label="Copy link">' + icons.share + '</button>';
-
-    const modalHtml = '<div class="fides-modal-overlay" id="fides-modal-overlay" data-theme="' + escapeHtml(theme) + '">' +
-      '<div class="fides-modal" role="dialog" aria-modal="true">' +
-      '<div class="fides-modal-header"><div class="fides-modal-header-content">' +
-      (modalLogoUrl ? '<img src="' + escapeHtml(modalLogoUrl) + '" alt="' + escapeHtml(rp.name) + '" class="fides-modal-logo">' : '<div class="fides-modal-logo-placeholder">' + icons.globe + '</div>') +
-      '<div class="fides-modal-title-wrap"><h2 class="fides-modal-title">' + escapeHtml(rp.name) + '</h2><p class="fides-modal-provider">' + icons.building + ' ' + providerNameInHeader + (bluePagesUrl ? ' <a href="' + escapeHtml(bluePagesUrl) + '" target="_blank" rel="noopener" class="fides-modal-provider-link">' + icons.externalLink + ' View in Blue Pages</a>' : '') + '</p></div>' +
-      '</div><div class="fides-modal-header-actions">' + shareButtonHtml + '<button class="fides-modal-close" id="fides-modal-close" aria-label="Close modal">' + icons.xLarge + '</button></div></div>' +
-      '<div class="fides-modal-body">' +
-      '<div id="fides-modal-rating-slot"></div>' +
-      '<div class="fides-modal-badges fides-modal-badges-with-action"><div class="fides-modal-badges-left">' +
-      (rp.readiness ? '<span class="fides-modal-badge readiness-' + escapeHtml(rp.readiness) + '">' + escapeHtml(readinessLabels[rp.readiness] || rp.readiness) + '</span>' : '') +
-      '<span class="fides-modal-badge interaction-mode interaction-' + escapeHtml(interactionMode) + '">' + escapeHtml(interactionModeLabel) + '</span>' +
-      (rp.status ? '<span class="fides-modal-badge status-' + escapeHtml(rp.status) + '">' + escapeHtml(statusLabels[rp.status] || rp.status) + '</span>' : '') +
-      '</div>' +
-      (rp.website ? '<a href="' + escapeHtml(rp.website) + '" target="_blank" rel="noopener" class="fides-modal-visit-button">' + icons.externalLink + ' Visit Website</a>' : '') +
-      '</div>' +
-      (rp.description ? '<div class="fides-modal-section"><p class="fides-modal-description">' + escapeHtml(rp.description) + '</p></div>' : '') +
-      (rp.video ? getVideoEmbedHtml(rp.video) : '') +
-      '<div class="fides-modal-grid">' +
-      '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.laptop + ' Interaction mode</div><div class="fides-modal-grid-value"><span class="fides-tag interaction-mode-tag interaction-' + escapeHtml(interactionMode) + '">' + escapeHtml(interactionModeLabel) + '</span></div></div>' +
-      buildRpSectorsModalGridHtml(rp) +
-      ((acceptedCredentialRows.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.fileCheck + ' Accepted Credentials</div><div class="fides-modal-grid-value">' + renderAcceptedCredentialTagsHtmlForRpModal(rp, credentialCatalogUrl) + '</div></div>' : '') +
-      ((rp.vcFormat && rp.vcFormat.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.fileCheck + ' VC formats</div><div class="fides-modal-grid-value">' + sortCredentialFormats(rp.vcFormat).map(f => '<span class="fides-tag credential-format">' + escapeHtml(credentialFormatDisplayLabel(f)) + '</span>').join('') + '</div></div>' : '') +
-      ((rp.presentationProtocols && rp.presentationProtocols.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.shield + ' Presentation Protocols</div><div class="fides-modal-grid-value">' + rp.presentationProtocols.map(p => '<span class="fides-tag protocol-presentation">' + escapeHtml(p) + '</span>').join('') + '</div></div>' : '') +
-      ((rp.interoperabilityProfiles && rp.interoperabilityProfiles.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.shield + ' Interop Profiles</div><div class="fides-modal-grid-value">' + rp.interoperabilityProfiles.map(p => '<span class="fides-tag interop">' + escapeHtml(p) + '</span>').join('') + '</div></div>' : '') +
-      ((rp.supportedWallets && rp.supportedWallets.length) ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.wallet + ' Supported Wallets</div><div class="fides-modal-grid-value">' + supportedWalletsHtml + '</div></div>' : '') +
-      '</div>' +
-      ((rp.useCases && rp.useCases.length) ? '<div class="fides-modal-features"><h4 class="fides-modal-section-title">Use Cases</h4><ul class="fides-features-list">' + rp.useCases.map(u => '<li>' + icons.check + ' ' + escapeHtml(u) + '</li>').join('') + '</ul></div>' : '') +
-      '<div class="fides-modal-links">' +
-      (rp.documentation ? '<a href="' + escapeHtml(rp.documentation) + '" target="_blank" rel="noopener" class="fides-modal-link" data-matomo-name="Documentation">' + icons.book + ' Documentation</a>' : '') +
-      (rp.testCredentials ? '<a href="' + escapeHtml(rp.testCredentials) + '" target="_blank" rel="noopener" class="fides-modal-link" data-matomo-name="Test credentials">' + icons.fileCheck + ' Test Credentials</a>' : '') +
-      '</div>' +
-      '</div></div></div>';
-
-    mountModal(modalHtml);
-    const rpOverlay = document.getElementById('fides-modal-overlay');
-    if (rpOverlay) attachModalRating(rpOverlay, 'rp', rp.id, options || {}, rp);
   }
 
   function arrayValues(input) {
@@ -2209,7 +3022,10 @@
     if (options && typeof options.onOpen === 'function') options.onOpen(org);
 
     const logo = org.logo || '';
-    const country = org.country || '';
+    const countryLabel = org.country ? resolveOrganizationCountryLabel(org, resolveOrganizationCountryCode(org), options) : '';
+    const countryHeaderHtml = org.country
+      ? buildOrganizationCountryFlagHtml(org, options) + '<span>' + escapeHtml(countryLabel) + '</span>'
+      : escapeHtml('Country unknown');
     const issuerCatalogBase = (options && options.issuerCatalogUrl) || 'https://fides.community/ecosystem-explorer/issuer-catalog/';
     const rpCatalogBase = (options && options.rpCatalogUrl) || 'https://fides.community/ecosystem-explorer/relying-party-catalog/';
     const walletCatalogBase = (options && options.walletCatalogUrl) || 'https://fides.community/community-tools/personal-wallets/';
@@ -2259,7 +3075,9 @@
       '<div class="fides-modal" role="dialog" aria-modal="true">' +
       '<div class="fides-modal-header"><div class="fides-modal-header-content">' +
       (logo ? '<img src="' + escapeHtml(logo) + '" alt="' + escapeHtml(org.name || org.id) + '" class="fides-modal-logo">' : '<div class="fides-modal-logo-placeholder">' + icons.building + '</div>') +
-      '<div class="fides-modal-title-wrap"><h2 class="fides-modal-title">' + escapeHtml(org.name || org.id) + '</h2><p class="fides-modal-provider">' + icons.globe + ' ' + escapeHtml(country || 'Country unknown') + '</p></div>' +
+      '<div class="fides-modal-title-wrap"><h2 class="fides-modal-title">' + escapeHtml(org.name || org.id) + '</h2><p class="fides-modal-provider">' +
+      (countryHeaderHtml) +
+      '</p></div>' +
       '</div><div class="fides-modal-header-actions">' + shareButtonHtml + '<button class="fides-modal-close" id="fides-modal-close" aria-label="Close modal">' + icons.xLarge + '</button></div></div>' +
       '<div class="fides-modal-body">' +
       '<div class="fides-modal-badges">' +
@@ -2348,8 +3166,17 @@
     userCanEditCatalogItem,
     canEditOrganization,
     canEditWallet,
+    canEditRp,
     resolveWalletOrgId,
     buildCatalogListingHeaderBadgeHtml,
+    buildWalletCountryModalFlagHtml,
+    buildWalletCountryFlagHtml,
+    buildOrganizationCountryFlagHtml,
+    buildOrganizationCountryModalFlagHtml,
+    resolveOrganizationCountryCode,
+    resolveOrganizationCountryLabel,
+    resolveWalletCountryCode,
+    resolveWalletCountryLabel,
     buildOrganizationContactFooterHtml,
     buildOrganizationHeroSectionHtml,
     initModalMediaCarousels
