@@ -1617,6 +1617,22 @@
   .fides-modal-recognitions--accordion .fides-recognitions-section {
     padding: 0.75rem 0.85rem 0.65rem;
   }
+
+  /* RP modal: one key|value pair per row on mobile (key left, value right — not 2-col grid) */
+  .fides-modal-overlay.fides-modal-overlay--rp .fides-details-kv,
+  .fides-modal-overlay.fides-modal-overlay--rp .fides-details-kv--technical-grid {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
+
+  .fides-modal-overlay.fides-modal-overlay--rp .fides-kv-row {
+    grid-template-columns: minmax(7.5rem, max-content) minmax(0, 1fr);
+    gap: 0.5rem 0.75rem;
+  }
+
+  .fides-modal-overlay.fides-modal-overlay--rp .fides-kv-key {
+    white-space: nowrap;
+  }
 }
 
 /* Links section */
@@ -2209,6 +2225,59 @@
 
 .fides-rp-action-bar .fides-modal-app-stores {
   margin-bottom: 0;
+}
+
+/* RP modal Links: outline style for secondary links only (Documentation, API endpoint) */
+.fides-modal-overlay.fides-modal-overlay--rp .fides-rp-action-bar .fides-app-store-btn.fides-rp-link-secondary {
+  background: transparent !important;
+  color: var(--fides-text-primary, #f1f5f9);
+  border: 1px solid var(--fides-border, rgba(255, 255, 255, 0.18));
+  box-shadow: none;
+  min-width: 132px;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp .fides-rp-action-bar .fides-app-store-btn.fides-rp-link-secondary small {
+  color: var(--fides-text-muted, #64748b);
+  opacity: 1;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp .fides-rp-action-bar .fides-app-store-btn.fides-rp-link-secondary strong {
+  color: var(--fides-text-primary, #f1f5f9);
+  font-weight: 600;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp .fides-rp-action-bar .fides-app-store-btn.fides-rp-link-secondary svg {
+  color: var(--fides-text-secondary, #94a3b8);
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp .fides-rp-action-bar .fides-app-store-btn.fides-rp-link-secondary:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--fides-accent, #3b82f6);
+  background: rgba(59, 130, 246, 0.08) !important;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="fides"] .fides-rp-action-bar .fides-app-store-btn.fides-rp-link-secondary,
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="light"] .fides-rp-action-bar .fides-app-store-btn.fides-rp-link-secondary {
+  background: #ffffff !important;
+  color: #0f172a;
+  border-color: #e2e8f0;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="fides"] .fides-rp-action-bar .fides-app-store-btn.fides-rp-link-secondary small,
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="light"] .fides-rp-action-bar .fides-app-store-btn.fides-rp-link-secondary small {
+  color: #64748b;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="fides"] .fides-rp-action-bar .fides-app-store-btn.fides-rp-link-secondary strong,
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="light"] .fides-rp-action-bar .fides-app-store-btn.fides-rp-link-secondary strong {
+  color: #0f172a;
+}
+
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="fides"] .fides-rp-action-bar .fides-app-store-btn.fides-rp-link-secondary:hover,
+.fides-modal-overlay.fides-modal-overlay--rp[data-theme="light"] .fides-rp-action-bar .fides-app-store-btn.fides-rp-link-secondary:hover {
+  border-color: #0A6EF3;
+  background: rgba(10, 110, 243, 0.06) !important;
 }
 
 
@@ -3775,14 +3844,99 @@ a.fides-eco-entity svg {
   scroll-margin-top: 0.75rem;
 }
 
+/* Responsive: stack ecosystem vertically on tablet/mobile (issuer catalog parity) */
+@media (max-width: 760px) {
+  .fides-modal-ecosystem {
+    padding: 0.35rem 0.25rem;
+  }
+
+  .fides-eco-wallet-row {
+    padding: 0 0.25rem;
+  }
+
+  .fides-eco-wallet-box {
+    min-width: 0;
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+  }
+
+  .fides-eco-main-row {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto;
+    gap: 0.35rem;
+    padding: 0.25rem 0.35rem;
+  }
+
+  .fides-eco-wallet-box.fides-eco-stat-box {
+    max-width: none;
+  }
+
+  .fides-eco-arrow {
+    transform: rotate(90deg);
+    justify-self: center;
+    padding: 0;
+  }
+
+  .fides-eco-col-center {
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid var(--fides-border);
+    border-bottom: 1px solid var(--fides-border);
+  }
+
+  .fides-eco-center-card {
+    max-width: none;
+  }
+
+  /* RP Links row: keep app-store buttons, scale down on narrow viewports */
+  .fides-modal-overlay--rp .fides-rp-action-bar {
+    padding: 0.55rem 0.65rem;
+    gap: 0.45rem 0.5rem;
+  }
+
+  .fides-modal-overlay--rp .fides-rp-action-bar .fides-wallet-capabilities-label {
+    flex: 0 0 100%;
+  }
+
+  .fides-modal-overlay--rp .fides-rp-action-bar .fides-wallet-capabilities-list {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  .fides-modal-overlay--rp .fides-rp-action-bar .fides-modal-app-stores {
+    gap: 0.4rem;
+  }
+
+  .fides-modal-overlay--rp .fides-rp-action-bar .fides-app-store-btn {
+    min-width: 0;
+    flex: 1 1 calc(50% - 0.25rem);
+    padding: 0.4rem 0.55rem;
+    gap: 0.45rem;
+  }
+
+  .fides-modal-overlay--rp .fides-rp-action-bar .fides-app-store-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .fides-modal-overlay--rp .fides-rp-action-bar .fides-app-store-btn small {
+    font-size: 0.5625rem;
+    line-height: 1.1;
+  }
+
+  .fides-modal-overlay--rp .fides-rp-action-bar .fides-app-store-btn strong {
+    font-size: 0.75rem;
+  }
+}
+
 /* RP modal entity tables + explore links (shared with credential catalog pattern) */
 .fides-modal-overlay .fides-modal-empty {
-.fides-modal-overlay   margin: 0;
-.fides-modal-overlay   font-size: 0.875rem;
-.fides-modal-overlay   color: var(--fides-text-muted);
-.fides-modal-overlay }
-.fides-modal-overlay 
-.fides-modal-overlay .fides-modal-links {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--fides-text-muted);
+}
+
 .fides-attributes-table .fides-col-type {
   width: 6rem;
   white-space: nowrap;
