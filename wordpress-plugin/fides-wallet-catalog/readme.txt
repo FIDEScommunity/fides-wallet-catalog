@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.9.5
+Stable tag: 2.9.9
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -102,6 +102,18 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.9.9 =
+* Wallet modal and grid cards: country flag replaced with globe icon and full country name (bundled fides-catalog-ui from tiles ≥ 1.8.19).
+
+= 2.9.8 =
+* Pro listing edit: update form only for linked owner or WP admin when wallet/org listing is Pro. Synced modal library edit-access checks.
+
+= 2.9.7 =
+* Fix Pro plan field badges on Community wallet listings (linked badge again). Requires tiles ≥ 1.8.7.
+
+= 2.9.6 =
+* Submission form: static Pro plan field badges when the signed-in user owns a linked Pro org (requires tiles ≥ 1.8.6).
 
 = 2.9.5 =
 * Submission form: show Pro plan badge on Pro-only field labels for Pro accounts too (static badge, no plans link).

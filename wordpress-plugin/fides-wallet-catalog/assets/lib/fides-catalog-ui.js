@@ -242,12 +242,25 @@
       escapeHtml(cls) + '" width="18" height="13" loading="lazy" decoding="async" />';
   }
 
+  /** Globe + country name row (aligned with use-case catalog modal subtitle). */
+  function buildCatalogCountryGlobeMetaHtml(label, extraClass) {
+    if (!label) return '';
+    const extra = extraClass ? ' ' + extraClass : '';
+    return '<span class="fides-catalog-country-meta' + extra + '" title="' + escapeHtml(label) + '" aria-label="' + escapeHtml(label) + '">' +
+      icons.globe + '<span>' + escapeHtml(label) + '</span></span>';
+  }
+
+  /** Modal header country appended after provider name (wallet / RP). */
+  function buildModalProviderCountryGlobeHtml(label) {
+    if (!label) return '';
+    return ' ' + buildCatalogCountryGlobeMetaHtml(label, 'fides-modal-provider-country');
+  }
+
   function buildWalletCountryModalFlagHtml(wallet, options) {
     const code = resolveWalletCountryCode(wallet);
     if (!code) return '';
     const label = resolveWalletCountryLabel(wallet, code, options);
-    return ' <span class="fides-modal-provider-country" title="' + escapeHtml(label) + '" aria-label="' + escapeHtml(label) + '">' +
-      buildWalletCountryFlagImgHtml(code, 'fides-modal-country-flag') + '</span>';
+    return buildModalProviderCountryGlobeHtml(label);
   }
 
   function resolveOrganizationCountryCode(org) {
@@ -267,16 +280,14 @@
     const code = resolveOrganizationCountryCode(org);
     if (!code) return '';
     const label = resolveOrganizationCountryLabel(org, code, options);
-    return '<span class="fides-wallet-country" title="' + escapeHtml(label) + '" aria-label="' + escapeHtml(label) + '">' +
-      buildWalletCountryFlagImgHtml(code, 'fides-wallet-country-flag') + '</span>';
+    return buildCatalogCountryGlobeMetaHtml(label);
   }
 
   function buildOrganizationCountryModalFlagHtml(org, options) {
     const code = resolveOrganizationCountryCode(org);
     if (!code) return '';
     const label = resolveOrganizationCountryLabel(org, code, options);
-    return ' <span class="fides-modal-provider-country" title="' + escapeHtml(label) + '" aria-label="' + escapeHtml(label) + '">' +
-      buildWalletCountryFlagImgHtml(code, 'fides-modal-country-flag') + '</span>';
+    return buildModalProviderCountryGlobeHtml(label);
   }
 
   function buildWalletCountryFlagHtml(wallet, options) {
@@ -1135,11 +1146,7 @@
     const code = resolveRpCountryCode(rp);
     if (!code) return '';
     const label = resolveRpCountryLabel(rp, code, options);
-    if (code === 'EU') {
-      return ' <span class="fides-modal-provider-country" title="' + escapeHtml(label) + '" aria-label="' + escapeHtml(label) + '"><span class="fides-modal-country-label">EU</span></span>';
-    }
-    return ' <span class="fides-modal-provider-country" title="' + escapeHtml(label) + '" aria-label="' + escapeHtml(label) + '">' +
-      buildWalletCountryFlagImgHtml(code, 'fides-modal-country-flag') + '</span>';
+    return buildModalProviderCountryGlobeHtml(label);
   }
 
   const RP_READINESS_LABELS = {
@@ -3030,10 +3037,10 @@
     if (options && typeof options.onOpen === 'function') options.onOpen(org);
 
     const logo = org.logo || '';
-    const countryLabel = org.country ? resolveOrganizationCountryLabel(org, resolveOrganizationCountryCode(org), options) : '';
-    const countryHeaderHtml = org.country
-      ? buildOrganizationCountryFlagHtml(org, options) + '<span>' + escapeHtml(countryLabel) + '</span>'
-      : escapeHtml('Country unknown');
+    const countryLabel = org.country
+      ? resolveOrganizationCountryLabel(org, resolveOrganizationCountryCode(org), options)
+      : 'Country unknown';
+    const countryHeaderHtml = buildCatalogCountryGlobeMetaHtml(countryLabel);
     const issuerCatalogBase = (options && options.issuerCatalogUrl) || 'https://fides.community/ecosystem-explorer/issuer-catalog/';
     const rpCatalogBase = (options && options.rpCatalogUrl) || 'https://fides.community/ecosystem-explorer/relying-party-catalog/';
     const walletCatalogBase = (options && options.walletCatalogUrl) || 'https://fides.community/community-tools/personal-wallets/';
@@ -3177,6 +3184,8 @@
     canEditRp,
     resolveWalletOrgId,
     buildCatalogListingHeaderBadgeHtml,
+    buildCatalogCountryGlobeMetaHtml,
+    buildModalProviderCountryGlobeHtml,
     buildWalletCountryModalFlagHtml,
     buildWalletCountryFlagHtml,
     buildOrganizationCountryFlagHtml,
