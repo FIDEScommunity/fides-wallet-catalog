@@ -2656,6 +2656,31 @@
     return '';
   }
 
+  function parseItemDate(item, dateFields) {
+    if (!item || !Array.isArray(dateFields)) return null;
+    for (let i = 0; i < dateFields.length; i += 1) {
+      const value = item[dateFields[i]];
+      if (!value) continue;
+      const date = new Date(value);
+      if (!Number.isNaN(date.getTime())) return date;
+    }
+    return null;
+  }
+
+  function formatModalLastUpdatedDate(date) {
+    if (!date || Number.isNaN(date.getTime())) return '';
+    return date.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+
+  function buildModalLastUpdatedHtml(item, dateFields) {
+    const date = parseItemDate(item, dateFields);
+    if (!date) return '';
+    const label = formatModalLastUpdatedDate(date);
+    const iso = date.toISOString().slice(0, 10);
+    return '<div class="fides-modal-last-updated">' +
+      'Last updated <time datetime="' + escapeHtml(iso) + '">' + escapeHtml(label) + '</time></div>';
+  }
+
   function buildOrganizationContactFooterHtml(contact, options) {
     const opts = options || {};
     if (optionsTierUiEnabled(opts)) {
@@ -2761,6 +2786,7 @@
       capabilitiesHtml +
       accordionsHtml +
       buildWalletModalLinksHtml(wallet, options) +
+      buildModalLastUpdatedHtml(wallet, ['updatedAt', 'updated', 'fetchedAt']) +
       '</div>' +
       buildWalletModalFooterHtml(wallet, options) +
       '</div></div>';
@@ -2891,6 +2917,7 @@
       actionBarHtml +
       accordionsHtml +
       linksHtml +
+      buildModalLastUpdatedHtml(rp, ['updatedAt', 'updated', 'fetchedAt']) +
       '</div>' +
       buildRpModalFooterHtml(rp, options) +
       '</div></div>';
@@ -3023,6 +3050,7 @@
       (issuer.issuerWebsiteUrl ? '<a href="' + escapeHtml(issuer.issuerWebsiteUrl) + '" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Issuer website">' + icons.externalLink + ' Issuer Website</a>' : '') +
       (issuer.oid4vciMetadataUrl ? '<a href="' + escapeHtml(issuer.oid4vciMetadataUrl) + '" target="_blank" rel="noopener" class="fides-modal-link" data-matomo-name="Issuer metadata">' + icons.book + ' OID4VCI metadata</a>' : '') +
       '</div>' +
+      buildModalLastUpdatedHtml(issuer, ['updatedAt', 'updated', 'fetchedAt']) +
       '</div></div></div>';
 
     mountModal(modalHtml);
@@ -3108,6 +3136,7 @@
       '<div class="fides-modal-links">' +
       (!isCommunity && org.website ? '<a href="' + escapeHtml(org.website) + '" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Organization website">' + icons.externalLink + ' Visit Website</a>' : '') +
       '</div>' +
+      buildModalLastUpdatedHtml(org, ['updatedAt', 'updated', 'fetchedAt']) +
       '</div>' +
       buildOrganizationContactFooterHtml(org.contact, { tierUiEnabled: optionsTierUiEnabled(options), isCommunity: isCommunity, item: org, editAccess: options && options.editAccess }) +
       '</div></div>';
@@ -3195,6 +3224,7 @@
     resolveWalletCountryCode,
     resolveWalletCountryLabel,
     buildOrganizationContactFooterHtml,
+    buildModalLastUpdatedHtml,
     buildOrganizationHeroSectionHtml,
     initModalMediaCarousels
   };

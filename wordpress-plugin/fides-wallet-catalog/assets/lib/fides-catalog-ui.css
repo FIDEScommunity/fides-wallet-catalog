@@ -1760,6 +1760,19 @@
   background: var(--fides-accent-hover, #60a5fa);
 }
 
+.fides-modal-last-updated {
+  margin-top: 0.25rem;
+  padding-top: 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--fides-text-muted, rgba(148, 163, 184, 0.9));
+  text-align: right;
+}
+
+.fides-modal-last-updated time {
+  color: inherit;
+}
+
 .fides-modal-footer {
   display: flex;
   flex-wrap: wrap;
@@ -2123,6 +2136,11 @@
 .fides-modal-overlay[data-theme="fides"] .fides-modal-link.primary:hover,
 .fides-modal-overlay[data-theme="light"] .fides-modal-link.primary:hover {
   background: #0858c4;
+}
+
+.fides-modal-overlay[data-theme="fides"] .fides-modal-last-updated,
+.fides-modal-overlay[data-theme="light"] .fides-modal-last-updated {
+  color: #94a3b8;
 }
 
 .fides-modal-overlay[data-theme="fides"] .fides-modal-footer,
