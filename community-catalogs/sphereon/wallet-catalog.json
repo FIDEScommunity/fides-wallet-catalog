@@ -1,10 +1,11 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:sphereon",
   "wallets": [
     {
       "id": "sphereon-wallet",
       "name": "Sphereon Wallet",
-      "description": "Enterprise-grade digital identity wallet with support for multiple credential formats and protocols.",
+      "description": "Open-Source digital identity wallet with support for multiple credential formats and protocols including SD-JWT VC and ISO mdocs, statuslists.",
       "logo": "https://www.google.com/s2/favicons?domain=sphereon.com&sz=128",
       "website": "https://sphereon.com/wallet",
       "type": "personal",
@@ -17,36 +18,44 @@
       "repository": "https://github.com/Sphereon-Opensource/ssi-mobile-wallet",
       "vcFormat": [
         "sd_jwt_vc",
+        "mdoc",
         "jwt_vc",
+        "vcdm_1_1",
         "vcdm_2_0"
       ],
       "issuanceProtocols": [
-        "OpenID4VCI"
+        "OpenID4VCI",
+        "ISO 18013-5 (Device Retrieval)"
       ],
       "presentationProtocols": [
         "OpenID4VP",
+        "ISO 18013-5",
         "SIOPv2"
       ],
       "supportedIdentifiers": [
         "did:web",
         "did:key",
         "did:jwk",
-        "did:ion",
         "did:ebsi"
       ],
       "keyStorage": [
+        "Software",
         "Secure Enclave (iOS)",
         "StrongBox (Android)",
-        "Software"
+        "HSM"
       ],
       "signingAlgorithms": [
         "ES256",
         "ES384",
-        "EdDSA"
+        "ES512",
+        "ES256K",
+        "EdDSA",
+        "RS256",
+        "PS256"
       ],
       "credentialStatusMethods": [
         "StatusList2021",
-        "RevocationList2020"
+        "IETF Token Status List"
       ],
       "interoperabilityProfiles": [
         "DIIP v4",
@@ -75,7 +84,12 @@
             "title": "EUDI Wallet LSP"
           }
         ]
-      }
+      },
+      "pricing": "Free, with optional support plan",
+      "capabilities": [
+        "holder"
+      ],
+      "catalogTier": "Pro"
     },
     {
       "id": "sphereon-vdx-platform",
@@ -115,6 +129,5 @@
       "status": "production"
     }
   ],
-  "lastUpdated": "2026-01-06T12:00:00Z",
-  "orgId": "org:sphereon"
+  "lastUpdated": "2026-07-08T13:51:04.047Z"
 }
