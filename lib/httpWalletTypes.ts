@@ -97,6 +97,35 @@ export interface WalletRecognitions {
   awardsAndRecognitions?: RecognitionItem[];
 }
 
+/** Crawl-time overlay from iGrant EUDI wallet tracker (aggregated.json only). */
+export interface EudiTrackerSource {
+  title: string;
+  url: string;
+  date?: string;
+}
+
+export interface EudiTrackerEnrichment {
+  source: string;
+  sourceLastUpdated?: string;
+  fetchedAt: string;
+  countryName?: string;
+  isoAlpha2?: string;
+  trackerPageSlug?: string;
+  trackerPageUrl?: string;
+  badgeSvgUrl?: string;
+  status: string;
+  statusOrder?: number | null;
+  walletName?: string;
+  walletProvider?: string;
+  assuranceLevel?: string;
+  lspParticipation?: string[];
+  launchOrPilotDate?: string | null;
+  notableIssuers?: string[];
+  qtspPartner?: string | null;
+  notes?: string;
+  sources?: EudiTrackerSource[];
+}
+
 export interface WalletProvider {
   /** Organization catalog id (matches source catalog orgId). */
   orgId: string;
@@ -179,6 +208,7 @@ export interface NormalizedWallet extends Wallet {
   updatedAt?: string;
   firstSeenAt?: string;
   source?: 'local' | 'github' | 'did'; // Where the catalog was fetched from
+  eudiTracker?: EudiTrackerEnrichment;
 }
 
 // Registry entry for registered providers

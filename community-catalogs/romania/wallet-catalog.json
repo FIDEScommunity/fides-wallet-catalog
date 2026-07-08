@@ -1,0 +1,22 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:romania",
+  "wallets": [
+    {
+      "id": "roeudiw",
+      "name": "RoEUDIW",
+      "description": "Romania's national European Digital Identity Wallet (RoEUDIW), led by the Authority for the Digitalization of Romania (ADR) with implementation involving MEDAT, MAI, and STS. Romania has formally adopted Germany's open-source EUDI Wallet solution; the first phase (mobile app, PID issuance, age verification) is planned for 2026. QTSP partners include certSIGN and Trans Sped.",
+      "type": "personal",
+      "status": "development",
+      "website": "https://www.adr.gov.ro/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/ro.png"
+    }
+  ]
+}

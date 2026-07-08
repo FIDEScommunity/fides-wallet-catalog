@@ -1,0 +1,22 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:bulgaria",
+  "wallets": [
+    {
+      "id": "national-eudi-wallet-bulgaria",
+      "name": "National EUDI Wallet (Bulgaria)",
+      "description": "Bulgaria's national European Digital Identity Wallet programme under the Ministry of e-Government. A draft Law on the European Digital Identity Wallet was published for public consultation in February 2026; a public developer repository exists but no public sandbox yet. Bulgaria participates in the EWC and WE BUILD large-scale pilots.",
+      "type": "personal",
+      "status": "development",
+      "website": "https://www.e-gov.bg/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/bg.png"
+    }
+  ]
+}

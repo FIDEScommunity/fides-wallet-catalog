@@ -1,15 +1,16 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:austria",
   "wallets": [
     {
       "id": "national-eudi-wallet-austria",
-      "name": "National EUDI Wallet (Valera)",
-      "description": "Open-source wallet \"Valera\" developed by A-SIT. Migration of eID Austria (~3 million users) and eAusausweis (~1 million users) to the EUDI architecture. One of the first nine countries with a deployed EUDI wallet.",
+      "name": "eAusweise",
+      "description": "Official Austrian national EUDI wallet (eAusweise), built on the open-source Valera project by A-SIT. Migration of eID Austria (~3 million users) and mobile eAusweis credentials (~1 million users) to the EUDI architecture. One of the first EU countries with a deployed EUDI wallet.",
       "type": "personal",
       "openSource": true,
       "repository": "https://github.com/a-sit-plus/valera",
-      "status": "development",
-      "website": "https://a-sit-plus.github.io/",
+      "status": "production",
+      "website": "https://www.id-austria.gv.at/de/verwenden/eausweise",
       "platforms": [
         "iOS",
         "Android"
@@ -28,8 +29,11 @@
         "EUDI Wallet ARF"
       ],
       "logo": "https://flagcdn.com/w80/at.png",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/de/app/eausweise/id1641458335",
+        "android": "https://play.google.com/store/apps/details?id=at.gv.oe.awp.eausweise"
+      },
       "releaseDate": "2024-01-01"
     }
-  ],
-  "orgId": "org:austria"
+  ]
 }

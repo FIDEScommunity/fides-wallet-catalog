@@ -17,6 +17,7 @@
         "android": "https://play.google.com/store/apps/details?id=io.twentysixty.mobileagent.m"
       },
       "status": "production",
+      "catalogTier": "Pro",
       "orgId": "org:2060",
       "provider": {
         "orgId": "org:2060",
@@ -26,7 +27,7 @@
         "country": "EE"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/2060/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:22.712Z",
+      "fetchedAt": "2026-07-03T20:14:25.213Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-13T19:28:00.000Z",
       "source": "local"
@@ -64,13 +65,10 @@
         "name": "California Department of Motor Vehicles (CA DMV)",
         "website": "https://www.dmv.ca.gov/portal/",
         "logo": "https://www.dmv.ca.gov/portal/uploads/2024/05/Five-Stars.png",
-        "country": "US",
-        "contact": {
-          "contactUrl": "https://www.dmv.ca.gov/portal/contacting-dmv/"
-        }
+        "country": "US"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/CA/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:22.739Z",
+      "fetchedAt": "2026-07-03T20:14:25.254Z",
       "updatedAt": "2026-02-18T00:00:00.000Z",
       "firstSeenAt": "2026-02-18T00:00:00.000Z",
       "source": "local"
@@ -106,7 +104,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/TNO/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:22.764Z",
+      "fetchedAt": "2026-07-03T20:14:25.285Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2025-06-06T00:00:00.000Z",
       "source": "local"
@@ -141,13 +139,10 @@
         "name": "Unique Identification Authority of India",
         "website": "https://uidai.gov.in/",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Aadhaar.svg/960px-Aadhaar.svg.png",
-        "country": "IN",
-        "contact": {
-          "contactUrl": "https://uidai.gov.in/en/contact-support.html"
-        }
+        "country": "IN"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/UIDAI/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:22.789Z",
+      "fetchedAt": "2026-07-03T20:14:25.318Z",
       "updatedAt": "2026-02-18T08:15:00.000Z",
       "firstSeenAt": "2026-02-18T08:15:00.000Z",
       "source": "local"
@@ -169,6 +164,7 @@
         "android": "https://play.google.com/store/apps/details?id=org.a3bc.trustme"
       },
       "releaseDate": "2022-06-01",
+      "catalogTier": "Pro",
       "orgId": "org:a3bc",
       "provider": {
         "orgId": "org:a3bc",
@@ -178,7 +174,7 @@
         "country": "FR"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/a3bc/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:22.813Z",
+      "fetchedAt": "2026-07-03T20:14:25.347Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2022-06-01T00:00:00.000Z",
       "source": "local"
@@ -219,7 +215,7 @@
         "country": "SG"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/affinidi/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:22.838Z",
+      "fetchedAt": "2026-07-03T20:14:25.375Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -242,10 +238,32 @@
         "country": "AL"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/albania/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:22.860Z",
+      "fetchedAt": "2026-07-03T20:14:25.401Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-12T16:03:07.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Albania",
+        "isoAlpha2": "AL",
+        "trackerPageSlug": "albania",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/albania",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/AL.svg",
+        "status": "Planned for Production",
+        "statusOrder": 4,
+        "walletName": "National EUDI Wallet (announced)",
+        "walletProvider": "National Authority for Electronic Certification (AKCE)",
+        "notes": "Albania is outside the EU but pursuing EU alignment. Announced plans to introduce a national digital ID in 2026.",
+        "sources": [
+          {
+            "title": "ID Tech Wire - Albania announces 2026 launch for national digital ID",
+            "url": "https://idtechwire.com/albania-announces-2026-launch-for-national-digital-id-to-drive-eu-alignment/",
+            "date": "2026-06-24"
+          }
+        ]
+      }
     },
     {
       "id": "paradym-wallet",
@@ -326,13 +344,10 @@
         "website": "https://animo.id",
         "logo": "https://www.google.com/s2/favicons?domain=animo.id&sz=128",
         "country": "NL",
-        "contact": {
-          "contactUrl": "https://animo.id/support"
-        },
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/animo/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:22.882Z",
+      "fetchedAt": "2026-07-03T20:14:25.430Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2023-06-01T00:00:00.000Z",
       "source": "local"
@@ -381,13 +396,10 @@
         "website": "https://animo.id",
         "logo": "https://www.google.com/s2/favicons?domain=animo.id&sz=128",
         "country": "NL",
-        "contact": {
-          "contactUrl": "https://animo.id/support"
-        },
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/animo/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:22.882Z",
+      "fetchedAt": "2026-07-03T20:14:25.430Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -420,20 +432,20 @@
         "country": "US"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/apple/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:22.905Z",
+      "fetchedAt": "2026-07-03T20:14:25.455Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "local"
     },
     {
       "id": "national-eudi-wallet-austria",
-      "name": "National EUDI Wallet (Valera)",
-      "description": "Open-source wallet \"Valera\" developed by A-SIT. Migration of eID Austria (~3 million users) and eAusausweis (~1 million users) to the EUDI architecture. One of the first nine countries with a deployed EUDI wallet.",
+      "name": "eAusweise",
+      "description": "Official Austrian national EUDI wallet (eAusweise), built on the open-source Valera project by A-SIT. Migration of eID Austria (~3 million users) and mobile eAusweis credentials (~1 million users) to the EUDI architecture. One of the first EU countries with a deployed EUDI wallet.",
       "type": "personal",
       "openSource": true,
       "repository": "https://github.com/a-sit-plus/valera",
-      "status": "development",
-      "website": "https://a-sit-plus.github.io/",
+      "status": "production",
+      "website": "https://www.id-austria.gv.at/de/verwenden/eausweise",
       "platforms": [
         "iOS",
         "Android"
@@ -452,6 +464,10 @@
         "EUDI Wallet ARF"
       ],
       "logo": "https://flagcdn.com/w80/at.png",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/de/app/eausweise/id1641458335",
+        "android": "https://play.google.com/store/apps/details?id=at.gv.oe.awp.eausweise"
+      },
       "releaseDate": "2024-01-01",
       "orgId": "org:austria",
       "provider": {
@@ -462,10 +478,79 @@
         "country": "AT"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/austria/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:22.926Z",
+      "fetchedAt": "2026-07-03T20:14:25.478Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2024-01-01T00:00:00.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Austria",
+        "isoAlpha2": "AT",
+        "trackerPageSlug": "austria",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/austria",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/AT.svg",
+        "status": "Public Pilot",
+        "statusOrder": 2,
+        "walletName": "eAusweise",
+        "walletProvider": "Federal Chancellery / Digital Austria",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "DC4EU",
+          "EWC",
+          "POTENTIAL",
+          "WE BUILD"
+        ],
+        "notableIssuers": [
+          "PID",
+          "mDL"
+        ],
+        "qtspPartner": "A-Trust",
+        "notes": "Existing ID Austria platform with mobile eAusweise. Upgrade to EUDI Wallet officially confirmed. Among the strong second tier per Namirial Q1 2026 review.",
+        "sources": [
+          {
+            "title": "Namirial Q1 2026 status review",
+            "url": "https://www.namirial.com/en/blog/stories/status-check-eudi-wallet/",
+            "date": "2026-04-09"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          },
+          {
+            "title": "Biometric Update - Austria adds digital student ID to eAusweise",
+            "url": "https://www.biometricupdate.com/202605/austria-adds-digital-student-id-to-eausweise-wallet-with-youniqx-identity",
+            "date": "2026-05-01"
+          },
+          {
+            "title": "ID Austria Zukunftsforum",
+            "url": "https://www.bundeskanzleramt.gv.at/bundeskanzleramt/nachrichten-der-bundesregierung/2025/10/id-austria-zukunftsforum-erfolgreicher-auftakt-des-dialogs-ueber-die-digitale-zukunft-oesterreichs.html",
+            "date": "2025-10-01"
+          },
+          {
+            "title": "ID Austria - eAusweise",
+            "url": "https://www.id-austria.gv.at/de/verwenden/eausweise",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "A-SIT Wallet",
+            "url": "https://wallet.a-sit.at/",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "EU Trust List - Austria",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/AT",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "EC Launchpad Demos",
+            "url": "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930448024/Launchpad+Demos",
+            "date": "2026-06-24"
+          }
+        ]
+      }
     },
     {
       "id": "auth0-platform",
@@ -502,7 +587,7 @@
         "country": "US"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/auth0/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:22.949Z",
+      "fetchedAt": "2026-07-03T20:14:25.503Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -554,19 +639,17 @@
       ],
       "documentation": "https://authbound.io",
       "status": "production",
+      "catalogTier": "Pro",
       "orgId": "org:authbound",
       "provider": {
         "orgId": "org:authbound",
         "name": "Authbound",
         "website": "https://authbound.io",
         "logo": "https://www.google.com/s2/favicons?domain=authbound.io&sz=128",
-        "country": "FI",
-        "contact": {
-          "contactUrl": "https://authbound.io/contact"
-        }
+        "country": "FI"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/authbound/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:22.972Z",
+      "fetchedAt": "2026-07-03T20:14:25.530Z",
       "updatedAt": "2026-02-17T12:00:00.000Z",
       "firstSeenAt": "2026-02-17T12:00:00.000Z",
       "source": "local"
@@ -601,6 +684,7 @@
       },
       "openSource": false,
       "status": "production",
+      "catalogTier": "Pro",
       "orgId": "org:ayanworks",
       "provider": {
         "orgId": "org:ayanworks",
@@ -610,7 +694,7 @@
         "country": "IN"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/ayanworks/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:22.993Z",
+      "fetchedAt": "2026-07-03T20:14:25.555Z",
       "updatedAt": "2026-01-19T00:00:00.000Z",
       "firstSeenAt": "2026-01-19T00:00:00.000Z",
       "source": "local"
@@ -640,6 +724,7 @@
       "website": "https://credebl.id",
       "openSource": false,
       "status": "production",
+      "catalogTier": "Pro",
       "orgId": "org:ayanworks",
       "provider": {
         "orgId": "org:ayanworks",
@@ -649,7 +734,7 @@
         "country": "IN"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/ayanworks/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:22.993Z",
+      "fetchedAt": "2026-07-03T20:14:25.555Z",
       "updatedAt": "2026-01-19T00:00:00.000Z",
       "firstSeenAt": "2026-01-19T00:00:00.000Z",
       "source": "local"
@@ -681,7 +766,7 @@
         "country": "CA"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/bcgov/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.014Z",
+      "fetchedAt": "2026-07-03T20:14:25.585Z",
       "updatedAt": "2026-01-12T00:00:00.000Z",
       "firstSeenAt": "2026-01-12T00:00:00.000Z",
       "source": "local"
@@ -710,10 +795,211 @@
         "country": "BE"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/belgium/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.033Z",
+      "fetchedAt": "2026-07-03T20:14:25.609Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2025-01-01T00:00:00.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Belgium",
+        "isoAlpha2": "BE",
+        "trackerPageSlug": "belgium",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/belgium",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/BE.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "MyGov.be",
+        "walletProvider": "FPS Policy and Support (BOSA)",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "DC4EU",
+          "EWC",
+          "POTENTIAL",
+          "WE BUILD"
+        ],
+        "notableIssuers": [
+          "PID"
+        ],
+        "qtspPartner": "itsme (Belgian Mobile ID)",
+        "notes": "BOSA presented MyGov.be as Belgium's response to the eIDAS 2.0 wallet obligation. itsme continues to be widely used for daily authentication and is expected to plug into the EUDI ecosystem.",
+        "sources": [
+          {
+            "title": "EU Trust List - Belgium",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/BE",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "Belgium.be - MyGov.be",
+            "url": "https://www.belgium.be/en/news/2025/mygovbe_your_administration_hand",
+            "date": "2025-12-01"
+          },
+          {
+            "title": "BOSA - MyGov.be available as digital key",
+            "url": "https://bosa.belgium.be/nl/news/mygovbe-app-beschikbaar-als-digitale-sleutel-voor-online-overheidsdiensten",
+            "date": "2025-09-15"
+          },
+          {
+            "title": "Namirial Q1 2026 status review",
+            "url": "https://www.namirial.com/en/blog/stories/status-check-eudi-wallet/",
+            "date": "2026-04-09"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          }
+        ]
+      }
+    },
+    {
+      "id": "national-eudi-wallet-bosnia-herzegovina",
+      "name": "National Digital ID Wallet (Bosnia and Herzegovina)",
+      "description": "National digital identity wallet programme led by the Agency for Identification Documents, Registers and Data Exchange (IDDEEA). A national digital ID app launched in 2025; Bosnia and Herzegovina participates in the WE BUILD Large Scale Pilot while aligning with EUDI Wallet capabilities.",
+      "type": "personal",
+      "status": "development",
+      "website": "https://idd.gov.ba/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/ba.png",
+      "orgId": "org:bosnia-herzegovina",
+      "provider": {
+        "orgId": "org:bosnia-herzegovina",
+        "name": "Bosnia and Herzegovina Government",
+        "website": "https://idd.gov.ba/",
+        "logo": "https://flagcdn.com/w80/ba.png",
+        "country": "BA"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/bosnia-herzegovina/wallet-catalog.json",
+      "fetchedAt": "2026-07-03T20:14:26.748Z",
+      "updatedAt": "2026-07-03T20:14:26.748Z",
+      "firstSeenAt": "2026-07-03T20:01:48.721Z",
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Bosnia and Herzegovina",
+        "isoAlpha2": "BA",
+        "trackerPageSlug": "bosnia-and-herzegovina",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/bosnia-and-herzegovina",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/BA.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "National EUDI Wallet (announced)",
+        "walletProvider": "Agency for Identification Documents Registry and Data Exchange (IDDEEA)",
+        "lspParticipation": [
+          "WE BUILD"
+        ],
+        "notes": "Bosnia and Herzegovina is outside the EU but participating in the WE BUILD Large Scale Pilot. National digital ID app launched in 2025.",
+        "sources": [
+          {
+            "title": "Biometric Update - Bosnia and Herzegovina launches national digital ID app",
+            "url": "https://www.biometricupdate.com/202507/bosnia-and-herzegovina-launches-national-digital-id-app",
+            "date": "2025-07-01"
+          },
+          {
+            "title": "Identyum - Digital ID wallet soon available to citizens of Bosnia and Herzegovina",
+            "url": "https://identyum.com/digital-id-wallet-soon-available-to-citizens-of-bosnia-and-herzegovina/",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "WE BUILD Consortium - Participating organisations",
+            "url": "https://www.webuildconsortium.eu/participating-organisations",
+            "date": "2026-06-24"
+          }
+        ]
+      }
+    },
+    {
+      "id": "national-eudi-wallet-bulgaria",
+      "name": "National EUDI Wallet (Bulgaria)",
+      "description": "Bulgaria's national European Digital Identity Wallet programme under the Ministry of e-Government. A draft Law on the European Digital Identity Wallet was published for public consultation in February 2026; a public developer repository exists but no public sandbox yet. Bulgaria participates in the EWC and WE BUILD large-scale pilots.",
+      "type": "personal",
+      "status": "development",
+      "website": "https://www.e-gov.bg/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/bg.png",
+      "orgId": "org:bulgaria",
+      "provider": {
+        "orgId": "org:bulgaria",
+        "name": "Bulgarian Government",
+        "website": "https://www.e-gov.bg/",
+        "logo": "https://flagcdn.com/w80/bg.png",
+        "country": "BG"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/bulgaria/wallet-catalog.json",
+      "fetchedAt": "2026-07-03T20:14:26.867Z",
+      "updatedAt": "2026-07-03T20:14:26.867Z",
+      "firstSeenAt": "2026-07-03T20:01:48.830Z",
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Bulgaria",
+        "isoAlpha2": "BG",
+        "trackerPageSlug": "bulgaria",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/bulgaria",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/BG.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "National EUDI Wallet (announced)",
+        "walletProvider": "Ministry of e-Government",
+        "assuranceLevel": "substantial",
+        "lspParticipation": [
+          "EWC",
+          "WE BUILD"
+        ],
+        "notableIssuers": [
+          "PID"
+        ],
+        "notes": "Draft Law on the European Digital Identity Wallet published for consultation in February 2026. Public developer repository available but no sandbox. Namirial flags Bulgaria as remaining risky for the December 2026 deadline.",
+        "sources": [
+          {
+            "title": "EU Trust List - Bulgaria",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/BG",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "BTA - Bulgaria moves to introduce European Digital Identity Wallet",
+            "url": "https://www.bta.bg/en/news/bulgaria/1068700-bulgaria-moves-to-introduce-european-digital-identity-wallet-bill-set-for-publi",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "iGrant.io Research Lab",
+            "url": "https://www.igrant.io/",
+            "date": "2026-05-18"
+          },
+          {
+            "title": "Bulgaria Public Consultation Portal - Draft EUDI Wallet law",
+            "url": "https://www.strategy.bg/bg/public-consultations/12172",
+            "date": "2026-02-15"
+          },
+          {
+            "title": "Namirial Q1 2026 status review",
+            "url": "https://www.namirial.com/en/blog/stories/status-check-eudi-wallet/",
+            "date": "2026-04-09"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          }
+        ]
+      }
     },
     {
       "id": "bhutan-ndi-mobile-wallet",
@@ -741,7 +1027,7 @@
         "country": "BT"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/buthan/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.052Z",
+      "fetchedAt": "2026-07-03T20:14:26.894Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-13T19:56:51.000Z",
       "source": "local"
@@ -779,10 +1065,54 @@
         "country": "CH"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/che/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.587Z",
+      "fetchedAt": "2026-07-03T20:14:26.991Z",
       "updatedAt": "2026-01-10T12:00:00.000Z",
       "firstSeenAt": "2026-01-10T12:00:00.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Switzerland",
+        "isoAlpha2": "CH",
+        "trackerPageSlug": "switzerland",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/switzerland",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/CH.svg",
+        "status": "Public Pilot",
+        "statusOrder": 2,
+        "walletName": "swiyu",
+        "walletProvider": "Swiss Confederation (BIT / FOITT)",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "EWC"
+        ],
+        "notableIssuers": [
+          "PID"
+        ],
+        "notes": "Public beta of swiyu infrastructure ahead of many EU countries on openness. National e-ID launch expected on 1 December 2026 following the September 2025 referendum.",
+        "sources": [
+          {
+            "title": "iGrant.io Research Lab",
+            "url": "https://www.igrant.io/",
+            "date": "2026-05-18"
+          },
+          {
+            "title": "Namirial Q1 2026 status review",
+            "url": "https://www.namirial.com/en/blog/stories/status-check-eudi-wallet/",
+            "date": "2026-04-09"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          },
+          {
+            "title": "swiyu GitHub organisation",
+            "url": "https://github.com/swiyu-admin-ch",
+            "date": "2026-06-24"
+          }
+        ]
+      }
     },
     {
       "id": "swiyu-generic-issuer",
@@ -816,7 +1146,7 @@
         "country": "CH"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/che/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.587Z",
+      "fetchedAt": "2026-07-03T20:14:26.991Z",
       "updatedAt": "2026-01-10T12:00:00.000Z",
       "firstSeenAt": "2026-01-10T12:00:00.000Z",
       "source": "local"
@@ -853,7 +1183,7 @@
         "country": "CH"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/che/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.587Z",
+      "fetchedAt": "2026-07-03T20:14:26.991Z",
       "updatedAt": "2026-01-10T12:00:00.000Z",
       "firstSeenAt": "2026-01-10T12:00:00.000Z",
       "source": "local"
@@ -922,6 +1252,7 @@
           "https://www.youtube.com/watch?v=IIZ7dlF4gmM"
         ]
       },
+      "catalogTier": "Pro",
       "orgId": "org:credenco",
       "provider": {
         "orgId": "org:credenco",
@@ -932,10 +1263,93 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/credenco/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.614Z",
-      "updatedAt": "2026-06-26T10:26:51.586Z",
+      "fetchedAt": "2026-07-03T20:14:27.016Z",
+      "updatedAt": "2026-07-02T05:07:29.808Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
+    },
+    {
+      "id": "certilia-wallet",
+      "name": "Certilia Wallet",
+      "description": "Croatia's Certilia Wallet, provided by the Ministry of Finance / Financial Agency (FINA), is being upgraded for full EUDI Wallet capabilities. The wallet supports high-assurance digital identity use cases and participates in the EWC large-scale pilot. AKD provides complementary digital identity solutions in the Croatian ecosystem.",
+      "type": "personal",
+      "status": "development",
+      "website": "https://www.certilia.com/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://www.google.com/s2/favicons?domain=certilia.com&sz=128",
+      "orgId": "org:croatia",
+      "provider": {
+        "orgId": "org:croatia",
+        "name": "Croatian Government",
+        "website": "https://www.fina.hr/",
+        "logo": "https://flagcdn.com/w80/hr.png",
+        "country": "HR"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/croatia/wallet-catalog.json",
+      "fetchedAt": "2026-07-03T20:14:27.114Z",
+      "updatedAt": "2026-07-03T20:14:27.114Z",
+      "firstSeenAt": "2026-07-03T20:01:49.076Z",
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Croatia",
+        "isoAlpha2": "HR",
+        "trackerPageSlug": "croatia",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/croatia",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/HR.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "Certilia Wallet",
+        "walletProvider": "Ministry of Finance / Financial Agency (FINA)",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "EWC"
+        ],
+        "notableIssuers": [
+          "PID"
+        ],
+        "notes": "The Certilia Wallet is being upgraded for EUDI Wallet capabilities.",
+        "sources": [
+          {
+            "title": "Biometric Update - Croatian digitalization head shares concerns",
+            "url": "https://www.biometricupdate.com/202510/croatian-digitalization-head-shares-concerns-about-eudi-wallet-certification",
+            "date": "2025-10-01"
+          },
+          {
+            "title": "Certilia",
+            "url": "https://www.certilia.com/",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "AKD - EUDI Wallet",
+            "url": "https://www.akd.hr/en/solutions/digital-identity-solutions/eudi-wallet",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "Signicat - EUDI Wallets: only one year to launch",
+            "url": "https://www.signicat.com/blog/eudi-wallets-only-one-year-to-launch",
+            "date": "2025-12-01"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          },
+          {
+            "title": "Identity Week 18 months to launch overview",
+            "url": "https://identityweek.net/18-months-to-launch-is-europe-ready-for-the-eu-digital-id-wallet/",
+            "date": "2025-06-21"
+          }
+        ]
+      }
     },
     {
       "id": "digital-citizen-cyprus",
@@ -962,10 +1376,49 @@
         "country": "CY"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/cyprus/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.636Z",
+      "fetchedAt": "2026-07-03T20:14:27.140Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2024-01-01T00:00:00.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Cyprus",
+        "isoAlpha2": "CY",
+        "trackerPageSlug": "cyprus",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/cyprus",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/CY.svg",
+        "status": "Public Pilot",
+        "statusOrder": 2,
+        "walletName": "Digital Citizen",
+        "walletProvider": "Deputy Ministry of Research, Innovation and Digital Policy",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "POTENTIAL"
+        ],
+        "notableIssuers": [
+          "PID"
+        ],
+        "notes": "The Digital Citizen platform is aligning to the Greek Gov.gr Wallet for mutual recognition.",
+        "sources": [
+          {
+            "title": "Digital Citizen Cyprus",
+            "url": "https://www.digital-citizen.gov.cy/",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "Signicat - EUDI Wallets one year to launch",
+            "url": "https://www.signicat.com/blog/eudi-wallets-only-one-year-to-launch",
+            "date": "2025-12-12"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          }
+        ]
+      }
     },
     {
       "id": "edoklady",
@@ -993,10 +1446,62 @@
         "country": "CZ"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/czechia/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.655Z",
+      "fetchedAt": "2026-07-03T20:14:27.164Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2022-01-01T00:00:00.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Czechia",
+        "isoAlpha2": "CZ",
+        "trackerPageSlug": "czechia",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/czechia",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/CZ.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "National EUDI Wallet (announced)",
+        "walletProvider": "Digital and Information Agency",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "APTITUDE",
+          "DC4EU",
+          "EWC",
+          "POTENTIAL"
+        ],
+        "notableIssuers": [
+          "PID"
+        ],
+        "notes": "DIA-led announced project, no public sandbox. Namirial Q1 2026 places Czechia in the middle band, no longer a laggard.",
+        "sources": [
+          {
+            "title": "Biometric Update - Czechia's EUDI Wallet to go live in early 2027",
+            "url": "https://www.biometricupdate.com/202602/czechias-eudi-wallet-to-go-live-in-early-2027",
+            "date": "2026-02-01"
+          },
+          {
+            "title": "eDoklady on Google Play",
+            "url": "https://play.google.com/store/apps/details?id=cz.gov.edoklady&hl=en_IN",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "eDoklady Portal",
+            "url": "https://edoklady.gov.cz/",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "Namirial Q1 2026 status review",
+            "url": "https://www.namirial.com/en/blog/stories/status-check-eudi-wallet/",
+            "date": "2026-04-09"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          }
+        ]
+      }
     },
     {
       "id": "datakeeper-personal-wallet",
@@ -1023,7 +1528,7 @@
         "country": "NL"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/datakeeper/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.674Z",
+      "fetchedAt": "2026-07-03T20:14:27.192Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-12T19:50:41.000Z",
       "source": "local"
@@ -1059,6 +1564,7 @@
       },
       "openSource": false,
       "status": "production",
+      "catalogTier": "Pro",
       "orgId": "org:digidentity",
       "provider": {
         "orgId": "org:digidentity",
@@ -1069,7 +1575,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/digidentity/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.694Z",
+      "fetchedAt": "2026-07-03T20:14:27.216Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "local"
@@ -1123,7 +1629,7 @@
         "country": "US"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/digitalbazaar/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.713Z",
+      "fetchedAt": "2026-07-03T20:14:27.241Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -1162,16 +1668,68 @@
         "name": "Digitaliseringsstyrelsen",
         "website": "https://digst.dk/",
         "logo": "https://digst.dk/media/cdld0gfa/digst_logo_dk_aubergine_rgb_new_png.png?format=webp&quality=92",
-        "country": "DK",
-        "contact": {
-          "contactUrl": "https://digst.dk/it-loesninger/altid/"
-        }
+        "country": "DK"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/digitaliseringsstyrelsen/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.733Z",
+      "fetchedAt": "2026-07-03T20:14:27.266Z",
       "updatedAt": "2026-06-05T00:00:00.000Z",
       "firstSeenAt": "2026-06-03T00:00:00.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Denmark",
+        "isoAlpha2": "DK",
+        "trackerPageSlug": "denmark",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/denmark",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/DK.svg",
+        "status": "Production (EU Notification Pending)",
+        "statusOrder": 1,
+        "walletName": "AltID",
+        "lspParticipation": [
+          "DC4EU",
+          "EWC",
+          "NOBID"
+        ],
+        "launchOrPilotDate": "2026-06-03",
+        "notableIssuers": [
+          "PID"
+        ],
+        "notes": "Public sandbox available since April 2026. AltID has released both Age Verification and Identity Verification, though it does not yet offer full EUDI Wallet functionality.",
+        "sources": [
+          {
+            "title": "Identity Week - Denmark launches AltID",
+            "url": "https://identityweek.net/denmark-launches-official-digital-identity-wallet-altid/",
+            "date": "2026-06-01"
+          },
+          {
+            "title": "Biometric Update - Denmark launches AltID for proof of age and identity",
+            "url": "https://www.biometricupdate.com/202606/denmark-launches-altid-digital-wallet-for-proof-of-age-identity",
+            "date": "2026-06-01"
+          },
+          {
+            "title": "Biometric Update - AltID to provide ID and age verification with ZKPs",
+            "url": "https://www.biometricupdate.com/202512/denmarks-digital-identity-wallet-altid-to-provide-id-age-verification-zkps",
+            "date": "2025-12-01"
+          },
+          {
+            "title": "iGrant.io Research Lab",
+            "url": "https://www.igrant.io/",
+            "date": "2026-05-18"
+          },
+          {
+            "title": "Danish Agency for Digital Government - AltID",
+            "url": "https://digst.dk/it-loesninger/altid/",
+            "date": "2026-06-04"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          }
+        ]
+      }
     },
     {
       "id": "digiyatra",
@@ -1214,11 +1772,11 @@
         "logo": "https://raw.githubusercontent.com/FIDEScommunity/fides-organization-catalog/main/community-catalogs/digiyatra/digiyatra.webp",
         "country": "IN",
         "contact": {
-          "contactUrl": "mailto:info@digiyatra.org"
+          "email": "info@digiyatra.org"
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/digiyatra/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.752Z",
+      "fetchedAt": "2026-07-03T20:14:27.290Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-04-22T13:33:59.000Z",
       "source": "local"
@@ -1264,7 +1822,7 @@
         "country": "CH"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/docklabs/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.771Z",
+      "fetchedAt": "2026-07-03T20:14:27.313Z",
       "updatedAt": "2026-01-10T12:00:00.000Z",
       "firstSeenAt": "2026-01-10T12:00:00.000Z",
       "source": "local"
@@ -1316,7 +1874,7 @@
         "country": "CH"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/docklabs/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.771Z",
+      "fetchedAt": "2026-07-03T20:14:27.313Z",
       "updatedAt": "2026-01-10T12:00:00.000Z",
       "firstSeenAt": "2026-01-10T12:00:00.000Z",
       "source": "local"
@@ -1344,10 +1902,67 @@
         "country": "EE"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/estonia/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.790Z",
+      "fetchedAt": "2026-07-03T20:14:27.337Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-12T15:59:00.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Estonia",
+        "isoAlpha2": "EE",
+        "trackerPageSlug": "estonia",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/estonia",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/EE.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "National EUDI Wallet (announced)",
+        "walletProvider": "Information System Authority (RIA)",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "EWC",
+          "POTENTIAL"
+        ],
+        "notableIssuers": [
+          "PID",
+          "mDL"
+        ],
+        "qtspPartner": "SK ID Solutions",
+        "notes": "Announced project, no public sandbox. Estonia already runs Smart-ID and Mobile-ID at very high adoption; EUDI work is being built on top of that estate.",
+        "sources": [
+          {
+            "title": "Biometric Update - Estonia launches EUR 21.65m procurement for EUDI Wallet",
+            "url": "https://www.biometricupdate.com/202605/estonia-launches-e21-65m-procurement-for-eu-digital-identity-wallet",
+            "date": "2026-05-01"
+          },
+          {
+            "title": "e-Estonia - Smart-ID",
+            "url": "https://e-estonia.com/solutions/estonian-e-identity/smart-id/",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "EU Trust List - Estonia",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/EE",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "iGrant.io Research Lab",
+            "url": "https://www.igrant.io/",
+            "date": "2026-05-18"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          },
+          {
+            "title": "Identity Week 18 months to launch overview",
+            "url": "https://identityweek.net/18-months-to-launch-is-europe-ready-for-the-eu-digital-id-wallet/",
+            "date": "2025-06-21"
+          }
+        ]
+      }
     },
     {
       "id": "fayda-id",
@@ -1375,7 +1990,7 @@
         "country": "ET"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/ethiopia/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.808Z",
+      "fetchedAt": "2026-07-03T20:14:27.362Z",
       "updatedAt": "2026-02-18T09:00:00.000Z",
       "firstSeenAt": "2026-02-18T09:00:00.000Z",
       "source": "local"
@@ -1413,7 +2028,7 @@
         "country": "EU"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/eu/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.828Z",
+      "fetchedAt": "2026-07-03T20:14:27.389Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-13T19:41:01.000Z",
       "source": "local"
@@ -1449,7 +2064,7 @@
         "country": "EU"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/eu/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.828Z",
+      "fetchedAt": "2026-07-03T20:14:27.389Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-13T19:41:01.000Z",
       "source": "local"
@@ -1482,7 +2097,7 @@
         "country": "EU"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/eu/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.828Z",
+      "fetchedAt": "2026-07-03T20:14:27.389Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-13T19:41:01.000Z",
       "source": "local"
@@ -1516,7 +2131,7 @@
         "country": "EU"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/eu/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.828Z",
+      "fetchedAt": "2026-07-03T20:14:27.389Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-13T19:41:01.000Z",
       "source": "local"
@@ -1546,10 +2161,57 @@
         "country": "FI"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/finland/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.847Z",
+      "fetchedAt": "2026-07-03T20:14:27.413Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-01T00:00:00.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Finland",
+        "isoAlpha2": "FI",
+        "trackerPageSlug": "finland",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/finland",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/FI.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "National EUDI Wallet (announced)",
+        "walletProvider": "Digital and Population Data Services Agency (DVV)",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "DC4EU",
+          "EWC",
+          "POTENTIAL",
+          "WE BUILD"
+        ],
+        "notableIssuers": [
+          "PID"
+        ],
+        "notes": "Public developer repository linked to DVV's wallet work, no confirmed sandbox.",
+        "sources": [
+          {
+            "title": "DVV - European Digital Identity Wallet",
+            "url": "https://dvv.fi/en/european-digital-identity-wallet",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "EU Trust List - Finland",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/FI",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "iGrant.io Research Lab",
+            "url": "https://www.igrant.io/",
+            "date": "2026-05-18"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          }
+        ]
+      }
     },
     {
       "id": "didroom",
@@ -1588,7 +2250,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/forkbomb/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.867Z",
+      "fetchedAt": "2026-07-03T20:14:27.438Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -1619,7 +2281,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/forkbomb/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.867Z",
+      "fetchedAt": "2026-07-03T20:14:27.438Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -1650,10 +2312,64 @@
         "country": "FR"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/france/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.887Z",
+      "fetchedAt": "2026-07-03T20:14:27.462Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2024-01-01T00:00:00.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "France",
+        "isoAlpha2": "FR",
+        "trackerPageSlug": "france",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/france",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/FR.svg",
+        "status": "Production (EU Notification Pending)",
+        "statusOrder": 1,
+        "walletName": "France Identité",
+        "walletProvider": "France Titres (ANTS)",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "APTITUDE",
+          "DC4EU",
+          "EWC",
+          "POTENTIAL"
+        ],
+        "launchOrPilotDate": "2024-04-17",
+        "notableIssuers": [
+          "PID",
+          "mDL"
+        ],
+        "notes": "France Identité is a live production service expanding its functionality and ecosystem integration as it becomes an official EUDI Wallet. Public playground for relying parties. Significant development is also underway through UNFOLD interoperathon events.",
+        "sources": [
+          {
+            "title": "iGrant.io Research Lab",
+            "url": "https://www.igrant.io/",
+            "date": "2026-05-18"
+          },
+          {
+            "title": "France Identité EUDIW Playground",
+            "url": "https://playground.france-identite.gouv.fr/",
+            "date": "2026-03-01"
+          },
+          {
+            "title": "EU Trust List - France",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/FR",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "Namirial Q1 2026 status review",
+            "url": "https://www.namirial.com/en/blog/stories/status-check-eudi-wallet/",
+            "date": "2026-04-09"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          }
+        ]
+      }
     },
     {
       "id": "gataca-wallet",
@@ -1739,6 +2455,7 @@
           "https://s3.eu-west-1.amazonaws.com/gataca.io/assets/videos/Gataca+-+Demo+Video+Onboarding+.mp4"
         ]
       },
+      "catalogTier": "Pro",
       "orgId": "org:gataca",
       "provider": {
         "orgId": "org:gataca",
@@ -1747,11 +2464,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=gataca.io&sz=128",
         "country": "ES",
         "contact": {
-          "contactUrl": "mailto:samuel@gataca.io"
+          "email": "samuel@gataca.io"
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/gataca/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.906Z",
+      "fetchedAt": "2026-07-03T20:14:27.486Z",
       "updatedAt": "2026-03-27T12:00:00.000Z",
       "firstSeenAt": "2026-01-15T12:00:00.000Z",
       "source": "local"
@@ -1840,6 +2557,7 @@
       ],
       "documentation": "https://docs.gataca.io/studio/platform-tutorials/gataca-studio-overview",
       "status": "production",
+      "catalogTier": "Pro",
       "orgId": "org:gataca",
       "provider": {
         "orgId": "org:gataca",
@@ -1848,14 +2566,64 @@
         "logo": "https://www.google.com/s2/favicons?domain=gataca.io&sz=128",
         "country": "ES",
         "contact": {
-          "contactUrl": "mailto:samuel@gataca.io"
+          "email": "samuel@gataca.io"
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/gataca/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.906Z",
+      "fetchedAt": "2026-07-03T20:14:27.486Z",
       "updatedAt": "2026-03-27T12:00:00.000Z",
       "firstSeenAt": "2026-01-15T12:00:00.000Z",
       "source": "local"
+    },
+    {
+      "id": "national-eudi-wallet-georgia",
+      "name": "National EUDI Wallet (Georgia)",
+      "description": "Georgia's national digital identity wallet programme, pursuing EU alignment although Georgia is outside the EU. A tender launched in early 2025 sought candidates to build a national digital ID wallet for citizens.",
+      "type": "personal",
+      "status": "development",
+      "website": "https://www.gov.ge/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/ge.png",
+      "orgId": "org:georgia",
+      "provider": {
+        "orgId": "org:georgia",
+        "name": "Georgian Government",
+        "website": "https://www.gov.ge/",
+        "logo": "https://flagcdn.com/w80/ge.png",
+        "country": "GE"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/georgia/wallet-catalog.json",
+      "fetchedAt": "2026-07-03T20:14:27.584Z",
+      "updatedAt": "2026-07-03T20:14:27.584Z",
+      "firstSeenAt": "2026-07-03T20:01:49.537Z",
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Georgia",
+        "isoAlpha2": "GE",
+        "trackerPageSlug": "georgia",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/georgia",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/GE.svg",
+        "status": "Planned for Production",
+        "statusOrder": 4,
+        "walletName": "National EUDI Wallet (announced)",
+        "notes": "Georgia is outside the EU but pursuing EU alignment. Tender launched in early 2025 seeking candidates to build a national digital ID wallet.",
+        "sources": [
+          {
+            "title": "Biometric Update - Georgia seeks candidates to build digital ID wallet",
+            "url": "https://www.biometricupdate.com/202502/georgia-seeks-candidates-to-build-digital-id-wallet",
+            "date": "2025-02-01"
+          }
+        ]
+      }
     },
     {
       "id": "national-eudi-wallet-germany",
@@ -1892,10 +2660,62 @@
         "country": "DE"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/germany/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.925Z",
+      "fetchedAt": "2026-07-03T20:14:27.610Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-11T10:29:32.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Germany",
+        "isoAlpha2": "DE",
+        "trackerPageSlug": "germany",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/germany",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/DE.svg",
+        "status": "Public Pilot",
+        "statusOrder": 2,
+        "walletName": "National EUDI Wallet (announced)",
+        "lspParticipation": [
+          "APTITUDE",
+          "DC4EU",
+          "EWC",
+          "NOBID",
+          "POTENTIAL"
+        ],
+        "notableIssuers": [
+          "PID"
+        ],
+        "qtspPartner": "D-Trust, Bundesdruckerei",
+        "notes": "Announced project with public sandbox. State-driven version scheduled to launch on 2 January 2027, then opening the market to private wallet providers in 2028. Sandbox and prototype challenge in progress.",
+        "sources": [
+          {
+            "title": "iGrant.io Research Lab",
+            "url": "https://www.igrant.io/",
+            "date": "2026-05-18"
+          },
+          {
+            "title": "BMDS - EUDI Wallet page",
+            "url": "https://bmds.bund.de/themen/digitaler-staat/digitale-identitaeten/eudi-wallet",
+            "date": "2026-03-01"
+          },
+          {
+            "title": "EU Trust List - Germany",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/DE",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "Namirial Q1 2026 status review",
+            "url": "https://www.namirial.com/en/blog/stories/status-check-eudi-wallet/",
+            "date": "2026-04-09"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          }
+        ]
+      }
     },
     {
       "id": "google-wallet",
@@ -1925,7 +2745,7 @@
         "country": "US"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/google/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.944Z",
+      "fetchedAt": "2026-07-03T20:14:27.634Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "local"
@@ -1956,7 +2776,7 @@
         "country": "GR"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/greece/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.964Z",
+      "fetchedAt": "2026-07-03T20:14:27.658Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2022-01-01T00:00:00.000Z",
       "source": "local"
@@ -1985,10 +2805,59 @@
         "country": "GR"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/greece/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.964Z",
+      "fetchedAt": "2026-07-03T20:14:27.658Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-01T00:00:00.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Greece",
+        "isoAlpha2": "GR",
+        "trackerPageSlug": "greece",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/greece",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/GR.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "National EUDI Wallet (announced)",
+        "walletProvider": "Ministry of Digital Governance",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "APTITUDE",
+          "DC4EU",
+          "EWC",
+          "POTENTIAL",
+          "WE BUILD"
+        ],
+        "notableIssuers": [
+          "PID",
+          "mDL"
+        ],
+        "notes": "Gov.gr Wallet is in closed pilot. Upgrade to EUDI Wallet officially confirmed; details on production scope still limited.",
+        "sources": [
+          {
+            "title": "EU Trust List - Greece",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/EL",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "iGrant.io Research Lab",
+            "url": "https://www.igrant.io/",
+            "date": "2026-05-18"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          },
+          {
+            "title": "Namirial Q1 2026 status review",
+            "url": "https://www.namirial.com/en/blog/stories/status-check-eudi-wallet/",
+            "date": "2026-04-09"
+          }
+        ]
+      }
     },
     {
       "id": "helix-id-wallet",
@@ -2051,6 +2920,7 @@
         "ISO 18013-5"
       ],
       "releaseDate": "2020-01-01",
+      "catalogTier": "Pro",
       "orgId": "org:helixid",
       "provider": {
         "orgId": "org:helixid",
@@ -2059,11 +2929,11 @@
         "logo": "https://helixid.io/wp-content/uploads/2019/06/cropped-id-180x180.png",
         "country": "DE",
         "contact": {
-          "contactUrl": "mailto:oliver@blockchain-helix.com"
+          "email": "oliver@blockchain-helix.com"
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/helixid/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:23.984Z",
+      "fetchedAt": "2026-07-03T20:14:27.681Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2020-01-01T00:00:00.000Z",
       "source": "local"
@@ -2092,7 +2962,7 @@
         "country": "HN"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/honduras/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.003Z",
+      "fetchedAt": "2026-07-03T20:14:27.708Z",
       "updatedAt": "2026-02-18T10:15:00.000Z",
       "firstSeenAt": "2026-02-18T10:15:00.000Z",
       "source": "local"
@@ -2163,6 +3033,7 @@
       },
       "status": "production",
       "releaseDate": "2024-10-01",
+      "catalogTier": "Pro",
       "orgId": "org:hovi",
       "provider": {
         "orgId": "org:hovi",
@@ -2171,12 +3042,12 @@
         "logo": "https://cdn.prod.website-files.com/659dad70ef0ae858f66ae208/6966ba7d3a1f6bb1adf4a924_hovi-logo-white.png",
         "country": "FI",
         "contact": {
-          "contactUrl": "mailto:contact@hovi.id"
+          "email": "contact@hovi.id"
         },
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/hovi/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.022Z",
+      "fetchedAt": "2026-07-03T20:14:27.731Z",
       "updatedAt": "2026-03-31T12:00:00.000Z",
       "firstSeenAt": "2024-10-01T00:00:00.000Z",
       "source": "local"
@@ -2248,6 +3119,7 @@
         "EUDI Ready",
         "Multi-language support"
       ],
+      "catalogTier": "Pro",
       "orgId": "org:hovi",
       "provider": {
         "orgId": "org:hovi",
@@ -2256,12 +3128,12 @@
         "logo": "https://cdn.prod.website-files.com/659dad70ef0ae858f66ae208/6966ba7d3a1f6bb1adf4a924_hovi-logo-white.png",
         "country": "FI",
         "contact": {
-          "contactUrl": "mailto:contact@hovi.id"
+          "email": "contact@hovi.id"
         },
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/hovi/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.022Z",
+      "fetchedAt": "2026-07-03T20:14:27.731Z",
       "updatedAt": "2026-03-31T12:00:00.000Z",
       "firstSeenAt": "2024-10-01T00:00:00.000Z",
       "source": "local"
@@ -2290,10 +3162,47 @@
         "country": "HU"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/hungary/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.043Z",
+      "fetchedAt": "2026-07-03T20:14:27.756Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2024-01-01T00:00:00.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Hungary",
+        "isoAlpha2": "HU",
+        "trackerPageSlug": "hungary",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/hungary",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/HU.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "National EUDI Wallet (announced)",
+        "walletProvider": "Digitális Magyarország Ügynökség (DMA)",
+        "assuranceLevel": "substantial",
+        "lspParticipation": [
+          "APTITUDE",
+          "DC4EU",
+          "EWC",
+          "POTENTIAL"
+        ],
+        "notableIssuers": [
+          "PID"
+        ],
+        "notes": "DÁP (Digitális Állampolgárság Program) wallet deployed at national level. EUDI upgrade not yet officially confirmed per eIDEasy.",
+        "sources": [
+          {
+            "title": "EU Trust List - Hungary",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/HU",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          }
+        ]
+      }
     },
     {
       "id": "national-eudi-wallet-iceland",
@@ -2319,10 +3228,55 @@
         "country": "IS"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/iceland/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.062Z",
+      "fetchedAt": "2026-07-03T20:14:27.780Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2027-01-01T00:00:00.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Iceland",
+        "isoAlpha2": "IS",
+        "trackerPageSlug": "iceland",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/iceland",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/IS.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "National EUDI Wallet (announced)",
+        "walletProvider": "Digital Iceland (Stafrænt Ísland)",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "NOBID"
+        ],
+        "notableIssuers": [
+          "PID"
+        ],
+        "qtspPartner": "Idemia",
+        "notes": "Launch announced for 2026 with Idemia as technology partner, one year before Iceland's EEA deadline of December 2027.",
+        "sources": [
+          {
+            "title": "EU Trust List - Iceland",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/IS",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "iGrant.io Research Lab",
+            "url": "https://www.igrant.io/",
+            "date": "2026-05-18"
+          },
+          {
+            "title": "FIDES Community - National EUDI Wallet Iceland",
+            "url": "https://fides.community/ecosystem-explorer/personal-wallets/?wallet=national-eudi-wallet-iceland",
+            "date": "2025-11-01"
+          },
+          {
+            "title": "NOBID Consortium wrap-up",
+            "url": "https://www.nobidconsortium.com/nobid-wraps-up-successful-pilot-under-the-european-digital-identity-wallet-programme/",
+            "date": "2025-06-26"
+          }
+        ]
+      }
     },
     {
       "id": "igrant-data-wallet",
@@ -2409,6 +3363,7 @@
           "https://www.youtube.com/shorts/RqDw7n9Ck9k"
         ]
       },
+      "catalogTier": "Pro",
       "orgId": "org:igrant",
       "provider": {
         "orgId": "org:igrant",
@@ -2417,11 +3372,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=igrant.io&sz=128",
         "country": "SE",
         "contact": {
-          "contactUrl": "mailto:support@igrant.io"
+          "email": "support@igrant.io"
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/igrant/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.081Z",
+      "fetchedAt": "2026-07-03T20:14:27.803Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2021-06-01T00:00:00.000Z",
       "source": "local"
@@ -2506,6 +3461,7 @@
           "https://youtu.be/3VktTStWHs8?si=sV0jJiA5Z1bZAiY-"
         ]
       },
+      "catalogTier": "Pro",
       "orgId": "org:igrant",
       "provider": {
         "orgId": "org:igrant",
@@ -2514,11 +3470,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=igrant.io&sz=128",
         "country": "SE",
         "contact": {
-          "contactUrl": "mailto:support@igrant.io"
+          "email": "support@igrant.io"
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/igrant/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.081Z",
+      "fetchedAt": "2026-07-03T20:14:27.803Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -2557,6 +3513,7 @@
         "android": "https://play.google.com/store/apps/details?id=com.impierce.identity_wallet"
       },
       "status": "production",
+      "catalogTier": "Pro",
       "orgId": "org:impierce",
       "provider": {
         "orgId": "org:impierce",
@@ -2567,7 +3524,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/impierce/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.101Z",
+      "fetchedAt": "2026-07-03T20:14:27.827Z",
       "updatedAt": "2026-02-16T12:00:00.000Z",
       "firstSeenAt": "2026-02-16T12:00:00.000Z",
       "source": "local"
@@ -2608,6 +3565,7 @@
       "license": "Apache-2.0",
       "repository": "https://github.com/impierce/ssi-agent",
       "status": "production",
+      "catalogTier": "Pro",
       "orgId": "org:impierce",
       "provider": {
         "orgId": "org:impierce",
@@ -2618,7 +3576,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/impierce/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.101Z",
+      "fetchedAt": "2026-07-03T20:14:27.827Z",
       "updatedAt": "2026-02-16T12:00:00.000Z",
       "firstSeenAt": "2026-02-16T12:00:00.000Z",
       "source": "local"
@@ -2651,7 +3609,7 @@
         "country": "IN"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/india/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.120Z",
+      "fetchedAt": "2026-07-03T20:14:27.850Z",
       "updatedAt": "2026-02-18T08:15:00.000Z",
       "firstSeenAt": "2026-02-18T08:15:00.000Z",
       "source": "local"
@@ -2683,6 +3641,7 @@
       "website": "https://www.engage.inetum.com/dalion/",
       "openSource": false,
       "status": "production",
+      "catalogTier": "Pro",
       "orgId": "org:inetum",
       "provider": {
         "orgId": "org:inetum",
@@ -2692,7 +3651,7 @@
         "country": "ES"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/inetum/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.139Z",
+      "fetchedAt": "2026-07-03T20:14:27.884Z",
       "updatedAt": "2026-03-05T12:00:00.000Z",
       "firstSeenAt": "2026-03-05T12:00:00.000Z",
       "source": "local"
@@ -2729,6 +3688,7 @@
       "website": "https://www.engage.inetum.com/dalion/",
       "openSource": false,
       "status": "production",
+      "catalogTier": "Pro",
       "orgId": "org:inetum",
       "provider": {
         "orgId": "org:inetum",
@@ -2738,7 +3698,7 @@
         "country": "ES"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/inetum/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.139Z",
+      "fetchedAt": "2026-07-03T20:14:27.884Z",
       "updatedAt": "2026-03-05T12:00:00.000Z",
       "firstSeenAt": "2026-03-05T12:00:00.000Z",
       "source": "local"
@@ -2775,7 +3735,7 @@
         "country": "GB"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/intercede/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.158Z",
+      "fetchedAt": "2026-07-03T20:14:27.909Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-19T11:32:53.000Z",
       "source": "local"
@@ -2803,10 +3763,50 @@
         "country": "IE"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/ireland/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.177Z",
+      "fetchedAt": "2026-07-03T20:14:27.937Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-12T15:28:59.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Ireland",
+        "isoAlpha2": "IE",
+        "trackerPageSlug": "ireland",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/ireland",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/IE.svg",
+        "status": "Public Pilot",
+        "statusOrder": 2,
+        "walletName": "National EUDI Wallet (announced)",
+        "walletProvider": "Department of the Environment, Climate and Communications",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "DC4EU",
+          "EWC"
+        ],
+        "notableIssuers": [
+          "PID"
+        ],
+        "notes": "Ireland opened early public access to a test wallet in April 2026, joining France and Germany as one of the most accessible ecosystems.",
+        "sources": [
+          {
+            "title": "Gov.ie - Government Digital Wallet questions answered",
+            "url": "https://www.gov.ie/en/department-of-public-expenditure-infrastructure-public-service-reform-and-digitalisation/publications/government-digital-wallet-your-questions-answered/#mygovid-and-the-government-digital-wallet",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "EU Trust List - Ireland",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/IE",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          }
+        ]
+      }
     },
     {
       "id": "it-wallet",
@@ -2834,10 +3834,83 @@
         "country": "IT"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/italy/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.196Z",
+      "fetchedAt": "2026-07-03T20:14:27.961Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2024-01-01T00:00:00.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Italy",
+        "isoAlpha2": "IT",
+        "trackerPageSlug": "italy",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/italy",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/IT.svg",
+        "status": "Production (EU Notification Pending)",
+        "statusOrder": 1,
+        "walletName": "Sistema IT-Wallet (IO app + private wallets)",
+        "walletProvider": "Department for Digital Transformation / PagoPA",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "APTITUDE",
+          "DC4EU",
+          "EWC",
+          "NOBID",
+          "POTENTIAL",
+          "WE BUILD"
+        ],
+        "launchOrPilotDate": "2024-12-04",
+        "notableIssuers": [
+          "PID",
+          "mDL",
+          "EHIC"
+        ],
+        "qtspPartner": "Namirial, InfoCert, Aruba PEC",
+        "notes": "Italy's IT-Wallet system pairs the public IO app with accredited private wallets, with citizens activating via CIE or SPID. SPID has 41.5 million registered users, making Italy one of the most operationally advanced EUDI transition cases in Europe.",
+        "sources": [
+          {
+            "title": "FIDES Community - IT-Wallet",
+            "url": "https://fides.community/ecosystem-explorer/personal-wallets/?wallet=it-wallet",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "Innovazione.gov.it - IT-Wallet three digital documents available",
+            "url": "https://innovazione.gov.it/notizie/articoli/en/it-wallet-three-digital-documents-available-for-all-italian-citizens-and-resident/",
+            "date": "2025-12-04"
+          },
+          {
+            "title": "EU Trust List - Italy",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/IT",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "iGrant.io Research Lab",
+            "url": "https://www.igrant.io/",
+            "date": "2026-05-18"
+          },
+          {
+            "title": "Dipartimento per la trasformazione digitale - Sistema IT-Wallet",
+            "url": "https://innovazione.gov.it/progetti/sistema-it-wallet/",
+            "date": "2025-12-01"
+          },
+          {
+            "title": "Namirial Q1 2026 status review",
+            "url": "https://www.namirial.com/en/blog/stories/status-check-eudi-wallet/",
+            "date": "2026-04-09"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          },
+          {
+            "title": "EC Launchpad Demos - Italy",
+            "url": "https://ec.europa.eu/digital-building-blocks/sites/download/attachments/930448024/IT.pdf",
+            "date": "2026-06-24"
+          }
+        ]
+      }
     },
     {
       "id": "ixo-portal",
@@ -2868,7 +3941,7 @@
         "country": "CH"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/ixo/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.216Z",
+      "fetchedAt": "2026-07-03T20:14:27.986Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-13T19:07:51.000Z",
       "source": "local"
@@ -2939,6 +4012,7 @@
         "iOS": "https://apps.apple.com/ec/app/identfy/id6476503276",
         "android": "https://play.google.com/store/apps/details?id=com.identfywallet.app"
       },
+      "catalogTier": "Pro",
       "orgId": "org:izertis",
       "provider": {
         "orgId": "org:izertis",
@@ -2948,7 +4022,7 @@
         "country": "ES"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/izertis/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.240Z",
+      "fetchedAt": "2026-07-03T20:14:28.010Z",
       "updatedAt": "2026-05-18T12:00:00.000Z",
       "firstSeenAt": "2026-03-16T12:00:00.000Z",
       "source": "local"
@@ -3018,6 +4092,7 @@
       "openSource": false,
       "status": "production",
       "logo": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMF82MDMyXzMpIj4KPHBhdGggZD0iTTk5IDY0OVYyNDZIMjE1VjY0OUg5OVoiIGZpbGw9IiNFQjVCNUIiLz4KPHBhdGggZD0iTTIzMCAxMjAuNjMyQzIyOS45NDEgMTQwLjg1MiAyMjMuMDM5IDE1Ni45NzYgMjA5LjMyMyAxNjkuMDMyQzE5NS42MzcgMTgxLjA2IDE3OC4xMzIgMTg3LjAyOSAxNTYuODY5IDE4N0MxMzUuNTc1IDE4Ni45NzEgMTE4LjI0NyAxODAuNTkxIDEwNC45MTMgMTY3Ljk3OUM5MS42MDg0IDE1NS4zMDggODQuOTcwNyAxMzkuNDQ4IDg1LjAwMDEgMTIwLjMzOUM4NS4wNTg4IDEwMC43MzMgOTEuNzI1OCA4NC43ODQ3IDEwNS4xMTkgNzIuNDA2NUMxMTguNTExIDYwLjA4NjggMTM1Ljg5OCA1My45NzA4IDE1Ny4xNjIgNTQuMDAwMUMxNzkuMDQzIDU0LjAyOTQgMTk2LjY2NSA2MC4yNjI0IDIxMC4wMjggNzIuNjExM0MyMjMuMzMzIDg1LjAxODggMjMwLjAyOSAxMDEuMDI2IDIyOS45NzEgMTIwLjYzMkgyMzBaIiBmaWxsPSIjRUI1QjVCIi8+CjxwYXRoIGQ9Ik0zNDUuOTE2IDUzNi45NzlDMzE5LjM3NCA1MzYuOTc5IDI5NS40NTcgNTMwLjk0NyAyNzQuMTQ1IDUxOC45MDNDMjUyLjgzNCA1MDYuODU5IDIzNS45OTMgNDg5Ljk5MyAyMjMuNjA0IDQ2OC4zNDdDMjExLjE5NSA0NDYuNzAxIDIwNSA0MjEuMTk3IDIwNSAzOTEuODU2QzIwNSAzNjIuNTE2IDIxMS4xOTUgMzM2LjQ5OSAyMjMuNjA0IDMxNC44MzJDMjM1Ljk5MyAyOTMuMTg2IDI1Mi44NTQgMjc2LjQwMiAyNzQuMTQ1IDI2NC41MjJDMjk1LjQzNiAyNTIuNjQyIDMxOS4zNzQgMjQ2LjcxMyAzNDUuOTE2IDI0Ni43MTNDMzY5LjY2OSAyNDYuNzEzIDM5MC40NDcgMjUxLjk0NSA0MDguMjUxIDI2Mi40MjlDNDI2LjA1NiAyNzIuOTE0IDQzOS44NiAyODguODE1IDQ0OS42MjQgMzEwLjExM0M0NTkuMzg3IDMzMS40MzEgNDY0LjI5IDM1OC42NzkgNDY0LjI5IDM5MS44NTZDNDY0LjI5IDQyNS4wMzQgNDczLjcyNSA0OTcuNDIxIDQ2NC4yOSA1MTguOTAzQzQ1NC44NTQgNTQwLjM4NSA0MjcuMTYzIDUxMC43OTkgNDA5LjU0NCA1MjEuMjgzQzM5MS45MDMgNTMxLjc2OCAzNzAuNjk0IDUzNyAzNDUuODk2IDUzN0wzNDUuOTE2IDUzNi45NzlaTTM2MC4wNjkgNDY5LjkwNkMzNzMuMzQgNDY5LjkwNiAzODUuMzgxIDQ2Ni43NjcgMzk2LjIxMSA0NjAuNDY4QzQwNy4wMjEgNDU0LjE5IDQxNS42NzcgNDQ1LjE4MiA0MjIuMTM4IDQzMy40ODdDNDI4LjU5OSA0MjEuNzkyIDQzMS44MTkgNDA3LjkwMSA0MzEuODE5IDM5MS44MzZDNDMxLjgxOSAzNzUuNzcgNDI4LjU3OSAzNjEuNDQ5IDQyMi4xMzggMzQ5LjkxOEM0MTUuNjc3IDMzOC4zODcgNDA3LjAyMSAzMjkuNDgyIDM5Ni4yMTEgMzIzLjIwM0MzODUuMzgxIDMxNi45MjUgMzczLjM0IDMxMy43NjUgMzYwLjA2OSAzMTMuNzY1QzM0Ni43OTggMzEzLjc2NSAzMzQuMjI0IDMxNi45MDQgMzIzLjM5NCAzMjMuMjAzQzMxMi41NjQgMzI5LjQ4MiAzMDMuOTI4IDMzOC40MDcgMjk3LjQ2NyAzNDkuOTE4QzI5MS4wMDYgMzYxLjQ0OSAyODcuNzg2IDM3NS40MjEgMjg3Ljc4NiAzOTEuODM2QzI4Ny43ODYgNDA4LjI1IDI5MS4wMDYgNDIxLjc5MiAyOTcuNDY3IDQzMy40ODdDMzAzLjkyOCA0NDUuMjAzIDMxMi41NjQgNDU0LjE5IDMyMy4zOTQgNDYwLjQ2OEMzMzQuMjI0IDQ2Ni43NDcgMzQ2LjQ0OSA0NjkuOTA2IDM2MC4wNjkgNDY5LjkwNlpNNDMzLjkzMiA1MzIuNzk0VjQ3NS4xNTlMNDM1LjUxMiAzOTEuMzIzTDQzMC4yODEgMzA4LjAyVjIyNi4wMVYxNDRINTEyVjUzMi43OTRINDMzLjk1M0g0MzMuOTMyWiIgZmlsbD0iI0VCNUI1QiIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzYwMzJfMyI+CjxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=",
+      "catalogTier": "Pro",
       "orgId": "org:izertis",
       "provider": {
         "orgId": "org:izertis",
@@ -3027,7 +4102,7 @@
         "country": "ES"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/izertis/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.240Z",
+      "fetchedAt": "2026-07-03T20:14:28.010Z",
       "updatedAt": "2026-05-18T12:00:00.000Z",
       "firstSeenAt": "2026-03-16T12:00:00.000Z",
       "source": "local"
@@ -3069,6 +4144,7 @@
       ],
       "openSource": false,
       "status": "production",
+      "catalogTier": "Pro",
       "orgId": "org:k4security",
       "provider": {
         "orgId": "org:k4security",
@@ -3077,11 +4153,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=k4-security.com&sz=128",
         "country": "KR",
         "contact": {
-          "contactUrl": "mailto:contact@k4-security.com"
+          "email": "contact@k4-security.com"
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/k4security/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.259Z",
+      "fetchedAt": "2026-07-03T20:14:28.034Z",
       "updatedAt": "2026-03-03T00:00:00.000Z",
       "firstSeenAt": "2026-03-03T00:00:00.000Z",
       "source": "local"
@@ -3109,10 +4185,118 @@
         "country": "LV"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/latvia/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.279Z",
+      "fetchedAt": "2026-07-03T20:14:28.058Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-12T16:00:02.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Latvia",
+        "isoAlpha2": "LV",
+        "trackerPageSlug": "latvia",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/latvia",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/LV.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "National EUDI Wallet (announced)",
+        "walletProvider": "State Digital Development Agency (VDAA)",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "APTITUDE",
+          "NOBID"
+        ],
+        "notableIssuers": [
+          "PID"
+        ],
+        "notes": "Latvia developed an EUDIW prototype used in the Large Scale Pilots. Initial release with basic functionality planned for December 2026.",
+        "sources": [
+          {
+            "title": "EU Trust List - Latvia",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/LV",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "Signicat - EUDI Wallets one year to launch",
+            "url": "https://www.signicat.com/blog/eudi-wallets-only-one-year-to-launch",
+            "date": "2025-12-12"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          }
+        ]
+      }
+    },
+    {
+      "id": "eid-li",
+      "name": "eID.li",
+      "description": "Official Liechtenstein government identity wallet enabling citizens to store and present digital identity documents and verifiable credentials on mobile devices.",
+      "type": "personal",
+      "status": "production",
+      "website": "https://www.llv.li",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "vcFormat": [
+        "mdoc"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://www.google.com/s2/favicons?domain=llv.li&sz=128",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/us/app/eid-li/id1490404943",
+        "android": "https://play.google.com/store/apps/details?id=li.llv.eidli.app"
+      },
+      "orgId": "org:liechtenstein",
+      "provider": {
+        "orgId": "org:liechtenstein",
+        "name": "Liechtenstein Government",
+        "website": "https://www.llv.li",
+        "logo": "https://www.google.com/s2/favicons?domain=llv.li&sz=128",
+        "country": "LI"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/liechtenstein/wallet-catalog.json",
+      "fetchedAt": "2026-07-03T20:14:28.154Z",
+      "updatedAt": "2026-07-03T20:14:28.154Z",
+      "firstSeenAt": "2026-07-03T19:58:58.743Z",
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Liechtenstein",
+        "isoAlpha2": "LI",
+        "trackerPageSlug": "liechtenstein",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/liechtenstein",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/LI.svg",
+        "status": "Planned for Production",
+        "statusOrder": 4,
+        "walletName": "eID.li",
+        "walletProvider": "Office for Information Technology (AI)",
+        "assuranceLevel": "high",
+        "notableIssuers": [
+          "PID",
+          "mDL"
+        ],
+        "notes": "Existing eID.li app supports identity, driving licence, QES and cross-border commuter registration. Planned for EUDI Wallet adaptation; EEA deadline is December 2027.",
+        "sources": [
+          {
+            "title": "EU Trust List - Liechtenstein",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/LI",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "Identity Week 18 months overview",
+            "url": "https://identityweek.net/18-months-to-launch-is-europe-ready-for-the-eu-digital-id-wallet/",
+            "date": "2025-06-21"
+          }
+        ]
+      }
     },
     {
       "id": "lissi-wallet",
@@ -3183,6 +4367,7 @@
           }
         ]
       },
+      "catalogTier": "Pro",
       "orgId": "org:lissi",
       "provider": {
         "orgId": "org:lissi",
@@ -3191,11 +4376,11 @@
         "logo": "https://www.google.com/s2/favicons?domain=lissi.id&sz=128",
         "country": "DE",
         "contact": {
-          "contactUrl": "mailto:info@lissi.id"
+          "email": "info@lissi.id"
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/lissi/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.298Z",
+      "fetchedAt": "2026-07-03T20:14:28.182Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2021-01-15T00:00:00.000Z",
       "source": "local"
@@ -3239,6 +4424,7 @@
       ],
       "documentation": "https://docs.lissi.id",
       "status": "production",
+      "catalogTier": "Pro",
       "orgId": "org:lissi",
       "provider": {
         "orgId": "org:lissi",
@@ -3247,14 +4433,226 @@
         "logo": "https://www.google.com/s2/favicons?domain=lissi.id&sz=128",
         "country": "DE",
         "contact": {
-          "contactUrl": "mailto:info@lissi.id"
+          "email": "info@lissi.id"
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/lissi/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.298Z",
+      "fetchedAt": "2026-07-03T20:14:28.182Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
+    },
+    {
+      "id": "national-eudi-wallet-lithuania",
+      "name": "National EUDI Wallet (Lithuania)",
+      "description": "Lithuania's announced national European Digital Identity Wallet programme, led by the Informatics and Communications Department under the Ministry of the Interior. The project participates in APTITUDE, DC4EU, and POTENTIAL large-scale pilots; no public sandbox is available yet.",
+      "type": "personal",
+      "status": "development",
+      "website": "https://www.vrm.lt/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/lt.png",
+      "orgId": "org:lithuania",
+      "provider": {
+        "orgId": "org:lithuania",
+        "name": "Lithuanian Government",
+        "website": "https://www.vrm.lt/",
+        "logo": "https://flagcdn.com/w80/lt.png",
+        "country": "LT"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/lithuania/wallet-catalog.json",
+      "fetchedAt": "2026-07-03T20:14:28.280Z",
+      "updatedAt": "2026-07-03T20:14:28.280Z",
+      "firstSeenAt": "2026-07-03T20:01:50.192Z",
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Lithuania",
+        "isoAlpha2": "LT",
+        "trackerPageSlug": "lithuania",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/lithuania",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/LT.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "National EUDI Wallet (announced)",
+        "walletProvider": "Informatics and Communications Department, Ministry of the Interior",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "APTITUDE",
+          "DC4EU",
+          "POTENTIAL"
+        ],
+        "notableIssuers": [
+          "PID"
+        ],
+        "notes": "Announced project, no public sandbox.",
+        "sources": [
+          {
+            "title": "EU Trust List - Lithuania",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/LT",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          }
+        ]
+      }
+    },
+    {
+      "id": "national-eudi-wallet-luxembourg",
+      "name": "National EUDI Wallet (Luxembourg)",
+      "description": "Luxembourg's national EUDI Wallet programme under the Ministry for Digitalisation, upgrading the existing GouvID app for EUDI compliance. INCERT partners with HOPAE on wallet services; LuxTrust serves as QTSP partner. Participates in DC4EU, EWC, and POTENTIAL large-scale pilots.",
+      "type": "personal",
+      "status": "development",
+      "website": "https://guichet.public.lu/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/lu.png",
+      "orgId": "org:luxembourg",
+      "provider": {
+        "orgId": "org:luxembourg",
+        "name": "Luxembourg Government",
+        "website": "https://gouvernement.lu/",
+        "logo": "https://flagcdn.com/w80/lu.png",
+        "country": "LU"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/luxembourg/wallet-catalog.json",
+      "fetchedAt": "2026-07-03T20:14:28.377Z",
+      "updatedAt": "2026-07-03T20:14:28.377Z",
+      "firstSeenAt": "2026-07-03T20:01:50.291Z",
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Luxembourg",
+        "isoAlpha2": "LU",
+        "trackerPageSlug": "luxembourg",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/luxembourg",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/LU.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "National EUDI Wallet (announced)",
+        "walletProvider": "Ministry for Digitalisation / INCERT",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "DC4EU",
+          "EWC",
+          "POTENTIAL"
+        ],
+        "notableIssuers": [
+          "PID"
+        ],
+        "qtspPartner": "LuxTrust",
+        "notes": "Existing GouvID app being upgraded. INCERT partnering with HOPAE on wallet services.",
+        "sources": [
+          {
+            "title": "EU Trust List - Luxembourg",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/LU",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          },
+          {
+            "title": "Identity Week 18 months overview",
+            "url": "https://identityweek.net/18-months-to-launch-is-europe-ready-for-the-eu-digital-id-wallet/",
+            "date": "2025-06-21"
+          }
+        ]
+      }
+    },
+    {
+      "id": "national-digital-wallet-malta",
+      "name": "National Digital Wallet (Malta)",
+      "description": "Malta's announced National Digital Wallet programme under the Malta Digital Innovation Authority (MDIA), targeting delivery ahead of the eIDAS 2.0 EUDI Wallet deadline. Participates in DC4EU and WE BUILD large-scale pilots; analysts note Malta may achieve only partial availability by the December 2026 deadline.",
+      "type": "personal",
+      "status": "development",
+      "website": "https://mdia.gov.mt/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/mt.png",
+      "orgId": "org:malta",
+      "provider": {
+        "orgId": "org:malta",
+        "name": "Malta Government",
+        "website": "https://mdia.gov.mt/",
+        "logo": "https://flagcdn.com/w80/mt.png",
+        "country": "MT"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/malta/wallet-catalog.json",
+      "fetchedAt": "2026-07-03T20:14:28.475Z",
+      "updatedAt": "2026-07-03T20:14:28.475Z",
+      "firstSeenAt": "2026-07-03T20:01:50.391Z",
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Malta",
+        "isoAlpha2": "MT",
+        "trackerPageSlug": "malta",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/malta",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/MT.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "National Digital Wallet (announced)",
+        "walletProvider": "Malta Digital Innovation Authority",
+        "assuranceLevel": "substantial",
+        "lspParticipation": [
+          "DC4EU",
+          "WE BUILD"
+        ],
+        "notes": "Announced project, no public sandbox. Identity Week and Namirial note Malta is expected to deliver only partial availability by deadline.",
+        "sources": [
+          {
+            "title": "Sumsub - Malta to launch digital wallet by EUDI 2026",
+            "url": "https://sumsub.com/media/news/malta-to-launch-digital-wallet-by-eudi-2026/",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "EU Trust List - Malta",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/MT",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "iGrant.io Research Lab",
+            "url": "https://www.igrant.io/",
+            "date": "2026-05-18"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          },
+          {
+            "title": "Identity Week 18 months overview",
+            "url": "https://identityweek.net/18-months-to-launch-is-europe-ready-for-the-eu-digital-id-wallet/",
+            "date": "2025-06-21"
+          }
+        ]
+      }
     },
     {
       "id": "mattr-vii",
@@ -3308,7 +4706,7 @@
         "country": "NZ"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/mattr/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.320Z",
+      "fetchedAt": "2026-07-03T20:14:28.501Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -3339,7 +4737,7 @@
         "country": "NZ"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/mattr/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.320Z",
+      "fetchedAt": "2026-07-03T20:14:28.501Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -3381,7 +4779,7 @@
         "country": "AU"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/meeco/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.341Z",
+      "fetchedAt": "2026-07-03T20:14:28.525Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -3411,7 +4809,7 @@
         "country": "AU"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/meeco/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.341Z",
+      "fetchedAt": "2026-07-03T20:14:28.525Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -3453,7 +4851,7 @@
         "country": "US"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/microsoft/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.366Z",
+      "fetchedAt": "2026-07-03T20:14:28.548Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "local"
@@ -3493,7 +4891,7 @@
         "country": "FI"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/minisuomi/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.385Z",
+      "fetchedAt": "2026-07-03T20:14:28.571Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -3541,10 +4939,46 @@
         "country": "MD"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/moldova/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.405Z",
+      "fetchedAt": "2026-07-03T20:14:28.595Z",
       "updatedAt": "2026-03-23T00:00:00.000Z",
       "firstSeenAt": "2026-03-23T00:00:00.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Moldova",
+        "isoAlpha2": "MD",
+        "trackerPageSlug": "moldova",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/moldova",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/MD.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "EVO Wallet",
+        "walletProvider": "",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "WE BUILD"
+        ],
+        "notes": "Closed pilot with the EVO Wallet. The sandbox is closed; access requires onboarding through Moldova's national trust scheme.",
+        "sources": [
+          {
+            "title": "Radio Moldova - Moldova's path toward the EUDI Wallet",
+            "url": "https://radiomoldova.md/p/78045",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "Paradym - Moldova's pragmatic path toward the EUDI Wallet",
+            "url": "https://paradym.id/articles/moldovas-pragmatic-path-toward-the-eudi-wallet",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "iGrant.io Research Lab",
+            "url": "https://www.igrant.io/",
+            "date": "2026-06-24"
+          }
+        ]
+      }
     },
     {
       "id": "inji-wallet",
@@ -3580,6 +5014,7 @@
       "appStoreLinks": {
         "web": "https://injiweb.collab.mosip.net/"
       },
+      "catalogTier": "Pro",
       "orgId": "org:mosip",
       "provider": {
         "orgId": "org:mosip",
@@ -3590,7 +5025,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/mosip/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.432Z",
+      "fetchedAt": "2026-07-03T20:14:28.619Z",
       "updatedAt": "2026-02-18T07:45:00.000Z",
       "firstSeenAt": "2026-02-18T07:45:00.000Z",
       "source": "local"
@@ -3621,6 +5056,7 @@
       "repository": "https://github.com/mosip",
       "status": "production",
       "documentation": "https://docs.mosip.io",
+      "catalogTier": "Pro",
       "orgId": "org:mosip",
       "provider": {
         "orgId": "org:mosip",
@@ -3631,7 +5067,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/mosip/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.432Z",
+      "fetchedAt": "2026-07-03T20:14:28.619Z",
       "updatedAt": "2026-02-18T07:45:00.000Z",
       "firstSeenAt": "2026-02-18T07:45:00.000Z",
       "source": "local"
@@ -3662,6 +5098,7 @@
       "repository": "https://github.com/mosip",
       "status": "production",
       "documentation": "https://docs.mosip.io",
+      "catalogTier": "Pro",
       "orgId": "org:mosip",
       "provider": {
         "orgId": "org:mosip",
@@ -3672,7 +5109,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/mosip/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.432Z",
+      "fetchedAt": "2026-07-03T20:14:28.619Z",
       "updatedAt": "2026-02-18T07:45:00.000Z",
       "firstSeenAt": "2026-02-18T07:45:00.000Z",
       "source": "local"
@@ -3729,19 +5166,17 @@
         "Multi-identity profile",
         "Backup and recovery"
       ],
+      "catalogTier": "Pro",
       "orgId": "org:namirial",
       "provider": {
         "orgId": "org:namirial",
         "name": "Namirial",
         "website": "https://www.namirial.com",
         "logo": "https://wallet-demo.namirial.com/static/img/fav-namirial-logo.png",
-        "country": "IT",
-        "contact": {
-          "contactUrl": "https://servicedesk.namirial.com/hc/en-gb"
-        }
+        "country": "IT"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/namirial/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.454Z",
+      "fetchedAt": "2026-07-03T20:14:28.642Z",
       "updatedAt": "2026-03-10T19:00:00.000Z",
       "firstSeenAt": "2026-03-10T19:00:00.000Z",
       "source": "local"
@@ -3784,19 +5219,17 @@
         "Dashboard",
         "Role-based access control"
       ],
+      "catalogTier": "Pro",
       "orgId": "org:namirial",
       "provider": {
         "orgId": "org:namirial",
         "name": "Namirial",
         "website": "https://www.namirial.com",
         "logo": "https://wallet-demo.namirial.com/static/img/fav-namirial-logo.png",
-        "country": "IT",
-        "contact": {
-          "contactUrl": "https://servicedesk.namirial.com/hc/en-gb"
-        }
+        "country": "IT"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/namirial/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.454Z",
+      "fetchedAt": "2026-07-03T20:14:28.642Z",
       "updatedAt": "2026-03-10T19:00:00.000Z",
       "firstSeenAt": "2026-03-10T19:00:00.000Z",
       "source": "local"
@@ -3827,7 +5260,7 @@
         "country": "NL"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/neoke/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.474Z",
+      "fetchedAt": "2026-07-03T20:14:28.666Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-13T19:11:36.000Z",
       "source": "local"
@@ -3868,10 +5301,78 @@
         "country": "NL"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/netherlands/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.494Z",
+      "fetchedAt": "2026-07-03T20:14:28.690Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-13T16:28:39.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Netherlands",
+        "isoAlpha2": "NL",
+        "trackerPageSlug": "netherlands",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/netherlands",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/NL.svg",
+        "status": "Public Pilot",
+        "statusOrder": 2,
+        "walletName": "NL Wallet",
+        "walletProvider": "Ministry of the Interior and Kingdom Relations",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "APTITUDE",
+          "DC4EU",
+          "EWC",
+          "POTENTIAL",
+          "WE BUILD"
+        ],
+        "notableIssuers": [
+          "PID"
+        ],
+        "notes": "57 residents of the Municipality of Amsterdam and the Municipality of Nijmegen tested the first version of the NL Wallet. The Dutch Government has publicly stated the initial release will not meet the full requirement set on time.",
+        "sources": [
+          {
+            "title": "EU Trust List - Netherlands",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/NL",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "Biometric Update - Dutch test demonstrates integration",
+            "url": "https://www.biometricupdate.com/202601/dutch-test-demonstrates-integration-of-eudi-wallet-once-only-system",
+            "date": "2026-01-01"
+          },
+          {
+            "title": "EDI Pleio - Eerste ervaringen met de NL Wallet",
+            "url": "https://edi.pleio.nl/news/view/c573089e-57bc-45bb-bdde-5d845ff1b8f5/eerste-ervaringen-met-de-nl-wallet",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "NL Digital Government - ID Wallet",
+            "url": "https://www.nldigitalgovernment.nl/overview/identity/id-wallet/",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "itsme - Google Play Store",
+            "url": "https://play.google.com/store/apps/details?id=be.bmid.itsme&hl=en_IN",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "Signicat - EUDI Wallets one year to launch",
+            "url": "https://www.signicat.com/blog/eudi-wallets-only-one-year-to-launch#4-unlikely-to-happen-on-time",
+            "date": "2025-12-12"
+          },
+          {
+            "title": "Namirial Q1 2026 status review",
+            "url": "https://www.namirial.com/en/blog/stories/status-check-eudi-wallet/",
+            "date": "2026-04-09"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          }
+        ]
+      }
     },
     {
       "id": "orbit-enterprise",
@@ -3910,7 +5411,7 @@
         "country": "CA"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/northernblock/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.515Z",
+      "fetchedAt": "2026-07-03T20:14:28.714Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -3939,7 +5440,7 @@
         "country": "CA"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/northernblock/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.515Z",
+      "fetchedAt": "2026-07-03T20:14:28.714Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -3968,10 +5469,58 @@
         "country": "NO"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/norway/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.535Z",
+      "fetchedAt": "2026-07-03T20:14:28.738Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2027-01-01T00:00:00.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Norway",
+        "isoAlpha2": "NO",
+        "trackerPageSlug": "norway",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/norway",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/NO.svg",
+        "status": "Public Pilot",
+        "statusOrder": 2,
+        "walletName": "National EUDI Wallet (announced)",
+        "walletProvider": "Digitaliseringsdirektoratet (Digdir)",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "DC4EU",
+          "EWC",
+          "NOBID",
+          "WE BUILD"
+        ],
+        "notableIssuers": [
+          "PID"
+        ],
+        "qtspPartner": "BankID",
+        "notes": "Public sandbox available for the Digital lommebok. As an EEA country, Norway has an extra year for adoption (December 2027).",
+        "sources": [
+          {
+            "title": "Digdir - Digital lommebok sandbox summary",
+            "url": "https://docs.digdir.no/docs/lommebok/wallet_sandbox_summary.html",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "iGrant.io Research Lab",
+            "url": "https://www.igrant.io/",
+            "date": "2026-05-18"
+          },
+          {
+            "title": "NOBID Consortium wrap-up",
+            "url": "https://www.nobidconsortium.com/nobid-wraps-up-successful-pilot-under-the-european-digital-identity-wallet-programme/",
+            "date": "2025-06-26"
+          },
+          {
+            "title": "Identity Week 18 months overview",
+            "url": "https://identityweek.net/18-months-to-launch-is-europe-ready-for-the-eu-digital-id-wallet/",
+            "date": "2025-06-21"
+          }
+        ]
+      }
     },
     {
       "id": "credissuer",
@@ -4006,11 +5555,11 @@
         "logo": "https://ooru.io/wp-content/uploads/2024/10/favicon.ico",
         "country": "IN",
         "contact": {
-          "contactUrl": "mailto:info@oouru.io"
+          "email": "info@oouru.io"
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/ooru/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.555Z",
+      "fetchedAt": "2026-07-03T20:14:28.762Z",
       "updatedAt": "2026-02-18T07:25:00.000Z",
       "firstSeenAt": "2026-02-18T07:25:00.000Z",
       "source": "local"
@@ -4048,11 +5597,11 @@
         "logo": "https://ooru.io/wp-content/uploads/2024/10/favicon.ico",
         "country": "IN",
         "contact": {
-          "contactUrl": "mailto:info@oouru.io"
+          "email": "info@oouru.io"
         }
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/ooru/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.555Z",
+      "fetchedAt": "2026-07-03T20:14:28.762Z",
       "updatedAt": "2026-02-18T07:25:00.000Z",
       "firstSeenAt": "2026-02-18T07:25:00.000Z",
       "source": "local"
@@ -4085,7 +5634,7 @@
         "country": "SN"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/oumou/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.574Z",
+      "fetchedAt": "2026-07-03T20:14:28.786Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-04-06T19:44:12.000Z",
       "source": "local"
@@ -4113,7 +5662,7 @@
         "country": "PG"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/png/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.595Z",
+      "fetchedAt": "2026-07-03T20:14:28.811Z",
       "updatedAt": "2026-02-18T12:00:00.000Z",
       "firstSeenAt": "2026-02-18T12:00:00.000Z",
       "source": "local"
@@ -4154,10 +5703,64 @@
         "country": "PL"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/poland/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.617Z",
+      "fetchedAt": "2026-07-03T20:14:28.835Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2018-01-01T00:00:00.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Poland",
+        "isoAlpha2": "PL",
+        "trackerPageSlug": "poland",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/poland",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/PL.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "mObywatel",
+        "walletProvider": "Ministry of Digital Affairs",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "APTITUDE",
+          "DC4EU",
+          "EWC",
+          "POTENTIAL",
+          "WE BUILD"
+        ],
+        "notableIssuers": [
+          "PID",
+          "mDL"
+        ],
+        "notes": "mObywatel runs in production with nearly 10 million users on version 2.0. Public commitment to integrate EUDI Wallet capabilities into mObywatel by end of 2026; transition to version 3.0 carries some delivery risk.",
+        "sources": [
+          {
+            "title": "EC Launchpad Demos - Poland",
+            "url": "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930448024/Launchpad+Demos",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "iGrant.io Research Lab",
+            "url": "https://www.igrant.io/",
+            "date": "2026-05-18"
+          },
+          {
+            "title": "Ministerstwo Cyfryzacji - mObywatel EUDI",
+            "url": "https://www.gov.pl/web/cyfryzacja/europejski-portfel-tozsamosci-cyfrowej-zmierza-do-mobywatela",
+            "date": "2025-11-12"
+          },
+          {
+            "title": "Namirial Q1 2026 status review",
+            "url": "https://www.namirial.com/en/blog/stories/status-check-eudi-wallet/",
+            "date": "2026-04-09"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          }
+        ]
+      }
     },
     {
       "id": "govpt",
@@ -4191,50 +5794,57 @@
         "country": "PT"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/portugal/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.638Z",
+      "fetchedAt": "2026-07-03T20:14:28.860Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2019-01-01T00:00:00.000Z",
-      "source": "local"
-    },
-    {
-      "id": "yivi",
-      "name": "Yivi",
-      "logo": "https://www.google.com/s2/favicons?domain=yivi.app&sz=128",
-      "description": "An open-source privacy-friendly identity wallet (formerly IRMA) developed by the Privacy by Design Foundation, enabling attribute-based credentials with selective disclosure.",
-      "type": "personal",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "vcFormat": [
-        "idemix"
-      ],
-      "protocols": {
-        "presentation": [
-          "IRMA Protocol"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Portugal",
+        "isoAlpha2": "PT",
+        "trackerPageSlug": "portugal",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/portugal",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/PT.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "gov.pt Wallet",
+        "walletProvider": "Agency for Administrative Modernisation (AMA)",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "APTITUDE",
+          "DC4EU",
+          "POTENTIAL",
+          "WE BUILD"
+        ],
+        "notableIssuers": [
+          "PID"
+        ],
+        "notes": "The gov.pt app is expecting an upgrade for EUDI Wallet capabilities.",
+        "sources": [
+          {
+            "title": "EU Trust List - Portugal",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/PT",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "Signicat - EUDI Wallets one year to launch",
+            "url": "https://www.signicat.com/blog/eudi-wallets-only-one-year-to-launch#4-unlikely-to-happen-on-time",
+            "date": "2025-12-12"
+          },
+          {
+            "title": "Namirial Q1 2026 status review",
+            "url": "https://www.namirial.com/en/blog/stories/status-check-eudi-wallet/",
+            "date": "2026-04-09"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          }
         ]
-      },
-      "website": "https://yivi.app",
-      "appStoreLinks": {
-        "iOS": "https://apps.apple.com/app/yivi/id1294092994",
-        "android": "https://play.google.com/store/apps/details?id=org.irmacard.cardemu"
-      },
-      "openSource": true,
-      "repository": "https://github.com/privacybydesign",
-      "status": "production",
-      "orgId": "org:privacybydesign",
-      "provider": {
-        "orgId": "org:privacybydesign",
-        "name": "Privacy by Design Foundation",
-        "website": "https://privacybydesign.foundation",
-        "logo": "https://www.google.com/s2/favicons?domain=yivi.app&sz=128",
-        "country": "NL"
-      },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/privacybydesign/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.657Z",
-      "updatedAt": "2026-01-22T12:00:00.000Z",
-      "firstSeenAt": "2026-01-22T12:00:00.000Z",
-      "source": "local"
+      }
     },
     {
       "id": "procivis-one-wallet",
@@ -4294,6 +5904,7 @@
       "openSource": true,
       "repository": "https://github.com/procivis",
       "status": "production",
+      "catalogTier": "Pro",
       "orgId": "org:procivis",
       "provider": {
         "orgId": "org:procivis",
@@ -4303,7 +5914,7 @@
         "country": "CH"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/procivis/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.677Z",
+      "fetchedAt": "2026-07-03T20:14:28.884Z",
       "updatedAt": "2026-02-04T12:00:00.000Z",
       "firstSeenAt": "2026-02-04T12:00:00.000Z",
       "source": "local"
@@ -4366,6 +5977,7 @@
           "https://onesdk.blob.core.windows.net/doc-assets/videos/components-organizational-wallet.mp4"
         ]
       },
+      "catalogTier": "Pro",
       "orgId": "org:procivis",
       "provider": {
         "orgId": "org:procivis",
@@ -4375,10 +5987,93 @@
         "country": "CH"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/procivis/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.677Z",
+      "fetchedAt": "2026-07-03T20:14:28.884Z",
       "updatedAt": "2026-02-04T12:00:00.000Z",
       "firstSeenAt": "2026-02-04T12:00:00.000Z",
       "source": "local"
+    },
+    {
+      "id": "roeudiw",
+      "name": "RoEUDIW",
+      "description": "Romania's national European Digital Identity Wallet (RoEUDIW), led by the Authority for the Digitalization of Romania (ADR) with implementation involving MEDAT, MAI, and STS. Romania has formally adopted Germany's open-source EUDI Wallet solution; the first phase (mobile app, PID issuance, age verification) is planned for 2026. QTSP partners include certSIGN and Trans Sped.",
+      "type": "personal",
+      "status": "development",
+      "website": "https://www.adr.gov.ro/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/ro.png",
+      "orgId": "org:romania",
+      "provider": {
+        "orgId": "org:romania",
+        "name": "Romanian Government",
+        "website": "https://www.adr.gov.ro/",
+        "logo": "https://flagcdn.com/w80/ro.png",
+        "country": "RO"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/romania/wallet-catalog.json",
+      "fetchedAt": "2026-07-03T20:14:28.983Z",
+      "updatedAt": "2026-07-03T20:14:28.983Z",
+      "firstSeenAt": "2026-07-03T20:01:50.886Z",
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Romania",
+        "isoAlpha2": "RO",
+        "trackerPageSlug": "romania",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/romania",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/RO.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "RoEUDIW",
+        "walletProvider": "Authority for the Digitalization of Romania (ADR)",
+        "assuranceLevel": "substantial",
+        "lspParticipation": [
+          "DC4EU",
+          "EWC",
+          "WE BUILD"
+        ],
+        "qtspPartner": "certSIGN, Trans Sped",
+        "notes": "Romania has formally adopted Germany's open-source EUDI Wallet solution. First phase (mobile app, PID issuance, age verification) planned for 2026. Implementation led by MEDAT, MAI, and STS.",
+        "sources": [
+          {
+            "title": "EU Trust List - Romania",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/RO",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "Sumsub - Romania signs Mastercard deal to develop EUDI Wallet",
+            "url": "https://sumsub.com/media/news/romania-signs-mastercard-deal-to-develop-european-digital-id-wallet/",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "iGrant.io Research Lab",
+            "url": "https://www.igrant.io/",
+            "date": "2026-05-18"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          },
+          {
+            "title": "Identity Week 18 months overview",
+            "url": "https://identityweek.net/18-months-to-launch-is-europe-ready-for-the-eu-digital-id-wallet/",
+            "date": "2025-06-21"
+          },
+          {
+            "title": "Digi24 - Romania will use German solution for EUDI Wallet",
+            "url": "https://www.digi24.ro/stiri/economie/romania-va-folosi-solutia-germana-pentru-portofelul-european-de-identitate-digitala-ce-documente-vor-putea-fi-stocate-3834545",
+            "date": "2026-06-26"
+          }
+        ]
+      }
     },
     {
       "id": "samsung-wallet",
@@ -4404,7 +6099,7 @@
         "country": "KR"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/samsung/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.696Z",
+      "fetchedAt": "2026-07-03T20:14:29.009Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-13T18:47:53.000Z",
       "source": "local"
@@ -4445,7 +6140,7 @@
         "country": "SE"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/scytales/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.716Z",
+      "fetchedAt": "2026-07-03T20:14:29.033Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -4486,7 +6181,7 @@
         "country": "SE"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/scytales/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.716Z",
+      "fetchedAt": "2026-07-03T20:14:29.033Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -4526,7 +6221,7 @@
         "country": "CH"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/sicpa/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.741Z",
+      "fetchedAt": "2026-07-03T20:14:29.057Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -4554,10 +6249,55 @@
         "country": "SK"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/slovakia/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.762Z",
+      "fetchedAt": "2026-07-03T20:14:29.081Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-12T15:31:16.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Slovakia",
+        "isoAlpha2": "SK",
+        "trackerPageSlug": "slovakia",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/slovakia",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/SK.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "eDOKLADY",
+        "walletProvider": "Ministry of Interior",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "POTENTIAL"
+        ],
+        "notableIssuers": [
+          "PID",
+          "mDL"
+        ],
+        "notes": "eDOKLADY in production with a published timeline. EUDIW offline verification scheduled for Q2 2026 per the Slovak Ministry of Interior.",
+        "sources": [
+          {
+            "title": "EU Trust List - Slovakia",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/SK",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "Ministry of Interior Slovakia - eDOKLADY timeline",
+            "url": "https://edoklady.minv.sk/o-projekte/casovy-harmonogram-projektu/",
+            "date": "2026-01-15"
+          },
+          {
+            "title": "Namirial Q1 2026 status review",
+            "url": "https://www.namirial.com/en/blog/stories/status-check-eudi-wallet/",
+            "date": "2026-04-09"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          }
+        ]
+      }
     },
     {
       "id": "national-eudi-wallet-slovenia",
@@ -4582,10 +6322,50 @@
         "country": "SI"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/slovenia/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.783Z",
+      "fetchedAt": "2026-07-03T20:14:29.105Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-12T15:31:42.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Slovenia",
+        "isoAlpha2": "SI",
+        "trackerPageSlug": "slovenia",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/slovenia",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/SI.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "National EUDI Wallet (announced)",
+        "walletProvider": "Ministry of Digital Transformation",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "POTENTIAL",
+          "WE BUILD"
+        ],
+        "notableIssuers": [
+          "PID"
+        ],
+        "notes": "Announced project, no public sandbox. SI-PASS to provide the trust anchor for the wallet.",
+        "sources": [
+          {
+            "title": "Government of Slovenia - SI-PASS and eID",
+            "url": "https://www.gov.si/novice/2026-01-19-zaupanje-kot-temelj-digitalne-drzave-elektronske-identitete-in-vloga-si-pass/",
+            "date": "2026-01-19"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          },
+          {
+            "title": "EU Trust List Browser",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/SI",
+            "date": "2026-06-24"
+          }
+        ]
+      }
     },
     {
       "id": "cartera-digital-beta",
@@ -4609,10 +6389,67 @@
         "country": "ES"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/spain/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.804Z",
+      "fetchedAt": "2026-07-03T20:14:29.128Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2024-01-01T00:00:00.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Spain",
+        "isoAlpha2": "ES",
+        "trackerPageSlug": "spain",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/spain",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/ES.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "Cartera Digital",
+        "walletProvider": "Ministry for Digital Transformation and Civil Service",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "DC4EU",
+          "EWC",
+          "POTENTIAL"
+        ],
+        "notableIssuers": [
+          "PID"
+        ],
+        "qtspPartner": "FNMT-RCM",
+        "notes": "First wallet version leveraging Cl@ve presented at the EUDI Wallet Launchpad in December 2025. Cl@ve has over 24 million registered users and 1.1 billion annual authentications.",
+        "sources": [
+          {
+            "title": "iGrant.io Research Lab",
+            "url": "https://www.igrant.io/",
+            "date": "2026-05-18"
+          },
+          {
+            "title": "Digital EU - Spanish National Wallet at EUDI Launchpad 2025",
+            "url": "https://www.youtube.com/watch?v=cgQ29g6YFtE",
+            "date": "2025-12-10"
+          },
+          {
+            "title": "Namirial Q1 2026 status review",
+            "url": "https://www.namirial.com/en/blog/stories/status-check-eudi-wallet/",
+            "date": "2026-04-09"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          },
+          {
+            "title": "EC Launchpad Demos",
+            "url": "https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/930448024/Launchpad+Demos",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "EU Trust List Browser",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/ES",
+            "date": "2026-06-24"
+          }
+        ]
+      }
     },
     {
       "id": "sphereon-wallet",
@@ -4689,6 +6526,7 @@
           }
         ]
       },
+      "catalogTier": "Pro",
       "orgId": "org:sphereon",
       "provider": {
         "orgId": "org:sphereon",
@@ -4697,12 +6535,12 @@
         "logo": "https://www.google.com/s2/favicons?domain=sphereon.com&sz=128",
         "country": "NL",
         "contact": {
-          "contactUrl": "mailto:info@sphereon.com"
+          "email": "info@sphereon.com"
         },
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/sphereon/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.825Z",
+      "fetchedAt": "2026-07-03T20:14:29.151Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2022-03-15T00:00:00.000Z",
       "source": "local"
@@ -4743,6 +6581,7 @@
       ],
       "documentation": "https://docs.sphereon.com",
       "status": "production",
+      "catalogTier": "Pro",
       "orgId": "org:sphereon",
       "provider": {
         "orgId": "org:sphereon",
@@ -4751,12 +6590,12 @@
         "logo": "https://www.google.com/s2/favicons?domain=sphereon.com&sz=128",
         "country": "NL",
         "contact": {
-          "contactUrl": "mailto:info@sphereon.com"
+          "email": "info@sphereon.com"
         },
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/sphereon/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.825Z",
+      "fetchedAt": "2026-07-03T20:14:29.151Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -4794,6 +6633,7 @@
       ],
       "openSource": false,
       "status": "production",
+      "catalogTier": "Pro",
       "orgId": "org:spherity",
       "provider": {
         "orgId": "org:spherity",
@@ -4804,7 +6644,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/spherity/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.847Z",
+      "fetchedAt": "2026-07-03T20:14:29.176Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -4855,7 +6695,7 @@
         "country": "US"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/spruce/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.867Z",
+      "fetchedAt": "2026-07-03T20:14:29.200Z",
       "updatedAt": "2026-01-10T12:00:00.000Z",
       "firstSeenAt": "2026-01-10T12:00:00.000Z",
       "source": "local"
@@ -4883,10 +6723,66 @@
         "country": "SE"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/sweden/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.887Z",
+      "fetchedAt": "2026-07-03T20:14:29.223Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-12T16:02:03.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Sweden",
+        "isoAlpha2": "SE",
+        "trackerPageSlug": "sweden",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/sweden",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/SE.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "National EUDI Wallet (announced)",
+        "walletProvider": "Agency for Digital Government (DIGG)",
+        "assuranceLevel": "high",
+        "lspParticipation": [
+          "DC4EU",
+          "EWC",
+          "WE BUILD"
+        ],
+        "notableIssuers": [
+          "PID"
+        ],
+        "notes": "Announced project, no public sandbox. Namirial places Sweden in the second tier on the strength of public mandate, sandbox work and implementation structure.",
+        "sources": [
+          {
+            "title": "iGrant.io Research Lab",
+            "url": "https://www.igrant.io/",
+            "date": "2026-05-18"
+          },
+          {
+            "title": "Namirial Q1 2026 status review",
+            "url": "https://www.namirial.com/en/blog/stories/status-check-eudi-wallet/",
+            "date": "2026-04-09"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          },
+          {
+            "title": "Biometric Update - Sweden to launch government eID in December 2026",
+            "url": "https://www.biometricupdate.com/202603/sweden-to-launch-government-eid-in-december-2026",
+            "date": "2026-03-01"
+          },
+          {
+            "title": "EU Trust List Browser",
+            "url": "https://eidas.ec.europa.eu/efda/trust-services/browse/eidas/tls/tl/SE",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "Polisen - Statlig e-legitimation Sverige ID",
+            "url": "https://polisen.se/tjanster-tillstand/pass-och-nationellt-id-kort/statlig-e-legitimation-sverige-id/",
+            "date": "2026-06-24"
+          }
+        ]
+      }
     },
     {
       "id": "altme-wallet",
@@ -4932,6 +6828,7 @@
       "openSource": true,
       "repository": "https://github.com/TalaoDAO/AltMe",
       "status": "production",
+      "catalogTier": "Pro",
       "orgId": "org:talao",
       "provider": {
         "orgId": "org:talao",
@@ -4942,7 +6839,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/talao/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.908Z",
+      "fetchedAt": "2026-07-03T20:14:29.247Z",
       "updatedAt": "2026-03-26T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "local"
@@ -5000,6 +6897,7 @@
       ],
       "documentation": "https://wallet4agent.com/documentation/stack",
       "status": "production",
+      "catalogTier": "Pro",
       "orgId": "org:talao",
       "provider": {
         "orgId": "org:talao",
@@ -5010,7 +6908,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/talao/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.908Z",
+      "fetchedAt": "2026-07-03T20:14:29.247Z",
       "updatedAt": "2026-03-26T12:00:00.000Z",
       "firstSeenAt": "2026-03-26T12:00:00.000Z",
       "source": "local"
@@ -5059,6 +6957,7 @@
       ],
       "repository": "https://github.com/TalaoDAO/AltMe/tree/TALAO",
       "status": "production",
+      "catalogTier": "Pro",
       "orgId": "org:talao",
       "provider": {
         "orgId": "org:talao",
@@ -5069,7 +6968,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/talao/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.908Z",
+      "fetchedAt": "2026-07-03T20:14:29.247Z",
       "updatedAt": "2026-03-26T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "local"
@@ -5116,7 +7015,7 @@
         "country": "JP"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/toppan/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.928Z",
+      "fetchedAt": "2026-07-03T20:14:29.271Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "local"
@@ -5160,7 +7059,7 @@
         "country": "GR"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/uaegean/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.947Z",
+      "fetchedAt": "2026-07-03T20:14:29.295Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -5199,6 +7098,7 @@
       },
       "openSource": false,
       "status": "production",
+      "catalogTier": "Pro",
       "orgId": "org:ubique",
       "provider": {
         "orgId": "org:ubique",
@@ -5208,7 +7108,7 @@
         "country": "CH"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/ubique/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.966Z",
+      "fetchedAt": "2026-07-03T20:14:29.318Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "local"
@@ -5239,10 +7139,48 @@
         "country": "UA"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/ukraine/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:24.986Z",
+      "fetchedAt": "2026-07-03T20:14:29.342Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2020-01-01T00:00:00.000Z",
-      "source": "local"
+      "source": "local",
+      "eudiTracker": {
+        "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
+        "sourceLastUpdated": "2026-06-26",
+        "fetchedAt": "2026-07-03T20:14:29.907Z",
+        "countryName": "Ukraine",
+        "isoAlpha2": "UA",
+        "trackerPageSlug": "ukraine",
+        "trackerPageUrl": "https://eudi-wallet-tracker.igrant.io/tracker/ukraine",
+        "badgeSvgUrl": "https://eudi-wallet-tracker.igrant.io/badge/UA.svg",
+        "status": "Closed Pilot / LSP",
+        "statusOrder": 3,
+        "walletName": "Diia",
+        "walletProvider": "Ministry of Digital Transformation of Ukraine",
+        "lspParticipation": [
+          "APTITUDE",
+          "DC4EU",
+          "EWC",
+          "POTENTIAL"
+        ],
+        "notes": "Ukraine is outside the EU but participating in the APTITUDE Large Scale Pilot. Diia app being upgraded to EUDI Wallet standards.",
+        "sources": [
+          {
+            "title": "EU for Digital - Ukraine helping to develop the European Digital Identity Wallet",
+            "url": "https://eufordigital.eu/ukraine-helping-to-develop-the-european-digital-identity-wallet/",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "ID Tech Wire - Ukraine adopts EU-compatible digital ID wallet framework",
+            "url": "https://idtechwire.com/ukraine-adopts-eu-compatible-digital-id-wallet-framework/",
+            "date": "2026-06-24"
+          },
+          {
+            "title": "eIDEasy April 2026 snapshot",
+            "url": "https://www.eideasy.com/blog/eu-digital-identity-wallets-status-april-2026",
+            "date": "2026-04-06"
+          }
+        ]
+      }
     },
     {
       "id": "vidwallet",
@@ -5289,7 +7227,7 @@
         "country": "ES"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/validatedid/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:25.005Z",
+      "fetchedAt": "2026-07-03T20:14:29.366Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -5339,7 +7277,7 @@
         "country": "ES"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/validatedid/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:25.005Z",
+      "fetchedAt": "2026-07-03T20:14:29.366Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "local"
@@ -5371,7 +7309,7 @@
         "country": "DE"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/verimi/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:25.024Z",
+      "fetchedAt": "2026-07-03T20:14:29.390Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2017-01-01T00:00:00.000Z",
       "source": "local"
@@ -5413,9 +7351,49 @@
         "country": "GR"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/wwwallet/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:25.043Z",
+      "fetchedAt": "2026-07-03T20:14:29.414Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
+      "source": "local"
+    },
+    {
+      "id": "yivi",
+      "name": "Yivi",
+      "logo": "https://www.google.com/s2/favicons?domain=yivi.app&sz=128",
+      "description": "An open-source privacy-friendly identity wallet (formerly IRMA) developed by the Privacy by Design Foundation, enabling attribute-based credentials with selective disclosure.",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "vcFormat": [
+        "idemix"
+      ],
+      "protocols": {
+        "presentation": [
+          "IRMA Protocol"
+        ]
+      },
+      "website": "https://yivi.app",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/app/yivi/id1294092994",
+        "android": "https://play.google.com/store/apps/details?id=org.irmacard.cardemu"
+      },
+      "openSource": true,
+      "repository": "https://github.com/privacybydesign",
+      "status": "production",
+      "catalogTier": "Pro",
+      "orgId": "org:yivi",
+      "provider": {
+        "orgId": "org:yivi",
+        "name": "Yivi",
+        "logo": "https://yivi.app/icons/yivi-logo.svg",
+        "country": "NL"
+      },
+      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/yivi/wallet-catalog.json",
+      "fetchedAt": "2026-07-03T20:14:29.438Z",
+      "updatedAt": "2026-07-02T12:00:00.000Z",
+      "firstSeenAt": "2026-07-02T12:00:00.000Z",
       "source": "local"
     },
     {
@@ -5444,77 +7422,9 @@
         "country": "GB"
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/yoti/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:25.063Z",
+      "fetchedAt": "2026-07-03T20:14:29.461Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2014-01-01T00:00:00.000Z",
-      "source": "local"
-    },
-    {
-      "id": "eausweise",
-      "name": "eAusweise (Austrian Wallet)",
-      "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/41/f7/85/41f78596-1cab-3d90-4fe9-98977dd360e1/AppIcon-0-1x_U007emarketing-0-6-0-85-220-0.png/400x400ia-75.webp",
-      "description": "The official Austrian government identity wallet, enabling citizens to store and present digital identity documents and verifiable credentials.",
-      "type": "personal",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "vcFormat": [
-        "mdoc"
-      ],
-      "website": "https://www.oesterreich.gv.at",
-      "appStoreLinks": {
-        "iOS": "https://apps.apple.com/de/app/eausweise/id1641458335",
-        "android": "https://play.google.com/store/apps/details?id=at.gv.oe.awp.eausweise"
-      },
-      "openSource": false,
-      "status": "production",
-      "orgId": "org:youniqx",
-      "provider": {
-        "orgId": "org:youniqx",
-        "name": "youniqx Identity AG",
-        "website": "https://www.youniqx.com",
-        "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/41/f7/85/41f78596-1cab-3d90-4fe9-98977dd360e1/AppIcon-0-1x_U007emarketing-0-6-0-85-220-0.png/400x400ia-75.webp",
-        "country": "AT"
-      },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/youniqx/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:25.082Z",
-      "updatedAt": "2025-01-06T12:00:00.000Z",
-      "firstSeenAt": "2025-01-06T12:00:00.000Z",
-      "source": "local"
-    },
-    {
-      "id": "eid-li",
-      "name": "eID.li (Liechtenstein Wallet)",
-      "logo": "https://www.google.com/s2/favicons?domain=llv.li&sz=128",
-      "description": "The official Liechtenstein government identity wallet, enabling citizens to store and present digital identity documents and verifiable credentials.",
-      "type": "personal",
-      "platforms": [
-        "iOS",
-        "Android"
-      ],
-      "vcFormat": [
-        "mdoc"
-      ],
-      "website": "https://www.llv.li",
-      "appStoreLinks": {
-        "iOS": "https://apps.apple.com/us/app/eid-li/id1490404943",
-        "android": "https://play.google.com/store/apps/details?id=li.llv.eidli.app"
-      },
-      "openSource": false,
-      "status": "production",
-      "orgId": "org:youniqx",
-      "provider": {
-        "orgId": "org:youniqx",
-        "name": "youniqx Identity AG",
-        "website": "https://www.youniqx.com",
-        "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/41/f7/85/41f78596-1cab-3d90-4fe9-98977dd360e1/AppIcon-0-1x_U007emarketing-0-6-0-85-220-0.png/400x400ia-75.webp",
-        "country": "AT"
-      },
-      "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/youniqx/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:25.082Z",
-      "updatedAt": "2025-01-06T12:00:00.000Z",
-      "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "local"
     },
     {
@@ -5551,6 +7461,7 @@
       },
       "openSource": false,
       "status": "production",
+      "catalogTier": "Pro",
       "orgId": "org:yourd",
       "provider": {
         "orgId": "org:yourd",
@@ -5561,7 +7472,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/yourd/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:25.101Z",
+      "fetchedAt": "2026-07-03T20:14:29.512Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "local"
@@ -5595,6 +7506,7 @@
       "website": "https://yourd.xyz",
       "openSource": false,
       "status": "production",
+      "catalogTier": "Pro",
       "orgId": "org:yourd",
       "provider": {
         "orgId": "org:yourd",
@@ -5605,7 +7517,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "/Users/victorvanderhulst/Projects/wallet-catalog/community-catalogs/yourd/wallet-catalog.json",
-      "fetchedAt": "2026-07-02T04:41:25.101Z",
+      "fetchedAt": "2026-07-03T20:14:29.512Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "local"
@@ -5624,10 +7536,7 @@
       "name": "California Department of Motor Vehicles (CA DMV)",
       "website": "https://www.dmv.ca.gov/portal/",
       "logo": "https://www.dmv.ca.gov/portal/uploads/2024/05/Five-Stars.png",
-      "country": "US",
-      "contact": {
-        "contactUrl": "https://www.dmv.ca.gov/portal/contacting-dmv/"
-      }
+      "country": "US"
     },
     {
       "orgId": "org:tno",
@@ -5642,10 +7551,7 @@
       "name": "Unique Identification Authority of India",
       "website": "https://uidai.gov.in/",
       "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Aadhaar.svg/960px-Aadhaar.svg.png",
-      "country": "IN",
-      "contact": {
-        "contactUrl": "https://uidai.gov.in/en/contact-support.html"
-      }
+      "country": "IN"
     },
     {
       "orgId": "org:a3bc",
@@ -5674,9 +7580,6 @@
       "website": "https://animo.id",
       "logo": "https://www.google.com/s2/favicons?domain=animo.id&sz=128",
       "country": "NL",
-      "contact": {
-        "contactUrl": "https://animo.id/support"
-      },
       "fidesManifestoSupporter": true
     },
     {
@@ -5705,10 +7608,7 @@
       "name": "Authbound",
       "website": "https://authbound.io",
       "logo": "https://www.google.com/s2/favicons?domain=authbound.io&sz=128",
-      "country": "FI",
-      "contact": {
-        "contactUrl": "https://authbound.io/contact"
-      }
+      "country": "FI"
     },
     {
       "orgId": "org:ayanworks",
@@ -5732,6 +7632,20 @@
       "country": "BE"
     },
     {
+      "orgId": "org:bosnia-herzegovina",
+      "name": "Bosnia and Herzegovina Government",
+      "website": "https://idd.gov.ba/",
+      "logo": "https://flagcdn.com/w80/ba.png",
+      "country": "BA"
+    },
+    {
+      "orgId": "org:bulgaria",
+      "name": "Bulgarian Government",
+      "website": "https://www.e-gov.bg/",
+      "logo": "https://flagcdn.com/w80/bg.png",
+      "country": "BG"
+    },
+    {
       "orgId": "org:buthan",
       "name": "Bhutan Government",
       "website": "https://bhutanndi.com/",
@@ -5752,6 +7666,13 @@
       "logo": "https://wallet.acc.credenco.com/logo_white_background.png",
       "country": "NL",
       "fidesManifestoSupporter": true
+    },
+    {
+      "orgId": "org:croatia",
+      "name": "Croatian Government",
+      "website": "https://www.fina.hr/",
+      "logo": "https://flagcdn.com/w80/hr.png",
+      "country": "HR"
     },
     {
       "orgId": "org:cyprus",
@@ -5793,10 +7714,7 @@
       "name": "Digitaliseringsstyrelsen",
       "website": "https://digst.dk/",
       "logo": "https://digst.dk/media/cdld0gfa/digst_logo_dk_aubergine_rgb_new_png.png?format=webp&quality=92",
-      "country": "DK",
-      "contact": {
-        "contactUrl": "https://digst.dk/it-loesninger/altid/"
-      }
+      "country": "DK"
     },
     {
       "orgId": "org:digiyatra",
@@ -5805,7 +7723,7 @@
       "logo": "https://raw.githubusercontent.com/FIDEScommunity/fides-organization-catalog/main/community-catalogs/digiyatra/digiyatra.webp",
       "country": "IN",
       "contact": {
-        "contactUrl": "mailto:info@digiyatra.org"
+        "email": "info@digiyatra.org"
       }
     },
     {
@@ -5865,8 +7783,15 @@
       "logo": "https://www.google.com/s2/favicons?domain=gataca.io&sz=128",
       "country": "ES",
       "contact": {
-        "contactUrl": "mailto:samuel@gataca.io"
+        "email": "samuel@gataca.io"
       }
+    },
+    {
+      "orgId": "org:georgia",
+      "name": "Georgian Government",
+      "website": "https://www.gov.ge/",
+      "logo": "https://flagcdn.com/w80/ge.png",
+      "country": "GE"
     },
     {
       "orgId": "org:germany",
@@ -5896,7 +7821,7 @@
       "logo": "https://helixid.io/wp-content/uploads/2019/06/cropped-id-180x180.png",
       "country": "DE",
       "contact": {
-        "contactUrl": "mailto:oliver@blockchain-helix.com"
+        "email": "oliver@blockchain-helix.com"
       }
     },
     {
@@ -5912,7 +7837,7 @@
       "logo": "https://cdn.prod.website-files.com/659dad70ef0ae858f66ae208/6966ba7d3a1f6bb1adf4a924_hovi-logo-white.png",
       "country": "FI",
       "contact": {
-        "contactUrl": "mailto:contact@hovi.id"
+        "email": "contact@hovi.id"
       },
       "fidesManifestoSupporter": true
     },
@@ -5937,7 +7862,7 @@
       "logo": "https://www.google.com/s2/favicons?domain=igrant.io&sz=128",
       "country": "SE",
       "contact": {
-        "contactUrl": "mailto:support@igrant.io"
+        "email": "support@igrant.io"
       }
     },
     {
@@ -6004,7 +7929,7 @@
       "logo": "https://www.google.com/s2/favicons?domain=k4-security.com&sz=128",
       "country": "KR",
       "contact": {
-        "contactUrl": "mailto:contact@k4-security.com"
+        "email": "contact@k4-security.com"
       }
     },
     {
@@ -6015,14 +7940,42 @@
       "country": "LV"
     },
     {
+      "orgId": "org:liechtenstein",
+      "name": "Liechtenstein Government",
+      "website": "https://www.llv.li",
+      "logo": "https://www.google.com/s2/favicons?domain=llv.li&sz=128",
+      "country": "LI"
+    },
+    {
       "orgId": "org:lissi",
       "name": "Lissi GmbH",
       "website": "https://lissi.id",
       "logo": "https://www.google.com/s2/favicons?domain=lissi.id&sz=128",
       "country": "DE",
       "contact": {
-        "contactUrl": "mailto:info@lissi.id"
+        "email": "info@lissi.id"
       }
+    },
+    {
+      "orgId": "org:lithuania",
+      "name": "Lithuanian Government",
+      "website": "https://www.vrm.lt/",
+      "logo": "https://flagcdn.com/w80/lt.png",
+      "country": "LT"
+    },
+    {
+      "orgId": "org:luxembourg",
+      "name": "Luxembourg Government",
+      "website": "https://gouvernement.lu/",
+      "logo": "https://flagcdn.com/w80/lu.png",
+      "country": "LU"
+    },
+    {
+      "orgId": "org:malta",
+      "name": "Malta Government",
+      "website": "https://mdia.gov.mt/",
+      "logo": "https://flagcdn.com/w80/mt.png",
+      "country": "MT"
     },
     {
       "orgId": "org:mattr",
@@ -6072,10 +8025,7 @@
       "name": "Namirial",
       "website": "https://www.namirial.com",
       "logo": "https://wallet-demo.namirial.com/static/img/fav-namirial-logo.png",
-      "country": "IT",
-      "contact": {
-        "contactUrl": "https://servicedesk.namirial.com/hc/en-gb"
-      }
+      "country": "IT"
     },
     {
       "orgId": "org:neoke",
@@ -6111,7 +8061,7 @@
       "logo": "https://ooru.io/wp-content/uploads/2024/10/favicon.ico",
       "country": "IN",
       "contact": {
-        "contactUrl": "mailto:info@oouru.io"
+        "email": "info@oouru.io"
       }
     },
     {
@@ -6143,18 +8093,18 @@
       "country": "PT"
     },
     {
-      "orgId": "org:privacybydesign",
-      "name": "Privacy by Design Foundation",
-      "website": "https://privacybydesign.foundation",
-      "logo": "https://www.google.com/s2/favicons?domain=yivi.app&sz=128",
-      "country": "NL"
-    },
-    {
       "orgId": "org:procivis",
       "name": "Procivis",
       "website": "https://www.procivis.ch",
       "logo": "https://www.google.com/s2/favicons?domain=procivis.ch&sz=128",
       "country": "CH"
+    },
+    {
+      "orgId": "org:romania",
+      "name": "Romanian Government",
+      "website": "https://www.adr.gov.ro/",
+      "logo": "https://flagcdn.com/w80/ro.png",
+      "country": "RO"
     },
     {
       "orgId": "org:samsung",
@@ -6205,7 +8155,7 @@
       "logo": "https://www.google.com/s2/favicons?domain=sphereon.com&sz=128",
       "country": "NL",
       "contact": {
-        "contactUrl": "mailto:info@sphereon.com"
+        "email": "info@sphereon.com"
       },
       "fidesManifestoSupporter": true
     },
@@ -6289,18 +8239,17 @@
       "country": "GR"
     },
     {
+      "orgId": "org:yivi",
+      "name": "Yivi",
+      "logo": "https://yivi.app/icons/yivi-logo.svg",
+      "country": "NL"
+    },
+    {
       "orgId": "org:yoti",
       "name": "Yoti Ltd.",
       "website": "https://www.yoti.com/",
       "logo": "https://cdn.aws.yoti.com/wp-content/uploads/Yoti-site-image_1200x675.jpg",
       "country": "GB"
-    },
-    {
-      "orgId": "org:youniqx",
-      "name": "youniqx Identity AG",
-      "website": "https://www.youniqx.com",
-      "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/41/f7/85/41f78596-1cab-3d90-4fe9-98977dd360e1/AppIcon-0-1x_U007emarketing-0-6-0-85-220-0.png/400x400ia-75.webp",
-      "country": "AT"
     },
     {
       "orgId": "org:yourd",
@@ -6311,17 +8260,17 @@
       "fidesManifestoSupporter": true
     }
   ],
-  "lastUpdated": "2026-07-02T04:41:25.102Z",
+  "lastUpdated": "2026-07-03T20:14:29.907Z",
   "stats": {
-    "totalWallets": 124,
-    "totalProviders": 92,
+    "totalWallets": 131,
+    "totalProviders": 100,
     "byType": {
-      "personal": 87,
+      "personal": 94,
       "organizational": 37
     },
     "byPlatform": {
-      "iOS": 79,
-      "Android": 81,
+      "iOS": 86,
+      "Android": 88,
       "Web": 42,
       "Windows": 0,
       "macOS": 0,
@@ -6329,7 +8278,7 @@
       "CLI": 0
     },
     "byVcFormat": {
-      "mdoc": 46,
+      "mdoc": 45,
       "sd_jwt_vc": 64,
       "jwt_vc": 50,
       "vcdm_2_0": 33,

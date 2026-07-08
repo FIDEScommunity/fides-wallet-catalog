@@ -1870,6 +1870,12 @@
       escapeHtml(tracker.status) + '</span>';
   }
 
+  function formatEudiAssuranceLevelDisplay(value) {
+    const raw = String(value || '').trim();
+    if (!raw) return '';
+    return raw.charAt(0).toUpperCase() + raw.slice(1).toLowerCase();
+  }
+
   function buildWalletEudiLandscapeBodyHtml(wallet) {
     const tracker = wallet && wallet.eudiTracker;
     if (!tracker) return '';
@@ -1879,7 +1885,7 @@
       rows.push(renderTechnicalKvRow('Landscape status', buildWalletEudiLandscapeBadgeHtml(wallet)));
     }
     if (tracker.assuranceLevel) {
-      rows.push(renderTechnicalKvRow('Assurance level', escapeHtml(String(tracker.assuranceLevel))));
+      rows.push(renderTechnicalKvRow('Assurance level', escapeHtml(formatEudiAssuranceLevelDisplay(tracker.assuranceLevel))));
     }
     if (tracker.qtspPartner) {
       rows.push(renderTechnicalKvRow('QTSP partner', escapeHtml(String(tracker.qtspPartner))));

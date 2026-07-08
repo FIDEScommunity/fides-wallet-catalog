@@ -1,0 +1,22 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:georgia",
+  "wallets": [
+    {
+      "id": "national-eudi-wallet-georgia",
+      "name": "National EUDI Wallet (Georgia)",
+      "description": "Georgia's national digital identity wallet programme, pursuing EU alignment although Georgia is outside the EU. A tender launched in early 2025 sought candidates to build a national digital ID wallet for citizens.",
+      "type": "personal",
+      "status": "development",
+      "website": "https://www.gov.ge/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/ge.png"
+    }
+  ]
+}

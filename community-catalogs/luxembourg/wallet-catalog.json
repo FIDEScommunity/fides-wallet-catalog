@@ -1,0 +1,22 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:luxembourg",
+  "wallets": [
+    {
+      "id": "national-eudi-wallet-luxembourg",
+      "name": "National EUDI Wallet (Luxembourg)",
+      "description": "Luxembourg's national EUDI Wallet programme under the Ministry for Digitalisation, upgrading the existing GouvID app for EUDI compliance. INCERT partners with HOPAE on wallet services; LuxTrust serves as QTSP partner. Participates in DC4EU, EWC, and POTENTIAL large-scale pilots.",
+      "type": "personal",
+      "status": "development",
+      "website": "https://guichet.public.lu/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/lu.png"
+    }
+  ]
+}
