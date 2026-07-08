@@ -1,0 +1,22 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:croatia",
+  "wallets": [
+    {
+      "id": "certilia-wallet",
+      "name": "Certilia Wallet",
+      "description": "Croatia's Certilia Wallet, provided by the Ministry of Finance / Financial Agency (FINA), is being upgraded for full EUDI Wallet capabilities. The wallet supports high-assurance digital identity use cases and participates in the EWC large-scale pilot. AKD provides complementary digital identity solutions in the Croatian ecosystem.",
+      "type": "personal",
+      "status": "development",
+      "website": "https://www.certilia.com/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://www.google.com/s2/favicons?domain=certilia.com&sz=128"
+    }
+  ]
+}

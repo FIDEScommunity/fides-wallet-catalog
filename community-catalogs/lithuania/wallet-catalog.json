@@ -1,0 +1,22 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:lithuania",
+  "wallets": [
+    {
+      "id": "national-eudi-wallet-lithuania",
+      "name": "National EUDI Wallet (Lithuania)",
+      "description": "Lithuania's announced national European Digital Identity Wallet programme, led by the Informatics and Communications Department under the Ministry of the Interior. The project participates in APTITUDE, DC4EU, and POTENTIAL large-scale pilots; no public sandbox is available yet.",
+      "type": "personal",
+      "status": "development",
+      "website": "https://www.vrm.lt/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/lt.png"
+    }
+  ]
+}

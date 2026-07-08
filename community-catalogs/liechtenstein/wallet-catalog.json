@@ -1,0 +1,29 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:liechtenstein",
+  "wallets": [
+    {
+      "id": "eid-li",
+      "name": "eID.li",
+      "description": "Official Liechtenstein government identity wallet enabling citizens to store and present digital identity documents and verifiable credentials on mobile devices.",
+      "type": "personal",
+      "status": "production",
+      "website": "https://www.llv.li",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "vcFormat": [
+        "mdoc"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://www.google.com/s2/favicons?domain=llv.li&sz=128",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/us/app/eid-li/id1490404943",
+        "android": "https://play.google.com/store/apps/details?id=li.llv.eidli.app"
+      }
+    }
+  ]
+}

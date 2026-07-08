@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.9.10
+Stable tag: 2.10.0
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -102,6 +102,13 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.10.0 =
+* EUDI landscape: crawl-time iGrant tracker enrichment (`eudiTracker`) for national wallets; modal accordion and SSR section (status, assurance level, QTSP partner, notes).
+* Personal catalog: replace Includes video quick filter with National EUDI wallets.
+* Wallet cards and modal: country flag before/after provider name (bundled fides-catalog-ui from tiles ≥ 1.8.21).
+* Community catalogs: Austria (eAusweise), Liechtenstein, and eight additional countries; remove duplicate youniqx entries.
+* Requires fides-community-tools-tiles ≥ 1.8.21 for shared EUDI modal UI.
 
 = 2.9.10 =
 * Wallet detail modal: restore subtle Last updated footer above the contact footer; dates use the browser locale (bundled fides-catalog-ui from tiles ≥ 1.8.20).

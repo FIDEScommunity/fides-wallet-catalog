@@ -44,6 +44,7 @@
 
   const OFFICIAL_ACCOUNT_TITLE = 'Official listing — managed by the provider';
   const OFFICIAL_FILTER_LABEL = 'Official listings only';
+  const NATIONAL_EUDI_FILTER_LABEL = 'National EUDI wallets';
 
   // Selected wallet for modal
   let selectedWallet = null;
@@ -208,9 +209,8 @@
     const orgId = resolveWalletOrgIdForEdit(wallet);
     if (!RATINGS_IS_LOGGED_IN) return false;
     if (!orgId) return true;
-    const proOrgIds = Array.isArray(EDIT_ACCESS.proOrgIds) ? EDIT_ACCESS.proOrgIds : [];
     const ownedOrgIds = Array.isArray(EDIT_ACCESS.ownedOrgIds) ? EDIT_ACCESS.ownedOrgIds : [];
-    if (proOrgIds.indexOf(orgId) < 0) return true;
+    if (!walletCatalogTierIsPro(wallet)) return true;
     return ownedOrgIds.indexOf(orgId) >= 0;
   }
 
@@ -241,6 +241,56 @@
   function getWalletProviderDisplayName(wallet) {
     if (!wallet || !wallet.provider || !wallet.provider.name) return 'Unknown';
     return String(wallet.provider.name);
+  }
+
+  function resolveWalletCountryCode(wallet) {
+    if (!wallet || typeof wallet !== 'object') return '';
+    if (window.FidesCatalogUI && typeof window.FidesCatalogUI.resolveWalletCountryCode === 'function') {
+      return window.FidesCatalogUI.resolveWalletCountryCode(wallet);
+    }
+    const provider = wallet.provider && typeof wallet.provider === 'object' ? wallet.provider : {};
+    const fromProvider = String(provider.country || '').trim().toUpperCase();
+    if (/^[A-Z]{2}$/.test(fromProvider)) return fromProvider;
+    const tracker = wallet.eudiTracker && typeof wallet.eudiTracker === 'object' ? wallet.eudiTracker : {};
+    const fromTracker = String(tracker.isoAlpha2 || '').trim().toUpperCase();
+    if (/^[A-Z]{2}$/.test(fromTracker)) return fromTracker;
+    return '';
+  }
+
+  function resolveWalletCountryLabel(wallet, countryCode) {
+    const code = countryCode || resolveWalletCountryCode(wallet);
+    if (!code) return '';
+    if (window.FidesCatalogUI && typeof window.FidesCatalogUI.resolveWalletCountryLabel === 'function') {
+      return window.FidesCatalogUI.resolveWalletCountryLabel(wallet, code, { countryNames: COUNTRY_NAMES });
+    }
+    if (COUNTRY_NAMES[code]) return COUNTRY_NAMES[code];
+    const tracker = wallet && wallet.eudiTracker && typeof wallet.eudiTracker === 'object' ? wallet.eudiTracker : {};
+    if (tracker.countryName) return String(tracker.countryName);
+    return code;
+  }
+
+  function renderWalletCountryFlag(wallet) {
+    if (window.FidesCatalogUI && typeof window.FidesCatalogUI.buildWalletCountryFlagHtml === 'function') {
+      return window.FidesCatalogUI.buildWalletCountryFlagHtml(wallet, { countryNames: COUNTRY_NAMES });
+    }
+    const code = resolveWalletCountryCode(wallet);
+    if (!code) return '';
+    const label = resolveWalletCountryLabel(wallet, code);
+    return '<span class="fides-wallet-country" title="' + escapeHtml(label) + '" aria-label="' + escapeHtml(label) + '">' +
+      '<img src="https://flagcdn.com/w40/' + encodeURIComponent(code.toLowerCase()) + '.png" alt="" class="fides-wallet-country-flag" width="16" height="12" loading="lazy" decoding="async" />' +
+      '</span>';
+  }
+
+  function renderWalletCountryModalFlagHtml(wallet) {
+    if (window.FidesCatalogUI && typeof window.FidesCatalogUI.buildWalletCountryModalFlagHtml === 'function') {
+      return window.FidesCatalogUI.buildWalletCountryModalFlagHtml(wallet, { countryNames: COUNTRY_NAMES });
+    }
+    const code = resolveWalletCountryCode(wallet);
+    if (!code) return '';
+    const label = resolveWalletCountryLabel(wallet, code);
+    return ' <span class="fides-modal-provider-country" title="' + escapeHtml(label) + '" aria-label="' + escapeHtml(label) + '">' +
+      '<img src="https://flagcdn.com/w40/' + encodeURIComponent(code.toLowerCase()) + '.png" alt="" class="fides-modal-country-flag" width="18" height="13" loading="lazy" decoding="async" />' +
+      '</span>';
   }
 
   function getOrganizationCatalogDeepLink(orgId, baseUrl) {
@@ -367,7 +417,7 @@
     openSource: null,
     governance: null, // 'government' or 'private'
     addedLast30Days: false,
-    includesVideo: false,
+    nationalEudiWallet: false,
     officialOnly: false,
     ids: [] // pre-filter by wallet IDs (set via ?wallets= URL param)
   };
@@ -577,6 +627,21 @@
   }
 
   /**
+   * Whether wallet is listed in the iGrant EUDI landscape overlay.
+   */
+  function hasEudiLandscapeWallet(wallet) {
+    return !!(wallet && wallet.eudiTracker && typeof wallet.eudiTracker === 'object');
+  }
+
+  /** National EUDI quick filter: personal catalog only, not business. */
+  function showsNationalEudiWalletFilter() {
+    if (settings.type === 'organizational') return false;
+    return filters.type.includes('personal') ||
+      settings.type === 'personal' ||
+      (!filters.type.includes('organizational') && settings.type !== 'organizational');
+  }
+
+  /**
    * Whether wallet has a usable video URL
    */
   function hasWalletVideo(wallet) {
@@ -677,7 +742,7 @@
           ${renderWalletListBadges(wallet)}
         </div>
         <div class="fides-row-likes">${renderWalletListLikeSummary(wallet.id)}</div>
-        <div class="fides-row-provider" title="${escapeHtml(d.providerName)}">${escapeHtml(d.providerName)}</div>
+        <div class="fides-row-provider" title="${escapeHtml(d.providerName)}">${renderWalletCountryFlag(wallet)}${escapeHtml(d.providerName)}</div>
         <div class="fides-row-platforms">${renderWalletRowPlatforms(wallet)}</div>
         <div class="fides-row-updated">${escapeHtml(d.activityDateLabel)}</div>
       </div>
@@ -1130,9 +1195,9 @@
         if (!isWithinLastDays(getWalletAddedDate(wallet), 30)) return false;
       }
 
-      // Includes video
-      if (filters.includesVideo) {
-        if (!hasWalletVideo(wallet)) return false;
+      // National EUDI wallets (iGrant landscape, personal catalog only)
+      if (showsNationalEudiWalletFilter() && filters.nationalEudiWallet) {
+        if (!hasEudiLandscapeWallet(wallet)) return false;
       }
 
       // Official (Pro organization) accounts only
@@ -1185,7 +1250,7 @@
     if (filters.openSource !== null) count += 1;
     if (filters.governance !== null) count += 1;
     if (filters.addedLast30Days) count += 1;
-    if (filters.includesVideo) count += 1;
+    if (showsNationalEudiWalletFilter() && filters.nationalEudiWallet) count += 1;
     if (filters.officialOnly) count += 1;
     if (filters.ids && filters.ids.length > 0) count += 1;
     return count;
@@ -1225,7 +1290,7 @@
     const interoperabilityProfiles = {};
     const openSource = { true: 0, false: 0 };
     let addedLast30Days = 0;
-    let includesVideo = 0;
+    let nationalEudiWallet = 0;
     let officialOnly = 0;
 
     walletList.forEach(wallet => {
@@ -1276,7 +1341,7 @@
       if (wallet.openSource === true) openSource.true += 1;
       else openSource.false += 1;
       if (isWithinLastDays(getWalletAddedDate(wallet), 30)) addedLast30Days += 1;
-      if (hasWalletVideo(wallet)) includesVideo += 1;
+      if (hasEudiLandscapeWallet(wallet)) nationalEudiWallet += 1;
       if (walletCatalogTierIsPro(wallet)) officialOnly += 1;
     });
 
@@ -1301,7 +1366,7 @@
       interoperabilityProfiles,
       openSource,
       addedLast30Days,
-      includesVideo,
+      nationalEudiWallet,
       officialOnly
     };
   }
@@ -1357,6 +1422,9 @@
    * Render the catalog
    */
   function render() {
+    if (!showsNationalEudiWalletFilter()) {
+      filters.nationalEudiWallet = false;
+    }
     const filtered = getFilteredWallets();
     const metrics = getCatalogMetrics(filtered);
     const activeFilterCount = getActiveFilterCount();
@@ -1403,10 +1471,12 @@
                 <input type="checkbox" data-filter="addedLast30Days" data-value="true" ${filters.addedLast30Days ? 'checked' : ''}>
                 <span>Added last 30 days<span class="fides-filter-option-count">(${filterFacets ? filterFacets.addedLast30Days : ''})</span></span>
               </label>
+              ${showsNationalEudiWalletFilter() ? `
               <label class="fides-filter-checkbox">
-                <input type="checkbox" data-filter="includesVideo" data-value="true" ${filters.includesVideo ? 'checked' : ''}>
-                <span>Includes video<span class="fides-filter-option-count">(${filterFacets ? filterFacets.includesVideo : ''})</span></span>
+                <input type="checkbox" data-filter="nationalEudiWallet" data-value="true" ${filters.nationalEudiWallet ? 'checked' : ''}>
+                <span>${NATIONAL_EUDI_FILTER_LABEL}<span class="fides-filter-option-count">(${filterFacets ? filterFacets.nationalEudiWallet : ''})</span></span>
               </label>
+              ` : ''}
               ${TIER_UI_ENABLED ? `
               <label class="fides-filter-checkbox">
                 <input type="checkbox" data-filter="officialOnly" data-value="true" ${filters.officialOnly ? 'checked' : ''}>
@@ -1974,7 +2044,7 @@
         <header class="fides-wallet-header fides-wallet-card-header--text-only type-${wallet.type}">
           <div class="fides-wallet-info">
             <h3 class="fides-wallet-name" title="${escapeHtml(displayName)}">${escapeHtml(displayName)}</h3>
-            <p class="fides-wallet-provider">${escapeHtml(getWalletProviderDisplayName(wallet))}</p>
+            <p class="fides-wallet-provider">${renderWalletCountryFlag(wallet)}<span class="fides-wallet-provider-text">${escapeHtml(getWalletProviderDisplayName(wallet))}</span></p>
           </div>
         </header>
         <div class="fides-wallet-body">
@@ -2093,7 +2163,7 @@
                   <h2 class="fides-modal-title" id="fides-modal-title">${escapeHtml(wallet.name)}</h2>
                   ${officialHeaderBadge}
                 </div>
-                <p class="fides-modal-provider">${icons.building} ${providerNameHtml}${bluePagesHref ? ` <a href="${escapeHtml(bluePagesHref)}" target="_blank" rel="noopener" class="fides-modal-provider-link">${icons.externalLink} View in Blue Pages</a>` : ''}</p>
+                <p class="fides-modal-provider">${icons.building} ${providerNameHtml}${renderWalletCountryModalFlagHtml(wallet)}</p>
               </div>
             </div>
             <div class="fides-modal-header-actions">
@@ -2490,6 +2560,7 @@
           theme: container ? (container.getAttribute('data-theme') || 'dark') : 'dark',
           tierUiEnabled: TIER_UI_ENABLED,
           vocabulary: vocabulary,
+          countryNames: COUNTRY_NAMES,
           organizationCatalogUrl: ORGANIZATION_CATALOG_PAGE_URL,
           bluePagesUrl: BLUE_PAGES_URL,
           updateFormUrl: UPDATE_FORM_URL,
@@ -2617,7 +2688,7 @@
         if (filterType === 'linkedWallets') {
           filters.ids = isChecked ? [...originalIds] : [];
         }
-        else if (filterType === 'addedLast30Days' || filterType === 'includesVideo' || filterType === 'officialOnly') {
+        else if (filterType === 'addedLast30Days' || filterType === 'nationalEudiWallet' || filterType === 'officialOnly') {
           filters[filterType] = isChecked;
         }
         // Special handling for openSource (boolean toggle)
@@ -2703,7 +2774,7 @@
           openSource: null,
           governance: null,
           addedLast30Days: false,
-          includesVideo: false,
+          nationalEudiWallet: false,
           officialOnly: false,
           ids: []
         };

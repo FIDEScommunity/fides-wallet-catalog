@@ -24,6 +24,7 @@ import type {
   Platform,
   WalletProvider
 } from '../types/wallet.js';
+import { enrichWalletsWithEudiTracker } from './eudiTrackerEnrichment.js';
 
 // Load schema
 const schemaPath = path.join(process.cwd(), 'schemas/wallet-catalog.schema.json');
@@ -946,14 +947,15 @@ async function crawl(): Promise<void> {
 
   // Deduplicate (prefer DID > GitHub > EU Landscape > Local)
   const dedupedWallets = deduplicateWallets(allWallets);
-  const proWalletCount = dedupedWallets.filter((w) => w.catalogTier === 'Pro').length;
+  const enrichedWallets = await enrichWalletsWithEudiTracker(dedupedWallets);
+  const proWalletCount = enrichedWallets.filter((w) => w.catalogTier === 'Pro').length;
   
   // Create aggregated data
   const aggregated: AggregatedCatalog = {
-    wallets: dedupedWallets,
+    wallets: enrichedWallets,
     providers: Array.from(allProviders.values()),
     lastUpdated: new Date().toISOString(),
-    stats: calculateStats(dedupedWallets)
+    stats: calculateStats(enrichedWallets)
   };
   
   // Save

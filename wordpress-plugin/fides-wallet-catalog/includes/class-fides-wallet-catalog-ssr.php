@@ -399,7 +399,89 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
                 echo $this->render_chip_section($this->list_field($item, 'signingAlgorithms'),       __('Signing algorithms', $td));
                 echo $this->render_chip_section($this->list_field($item, 'credentialStatusMethods'), __('Credential status methods', $td));
 
+                if (! empty($item['eudiTracker']) && is_array($item['eudiTracker'])) {
+                    echo $this->render_eudi_landscape_ssr_section($item['eudiTracker']);
+                }
+
                 return (string) ob_get_clean();
+            }
+
+            /**
+             * SSR block for crawl-time iGrant EUDI landscape overlay.
+             *
+             * @param array<string, mixed> $tracker
+             */
+            private function render_eudi_landscape_ssr_section(array $tracker): string {
+                $status = isset($tracker['status']) ? (string) $tracker['status'] : '';
+                if ($status === '') {
+                    return '';
+                }
+
+                $badge_class = $this->eudi_landscape_status_badge_class($status);
+
+                ob_start();
+                ?>
+                <section class="fides-ssr-detail__section fides-ssr-detail__section--eudi-landscape">
+                    <h2 class="fides-ssr-detail__section-title"><?php esc_html_e('EUDI landscape status', 'fides-wallet-catalog'); ?></h2>
+                    <dl class="fides-ssr-detail__meta">
+                        <dt><?php esc_html_e('Landscape status', 'fides-wallet-catalog'); ?></dt>
+                        <dd><span class="fides-eudi-landscape-badge <?php echo esc_attr($badge_class); ?>"><?php echo esc_html($status); ?></span></dd>
+                        <?php if (! empty($tracker['assuranceLevel'])) : ?>
+                            <dt><?php esc_html_e('Assurance level', 'fides-wallet-catalog'); ?></dt>
+                            <dd><?php echo esc_html($this->format_eudi_assurance_level_display((string) $tracker['assuranceLevel'])); ?></dd>
+                        <?php endif; ?>
+                        <?php if (! empty($tracker['qtspPartner'])) : ?>
+                            <dt><?php esc_html_e('QTSP partner', 'fides-wallet-catalog'); ?></dt>
+                            <dd><?php echo esc_html((string) $tracker['qtspPartner']); ?></dd>
+                        <?php endif; ?>
+                    </dl>
+                    <?php if (! empty($tracker['notes'])) : ?>
+                        <p><?php echo esc_html((string) $tracker['notes']); ?></p>
+                    <?php endif; ?>
+                    <p class="fides-ssr-detail__attribution">
+                        <?php
+                        esc_html_e('Data from the iGrant EUDI Wallet Tracker.', 'fides-wallet-catalog');
+                        if (! empty($tracker['sourceLastUpdated'])) {
+                            echo ' ';
+                            printf(
+                                /* translators: %s: ISO date from iGrant tracker */
+                                esc_html__('Last updated %s.', 'fides-wallet-catalog'),
+                                esc_html((string) $tracker['sourceLastUpdated'])
+                            );
+                        }
+                        ?>
+                    </p>
+                </section>
+                <?php
+                return (string) ob_get_clean();
+            }
+
+            /**
+             * CSS modifier for iGrant landscape status pills (matches modal JS mapping).
+             */
+            private function eudi_landscape_status_badge_class(string $status): string {
+                $map = array(
+                    'Production (EU Notified)'             => 'fides-eudi-landscape-badge--prod-notified',
+                    'Production (EU Notification Pending)'   => 'fides-eudi-landscape-badge--prod-pending',
+                    'Public Pilot'                         => 'fides-eudi-landscape-badge--public-pilot',
+                    'Closed Pilot / LSP'                   => 'fides-eudi-landscape-badge--closed-pilot',
+                    'Planned for Production'               => 'fides-eudi-landscape-badge--planned',
+                    'No plans'                             => 'fides-eudi-landscape-badge--no-plans',
+                );
+
+                return $map[ $status ] ?? 'fides-eudi-landscape-badge--unknown';
+            }
+
+            /**
+             * Display label for iGrant assurance level (e.g. high → High).
+             */
+            private function format_eudi_assurance_level_display(string $value): string {
+                $trimmed = trim($value);
+                if ($trimmed === '') {
+                    return '';
+                }
+
+                return ucfirst(strtolower($trimmed));
             }
 
             /* --------------------------------------------------------------

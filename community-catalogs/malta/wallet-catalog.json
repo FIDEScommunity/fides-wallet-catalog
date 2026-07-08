@@ -1,0 +1,22 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:malta",
+  "wallets": [
+    {
+      "id": "national-digital-wallet-malta",
+      "name": "National Digital Wallet (Malta)",
+      "description": "Malta's announced National Digital Wallet programme under the Malta Digital Innovation Authority (MDIA), targeting delivery ahead of the eIDAS 2.0 EUDI Wallet deadline. Participates in DC4EU and WE BUILD large-scale pilots; analysts note Malta may achieve only partial availability by the December 2026 deadline.",
+      "type": "personal",
+      "status": "development",
+      "website": "https://mdia.gov.mt/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/mt.png"
+    }
+  ]
+}

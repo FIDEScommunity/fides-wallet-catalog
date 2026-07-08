@@ -1,0 +1,22 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:bosnia-herzegovina",
+  "wallets": [
+    {
+      "id": "national-eudi-wallet-bosnia-herzegovina",
+      "name": "National Digital ID Wallet (Bosnia and Herzegovina)",
+      "description": "National digital identity wallet programme led by the Agency for Identification Documents, Registers and Data Exchange (IDDEEA). A national digital ID app launched in 2025; Bosnia and Herzegovina participates in the WE BUILD Large Scale Pilot while aligning with EUDI Wallet capabilities.",
+      "type": "personal",
+      "status": "development",
+      "website": "https://idd.gov.ba/",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF"
+      ],
+      "logo": "https://flagcdn.com/w80/ba.png"
+    }
+  ]
+}
