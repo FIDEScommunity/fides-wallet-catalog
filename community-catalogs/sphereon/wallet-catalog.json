@@ -94,7 +94,7 @@
     {
       "id": "sphereon-vdx-platform",
       "name": "Sphereon VDX Platform",
-      "description": "An enterprise organizational wallet platform providing holder, issuer, and verifier capabilities with DIIP v4 compliance.",
+      "description": "An omni-channel enterprise developer platform supporting management of organizational wallets, mobile wallets and identity integrations, Providing holder, issuer, and verifier capabilities with DIIP v5, HAIP and OID4VCI/VP 1.0, ISO-18013-5/7 compliance.",
       "logo": "https://www.google.com/s2/favicons?domain=sphereon.com&sz=128",
       "website": "https://sphereon.com",
       "type": "organizational",
@@ -109,25 +109,71 @@
       "openSource": false,
       "vcFormat": [
         "sd_jwt_vc",
+        "mdoc",
         "jwt_vc",
-        "vcdm_2_0",
-        "mdoc"
+        "vcdm_2_0"
       ],
       "issuanceProtocols": [
-        "OpenID4VCI"
+        "OpenID4VCI",
+        "ISO 18013-5 (Device Retrieval)"
       ],
       "presentationProtocols": [
-        "OpenID4VP"
+        "OpenID4VP",
+        "ISO 18013-5"
       ],
       "interoperabilityProfiles": [
-        "DIIP v4"
+        "DIIP v5",
+        "EUDI Wallet ARF",
+        "HAIP v1"
       ],
       "features": [
         "Universal OID4VP API"
       ],
       "documentation": "https://docs.sphereon.com",
-      "status": "production"
+      "status": "production",
+      "license": "proprietary",
+      "deploymentModel": "hybrid",
+      "slaAvailable": true,
+      "supportedIdentifiers": [
+        "did:web",
+        "did:key",
+        "did:jwk",
+        "did:webvh",
+        "x509"
+      ],
+      "keyStorage": [
+        "Software",
+        "Secure Enclave (iOS)",
+        "StrongBox (Android)",
+        "TEE",
+        "HSM",
+        "Cloud KMS",
+        "Smart Card",
+        "FIDO2/WebAuthn"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "ES384",
+        "ES512",
+        "ES256K",
+        "EdDSA",
+        "RS256",
+        "PS256"
+      ],
+      "credentialStatusMethods": [
+        "OCSP",
+        "CRL",
+        "IETF Token Status List",
+        "Bitstring Status List"
+      ],
+      "eidasTrustServices": [
+        "Q_CERT_ESIG",
+        "Q_CERT_ESEAL",
+        "Q_TIMESTAMP",
+        "QEAA"
+      ],
+      "catalogTier": "Pro"
     }
   ],
-  "lastUpdated": "2026-07-08T13:51:04.047Z"
+  "lastUpdated": "2026-07-12T15:44:53.687Z"
 }

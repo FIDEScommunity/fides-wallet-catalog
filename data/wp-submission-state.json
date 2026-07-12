@@ -1,11 +1,19 @@
 {
   "schemaVersion": "1.0.0",
   "catalogType": "wallet",
-  "lastImportAt": "2026-07-08T13:51:04.048Z",
+  "lastImportAt": "2026-07-12T15:44:53.688Z",
   "managedWallets": [
     {
       "slug": "credenco",
       "walletId": "credenco-business-wallet"
+    },
+    {
+      "slug": "credenco",
+      "walletId": "credenco-wallet"
+    },
+    {
+      "slug": "sphereon",
+      "walletId": "sphereon-vdx-platform"
     },
     {
       "slug": "sphereon",

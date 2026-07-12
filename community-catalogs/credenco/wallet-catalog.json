@@ -67,7 +67,77 @@
         ]
       },
       "catalogTier": "Pro"
+    },
+    {
+      "id": "credenco-wallet",
+      "name": "Credenco Wallet",
+      "description": "The Credenco Wallet enables users to securely receive, store, manage, and present verifiable credentials and digital identity information. Built with privacy and security in mind, the wallet supports trusted interactions with participating relying parties while keeping users in control of their personal data.\n\nKey features include:\n- Securely receive and store verifiable credentials\n- Manage digital identity information on-device\n- Present credentials securely to trusted relying parties\n- Privacy-preserving sharing with user consent\n- Support for interoperable European digital identity standards\n\nThe Credenco Wallet also provides the ability to receive and share credentials from your Credenco Business Wallet.",
+      "logo": "https://play-lh.googleusercontent.com/q7wotX3g-O6DgYEBq6EfR6vsDe0NHd138uMK_6pUJat9x2UzisC15FfMQOPmQ7EDp5354fV61Ic1xuKQPGY5=w480-h960-rw",
+      "website": "https://www.credenco.com",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "media": {
+        "images": [
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/2e/49/ee/2e49ee35-1e70-c717-4765-a546467027d9/01_new_wallet.png/460x996bb.webp",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/0a/f9/88/0af988e6-b35e-84bc-25a1-d74236984454/02_credential_list.png/460x996bb.webp",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/e6/d0/d0/e6d0d0cd-5541-48aa-ee8d-fe9deca88426/03_credential_details.png/460x996bb.webp"
+        ]
+      },
+      "vcFormat": [
+        "sd_jwt_vc",
+        "jwt_vc",
+        "vcdm_2_0"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "supportedIdentifiers": [
+        "did:web",
+        "did:jwk",
+        "x509"
+      ],
+      "keyStorage": [
+        "Secure Enclave (iOS)",
+        "StrongBox (Android)"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "ES384",
+        "ES512",
+        "ES256K",
+        "EdDSA",
+        "RS256"
+      ],
+      "credentialStatusMethods": [
+        "StatusList2021",
+        "IETF Token Status List"
+      ],
+      "interoperabilityProfiles": [
+        "DIIP v4",
+        "DIIP v5",
+        "HAIP v1"
+      ],
+      "features": [
+        "Biometric authentication",
+        "Integration with Credenco Business Wallet"
+      ],
+      "documentation": "https://docs.acc.credenco.com",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/dz/app/credenco-wallet/id6753174105",
+        "android": "https://play.google.com/store/apps/details?id=com.credenco.wallet"
+      },
+      "status": "production",
+      "capabilities": [
+        "holder"
+      ],
+      "catalogTier": "Pro"
     }
   ],
-  "lastUpdated": "2026-07-08T13:51:04.045Z"
+  "lastUpdated": "2026-07-12T15:44:53.685Z"
 }
