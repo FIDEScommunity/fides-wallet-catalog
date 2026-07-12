@@ -47,7 +47,9 @@
       ],
       "interoperabilityProfiles": [
         "DIIP v4",
-        "DIIP v5"
+        "DIIP v5",
+        "EUDI Wallet ARF",
+        "HAIP v1"
       ],
       "features": [
         "Universal OID4VP API",
@@ -66,7 +68,15 @@
           "https://www.youtube.com/watch?v=IIZ7dlF4gmM"
         ]
       },
-      "catalogTier": "Pro"
+      "catalogTier": "Pro",
+      "signingAlgorithms": [
+        "ES256",
+        "ES384",
+        "ES512",
+        "ES256K",
+        "EdDSA",
+        "RS256"
+      ]
     },
     {
       "id": "credenco-wallet",
@@ -139,5 +149,5 @@
       "catalogTier": "Pro"
     }
   ],
-  "lastUpdated": "2026-07-12T16:58:02.489Z"
+  "lastUpdated": "2026-07-12T17:52:18.201Z"
 }
