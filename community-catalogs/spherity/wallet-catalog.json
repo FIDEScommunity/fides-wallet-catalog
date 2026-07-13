@@ -1,12 +1,13 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:spherity",
   "wallets": [
     {
       "id": "spherity-business-wallet",
-      "name": "Spherity Business Wallet",
-      "description": "An enterprise identity wallet specializing in supply chain and pharmaceutical industry use cases, providing complete holder, issuer, and verifier capabilities.",
+      "name": "Spherity European Business Wallet",
+      "description": "Spherity’s European Business Wallet (EBW) enables the seamless exchange of verifiable credentials across organisations, from banking, insurance and beyond. As part of the EBW framework and fully eIDAS 2.0-compliant, it streamlines operations, cuts costs, and boosts efficiency. Enhanced with automated business partner data validation, our Business Wallet transforms how businesses handles regulatory obligations in Germany and beyond. With enterprise-grade data automation and primary source-validated information from Bundesanzeiger Verlag, businesses can minimise risks, eliminate manual KYC/KYS processes, and ensure real-time due diligence. Organisations operating in regulated industries or managing complex supply chains, our solution helps you meet obligations such as Anti-Money Laundering regulations.",
       "logo": "https://www.google.com/s2/favicons?domain=spherity.com&sz=128",
-      "website": "https://www.spherity.com",
+      "website": "https://www.spherity.com/eida",
       "type": "organizational",
       "capabilities": [
         "holder",
@@ -22,20 +23,82 @@
         "vcdm_2_0"
       ],
       "issuanceProtocols": [
-        "OpenID4VCI"
+        "OpenID4VCI",
+        "DIDComm Issue Credential v2"
       ],
       "presentationProtocols": [
-        "OpenID4VP"
+        "OpenID4VP",
+        "DIDComm Present Proof v2"
       ],
       "supportedIdentifiers": [
         "did:web",
         "did:key",
-        "did:ethr"
+        "did:peer",
+        "did:ethr",
+        "x509"
       ],
       "openSource": false,
-      "status": "production"
+      "status": "production",
+      "license": "proprietary",
+      "deploymentModel": "hybrid",
+      "slaAvailable": true,
+      "media": {
+        "videos": [
+          "https://youtu.be/yNrJYYx-VQA",
+          "https://youtube.com/playlist?list=PLnj6hp2xuFVI9DxMgnrPSbvK36WxN-KSl&si=7N1sv2QWay6-rP0r",
+          "https://youtube.com/playlist?list=PLnj6hp2xuFVLRc_qcCZ_3X1pwVsJv1gPg&si=_N4YnNToUGA1KxZy"
+        ],
+        "images": [
+          "https://static.wixstatic.com/media/4e321c_bdd8b44ded4243249921af3cdfbdae17~mv2.png/v1/crop/x_24,y_19,w_1552,h_985/fill/w_1110,h_704,fp_0.50_0.50,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Spherity%20Enterprise%20Wallet%20UI%20UX%202-p-1600.png"
+        ]
+      },
+      "additionalDocumentation": [
+        {
+          "title": "European Business Wallet User Guide",
+          "url": "https://oid.spherity.com/architecture"
+        },
+        {
+          "title": "European Business Wallet Playground",
+          "url": "https://playground.spherity.com/"
+        }
+      ],
+      "keyStorage": [
+        "Software",
+        "HSM",
+        "Cloud KMS"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "ES384",
+        "ES512",
+        "EdDSA",
+        "PS256",
+        "BBS+"
+      ],
+      "credentialStatusMethods": [
+        "IETF Token Status List",
+        "Bitstring Status List"
+      ],
+      "eidasTrustServices": [
+        "QEAA"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF",
+        "HAIP v1"
+      ],
+      "standards": [
+        "DIF WACI",
+        "OID4VCI 1.0",
+        "OID4VP 1.0",
+        "W3C VCDM 2.0",
+        "SD-JWT VC",
+        "eIDAS"
+      ],
+      "features": [
+        "Integration of external identity providers based on OAuth 2.0"
+      ],
+      "catalogTier": "Pro"
     }
   ],
-  "lastUpdated": "2026-01-06T12:00:00Z",
-  "orgId": "org:spherity"
+  "lastUpdated": "2026-07-13T15:38:16.560Z"
 }

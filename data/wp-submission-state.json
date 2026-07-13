@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "catalogType": "wallet",
-  "lastImportAt": "2026-07-12T17:52:18.205Z",
+  "lastImportAt": "2026-07-13T15:38:16.560Z",
   "managedWallets": [
     {
       "slug": "credenco",
@@ -18,6 +18,10 @@
     {
       "slug": "sphereon",
       "walletId": "sphereon-wallet"
+    },
+    {
+      "slug": "spherity",
+      "walletId": "spherity-business-wallet"
     }
   ]
 }
