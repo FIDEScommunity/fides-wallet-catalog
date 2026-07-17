@@ -127,14 +127,7 @@
         "HAIP v1"
       ],
       "features": [
-        "Semantic Modelling - Describe your digital world: meaning",
-        "legal basis",
-        "trust",
-        "sensitivity",
-        "disclosure",
-        "retention",
-        "consequence",
-        "audit duty",
+        "Semantic Modelling - Describe your digital world: meaning/legal basis/trust/sensitivity/disclosure/retention/consequence/audit duty",
         "Decision Engine - Verify compliance with laws",
         "regulation or internal company policies."
       ],
@@ -189,5 +182,5 @@
       }
     }
   ],
-  "lastUpdated": "2026-07-17T09:32:28.316Z"
+  "lastUpdated": "2026-07-17T09:35:43.929Z"
 }
