@@ -93,10 +93,10 @@
     },
     {
       "id": "sphereon-vdx-platform",
-      "name": "Sphereon VDX Platform",
+      "name": "Sphereon VDX Business Wallet",
       "description": "An omni-channel enterprise developer platform supporting management of organizational wallets, mobile wallets and identity integrations, Providing holder, issuer, and verifier capabilities with DIIP v5, HAIP and OID4VCI/VP 1.0, ISO-18013-5/7 compliance.",
       "logo": "https://www.google.com/s2/favicons?domain=sphereon.com&sz=128",
-      "website": "https://sphereon.com",
+      "website": "https://sphereon.com/solutions/the-sphereon-business-wallet/",
       "type": "organizational",
       "capabilities": [
         "holder",
@@ -127,7 +127,16 @@
         "HAIP v1"
       ],
       "features": [
-        "Universal OID4VP API"
+        "Semantic Modelling - Describe your digital world: meaning",
+        "legal basis",
+        "trust",
+        "sensitivity",
+        "disclosure",
+        "retention",
+        "consequence",
+        "audit duty",
+        "Decision Engine - Verify compliance with laws",
+        "regulation or internal company policies."
       ],
       "documentation": "https://docs.sphereon.com",
       "status": "production",
@@ -172,8 +181,13 @@
         "Q_TIMESTAMP",
         "QEAA"
       ],
-      "catalogTier": "Pro"
+      "catalogTier": "Pro",
+      "media": {
+        "images": [
+          "https://sphereon.com/content/uploads/2026/07/Sphereon-Business-Wallet.png"
+        ]
+      }
     }
   ],
-  "lastUpdated": "2026-07-13T15:38:16.558Z"
+  "lastUpdated": "2026-07-17T09:32:28.316Z"
 }
