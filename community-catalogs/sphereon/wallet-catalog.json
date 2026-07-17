@@ -93,10 +93,10 @@
     },
     {
       "id": "sphereon-vdx-platform",
-      "name": "Sphereon VDX Business Wallet",
-      "description": "An omni-channel enterprise developer platform supporting management of organizational wallets, mobile wallets and identity integrations, Providing holder, issuer, and verifier capabilities with DIIP v5, HAIP and OID4VCI/VP 1.0, ISO-18013-5/7 compliance.",
-      "logo": "https://www.google.com/s2/favicons?domain=sphereon.com&sz=128",
-      "website": "https://sphereon.com/solutions/the-sphereon-business-wallet/",
+      "name": "Sphereon VDX platform",
+      "description": "Sphereon VDX is a verifiable data layer for policy-driven trust and audit-ready decisions. It is a deployable verifiable data exchange platform that verifies evidence, resolves trust, applies policy, and returns auditable decisions to your existing business systems.\n\nIt is an omni-channel enterprise developer platform supporting management of organizational wallets, mobile wallets and identity integrations, providing holder, issuer, and verifier capabilities with DIIP v5, HAIP and OID4VCI/VP 1.0, ISO-18013-5/7 compliance.\n\nWhere our open-source Sphereon Identity Development Kit (IDK) provides low-level cryptographic control and our Sphereon Enterprise development Kit (EDK) provides production-grade building blocks, the Sphereon Verifiable data Exchange (VDX) platform provides the deployable verifiable data layer with APIs, management tooling, workflow support, and reusable solution patterns for enterprise operations.\n\nSee our developer documentation for all details or contact us for a free consultation",
+      "logo": "https://sphereon.com/content/uploads/2024/10/190013-Sphereon-logo-Transparent.png",
+      "website": "https://sphereon.com/sphereon-vdx-verifiable-data-exchange/",
       "type": "organizational",
       "capabilities": [
         "holder",
@@ -127,9 +127,13 @@
         "HAIP v1"
       ],
       "features": [
-        "Semantic Modelling - Describe your digital world: meaning/legal basis/trust/sensitivity/disclosure/retention/consequence/audit duty",
-        "Decision Engine - Verify compliance with laws",
-        "regulation or internal company policies."
+        "Semantic catalog",
+        "Decision engines",
+        "Event system",
+        "AuthZEN",
+        "Shared Signals (SSF)",
+        "Overlays Capture Architecture (OCA)",
+        "Identity Verification (IDV)"
       ],
       "documentation": "https://docs.sphereon.com",
       "status": "production",
@@ -177,10 +181,22 @@
       "catalogTier": "Pro",
       "media": {
         "images": [
-          "https://sphereon.com/content/uploads/2026/07/Sphereon-Business-Wallet.png"
+          "https://fides.community/app/uploads/2026/07/VDX-Overview-Simplified.png",
+          "https://sphereon.com/content/uploads/2026/07/Access-Denied-Screen.jpeg"
         ]
-      }
+      },
+      "pricing": "Fixed annual fee.",
+      "additionalDocumentation": [
+        {
+          "title": "Website",
+          "url": "https://sphereon.com/sphereon-vdx-verifiable-data-exchange/"
+        },
+        {
+          "title": "Developer documentation",
+          "url": "https://docs.sphereon.com/"
+        }
+      ]
     }
   ],
-  "lastUpdated": "2026-07-17T09:35:43.929Z"
+  "lastUpdated": "2026-07-17T13:39:03.682Z"
 }
