@@ -196,7 +196,123 @@
           "url": "https://docs.sphereon.com/"
         }
       ]
+    },
+    {
+      "id": "sphereon-business-wallet",
+      "name": "Sphereon Business Wallet",
+      "description": "The Sphereon business wallet is an enterprise-grade, API-first application service that provides the comprehensive functionality required to manage the complete digital credential lifecycle. It enables organizations to seamlessly operate as issuers, holders, and verifiers of verifiable credentials. Designed for ecosystem interoperability, it supports cross-border European standards including eIDAS 2.0 profiles, SD-JWT, and ISO 18013-5 mdocs. Its headless architecture allows it to integrate silently into existing ERP, GRC, and procurement workflows, allowing organizations to automate compliance and trust without forcing employees to adopt new standalone interfaces.\n\nWhat distinguishes the Sphereon business wallet from standard digital identity applications is its underlying Sphereon Verifiable Data Exchange (VDX) trust engine. While most wallets passively hold or perform basic checks on credentials, the Sphereon wallet actively gates business operations.\n\nThis allows organizations to create an authoritative semantic model of their specific operational world. Using integrated industry-standard decision engines, the wallet evaluates every single action and credential exchange against internal organizational policies, external regulations, and technical specifications.\n\nThe result is that every data exchange produces a definitive outcome ( Permit, Deny, or Step-Up) that dictates subsequent workflow steps. Furthermore, instead of relying on standard system logs, every decision and its surrounding context is cryptographically written to a tamper-proof, hash-chained audit trail. The Sphereon business wallet does not just verify data; it provides a legally defensible, perfectly reconstructable record of continuous assurance for every operational decision.",
+      "logo": "https://sphereon.com/content/uploads/2024/10/190013-Sphereon-logo-Transparent.png",
+      "website": "https://sphereon.com/solutions/sphereon-business-wallet/",
+      "type": "organizational",
+      "openSource": false,
+      "license": "proprietary",
+      "deploymentModel": "hybrid",
+      "slaAvailable": true,
+      "pricing": "Fixed annual fee",
+      "media": {
+        "images": [
+          "https://docs.sphereon.com/img/diagrams/edk-architecture-overview.svg",
+          "https://sphereon.com/content/uploads/2026/07/Sphereon-Business-Wallet.png",
+          "https://sphereon.com/content/uploads/2026/07/Dashboard-Wallet.png"
+        ]
+      },
+      "recognitions": {
+        "customerStories": [
+          {
+            "title": "Verified machine safety access at Koning Willem I College (KW1C)",
+            "url": "https://sphereon.com/content/uploads/PDF/FIDES_Innovation_Award.pdf"
+          }
+        ]
+      },
+      "additionalDocumentation": [
+        {
+          "title": "FIDES Award submission",
+          "url": "https://sphereon.com/content/uploads/PDF/FIDES_Best_Business_Wallet.pdf"
+        }
+      ],
+      "vcFormat": [
+        "sd_jwt_vc",
+        "mdoc",
+        "jwt_vc",
+        "vcdm_2_0"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI",
+        "ISO 18013-5 (Device Retrieval)"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "ISO 18013-5"
+      ],
+      "supportedIdentifiers": [
+        "did:web",
+        "did:key",
+        "did:jwk",
+        "did:webvh",
+        "x509"
+      ],
+      "keyStorage": [
+        "Software",
+        "HSM",
+        "Cloud KMS",
+        "FIDO2/WebAuthn"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "ES384",
+        "ES512",
+        "ES256K",
+        "EdDSA",
+        "RS256",
+        "PS256"
+      ],
+      "credentialStatusMethods": [
+        "OCSP",
+        "CRL",
+        "IETF Token Status List",
+        "Bitstring Status List"
+      ],
+      "eidasTrustServices": [
+        "Q_CERT_ESIG",
+        "Q_CERT_ESEAL",
+        "Q_TIMESTAMP",
+        "QEAA"
+      ],
+      "interoperabilityProfiles": [
+        "DIIP v5",
+        "HAIP v1"
+      ],
+      "standards": [
+        "eIDAS 2.0",
+        "ARF 1.4",
+        "SD-JWT",
+        "ISO 18013-5 mdoc",
+        "OpenID Federation",
+        "DIIP",
+        "EBSI profiles",
+        "W3C Verifiable Credentials",
+        "Linked VP"
+      ],
+      "features": [
+        "VDX trust resolution engine",
+        "API-first headless architecture",
+        "authoritative semantic modeling",
+        "integrated decision engines",
+        "dynamic workflow gating",
+        "tamper-proof audit trails",
+        "verifiable digital mandates",
+        "credential-gated physical reservations",
+        "in-person proximity verification"
+      ],
+      "documentation": "https://docs.sphereon.com/vdx/guides/getting-started/",
+      "status": "production",
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "catalogTier": "Pro"
     }
   ],
-  "lastUpdated": "2026-07-17T21:31:02.337Z"
+  "lastUpdated": "2026-07-17T21:33:43.105Z"
 }
