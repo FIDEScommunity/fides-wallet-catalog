@@ -4,10 +4,10 @@
   "wallets": [
     {
       "id": "sphereon-wallet",
-      "name": "Sphereon Wallet",
+      "name": "Sphereon Edge Wallet",
       "description": "Open-Source digital identity wallet with support for multiple credential formats and protocols including SD-JWT VC and ISO mdocs, statuslists.",
       "logo": "https://www.google.com/s2/favicons?domain=sphereon.com&sz=128",
-      "website": "https://sphereon.com/wallet",
+      "website": "https://sphereon.com/eidas-2/sphereon-wallet/",
       "type": "personal",
       "platforms": [
         "iOS",
@@ -15,7 +15,7 @@
       ],
       "openSource": true,
       "license": "Apache-2.0",
-      "repository": "https://github.com/Sphereon-Opensource/ssi-mobile-wallet",
+      "repository": "https://github.com/Sphereon-Opensource/mobile-wallet",
       "vcFormat": [
         "sd_jwt_vc",
         "mdoc",
@@ -71,7 +71,7 @@
         "Biometric authentication",
         "Cross-platform sync"
       ],
-      "documentation": "https://docs.sphereon.com/wallet",
+      "documentation": "https://docs.sphereon.com/idk/guides/getting-started/#mobile-wallets-and-credential-holders",
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/app/sphereon-wallet/id1661096796",
         "android": "https://play.google.com/store/apps/details?id=com.sphereon.wallet"
@@ -89,7 +89,12 @@
       "capabilities": [
         "holder"
       ],
-      "catalogTier": "Pro"
+      "catalogTier": "Pro",
+      "media": {
+        "images": [
+          "https://sphereon.com/content/uploads/2023/01/Sphereon-Store-Branding-Small.jpg"
+        ]
+      }
     },
     {
       "id": "sphereon-vdx-platform",
@@ -314,5 +319,5 @@
       "catalogTier": "Pro"
     }
   ],
-  "lastUpdated": "2026-07-17T21:33:43.105Z"
+  "lastUpdated": "2026-07-20T12:40:59.080Z"
 }
