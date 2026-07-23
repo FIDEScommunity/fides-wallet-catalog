@@ -1,11 +1,55 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import fs from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
 import {
   buildImportPlan,
   emptyState,
+  loadCommittedExportPayload,
   mergeWalletIntoCatalog,
   type WpExportEntry,
 } from '../scripts/import-wp-submissions.ts';
+
+test('loadCommittedExportPayload returns null when the file is absent', async () => {
+  const missing = path.join(os.tmpdir(), `fides-missing-${Date.now()}.json`);
+  assert.equal(await loadCommittedExportPayload(missing), null);
+});
+
+test('loadCommittedExportPayload parses a committed export file', async () => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'fides-export-'));
+  const file = path.join(dir, 'wallet.json');
+  const payload = {
+    schemaVersion: '1.0.0',
+    catalogType: 'wallet',
+    generatedAt: new Date().toISOString(),
+    entries: [
+      {
+        itemId: 'example-wallet',
+        slug: 'fides',
+        filename: 'wallet-catalog.json',
+        source: 'wordpress',
+        document: {
+          orgId: 'org:fides',
+          wallets: [{ id: 'example-wallet', name: 'Example' }],
+        },
+      },
+    ],
+  };
+  await fs.writeFile(file, `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
+  const loaded = await loadCommittedExportPayload(file);
+  assert.equal(loaded?.entries.length, 1);
+  assert.equal(loaded?.entries[0].slug, 'fides');
+  await fs.rm(dir, { recursive: true, force: true });
+});
+
+test('loadCommittedExportPayload throws a clear error on malformed JSON', async () => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'fides-export-bad-'));
+  const file = path.join(dir, 'wallet.json');
+  await fs.writeFile(file, '{ not json', 'utf8');
+  await assert.rejects(loadCommittedExportPayload(file), /Invalid committed export/);
+  await fs.rm(dir, { recursive: true, force: true });
+});
 
 test('mergeWalletIntoCatalog appends and updates by wallet id', () => {
   const entryA: WpExportEntry = {

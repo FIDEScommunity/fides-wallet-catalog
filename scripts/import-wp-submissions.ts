@@ -13,6 +13,12 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(process.cwd());
 const COMMUNITY_DIR = path.join(ROOT, 'community-catalogs');
 const STATE_PATH = path.join(ROOT, 'data/wp-submission-state.json');
+// Committed export file (primary source): WordPress writes this via the GitHub
+// Contents API; its push triggers the sync workflow, which reads the file
+// locally — no ~65 KB repository_dispatch cap and no WAF-blocked HTTP pull.
+const WP_EXPORT_FILE = process.env.FIDES_WP_EXPORT_FILE
+  ? path.resolve(ROOT, process.env.FIDES_WP_EXPORT_FILE)
+  : path.join(ROOT, 'data/wp-export/wallet.json');
 const MARKER_FILENAME = '.wordpress-source';
 const COMMUNITY_FILENAME = 'wallet-catalog.json';
 const SECRET_HEADER = 'X-FIDES-Catalog-Secret';
@@ -260,11 +266,43 @@ export function loadInlineExportPayload(): WpExportPayload | null {
   }
 }
 
+export async function loadCommittedExportPayload(
+  filePath: string = WP_EXPORT_FILE,
+): Promise<WpExportPayload | null> {
+  let raw: string;
+  try {
+    raw = await fs.readFile(filePath, 'utf8');
+  } catch (err) {
+    if ((err as NodeJS.ErrnoException).code === 'ENOENT') {
+      return null;
+    }
+    throw err;
+  }
+  try {
+    const payload = JSON.parse(raw) as WpExportPayload;
+    if (!payload?.entries || !Array.isArray(payload.entries)) {
+      throw new Error('committed export is missing entries array.');
+    }
+    return payload;
+  } catch (err) {
+    throw new Error(
+      `Invalid committed export ${path.relative(ROOT, filePath)}: ${err instanceof Error ? err.message : String(err)}`,
+    );
+  }
+}
+
 export async function loadExportPayload(wpUrl: string, secret: string): Promise<WpExportPayload> {
   const inline = loadInlineExportPayload();
   if (inline) {
     console.log('Using inline export payload (WordPress push sync).');
     return inline;
+  }
+
+  // Primary: the export file WordPress committed via the Contents API.
+  const committed = await loadCommittedExportPayload();
+  if (committed) {
+    console.log(`Using committed WordPress export ${path.relative(ROOT, WP_EXPORT_FILE)}.`);
+    return committed;
   }
 
   const event = process.env.GITHUB_EVENT_NAME?.trim();

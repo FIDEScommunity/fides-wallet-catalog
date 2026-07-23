@@ -1,12 +1,19 @@
 name: WP Submissions Sync
 
-# Push primary (repository_dispatch from WP publish/delete). HTTP export pull only
-# on workflow_dispatch (recovery). See fides-community-tools-tiles §14.1.
+# Push primary: WordPress commits data/wp-export/wallet.json via the GitHub
+# Contents API on publish/delete; that push triggers this workflow, which reads
+# the committed export locally (no ~65 KB repository_dispatch cap, no WAF).
+# repository_dispatch (inline JSON) and workflow_dispatch (HTTP pull) remain as
+# fallback/recovery. See fides-community-tools-tiles §14.1.
 
 on:
   repository_dispatch:
     types: [fides-catalog-export]
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/wp-export/wallet.json'
 
 jobs:
   sync-wp-submissions:
