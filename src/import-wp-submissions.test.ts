@@ -62,6 +62,16 @@ test('mergeWalletIntoCatalog appends and updates by wallet id', () => {
       wallets: [{ id: 'example-wallet', name: 'Example', type: 'personal', status: 'beta' }],
     },
   };
+  {
+    // The merged doc must carry the real last-modification date from the export
+    // document (submission updated_at), not a fresh "now" stamp.
+    const realDate = '2026-01-15T09:30:00+00:00';
+    const dated = mergeWalletIntoCatalog(null, {
+      ...entryA,
+      document: { ...entryA.document, lastUpdated: realDate },
+    });
+    assert.equal(dated.lastUpdated, realDate);
+  }
   const entryB: WpExportEntry = {
     itemId: 'example-wallet',
     slug: 'animo',
