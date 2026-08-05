@@ -1488,7 +1488,7 @@
     const credentialCatalogUrl = (options && options.credentialCatalogUrl) || 'https://fides.community/ecosystem-explorer/credential-catalog/';
     const issuerCatalogUrl = (options && options.issuerCatalogUrl) || 'https://fides.community/ecosystem-explorer/issuer-catalog/';
     const walletCatalogUrl = (options && options.walletCatalogUrl) || '';
-    const useCaseCatalogUrl = (options && options.useCaseCatalogUrl) || 'https://fides.community/use-cases/';
+    const useCaseCatalogUrl = (options && options.useCaseCatalogUrl) || 'https://fides.community/ecosystem-explorer/use-cases/';
     const issuers = (options && Array.isArray(options.ecosystemIssuers)) ? options.ecosystemIssuers : [];
     const specificationsBody = buildRpSpecificationsBodyHtml(rp, options);
     const websiteDetailsBody = buildRpWebsiteDetailsBodyHtml(rp);
@@ -2101,11 +2101,189 @@
       overlay.classList.add('closing');
       setTimeout(() => {
         overlay.remove();
-        document.body.style.overflow = '';
+        // Keep page scroll locked when mobile filters are still open.
+        syncCatalogBodyScrollLock();
         selectedContext = null;
         document.dispatchEvent(new CustomEvent('fides-catalog-modal-closed'));
       }, 200);
     }
+  }
+
+  const MOBILE_FILTER_BREAKPOINT = 1024;
+
+  function defaultIsCatalogModalOpen(doc) {
+    return !!(doc || document).getElementById('fides-modal-overlay');
+  }
+
+  /**
+   * Keep document.body overflow in sync with mobile filter drawers and catalog modals.
+   * Catalog listing scripts should use this instead of writing body.style.overflow directly.
+   */
+  function syncCatalogBodyScrollLock(options) {
+    options = options || {};
+    const doc = options.document || document;
+    const root = options.root || null;
+    const isModalOpen = typeof options.isModalOpen === 'function'
+      ? !!options.isModalOpen()
+      : defaultIsCatalogModalOpen(doc);
+    const scope = root || doc;
+    const filtersOpen = !!(scope.querySelector && scope.querySelector('.fides-sidebar.mobile-open'));
+    if (filtersOpen || isModalOpen) {
+      doc.body.style.overflow = 'hidden';
+    } else {
+      doc.body.style.overflow = '';
+    }
+    return { filtersOpen: filtersOpen, modalOpen: isModalOpen };
+  }
+
+  /**
+   * Shared mobile filter drawer controller for all catalog listings.
+   * Prevents drawer close / body scroll-lock drift across full re-renders.
+   *
+   * @param {Object} options
+   * @param {Element|Function} options.root Catalog root element (or getter)
+   * @param {number} [options.breakpoint=1024]
+   * @param {Function} [options.isModalOpen]
+   * @param {Document} [options.document]
+   * @param {Window} [options.window]
+   */
+  function createMobileFiltersController(options) {
+    options = options || {};
+    const doc = options.document || document;
+    const win = options.window || window;
+    const breakpoint = options.breakpoint || MOBILE_FILTER_BREAKPOINT;
+    const getRoot = typeof options.root === 'function'
+      ? options.root
+      : function() { return options.root || null; };
+    const isModalOpen = typeof options.isModalOpen === 'function'
+      ? options.isModalOpen
+      : function() { return defaultIsCatalogModalOpen(doc); };
+    let viewportBound = false;
+
+    function isMobileViewport() {
+      return win.innerWidth < breakpoint;
+    }
+
+    function getSidebar() {
+      const root = getRoot();
+      return root && root.querySelector ? root.querySelector('.fides-sidebar') : null;
+    }
+
+    function isOpen() {
+      const root = getRoot();
+      return !!(root && root.querySelector && root.querySelector('.fides-sidebar.mobile-open'));
+    }
+
+    function syncScrollLock() {
+      return syncCatalogBodyScrollLock({
+        document: doc,
+        root: getRoot(),
+        isModalOpen: isModalOpen
+      });
+    }
+
+    function setOpen(open) {
+      const sidebar = getSidebar();
+      if (sidebar) {
+        sidebar.classList.toggle('mobile-open', !!open);
+      }
+      syncScrollLock();
+      return isOpen();
+    }
+
+    function captureOpenState() {
+      return isOpen();
+    }
+
+    function applyAfterRender(wasOpen) {
+      if (wasOpen && isMobileViewport()) {
+        setOpen(true);
+      } else {
+        setOpen(false);
+      }
+    }
+
+    function bindShell() {
+      const root = getRoot();
+      if (!root) return;
+      const sidebar = root.querySelector('.fides-sidebar');
+      const toggle = root.querySelector('#fides-mobile-filter-toggle');
+      const closeBtn = root.querySelector('#fides-sidebar-close');
+      if (toggle && sidebar) {
+        toggle.addEventListener('click', function() { setOpen(true); });
+      }
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function() { setOpen(false); });
+      }
+      if (sidebar) {
+        sidebar.addEventListener('click', function(e) {
+          if (e.target === sidebar && sidebar.classList.contains('mobile-open')) {
+            setOpen(false);
+          }
+        });
+      }
+    }
+
+    function bindCollapsibleToggles(filterGroupState) {
+      const root = getRoot();
+      if (!root) return;
+      root.querySelectorAll('.fides-filter-label-toggle').forEach(function(toggle) {
+        toggle.addEventListener('click', function(e) {
+          if (e.target.closest && e.target.closest('.fides-vocab-info')) return;
+          const filterGroup = toggle.closest('.fides-filter-group');
+          if (!filterGroup) return;
+          filterGroup.classList.toggle('collapsed');
+          const isExpanded = !filterGroup.classList.contains('collapsed');
+          toggle.setAttribute('aria-expanded', String(isExpanded));
+          const group = filterGroup.getAttribute('data-filter-group')
+            || (filterGroup.dataset && filterGroup.dataset.filterGroup);
+          if (group && filterGroupState && Object.prototype.hasOwnProperty.call(filterGroupState, group)) {
+            filterGroupState[group] = isExpanded;
+          }
+        });
+      });
+    }
+
+    function onLeavingMobileViewport() {
+      if (!isMobileViewport() && isOpen()) {
+        setOpen(false);
+      } else {
+        syncScrollLock();
+      }
+    }
+
+    function bindViewportGuard(onCrossBreakpoint) {
+      if (viewportBound) return;
+      viewportBound = true;
+      let lastWidth = win.innerWidth;
+      let timer = null;
+      win.addEventListener('resize', function() {
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(function() {
+          timer = null;
+          onLeavingMobileViewport();
+          const width = win.innerWidth;
+          const crossed = (lastWidth < breakpoint) !== (width < breakpoint);
+          lastWidth = width;
+          if (crossed && typeof onCrossBreakpoint === 'function') {
+            onCrossBreakpoint(isMobileViewport());
+          }
+        }, 150);
+      });
+    }
+
+    return {
+      isMobileViewport: isMobileViewport,
+      isOpen: isOpen,
+      setOpen: setOpen,
+      syncScrollLock: syncScrollLock,
+      captureOpenState: captureOpenState,
+      applyAfterRender: applyAfterRender,
+      bindShell: bindShell,
+      bindCollapsibleToggles: bindCollapsibleToggles,
+      onLeavingMobileViewport: onLeavingMobileViewport,
+      bindViewportGuard: bindViewportGuard
+    };
   }
 
   function getDirectLink(contextType, item, options) {
@@ -3232,6 +3410,9 @@
     buildOrganizationContactFooterHtml,
     buildModalLastUpdatedHtml,
     buildOrganizationHeroSectionHtml,
-    initModalMediaCarousels
+    initModalMediaCarousels,
+    syncCatalogBodyScrollLock,
+    createMobileFiltersController,
+    MOBILE_FILTER_BREAKPOINT
   };
 })();
