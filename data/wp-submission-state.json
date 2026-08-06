@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "catalogType": "wallet",
-  "lastImportAt": "2026-07-20T16:26:48.442Z",
+  "lastImportAt": "2026-08-06T13:28:46.518Z",
   "managedWallets": [
     {
       "slug": "credenco",
@@ -26,6 +26,10 @@
     {
       "slug": "spherity",
       "walletId": "spherity-business-wallet"
+    },
+    {
+      "slug": "verana",
+      "walletId": "vs-agent-verana-business-wallet"
     }
   ]
 }

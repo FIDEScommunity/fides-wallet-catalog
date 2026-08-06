@@ -187,7 +187,8 @@
       "media": {
         "images": [
           "https://fides.community/app/uploads/2026/07/VDX-Overview-Simplified.png",
-          "https://sphereon.com/content/uploads/2026/07/Access-Denied-Screen.jpeg"
+          "https://docs.sphereon.com/img/diagrams/edk-architecture-overview.svg",
+          "https://sphereon.com/content/uploads/2026/07/Dashboard-Wallet.png"
         ]
       },
       "pricing": "Fixed annual fee.",
@@ -200,6 +201,18 @@
           "title": "Developer documentation",
           "url": "https://docs.sphereon.com/"
         }
+      ],
+      "standards": [
+        "eIDAS 2.0",
+        "GSPR",
+        "NIS2",
+        "SOC2",
+        "OpenID Federation 1.0",
+        "HAIP",
+        "ISO",
+        "W3C",
+        "DIF",
+        "ETSI. OAuth 2.0"
       ]
     },
     {
@@ -319,5 +332,5 @@
       "catalogTier": "Pro"
     }
   ],
-  "lastUpdated": "2026-07-20T16:26:48.440Z"
+  "lastUpdated": "2026-07-20T12:40:36+00:00"
 }

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:verana",
+  "wallets": [
+    {
+      "id": "vs-agent-verana-business-wallet",
+      "name": "VS Agent - Verana Business Wallet",
+      "description": "VS Agent is the reference implementation of a Verifiable Service: an open-source, self-hosted business wallet that gives every service an organization operates a resolvable DID and a verifiable identity, so anyone can check what it is and who runs it before connecting.\n\nThe wallet's DID plugs into the Verana Network, a public decentralized trust infrastructure that no vendor or state controls. Through it, an organization joins any ecosystem as issuer, verifier, holder, or grantor. No platform account, no gatekeeper: roles and permissions are anchored on-chain and publicly verifiable.\n\nEach ecosystem decides how it admits participants: VS Agent is onboarding-process agnostic. The vt-flow protocol fixes the machinery while each ecosystem defines what gets verified: a registry lookup, an industry accreditation, a video call, or eIDAS-grade KYB if required. EU-ready, not EU-bound: European regulation is one profile among many; the same wallet serves any jurisdiction and sector.\n\nThe same rails carry privacy-preserving business models: ecosystems set their own fees for onboarding, issuance and verification, settled on-chain and backed by trust deposits. Value flows to issuers, verifiers and ecosystem operators without tracking users or monetizing their data: the business model lives in the trust layer, not in surveillance.\n\nWhatever the process, the lifecycle is automatic: onboarding triggers issuance; on-chain revocation reaches the holder and cleans up the credential. Trust is resolved before every exchange, fail closed.\n\nOne runtime, both transport stacks: DIDComm (Issue Credential v2, Present Proof v2, vt-flow) and OpenID4VCI / OpenID4VP. W3C JSON-LD for public credentials, AnonCreds for unlinkable private credentials, SD-JWT VC with Token Status List for interop.\n\nHost any service shape under one DID: DIDComm chat agents, MCP servers, A2A agents, HTTP APIs, even verifiable AI agents. Docker, REST API, NestJS/JS clients. Apache-2.0, powering the Verana Playground.",
+      "logo": "https://verana.io/logo.svg",
+      "website": "https://playground.testnet.verana.network/business-wallets",
+      "type": "organizational",
+      "openSource": true,
+      "license": "Apache-2.0",
+      "repository": "https://github.com/verana-labs/vs-agent/",
+      "deploymentModel": "on_premises",
+      "pricing": "The wallet is free and always will be. VS Agent is the reference implementation of a Verifiable Service, published under the Apache-2.0 license and stewarded as part of the Verana Foundation's mission: trust infrastructure only works if anyone can inspect it, run it and build on it without asking permission. No license fee, no usage tier, no hosted lock-in: you self-host the container and keep full control of your keys, data and DID.\n\nThere is no software vendor to pay; value flows between ecosystem participants instead. You pay your own hosting, the network fees of the Verana Verifiable Public Registry, and the fees each ecosystem defines for its privacy-preserving business models: onboarding, pay-per-issuance and pay-per-verification, settled on-chain, backed by reclaimable trust deposits, and charged without tracking users or monetizing their data. Commercial support and integration services are available from Verana Labs and ecosystem partners.",
+      "vcFormat": [
+        "sd_jwt_vc",
+        "anoncreds"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI",
+        "DIDComm Issue Credential v1",
+        "DIDComm Issue Credential v2"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "DIDComm Present Proof v1",
+        "DIDComm Present Proof v2"
+      ],
+      "supportedIdentifiers": [
+        "did:web"
+      ],
+      "features": [
+        "mrtd support",
+        "webrtc over DIDComm"
+      ],
+      "status": "production",
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "catalogTier": "Pro"
+    }
+  ],
+  "lastUpdated": "2026-08-06T13:28:22+00:00"
+}
