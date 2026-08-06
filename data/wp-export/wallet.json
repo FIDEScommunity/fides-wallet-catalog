@@ -1,7 +1,7 @@
 {
     "schemaVersion": "1.0.0",
     "catalogType": "wallet",
-    "generatedAt": "2026-08-06T14:58:31+00:00",
+    "generatedAt": "2026-08-06T15:45:02+00:00",
     "entries": [
         {
             "itemId": "credenco-business-wallet",
@@ -684,6 +684,12 @@
                         "repository": "https://github.com/verana-labs/vs-agent/",
                         "deploymentModel": "on_premises",
                         "pricing": "The wallet is free and always will be. VS Agent is the reference implementation of a Verifiable Service, published under the Apache-2.0 license and stewarded as part of the Verana Foundation's mission: trust infrastructure only works if anyone can inspect it, run it and build on it without asking permission. No license fee, no usage tier, no hosted lock-in: you self-host the container and keep full control of your keys, data and DID.\n\nThere is no software vendor to pay; value flows between ecosystem participants instead. You pay your own hosting, the network fees of the Verana Verifiable Public Registry, and the fees each ecosystem defines for its privacy-preserving business models: onboarding, pay-per-issuance and pay-per-verification, settled on-chain, backed by reclaimable trust deposits, and charged without tracking users or monetizing their data. Commercial support and integration services are available from Verana Labs and ecosystem partners.",
+                        "media": {
+                            "images": [
+                                "https://fides.community/app/uploads/2026/08/signal-2026-08-06-10-07-13-189_002.jpg",
+                                "https://fides.community/app/uploads/2026/08/signal-2026-08-06-10-09-54-647_002.jpg"
+                            ]
+                        },
                         "vcFormat": [
                             "sd_jwt_vc",
                             "anoncreds"
@@ -715,10 +721,10 @@
                         "catalogTier": "Pro"
                     }
                 ],
-                "lastUpdated": "2026-08-06T14:58:30+00:00"
+                "lastUpdated": "2026-08-06T15:45:01+00:00"
             },
-            "publishedAt": "2026-08-06 14:58:30",
-            "updatedAt": "2026-08-06 14:58:30"
+            "publishedAt": "2026-08-06 15:45:01",
+            "updatedAt": "2026-08-06 15:45:01"
         }
     ]
 }
