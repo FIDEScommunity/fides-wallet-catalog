@@ -1,7 +1,7 @@
 {
     "schemaVersion": "1.0.0",
     "catalogType": "wallet",
-    "generatedAt": "2026-08-06T13:28:23+00:00",
+    "generatedAt": "2026-08-06T14:58:31+00:00",
     "entries": [
         {
             "itemId": "credenco-business-wallet",
@@ -675,7 +675,7 @@
                     {
                         "id": "vs-agent-verana-business-wallet",
                         "name": "VS Agent - Verana Business Wallet",
-                        "description": "VS Agent is the reference implementation of a Verifiable Service: an open-source, self-hosted business wallet that gives every service an organization operates a resolvable DID and a verifiable identity, so anyone can check what it is and who runs it before connecting.\n\nThe wallet's DID plugs into the Verana Network, a public decentralized trust infrastructure that no vendor or state controls. Through it, an organization joins any ecosystem as issuer, verifier, holder, or grantor. No platform account, no gatekeeper: roles and permissions are anchored on-chain and publicly verifiable.\n\nEach ecosystem decides how it admits participants: VS Agent is onboarding-process agnostic. The vt-flow protocol fixes the machinery while each ecosystem defines what gets verified: a registry lookup, an industry accreditation, a video call, or eIDAS-grade KYB if required. EU-ready, not EU-bound: European regulation is one profile among many; the same wallet serves any jurisdiction and sector.\n\nThe same rails carry privacy-preserving business models: ecosystems set their own fees for onboarding, issuance and verification, settled on-chain and backed by trust deposits. Value flows to issuers, verifiers and ecosystem operators without tracking users or monetizing their data: the business model lives in the trust layer, not in surveillance.\n\nWhatever the process, the lifecycle is automatic: onboarding triggers issuance; on-chain revocation reaches the holder and cleans up the credential. Trust is resolved before every exchange, fail closed.\n\nOne runtime, both transport stacks: DIDComm (Issue Credential v2, Present Proof v2, vt-flow) and OpenID4VCI / OpenID4VP. W3C JSON-LD for public credentials, AnonCreds for unlinkable private credentials, SD-JWT VC with Token Status List for interop.\n\nHost any service shape under one DID: DIDComm chat agents, MCP servers, A2A agents, HTTP APIs, even verifiable AI agents. Docker, REST API, NestJS/JS clients. Apache-2.0, powering the Verana Playground.",
+                        "description": "VS Agent is the reference implementation of a Verifiable Service: an open-source, self-hosted business wallet that gives every service an organization operates a verifiable identity, so anyone can check what it is and who runs it before connecting.\n\nIts DID plugs into the Verana Network, a public decentralized trust infrastructure that no vendor or state controls: join any ecosystem as issuer, verifier or holder, with no platform account and no gatekeeper. Each ecosystem defines its own onboarding process (registry lookup, accreditation, eIDAS-grade KYB if required) and its own privacy-preserving business model: onboarding, pay-per-issuance and pay-per-verification fees settled on-chain, without tracking users. The credential lifecycle is automatic via the vt-flow protocol: onboarding triggers issuance, on-chain revocation reaches the holder.\n\nDIDComm and OpenID4VCI/VP; JSON-LD, AnonCreds and SD-JWT VC. Host chat agents, MCP servers, A2A agents or HTTP APIs under one DID. Apache-2.0.",
                         "logo": "https://verana.io/logo.svg",
                         "website": "https://playground.testnet.verana.network/business-wallets",
                         "type": "organizational",
@@ -699,7 +699,8 @@
                             "DIDComm Present Proof v2"
                         ],
                         "supportedIdentifiers": [
-                            "did:web"
+                            "did:web",
+                            "did:webvh"
                         ],
                         "features": [
                             "mrtd support",
@@ -714,10 +715,10 @@
                         "catalogTier": "Pro"
                     }
                 ],
-                "lastUpdated": "2026-08-06T13:28:22+00:00"
+                "lastUpdated": "2026-08-06T14:58:30+00:00"
             },
-            "publishedAt": "2026-08-06 13:28:22",
-            "updatedAt": "2026-08-06 13:28:22"
+            "publishedAt": "2026-08-06 14:58:30",
+            "updatedAt": "2026-08-06 14:58:30"
         }
     ]
 }
