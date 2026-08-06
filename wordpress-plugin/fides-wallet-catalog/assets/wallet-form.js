@@ -115,8 +115,12 @@
     "fides-wallet-web-url",
   ];
 
+  function proPlanBadgeIsStatic() {
+    return !!planTier.isPro || planTier.tier === "Pro";
+  }
+
   function proBadgeHtml() {
-    if (planTier.isPro) {
+    if (proPlanBadgeIsStatic()) {
       return '<span class="fides-pro-plan-badge fides-pro-plan-badge--label">Pro plan</span>';
     }
     const url = String(planTier.plansUrl || "/plans/");

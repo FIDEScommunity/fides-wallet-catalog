@@ -522,11 +522,25 @@
   let container;
   let settings;
 
+  let mobileFiltersController = null;
+  function getMobileFilters() {
+    if (mobileFiltersController) return mobileFiltersController;
+    if (!window.FidesCatalogUI || typeof window.FidesCatalogUI.createMobileFiltersController !== 'function') {
+      return null;
+    }
+    mobileFiltersController = window.FidesCatalogUI.createMobileFiltersController({
+      root: () => container,
+      breakpoint: LIST_BREAKPOINT,
+    });
+    return mobileFiltersController;
+  }
+
   function effectiveView() {
     return window.innerWidth < LIST_BREAKPOINT ? 'grid' : viewMode;
   }
   let _lastEffective = effectiveView();
   window.addEventListener('resize', debounce(() => {
+    getMobileFilters()?.onLeavingMobileViewport();
     const cur = effectiveView();
     if (cur !== _lastEffective) {
       _lastEffective = cur;
@@ -1892,8 +1906,10 @@
     html += `</main>`; // Close fides-content
     html += `</div>`; // Close fides-main-layout
 
+    const mobileFiltersOpen = getMobileFilters()?.captureOpenState() || false;
     container.innerHTML = html;
     attachEventListeners();
+    getMobileFilters()?.applyAfterRender(mobileFiltersOpen);
     
     // Restore focus to search input if it was focused
     if (wasSearchFocused) {
@@ -2382,7 +2398,11 @@
       overlay.classList.add('closing');
       setTimeout(() => {
         overlay.remove();
-        document.body.style.overflow = '';
+        if (window.FidesCatalogUI && typeof window.FidesCatalogUI.syncCatalogBodyScrollLock === 'function') {
+          window.FidesCatalogUI.syncCatalogBodyScrollLock({ root: container });
+        } else if (!(container && container.querySelector('.fides-sidebar.mobile-open'))) {
+          document.body.style.overflow = '';
+        }
         selectedWallet = null;
       }, 200);
     }
@@ -2623,57 +2643,8 @@
       searchClear.addEventListener('click', handleSearchClear);
     }
 
-    // Mobile filter toggle
-    const mobileFilterToggle = document.getElementById('fides-mobile-filter-toggle');
-    const sidebar = container.querySelector('.fides-sidebar');
-    
-    if (mobileFilterToggle) {
-      mobileFilterToggle.addEventListener('click', () => {
-        if (sidebar) {
-          sidebar.classList.add('mobile-open');
-          document.body.style.overflow = 'hidden';
-        }
-      });
-    }
-
-    // Close sidebar button
-    const sidebarClose = document.getElementById('fides-sidebar-close');
-    if (sidebarClose) {
-      sidebarClose.addEventListener('click', () => {
-        if (sidebar) {
-          sidebar.classList.remove('mobile-open');
-          document.body.style.overflow = '';
-        }
-      });
-    }
-
-    // Close sidebar when clicking overlay (mobile)
-    if (sidebar) {
-      sidebar.addEventListener('click', (e) => {
-        if (e.target === sidebar && sidebar.classList.contains('mobile-open')) {
-          sidebar.classList.remove('mobile-open');
-          document.body.style.overflow = '';
-        }
-      });
-    }
-
-    // Collapsible filter toggles
-    container.querySelectorAll('.fides-filter-label-toggle').forEach(toggle => {
-      toggle.addEventListener('click', (e) => {
-        if (e.target.closest('.fides-vocab-info')) return;
-        const filterGroup = toggle.closest('.fides-filter-group');
-        if (filterGroup) {
-          const groupName = filterGroup.dataset.filterGroup;
-          filterGroup.classList.toggle('collapsed');
-          const isExpanded = !filterGroup.classList.contains('collapsed');
-          toggle.setAttribute('aria-expanded', isExpanded);
-          // Save state
-          if (groupName && filterGroupState.hasOwnProperty(groupName)) {
-            filterGroupState[groupName] = isExpanded;
-          }
-        }
-      });
-    });
+    getMobileFilters()?.bindShell();
+    getMobileFilters()?.bindCollapsibleToggles(filterGroupState);
 
     // Vocabulary [i] info buttons
     initVocabularyInfo(container);
