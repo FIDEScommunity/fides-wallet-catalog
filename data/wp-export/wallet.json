@@ -1,0 +1,723 @@
+{
+    "schemaVersion": "1.0.0",
+    "catalogType": "wallet",
+    "generatedAt": "2026-08-06T13:28:23+00:00",
+    "entries": [
+        {
+            "itemId": "credenco-business-wallet",
+            "slug": "credenco",
+            "filename": "wallet-catalog.json",
+            "source": "wordpress",
+            "document": {
+                "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+                "orgId": "org:credenco",
+                "wallets": [
+                    {
+                        "id": "credenco-business-wallet",
+                        "name": "Credenco Business Wallet",
+                        "description": "A DIIP v5 compliant Business Wallet platform providing full holder, issuer, and verifier capabilities for enterprise digital identity management.",
+                        "logo": "https://wallet.acc.credenco.com/logo_white_background.png",
+                        "website": "https://www.credenco.com",
+                        "type": "organizational",
+                        "platforms": [
+                            "Web"
+                        ],
+                        "media": {
+                            "videos": [
+                                "https://www.youtube.com/watch?v=IIZ7dlF4gmM"
+                            ]
+                        },
+                        "vcFormat": [
+                            "sd_jwt_vc",
+                            "mdoc",
+                            "jwt_vc",
+                            "vcdm_2_0"
+                        ],
+                        "issuanceProtocols": [
+                            "OpenID4VCI"
+                        ],
+                        "presentationProtocols": [
+                            "OpenID4VP"
+                        ],
+                        "supportedIdentifiers": [
+                            "did:web",
+                            "did:jwk",
+                            "did:ebsi",
+                            "did:webvh",
+                            "x509"
+                        ],
+                        "keyStorage": [
+                            "Software",
+                            "HSM",
+                            "Cloud KMS"
+                        ],
+                        "signingAlgorithms": [
+                            "ES256",
+                            "ES384",
+                            "ES512",
+                            "ES256K",
+                            "EdDSA",
+                            "RS256"
+                        ],
+                        "credentialStatusMethods": [
+                            "StatusList2021",
+                            "IETF Token Status List"
+                        ],
+                        "interoperabilityProfiles": [
+                            "DIIP v4",
+                            "DIIP v5",
+                            "EUDI Wallet ARF",
+                            "HAIP v1"
+                        ],
+                        "features": [
+                            "Universal OID4VP API",
+                            "Compliant with WE BUILD Interoperability Test Bed (ITB)",
+                            "Integration with FIDES Credential Catalog and BluePages",
+                            "EBSI Integration",
+                            "Public Profile",
+                            "Inbox notifications",
+                            "Available as SaaS or on-premise deployment"
+                        ],
+                        "documentation": "https://docs.acc.credenco.com",
+                        "status": "production",
+                        "capabilities": [
+                            "holder",
+                            "issuer",
+                            "verifier"
+                        ],
+                        "catalogTier": "Pro"
+                    }
+                ],
+                "lastUpdated": "2026-07-12T17:52:01+00:00"
+            },
+            "publishedAt": "2026-07-12 17:52:01",
+            "updatedAt": "2026-07-12 17:52:01"
+        },
+        {
+            "itemId": "credenco-wallet",
+            "slug": "credenco",
+            "filename": "wallet-catalog.json",
+            "source": "wordpress",
+            "document": {
+                "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+                "orgId": "org:credenco",
+                "wallets": [
+                    {
+                        "id": "credenco-wallet",
+                        "name": "Credenco Wallet",
+                        "description": "The Credenco Wallet enables users to securely receive, store, manage, and present verifiable credentials and digital identity information. Built with privacy and security in mind, the wallet supports trusted interactions with participating relying parties while keeping users in control of their personal data.\n\nKey features include:\n- Securely receive and store verifiable credentials\n- Manage digital identity information on-device\n- Present credentials securely to trusted relying parties\n- Privacy-preserving sharing with user consent\n- Support for interoperable European digital identity standards\n\nThe Credenco Wallet also provides the ability to receive and share credentials from your Credenco Business Wallet.",
+                        "logo": "https://play-lh.googleusercontent.com/q7wotX3g-O6DgYEBq6EfR6vsDe0NHd138uMK_6pUJat9x2UzisC15FfMQOPmQ7EDp5354fV61Ic1xuKQPGY5=w480-h960-rw",
+                        "website": "https://www.credenco.com",
+                        "type": "personal",
+                        "platforms": [
+                            "iOS",
+                            "Android"
+                        ],
+                        "media": {
+                            "images": [
+                                "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/2e/49/ee/2e49ee35-1e70-c717-4765-a546467027d9/01_new_wallet.png/460x996bb.webp",
+                                "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/0a/f9/88/0af988e6-b35e-84bc-25a1-d74236984454/02_credential_list.png/460x996bb.webp",
+                                "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/e6/d0/d0/e6d0d0cd-5541-48aa-ee8d-fe9deca88426/03_credential_details.png/460x996bb.webp"
+                            ]
+                        },
+                        "vcFormat": [
+                            "sd_jwt_vc",
+                            "jwt_vc",
+                            "vcdm_2_0"
+                        ],
+                        "issuanceProtocols": [
+                            "OpenID4VCI"
+                        ],
+                        "presentationProtocols": [
+                            "OpenID4VP"
+                        ],
+                        "supportedIdentifiers": [
+                            "did:web",
+                            "did:jwk",
+                            "x509"
+                        ],
+                        "keyStorage": [
+                            "Secure Enclave (iOS)",
+                            "StrongBox (Android)"
+                        ],
+                        "signingAlgorithms": [
+                            "ES256",
+                            "ES384",
+                            "ES512",
+                            "ES256K",
+                            "EdDSA",
+                            "RS256"
+                        ],
+                        "credentialStatusMethods": [
+                            "StatusList2021",
+                            "IETF Token Status List"
+                        ],
+                        "interoperabilityProfiles": [
+                            "DIIP v4",
+                            "DIIP v5",
+                            "HAIP v1"
+                        ],
+                        "features": [
+                            "Biometric authentication",
+                            "Integration with Credenco Business Wallet"
+                        ],
+                        "documentation": "https://docs.acc.credenco.com",
+                        "appStoreLinks": {
+                            "iOS": "https://apps.apple.com/dz/app/credenco-wallet/id6753174105",
+                            "android": "https://play.google.com/store/apps/details?id=com.credenco.wallet"
+                        },
+                        "status": "production",
+                        "capabilities": [
+                            "holder"
+                        ],
+                        "catalogTier": "Pro"
+                    }
+                ],
+                "lastUpdated": "2026-07-12T15:44:32+00:00"
+            },
+            "publishedAt": "2026-07-12 15:44:32",
+            "updatedAt": "2026-07-12 15:44:32"
+        },
+        {
+            "itemId": "sphereon-business-wallet",
+            "slug": "sphereon",
+            "filename": "wallet-catalog.json",
+            "source": "wordpress",
+            "document": {
+                "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+                "orgId": "org:sphereon",
+                "wallets": [
+                    {
+                        "id": "sphereon-business-wallet",
+                        "name": "Sphereon Business Wallet",
+                        "description": "The Sphereon business wallet is an enterprise-grade, API-first application service that provides the comprehensive functionality required to manage the complete digital credential lifecycle. It enables organizations to seamlessly operate as issuers, holders, and verifiers of verifiable credentials. Designed for ecosystem interoperability, it supports cross-border European standards including eIDAS 2.0 profiles, SD-JWT, and ISO 18013-5 mdocs. Its headless architecture allows it to integrate silently into existing ERP, GRC, and procurement workflows, allowing organizations to automate compliance and trust without forcing employees to adopt new standalone interfaces.\n\nWhat distinguishes the Sphereon business wallet from standard digital identity applications is its underlying Sphereon Verifiable Data Exchange (VDX) trust engine. While most wallets passively hold or perform basic checks on credentials, the Sphereon wallet actively gates business operations.\n\nThis allows organizations to create an authoritative semantic model of their specific operational world. Using integrated industry-standard decision engines, the wallet evaluates every single action and credential exchange against internal organizational policies, external regulations, and technical specifications.\n\nThe result is that every data exchange produces a definitive outcome ( Permit, Deny, or Step-Up) that dictates subsequent workflow steps. Furthermore, instead of relying on standard system logs, every decision and its surrounding context is cryptographically written to a tamper-proof, hash-chained audit trail. The Sphereon business wallet does not just verify data; it provides a legally defensible, perfectly reconstructable record of continuous assurance for every operational decision.",
+                        "logo": "https://sphereon.com/content/uploads/2024/10/190013-Sphereon-logo-Transparent.png",
+                        "website": "https://sphereon.com/solutions/sphereon-business-wallet/",
+                        "type": "organizational",
+                        "openSource": false,
+                        "license": "proprietary",
+                        "deploymentModel": "hybrid",
+                        "slaAvailable": true,
+                        "pricing": "Fixed annual fee",
+                        "media": {
+                            "images": [
+                                "https://docs.sphereon.com/img/diagrams/edk-architecture-overview.svg",
+                                "https://sphereon.com/content/uploads/2026/07/Machine-Safety-Image-1.jpg",
+                                "https://sphereon.com/content/uploads/2026/07/Dashboard-Wallet.png"
+                            ]
+                        },
+                        "recognitions": {
+                            "customerStories": [
+                                {
+                                    "title": "Verified machine safety access at Koning Willem I College (KW1C)",
+                                    "url": "https://sphereon.com/content/uploads/PDF/FIDES_Innovation_Award.pdf"
+                                }
+                            ]
+                        },
+                        "additionalDocumentation": [
+                            {
+                                "title": "FIDES Award submission",
+                                "url": "https://sphereon.com/content/uploads/PDF/FIDES_Best_Business_Wallet.pdf"
+                            }
+                        ],
+                        "vcFormat": [
+                            "sd_jwt_vc",
+                            "mdoc",
+                            "jwt_vc",
+                            "vcdm_2_0"
+                        ],
+                        "issuanceProtocols": [
+                            "OpenID4VCI",
+                            "ISO 18013-5 (Device Retrieval)"
+                        ],
+                        "presentationProtocols": [
+                            "OpenID4VP",
+                            "ISO 18013-5"
+                        ],
+                        "supportedIdentifiers": [
+                            "did:web",
+                            "did:key",
+                            "did:jwk",
+                            "did:webvh",
+                            "x509"
+                        ],
+                        "keyStorage": [
+                            "Software",
+                            "HSM",
+                            "Cloud KMS",
+                            "FIDO2/WebAuthn"
+                        ],
+                        "signingAlgorithms": [
+                            "ES256",
+                            "ES384",
+                            "ES512",
+                            "ES256K",
+                            "EdDSA",
+                            "RS256",
+                            "PS256"
+                        ],
+                        "credentialStatusMethods": [
+                            "OCSP",
+                            "CRL",
+                            "IETF Token Status List",
+                            "Bitstring Status List"
+                        ],
+                        "eidasTrustServices": [
+                            "Q_CERT_ESIG",
+                            "Q_CERT_ESEAL",
+                            "Q_TIMESTAMP",
+                            "QEAA"
+                        ],
+                        "interoperabilityProfiles": [
+                            "DIIP v5",
+                            "HAIP v1"
+                        ],
+                        "standards": [
+                            "eIDAS 2.0",
+                            "ARF 1.4",
+                            "SD-JWT",
+                            "ISO 18013-5 mdoc",
+                            "OpenID Federation",
+                            "DIIP",
+                            "EBSI profiles",
+                            "W3C Verifiable Credentials",
+                            "Linked VP"
+                        ],
+                        "features": [
+                            "VDX trust resolution engine",
+                            "API-first headless architecture",
+                            "authoritative semantic modeling",
+                            "integrated decision engines",
+                            "dynamic workflow gating",
+                            "tamper-proof audit trails",
+                            "verifiable digital mandates",
+                            "credential-gated physical reservations",
+                            "in-person proximity verification"
+                        ],
+                        "documentation": "https://docs.sphereon.com/vdx/guides/getting-started/",
+                        "status": "production",
+                        "capabilities": [
+                            "holder",
+                            "issuer",
+                            "verifier"
+                        ],
+                        "catalogTier": "Pro"
+                    }
+                ],
+                "lastUpdated": "2026-07-20T16:26:26+00:00"
+            },
+            "publishedAt": "2026-07-20 16:26:26",
+            "updatedAt": "2026-07-20 16:26:26"
+        },
+        {
+            "itemId": "sphereon-vdx-platform",
+            "slug": "sphereon",
+            "filename": "wallet-catalog.json",
+            "source": "wordpress",
+            "document": {
+                "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+                "orgId": "org:sphereon",
+                "wallets": [
+                    {
+                        "id": "sphereon-vdx-platform",
+                        "name": "Sphereon VDX platform",
+                        "description": "Sphereon VDX is a verifiable data layer for policy-driven trust and audit-ready decisions. It is a deployable verifiable data exchange platform that verifies evidence, resolves trust, applies policy, and returns auditable decisions to your existing business systems.\n\nIt is an omni-channel enterprise developer platform supporting management of organizational wallets, mobile wallets and identity integrations, providing holder, issuer, and verifier capabilities with DIIP v5, HAIP and OID4VCI/VP 1.0, ISO-18013-5/7 compliance.\n\nWhere our open-source Sphereon Identity Development Kit (IDK) provides low-level cryptographic control and our Sphereon Enterprise development Kit (EDK) provides production-grade building blocks, the Sphereon Verifiable data Exchange (VDX) platform provides the deployable verifiable data layer with APIs, management tooling, workflow support, and reusable solution patterns for enterprise operations.\n\nSee our developer documentation for all details or contact us for a free consultation",
+                        "logo": "https://sphereon.com/content/uploads/2024/10/190013-Sphereon-logo-Transparent.png",
+                        "website": "https://sphereon.com/sphereon-vdx-verifiable-data-exchange/",
+                        "type": "organizational",
+                        "platforms": [
+                            "Web"
+                        ],
+                        "openSource": false,
+                        "license": "proprietary",
+                        "deploymentModel": "hybrid",
+                        "slaAvailable": true,
+                        "pricing": "Fixed annual fee.",
+                        "media": {
+                            "images": [
+                                "https://fides.community/app/uploads/2026/07/VDX-Overview-Simplified.png",
+                                "https://docs.sphereon.com/img/diagrams/edk-architecture-overview.svg",
+                                "https://sphereon.com/content/uploads/2026/07/Dashboard-Wallet.png"
+                            ]
+                        },
+                        "additionalDocumentation": [
+                            {
+                                "title": "Website",
+                                "url": "https://sphereon.com/sphereon-vdx-verifiable-data-exchange/"
+                            },
+                            {
+                                "title": "Developer documentation",
+                                "url": "https://docs.sphereon.com/"
+                            }
+                        ],
+                        "vcFormat": [
+                            "sd_jwt_vc",
+                            "mdoc",
+                            "jwt_vc",
+                            "vcdm_2_0"
+                        ],
+                        "issuanceProtocols": [
+                            "OpenID4VCI",
+                            "ISO 18013-5 (Device Retrieval)"
+                        ],
+                        "presentationProtocols": [
+                            "OpenID4VP",
+                            "ISO 18013-5"
+                        ],
+                        "supportedIdentifiers": [
+                            "did:web",
+                            "did:key",
+                            "did:jwk",
+                            "did:webvh",
+                            "x509"
+                        ],
+                        "keyStorage": [
+                            "Software",
+                            "Secure Enclave (iOS)",
+                            "StrongBox (Android)",
+                            "TEE",
+                            "HSM",
+                            "Cloud KMS",
+                            "Smart Card",
+                            "FIDO2/WebAuthn"
+                        ],
+                        "signingAlgorithms": [
+                            "ES256",
+                            "ES384",
+                            "ES512",
+                            "ES256K",
+                            "EdDSA",
+                            "RS256",
+                            "PS256"
+                        ],
+                        "credentialStatusMethods": [
+                            "OCSP",
+                            "CRL",
+                            "IETF Token Status List",
+                            "Bitstring Status List"
+                        ],
+                        "eidasTrustServices": [
+                            "Q_CERT_ESIG",
+                            "Q_CERT_ESEAL",
+                            "Q_TIMESTAMP",
+                            "QEAA"
+                        ],
+                        "interoperabilityProfiles": [
+                            "DIIP v5",
+                            "EUDI Wallet ARF",
+                            "HAIP v1"
+                        ],
+                        "standards": [
+                            "eIDAS 2.0",
+                            "GSPR",
+                            "NIS2",
+                            "SOC2",
+                            "OpenID Federation 1.0",
+                            "HAIP",
+                            "ISO",
+                            "W3C",
+                            "DIF",
+                            "ETSI. OAuth 2.0"
+                        ],
+                        "features": [
+                            "Semantic catalog",
+                            "Decision engines",
+                            "Event system",
+                            "AuthZEN",
+                            "Shared Signals (SSF)",
+                            "Overlays Capture Architecture (OCA)",
+                            "Identity Verification (IDV)"
+                        ],
+                        "documentation": "https://docs.sphereon.com",
+                        "status": "production",
+                        "capabilities": [
+                            "holder",
+                            "issuer",
+                            "verifier"
+                        ],
+                        "catalogTier": "Pro"
+                    }
+                ],
+                "lastUpdated": "2026-07-20T16:26:31+00:00"
+            },
+            "publishedAt": "2026-07-20 16:26:31",
+            "updatedAt": "2026-07-20 16:26:31"
+        },
+        {
+            "itemId": "sphereon-wallet",
+            "slug": "sphereon",
+            "filename": "wallet-catalog.json",
+            "source": "wordpress",
+            "document": {
+                "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+                "orgId": "org:sphereon",
+                "wallets": [
+                    {
+                        "id": "sphereon-wallet",
+                        "name": "Sphereon Edge Wallet",
+                        "description": "Open-Source digital identity wallet with support for multiple credential formats and protocols including SD-JWT VC and ISO mdocs, statuslists.",
+                        "logo": "https://www.google.com/s2/favicons?domain=sphereon.com&sz=128",
+                        "website": "https://sphereon.com/eidas-2/sphereon-wallet/",
+                        "type": "personal",
+                        "platforms": [
+                            "iOS",
+                            "Android"
+                        ],
+                        "openSource": true,
+                        "license": "Apache-2.0",
+                        "repository": "https://github.com/Sphereon-Opensource/mobile-wallet",
+                        "pricing": "Free, with optional support plan",
+                        "media": {
+                            "images": [
+                                "https://sphereon.com/content/uploads/2023/01/Sphereon-Store-Branding-Small.jpg"
+                            ]
+                        },
+                        "recognitions": {
+                            "certifications": [
+                                {
+                                    "title": "EUDI Wallet LSP"
+                                }
+                            ]
+                        },
+                        "vcFormat": [
+                            "sd_jwt_vc",
+                            "mdoc",
+                            "jwt_vc",
+                            "vcdm_1_1",
+                            "vcdm_2_0"
+                        ],
+                        "issuanceProtocols": [
+                            "OpenID4VCI",
+                            "ISO 18013-5 (Device Retrieval)"
+                        ],
+                        "presentationProtocols": [
+                            "OpenID4VP",
+                            "ISO 18013-5",
+                            "SIOPv2"
+                        ],
+                        "supportedIdentifiers": [
+                            "did:web",
+                            "did:key",
+                            "did:jwk",
+                            "did:ebsi"
+                        ],
+                        "keyStorage": [
+                            "Software",
+                            "Secure Enclave (iOS)",
+                            "StrongBox (Android)",
+                            "HSM"
+                        ],
+                        "signingAlgorithms": [
+                            "ES256",
+                            "ES384",
+                            "ES512",
+                            "ES256K",
+                            "EdDSA",
+                            "RS256",
+                            "PS256"
+                        ],
+                        "credentialStatusMethods": [
+                            "StatusList2021",
+                            "IETF Token Status List"
+                        ],
+                        "interoperabilityProfiles": [
+                            "DIIP v4",
+                            "DIIP v5"
+                        ],
+                        "standards": [
+                            "ARF 1.4",
+                            "EBSI"
+                        ],
+                        "features": [
+                            "Multi-tenant support",
+                            "Enterprise integration",
+                            "Biometric authentication",
+                            "Cross-platform sync"
+                        ],
+                        "documentation": "https://docs.sphereon.com/idk/guides/getting-started/#mobile-wallets-and-credential-holders",
+                        "appStoreLinks": {
+                            "iOS": "https://apps.apple.com/app/sphereon-wallet/id1661096796",
+                            "android": "https://play.google.com/store/apps/details?id=com.sphereon.wallet"
+                        },
+                        "status": "production",
+                        "capabilities": [
+                            "holder"
+                        ],
+                        "catalogTier": "Pro"
+                    }
+                ],
+                "lastUpdated": "2026-07-20T12:40:36+00:00"
+            },
+            "publishedAt": "2026-07-20 12:40:36",
+            "updatedAt": "2026-07-20 12:40:36"
+        },
+        {
+            "itemId": "spherity-business-wallet",
+            "slug": "spherity",
+            "filename": "wallet-catalog.json",
+            "source": "wordpress",
+            "document": {
+                "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+                "orgId": "org:spherity",
+                "wallets": [
+                    {
+                        "id": "spherity-business-wallet",
+                        "name": "Spherity's European Business Wallet",
+                        "description": "Spherity’s European Business Wallet (EBW) enables the seamless exchange of verifiable credentials across organisations, from banking, insurance and beyond. As part of the EBW framework and fully eIDAS 2.0-compliant, it streamlines operations, cuts costs, and boosts efficiency. Enhanced with automated business partner data validation, our Business Wallet transforms how businesses handles regulatory obligations in Germany and beyond. With enterprise-grade data automation and primary source-validated information from Bundesanzeiger Verlag, businesses can minimise risks, eliminate manual KYC/KYS processes, and ensure real-time due diligence. Organisations operating in regulated industries or managing complex supply chains, our solution helps you meet obligations such as Anti-Money Laundering regulations.",
+                        "logo": "https://www.google.com/s2/favicons?domain=spherity.com&sz=128",
+                        "website": "https://www.spherity.com/eida",
+                        "type": "organizational",
+                        "platforms": [
+                            "Web"
+                        ],
+                        "openSource": false,
+                        "license": "proprietary",
+                        "deploymentModel": "hybrid",
+                        "slaAvailable": true,
+                        "media": {
+                            "videos": [
+                                "https://youtu.be/yNrJYYx-VQA",
+                                "https://youtube.com/playlist?list=PLnj6hp2xuFVI9DxMgnrPSbvK36WxN-KSl&si=7N1sv2QWay6-rP0r",
+                                "https://youtube.com/playlist?list=PLnj6hp2xuFVLRc_qcCZ_3X1pwVsJv1gPg&si=_N4YnNToUGA1KxZy"
+                            ],
+                            "images": [
+                                "https://static.wixstatic.com/media/4e321c_bdd8b44ded4243249921af3cdfbdae17~mv2.png/v1/crop/x_24,y_19,w_1552,h_985/fill/w_1110,h_704,fp_0.50_0.50,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Spherity%20Enterprise%20Wallet%20UI%20UX%202-p-1600.png"
+                            ]
+                        },
+                        "additionalDocumentation": [
+                            {
+                                "title": "European Business Wallet User Guide",
+                                "url": "https://oid.spherity.com/architecture"
+                            },
+                            {
+                                "title": "European Business Wallet Playground",
+                                "url": "https://playground.spherity.com/"
+                            }
+                        ],
+                        "vcFormat": [
+                            "sd_jwt_vc",
+                            "jwt_vc",
+                            "vcdm_2_0"
+                        ],
+                        "issuanceProtocols": [
+                            "OpenID4VCI",
+                            "DIDComm Issue Credential v2"
+                        ],
+                        "presentationProtocols": [
+                            "OpenID4VP",
+                            "DIDComm Present Proof v2"
+                        ],
+                        "supportedIdentifiers": [
+                            "did:web",
+                            "did:key",
+                            "did:peer",
+                            "did:ethr",
+                            "x509"
+                        ],
+                        "keyStorage": [
+                            "Software",
+                            "HSM",
+                            "Cloud KMS"
+                        ],
+                        "signingAlgorithms": [
+                            "ES256",
+                            "ES384",
+                            "ES512",
+                            "EdDSA",
+                            "PS256",
+                            "BBS+"
+                        ],
+                        "credentialStatusMethods": [
+                            "IETF Token Status List",
+                            "Bitstring Status List"
+                        ],
+                        "eidasTrustServices": [
+                            "QEAA"
+                        ],
+                        "interoperabilityProfiles": [
+                            "EUDI Wallet ARF",
+                            "HAIP v1"
+                        ],
+                        "standards": [
+                            "DIF WACI",
+                            "OID4VCI 1.0",
+                            "OID4VP 1.0",
+                            "W3C VCDM 2.0",
+                            "SD-JWT VC",
+                            "eIDAS"
+                        ],
+                        "features": [
+                            "Integration of external identity providers based on OAuth 2.0"
+                        ],
+                        "status": "production",
+                        "capabilities": [
+                            "holder",
+                            "issuer",
+                            "verifier"
+                        ],
+                        "catalogTier": "Pro"
+                    }
+                ],
+                "lastUpdated": "2026-07-20T16:26:37+00:00"
+            },
+            "publishedAt": "2026-07-20 16:26:37",
+            "updatedAt": "2026-07-20 16:26:37"
+        },
+        {
+            "itemId": "vs-agent-verana-business-wallet",
+            "slug": "verana",
+            "filename": "wallet-catalog.json",
+            "source": "wordpress",
+            "document": {
+                "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+                "orgId": "org:verana",
+                "wallets": [
+                    {
+                        "id": "vs-agent-verana-business-wallet",
+                        "name": "VS Agent - Verana Business Wallet",
+                        "description": "VS Agent is the reference implementation of a Verifiable Service: an open-source, self-hosted business wallet that gives every service an organization operates a resolvable DID and a verifiable identity, so anyone can check what it is and who runs it before connecting.\n\nThe wallet's DID plugs into the Verana Network, a public decentralized trust infrastructure that no vendor or state controls. Through it, an organization joins any ecosystem as issuer, verifier, holder, or grantor. No platform account, no gatekeeper: roles and permissions are anchored on-chain and publicly verifiable.\n\nEach ecosystem decides how it admits participants: VS Agent is onboarding-process agnostic. The vt-flow protocol fixes the machinery while each ecosystem defines what gets verified: a registry lookup, an industry accreditation, a video call, or eIDAS-grade KYB if required. EU-ready, not EU-bound: European regulation is one profile among many; the same wallet serves any jurisdiction and sector.\n\nThe same rails carry privacy-preserving business models: ecosystems set their own fees for onboarding, issuance and verification, settled on-chain and backed by trust deposits. Value flows to issuers, verifiers and ecosystem operators without tracking users or monetizing their data: the business model lives in the trust layer, not in surveillance.\n\nWhatever the process, the lifecycle is automatic: onboarding triggers issuance; on-chain revocation reaches the holder and cleans up the credential. Trust is resolved before every exchange, fail closed.\n\nOne runtime, both transport stacks: DIDComm (Issue Credential v2, Present Proof v2, vt-flow) and OpenID4VCI / OpenID4VP. W3C JSON-LD for public credentials, AnonCreds for unlinkable private credentials, SD-JWT VC with Token Status List for interop.\n\nHost any service shape under one DID: DIDComm chat agents, MCP servers, A2A agents, HTTP APIs, even verifiable AI agents. Docker, REST API, NestJS/JS clients. Apache-2.0, powering the Verana Playground.",
+                        "logo": "https://verana.io/logo.svg",
+                        "website": "https://playground.testnet.verana.network/business-wallets",
+                        "type": "organizational",
+                        "openSource": true,
+                        "license": "Apache-2.0",
+                        "repository": "https://github.com/verana-labs/vs-agent/",
+                        "deploymentModel": "on_premises",
+                        "pricing": "The wallet is free and always will be. VS Agent is the reference implementation of a Verifiable Service, published under the Apache-2.0 license and stewarded as part of the Verana Foundation's mission: trust infrastructure only works if anyone can inspect it, run it and build on it without asking permission. No license fee, no usage tier, no hosted lock-in: you self-host the container and keep full control of your keys, data and DID.\n\nThere is no software vendor to pay; value flows between ecosystem participants instead. You pay your own hosting, the network fees of the Verana Verifiable Public Registry, and the fees each ecosystem defines for its privacy-preserving business models: onboarding, pay-per-issuance and pay-per-verification, settled on-chain, backed by reclaimable trust deposits, and charged without tracking users or monetizing their data. Commercial support and integration services are available from Verana Labs and ecosystem partners.",
+                        "vcFormat": [
+                            "sd_jwt_vc",
+                            "anoncreds"
+                        ],
+                        "issuanceProtocols": [
+                            "OpenID4VCI",
+                            "DIDComm Issue Credential v1",
+                            "DIDComm Issue Credential v2"
+                        ],
+                        "presentationProtocols": [
+                            "OpenID4VP",
+                            "DIDComm Present Proof v1",
+                            "DIDComm Present Proof v2"
+                        ],
+                        "supportedIdentifiers": [
+                            "did:web"
+                        ],
+                        "features": [
+                            "mrtd support",
+                            "webrtc over DIDComm"
+                        ],
+                        "status": "production",
+                        "capabilities": [
+                            "holder",
+                            "issuer",
+                            "verifier"
+                        ],
+                        "catalogTier": "Pro"
+                    }
+                ],
+                "lastUpdated": "2026-08-06T13:28:22+00:00"
+            },
+            "publishedAt": "2026-08-06 13:28:22",
+            "updatedAt": "2026-08-06 13:28:22"
+        }
+    ]
+}
