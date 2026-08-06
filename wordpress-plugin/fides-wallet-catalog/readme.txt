@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.10.0
+Stable tag: 2.10.2
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -102,6 +102,9 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.10.2 =
+* Fix light/fides modal contrast (accordions, ecosystem, close, Open in catalog), header-fixed scrolling, and issuer/credential table column layout.
 
 = 2.10.0 =
 * EUDI landscape: crawl-time iGrant tracker enrichment (`eudiTracker`) for national wallets; modal accordion and SSR section (status, assurance level, QTSP partner, notes).

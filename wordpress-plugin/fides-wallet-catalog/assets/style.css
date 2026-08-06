@@ -2254,14 +2254,16 @@
   to { opacity: 0; }
 }
 
-/* Modal container */
+/* Modal container — keep in sync with shared fides-catalog-ui.css (header fixed, body scrolls). */
 .fides-modal {
   background: var(--fides-bg-secondary, #1e293b);
   border-radius: var(--fides-radius-lg, 16px);
   max-width: 900px;
   width: 95%;
   max-height: 90vh;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
   animation: fides-modal-slide-up 0.3s ease;
 }
@@ -2591,9 +2593,13 @@ a.fides-modal-copy-link {
   }
 }
 
-/* Modal body */
+/* Modal body — keep in sync with shared fides-catalog-ui.css */
 .fides-modal-body {
   padding: 1.5rem;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Badges row */
