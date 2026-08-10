@@ -131,6 +131,7 @@
       "interoperabilityProfiles": [
         "DIIP v4",
         "DIIP v5",
+        "EUDI Wallet ARF",
         "HAIP v1"
       ],
       "features": [
@@ -146,8 +147,9 @@
       "capabilities": [
         "holder"
       ],
-      "catalogTier": "Pro"
+      "catalogTier": "Pro",
+      "pricing": "Free"
     }
   ],
-  "lastUpdated": "2026-07-12T15:44:32+00:00"
+  "lastUpdated": "2026-08-10T05:14:55+00:00"
 }
