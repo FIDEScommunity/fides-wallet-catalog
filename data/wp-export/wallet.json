@@ -1,7 +1,7 @@
 {
     "schemaVersion": "1.0.0",
     "catalogType": "wallet",
-    "generatedAt": "2026-08-07T06:08:15+00:00",
+    "generatedAt": "2026-08-10T05:14:56+00:00",
     "entries": [
         {
             "itemId": "credenco-business-wallet",
@@ -113,6 +113,7 @@
                             "iOS",
                             "Android"
                         ],
+                        "pricing": "Free",
                         "media": {
                             "images": [
                                 "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/2e/49/ee/2e49ee35-1e70-c717-4765-a546467027d9/01_new_wallet.png/460x996bb.webp",
@@ -155,6 +156,7 @@
                         "interoperabilityProfiles": [
                             "DIIP v4",
                             "DIIP v5",
+                            "EUDI Wallet ARF",
                             "HAIP v1"
                         ],
                         "features": [
@@ -173,10 +175,10 @@
                         "catalogTier": "Pro"
                     }
                 ],
-                "lastUpdated": "2026-07-12T15:44:32+00:00"
+                "lastUpdated": "2026-08-10T05:14:55+00:00"
             },
-            "publishedAt": "2026-07-12 15:44:32",
-            "updatedAt": "2026-07-12 15:44:32"
+            "publishedAt": "2026-08-10 05:14:55",
+            "updatedAt": "2026-08-10 05:14:55"
         },
         {
             "itemId": "sphereon-business-wallet",
