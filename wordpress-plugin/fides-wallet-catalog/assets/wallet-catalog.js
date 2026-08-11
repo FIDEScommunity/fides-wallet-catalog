@@ -154,7 +154,8 @@
   // Configuration
   const config = window.fidesWalletCatalog || {
     pluginUrl: '',
-    githubDataUrl: 'https://raw.githubusercontent.com/FIDEScommunity/fides-wallet-catalog/main/data/aggregated.json'
+    githubDataUrl: 'https://raw.githubusercontent.com/FIDEScommunity/fides-wallet-catalog/main/data/aggregated.json',
+    useCaseAggregatedDataUrl: 'https://raw.githubusercontent.com/FIDEScommunity/fides-use-case-catalog/main/data/aggregated.json'
   };
 
   // Map page URL for "Show on map" link (configurable via WordPress)
@@ -163,6 +164,9 @@
 
   const ORGANIZATION_CATALOG_PAGE_URL = (window.fidesWalletCatalog && window.fidesWalletCatalog.organizationCatalogUrl)
     || 'https://fides.community/ecosystem-explorer/organization-catalog/';
+
+  const USE_CASE_CATALOG_PAGE_URL = (window.fidesWalletCatalog && window.fidesWalletCatalog.useCaseCatalogUrl)
+    || 'https://fides.community/ecosystem-explorer/use-cases/';
 
   const BLUE_PAGES_URL = (window.fidesWalletCatalog && window.fidesWalletCatalog.bluePagesUrl)
     ? String(window.fidesWalletCatalog.bluePagesUrl).trim()
@@ -391,6 +395,8 @@
   // State
   let wallets = [];
   let ratingSummariesByWalletId = Object.create(null);
+  /** wallet id → use cases[] reverse-linked from use case catalog aggregated.json */
+  let useCasesByWalletId = Object.create(null);
   /** Precomputed counts per filter option (set after load, over walletsForFacets) */
   let filterFacets = null;
   const SORT_PREFERENCE_STORAGE_KEY = 'fidesWalletCatalogSortBy';
@@ -919,6 +925,55 @@
   }
 
   /**
+   * Build wallet id → use cases[] from use case catalog aggregated.json
+   * (links.personalWallets / links.businessWallets refId). Runtime join —
+   * wallet aggregated.json carries no use-case field.
+   */
+  async function loadUseCaseIndex() {
+    useCasesByWalletId = Object.create(null);
+    const url = (config.useCaseAggregatedDataUrl || '').trim();
+    if (!url) return;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) return;
+      const data = await response.json();
+      const useCases = Array.isArray(data.useCases) ? data.useCases : [];
+      useCases.forEach(function(uc) {
+        if (!uc || typeof uc.id !== 'string') return;
+        const links = uc.links && typeof uc.links === 'object' ? uc.links : {};
+        const personal = Array.isArray(links.personalWallets) ? links.personalWallets : [];
+        const business = Array.isArray(links.businessWallets) ? links.businessWallets : [];
+        const entry = {
+          id: uc.id,
+          title: (uc.title || '').trim() || uc.id,
+          organizationName: (uc.organizationName || '').trim()
+        };
+        personal.concat(business).forEach(function(link) {
+          if (!link || typeof link !== 'object') return;
+          const walletId = link.refId ? String(link.refId).trim() : '';
+          if (!walletId) return;
+          if (!useCasesByWalletId[walletId]) useCasesByWalletId[walletId] = [];
+          if (!useCasesByWalletId[walletId].some(function(e) { return e.id === entry.id; })) {
+            useCasesByWalletId[walletId].push(entry);
+          }
+        });
+      });
+      Object.keys(useCasesByWalletId).forEach(function(walletId) {
+        useCasesByWalletId[walletId].sort(function(a, b) {
+          return String(a.title || a.id).localeCompare(String(b.title || b.id), undefined, { sensitivity: 'base' });
+        });
+      });
+    } catch (e) {
+      console.warn('Use case catalog index load failed:', e.message);
+    }
+  }
+
+  function getDerivedUseCasesForWallet(wallet) {
+    if (!wallet || !wallet.id) return [];
+    return useCasesByWalletId[wallet.id] || [];
+  }
+
+  /**
    * Load wallets from multiple sources (with fallbacks)
    * Default: GitHub/raw JSON first, then plugin data/aggregated.json.
    * Hostname or full URL contains ".local": try local plugin file first, then GitHub.
@@ -942,6 +997,7 @@
           } catch (ratingsError) {
             console.warn('Failed to load wallet likes:', ratingsError.message);
           }
+          await loadUseCaseIndex();
           console.log(`✅ Loaded ${wallets.length} wallets from ${source.name}`);
           break;
         }
@@ -2569,19 +2625,65 @@
     }
   }
 
+  async function loadEntityRatingSummaries(type, ids) {
+    const map = Object.create(null);
+    if (!RATINGS_API_BASE || !type || !Array.isArray(ids) || ids.length === 0) return map;
+    const uniqueIds = Array.from(new Set(ids.map((id) => String(id || '').trim()).filter(Boolean)));
+    if (!uniqueIds.length) return map;
+    for (let i = 0; i < uniqueIds.length; i += RATINGS_BATCH_LIMIT) {
+      const chunk = uniqueIds.slice(i, i + RATINGS_BATCH_LIMIT);
+      const url = buildRatingsEndpoint(RATINGS_API_BASE, 'ratings/batch', {
+        type: type,
+        ids: chunk.join(','),
+        _wpnonce: RATINGS_NONCE || ''
+      });
+      if (!url) continue;
+      try {
+        const response = await fetch(url, {
+          method: 'GET',
+          credentials: 'same-origin',
+          headers: {
+            'X-WP-Nonce': RATINGS_NONCE || ''
+          }
+        });
+        if (!response.ok) continue;
+        const data = await response.json();
+        const results = data && data.results ? data.results : {};
+        Object.keys(results).forEach((itemId) => {
+          const raw = results[itemId] || {};
+          const likeCount = Number(raw.likes);
+          map[itemId] = {
+            avg: Number(raw.avg) || 0,
+            count: isFinite(likeCount) ? likeCount : (Number(raw.count) || 0),
+            myRating: Number(raw.my_like) > 0 || Number(raw.my_rating) > 0 ? 1 : null
+          };
+        });
+      } catch (_) {
+        // Keep modal usable when ratings are unreachable.
+      }
+    }
+    return map;
+  }
+
   /**
    * Open wallet detail modal
    */
-  function openWalletDetail(walletId) {
+  async function openWalletDetail(walletId) {
     const wallet = wallets.find(w => w.id === walletId);
     if (wallet) {
       if (window.FidesCatalogUI && typeof window.FidesCatalogUI.openWalletModal === 'function') {
+        const derivedUseCases = getDerivedUseCasesForWallet(wallet);
+        const usecaseIds = derivedUseCases.map(function(u) { return u && u.id; }).filter(Boolean);
+        const usecaseSummaries = await loadEntityRatingSummaries('usecase', usecaseIds);
         window.FidesCatalogUI.openWalletModal(wallet, {
           theme: container ? (container.getAttribute('data-theme') || 'dark') : 'dark',
           tierUiEnabled: TIER_UI_ENABLED,
           vocabulary: vocabulary,
           countryNames: COUNTRY_NAMES,
           organizationCatalogUrl: ORGANIZATION_CATALOG_PAGE_URL,
+          useCaseCatalogUrl: USE_CASE_CATALOG_PAGE_URL,
+          derivedUseCases: derivedUseCases,
+          entityRatingSummaries: { usecase: usecaseSummaries },
           bluePagesUrl: BLUE_PAGES_URL,
           updateFormUrl: UPDATE_FORM_URL,
           isLoggedIn: RATINGS_IS_LOGGED_IN,

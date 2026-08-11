@@ -3,7 +3,7 @@
  * Plugin Name: FIDES Wallet Catalog
  * Plugin URI: https://fides.community
  * Description: Displays the FIDES Wallet Catalog with search and filter functionality. When the master fides_catalog_ssr_enabled flag (provided by FIDES Community Tools Tiles ≥ 1.6.0) is enabled, the plugin also emits a server-rendered listing fallback, per-deeplink SEO meta tags and a SoftwareApplication JSON-LD payload so wallet detail URLs become indexable by search engines.
- * Version: 2.10.3
+ * Version: 2.10.4
  * Author: FIDES Labs BV
  * Author URI: https://fides.community
  * License: Apache-2.0
@@ -28,7 +28,7 @@ Fides_Wallet_Catalog_Submission_Forms::bootstrap();
 class FIDES_Wallet_Catalog {
     
     private static $instance = null;
-    private const VERSION = '2.10.3';
+    private const VERSION = '2.10.4';
     /** @var string Site path for the wallet update submission form page. */
     const DEFAULT_UPDATE_FORM_PATH = '/wallets-update/';
     private $plugin_url;
@@ -129,6 +129,14 @@ class FIDES_Wallet_Catalog {
             'organizationCatalogUrl' => get_option(
                 'fides_wallet_catalog_organization_catalog_url',
                 'https://fides.community/ecosystem-explorer/organization-catalog/'
+            ),
+            'useCaseCatalogUrl' => get_option(
+                'fides_wallet_catalog_use_case_catalog_url',
+                'https://fides.community/ecosystem-explorer/use-cases/'
+            ),
+            'useCaseAggregatedDataUrl' => get_option(
+                'fides_wallet_catalog_use_case_aggregated_url',
+                'https://raw.githubusercontent.com/FIDEScommunity/fides-use-case-catalog/main/data/aggregated.json'
             ),
             'bluePagesUrl' => get_option(
                 'fides_wallet_catalog_blue_pages_url',
@@ -241,6 +249,16 @@ class FIDES_Wallet_Catalog {
             'default' => 'https://fides.community/ecosystem-explorer/organization-catalog/',
             'sanitize_callback' => 'esc_url_raw',
         ));
+        register_setting('fides_wallet_catalog_settings', 'fides_wallet_catalog_use_case_catalog_url', array(
+            'type' => 'string',
+            'default' => 'https://fides.community/ecosystem-explorer/use-cases/',
+            'sanitize_callback' => 'esc_url_raw',
+        ));
+        register_setting('fides_wallet_catalog_settings', 'fides_wallet_catalog_use_case_aggregated_url', array(
+            'type' => 'string',
+            'default' => 'https://raw.githubusercontent.com/FIDEScommunity/fides-use-case-catalog/main/data/aggregated.json',
+            'sanitize_callback' => 'esc_url_raw',
+        ));
         register_setting('fides_wallet_catalog_settings', 'fides_wallet_catalog_blue_pages_url', array(
             'type' => 'string',
             'default' => 'https://fides.community/community-tools/blue-pages',
@@ -296,6 +314,24 @@ class FIDES_Wallet_Catalog {
                                    value="<?php echo esc_attr(get_option('fides_wallet_catalog_organization_catalog_url', 'https://fides.community/ecosystem-explorer/organization-catalog/')); ?>"
                                    class="regular-text">
                             <p class="description">Page URL of the FIDES Organization Catalog. Used for <code>?org=org:…</code> deep links when opening a wallet modal (provider name). Use the same value as in the RP Catalog settings if both plugins are installed.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="fides_wallet_catalog_use_case_catalog_url">Use case catalog URL</label></th>
+                        <td>
+                            <input type="url" id="fides_wallet_catalog_use_case_catalog_url" name="fides_wallet_catalog_use_case_catalog_url"
+                                   value="<?php echo esc_attr(get_option('fides_wallet_catalog_use_case_catalog_url', 'https://fides.community/ecosystem-explorer/use-cases/')); ?>"
+                                   class="regular-text">
+                            <p class="description">Page with the use case catalog shortcode. Used for <code>?usecase=…</code> links in the Use cases accordion of the wallet modal.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="fides_wallet_catalog_use_case_aggregated_url">Use case catalog data URL</label></th>
+                        <td>
+                            <input type="url" id="fides_wallet_catalog_use_case_aggregated_url" name="fides_wallet_catalog_use_case_aggregated_url"
+                                   value="<?php echo esc_attr(get_option('fides_wallet_catalog_use_case_aggregated_url', 'https://raw.githubusercontent.com/FIDEScommunity/fides-use-case-catalog/main/data/aggregated.json')); ?>"
+                                   class="regular-text">
+                            <p class="description">Raw <code>aggregated.json</code> of the use case catalog. Used to reverse-link use cases that reference this wallet.</p>
                         </td>
                     </tr>
                     <tr>

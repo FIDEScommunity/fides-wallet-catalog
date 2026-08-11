@@ -4225,6 +4225,12 @@ a.fides-eco-entity svg {
   width: 46%;
 }
 
+/* Name | Likes (no Organization): name takes remaining width */
+.fides-modal-overlay .fides-modal-entity-table--name-likes th:nth-child(1),
+.fides-modal-overlay .fides-modal-entity-table--name-likes td:nth-child(1) {
+  width: auto;
+}
+
 .fides-modal-overlay .fides-modal-entity-table th.fides-modal-entity-col-likes,
 .fides-modal-overlay .fides-modal-entity-table td.fides-modal-entity-col-likes {
   width: 3.25rem;
@@ -4260,8 +4266,8 @@ a.fides-eco-entity svg {
 }
 
 @media (max-width: 560px) {
-  .fides-modal-overlay .fides-modal-entity-table th:nth-child(1),
-  .fides-modal-overlay .fides-modal-entity-table td:nth-child(1) {
+  .fides-modal-overlay .fides-modal-entity-table:not(.fides-modal-entity-table--name-likes) th:nth-child(1),
+  .fides-modal-overlay .fides-modal-entity-table:not(.fides-modal-entity-table--name-likes) td:nth-child(1) {
     width: 42%;
   }
 

@@ -132,7 +132,8 @@
     mail: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
     apple: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>',
     playStore: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 9.99l-2.302 2.302-8.634-8.634z"/></svg>',
-    globeApp: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>'
+    globeApp: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>',
+    useCases: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg>'
   };
 
   let currentModalMediaSlides = [];
@@ -1443,29 +1444,48 @@
     return list.filter(function(u) { return u && (u.id || u.title || u.name); });
   }
 
-  function buildRpUseCasesAccordionBody(useCaseCatalogUrl, options) {
+  function buildUseCasesAccordionBody(useCaseCatalogUrl, options, emptyMessage, tableConfig) {
     const useCases = getDerivedUseCases(options);
     if (!useCases.length) return '';
+    const tc = tableConfig || {};
+    const includeOrganization = tc.showOrganizationColumn !== false;
     const rows = useCases.map(function(uc) {
       const id = uc.id || '';
       const title = uc.title || uc.name || id;
       const href = id && useCaseCatalogUrl
         ? useCaseCatalogUrl.replace(/\/$/, '') + '/?usecase=' + encodeURIComponent(id)
         : '';
-      return {
+      const row = {
         id: id,
         name: title,
-        organization: uc.organizationName || uc.organization || '',
-        href: href
+        href: href,
+        ratingType: 'usecase'
       };
+      if (includeOrganization) {
+        row.organization = uc.organizationName || uc.organization || '';
+      }
+      return row;
     });
     return buildModalEntityTableHtml({
       rows: rows,
       nameColumnLabel: 'Use case',
       ariaLabel: 'Use cases',
       options: options,
-      emptyHtml: '<p class="fides-modal-empty">No use cases linked from the use case catalog for this relying party.</p>'
+      showOrganizationColumn: includeOrganization,
+      showHeader: tc.showHeader !== false,
+      sameWindowLinks: true,
+      emptyHtml: '<p class="fides-modal-empty">' + escapeHtml(
+        emptyMessage || 'No use cases linked from the use case catalog.'
+      ) + '</p>'
     });
+  }
+
+  function buildRpUseCasesAccordionBody(useCaseCatalogUrl, options) {
+    return buildUseCasesAccordionBody(
+      useCaseCatalogUrl,
+      options,
+      'No use cases linked from the use case catalog for this relying party.'
+    );
   }
 
   function rpUseCasesCount(options) {
@@ -1566,7 +1586,7 @@
       renderModalAccordion(
         'fides-accordion-rp-use-cases',
         'Use cases',
-        icons.check,
+        icons.useCases,
         useCasesBody,
         false,
         rpUseCasesCount(options),
@@ -1796,16 +1816,19 @@
     if (!rows.length) return cfg.emptyHtml || '<p class="fides-modal-empty">No items found.</p>';
     const showOrgCol = cfg.alwaysShowOrganizationColumn === true ||
       (cfg.showOrganizationColumn !== false && rows.some(function(r) { return r.organization; }));
+    const showHeader = cfg.showHeader !== false;
     const nameLabel = cfg.nameColumnLabel || 'Name';
     const orgLabel = cfg.organizationColumnLabel || 'Organization';
     const ariaLabel = cfg.ariaLabel || nameLabel;
     const options = cfg.options || {};
-    const thead = showOrgCol
-      ? '<thead><tr><th>' + escapeHtml(nameLabel) + '</th>' +
-        '<th class="fides-modal-entity-col-likes" title="Likes"><span aria-label="Likes">★</span></th>' +
-        '<th>' + escapeHtml(orgLabel) + '</th></tr></thead>'
-      : '<thead><tr><th>' + escapeHtml(nameLabel) + '</th>' +
-        '<th class="fides-modal-entity-col-likes" title="Likes"><span aria-label="Likes">★</span></th></tr></thead>';
+    const thead = !showHeader
+      ? ''
+      : (showOrgCol
+        ? '<thead><tr><th>' + escapeHtml(nameLabel) + '</th>' +
+          '<th class="fides-modal-entity-col-likes" title="Likes"><span aria-label="Likes">★</span></th>' +
+          '<th>' + escapeHtml(orgLabel) + '</th></tr></thead>'
+        : '<thead><tr><th>' + escapeHtml(nameLabel) + '</th>' +
+          '<th class="fides-modal-entity-col-likes" title="Likes"><span aria-label="Likes">★</span></th></tr></thead>');
     const tbody = rows.map(function(row) {
       const label = escapeHtml(row.name || row.id || '');
       const likeInner = row.ratingType && row.id
@@ -1818,11 +1841,15 @@
         ? '<td>' + (row.organization ? escapeHtml(row.organization) : '—') + '</td>'
         : '';
       const nameCell = row.href
-        ? '<a href="' + escapeHtml(row.href) + '" class="fides-modal-link-inline" target="_blank" rel="noopener" onclick="event.stopPropagation();">' + label + '</a>'
+        ? (cfg.sameWindowLinks
+          ? '<a href="' + escapeHtml(row.href) + '" class="fides-modal-link-inline" onclick="event.stopPropagation();">' + label + '</a>'
+          : '<a href="' + escapeHtml(row.href) + '" class="fides-modal-link-inline" target="_blank" rel="noopener" onclick="event.stopPropagation();">' + label + '</a>')
         : '<span>' + label + '</span>';
       return '<tr><td>' + nameCell + '</td>' + likeCell + orgCell + '</tr>';
     }).join('');
-    return '<div class="fides-attributes-table-wrap"><table class="fides-attributes-table fides-modal-rp-table fides-modal-entity-table" aria-label="' +
+    const tableClass = 'fides-attributes-table fides-modal-rp-table fides-modal-entity-table' +
+      (showOrgCol ? '' : ' fides-modal-entity-table--name-likes');
+    return '<div class="fides-attributes-table-wrap"><table class="' + tableClass + '" aria-label="' +
       escapeHtml(ariaLabel) + '">' + thead + '<tbody>' + tbody + '</tbody></table></div>';
   }
 
@@ -1919,6 +1946,13 @@
     const certificationsBody = buildWalletCertificationsBodyHtml(wallet, options);
     const pricingBody = buildWalletPricingBodyHtml(wallet, options);
     const eudiLandscapeBody = buildWalletEudiLandscapeBodyHtml(wallet);
+    const useCaseCatalogUrl = (options && options.useCaseCatalogUrl) || 'https://fides.community/ecosystem-explorer/use-cases/';
+    const useCasesBody = buildUseCasesAccordionBody(
+      useCaseCatalogUrl,
+      options,
+      'No use cases linked from the use case catalog for this wallet.',
+      { showOrganizationColumn: false, showHeader: false }
+    );
     const accordions = [
       renderModalAccordion(
         'fides-accordion-wallet-eudi-landscape',
@@ -1926,6 +1960,14 @@
         icons.globe,
         eudiLandscapeBody,
         false
+      ),
+      renderModalAccordion(
+        'fides-accordion-wallet-use-cases',
+        'Use cases',
+        icons.useCases,
+        useCasesBody,
+        false,
+        rpUseCasesCount(options)
       ),
       renderModalAccordion(
         'fides-accordion-wallet-technical',

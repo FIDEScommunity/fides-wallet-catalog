@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.10.3
+Stable tag: 2.10.4
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -102,6 +102,10 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.10.4 =
+* Wallet modal: Use cases accordion when use cases link this wallet (above Specifications); same-window deep links and like counts.
+* Settings: use case catalog page URL and aggregated.json URL for reverse-linking.
 
 = 2.10.3 =
 * Mobile filters: keep the drawer open when expanding groups or selecting options; keep body scroll lock in sync (shared FidesCatalogUI.createMobileFiltersController).
