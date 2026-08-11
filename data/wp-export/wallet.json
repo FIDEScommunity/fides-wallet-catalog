@@ -1,8 +1,35 @@
 {
     "schemaVersion": "1.0.0",
     "catalogType": "wallet",
-    "generatedAt": "2026-08-10T05:14:56+00:00",
+    "generatedAt": "2026-08-11T15:36:14+00:00",
     "entries": [
+        {
+            "itemId": "carteira-digital-da-empresa",
+            "slug": "portugal",
+            "filename": "wallet-catalog.json",
+            "source": "wordpress",
+            "document": {
+                "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+                "orgId": "org:portugal",
+                "wallets": [
+                    {
+                        "id": "carteira-digital-da-empresa",
+                        "name": "Carteira Digital da Empresa",
+                        "description": "Portugal’s government-operated Business Digital Wallet provides companies with secure access to official business information, representation powers and trusted digital documents through GOV.PT app.",
+                        "logo": "https://www.google.com/s2/favicons?domain=eportugal.gov.pt&sz=128",
+                        "type": "organizational",
+                        "status": "production",
+                        "capabilities": [
+                            "holder"
+                        ],
+                        "catalogTier": "Community"
+                    }
+                ],
+                "lastUpdated": "2026-08-11T15:36:14+00:00"
+            },
+            "publishedAt": "2026-08-11 15:36:14",
+            "updatedAt": "2026-08-11 15:36:14"
+        },
         {
             "itemId": "credenco-business-wallet",
             "slug": "credenco",
