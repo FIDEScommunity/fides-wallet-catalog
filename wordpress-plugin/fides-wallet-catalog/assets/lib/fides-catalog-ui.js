@@ -1484,7 +1484,8 @@
     return buildUseCasesAccordionBody(
       useCaseCatalogUrl,
       options,
-      'No use cases linked from the use case catalog for this relying party.'
+      'No use cases linked from the use case catalog for this relying party.',
+      { showOrganizationColumn: false, showHeader: false }
     );
   }
 
@@ -1539,15 +1540,17 @@
       'wallets',
       rpSupportedWalletCatalogIds(rp)
     );
-    const useCaseExploreHref = buildCatalogFilteredHref(
-      useCaseCatalogUrl,
-      'usecase',
-      'usecases',
-      getDerivedUseCases(options).map(function(u) { return u.id; }).filter(Boolean)
-    );
 
     const ecosystemHtml = buildRpEcosystemModelHtml(rp, options);
     const accordions = [
+      renderModalAccordion(
+        'fides-accordion-rp-use-cases',
+        'Use cases',
+        icons.useCases,
+        useCasesBody,
+        false,
+        rpUseCasesCount(options)
+      ),
       renderModalAccordion(
         'fides-accordion-rp-specifications',
         'Specifications',
@@ -1582,15 +1585,6 @@
         false,
         rpSupportedWalletsCount(rp),
         walletExploreHref
-      ),
-      renderModalAccordion(
-        'fides-accordion-rp-use-cases',
-        'Use cases',
-        icons.useCases,
-        useCasesBody,
-        false,
-        rpUseCasesCount(options),
-        useCaseExploreHref
       ),
       renderModalAccordion(
         'fides-accordion-rp-features',
@@ -2572,9 +2566,10 @@
     const batches = [
       { type: 'issuer', ids: issuers.map(function(i) { return i.id; }).filter(Boolean) },
       { type: 'credential', ids: credentialRows.map(function(r) { return r.credentialId; }).filter(Boolean) },
-      { type: 'wallet', ids: walletIds }
+      { type: 'wallet', ids: walletIds },
+      { type: 'usecase', ids: getDerivedUseCases(options).map(function(u) { return u.id; }).filter(Boolean) }
     ];
-    const summaries = { issuer: {}, credential: {}, wallet: {} };
+    const summaries = { issuer: {}, credential: {}, wallet: {}, usecase: {} };
     for (let i = 0; i < batches.length; i++) {
       const batch = batches[i];
       if (!batch.ids.length) continue;
