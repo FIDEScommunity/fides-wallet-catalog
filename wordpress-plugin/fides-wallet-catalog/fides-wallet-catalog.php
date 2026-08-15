@@ -3,7 +3,7 @@
  * Plugin Name: FIDES Wallet Catalog
  * Plugin URI: https://fides.community
  * Description: Displays the FIDES Wallet Catalog with search and filter functionality. When the master fides_catalog_ssr_enabled flag (provided by FIDES Community Tools Tiles ≥ 1.6.0) is enabled, the plugin also emits a server-rendered listing fallback, per-deeplink SEO meta tags and a SoftwareApplication JSON-LD payload so wallet detail URLs become indexable by search engines.
- * Version: 2.10.4
+ * Version: 2.11.0
  * Author: FIDES Labs BV
  * Author URI: https://fides.community
  * License: Apache-2.0
@@ -28,7 +28,7 @@ Fides_Wallet_Catalog_Submission_Forms::bootstrap();
 class FIDES_Wallet_Catalog {
     
     private static $instance = null;
-    private const VERSION = '2.10.4';
+    private const VERSION = '2.11.0';
     /** @var string Site path for the wallet update submission form page. */
     const DEFAULT_UPDATE_FORM_PATH = '/wallets-update/';
     private $plugin_url;
@@ -125,7 +125,6 @@ class FIDES_Wallet_Catalog {
             'vocabularyUrl' => 'https://raw.githubusercontent.com/FIDEScommunity/fides-interop-profiles/main/data/vocabulary.json',
             'vocabularyFallbackUrl' => $this->plugin_url . 'assets/vocabulary.json',
             'vocabularyDataVersion' => $vocabulary_version,
-            'mapPageUrl' => get_option('fides_wallet_catalog_map_url', 'https://fides.community/community-tools/map/'),
             'organizationCatalogUrl' => get_option(
                 'fides_wallet_catalog_organization_catalog_url',
                 'https://fides.community/ecosystem-explorer/organization-catalog/'
@@ -156,6 +155,8 @@ class FIDES_Wallet_Catalog {
                     'proOrgIds'   => array(),
                 ),
             'tierUiEnabled' => function_exists('fides_catalog_tier_ui_enabled') && fides_catalog_tier_ui_enabled(),
+            'askFidesAvailable' => has_action('fides_assistant_enqueue_headless') !== false,
+            'askFidesPlaceholder' => __('Ask anything about wallets…', 'fides-wallet-catalog'),
         ));
     }
 
@@ -193,6 +194,9 @@ class FIDES_Wallet_Catalog {
         wp_enqueue_style('fides-wallet-catalog');
         wp_enqueue_style('fides-wallet-catalog-ui-lib');
         wp_enqueue_script('fides-wallet-catalog-ui-lib');
+        if (has_action('fides_assistant_enqueue_headless') !== false) {
+            do_action('fides_assistant_enqueue_headless');
+        }
         wp_enqueue_script('fides-wallet-catalog');
 
         $update_form_url = $this->resolve_update_form_url((string) $atts['update_form_url']);
@@ -239,11 +243,6 @@ class FIDES_Wallet_Catalog {
      * Register options (Settings → FIDES Wallet Catalog)
      */
     public function register_settings() {
-        register_setting('fides_wallet_catalog_settings', 'fides_wallet_catalog_map_url', array(
-            'type' => 'string',
-            'default' => 'https://fides.community/community-tools/map/',
-            'sanitize_callback' => 'esc_url_raw',
-        ));
         register_setting('fides_wallet_catalog_settings', 'fides_wallet_catalog_organization_catalog_url', array(
             'type' => 'string',
             'default' => 'https://fides.community/ecosystem-explorer/organization-catalog/',
@@ -298,15 +297,6 @@ class FIDES_Wallet_Catalog {
                 <?php settings_fields('fides_wallet_catalog_settings'); ?>
                 <h2>Settings</h2>
                 <table class="form-table" role="presentation">
-                    <tr>
-                        <th scope="row"><label for="fides_wallet_catalog_map_url">Map page URL</label></th>
-                        <td>
-                            <input type="url" id="fides_wallet_catalog_map_url" name="fides_wallet_catalog_map_url"
-                                   value="<?php echo esc_attr(get_option('fides_wallet_catalog_map_url', 'https://fides.community/community-tools/map/')); ?>"
-                                   class="regular-text">
-                            <p class="description">URL of the FIDES catalog map page. Used for the &quot;Show on map&quot; link.</p>
-                        </td>
-                    </tr>
                     <tr>
                         <th scope="row"><label for="fides_wallet_catalog_organization_catalog_url">Organization catalog URL</label></th>
                         <td>

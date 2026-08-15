@@ -157,10 +157,10 @@
     githubDataUrl: 'https://raw.githubusercontent.com/FIDEScommunity/fides-wallet-catalog/main/data/aggregated.json',
     useCaseAggregatedDataUrl: 'https://raw.githubusercontent.com/FIDEScommunity/fides-use-case-catalog/main/data/aggregated.json'
   };
-
-  // Map page URL for "Show on map" link (configurable via WordPress)
-  const MAP_PAGE_URL = (window.fidesWalletCatalog && window.fidesWalletCatalog.mapPageUrl)
-    || 'https://fides.community/community-tools/map/';
+  const ASK_FIDES_AVAILABLE = !!(window.fidesWalletCatalog && window.fidesWalletCatalog.askFidesAvailable);
+  const ASK_FIDES_PLACEHOLDER = (window.fidesWalletCatalog && window.fidesWalletCatalog.askFidesPlaceholder)
+    ? String(window.fidesWalletCatalog.askFidesPlaceholder)
+    : 'Ask anything about wallets…';
 
   const ORGANIZATION_CATALOG_PAGE_URL = (window.fidesWalletCatalog && window.fidesWalletCatalog.organizationCatalogUrl)
     || 'https://fides.community/ecosystem-explorer/organization-catalog/';
@@ -1874,25 +1874,30 @@
     // Main content area
     html += `<main class="fides-content">`;
 
-    // Results bar: search (optional) + sort + map link + mobile filter toggle (matches credential catalog layout)
+    // Results bar: search (optional) + Ask FIDES + sort + mobile filter toggle.
     html += `
       <div class="fides-results-bar">
         ${settings.showSearch ? `
-          <div class="fides-topbar-search">
-            <div class="fides-search-wrapper">
-              <span class="fides-search-icon">${icons.search}</span>
-              <input
-                type="text"
-                class="fides-search-input"
-                placeholder="Search..."
-                value="${escapeHtml(filters.search)}"
-                id="fides-search-input"
-                autocomplete="off"
-              >
-              <button class="fides-search-clear ${filters.search ? '' : 'hidden'}" id="fides-search-clear" type="button" aria-label="Clear search">
-                ${icons.xSmall}
-              </button>
+          <div class="fides-search-actions">
+            <div class="fides-topbar-search">
+              <div class="fides-search-wrapper">
+                <span class="fides-search-icon">${icons.search}</span>
+                <input
+                  type="text"
+                  class="fides-search-input"
+                  placeholder="Search..."
+                  value="${escapeHtml(filters.search)}"
+                  id="fides-search-input"
+                  autocomplete="off"
+                >
+                <button class="fides-search-clear ${filters.search ? '' : 'hidden'}" id="fides-search-clear" type="button" aria-label="Clear search">
+                  ${icons.xSmall}
+                </button>
+              </div>
             </div>
+            ${ASK_FIDES_AVAILABLE
+              ? '<div class="fides-ask-fides-option"><span class="fides-ask-fides-separator">or</span><button class="fides-ask-fides-trigger" id="fides-ask-fides-trigger" type="button">Ask <strong>FIDES</strong></button></div>'
+              : ''}
           </div>
         ` : ''}
         <div class="fides-results-bar-actions">
@@ -1912,7 +1917,6 @@
             </select>
           </label>
         </div>
-        <a href="${MAP_PAGE_URL}" class="fides-show-on-map" target="_blank" rel="noopener" aria-label="Show on map (opens in new tab)">${icons.externalLink}<span class="fides-show-on-map-label fides-show-on-map-label--full">Show on map</span><span class="fides-show-on-map-label fides-show-on-map-label--short" aria-hidden="true">Map</span></a>
         ${renderViewToggle()}
       </div>
     `;
@@ -2722,6 +2726,7 @@
    */
   function attachEventListeners() {
     const searchInput = document.getElementById('fides-search-input');
+    const askFidesTrigger = document.getElementById('fides-ask-fides-trigger');
 
     const handleSearchInput = debounce((e) => {
       filters.search = e.target.value;
@@ -2743,6 +2748,15 @@
 
     if (searchClear) {
       searchClear.addEventListener('click', handleSearchClear);
+    }
+    if (askFidesTrigger) {
+      askFidesTrigger.addEventListener('click', () => {
+        if (!window.FidesAssistant || typeof window.FidesAssistant.open !== 'function') return;
+        window.FidesAssistant.open({
+          prefill: searchInput ? String(searchInput.value || '').trim() : filters.search,
+          placeholder: ASK_FIDES_PLACEHOLDER,
+        });
+      });
     }
 
     getMobileFilters()?.bindShell();

@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.10.4
+Stable tag: 2.11.0
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -102,6 +102,13 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.11.0 =
+* Add an “or Ask FIDES” button beside wallet search when FIDES Assistant 0.6.1
+  or newer is active.
+* Reuse the headless assistant modal, prefill the current search without
+  submitting it, and show a wallet-specific chat placeholder.
+* Remove the “Show on map” listing action and its obsolete URL setting.
 
 = 2.10.4 =
 * Wallet modal: Use cases accordion when use cases link this wallet (above Specifications); same-window deep links and like counts.
