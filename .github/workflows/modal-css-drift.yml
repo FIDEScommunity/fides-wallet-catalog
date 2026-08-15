@@ -1,0 +1,35 @@
+name: Modal CSS drift
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  modal-css-drift:
+    name: Modal CSS drift
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out wallet catalog
+        uses: actions/checkout@v4
+
+      - name: Check out canonical modal library
+        uses: actions/checkout@v4
+        with:
+          repository: FIDEScommunity/fides-community-tools-tiles
+          path: canonical
+
+      - name: Require canonical modal stylesheet
+        run: |
+          canonical="canonical/lib/fides-catalog-ui/fides-catalog-ui.css"
+          distributed="wordpress-plugin/fides-wallet-catalog/assets/lib/fides-catalog-ui.css"
+          if ! cmp -s "$canonical" "$distributed"; then
+            echo "::error file=$distributed::Modal CSS differs from the canonical fides-community-tools-tiles stylesheet. Run scripts/sync-catalog-modal-library.sh from fides-community-tools-tiles and commit the synced copy."
+            diff -u "$canonical" "$distributed" || true
+            exit 1
+          fi

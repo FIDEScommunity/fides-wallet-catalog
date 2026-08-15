@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.11.0
+Stable tag: 2.11.1
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -102,6 +102,10 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.11.1 =
+* Restore readable light/FIDES wallet modal colors and fixed header/body
+  scrolling by resynchronizing the canonical shared modal stylesheet.
 
 = 2.11.0 =
 * Add an “or Ask FIDES” button beside wallet search when FIDES Assistant 0.6.1
