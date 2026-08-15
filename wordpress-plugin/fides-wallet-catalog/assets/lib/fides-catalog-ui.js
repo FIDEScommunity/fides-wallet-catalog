@@ -132,8 +132,7 @@
     mail: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
     apple: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>',
     playStore: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 9.99l-2.302 2.302-8.634-8.634z"/></svg>',
-    globeApp: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>',
-    useCases: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg>'
+    globeApp: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>'
   };
 
   let currentModalMediaSlides = [];
@@ -1444,49 +1443,29 @@
     return list.filter(function(u) { return u && (u.id || u.title || u.name); });
   }
 
-  function buildUseCasesAccordionBody(useCaseCatalogUrl, options, emptyMessage, tableConfig) {
+  function buildRpUseCasesAccordionBody(useCaseCatalogUrl, options) {
     const useCases = getDerivedUseCases(options);
     if (!useCases.length) return '';
-    const tc = tableConfig || {};
-    const includeOrganization = tc.showOrganizationColumn !== false;
     const rows = useCases.map(function(uc) {
       const id = uc.id || '';
       const title = uc.title || uc.name || id;
       const href = id && useCaseCatalogUrl
         ? useCaseCatalogUrl.replace(/\/$/, '') + '/?usecase=' + encodeURIComponent(id)
         : '';
-      const row = {
+      return {
         id: id,
         name: title,
-        href: href,
-        ratingType: 'usecase'
+        organization: uc.organizationName || uc.organization || '',
+        href: href
       };
-      if (includeOrganization) {
-        row.organization = uc.organizationName || uc.organization || '';
-      }
-      return row;
     });
     return buildModalEntityTableHtml({
       rows: rows,
       nameColumnLabel: 'Use case',
       ariaLabel: 'Use cases',
       options: options,
-      showOrganizationColumn: includeOrganization,
-      showHeader: tc.showHeader !== false,
-      sameWindowLinks: true,
-      emptyHtml: '<p class="fides-modal-empty">' + escapeHtml(
-        emptyMessage || 'No use cases linked from the use case catalog.'
-      ) + '</p>'
+      emptyHtml: '<p class="fides-modal-empty">No use cases linked from the use case catalog for this relying party.</p>'
     });
-  }
-
-  function buildRpUseCasesAccordionBody(useCaseCatalogUrl, options) {
-    return buildUseCasesAccordionBody(
-      useCaseCatalogUrl,
-      options,
-      'No use cases linked from the use case catalog for this relying party.',
-      { showOrganizationColumn: false, showHeader: false }
-    );
   }
 
   function rpUseCasesCount(options) {
@@ -1509,7 +1488,7 @@
     const credentialCatalogUrl = (options && options.credentialCatalogUrl) || 'https://fides.community/ecosystem-explorer/credential-catalog/';
     const issuerCatalogUrl = (options && options.issuerCatalogUrl) || 'https://fides.community/ecosystem-explorer/issuer-catalog/';
     const walletCatalogUrl = (options && options.walletCatalogUrl) || '';
-    const useCaseCatalogUrl = (options && options.useCaseCatalogUrl) || 'https://fides.community/ecosystem-explorer/use-cases/';
+    const useCaseCatalogUrl = (options && options.useCaseCatalogUrl) || 'https://fides.community/use-cases/';
     const issuers = (options && Array.isArray(options.ecosystemIssuers)) ? options.ecosystemIssuers : [];
     const specificationsBody = buildRpSpecificationsBodyHtml(rp, options);
     const websiteDetailsBody = buildRpWebsiteDetailsBodyHtml(rp);
@@ -1540,17 +1519,15 @@
       'wallets',
       rpSupportedWalletCatalogIds(rp)
     );
+    const useCaseExploreHref = buildCatalogFilteredHref(
+      useCaseCatalogUrl,
+      'usecase',
+      'usecases',
+      getDerivedUseCases(options).map(function(u) { return u.id; }).filter(Boolean)
+    );
 
     const ecosystemHtml = buildRpEcosystemModelHtml(rp, options);
     const accordions = [
-      renderModalAccordion(
-        'fides-accordion-rp-use-cases',
-        'Use cases',
-        icons.useCases,
-        useCasesBody,
-        false,
-        rpUseCasesCount(options)
-      ),
       renderModalAccordion(
         'fides-accordion-rp-specifications',
         'Specifications',
@@ -1585,6 +1562,15 @@
         false,
         rpSupportedWalletsCount(rp),
         walletExploreHref
+      ),
+      renderModalAccordion(
+        'fides-accordion-rp-use-cases',
+        'Use cases',
+        icons.check,
+        useCasesBody,
+        false,
+        rpUseCasesCount(options),
+        useCaseExploreHref
       ),
       renderModalAccordion(
         'fides-accordion-rp-features',
@@ -1810,19 +1796,16 @@
     if (!rows.length) return cfg.emptyHtml || '<p class="fides-modal-empty">No items found.</p>';
     const showOrgCol = cfg.alwaysShowOrganizationColumn === true ||
       (cfg.showOrganizationColumn !== false && rows.some(function(r) { return r.organization; }));
-    const showHeader = cfg.showHeader !== false;
     const nameLabel = cfg.nameColumnLabel || 'Name';
     const orgLabel = cfg.organizationColumnLabel || 'Organization';
     const ariaLabel = cfg.ariaLabel || nameLabel;
     const options = cfg.options || {};
-    const thead = !showHeader
-      ? ''
-      : (showOrgCol
-        ? '<thead><tr><th>' + escapeHtml(nameLabel) + '</th>' +
-          '<th class="fides-modal-entity-col-likes" title="Likes"><span aria-label="Likes">★</span></th>' +
-          '<th>' + escapeHtml(orgLabel) + '</th></tr></thead>'
-        : '<thead><tr><th>' + escapeHtml(nameLabel) + '</th>' +
-          '<th class="fides-modal-entity-col-likes" title="Likes"><span aria-label="Likes">★</span></th></tr></thead>');
+    const thead = showOrgCol
+      ? '<thead><tr><th>' + escapeHtml(nameLabel) + '</th>' +
+        '<th class="fides-modal-entity-col-likes" title="Likes"><span aria-label="Likes">★</span></th>' +
+        '<th>' + escapeHtml(orgLabel) + '</th></tr></thead>'
+      : '<thead><tr><th>' + escapeHtml(nameLabel) + '</th>' +
+        '<th class="fides-modal-entity-col-likes" title="Likes"><span aria-label="Likes">★</span></th></tr></thead>';
     const tbody = rows.map(function(row) {
       const label = escapeHtml(row.name || row.id || '');
       const likeInner = row.ratingType && row.id
@@ -1835,15 +1818,11 @@
         ? '<td>' + (row.organization ? escapeHtml(row.organization) : '—') + '</td>'
         : '';
       const nameCell = row.href
-        ? (cfg.sameWindowLinks
-          ? '<a href="' + escapeHtml(row.href) + '" class="fides-modal-link-inline" onclick="event.stopPropagation();">' + label + '</a>'
-          : '<a href="' + escapeHtml(row.href) + '" class="fides-modal-link-inline" target="_blank" rel="noopener" onclick="event.stopPropagation();">' + label + '</a>')
+        ? '<a href="' + escapeHtml(row.href) + '" class="fides-modal-link-inline" target="_blank" rel="noopener" onclick="event.stopPropagation();">' + label + '</a>'
         : '<span>' + label + '</span>';
       return '<tr><td>' + nameCell + '</td>' + likeCell + orgCell + '</tr>';
     }).join('');
-    const tableClass = 'fides-attributes-table fides-modal-rp-table fides-modal-entity-table' +
-      (showOrgCol ? '' : ' fides-modal-entity-table--name-likes');
-    return '<div class="fides-attributes-table-wrap"><table class="' + tableClass + '" aria-label="' +
+    return '<div class="fides-attributes-table-wrap"><table class="fides-attributes-table fides-modal-rp-table fides-modal-entity-table" aria-label="' +
       escapeHtml(ariaLabel) + '">' + thead + '<tbody>' + tbody + '</tbody></table></div>';
   }
 
@@ -1940,13 +1919,6 @@
     const certificationsBody = buildWalletCertificationsBodyHtml(wallet, options);
     const pricingBody = buildWalletPricingBodyHtml(wallet, options);
     const eudiLandscapeBody = buildWalletEudiLandscapeBodyHtml(wallet);
-    const useCaseCatalogUrl = (options && options.useCaseCatalogUrl) || 'https://fides.community/ecosystem-explorer/use-cases/';
-    const useCasesBody = buildUseCasesAccordionBody(
-      useCaseCatalogUrl,
-      options,
-      'No use cases linked from the use case catalog for this wallet.',
-      { showOrganizationColumn: false, showHeader: false }
-    );
     const accordions = [
       renderModalAccordion(
         'fides-accordion-wallet-eudi-landscape',
@@ -1954,14 +1926,6 @@
         icons.globe,
         eudiLandscapeBody,
         false
-      ),
-      renderModalAccordion(
-        'fides-accordion-wallet-use-cases',
-        'Use cases',
-        icons.useCases,
-        useCasesBody,
-        false,
-        rpUseCasesCount(options)
       ),
       renderModalAccordion(
         'fides-accordion-wallet-technical',
@@ -2330,6 +2294,7 @@
     if (contextType === 'issuer') url.searchParams.set('issuer', item.id);
     if (contextType === 'organization') url.searchParams.set('org', item.id);
     if (contextType === 'vocabulary') url.searchParams.set('term', item.id);
+    if (contextType === 'trustscheme') url.searchParams.set('scheme', item.id);
     return url.toString();
   }
 
@@ -2566,10 +2531,9 @@
     const batches = [
       { type: 'issuer', ids: issuers.map(function(i) { return i.id; }).filter(Boolean) },
       { type: 'credential', ids: credentialRows.map(function(r) { return r.credentialId; }).filter(Boolean) },
-      { type: 'wallet', ids: walletIds },
-      { type: 'usecase', ids: getDerivedUseCases(options).map(function(u) { return u.id; }).filter(Boolean) }
+      { type: 'wallet', ids: walletIds }
     ];
-    const summaries = { issuer: {}, credential: {}, wallet: {}, usecase: {} };
+    const summaries = { issuer: {}, credential: {}, wallet: {} };
     for (let i = 0; i < batches.length; i++) {
       const batch = batches[i];
       if (!batch.ids.length) continue;
@@ -3419,11 +3383,279 @@
     if (vocabularyOverlay) attachModalRating(vocabularyOverlay, 'vocabulary', term.id, options || {}, term);
   }
 
+  const TRUST_SCHEME_JURISDICTION_LABELS = {
+    CA: 'Canada',
+    EU: 'European Union',
+    FI: 'Finland',
+    GLOBAL: 'Global',
+    IN: 'India',
+    US: 'United States'
+  };
+
+  function trustSchemeJurisdictionLabel(code) {
+    if (!code) return '';
+    return TRUST_SCHEME_JURISDICTION_LABELS[code] || String(code);
+  }
+
+  const TRUST_REGISTRY_PROFILE_LABELS = {
+    etsi_ts_119_612_lotl: 'ETSI TS 119 612 LOTL',
+    etsi_ts_119_612_tl: 'ETSI TS 119 612 Trusted List',
+    etsi_ts_119_602_lote: 'ETSI TS 119 602 LoTE',
+    iso_18013_5_vical: 'ISO/IEC 18013-5 VICAL',
+    iso_18013_5_rical: 'ISO/IEC 18013-5 RICAL',
+    openid_federation: 'OpenID Federation',
+    verana_vpr: 'Verana VPR',
+    human_readable_web_register: 'Web register (human-readable)',
+    other: 'Other'
+  };
+
+  const TRUST_REGISTRY_ACCESS_LABELS = {
+    public: 'Public',
+    registration_required: 'Registration required',
+    restricted: 'Restricted'
+  };
+
+  const TRUST_SCHEME_ROLE_LABELS = {
+    scheme_owner: 'Scheme owner',
+    standards_body: 'Standards body',
+    accreditation_body: 'Accreditation body',
+    supervisory_body: 'Supervisory body',
+    certification_body: 'Certification body',
+    registry_operator: 'Registry operator'
+  };
+
+  const TRUST_SCHEME_RELATION_LABELS = {
+    successor: 'Successor',
+    predecessor: 'Predecessor',
+    profile_of: 'Profile of',
+    accredited_under: 'Accredited under'
+  };
+
+  function trustRegistryProfileLabel(registry) {
+    if (!registry) return '';
+    if (registry.registryProfile === 'other' && registry.registryProfileOther) {
+      return String(registry.registryProfileOther);
+    }
+    return TRUST_REGISTRY_PROFILE_LABELS[registry.registryProfile] || registry.registryProfile || '';
+  }
+
+  function buildTrustRegistryCardHtml(registry, options) {
+    if (!registry) return '';
+    const orgCatalogBase = (options && options.organizationCatalogUrl) || '';
+    const ownerName = registry.owner && registry.owner.name ? registry.owner.name : '';
+    const operatorName = registry.operator && registry.operator.name ? registry.operator.name : '';
+    const ownerHref = getOrganizationCatalogDeepLink((registry.ownerOrgId || '').trim(), orgCatalogBase);
+    const ownerHtml = ownerName
+      ? (ownerHref
+        ? '<a href="' + escapeHtml(ownerHref) + '" class="fides-modal-link-inline" target="_blank" rel="noopener">' + escapeHtml(ownerName) + '</a>'
+        : escapeHtml(ownerName))
+      : '';
+
+    const badges = [];
+    const profileLabel = trustRegistryProfileLabel(registry);
+    if (profileLabel) {
+      badges.push('<span class="fides-modal-badge">' + escapeHtml(profileLabel) + '</span>');
+    }
+    if (registry.access) {
+      badges.push('<span class="fides-modal-badge">' + escapeHtml(TRUST_REGISTRY_ACCESS_LABELS[registry.access] || registry.access) + '</span>');
+    }
+
+    const metaRows = [];
+    if (ownerHtml) metaRows.push('<div class="fides-trust-registry-meta"><span>Owner</span>' + ownerHtml + '</div>');
+    if (operatorName) metaRows.push('<div class="fides-trust-registry-meta"><span>Operator</span>' + escapeHtml(operatorName) + '</div>');
+
+    const links = [];
+    if (registry.registryUrl) {
+      links.push('<a href="' + escapeHtml(registry.registryUrl) + '" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Trust registry">' + icons.server + ' Open registry</a>');
+    }
+    if (registry.website && registry.website !== registry.registryUrl) {
+      links.push('<a href="' + escapeHtml(registry.website) + '" target="_blank" rel="noopener" class="fides-modal-link" data-matomo-name="Trust registry website">' + icons.externalLink + ' Information</a>');
+    }
+
+    return '<div class="fides-trust-registry-card">' +
+      '<h4 class="fides-trust-registry-title">' + escapeHtml(registry.name || registry.id) + '</h4>' +
+      '<div class="fides-modal-badges">' + badges.join('') + '</div>' +
+      (registry.description ? '<p class="fides-trust-registry-description">' + escapeHtml(registry.description) + '</p>' : '') +
+      (metaRows.length ? '<div class="fides-trust-registry-metas">' + metaRows.join('') + '</div>' : '') +
+      (links.length ? '<div class="fides-modal-links">' + links.join('') + '</div>' : '') +
+      '</div>';
+  }
+
+  const TRUST_SCHEME_LINK_LIMIT = 12;
+
+  /**
+   * Related catalog entries for a trust scheme.
+   *
+   * `via: 'trusted_authority'` is an exact link: the credential names a registry of this
+   * scheme as trusted authority. `via: 'credential_ecosystem'` is indicative: the entry
+   * belongs to a credential ecosystem this scheme governs, which is not the same as formal
+   * recognition. The distinction is shown, never flattened.
+   */
+  function buildTrustSchemeRelatedGroupHtml(config) {
+    const items = arrayValues(config.items);
+    if (!items.length) return '';
+    const base = config.catalogUrl ? String(config.catalogUrl).replace(/\/$/, '') : '';
+    const shown = items.slice(0, TRUST_SCHEME_LINK_LIMIT);
+    const tags = shown.map(function(item) {
+      if (!item || !item.id) return '';
+      const label = item.displayName || item.id;
+      const exact = item.via === 'trusted_authority';
+      const cls = 'fides-tag' + (exact ? ' is-exact-link' : '');
+      const title = exact
+        ? 'Names a trust registry of this scheme as trusted authority'
+        : 'Belongs to a credential ecosystem governed by this scheme';
+      const href = base ? base + '/?' + config.param + '=' + encodeURIComponent(item.id) : '';
+      if (href) {
+        return '<a href="' + escapeHtml(href) + '" class="' + cls + '" title="' + escapeHtml(title) +
+          '" target="_blank" rel="noopener">' + escapeHtml(label) + ' ' + icons.externalLinkSmall + '</a>';
+      }
+      return '<span class="' + cls + '" title="' + escapeHtml(title) + '">' + escapeHtml(label) + '</span>';
+    }).filter(Boolean).join('');
+    const remaining = items.length - shown.length;
+    const more = remaining > 0
+      ? '<span class="fides-tag is-more">+' + remaining + ' more</span>'
+      : '';
+    return '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + config.icon + ' ' +
+      escapeHtml(config.label) + ' <span class="fides-modal-section-count">' + items.length + '</span></div>' +
+      '<div class="fides-modal-grid-value">' + tags + more + '</div></div>';
+  }
+
+  function buildTrustSchemeEcosystemSectionHtml(scheme, options) {
+    const groups = [
+      buildTrustSchemeRelatedGroupHtml({
+        items: scheme.relatedCredentials,
+        label: 'Credential types',
+        icon: icons.fileCheck,
+        param: 'credential',
+        catalogUrl: (options && options.credentialCatalogUrl) || ''
+      }),
+      buildTrustSchemeRelatedGroupHtml({
+        items: scheme.relatedIssuers,
+        label: 'Issuers',
+        icon: icons.building,
+        param: 'issuer',
+        catalogUrl: (options && options.issuerCatalogUrl) || ''
+      }),
+      buildTrustSchemeRelatedGroupHtml({
+        items: scheme.relatedRelyingParties,
+        label: 'Relying parties',
+        icon: icons.laptop,
+        param: 'rp',
+        catalogUrl: (options && options.rpCatalogUrl) || ''
+      })
+    ].filter(Boolean).join('');
+
+    if (!groups) return '';
+
+    const hasExact = [scheme.relatedCredentials, scheme.relatedIssuers, scheme.relatedRelyingParties]
+      .some(function(list) {
+        return arrayValues(list).some(function(item) { return item && item.via === 'trusted_authority'; });
+      });
+    const note = hasExact
+      ? 'Highlighted entries name a trust registry of this scheme as trusted authority. The others are listed because they belong to a credential ecosystem this scheme governs, which is context rather than formal recognition.'
+      : 'Listed because they belong to a credential ecosystem this scheme governs. This is context, not formal recognition under the scheme.';
+
+    return '<div class="fides-modal-section fides-trust-scheme-ecosystem">' +
+      '<h3 class="fides-modal-section-title">' + icons.shield + ' Ecosystem context</h3>' +
+      '<div class="fides-modal-grid">' + groups + '</div>' +
+      '<p class="fides-trust-scheme-ecosystem-note">' + escapeHtml(note) + '</p>' +
+      '</div>';
+  }
+
+  function openTrustSchemeModal(scheme, options) {
+    if (!scheme) return;
+    const theme = (options && options.theme) || 'dark';
+    selectedContext = { type: 'trustscheme', item: scheme, options: options || {}, theme: theme };
+    if (options && typeof options.onOpen === 'function') options.onOpen(scheme);
+
+    const owner = scheme.owner || {};
+    const ownerName = owner.name ? String(owner.name) : 'Unknown organization';
+    const orgCatalogHref = getOrganizationCatalogDeepLink(
+      (scheme.ownerOrgId || '').trim(),
+      (options && options.organizationCatalogUrl) || 'https://fides.community/ecosystem-explorer/organization-catalog/'
+    );
+    const ownerInHeader = orgCatalogHref
+      ? '<a href="' + escapeHtml(orgCatalogHref) + '" class="fides-modal-link-inline" aria-label="View owner in organization catalog" title="Organization catalog" onclick="event.stopPropagation();"><span>' + escapeHtml(ownerName) + '</span></a>'
+      : escapeHtml(ownerName);
+    const logo = scheme.logo || owner.logo || '';
+
+    const jurisdictions = arrayValues(scheme.governingJurisdictions);
+    const registries = arrayValues(scheme.trustRegistries);
+
+    const governanceTags = arrayValues(scheme.governanceOrganizations).map(function(entry) {
+      if (!entry || !entry.name) return '';
+      const roleLabel = TRUST_SCHEME_ROLE_LABELS[entry.role] || entry.role || '';
+      const label = roleLabel ? entry.name + ' — ' + roleLabel : entry.name;
+      const href = getOrganizationCatalogDeepLink((entry.orgId || '').trim(), (options && options.organizationCatalogUrl) || '');
+      if (href) return '<a href="' + escapeHtml(href) + '" class="fides-tag" target="_blank" rel="noopener">' + escapeHtml(label) + ' ' + icons.externalLinkSmall + '</a>';
+      return '<span class="fides-tag">' + escapeHtml(label) + '</span>';
+    }).filter(Boolean).join('');
+
+    const schemeCatalogBase = (options && options.trustSchemeCatalogUrl) || '';
+    const relatedTags = arrayValues(scheme.relatedSchemes).map(function(entry) {
+      if (!entry || !entry.id) return '';
+      const relationLabel = TRUST_SCHEME_RELATION_LABELS[entry.relation] || entry.relation || '';
+      const label = relationLabel ? relationLabel + ': ' + entry.id.replace(/^scheme:/, '') : entry.id;
+      const href = schemeCatalogBase
+        ? schemeCatalogBase.replace(/\/$/, '') + '/?scheme=' + encodeURIComponent(entry.id)
+        : '';
+      if (href) return '<a href="' + escapeHtml(href) + '" class="fides-tag">' + escapeHtml(label) + '</a>';
+      return '<span class="fides-tag">' + escapeHtml(label) + '</span>';
+    }).filter(Boolean).join('');
+
+    const registriesHtml = registries.length
+      ? registries.map(function(registry) { return buildTrustRegistryCardHtml(registry, options); }).join('')
+      : '<p class="fides-trust-registry-empty">' + icons.shield + ' This scheme publishes no public trust registry. ' +
+        'Participation is established through the scheme rules rather than through a register that can be looked up.</p>';
+
+    const shareButtonHtml = (options && options.showShare === false)
+      ? ''
+      : '<button type="button" class="fides-modal-copy-link" id="fides-modal-copy-link" aria-label="Copy link">' + icons.share + '</button>';
+
+    const modalHtml = '<div class="fides-modal-overlay" id="fides-modal-overlay" data-theme="' + escapeHtml(theme) + '">' +
+      '<div class="fides-modal" role="dialog" aria-modal="true">' +
+      '<div class="fides-modal-header"><div class="fides-modal-header-content">' +
+      (logo ? '<img src="' + escapeHtml(logo) + '" alt="' + escapeHtml(scheme.name || scheme.id) + '" class="fides-modal-logo">' : '<div class="fides-modal-logo-placeholder">' + icons.shield + '</div>') +
+      '<div class="fides-modal-title-wrap"><h2 class="fides-modal-title">' + escapeHtml(scheme.name || scheme.id) + '</h2>' +
+      '<p class="fides-modal-provider">' + icons.building + ' ' + ownerInHeader + '</p></div>' +
+      '</div><div class="fides-modal-header-actions">' + shareButtonHtml + '<button class="fides-modal-close" id="fides-modal-close" aria-label="Close modal">' + icons.xLarge + '</button></div></div>' +
+      '<div class="fides-modal-body">' +
+      '<div class="fides-modal-badges">' +
+      jurisdictions.map(function(code) { return '<span class="fides-modal-badge">' + escapeHtml(trustSchemeJurisdictionLabel(code)) + '</span>'; }).join('') +
+      '</div>' +
+      (scheme.description ? '<div class="fides-modal-section"><p class="fides-modal-description">' + escapeHtml(scheme.description) + '</p></div>' : '') +
+      '<div class="fides-modal-grid">' +
+      (scheme.legalBasis && scheme.legalBasis.name
+        ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.official + ' Legal basis</div><div class="fides-modal-grid-value">' +
+          (scheme.legalBasis.url
+            ? '<a href="' + escapeHtml(scheme.legalBasis.url) + '" target="_blank" rel="noopener">' + escapeHtml(scheme.legalBasis.name) + ' ' + icons.externalLinkSmall + '</a>'
+            : escapeHtml(scheme.legalBasis.name)) +
+          '</div></div>'
+        : '') +
+      (governanceTags ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.building + ' Governance</div><div class="fides-modal-grid-value">' + governanceTags + '</div></div>' : '') +
+      (arrayValues(scheme.sectors).length ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.tag + ' Sectors</div><div class="fides-modal-grid-value">' + renderTagList(arrayValues(scheme.sectors), '') + '</div></div>' : '') +
+      (relatedTags ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.shield + ' Related schemes</div><div class="fides-modal-grid-value">' + relatedTags + '</div></div>' : '') +
+      '</div>' +
+      '<div class="fides-modal-section fides-trust-registries">' +
+      '<h3 class="fides-modal-section-title">' + icons.server + ' Trust registries' +
+      (registries.length ? ' <span class="fides-modal-section-count">' + registries.length + '</span>' : '') +
+      '</h3>' + registriesHtml + '</div>' +
+      buildTrustSchemeEcosystemSectionHtml(scheme, options) +
+      '<div class="fides-modal-links">' +
+      (scheme.website ? '<a href="' + escapeHtml(scheme.website) + '" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Trust scheme website">' + icons.externalLink + ' Visit website</a>' : '') +
+      '</div>' +
+      buildModalLastUpdatedHtml(scheme, ['updatedAt', 'firstSeenAt']) +
+      '</div></div></div>';
+
+    mountModal(modalHtml);
+  }
+
   window.FidesCatalogUI = {
     openWalletModal,
     openRpModal,
     openIssuerModal,
     openOrganizationModal,
+    openTrustSchemeModal,
     openVocabularyModal,
     closeModal,
     trackMatomoEvent,
