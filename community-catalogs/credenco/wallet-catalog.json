@@ -55,9 +55,13 @@
         "Universal OID4VP API",
         "Compliant with WE BUILD Interoperability Test Bed (ITB)",
         "Integration with FIDES Credential Catalog and BluePages",
+        "TS11 Credential Type Catalog",
         "EBSI Integration",
         "Public Profile",
         "Inbox notifications",
+        "Integration events",
+        "OpenID Federation",
+        "Dark mode",
         "Available as SaaS or on-premise deployment"
       ],
       "documentation": "https://docs.acc.credenco.com",
