@@ -1,7 +1,7 @@
 {
     "schemaVersion": "1.0.0",
     "catalogType": "wallet",
-    "generatedAt": "2026-08-11T15:36:14+00:00",
+    "generatedAt": "2026-08-16T09:13:24+00:00",
     "entries": [
         {
             "itemId": "carteira-digital-da-empresa",
@@ -100,9 +100,13 @@
                             "Universal OID4VP API",
                             "Compliant with WE BUILD Interoperability Test Bed (ITB)",
                             "Integration with FIDES Credential Catalog and BluePages",
+                            "TS11 Credential Type Catalog",
                             "EBSI Integration",
                             "Public Profile",
                             "Inbox notifications",
+                            "Integration events",
+                            "OpenID Federation",
+                            "Dark mode",
                             "Available as SaaS or on-premise deployment"
                         ],
                         "documentation": "https://docs.acc.credenco.com",
@@ -115,10 +119,10 @@
                         "catalogTier": "Pro"
                     }
                 ],
-                "lastUpdated": "2026-07-12T17:52:01+00:00"
+                "lastUpdated": "2026-08-16T09:13:24+00:00"
             },
-            "publishedAt": "2026-07-12 17:52:01",
-            "updatedAt": "2026-07-12 17:52:01"
+            "publishedAt": "2026-08-16 09:13:24",
+            "updatedAt": "2026-08-16 09:13:24"
         },
         {
             "itemId": "credenco-wallet",
