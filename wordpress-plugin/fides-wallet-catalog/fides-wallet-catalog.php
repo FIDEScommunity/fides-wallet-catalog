@@ -3,7 +3,7 @@
  * Plugin Name: FIDES Wallet Catalog
  * Plugin URI: https://fides.community
  * Description: Displays the FIDES Wallet Catalog with search and filter functionality. When the master fides_catalog_ssr_enabled flag (provided by FIDES Community Tools Tiles ≥ 1.6.0) is enabled, the plugin also emits a server-rendered listing fallback, per-deeplink SEO meta tags and a SoftwareApplication JSON-LD payload so wallet detail URLs become indexable by search engines.
- * Version: 2.11.1
+ * Version: 2.11.3
  * Author: FIDES Labs BV
  * Author URI: https://fides.community
  * License: Apache-2.0
@@ -28,7 +28,7 @@ Fides_Wallet_Catalog_Submission_Forms::bootstrap();
 class FIDES_Wallet_Catalog {
     
     private static $instance = null;
-    private const VERSION = '2.11.1';
+    private const VERSION = '2.11.3';
     /** @var string Site path for the wallet update submission form page. */
     const DEFAULT_UPDATE_FORM_PATH = '/wallets-update/';
     private $plugin_url;
@@ -121,6 +121,7 @@ class FIDES_Wallet_Catalog {
         wp_localize_script('fides-wallet-catalog', 'fidesWalletCatalog', array(
             'pluginUrl' => $this->plugin_url,
             'githubDataUrl' => 'https://raw.githubusercontent.com/FIDEScommunity/fides-wallet-catalog/main/data/aggregated.json',
+            'cacheDataUrl' => rest_url('fides-catalog/v1/aggregated/wallet'),
             'aggregatedDataVersion' => $aggregated_version,
             'vocabularyUrl' => 'https://raw.githubusercontent.com/FIDEScommunity/fides-interop-profiles/main/data/vocabulary.json',
             'vocabularyFallbackUrl' => $this->plugin_url . 'assets/vocabulary.json',

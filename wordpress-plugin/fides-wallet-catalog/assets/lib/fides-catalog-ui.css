@@ -451,6 +451,62 @@
   line-height: 1.4;
 }
 
+.fides-stale-catalog-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin: 0 0 1rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 10px;
+  border: 1px solid var(--fides-warning, #d97706);
+  background: rgba(217, 119, 6, 0.12);
+  color: var(--fides-text-primary, #0f172a);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.fides-stale-catalog-notice-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+  color: var(--fides-warning, #d97706);
+}
+
+.fides-stale-catalog-notice-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.fides-stale-catalog-notice-text {
+  margin: 0;
+  flex: 1;
+}
+
+.fides-stale-catalog-notice-dismiss {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0.15rem;
+  margin: -0.15rem -0.1rem 0 0;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.7;
+  border-radius: 6px;
+  line-height: 0;
+}
+
+.fides-stale-catalog-notice-dismiss:hover,
+.fides-stale-catalog-notice-dismiss:focus-visible {
+  opacity: 1;
+  outline: none;
+  background: rgba(217, 119, 6, 0.16);
+}
+
+.fides-stale-catalog-notice-dismiss svg {
+  width: 14px;
+  height: 14px;
+}
+
 @keyframes fides-toast-in {
   from {
     opacity: 0;

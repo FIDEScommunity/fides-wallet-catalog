@@ -527,6 +527,16 @@
   // DOM Elements
   let container;
   let settings;
+  let catalogLoadMeta = { showStaleNotice: false, remoteFailed: false, snapshotDate: '' };
+
+  function applyStaleCatalogNotice() {
+    if (!window.FidesCatalogUI || typeof window.FidesCatalogUI.mountStaleCatalogNotice !== 'function') return;
+    window.FidesCatalogUI.mountStaleCatalogNotice(container, {
+      showStaleNotice: catalogLoadMeta.showStaleNotice,
+      catalogType: 'wallet',
+      snapshotDate: catalogLoadMeta.snapshotDate
+    });
+  }
 
   let mobileFiltersController = null;
   function getMobileFilters() {
@@ -979,39 +989,55 @@
    * Hostname or full URL contains ".local": try local plugin file first, then GitHub.
    */
   async function loadWallets() {
-    const remote = { name: 'GitHub', url: config.githubDataUrl, transform: (d) => d.wallets || [] };
     const localVersion = config.aggregatedDataVersion ? `?v=${encodeURIComponent(config.aggregatedDataVersion)}` : '';
-    const local = { name: 'Local', url: `${config.pluginUrl}data/aggregated.json${localVersion}`, transform: (d) => d.wallets || [] };
-    const sources = isFidesLocalDevHost() ? [local, remote] : [remote, local];
+    const localUrl = `${config.pluginUrl}data/aggregated.json${localVersion}`;
+    const ui = window.FidesCatalogUI;
+    let sourceName = '';
 
-    for (const source of sources) {
-      if (!source.url) continue;
-      
-      try {
-        const response = await fetch(source.url);
-        if (response.ok) {
-          const data = await response.json();
-          wallets = source.transform(data);
-          try {
-            await loadWalletRatingSummaries(wallets);
-          } catch (ratingsError) {
-            console.warn('Failed to load wallet likes:', ratingsError.message);
-          }
-          await loadUseCaseIndex();
-          console.log(`✅ Loaded ${wallets.length} wallets from ${source.name}`);
-          break;
-        }
-      } catch (error) {
-        console.warn(`Failed to load from ${source.name}:`, error.message);
+    if (ui && typeof ui.loadCatalogAggregatedJson === 'function') {
+      const loaded = await ui.loadCatalogAggregatedJson({
+        remoteUrl: config.githubDataUrl,
+        cacheUrl: config.cacheDataUrl,
+        localUrl: localUrl
+      });
+      catalogLoadMeta.showStaleNotice = !!loaded.showStaleNotice;
+      catalogLoadMeta.remoteFailed = !!loaded.remoteFailed;
+      catalogLoadMeta.snapshotDate = loaded.snapshotDate || '';
+      if (loaded.ok && loaded.data) {
+        wallets = loaded.data.wallets || [];
+        sourceName = loaded.source === 'github' ? 'GitHub' : (loaded.source === 'cache' ? 'Cache' : 'Local');
       }
+    } else {
+      const remote = { name: 'GitHub', url: config.githubDataUrl };
+      const local = { name: 'Local', url: localUrl };
+      const sources = isFidesLocalDevHost() ? [local, remote] : [remote, local];
+      for (const source of sources) {
+        if (!source.url) continue;
+        try {
+          const response = await fetch(source.url);
+          if (!response.ok) continue;
+          const data = await response.json();
+          wallets = data.wallets || [];
+          sourceName = source.name;
+          break;
+        } catch (error) {
+          console.warn(`Failed to load from ${source.name}:`, error.message);
+        }
+      }
+    }
+
+    if (wallets.length > 0) {
+      try {
+        await loadWalletRatingSummaries(wallets);
+      } catch (ratingsError) {
+        console.warn('Failed to load wallet likes:', ratingsError.message);
+      }
+      await loadUseCaseIndex();
+      console.log(`Loaded ${wallets.length} wallets from ${sourceName}`);
     }
 
     if (wallets.length === 0) {
       console.error('Failed to load wallets from any source');
-      // If a server-side fallback is present (Fase 2 SSR), reveal it and
-      // remove the loading spinner instead of overwriting the container with
-      // an empty interactive UI. Crawlers and users on flaky networks then
-      // still see real content.
       const ssrFallback = container && container.querySelector('[data-fides-ssr="wallet"]');
       if (ssrFallback) {
         console.warn('Revealing server-rendered fallback because no wallets were loaded.');
@@ -1019,6 +1045,8 @@
         ssrFallback.removeAttribute('aria-hidden');
         const spinner = container.querySelector('[data-fides-ssr-spinner="1"]');
         if (spinner) spinner.remove();
+        catalogLoadMeta.showStaleNotice = catalogLoadMeta.remoteFailed && !isFidesLocalDevHost();
+        applyStaleCatalogNotice();
         return;
       }
     } else {
@@ -1970,6 +1998,7 @@
     container.innerHTML = html;
     attachEventListeners();
     getMobileFilters()?.applyAfterRender(mobileFiltersOpen);
+    applyStaleCatalogNotice();
     
     // Restore focus to search input if it was focused
     if (wasSearchFocused) {
