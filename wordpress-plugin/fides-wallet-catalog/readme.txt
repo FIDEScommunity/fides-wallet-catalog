@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.11.7
+Stable tag: 2.11.8
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -102,6 +102,10 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.11.8 =
+* After sign-in, Back from the logged-in page reloads a stale guest catalog
+  snapshot so the like star sees the session (needs tiles ≥ 1.9.23).
 
 = 2.11.7 =
 * After magic-link sign-in, Back reloads a cached logged-out catalog page so

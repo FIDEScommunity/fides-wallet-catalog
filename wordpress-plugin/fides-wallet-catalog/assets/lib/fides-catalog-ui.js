@@ -3938,10 +3938,12 @@
   /**
    * After magic-link sign-in, Back often restores a cached logged-out catalog
    * page (bfcache / history). The like UI reads isLoggedIn from that snapshot,
-   * so the star still asks for sign-in. Mark sign-in clicks, then reload once
-   * when that stale page is shown again.
+   * so the star still asks for sign-in. Keep the sign-in click flag across the
+   * logged-in landing page (do not clear it there), then reload the stale
+   * guest snapshot. If the flag is gone, probe the cookie session via admin-ajax.
    */
   var PENDING_LOGIN_KEY = 'fidesCatalogPendingLogin';
+  var AUTH_RELOAD_KEY = 'fidesCatalogAuthReloadAt';
 
   function storageGet(key) {
     try {
@@ -4027,21 +4029,54 @@
     return false;
   }
 
-  function resumeLoginAfterBack(event) {
-    if (catalogConfigLooksLoggedIn()) {
-      storageRemove(PENDING_LOGIN_KEY);
-      return;
+  function sessionStatusUrl() {
+    try {
+      var loc = window.location || {};
+      var base = loc.origin || loc.href || '';
+      if (!base) return '';
+      return new URL('/wp-admin/admin-ajax.php?action=fides_catalog_session', base).toString();
+    } catch (e) {
+      return '';
     }
-    if (!isBackOrPersistedShow(event)) return;
-    if (storageGet(PENDING_LOGIN_KEY) !== '1') return;
+  }
+
+  function reloadGuestPageForAuth() {
+    var now = Date.now();
+    var prev = parseInt(storageGet(AUTH_RELOAD_KEY) || '0', 10);
+    if (now - prev < 8000) return;
+    storageSet(AUTH_RELOAD_KEY, String(now));
     storageRemove(PENDING_LOGIN_KEY);
     if (window.location && typeof window.location.reload === 'function') {
       window.location.reload();
     }
   }
 
+  function probeSessionAndReloadIfLoggedIn() {
+    var fetchFn = window.fetch;
+    if (typeof fetchFn !== 'function') return;
+    var url = sessionStatusUrl();
+    if (!url) return;
+    fetchFn(url, { credentials: 'same-origin', cache: 'no-store' })
+      .then(function (res) { return res && res.ok ? res.json() : null; })
+      .then(function (data) {
+        if (data && (data.loggedIn === true || data.loggedIn === 1 || data.loggedIn === '1')) {
+          reloadGuestPageForAuth();
+        }
+      })
+      .catch(function () {});
+  }
+
+  function resumeLoginAfterBack(event) {
+    if (catalogConfigLooksLoggedIn()) return;
+    if (!isBackOrPersistedShow(event)) return;
+    if (storageGet(PENDING_LOGIN_KEY) === '1') {
+      reloadGuestPageForAuth();
+      return;
+    }
+    probeSessionAndReloadIfLoggedIn();
+  }
+
   function bindGuestLoginResume() {
-    if (catalogConfigLooksLoggedIn()) storageRemove(PENDING_LOGIN_KEY);
     if (typeof document.addEventListener === 'function') {
       document.addEventListener('click', markPendingLoginFromEvent, true);
     }
