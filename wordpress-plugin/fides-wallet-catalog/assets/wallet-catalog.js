@@ -789,7 +789,7 @@
       const icon = getAppStoreIcon(platform);
       const platformLabel = escapeHtml(platform);
       if (href) {
-        return `<a href="${escapeHtml(href)}" target="_blank" rel="noopener" class="fides-row-platform-link" title="${platformLabel}" aria-label="${platformLabel} store link" onclick="event.stopPropagation();">${icon}</a>`;
+        return `<a href="${escapeHtml(href)}" target="_blank" rel="noopener" class="fides-row-platform-link" title="${platformLabel}" aria-label="${platformLabel} store link" onclick="event.stopPropagation();"${walletSalesTrackAttrs(wallet, platformSalesLinkType(platform))}>${icon}</a>`;
       }
       return `<span class="fides-row-platform-icon" title="${platformLabel}" aria-label="${platformLabel}">${icon}</span>`;
     }).join('');
@@ -2180,6 +2180,25 @@
     return null;
   }
 
+  function platformSalesLinkType(platform) {
+    if (window.FidesCatalogUI && typeof window.FidesCatalogUI.platformSalesLinkType === 'function') {
+      return window.FidesCatalogUI.platformSalesLinkType(platform);
+    }
+    const p = String(platform || '').toLowerCase();
+    if (p === 'ios') return 'app_store';
+    if (p === 'android') return 'google_play';
+    if (p === 'web') return 'web_app';
+    return '';
+  }
+
+  function walletSalesTrackAttrs(wallet, linkType) {
+    if (!linkType) return '';
+    if (window.FidesCatalogUI && typeof window.FidesCatalogUI.walletSalesTrackAttrString === 'function') {
+      return window.FidesCatalogUI.walletSalesTrackAttrString(wallet, linkType);
+    }
+    return '';
+  }
+
   /**
    * Get app store icon for a platform
    */
@@ -2198,7 +2217,7 @@
     const icon = platform === 'iOS' || platform === 'Android' ? icons.smartphone : icons.globe;
     
     if (link) {
-      return `<a href="${escapeHtml(link)}" target="_blank" rel="noopener" class="fides-tag platform clickable">${icon} ${escapeHtml(platform)}</a>`;
+      return `<a href="${escapeHtml(link)}" target="_blank" rel="noopener" class="fides-tag platform clickable"${walletSalesTrackAttrs(wallet, platformSalesLinkType(platform))}>${icon} ${escapeHtml(platform)}</a>`;
     }
     return `<span class="fides-tag platform">${icon} ${escapeHtml(platform)}</span>`;
   }
@@ -2725,9 +2744,6 @@
           ratingsNonce: RATINGS_NONCE,
           ratingsIsLoggedIn: RATINGS_IS_LOGGED_IN,
           ratingsLoginUrl: RATINGS_LOGIN_URL,
-          onOpen: function(openedWallet) {
-            (window.FidesCatalogUI && window.FidesCatalogUI.trackMatomoEvent) && window.FidesCatalogUI.trackMatomoEvent('Wallet Catalog', 'Modal Open', openedWallet.name);
-          },
           onRatingUpdate: function(updated) {
             if (!updated || updated.itemId !== wallet.id) return;
             setWalletRatingSummary(wallet.id, {
@@ -2742,10 +2758,11 @@
         return;
       }
       selectedWallet = wallet;
-      
-      // Track modal open in Matomo
-      (window.FidesCatalogUI && window.FidesCatalogUI.trackMatomoEvent) && window.FidesCatalogUI.trackMatomoEvent('Wallet Catalog', 'Modal Open', wallet.name);
-      
+
+      if (window.FidesCatalogUI && typeof window.FidesCatalogUI.trackWalletDetailOpen === 'function') {
+        window.FidesCatalogUI.trackWalletDetailOpen(wallet);
+      }
+
       renderModal(wallet);
     }
   }

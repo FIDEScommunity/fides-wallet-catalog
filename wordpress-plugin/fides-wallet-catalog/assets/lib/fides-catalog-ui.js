@@ -171,10 +171,22 @@
     return null;
   }
 
+  function platformSalesLinkType(platform) {
+    var p = String(platform || '').toLowerCase();
+    if (p === 'ios') return 'app_store';
+    if (p === 'android') return 'google_play';
+    if (p === 'web') return 'web_app';
+    return '';
+  }
+
   function renderPlatformTag(wallet, platform, labelsOnly) {
     const link = labelsOnly ? null : getAppStoreLink(wallet, platform);
     const icon = platform === 'iOS' || platform === 'Android' ? icons.smartphone : icons.globe;
-    if (link) return '<a href="' + escapeHtml(link) + '" target="_blank" rel="noopener" class="fides-tag platform clickable">' + icon + ' ' + escapeHtml(platform) + '</a>';
+    if (link) {
+      return '<a href="' + escapeHtml(link) + '" target="_blank" rel="noopener" class="fides-tag platform clickable"' +
+        walletSalesTrackAttrString(wallet, platformSalesLinkType(platform)) + '>' +
+        icon + ' ' + escapeHtml(platform) + '</a>';
+    }
     return '<span class="fides-tag platform">' + icon + ' ' + escapeHtml(platform) + '</span>';
   }
 
@@ -497,22 +509,35 @@
     });
   }
 
-  function buildWalletAdditionalProductLinkRow(label, href, matomoName, linkText) {
+  function buildWalletAdditionalProductLinkRow(label, href, matomoName, linkText, salesAttrs) {
     const url = String(href || '').trim();
     if (!url) return '';
     const display = linkText != null && String(linkText).trim() ? String(linkText).trim() : url;
     return '<div class="fides-additional-product-link-row">' +
       '<span class="fides-additional-product-link-label">' + escapeHtml(label) + '</span>' +
-      '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer" class="fides-modal-link-inline fides-additional-product-link" data-matomo-name="' + escapeHtml(matomoName) + '">' +
+      '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer" class="fides-modal-link-inline fides-additional-product-link" data-matomo-name="' + escapeHtml(matomoName) + '"' +
+      (salesAttrs || '') + '>' +
       escapeHtml(display) + ' ' + icons.externalLinkSmall + '</a></div>';
   }
 
   function buildWalletAdditionalProductInfoBodyHtml(wallet, options) {
     if (!walletListingTierIsPro(wallet, options)) return '';
     const linkRows = [];
-    const websiteRow = buildWalletAdditionalProductLinkRow('Product link', wallet.website, 'Product link');
+    const websiteRow = buildWalletAdditionalProductLinkRow(
+      'Product link',
+      wallet.website,
+      'Product link',
+      null,
+      walletSalesTrackAttrString(wallet, 'website')
+    );
     if (websiteRow) linkRows.push(websiteRow);
-    const documentationRow = buildWalletAdditionalProductLinkRow('Documentation', wallet.documentation, 'Documentation');
+    const documentationRow = buildWalletAdditionalProductLinkRow(
+      'Documentation',
+      wallet.documentation,
+      'Documentation',
+      null,
+      walletSalesTrackAttrString(wallet, 'documentation')
+    );
     if (documentationRow) linkRows.push(documentationRow);
     const repositoryRow = buildWalletAdditionalProductLinkRow('Code Repository', wallet.repository, 'Code Repository');
     if (repositoryRow) linkRows.push(repositoryRow);
@@ -772,13 +797,15 @@
     });
   }
 
-  function renderWalletAppStoreButton(kind, iconHtml, smallText, strongText, url, isClickable, matomoName, ariaLabel, extraClass) {
+  function renderWalletAppStoreButton(kind, iconHtml, smallText, strongText, url, isClickable, matomoName, ariaLabel, extraClass, salesAttrs) {
     const extra = extraClass ? ' ' + String(extraClass).trim() : '';
     const className = 'fides-app-store-btn ' + kind + extra + (isClickable ? '' : ' is-disabled');
     const labelHtml = '<span><small>' + escapeHtml(smallText) + '</small><strong>' + escapeHtml(strongText) + '</strong></span>';
     const content = iconHtml + labelHtml;
     if (isClickable && url) {
-      return '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer" class="' + className + '" data-matomo-name="' + escapeHtml(matomoName) + '" aria-label="' + escapeHtml(ariaLabel) + '">' + content + '</a>';
+      return '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer" class="' + className + '" data-matomo-name="' + escapeHtml(matomoName) + '"' +
+        (salesAttrs || '') +
+        ' aria-label="' + escapeHtml(ariaLabel) + '">' + content + '</a>';
     }
     return '<span class="' + className + '" role="img" aria-label="' + escapeHtml(ariaLabel) + ' (preview only)">' + content + '</span>';
   }
@@ -799,7 +826,9 @@
         iosUrl,
         isPro && !!iosUrl,
         'App Store',
-        'Download on the App Store'
+        'Download on the App Store',
+        '',
+        isPro && iosUrl ? walletSalesTrackAttrString(wallet, 'app_store') : ''
       ));
     }
     if (androidUrl || walletHasPlatform(wallet, 'Android')) {
@@ -811,7 +840,9 @@
         androidUrl,
         isPro && !!androidUrl,
         'Google Play',
-        'Get it on Google Play'
+        'Get it on Google Play',
+        '',
+        isPro && androidUrl ? walletSalesTrackAttrString(wallet, 'google_play') : ''
       ));
     }
     if (walletHasWebPlatform(wallet)) {
@@ -823,7 +854,9 @@
         webUrl,
         isPro && !!webUrl,
         'Web app',
-        'Open web app'
+        'Open web app',
+        '',
+        isPro && webUrl ? walletSalesTrackAttrString(wallet, 'web_app') : ''
       ));
     }
     if (!buttons.length) return '';
@@ -1728,7 +1761,8 @@
     return wallet.platforms.map(function(p) {
       const link = platformLabelsOnly ? null : getAppStoreLink(wallet, p);
       if (link) {
-        return '<a href="' + escapeHtml(link) + '" target="_blank" rel="noopener" class="fides-modal-link-inline">' +
+        return '<a href="' + escapeHtml(link) + '" target="_blank" rel="noopener" class="fides-modal-link-inline"' +
+          walletSalesTrackAttrString(wallet, platformSalesLinkType(p)) + '>' +
           escapeHtml(p) + ' ' + icons.externalLinkSmall + '</a>';
       }
       return escapeHtml(p);
@@ -2050,16 +2084,154 @@
   }
 
   /**
-   * Matomo: track event (if _paq loaded, respects DoNotTrack).
+   * Matomo: track event (if _paq loaded, respects DoNotTrack and consent).
+   * Do not create window._paq here — a missing tracker means analytics is off.
    */
   function trackMatomoEvent(category, action, name, value) {
     if (typeof window._paq === 'undefined') return;
     if (navigator.doNotTrack === '1' || navigator.doNotTrack === 'yes') return;
     try {
-      window._paq.push(['trackEvent', category, action, name, value]);
+      if (typeof value === 'undefined') {
+        window._paq.push(['trackEvent', category, action, name]);
+      } else {
+        window._paq.push(['trackEvent', category, action, name, value]);
+      }
     } catch (e) {
       console.debug('Matomo tracking failed:', e);
     }
+  }
+
+  function salesTrackSafePart(value) {
+    return String(value || 'unknown')
+      .trim()
+      .toLowerCase()
+      .replace(/\|/g, '-')
+      .replace(/\s+/g, '-');
+  }
+
+  function salesTrackDestinationFromHref(href) {
+    var value = String(href || '').trim();
+    if (!value) return 'unknown';
+    if (/^mailto:/i.test(value)) return 'email';
+    if (value.charAt(0) === '#' || value.charAt(0) === '/') return 'internal';
+    try {
+      var base = (window.location && window.location.href) ? window.location.href : 'https://fides.community/';
+      var host = new URL(value, base).hostname.toLowerCase();
+      return host || 'unknown';
+    } catch (e) {
+      return 'unknown';
+    }
+  }
+
+  function walletSalesProviderId(wallet) {
+    var raw = '';
+    if (wallet && wallet.orgId) raw = String(wallet.orgId);
+    else if (wallet && wallet.provider && wallet.provider.orgId) raw = String(wallet.provider.orgId);
+    return salesTrackSafePart(raw.replace(/^org:/i, ''));
+  }
+
+  function walletSalesWalletId(wallet) {
+    return salesTrackSafePart(wallet && wallet.id);
+  }
+
+  function walletSalesTrackAttrString(wallet, linkType, options) {
+    if (!wallet || !linkType) return '';
+    var attrs = ' data-sales-track="wallet-link"' +
+      ' data-provider-id="' + escapeHtml(walletSalesProviderId(wallet)) + '"' +
+      ' data-wallet-id="' + escapeHtml(walletSalesWalletId(wallet)) + '"' +
+      ' data-link-type="' + escapeHtml(salesTrackSafePart(linkType)) + '"';
+    if (options && options.matomoIgnore) attrs += ' data-matomo-ignore="1"';
+    return attrs;
+  }
+
+  function organizationSalesProviderId(org) {
+    var raw = '';
+    if (org && org.id) raw = String(org.id);
+    else if (org && org.orgId) raw = String(org.orgId);
+    return salesTrackSafePart(raw.replace(/^org:/i, ''));
+  }
+
+  function organizationSalesTrackAttrString(org, linkType, options) {
+    if (!org || !linkType) return '';
+    var attrs = ' data-sales-track="org-link"' +
+      ' data-provider-id="' + escapeHtml(organizationSalesProviderId(org)) + '"' +
+      ' data-link-type="' + escapeHtml(salesTrackSafePart(linkType)) + '"';
+    if (options && options.matomoIgnore) attrs += ' data-matomo-ignore="1"';
+    return attrs;
+  }
+
+  function trackWalletDetailOpen(wallet) {
+    if (!wallet) return;
+    trackMatomoEvent(
+      'Wallet Catalog',
+      'Modal Open',
+      walletSalesProviderId(wallet) + '|' + walletSalesWalletId(wallet)
+    );
+  }
+
+  function trackOrganizationDetailOpen(org) {
+    if (!org) return;
+    ensureSalesLinkTracking();
+    trackMatomoEvent(
+      'Organization Catalog',
+      'Modal Open',
+      organizationSalesProviderId(org)
+    );
+  }
+
+  function trackWalletLinkClick(link) {
+    if (!link) return;
+    var href = (link.getAttribute && link.getAttribute('href')) || link.href || '';
+    var dataset = link.dataset || {};
+    var name = [
+      dataset.providerId,
+      dataset.walletId,
+      dataset.linkType,
+      salesTrackDestinationFromHref(href)
+    ].map(salesTrackSafePart).join('|');
+    trackMatomoEvent('Wallet Catalog', 'Link Click', name);
+  }
+
+  function trackOrganizationLinkClick(link) {
+    if (!link) return;
+    var href = (link.getAttribute && link.getAttribute('href')) || link.href || '';
+    var dataset = link.dataset || {};
+    var name = [
+      dataset.providerId,
+      dataset.linkType,
+      salesTrackDestinationFromHref(href)
+    ].map(salesTrackSafePart).join('|');
+    trackMatomoEvent('Organization Catalog', 'Link Click', name);
+  }
+
+  function salesTrackKind(el) {
+    return (el && el.getAttribute && el.getAttribute('data-sales-track')) || '';
+  }
+
+  function isSalesTrackLink(el) {
+    var kind = salesTrackKind(el);
+    return kind === 'wallet-link' || kind === 'org-link';
+  }
+
+  var salesLinkTrackingBound = false;
+  function ensureSalesLinkTracking() {
+    if (salesLinkTrackingBound) return;
+    if (typeof document === 'undefined' || typeof document.addEventListener !== 'function') return;
+    salesLinkTrackingBound = true;
+    // Capture phase: list-view store icons use stopPropagation so the row
+    // click does not open the modal; bubbling would miss those clicks.
+    document.addEventListener('click', function salesLinkClick(event) {
+      var target = event && event.target;
+      if (!target || typeof target.closest !== 'function') return;
+      var link = target.closest('[data-sales-track="wallet-link"], [data-sales-track="org-link"]');
+      if (!link) return;
+      if (salesTrackKind(link) === 'org-link') trackOrganizationLinkClick(link);
+      else trackWalletLinkClick(link);
+    }, true);
+  }
+
+  function ensureWalletSalesLinkTracking() {
+    ensureSalesLinkTracking();
   }
 
   /** Default class-to-name map for link tracking (used by initMatomoLinkTracking). */
@@ -2076,20 +2248,29 @@
     { classes: 'fides-tag platform clickable', name: 'Platform' }
   ];
 
+  var matomoLinkTrackingBound = {};
+
   /**
    * Initialize document-level link click tracking for Matomo.
    * Call once per app with { category, containerSelector, modalOverlayId }.
-   * Links with data-matomo-name or matching known classes are tracked as "Link Click".
+   * Sales-track links (wallet and organization) use the structured Event Name
+   * contract and are skipped here to avoid duplicate Link Click events.
+   * Other links with data-matomo-name or matching known classes are tracked as "Link Click".
    */
   function initMatomoLinkTracking(config) {
     if (!config || !config.category) return;
+    ensureSalesLinkTracking();
     var containerSelector = config.containerSelector || null;
     var modalOverlayId = config.modalOverlayId || 'fides-modal-overlay';
     var classToName = config.classToName || DEFAULT_LINK_CLASS_TO_NAME;
+    var bindKey = config.category + '|' + (containerSelector || '') + '|' + modalOverlayId;
+    if (matomoLinkTrackingBound[bindKey]) return;
+    matomoLinkTrackingBound[bindKey] = true;
 
     document.addEventListener('click', function matomoLinkClick(e) {
       var a = e.target.closest('a');
       if (!a || !a.href) return;
+      if (isSalesTrackLink(a)) return;
       var inCatalog = containerSelector && document.querySelector(containerSelector) && document.querySelector(containerSelector).contains(a);
       var overlay = document.getElementById(modalOverlayId);
       var inModal = overlay && overlay.contains(a);
@@ -2834,20 +3015,26 @@
     }
   }
 
-  function buildWalletModalLinkButton(href, label, iconSvg, matomoName, isPrimary) {
+  function buildWalletModalLinkButton(href, label, iconSvg, matomoName, isPrimary, salesAttrs) {
     return '<a href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer" class="fides-modal-link' +
-      (isPrimary ? ' primary' : '') + '" data-matomo-name="' + escapeHtml(matomoName) + '">' +
+      (isPrimary ? ' primary' : '') + '" data-matomo-name="' + escapeHtml(matomoName) + '"' +
+      (salesAttrs || '') + '>' +
       iconSvg + ' ' + escapeHtml(label) + '</a>';
   }
 
   function buildWalletModalLinksGroupHtml(sectionLabel, linkEntries, groupOptions) {
     if (!linkEntries.length) return '';
     const noPrimary = !!(groupOptions && groupOptions.noPrimary);
+    const wallet = groupOptions && groupOptions.wallet;
     const buttons = linkEntries.map(function(entry, index) {
       const isPrimary = !noPrimary && index === 0;
+      const salesAttrs = wallet && entry.salesLinkType
+        ? walletSalesTrackAttrString(wallet, entry.salesLinkType, { matomoIgnore: entry.type === 'mailto' })
+        : '';
       if (entry.type === 'mailto') {
         return '<a href="mailto:' + escapeHtml(entry.href) + '" class="fides-modal-link' +
-          (isPrimary ? ' primary' : '') + '" data-matomo-name="' + escapeHtml(entry.matomoName) + '">' +
+          (isPrimary ? ' primary' : '') + (salesAttrs ? ' matomo_ignore' : '') + '" data-matomo-name="' + escapeHtml(entry.matomoName) + '"' +
+          salesAttrs + '>' +
           entry.icon + ' ' + escapeHtml(entry.label) + '</a>';
       }
       if (entry.type === 'internal') {
@@ -2855,7 +3042,7 @@
           (isPrimary ? ' primary' : '') + '" data-matomo-name="' + escapeHtml(entry.matomoName) +
           '" onclick="event.stopPropagation();">' + entry.icon + ' ' + escapeHtml(entry.label) + '</a>';
       }
-      return buildWalletModalLinkButton(entry.href, entry.label, entry.icon, entry.matomoName, isPrimary);
+      return buildWalletModalLinkButton(entry.href, entry.label, entry.icon, entry.matomoName, isPrimary, salesAttrs);
     }).join('');
     return '<div class="fides-modal-links-group">' +
       '<div class="fides-modal-links-label">' + escapeHtml(sectionLabel) + '</div>' +
@@ -2912,16 +3099,26 @@
     const contactObj = contact && typeof contact === 'object' ? contact : {};
     const bookMeetingUrl = contactObj.bookMeetingUrl ? String(contactObj.bookMeetingUrl).trim() : '';
     const email = resolveOrganizationContactEmail(contactObj);
+    const salesWallet = opts.salesWallet && typeof opts.salesWallet === 'object' ? opts.salesWallet : null;
+    const salesOrg = opts.salesOrg && typeof opts.salesOrg === 'object' ? opts.salesOrg : null;
+    const contactSalesAttrs = salesWallet
+      ? walletSalesTrackAttrString(salesWallet, 'contact', { matomoIgnore: true })
+      : (salesOrg ? organizationSalesTrackAttrString(salesOrg, 'contact', { matomoIgnore: true }) : '');
+    const meetingSalesAttrs = salesWallet
+      ? walletSalesTrackAttrString(salesWallet, 'contact')
+      : (salesOrg ? organizationSalesTrackAttrString(salesOrg, 'contact') : '');
     const buttons = [];
     if (email) {
       buttons.push(
-        '<a href="mailto:' + escapeHtml(email) + '" class="fides-modal-footer-btn fides-modal-footer-btn--accent" data-matomo-name="Contact">' +
+        '<a href="mailto:' + escapeHtml(email) + '" class="fides-modal-footer-btn fides-modal-footer-btn--accent' +
+        (contactSalesAttrs ? ' matomo_ignore' : '') + '" data-matomo-name="Contact"' + contactSalesAttrs + '>' +
         icons.mail + ' Contact</a>'
       );
     }
     if (bookMeetingUrl) {
       buttons.push(
-        '<a href="' + escapeHtml(bookMeetingUrl) + '" target="_blank" rel="noopener noreferrer" class="fides-modal-footer-btn" data-matomo-name="Book a Meeting">' +
+        '<a href="' + escapeHtml(bookMeetingUrl) + '" target="_blank" rel="noopener noreferrer" class="fides-modal-footer-btn" data-matomo-name="Book a Meeting"' +
+        meetingSalesAttrs + '>' +
         icons.externalLink + ' Book a Meeting</a>'
       );
     }
@@ -2933,7 +3130,10 @@
     if (!walletListingTierIsPro(wallet, options)) return '';
     const provider = wallet.provider && typeof wallet.provider === 'object' ? wallet.provider : {};
     const contact = provider.contact && typeof provider.contact === 'object' ? provider.contact : {};
-    return buildOrganizationContactFooterHtml(contact, { tierUiEnabled: optionsTierUiEnabled(options) });
+    return buildOrganizationContactFooterHtml(contact, {
+      tierUiEnabled: optionsTierUiEnabled(options),
+      salesWallet: wallet
+    });
   }
 
   function buildWalletModalLinksHtml(wallet, options) {
@@ -2951,28 +3151,30 @@
       return url;
     }
 
-    function pushProduct(href, label, icon, matomoName) {
+    function pushProduct(href, label, icon, matomoName, salesLinkType) {
       const url = rememberHttp(href, productSeen);
       if (!url) return;
-      productEntries.push({ type: 'http', href: url, label: label, icon: icon, matomoName: matomoName });
+      productEntries.push({ type: 'http', href: url, label: label, icon: icon, matomoName: matomoName, salesLinkType: salesLinkType });
     }
 
     if (!walletIsPersonal(wallet)) {
-      pushProduct(appLinks.iOS || appLinks.ios, 'App Store', icons.smartphone, 'App Store');
-      pushProduct(appLinks.android, 'Google Play', icons.smartphone, 'Google Play');
+      pushProduct(appLinks.iOS || appLinks.ios, 'App Store', icons.smartphone, 'App Store', 'app_store');
+      pushProduct(appLinks.android, 'Google Play', icons.smartphone, 'Google Play', 'google_play');
     }
 
-    const productHtml = buildWalletModalLinksGroupHtml('Product', productEntries);
+    const productHtml = buildWalletModalLinksGroupHtml('Product', productEntries, { wallet: wallet });
     if (!productHtml) return '';
     return '<div class="fides-modal-links-sections">' + productHtml + '</div>';
   }
 
   function openWalletModal(wallet, options) {
     if (!wallet) return;
+    ensureWalletSalesLinkTracking();
     const theme = (options && options.theme) || 'dark';
     const tierUi = optionsTierUiEnabled(options);
     const platformLabelsOnly = tierUi && !walletListingTierIsPro(wallet, options);
     selectedContext = { type: 'wallet', item: wallet, options: options || {}, theme: theme };
+    trackWalletDetailOpen(wallet);
     if (options && typeof options.onOpen === 'function') options.onOpen(wallet);
 
     const organizationCatalogUrl = (options && options.organizationCatalogUrl) || 'https://fides.community/ecosystem-explorer/organization-catalog/';
@@ -3280,10 +3482,12 @@
 
   function openOrganizationModal(org, options) {
     if (!org) return;
+    ensureSalesLinkTracking();
     const theme = (options && options.theme) || 'dark';
     const tierUi = optionsTierUiEnabled(options);
     const isCommunity = tierUi ? !walletListingTierIsPro(org, options) : itemIsCommunity(org);
     selectedContext = { type: 'organization', item: org, options: options || {}, theme: theme };
+    trackOrganizationDetailOpen(org);
     if (options && typeof options.onOpen === 'function') options.onOpen(org);
 
     const logo = org.logo || '';
@@ -3356,11 +3560,11 @@
       (credentialLinks ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.fileCheck + ' Credentials</div><div class="fides-modal-grid-value">' + credentialLinks + '</div></div>' : '') +
       '</div>' +
       '<div class="fides-modal-links">' +
-      (!isCommunity && org.website ? '<a href="' + escapeHtml(org.website) + '" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Organization website">' + icons.externalLink + ' Visit Website</a>' : '') +
+      (!isCommunity && org.website ? '<a href="' + escapeHtml(org.website) + '" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Organization website"' + organizationSalesTrackAttrString(org, 'website') + '>' + icons.externalLink + ' Visit Website</a>' : '') +
       '</div>' +
       buildModalLastUpdatedHtml(org, ['updatedAt', 'updated', 'fetchedAt']) +
       '</div>' +
-      buildOrganizationContactFooterHtml(org.contact, { tierUiEnabled: optionsTierUiEnabled(options), isCommunity: isCommunity, item: org, editAccess: options && options.editAccess }) +
+      buildOrganizationContactFooterHtml(org.contact, { tierUiEnabled: optionsTierUiEnabled(options), isCommunity: isCommunity, item: org, editAccess: options && options.editAccess, salesOrg: org }) +
       '</div></div>';
 
     mountModal(modalHtml);
@@ -3744,6 +3948,11 @@
     mountStaleCatalogNotice,
     CATALOG_SOURCE_TIMEOUT_MS,
     trackMatomoEvent,
+    trackWalletDetailOpen,
+    trackOrganizationDetailOpen,
+    walletSalesTrackAttrString,
+    platformSalesLinkType,
+    organizationSalesTrackAttrString,
     initMatomoLinkTracking,
     userCanEditCatalogItem,
     canEditOrganization,

@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.11.3
+Stable tag: 2.11.6
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -102,6 +102,20 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.11.6 =
+* List-view App Store and Google Play icons now send the same wallet sales
+  Matomo events as the modal store buttons (`app_store` / `google_play` /
+  `web_app` in Event Name).
+
+= 2.11.5 =
+* Wallet modal Matomo events now encode provider and wallet slugs in Event Name
+  (`provider|wallet` and `provider|wallet|link_type|domain`) so sales can report
+  opens and commercial clicks without custom dimensions.
+
+= 2.11.4 =
+* Store wallet submission descriptions as plain text so ampersands are not
+  double-escaped as &amp; in the catalog modal.
 
 = 2.11.3 =
 * After GitHub fails, use a 12-hour browser cache and the WP last-known-good aggregated feed before the bundled plugin snapshot.
