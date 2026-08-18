@@ -3935,6 +3935,123 @@
     }
   }
 
+  /**
+   * After magic-link sign-in, Back often restores a cached logged-out catalog
+   * page (bfcache / history). The like UI reads isLoggedIn from that snapshot,
+   * so the star still asks for sign-in. Mark sign-in clicks, then reload once
+   * when that stale page is shown again.
+   */
+  var PENDING_LOGIN_KEY = 'fidesCatalogPendingLogin';
+
+  function storageGet(key) {
+    try {
+      return window.sessionStorage ? window.sessionStorage.getItem(key) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function storageSet(key, value) {
+    try {
+      if (window.sessionStorage) window.sessionStorage.setItem(key, value);
+    } catch (e) {}
+  }
+
+  function storageRemove(key) {
+    try {
+      if (window.sessionStorage) window.sessionStorage.removeItem(key);
+    } catch (e) {}
+  }
+
+  function catalogConfigLooksLoggedIn() {
+    var names = [
+      'fidesWalletCatalog',
+      'fidesRPCatalog',
+      'fidesIssuerCatalog',
+      'fidesOrganizationCatalog',
+      'fidesCredentialCatalog',
+      'fidesCatalogMap',
+      'FIDES_USE_CASE_LIST_CONFIG',
+      'fidesVocabularyGlossary'
+    ];
+    for (var i = 0; i < names.length; i++) {
+      var cfg = window[names[i]];
+      if (!cfg || typeof cfg !== 'object') continue;
+      if (truthyFlag(cfg.ratingsIsLoggedIn) || truthyFlag(cfg.isLoggedIn)) return true;
+    }
+    return false;
+  }
+
+  function truthyFlag(value) {
+    return value === true || value === 1 || value === '1';
+  }
+
+  function isSignInHref(href) {
+    var raw = String(href || '').trim();
+    if (!raw || raw.charAt(0) === '#') return false;
+    try {
+      var url = new URL(raw, window.location.href);
+      var path = String(url.pathname || '').replace(/\/+$/, '');
+      if (path === '/signin' || (path.length >= 7 && path.slice(-7) === '/signin')) return true;
+      return path.indexOf('wp-login.php') !== -1;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function markPendingLoginFromEvent(event) {
+    var target = event && event.target;
+    if (!target) return;
+    var link = (typeof target.closest === 'function')
+      ? target.closest('a')
+      : (target.tagName === 'A' ? target : null);
+    if (!link) return;
+    var className = ' ' + String(link.className || '') + ' ';
+    if (className.indexOf(' fides-modal-rating-login ') !== -1) {
+      storageSet(PENDING_LOGIN_KEY, '1');
+      return;
+    }
+    var href = (typeof link.getAttribute === 'function' ? link.getAttribute('href') : '') || link.href || '';
+    if (isSignInHref(href)) storageSet(PENDING_LOGIN_KEY, '1');
+  }
+
+  function isBackOrPersistedShow(event) {
+    if (event && event.persisted) return true;
+    try {
+      if (window.performance && typeof performance.getEntriesByType === 'function') {
+        var nav = performance.getEntriesByType('navigation')[0];
+        if (nav && nav.type === 'back_forward') return true;
+      }
+      if (window.performance && performance.navigation && performance.navigation.type === 2) return true;
+    } catch (e) {}
+    return false;
+  }
+
+  function resumeLoginAfterBack(event) {
+    if (catalogConfigLooksLoggedIn()) {
+      storageRemove(PENDING_LOGIN_KEY);
+      return;
+    }
+    if (!isBackOrPersistedShow(event)) return;
+    if (storageGet(PENDING_LOGIN_KEY) !== '1') return;
+    storageRemove(PENDING_LOGIN_KEY);
+    if (window.location && typeof window.location.reload === 'function') {
+      window.location.reload();
+    }
+  }
+
+  function bindGuestLoginResume() {
+    if (catalogConfigLooksLoggedIn()) storageRemove(PENDING_LOGIN_KEY);
+    if (typeof document.addEventListener === 'function') {
+      document.addEventListener('click', markPendingLoginFromEvent, true);
+    }
+    if (typeof window.addEventListener === 'function') {
+      window.addEventListener('pageshow', resumeLoginAfterBack);
+    }
+  }
+
+  bindGuestLoginResume();
+
   window.FidesCatalogUI = {
     openWalletModal,
     openRpModal,

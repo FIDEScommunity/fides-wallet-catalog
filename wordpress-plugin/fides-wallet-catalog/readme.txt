@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.11.6
+Stable tag: 2.11.7
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -102,6 +102,10 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.11.7 =
+* After magic-link sign-in, Back reloads a cached logged-out catalog page so
+  the like star sees the new session.
 
 = 2.11.6 =
 * List-view App Store and Google Play icons now send the same wallet sales
