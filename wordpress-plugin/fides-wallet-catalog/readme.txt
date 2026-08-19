@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.11.8
+Stable tag: 2.11.9
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -102,6 +102,10 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.11.9 =
+* Official listing badge requires explicit catalogTier Pro; curated Community
+  can keep full fields via catalogListingDepth (tiles ≥ 1.10.0).
 
 = 2.11.8 =
 * After sign-in, Back from the logged-in page reloads a stale guest catalog

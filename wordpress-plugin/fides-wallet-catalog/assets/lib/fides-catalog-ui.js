@@ -211,9 +211,23 @@
     return resolveCatalogTier(item) === CATALOG_TIER_PRO;
   }
 
+  function catalogListingDepthIsFull(item) {
+    return String((item && item.catalogListingDepth) || '').toLowerCase() === 'full';
+  }
+
+  function catalogListingIsOfficial(item) {
+    return catalogTierIsProExplicit(item);
+  }
+
+  function catalogListingHasFullFields(item, options) {
+    if (!optionsTierUiEnabled(options)) return true;
+    if (!item) return false;
+    return catalogListingIsOfficial(item) || catalogListingDepthIsFull(item);
+  }
+
   function buildCatalogListingHeaderBadgeHtml(item, options) {
     if (!optionsTierUiEnabled(options)) return '';
-    if (walletListingTierIsPro(item, options)) {
+    if (catalogListingIsOfficial(item)) {
       return '<span class="fides-modal-header-official-badge fides-modal-header-listing-badge fides-modal-header-listing-badge--official" role="status" title="' +
         escapeHtml(OFFICIAL_LISTING_TITLE) + '">' + icons.official +
         '<span class="fides-modal-header-official-label fides-modal-header-listing-label">Official Listing</span></span>';
@@ -327,9 +341,8 @@
    * @return {boolean}
    */
   function catalogListingIsPro(item, orgId, editAccess) {
-    if (item && item.catalogTier) {
-      return !itemIsCommunity(item);
-    }
+    if (catalogListingIsOfficial(item)) return true;
+    if (item && item.catalogTier) return false;
     const org = String(orgId || '').trim();
     if (!org) return false;
     const proOrgIds = Array.isArray(editAccess && editAccess.proOrgIds) ? editAccess.proOrgIds : [];
@@ -400,18 +413,9 @@
     return userCanEditCatalogItem(normalizeEditAccess(options), resolveCatalogItemOrgId(rp), rp);
   }
 
-  /** Pro listing for wallet/org UI when tier switch is on (explicit Pro tier or proOrgIds fallback). */
+  /** Full public fields when tier switch is on (Official Pro or curated catalogListingDepth=full). */
   function walletListingTierIsPro(item, options) {
-    if (!optionsTierUiEnabled(options)) return true;
-    if (!item) return false;
-    if (item.catalogTier) {
-      return !itemIsCommunity(item);
-    }
-    const orgId = resolveCatalogItemOrgId(item);
-    if (!orgId) return false;
-    const editAccess = normalizeEditAccess(options);
-    const proOrgIds = Array.isArray(editAccess.proOrgIds) ? editAccess.proOrgIds : [];
-    return proOrgIds.indexOf(orgId) >= 0;
+    return catalogListingHasFullFields(item, options);
   }
 
   function parseYoutubeVideoId(videoUrl) {
