@@ -1482,40 +1482,123 @@
     return list.filter(function(u) { return u && (u.id || u.title || u.name); });
   }
 
+  /**
+   * Horizontal use-case cards for catalog modals (wallet/RP/org/issuer/credential).
+   * Scroll + side arrows when there are more than three items.
+   *
+   * @param {Array<{id?: string, title?: string, name?: string}>} useCases
+   * @param {string} useCaseCatalogUrl
+   * @param {{renderUseCaseLikeHtml?: function(string): string}|null} options
+   * @returns {string}
+   */
+  function buildUseCasesCardsHtml(useCases, useCaseCatalogUrl, options) {
+    const list = (Array.isArray(useCases) ? useCases : []).filter(function(u) {
+      return u && (u.id || u.title || u.name);
+    });
+    if (!list.length) return '';
+    const opts = options || {};
+    const base = String(useCaseCatalogUrl || '').replace(/\/$/, '');
+    const scroll = list.length > 3;
+    const wrapClass = scroll ? ' fides-modal-use-cases-wrap--scroll' : '';
+    const scrollClass = scroll ? ' fides-modal-use-cases--scroll' : '';
+    const likeRenderer = typeof opts.renderUseCaseLikeHtml === 'function'
+      ? opts.renderUseCaseLikeHtml
+      : function(id) {
+          const inner = renderModalEntityLikeHtml(opts, 'usecase', id);
+          return inner
+            ? '<span class="fides-modal-use-case-card__like">' + inner + '</span>'
+            : '';
+        };
+    const cardsHtml = list.map(function(uc) {
+      const id = uc.id ? String(uc.id) : '';
+      const title = escapeHtml(uc.title || uc.name || id || 'Use case');
+      const href = base && id ? base + '/?usecase=' + encodeURIComponent(id) : '';
+      const likeSlot = id ? likeRenderer(id) : '';
+      const sourceId = String(opts.matomoSourceId || '').trim();
+      const matomoName = id ? (sourceId ? sourceId + '|' + id : id) : '';
+      const matomoAttrs = matomoName
+        ? ' data-matomo-name="' + escapeHtml(matomoName) + '" data-matomo-action="Use Case Click"'
+        : '';
+      const body =
+        '<span class="fides-modal-use-case-card__top">' +
+        '<span class="fides-modal-use-case-card__eyebrow">Use case</span>' +
+        likeSlot +
+        '</span>' +
+        '<strong class="fides-modal-use-case-card__title">' + title + '</strong>' +
+        '<span class="fides-modal-use-case-card__link">View use case <span aria-hidden="true">→</span></span>';
+      if (href) {
+        return '<a class="fides-modal-use-case-card" href="' + escapeHtml(href) + '"' + matomoAttrs +
+          ' onclick="event.stopPropagation();">' + body + '</a>';
+      }
+      return '<div class="fides-modal-use-case-card fides-modal-use-case-card--static">' + body + '</div>';
+    }).join('');
+    const navPrev = scroll
+      ? '<button type="button" class="fides-modal-use-cases-nav-btn fides-modal-use-cases-nav-btn--prev" data-modal-uc-scroll="prev" aria-label="Previous use cases" disabled>' +
+        icons.chevronLeft + '</button>'
+      : '';
+    const navNext = scroll
+      ? '<button type="button" class="fides-modal-use-cases-nav-btn fides-modal-use-cases-nav-btn--next" data-modal-uc-scroll="next" aria-label="Next use cases">' +
+        icons.chevronRight + '</button>'
+      : '';
+    return '<div class="fides-modal-use-cases-wrap' + wrapClass + '">' +
+      navPrev +
+      '<div class="fides-modal-use-cases' + scrollClass + '" aria-label="Use cases">' + cardsHtml + '</div>' +
+      navNext +
+      '</div>';
+  }
+
+  function bindModalUseCasesScroll(root) {
+    const scope = root && root.querySelectorAll ? root : document;
+    scope.querySelectorAll('.fides-modal-use-cases-wrap--scroll').forEach(function(wrap) {
+      if (wrap.getAttribute('data-fides-uc-scroll-bound') === '1') return;
+      const scroller = wrap.querySelector('.fides-modal-use-cases--scroll');
+      if (!scroller) return;
+      wrap.setAttribute('data-fides-uc-scroll-bound', '1');
+      const prevBtn = wrap.querySelector('[data-modal-uc-scroll="prev"]');
+      const nextBtn = wrap.querySelector('[data-modal-uc-scroll="next"]');
+
+      function updateNavState() {
+        const maxScroll = Math.max(0, scroller.scrollWidth - scroller.clientWidth);
+        const left = scroller.scrollLeft;
+        const atStart = left <= 4;
+        const atEnd = left >= maxScroll - 4;
+        if (prevBtn) prevBtn.disabled = atStart;
+        if (nextBtn) nextBtn.disabled = atEnd;
+        wrap.classList.toggle('is-at-start', atStart);
+        wrap.classList.toggle('is-at-end', atEnd);
+      }
+
+      function scrollByPage(direction) {
+        const amount = Math.max(scroller.clientWidth * 0.72, 180);
+        scroller.scrollBy({ left: direction * amount, behavior: 'smooth' });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          scrollByPage(-1);
+        });
+      }
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          scrollByPage(1);
+        });
+      }
+      scroller.addEventListener('scroll', updateNavState, { passive: true });
+      updateNavState();
+    });
+  }
+
   function buildUseCasesAccordionBody(useCaseCatalogUrl, options, emptyMessage, tableConfig) {
     const useCases = getDerivedUseCases(options);
     if (!useCases.length) return '';
-    const tc = tableConfig || {};
-    const includeOrganization = tc.showOrganizationColumn !== false;
-    const rows = useCases.map(function(uc) {
-      const id = uc.id || '';
-      const title = uc.title || uc.name || id;
-      const href = id && useCaseCatalogUrl
-        ? useCaseCatalogUrl.replace(/\/$/, '') + '/?usecase=' + encodeURIComponent(id)
-        : '';
-      const row = {
-        id: id,
-        name: title,
-        href: href,
-        ratingType: 'usecase'
-      };
-      if (includeOrganization) {
-        row.organization = uc.organizationName || uc.organization || '';
-      }
-      return row;
-    });
-    return buildModalEntityTableHtml({
-      rows: rows,
-      nameColumnLabel: 'Use case',
-      ariaLabel: 'Use cases',
-      options: options,
-      showOrganizationColumn: includeOrganization,
-      showHeader: tc.showHeader !== false,
-      sameWindowLinks: true,
-      emptyHtml: '<p class="fides-modal-empty">' + escapeHtml(
-        emptyMessage || 'No use cases linked from the use case catalog.'
-      ) + '</p>'
-    });
+    // tableConfig retained for call-site compatibility; cards omit organization columns.
+    void tableConfig;
+    void emptyMessage;
+    return buildUseCasesCardsHtml(useCases, useCaseCatalogUrl, options);
   }
 
   function buildRpUseCasesAccordionBody(useCaseCatalogUrl, options) {
@@ -1548,13 +1631,16 @@
     const issuerCatalogUrl = (options && options.issuerCatalogUrl) || 'https://fides.community/ecosystem-explorer/issuer-catalog/';
     const walletCatalogUrl = (options && options.walletCatalogUrl) || '';
     const useCaseCatalogUrl = (options && options.useCaseCatalogUrl) || 'https://fides.community/ecosystem-explorer/use-cases/';
+    const useCaseOptions = Object.assign({}, options || {}, {
+      matomoSourceId: rp && rp.id ? rp.id : (options && options.matomoSourceId) || ''
+    });
     const issuers = (options && Array.isArray(options.ecosystemIssuers)) ? options.ecosystemIssuers : [];
     const specificationsBody = buildRpSpecificationsBodyHtml(rp, options);
     const websiteDetailsBody = buildRpWebsiteDetailsBodyHtml(rp);
     const issuersBody = buildRpIssuersAccordionBody(issuers, issuerCatalogUrl, options);
     const acceptedBody = buildRpAcceptedCredentialsAccordionBody(rp, credentialCatalogUrl, options);
     const walletsBody = buildRpSupportedWalletsAccordionBody(rp, walletCatalogUrl, options);
-    const useCasesBody = buildRpUseCasesAccordionBody(useCaseCatalogUrl, options);
+    const useCasesBody = buildRpUseCasesAccordionBody(useCaseCatalogUrl, useCaseOptions);
     const featuresBody = buildRpFeaturesAccordionBody(rp);
 
     const issuerExploreHref = buildCatalogFilteredHref(
@@ -1587,7 +1673,7 @@
         icons.useCases,
         useCasesBody,
         false,
-        rpUseCasesCount(options)
+        rpUseCasesCount(useCaseOptions)
       ),
       renderModalAccordion(
         'fides-accordion-rp-specifications',
@@ -1980,9 +2066,12 @@
     const pricingBody = buildWalletPricingBodyHtml(wallet, options);
     const eudiLandscapeBody = buildWalletEudiLandscapeBodyHtml(wallet);
     const useCaseCatalogUrl = (options && options.useCaseCatalogUrl) || 'https://fides.community/ecosystem-explorer/use-cases/';
+    const useCaseOptions = Object.assign({}, options || {}, {
+      matomoSourceId: wallet && wallet.id ? wallet.id : (options && options.matomoSourceId) || ''
+    });
     const useCasesBody = buildUseCasesAccordionBody(
       useCaseCatalogUrl,
-      options,
+      useCaseOptions,
       'No use cases linked from the use case catalog for this wallet.',
       { showOrganizationColumn: false, showHeader: false }
     );
@@ -1999,8 +2088,8 @@
         'Use cases',
         icons.useCases,
         useCasesBody,
-        false,
-        rpUseCasesCount(options)
+        true,
+        rpUseCasesCount(useCaseOptions)
       ),
       renderModalAccordion(
         'fides-accordion-wallet-technical',
@@ -2064,6 +2153,7 @@
         });
       });
     });
+    bindModalUseCasesScroll(document.getElementById('fides-modal-overlay'));
   }
 
   function initModalEcosystemTargets() {
@@ -2290,7 +2380,10 @@
           }
         }
       }
-      if (name) trackMatomoEvent(config.category, 'Link Click', name);
+      if (name) {
+        var action = a.dataset.matomoAction || 'Link Click';
+        trackMatomoEvent(config.category, action, name);
+      }
     });
   }
 
@@ -4129,6 +4222,8 @@
     buildOrganizationContactFooterHtml,
     buildModalLastUpdatedHtml,
     buildOrganizationHeroSectionHtml,
+    buildUseCasesCardsHtml,
+    bindModalUseCasesScroll,
     initModalMediaCarousels,
     syncCatalogBodyScrollLock,
     createMobileFiltersController,
