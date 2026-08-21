@@ -96,12 +96,16 @@
   let planTier =
     config.planTier && typeof config.planTier === "object"
       ? { ...config.planTier }
-      : { tierUiEnabled: false, tier: "Community", isPro: false, plansUrl: "/plans/", descriptionMaxLength: 2000 };
+      : { tierUiEnabled: false, tier: "Community", isPro: false, hasFullListing: false, plansUrl: "/plans/", descriptionMaxLength: 2000 };
 
   const v2Limits = config.v2Limits && typeof config.v2Limits === "object" ? config.v2Limits : {};
 
   function tierUiEnabled() {
     return planTier.tierUiEnabled === true;
+  }
+
+  function fullListingFieldsEnabled() {
+    return !tierUiEnabled() || !!planTier.isPro || !!planTier.hasFullListing;
   }
 
   const WALLET_PRO_FIELD_IDS = [
@@ -115,13 +119,12 @@
     "fides-wallet-web-url",
   ];
 
-  function proPlanBadgeIsStatic() {
-    return !!planTier.isPro || planTier.tier === "Pro";
-  }
-
   function proBadgeHtml() {
-    if (proPlanBadgeIsStatic()) {
+    if (!!planTier.isPro || planTier.tier === "Pro") {
       return '<span class="fides-pro-plan-badge fides-pro-plan-badge--label">Pro plan</span>';
+    }
+    if (fullListingFieldsEnabled()) {
+      return '<span class="fides-pro-plan-badge fides-pro-plan-badge--label">Full listing</span>';
     }
     const url = String(planTier.plansUrl || "/plans/");
     return `<a href="${escapeHtml(url)}" class="fides-pro-plan-badge" target="_blank" rel="noopener">Pro plan</a>`;
@@ -146,6 +149,7 @@
         tierUiEnabled: planTier.tierUiEnabled,
         tier: "Community",
         isPro: false,
+        hasFullListing: false,
         plansUrl: planTier.plansUrl || "/plans/",
         descriptionMaxLength: 200,
       };
@@ -180,12 +184,12 @@
     if (fromConfig > 0) {
       return fromConfig;
     }
-    return planTier.isPro ? WALLET_DESC_MAX_PRO : WALLET_DESC_MAX_COMMUNITY;
+    return fullListingFieldsEnabled() ? WALLET_DESC_MAX_PRO : WALLET_DESC_MAX_COMMUNITY;
   }
 
   function updateWalletDescriptionLimitUi() {
     const maxLen = walletDescriptionMaxLength();
-    const isPro = !!planTier.isPro;
+    const hasFullListing = fullListingFieldsEnabled();
     const descEl = root.querySelector("#fides-wallet-description");
     const labelEl = root.querySelector("#fides-wallet-description-label");
     const noticeEl = root.querySelector("#fides-wallet-description-limit-notice");
@@ -195,7 +199,7 @@
     }
     if (noticeEl) {
       const plansUrl = escapeHtml(String(planTier.plansUrl || "/plans/"));
-      if (!tierUiEnabled() || isPro) {
+      if (hasFullListing) {
         noticeEl.textContent = `You can use up to ${WALLET_DESC_MAX_PRO.toLocaleString("en-US")} characters in the published catalog description.`;
       } else {
         noticeEl.innerHTML = `Community plan: maximum ${WALLET_DESC_MAX_COMMUNITY} characters in the catalog. <a href="${plansUrl}" target="_blank" rel="noopener">Pro plan</a> allows up to ${WALLET_DESC_MAX_PRO.toLocaleString("en-US")} characters.`;
@@ -221,12 +225,15 @@
       return;
     }
     const isPro = !!planTier.isPro;
+    const hasFullListing = fullListingFieldsEnabled();
     badge.hidden = false;
-    badge.textContent = isPro ? "Pro plan" : "Community plan";
+    badge.textContent = isPro ? "Pro plan" : hasFullListing ? "Full Community listing" : "Community plan";
     badge.className = `fides-update-banner-plan ${isPro ? "fides-pro-plan-badge" : "fides-free-plan-badge"}`;
     badge.title = isPro
       ? "This organization has a linked Pro account. Extended wallet catalog fields are enabled."
-      : "Community plan limits apply to fields published in the catalog.";
+      : hasFullListing
+        ? "This Community listing includes all wallet catalog fields."
+        : "Community plan limits apply to fields published in the catalog.";
   }
 
   function updatePlanTierBanner() {
@@ -408,27 +415,27 @@
   }
 
   function applyTierFieldState() {
-    const isPro = !!planTier.isPro;
+    const hasFullListing = fullListingFieldsEnabled();
     WALLET_PRO_FIELD_IDS.forEach((fieldId) => {
       const el = root.querySelector(`#${fieldId}`);
       if (!el) return;
-      el.disabled = !isPro;
-      el.readOnly = !isPro;
-      el.classList.toggle("fides-input-pro-locked", !isPro);
+      el.disabled = !hasFullListing;
+      el.readOnly = !hasFullListing;
+      el.classList.toggle("fides-input-pro-locked", !hasFullListing);
       const row = el.closest(".fides-form-row");
-      if (row) row.classList.toggle("fides-form-row--pro-locked", !isPro);
+      if (row) row.classList.toggle("fides-form-row--pro-locked", !hasFullListing);
     });
     root.querySelectorAll(".fides-form-section--pro-tier").forEach((section) => {
-      section.classList.toggle("fides-form-section--pro-locked", !isPro);
+      section.classList.toggle("fides-form-section--pro-locked", !hasFullListing);
     });
     root.querySelectorAll(".fides-recognition-group input, .fides-recognition-group .fides-media-action-btn").forEach((el) => {
-      el.disabled = !isPro;
+      el.disabled = !hasFullListing;
     });
     const mediaSection = root.querySelector(".fides-wallet-media-section");
     if (mediaSection) {
-      mediaSection.classList.toggle("fides-form-section--pro-locked", !isPro);
+      mediaSection.classList.toggle("fides-form-section--pro-locked", !hasFullListing);
       mediaSection.querySelectorAll("input, button").forEach((el) => {
-        el.disabled = !isPro;
+        el.disabled = !hasFullListing;
       });
     }
     updateLicenseOtherVisibility();
