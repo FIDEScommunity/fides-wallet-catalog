@@ -1,8 +1,12 @@
 {
   "schemaVersion": "1.0.0",
   "catalogType": "wallet",
-  "lastImportAt": "2026-08-16T09:13:43.251Z",
+  "lastImportAt": "2026-08-21T15:32:28.183Z",
   "managedWallets": [
+    {
+      "slug": "bcgov",
+      "walletId": "orgbook"
+    },
     {
       "slug": "credenco",
       "walletId": "credenco-business-wallet"
@@ -30,6 +34,10 @@
     {
       "slug": "spherity",
       "walletId": "spherity-business-wallet"
+    },
+    {
+      "slug": "uidai",
+      "walletId": "aadhaar"
     },
     {
       "slug": "verana",

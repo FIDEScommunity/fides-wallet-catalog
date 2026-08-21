@@ -5,7 +5,7 @@
     {
       "id": "spherity-business-wallet",
       "name": "Spherity's European Business Wallet",
-      "description": "Spherity’s European Business Wallet (EBW) enables the seamless exchange of verifiable credentials across organisations, from banking, insurance and beyond. As part of the EBW framework and fully eIDAS 2.0-compliant, it streamlines operations, cuts costs, and boosts efficiency. Enhanced with automated business partner data validation, our Business Wallet transforms how businesses handles regulatory obligations in Germany and beyond. With enterprise-grade data automation and primary source-validated information from Bundesanzeiger Verlag, businesses can minimise risks, eliminate manual KYC/KYS processes, and ensure real-time due diligence. Organisations operating in regulated industries or managing complex supply chains, our solution helps you meet obligations such as Anti-Money Laundering regulations.",
+      "description": "Spherity’s European Business Wallet (EBW) enables the seamless exchange of verifiable credentials across organisations, from banking, insurance and beyond. As part of the EBW framework and fully eIDAS",
       "logo": "https://www.google.com/s2/favicons?domain=spherity.com&sz=128",
       "website": "https://www.spherity.com/eida",
       "type": "organizational",
@@ -97,7 +97,7 @@
       "features": [
         "Integration of external identity providers based on OAuth 2.0"
       ],
-      "catalogTier": "Pro"
+      "catalogTier": "Community"
     }
   ],
   "lastUpdated": "2026-07-20T16:26:37+00:00"
