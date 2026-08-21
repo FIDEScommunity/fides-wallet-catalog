@@ -1,7 +1,7 @@
 {
     "schemaVersion": "1.0.0",
     "catalogType": "wallet",
-    "generatedAt": "2026-08-16T09:13:24+00:00",
+    "generatedAt": "2026-08-21T04:44:18+00:00",
     "entries": [
         {
             "itemId": "carteira-digital-da-empresa",
@@ -210,6 +210,35 @@
             },
             "publishedAt": "2026-08-10 05:14:55",
             "updatedAt": "2026-08-10 05:14:55"
+        },
+        {
+            "itemId": "orgbook",
+            "slug": "bcgov",
+            "filename": "wallet-catalog.json",
+            "source": "wordpress",
+            "document": {
+                "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+                "orgId": "org:bcgov",
+                "wallets": [
+                    {
+                        "id": "orgbook",
+                        "name": "Orgbook",
+                        "description": "A public directory of organizations registered in BC. https://orgbook.gov.bc.ca/search",
+                        "type": "organizational",
+                        "deploymentModel": "on_premises",
+                        "status": "production",
+                        "capabilities": [
+                            "holder",
+                            "issuer",
+                            "verifier"
+                        ],
+                        "catalogTier": "Community"
+                    }
+                ],
+                "lastUpdated": "2026-08-21T04:44:18+00:00"
+            },
+            "publishedAt": "2026-08-21 04:44:18",
+            "updatedAt": "2026-08-21 04:44:18"
         },
         {
             "itemId": "sphereon-business-wallet",
@@ -596,9 +625,8 @@
                     {
                         "id": "spherity-business-wallet",
                         "name": "Spherity's European Business Wallet",
-                        "description": "Spherity’s European Business Wallet (EBW) enables the seamless exchange of verifiable credentials across organisations, from banking, insurance and beyond. As part of the EBW framework and fully eIDAS 2.0-compliant, it streamlines operations, cuts costs, and boosts efficiency. Enhanced with automated business partner data validation, our Business Wallet transforms how businesses handles regulatory obligations in Germany and beyond. With enterprise-grade data automation and primary source-validated information from Bundesanzeiger Verlag, businesses can minimise risks, eliminate manual KYC/KYS processes, and ensure real-time due diligence. Organisations operating in regulated industries or managing complex supply chains, our solution helps you meet obligations such as Anti-Money Laundering regulations.",
+                        "description": "Spherity’s European Business Wallet (EBW) enables the seamless exchange of verifiable credentials across organisations, from banking, insurance and beyond. As part of the EBW framework and fully eIDAS",
                         "logo": "https://www.google.com/s2/favicons?domain=spherity.com&sz=128",
-                        "website": "https://www.spherity.com/eida",
                         "type": "organizational",
                         "platforms": [
                             "Web"
@@ -607,26 +635,6 @@
                         "license": "proprietary",
                         "deploymentModel": "hybrid",
                         "slaAvailable": true,
-                        "media": {
-                            "videos": [
-                                "https://youtu.be/yNrJYYx-VQA",
-                                "https://youtube.com/playlist?list=PLnj6hp2xuFVI9DxMgnrPSbvK36WxN-KSl&si=7N1sv2QWay6-rP0r",
-                                "https://youtube.com/playlist?list=PLnj6hp2xuFVLRc_qcCZ_3X1pwVsJv1gPg&si=_N4YnNToUGA1KxZy"
-                            ],
-                            "images": [
-                                "https://static.wixstatic.com/media/4e321c_bdd8b44ded4243249921af3cdfbdae17~mv2.png/v1/crop/x_24,y_19,w_1552,h_985/fill/w_1110,h_704,fp_0.50_0.50,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Spherity%20Enterprise%20Wallet%20UI%20UX%202-p-1600.png"
-                            ]
-                        },
-                        "additionalDocumentation": [
-                            {
-                                "title": "European Business Wallet User Guide",
-                                "url": "https://oid.spherity.com/architecture"
-                            },
-                            {
-                                "title": "European Business Wallet Playground",
-                                "url": "https://playground.spherity.com/"
-                            }
-                        ],
                         "vcFormat": [
                             "sd_jwt_vc",
                             "jwt_vc",
@@ -679,16 +687,13 @@
                             "SD-JWT VC",
                             "eIDAS"
                         ],
-                        "features": [
-                            "Integration of external identity providers based on OAuth 2.0"
-                        ],
                         "status": "production",
                         "capabilities": [
                             "holder",
                             "issuer",
                             "verifier"
                         ],
-                        "catalogTier": "Pro"
+                        "catalogTier": "Community"
                     }
                 ],
                 "lastUpdated": "2026-07-20T16:26:37+00:00"
