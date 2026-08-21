@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.11.12
+Stable tag: 2.11.13
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -102,6 +102,10 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.11.13 =
+* Full Community wallets now inherit listing depth from their organization and expose all modal fields and clickable product links while retaining the Community badge.
+* Remove the obsolete uppercase UIDAI wallet source in favor of the WordPress-managed lowercase listing.
 
 = 2.11.12 =
 * Full Community listings unlock all wallet form fields without showing an Official badge (requires tiles ≥ 1.13.7).

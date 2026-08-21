@@ -215,6 +215,15 @@
     return String((item && item.catalogListingDepth) || '').toLowerCase() === 'full';
   }
 
+  function catalogListingOrgHasFullFields(item, options) {
+    const access = options && options.editAccess && typeof options.editAccess === 'object'
+      ? options.editAccess
+      : {};
+    const fullOrgIds = Array.isArray(access.fullOrgIds) ? access.fullOrgIds : [];
+    const orgId = resolveCatalogItemOrgId(item);
+    return orgId !== '' && fullOrgIds.indexOf(orgId) >= 0;
+  }
+
   function catalogListingIsOfficial(item) {
     return catalogTierIsProExplicit(item);
   }
@@ -222,7 +231,9 @@
   function catalogListingHasFullFields(item, options) {
     if (!optionsTierUiEnabled(options)) return true;
     if (!item) return false;
-    return catalogListingIsOfficial(item) || catalogListingDepthIsFull(item);
+    return catalogListingIsOfficial(item) ||
+      catalogListingDepthIsFull(item) ||
+      catalogListingOrgHasFullFields(item, options);
   }
 
   function buildCatalogListingHeaderBadgeHtml(item, options) {
@@ -390,10 +401,11 @@
     const raw = options && options.editAccess;
     const editAccess = raw && typeof raw === 'object'
       ? Object.assign({}, raw)
-      : { ownedOrgIds: [], proOrgIds: [] };
+      : { ownedOrgIds: [], proOrgIds: [], fullOrgIds: [] };
     editAccess.isLoggedIn = !!(editAccess.isLoggedIn || boolFromMixed(options && options.isLoggedIn) || boolFromMixed(options && options.ratingsIsLoggedIn));
     if (!Array.isArray(editAccess.ownedOrgIds)) editAccess.ownedOrgIds = [];
     if (!Array.isArray(editAccess.proOrgIds)) editAccess.proOrgIds = [];
+    if (!Array.isArray(editAccess.fullOrgIds)) editAccess.fullOrgIds = [];
     return editAccess;
   }
 
@@ -3190,8 +3202,11 @@
   function buildOrganizationContactFooterHtml(contact, options) {
     const opts = options || {};
     if (optionsTierUiEnabled(opts)) {
-      if (opts.item && !walletListingTierIsPro(opts.item, opts)) return '';
-      if (opts.isCommunity === true) return '';
+      if (opts.item) {
+        if (!walletListingTierIsPro(opts.item, opts)) return '';
+      } else if (opts.isCommunity === true) {
+        return '';
+      }
     }
     const contactObj = contact && typeof contact === 'object' ? contact : {};
     const bookMeetingUrl = contactObj.bookMeetingUrl ? String(contactObj.bookMeetingUrl).trim() : '';
@@ -4208,6 +4223,7 @@
     canEditWallet,
     canEditRp,
     resolveWalletOrgId,
+    catalogListingHasFullFields,
     buildCatalogListingHeaderBadgeHtml,
     buildCatalogCountryGlobeMetaHtml,
     buildModalProviderCountryGlobeHtml,

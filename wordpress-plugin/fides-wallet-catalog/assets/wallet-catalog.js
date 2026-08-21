@@ -187,7 +187,7 @@
   const EDIT_ACCESS = (window.fidesWalletCatalog && window.fidesWalletCatalog.editAccess
     && typeof window.fidesWalletCatalog.editAccess === 'object')
     ? window.fidesWalletCatalog.editAccess
-    : { isLoggedIn: false, isAdmin: false, ownedOrgIds: [], proOrgIds: [] };
+    : { isLoggedIn: false, isAdmin: false, ownedOrgIds: [], proOrgIds: [], fullOrgIds: [] };
   const TIER_UI_ENABLED = !!(window.fidesWalletCatalog && window.fidesWalletCatalog.tierUiEnabled);
   const RATINGS_BATCH_LIMIT = 100;
 
@@ -483,10 +483,20 @@
     return orgId !== '' && proOrgIds.indexOf(orgId) >= 0;
   }
 
-  /** Pro-only catalog fields (app store links, video, features): legacy always on; tier UI limits to Pro. */
-  function walletShowsProCatalogContent(wallet) {
+  /** Full public fields for Official or Full Community listings; legacy always on. */
+  function walletHasFullCatalogContent(wallet) {
     if (!TIER_UI_ENABLED) return true;
-    return walletCatalogTierIsPro(wallet);
+    if (window.FidesCatalogUI && typeof window.FidesCatalogUI.catalogListingHasFullFields === 'function') {
+      return window.FidesCatalogUI.catalogListingHasFullFields(wallet, {
+        tierUiEnabled: TIER_UI_ENABLED,
+        editAccess: EDIT_ACCESS,
+      });
+    }
+    if (walletCatalogTierIsPro(wallet)) return true;
+    if (String(wallet && wallet.catalogListingDepth || '').toLowerCase() === 'full') return true;
+    const orgId = resolveWalletOrgIdForEdit(wallet);
+    const fullOrgIds = Array.isArray(EDIT_ACCESS.fullOrgIds) ? EDIT_ACCESS.fullOrgIds : [];
+    return orgId !== '' && fullOrgIds.indexOf(orgId) >= 0;
   }
 
   function walletOfficialCardClass(wallet) {
@@ -785,7 +795,7 @@
       return '<span class="fides-row-platform-empty">—</span>';
     }
     return platforms.map((platform) => {
-      const href = walletShowsProCatalogContent(wallet) ? getAppStoreLink(wallet, platform) : null;
+      const href = walletHasFullCatalogContent(wallet) ? getAppStoreLink(wallet, platform) : null;
       const icon = getAppStoreIcon(platform);
       const platformLabel = escapeHtml(platform);
       if (href) {
@@ -2213,7 +2223,7 @@
    * Render platform tag (clickable if app store link available)
    */
   function renderPlatformTag(wallet, platform) {
-    const link = walletShowsProCatalogContent(wallet) ? getAppStoreLink(wallet, platform) : null;
+    const link = walletHasFullCatalogContent(wallet) ? getAppStoreLink(wallet, platform) : null;
     const icon = platform === 'iOS' || platform === 'Android' ? icons.smartphone : icons.globe;
     
     if (link) {
@@ -2329,8 +2339,8 @@
               </div>
             ` : ''}
 
-            <!-- Video embed (Pro listings only when tier UI is on) -->
-            ${walletShowsProCatalogContent(wallet) && walletPrimaryVideoUrl(wallet) ? getVideoEmbedHtml(walletPrimaryVideoUrl(wallet)) : ''}
+            <!-- Video embed (full listings only when tier UI is on) -->
+            ${walletHasFullCatalogContent(wallet) && walletPrimaryVideoUrl(wallet) ? getVideoEmbedHtml(walletPrimaryVideoUrl(wallet)) : ''}
 
             <!-- Quick info grid -->
             <div class="fides-modal-grid">
@@ -2338,7 +2348,7 @@
               ${wallet.platforms && wallet.platforms.length > 0 ? `
                 <div class="fides-modal-grid-item">
                   <div class="fides-modal-grid-label">
-                    ${icons.smartphone} Platforms ${wallet.type !== 'organizational' && walletShowsProCatalogContent(wallet) ? '<span class="fides-label-hint">(click to access)</span>' : ''}
+                    ${icons.smartphone} Platforms ${wallet.type !== 'organizational' && walletHasFullCatalogContent(wallet) ? '<span class="fides-label-hint">(click to access)</span>' : ''}
                   </div>
                   <div class="fides-modal-grid-value">
                     ${wallet.platforms.map(p => renderPlatformTag(wallet, p)).join('')}
@@ -2450,8 +2460,8 @@
 
             </div>
 
-            <!-- Features (Pro listings only when tier UI is on) -->
-            ${walletShowsProCatalogContent(wallet) && wallet.features && wallet.features.length > 0 ? `
+            <!-- Features (full listings only when tier UI is on) -->
+            ${walletHasFullCatalogContent(wallet) && wallet.features && wallet.features.length > 0 ? `
               <div class="fides-modal-features">
                 <h4 class="fides-modal-section-title">Features</h4>
                 <ul class="fides-features-list">
@@ -2462,8 +2472,8 @@
               </div>
             ` : ''}
 
-            <!-- Links (Pro listings only when tier UI is on) -->
-            ${walletShowsProCatalogContent(wallet) ? `
+            <!-- Links (full listings only when tier UI is on) -->
+            ${walletHasFullCatalogContent(wallet) ? `
             <div class="fides-modal-links">
               ${wallet.website ? `
                 <a href="${escapeHtml(wallet.website)}" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Visit website">

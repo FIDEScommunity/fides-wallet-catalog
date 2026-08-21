@@ -81,6 +81,8 @@ interface OrgCatalogEntry {
   fidesManifestoSupporter?: boolean;
   /** Community or Pro — inherited onto wallets at crawl time when missing on wallet JSON. */
   catalogTier?: string;
+  /** Full Community listing depth — inherited onto wallets at crawl time. */
+  catalogListingDepth?: string;
 }
 
 function orgEntryToWalletProvider(entry: OrgCatalogEntry, orgId: string): WalletProvider {
@@ -107,6 +109,23 @@ function resolveWalletCatalogTier(
   const orgTier = organizationById.get(orgId)?.catalogTier;
   if (typeof orgTier === 'string' && orgTier.trim()) {
     return orgTier.trim();
+  }
+  return undefined;
+}
+
+/** Resolve full listing depth for a wallet (explicit wallet field, else organization catalog). */
+function resolveWalletCatalogListingDepth(
+  wallet: Record<string, unknown>,
+  orgId: string,
+  organizationById: Map<string, OrgCatalogEntry>
+): string | undefined {
+  const walletDepth = wallet.catalogListingDepth;
+  if (typeof walletDepth === 'string' && walletDepth.trim()) {
+    return walletDepth.trim();
+  }
+  const orgDepth = organizationById.get(orgId)?.catalogListingDepth;
+  if (typeof orgDepth === 'string' && orgDepth.trim()) {
+    return orgDepth.trim();
   }
   return undefined;
 }
@@ -800,10 +819,12 @@ function normalizeWallets(
     };
 
     const catalogTier = resolveWalletCatalogTier(walletAny, orgId, organizationById);
+    const catalogListingDepth = resolveWalletCatalogListingDepth(walletAny, orgId, organizationById);
 
     return {
       ...walletRest,
       ...(catalogTier ? { catalogTier } : {}),
+      ...(catalogListingDepth ? { catalogListingDepth } : {}),
       orgId,
       provider,
       catalogUrl,

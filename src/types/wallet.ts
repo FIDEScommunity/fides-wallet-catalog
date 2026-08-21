@@ -185,6 +185,8 @@ export interface Wallet {
   firstSeenAt?: string;
   /** Community or Pro — set by WP export or inherited from organization at crawl time. */
   catalogTier?: string;
+  /** Full Community listing depth — set by WP export or inherited from organization at crawl time. */
+  catalogListingDepth?: 'full';
 }
 
 export interface WalletCatalog {

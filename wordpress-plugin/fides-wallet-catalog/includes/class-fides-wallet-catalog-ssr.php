@@ -173,7 +173,36 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
                 return $render;
             }
 
+            private static function item_has_full_listing(array $item): bool {
+                if (! class_exists('Fides_Catalog_Org_Tier') || ! Fides_Catalog_Org_Tier::tier_ui_enabled()) {
+                    return true;
+                }
+                if (
+                    isset($item['catalogListingDepth'])
+                    && strtolower(trim((string) $item['catalogListingDepth'])) === 'full'
+                ) {
+                    return true;
+                }
+                if (isset($item['catalogTier'])) {
+                    $tier = strtolower(trim((string) $item['catalogTier']));
+                    if ($tier !== '' && $tier !== 'community' && $tier !== 'gratis') {
+                        return true;
+                    }
+                }
+                $org_id = isset($item['orgId']) ? trim((string) $item['orgId']) : '';
+                if (
+                    $org_id === ''
+                    && isset($item['provider'])
+                    && is_array($item['provider'])
+                    && isset($item['provider']['orgId'])
+                ) {
+                    $org_id = trim((string) $item['provider']['orgId']);
+                }
+                return $org_id !== '' && Fides_Catalog_Org_Tier::has_full_listing($org_id);
+            }
+
             protected function enrich_jsonld(array $jsonld, array $item): array {
+                $full_listing = self::item_has_full_listing($item);
                 if (! empty($item['platforms']) && is_array($item['platforms'])) {
                     $platforms = array_values(array_filter(array_map('strval', $item['platforms'])));
                     if (! empty($platforms)) {
@@ -187,7 +216,7 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
                     $jsonld['description'] = (string) $item['description'];
                 }
 
-                if (! empty($item['appStoreLinks']) && is_array($item['appStoreLinks'])) {
+                if ($full_listing && ! empty($item['appStoreLinks']) && is_array($item['appStoreLinks'])) {
                     $download_urls = array_values(array_filter(array_map('strval', $item['appStoreLinks'])));
                     if (count($download_urls) === 1) {
                         $jsonld['downloadUrl'] = $download_urls[0];
@@ -211,7 +240,7 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
                     }
                 }
 
-                $features = $this->list_field($item, 'features');
+                $features = $full_listing ? $this->list_field($item, 'features') : array();
                 if (! empty($features)) {
                     $jsonld['featureList'] = $features;
                 }
@@ -243,7 +272,7 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
                 }
 
                 $same_as = array();
-                if (! empty($item['repository']) && is_string($item['repository'])) {
+                if ($full_listing && ! empty($item['repository']) && is_string($item['repository'])) {
                     $same_as[] = (string) $item['repository'];
                 }
                 if (! empty($same_as)) {
@@ -314,7 +343,7 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
                         ? esc_html__('Yes', 'fides-wallet-catalog')
                         : esc_html__('No', 'fides-wallet-catalog'),
                 );
-                if ($website !== '') {
+                if ($website !== '' && self::item_has_full_listing($item)) {
                     $rows[] = array(
                         'label' => __('Website', 'fides-wallet-catalog'),
                         'html'  => sprintf(
@@ -324,7 +353,7 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
                         ),
                     );
                 }
-                if ($repository !== '') {
+                if ($repository !== '' && self::item_has_full_listing($item)) {
                     $rows[] = array(
                         'label' => __('Repository', 'fides-wallet-catalog'),
                         'html'  => sprintf(
@@ -350,9 +379,13 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
             }
 
             protected function detail_extra_sections(array $item): string {
+                $full_listing = self::item_has_full_listing($item);
                 $app_links = (isset($item['appStoreLinks']) && is_array($item['appStoreLinks']))
                     ? $item['appStoreLinks']
                     : array();
+                if (! $full_listing) {
+                    $app_links = array();
+                }
 
                 if (
                     isset($item['type']) && $item['type'] === 'personal'
@@ -392,7 +425,9 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
                 <?php endif;
 
                 $td = 'fides-wallet-catalog';
-                echo $this->render_chip_section($this->list_field($item, 'features'),                __('Features', $td));
+                if ($full_listing) {
+                    echo $this->render_chip_section($this->list_field($item, 'features'), __('Features', $td));
+                }
                 echo $this->render_chip_section($this->list_field($item, 'vcFormat'),       __('VC formats', $td));
                 echo $this->render_chip_section($this->list_field($item, 'issuanceProtocols'),       __('Issuance protocols', $td));
                 echo $this->render_chip_section($this->list_field($item, 'presentationProtocols'),   __('Presentation protocols', $td));
