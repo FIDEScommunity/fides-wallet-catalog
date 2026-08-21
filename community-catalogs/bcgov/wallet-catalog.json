@@ -1,5 +1,6 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:bcgov",
   "wallets": [
     {
       "id": "bc-wallet",
@@ -19,8 +20,21 @@
         "iOS": "https://apps.apple.com/ca/app/bc-wallet/id1587380443",
         "android": "https://play.google.com/store/apps/details?id=ca.bc.gov.BCWallet&hl=en"
       }
+    },
+    {
+      "id": "orgbook",
+      "name": "Orgbook",
+      "description": "A public directory of organizations registered in BC. https://orgbook.gov.bc.ca/search",
+      "type": "organizational",
+      "deploymentModel": "on_premises",
+      "status": "production",
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "catalogTier": "Community"
     }
   ],
-  "lastUpdated": "2026-01-12T00:00:00Z",
-  "orgId": "org:bcgov"
+  "lastUpdated": "2026-08-21T04:44:18+00:00"
 }
