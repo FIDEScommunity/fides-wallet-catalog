@@ -1,10 +1,11 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:italy",
   "wallets": [
     {
       "id": "it-wallet",
       "name": "IT Wallet",
-      "description": "Italy's IT-Wallet pilot launched October 23, 2024, with 50,000 users selected through IO app, achieving full nationwide deployment December 4, 2024, making Italy the first EU member state to fully deploy an EUDI Wallet under eIDAS 2.0 framework with 1.76 million digital driving licenses and 2.04 million digital health cards added within the first week. The comprehensive digital identity wallet integrated into PagoPa's IO app enables Italian citizens to securely store and present digital versions of identity cards, driving licenses, health cards, and European Disability Cards on smartphones, with plans to expand to educational qualifications and professional licenses while serving as foundation for Italy's digital government modernization strategy aligned with EU Digital Identity Wallet Architecture Reference Framework specifications.",
+      "description": "Italy’s IT-Wallet is a national digital wallet system integrated into the IO app. Launched nationwide in December 2024, it enables citizens to store and present digital versions of official documents,",
       "type": "personal",
       "status": "production",
       "website": "https://io.italia.it/",
@@ -17,8 +18,13 @@
         "android": "https://play.google.com/store/apps/details?id=it.pagopa.io.app"
       },
       "logo": "https://www.google.com/s2/favicons?domain=io.italia.it&sz=128",
-      "releaseDate": "2024-01-01"
+      "releaseDate": "2024-01-01",
+      "capabilities": [
+        "holder"
+      ],
+      "catalogTier": "Community",
+      "catalogListingDepth": "full"
     }
   ],
-  "orgId": "org:italy"
+  "lastUpdated": "2026-08-24T11:19:00+00:00"
 }

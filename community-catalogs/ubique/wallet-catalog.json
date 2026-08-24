@@ -1,11 +1,12 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:ubique",
   "wallets": [
     {
       "id": "heidi-wallet",
       "name": "Heidi Wallet App",
       "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/13/2d/44/132d44a4-424b-3dfc-174e-541248ef421b/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/400x400ia-75.webp",
-      "description": "A DIIP v4-compliant Swiss identity wallet supporting verifiable credentials for secure digital identity management.",
+      "description": "Heidi Wallet is the easy-to-use wallet app. Built on open protocols, Heidi Wallet interacts with a range of issuers and verifiers. It is compatible with both the EUDI Wallet ecosystem and Switzerland’s swiyu trust infrastructure, supporting a broad range of use cases.\n\nThe app goes beyond credential issuance and presentation. It supports zero-knowledge proofs based on BBS+, and lets users sign digital documents directly within the wallet, exploring what digital identity wallets can do beyond their core use cases.",
       "type": "personal",
       "platforms": [
         "iOS",
@@ -13,6 +14,7 @@
       ],
       "vcFormat": [
         "sd_jwt_vc",
+        "mdoc",
         "jwt_vc",
         "vcdm_2_0"
       ],
@@ -26,17 +28,34 @@
       },
       "interoperabilityProfiles": [
         "DIIP v4",
-        "DIIP v5"
+        "DIIP v5",
+        "EUDI Wallet ARF"
       ],
-      "website": "https://ubique.ch",
+      "website": "https://heidi-wallet.app",
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/bj/app/heidi-wallet/id6741428702",
         "android": "https://play.google.com/store/apps/details?id=ch.ubique.heidi.android"
       },
       "openSource": false,
-      "status": "production"
+      "status": "production",
+      "pricing": "Free",
+      "media": {
+        "images": [
+          "https://fides.community/app/uploads/2026/08/Heidi_Wallet-1.png"
+        ]
+      },
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "ISO 18013-5"
+      ],
+      "capabilities": [
+        "holder"
+      ],
+      "catalogTier": "Pro"
     }
   ],
-  "lastUpdated": "2025-01-06T12:00:00Z",
-  "orgId": "org:ubique"
+  "lastUpdated": "2026-08-21T15:32:48+00:00"
 }

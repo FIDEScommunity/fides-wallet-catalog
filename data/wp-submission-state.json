@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "catalogType": "wallet",
-  "lastImportAt": "2026-08-21T15:32:28.183Z",
+  "lastImportAt": "2026-08-24T11:19:22.474Z",
   "managedWallets": [
     {
       "slug": "bcgov",
@@ -14,6 +14,10 @@
     {
       "slug": "credenco",
       "walletId": "credenco-wallet"
+    },
+    {
+      "slug": "italy",
+      "walletId": "it-wallet"
     },
     {
       "slug": "portugal",
@@ -34,6 +38,10 @@
     {
       "slug": "spherity",
       "walletId": "spherity-business-wallet"
+    },
+    {
+      "slug": "ubique",
+      "walletId": "heidi-wallet"
     },
     {
       "slug": "uidai",
