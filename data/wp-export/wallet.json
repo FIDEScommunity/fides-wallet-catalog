@@ -1,7 +1,7 @@
 {
     "schemaVersion": "1.0.0",
     "catalogType": "wallet",
-    "generatedAt": "2026-08-21T15:32:10+00:00",
+    "generatedAt": "2026-08-24T11:19:00+00:00",
     "entries": [
         {
             "itemId": "aadhaar",
@@ -257,6 +257,103 @@
             },
             "publishedAt": "2026-08-10 05:14:55",
             "updatedAt": "2026-08-10 05:14:55"
+        },
+        {
+            "itemId": "heidi-wallet",
+            "slug": "ubique",
+            "filename": "wallet-catalog.json",
+            "source": "wordpress",
+            "document": {
+                "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+                "orgId": "org:ubique",
+                "wallets": [
+                    {
+                        "id": "heidi-wallet",
+                        "name": "Heidi Wallet App",
+                        "description": "Heidi Wallet is the easy-to-use wallet app. Built on open protocols, Heidi Wallet interacts with a range of issuers and verifiers. It is compatible with both the EUDI Wallet ecosystem and Switzerland’s swiyu trust infrastructure, supporting a broad range of use cases.\n\nThe app goes beyond credential issuance and presentation. It supports zero-knowledge proofs based on BBS+, and lets users sign digital documents directly within the wallet, exploring what digital identity wallets can do beyond their core use cases.",
+                        "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/13/2d/44/132d44a4-424b-3dfc-174e-541248ef421b/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/400x400ia-75.webp",
+                        "website": "https://heidi-wallet.app",
+                        "type": "personal",
+                        "platforms": [
+                            "iOS",
+                            "Android"
+                        ],
+                        "pricing": "Free",
+                        "media": {
+                            "images": [
+                                "https://fides.community/app/uploads/2026/08/Heidi_Wallet-1.png"
+                            ]
+                        },
+                        "vcFormat": [
+                            "sd_jwt_vc",
+                            "mdoc",
+                            "jwt_vc",
+                            "vcdm_2_0"
+                        ],
+                        "issuanceProtocols": [
+                            "OpenID4VCI"
+                        ],
+                        "presentationProtocols": [
+                            "OpenID4VP",
+                            "ISO 18013-5"
+                        ],
+                        "interoperabilityProfiles": [
+                            "DIIP v4",
+                            "DIIP v5",
+                            "EUDI Wallet ARF"
+                        ],
+                        "appStoreLinks": {
+                            "iOS": "https://apps.apple.com/bj/app/heidi-wallet/id6741428702",
+                            "android": "https://play.google.com/store/apps/details?id=ch.ubique.heidi.android"
+                        },
+                        "status": "production",
+                        "capabilities": [
+                            "holder"
+                        ],
+                        "catalogTier": "Pro"
+                    }
+                ],
+                "lastUpdated": "2026-08-21T15:32:48+00:00"
+            },
+            "publishedAt": "2026-08-21 15:32:48",
+            "updatedAt": "2026-08-21 15:32:48"
+        },
+        {
+            "itemId": "it-wallet",
+            "slug": "italy",
+            "filename": "wallet-catalog.json",
+            "source": "wordpress",
+            "document": {
+                "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+                "orgId": "org:italy",
+                "wallets": [
+                    {
+                        "id": "it-wallet",
+                        "name": "IT Wallet",
+                        "description": "Italy’s IT-Wallet is a national digital wallet system integrated into the IO app. Launched nationwide in December 2024, it enables citizens to store and present digital versions of official documents,",
+                        "logo": "https://www.google.com/s2/favicons?domain=io.italia.it&sz=128",
+                        "website": "https://io.italia.it/",
+                        "type": "personal",
+                        "platforms": [
+                            "iOS",
+                            "Android"
+                        ],
+                        "appStoreLinks": {
+                            "iOS": "https://apps.apple.com/us/app/io/id1501681835",
+                            "android": "https://play.google.com/store/apps/details?id=it.pagopa.io.app"
+                        },
+                        "status": "production",
+                        "capabilities": [
+                            "holder"
+                        ],
+                        "catalogTier": "Community",
+                        "catalogListingDepth": "full"
+                    }
+                ],
+                "lastUpdated": "2026-08-24T11:19:00+00:00"
+            },
+            "publishedAt": "2026-08-24 11:19:00",
+            "updatedAt": "2026-08-24 11:19:00"
         },
         {
             "itemId": "orgbook",
