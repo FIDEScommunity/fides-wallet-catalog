@@ -4657,7 +4657,7 @@ a.fides-eco-entity svg {
 
 /* Match mobile detail-modal sheet breakpoint (760px), not 720px */
 @media (max-width: 760px) {
-  /* ≤3 linked use cases: 2-column grid (aligned with use-case modal similar cases) */
+  /* ≤2 linked use cases: 2-column grid (aligned with use-case modal similar cases) */
   .fides-modal-overlay .fides-modal-use-cases:not(.fides-modal-use-cases--scroll) {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4681,7 +4681,7 @@ a.fides-eco-entity svg {
     max-width: none;
   }
 
-  /* >3 linked use cases: horizontal scroll with two cards visible per view */
+  /* >2 linked use cases: horizontal scroll with two cards visible per view */
   .fides-modal-overlay .fides-modal-use-cases--scroll .fides-modal-use-case-card {
     flex: 0 0 calc((100% - 0.5rem) / 2);
     width: calc((100% - 0.5rem) / 2);

@@ -1502,7 +1502,7 @@
 
   /**
    * Horizontal use-case cards for catalog modals (wallet/RP/org/issuer/credential).
-   * Scroll + side arrows when there are more than three items.
+   * Scroll + side arrows when there are more than two items (avoids a wrapped second row on narrow screens).
    *
    * @param {Array<{id?: string, title?: string, name?: string}>} useCases
    * @param {string} useCaseCatalogUrl
@@ -1516,7 +1516,7 @@
     if (!list.length) return '';
     const opts = options || {};
     const base = String(useCaseCatalogUrl || '').replace(/\/$/, '');
-    const scroll = list.length > 3;
+    const scroll = list.length > 2;
     const wrapClass = scroll ? ' fides-modal-use-cases-wrap--scroll' : '';
     const scrollClass = scroll ? ' fides-modal-use-cases--scroll' : '';
     const likeRenderer = typeof opts.renderUseCaseLikeHtml === 'function'
