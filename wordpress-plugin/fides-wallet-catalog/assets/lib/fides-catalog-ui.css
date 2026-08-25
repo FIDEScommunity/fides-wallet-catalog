@@ -4635,8 +4635,47 @@ a.fides-eco-entity svg {
 }
 
 @media (max-width: 720px) {
+  /* ≤3 linked use cases: 2-column grid (aligned with use-case modal similar cases) */
+  .fides-modal-overlay .fides-modal-use-cases:not(.fides-modal-use-cases--scroll) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .fides-modal-overlay .fides-modal-use-cases:not(.fides-modal-use-cases--scroll) .fides-modal-use-case-card {
+    flex: unset;
+    min-width: 0;
+    max-width: none;
+    width: auto;
+    min-height: 0;
+    padding: 0.7rem;
+  }
+
+  .fides-modal-overlay .fides-modal-use-cases:not(.fides-modal-use-cases--scroll) .fides-modal-use-case-card:only-child {
+    flex: unset;
+    width: auto;
+    max-width: calc((100% - 0.5rem) / 2);
+  }
+
+  /* >3 linked use cases: horizontal scroll with two cards visible per view */
   .fides-modal-overlay .fides-modal-use-cases--scroll .fides-modal-use-case-card {
-    flex-basis: min(78%, 16rem);
-    min-width: min(78%, 16rem);
+    flex: 0 0 calc((100% - 0.75rem) / 2);
+    min-width: calc((100% - 0.75rem) / 2);
+    min-height: 0;
+    padding: 0.7rem;
+  }
+
+  .fides-modal-overlay .fides-modal-use-case-card__eyebrow {
+    font-size: 0.62rem;
+  }
+
+  .fides-modal-overlay .fides-modal-use-case-card__title {
+    font-size: 0.76rem;
+    -webkit-line-clamp: 2;
+  }
+
+  .fides-modal-overlay .fides-modal-use-case-card__link {
+    padding-top: 0.55rem;
+    font-size: 0.68rem;
   }
 }
