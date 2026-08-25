@@ -4586,6 +4586,41 @@ a.fides-eco-entity svg {
   height: 14px;
 }
 
+/* Narrow screens: overlay arrows so cards keep full scroller width */
+@media (max-width: 760px) {
+  .fides-modal-overlay .fides-modal-use-cases-wrap--scroll {
+    gap: 0;
+  }
+
+  .fides-modal-overlay .fides-modal-use-cases-wrap--scroll .fides-modal-use-cases-nav-btn {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 1.5rem;
+    height: 1.5rem;
+    transform: translateY(-50%);
+    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.18);
+  }
+
+  .fides-modal-overlay .fides-modal-use-cases-wrap--scroll .fides-modal-use-cases-nav-btn--prev {
+    left: 0.2rem;
+  }
+
+  .fides-modal-overlay .fides-modal-use-cases-wrap--scroll .fides-modal-use-cases-nav-btn--next {
+    right: 0.2rem;
+  }
+
+  .fides-modal-overlay .fides-modal-use-cases-wrap--scroll .fides-modal-use-cases-nav-btn svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .fides-modal-overlay .fides-modal-use-cases-wrap--scroll .fides-modal-use-cases--scroll {
+    /* Room for overlay arrows without clipping card content too hard */
+    scroll-padding-inline: 0.35rem;
+  }
+}
+
 .fides-modal-overlay .fides-modal-use-case-card {
   display: flex;
   min-height: 9rem;

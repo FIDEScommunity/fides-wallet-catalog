@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.11.15
+Stable tag: 2.11.16
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -102,6 +102,9 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.11.16 =
+* Sync shared modal UI: Use cases accordion scroll arrows overlay cards on narrow screens (tiles ≥ 1.13.18).
 
 = 2.11.15 =
 * Sync shared modal UI: Use cases accordion scrolls horizontally when more than two cases are linked (tiles ≥ 1.13.17).
