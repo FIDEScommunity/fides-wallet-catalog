@@ -452,7 +452,7 @@
   function getVideoEmbedHtml(videoUrl) {
     const embedUrl = getVideoEmbedUrl(videoUrl);
     if (embedUrl) {
-      return '<div class="fides-video-container"><iframe src="' + escapeHtml(embedUrl) + '" frameborder="0" class="fides-video-iframe" title="Video player"></iframe></div>';
+      return '<div class="fides-video-container"><iframe src="' + escapeHtml(embedUrl) + '" width="100%" height="100%" frameborder="0" class="fides-video-iframe" title="Video player"></iframe></div>';
     }
     return '<div class="fides-video-fallback"><a href="' + escapeHtml(videoUrl) + '" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Video">' + icons.play + ' Watch Video (External)</a></div>';
   }
@@ -985,9 +985,15 @@
       const iframe = document.createElement('iframe');
       iframe.src = src;
       iframe.title = frame.getAttribute('data-video-title') || 'Demo video';
+      iframe.setAttribute('width', '100%');
+      iframe.setAttribute('height', '100%');
       iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
       iframe.setAttribute('allowfullscreen', '');
       iframe.setAttribute('loading', 'lazy');
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+      iframe.style.maxWidth = '100%';
+      iframe.style.border = '0';
       frame.appendChild(iframe);
     });
   }
