@@ -28,7 +28,7 @@ Fides_Wallet_Catalog_Submission_Forms::bootstrap();
 class FIDES_Wallet_Catalog {
     
     private static $instance = null;
-    private const VERSION = '2.11.13';
+    private const VERSION = '2.11.14';
     /** @var string Site path for the wallet update submission form page. */
     const DEFAULT_UPDATE_FORM_PATH = '/wallets-update/';
     private $plugin_url;
