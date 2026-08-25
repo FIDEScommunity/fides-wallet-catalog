@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "catalogType": "wallet",
-  "lastImportAt": "2026-08-24T11:19:22.474Z",
+  "lastImportAt": "2026-08-25T06:40:08.353Z",
   "managedWallets": [
     {
       "slug": "bcgov",
@@ -14,6 +14,10 @@
     {
       "slug": "credenco",
       "walletId": "credenco-wallet"
+    },
+    {
+      "slug": "france",
+      "walletId": "france-identite"
     },
     {
       "slug": "italy",

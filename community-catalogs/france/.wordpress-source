@@ -1,0 +1,11 @@
+{
+  "source": "wordpress",
+  "slug": "france",
+  "wallets": {
+    "france-identite": {
+      "itemId": "france-identite",
+      "publishedAt": "2026-08-25 06:39:46"
+    }
+  },
+  "importedAt": "2026-08-25T06:40:08.343Z"
+}

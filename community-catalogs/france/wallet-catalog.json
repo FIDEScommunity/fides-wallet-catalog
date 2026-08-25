@@ -1,10 +1,11 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:france",
   "wallets": [
     {
       "id": "france-identite",
       "name": "France Identité",
-      "description": "France Identité app launched by French Ministry of Interior entered beta in May 2022 before full public rollout February 14, 2024, with no user limits, enabling citizens to create dematerialized versions of identity cards and driving licenses on smartphones using NFC readers to scan biometric identity cards requiring Android 11 or iOS 16 minimum software. The state-provided digital identity platform generates electronically signed proofs of identity to prevent fraud, authenticates users for FranceConnect government services access, and displays identity cards and Carte Vitale health insurance cards, with plans to expand health card functionality in 2025, positioning France among early adopters of EUDI Wallet-compatible infrastructure preparing for EU Digital Identity Wallet framework implementation by 2030 for uniform mobile driving licenses across Europe aligned with eIDAS 2.0 regulation.",
+      "description": "France Identité app launched by French Ministry of Interior entered beta in May 2022 before full public rollout February 14, 2024, with no user limits, enabling citizens to create dematerialized versi",
       "type": "personal",
       "status": "production",
       "website": "https://france-identite.gouv.fr/",
@@ -16,9 +17,40 @@
         "iOS": "https://apps.apple.com/fr/app/france-identit%C3%A9/id1590142959",
         "android": "https://play.google.com/store/apps/details?id=fr.gouv.franceidentite"
       },
-      "logo": "https://www.google.com/s2/favicons?domain=france-identite.gouv.fr&sz=128",
-      "releaseDate": "2024-01-01"
+      "logo": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/f1/00/29/f10029ba-79b0-c102-b195-8611663faf6b/Placeholder.mill/400x400bb-75.webp",
+      "releaseDate": "2024-01-01",
+      "openSource": false,
+      "license": "proprietary",
+      "vcFormat": [
+        "mdoc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI",
+        "ISO 18013-5 (Device Retrieval)"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP",
+        "ISO 18013-5"
+      ],
+      "supportedIdentifiers": [
+        "x509"
+      ],
+      "keyStorage": [
+        "Secure Enclave (iOS)",
+        "StrongBox (Android)",
+        "TEE",
+        "HSM"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "ES384",
+        "ES512"
+      ],
+      "capabilities": [
+        "holder"
+      ],
+      "catalogTier": "Community"
     }
   ],
-  "orgId": "org:france"
+  "lastUpdated": "2026-08-25T06:39:46+00:00"
 }

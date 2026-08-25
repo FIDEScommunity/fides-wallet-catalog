@@ -5,7 +5,7 @@
     {
       "id": "it-wallet",
       "name": "IT Wallet",
-      "description": "Italy’s IT-Wallet is a national digital wallet system integrated into the IO app. Launched nationwide in December 2024, it enables citizens to store and present digital versions of official documents,",
+      "description": "Italy’s IT-Wallet is a national digital wallet system integrated into the IO app. Launched nationwide in December 2024, it enables citizens to store and present digital versions of official documents, including driving licences, health cards and the European Disability Card. The system is being further developed in alignment with the European Digital Identity Wallet framework, with additional credentials and services planned.",
       "type": "personal",
       "status": "production",
       "website": "https://io.italia.it/",
@@ -26,5 +26,5 @@
       "catalogListingDepth": "full"
     }
   ],
-  "lastUpdated": "2026-08-24T11:19:00+00:00"
+  "lastUpdated": "2026-08-24T11:19:55+00:00"
 }
