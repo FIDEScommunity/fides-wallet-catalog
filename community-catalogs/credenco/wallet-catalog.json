@@ -5,7 +5,7 @@
     {
       "id": "credenco-business-wallet",
       "name": "Credenco Business Wallet",
-      "description": "A DIIP v5 compliant Business Wallet platform providing full holder, issuer, and verifier capabilities for enterprise digital identity management.",
+      "description": "A DIIP v5 compliant European Business Wallet platform providing full holder, issuer, and verifier capabilities for enterprise digital identity management.",
       "logo": "https://wallet.acc.credenco.com/logo_white_background.png",
       "website": "https://www.credenco.com",
       "type": "organizational",
@@ -69,7 +69,9 @@
       "status": "production",
       "media": {
         "videos": [
-          "https://www.youtube.com/watch?v=IIZ7dlF4gmM"
+          "https://www.youtube.com/watch?v=IIZ7dlF4gmM",
+          "https://www.youtube.com/watch?v=mPfLun8p0yE",
+          "https://www.youtube.com/watch?v=eEve58WGF3c"
         ]
       },
       "catalogTier": "Pro",
