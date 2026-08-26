@@ -1,7 +1,7 @@
 {
     "schemaVersion": "1.0.0",
     "catalogType": "wallet",
-    "generatedAt": "2026-08-26T07:01:10+00:00",
+    "generatedAt": "2026-08-26T09:47:51+00:00",
     "entries": [
         {
             "itemId": "aadhaar",
@@ -501,6 +501,9 @@
                         "slaAvailable": true,
                         "pricing": "Fixed annual fee",
                         "media": {
+                            "videos": [
+                                "https://vimeo.com/1221415005?fl=pl&fe=sh"
+                            ],
                             "images": [
                                 "https://docs.sphereon.com/img/diagrams/edk-architecture-overview.svg",
                                 "https://sphereon.com/content/uploads/2026/07/Machine-Safety-Image-1.jpg",
@@ -517,7 +520,7 @@
                         },
                         "additionalDocumentation": [
                             {
-                                "title": "FIDES Award submission",
+                                "title": "FIDES Award Nomination",
                                 "url": "https://sphereon.com/content/uploads/PDF/FIDES_Best_Business_Wallet.pdf"
                             }
                         ],
@@ -605,10 +608,10 @@
                         "catalogTier": "Pro"
                     }
                 ],
-                "lastUpdated": "2026-07-20T16:26:26+00:00"
+                "lastUpdated": "2026-08-26T09:47:51+00:00"
             },
-            "publishedAt": "2026-07-20 16:26:26",
-            "updatedAt": "2026-07-20 16:26:26"
+            "publishedAt": "2026-08-26 09:47:51",
+            "updatedAt": "2026-08-26 09:47:51"
         },
         {
             "itemId": "sphereon-vdx-platform",
