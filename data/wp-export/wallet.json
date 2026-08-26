@@ -1,7 +1,7 @@
 {
     "schemaVersion": "1.0.0",
     "catalogType": "wallet",
-    "generatedAt": "2026-08-25T06:42:04+00:00",
+    "generatedAt": "2026-08-26T07:01:10+00:00",
     "entries": [
         {
             "itemId": "aadhaar",
@@ -15,7 +15,7 @@
                     {
                         "id": "aadhaar",
                         "name": "Aadhaar App",
-                        "description": "Official UIDAI mobile wallet for Aadhaar digital identity credentials. Uses ISO mDL/mDoc and supports OpenID4VP (v1.0) presentation flows.",
+                        "description": "The Aadhaar App is an identity credential wallet that enables users to securely store, access and present Aadhaar-based identity credentials to prove their identity across online and offline scenarios. As of 26 August 2026, the app has 52 million downloads, with 202 relying parties integrated and approximately 300,000 verifiable credential presentations taking place each month.\n\nThe wallet is being used across a growing range of use cases, including identity verification for national examinations, gig-economy platforms such as Urban Company and Hala Mobility, customer and partner verification, and social media profile verification. Going forward, the vision is to extend the wallet beyond identity and enable other welfare and government credentials to be embedded into the same user-controlled digital wallet.",
                         "logo": "https://play-lh.googleusercontent.com/j7kM2-v1QBN5YO167Si_6YEmLc2A-f_4vaMyf-imZjwIkV83IkWm6U7NYfOdTbNGyaQ=w480-h960-rw",
                         "website": "https://uidai.gov.in/",
                         "type": "personal",
@@ -23,16 +23,47 @@
                             "iOS",
                             "Android"
                         ],
+                        "pricing": "Free for all user",
                         "vcFormat": [
+                            "sd_jwt_vc",
                             "mdoc"
+                        ],
+                        "issuanceProtocols": [
+                            "OpenID4VCI"
                         ],
                         "presentationProtocols": [
                             "OpenID4VP"
                         ],
-                        "features": [
-                            "OpenID4VP 1.0"
+                        "supportedIdentifiers": [
+                            "x509"
                         ],
-                        "documentation": "https://uidai.gov.in/",
+                        "keyStorage": [
+                            "TEE"
+                        ],
+                        "signingAlgorithms": [
+                            "EdDSA",
+                            "RS256"
+                        ],
+                        "standards": [
+                            "SD-JWT",
+                            "SD-JWT VC",
+                            "ISO/IEC 18013-5 (mDL/mDoc)",
+                            "OpenID4VCI",
+                            "OpenID4VP",
+                            "W3C Verifiable Credentials",
+                            "Android Credential Manager."
+                        ],
+                        "features": [
+                            "App-to-app",
+                            "web-to-app and QR-based cross-device credential sharing",
+                            "Bluetooth/NFC proximity presentation",
+                            "offline face verification with liveness detection",
+                            "multi-profile support with multi-factor credential download",
+                            "Android Credential Manager interoperability",
+                            "portable SD-JWT credential sharing",
+                            "demographic credential update and re-issuance."
+                        ],
+                        "documentation": "https://docs.uidai.gov.in/",
                         "appStoreLinks": {
                             "iOS": "https://apps.apple.com/in/app/aadhaar/id6744029871",
                             "android": "https://play.google.com/store/apps/details?id=in.gov.uidai.pehchaan&hl=en"
@@ -45,10 +76,10 @@
                         "catalogListingDepth": "full"
                     }
                 ],
-                "lastUpdated": "2026-08-21T15:32:10+00:00"
+                "lastUpdated": "2026-08-26T07:01:10+00:00"
             },
-            "publishedAt": "2026-08-21 15:32:10",
-            "updatedAt": "2026-08-21 15:32:10"
+            "publishedAt": "2026-08-26 07:01:10",
+            "updatedAt": "2026-08-26 07:01:10"
         },
         {
             "itemId": "carteira-digital-da-empresa",
