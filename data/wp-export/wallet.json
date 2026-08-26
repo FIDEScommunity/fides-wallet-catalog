@@ -1,7 +1,7 @@
 {
     "schemaVersion": "1.0.0",
     "catalogType": "wallet",
-    "generatedAt": "2026-08-26T14:43:24+00:00",
+    "generatedAt": "2026-08-26T15:24:07+00:00",
     "entries": [
         {
             "itemId": "aadhaar",
@@ -272,7 +272,7 @@
                             "Biometric authentication",
                             "Integration with Credenco Business Wallet"
                         ],
-                        "documentation": "https://docs.acc.credenco.com",
+                        "documentation": "https://docs.credenco.com",
                         "appStoreLinks": {
                             "iOS": "https://apps.apple.com/dz/app/credenco-wallet/id6753174105",
                             "android": "https://play.google.com/store/apps/details?id=com.credenco.wallet"
@@ -284,10 +284,10 @@
                         "catalogTier": "Pro"
                     }
                 ],
-                "lastUpdated": "2026-08-10T05:14:55+00:00"
+                "lastUpdated": "2026-08-26T15:24:07+00:00"
             },
-            "publishedAt": "2026-08-10 05:14:55",
-            "updatedAt": "2026-08-10 05:14:55"
+            "publishedAt": "2026-08-26 15:24:07",
+            "updatedAt": "2026-08-26 15:24:07"
         },
         {
             "itemId": "france-identite",
