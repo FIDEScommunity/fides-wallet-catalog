@@ -1,13 +1,16 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:wwwallet",
   "wallets": [
     {
       "id": "wwwallet",
-      "name": "wwWallet",
-      "logo": "https://avatars.githubusercontent.com/u/126908515",
+      "name": "SIROS ID",
+      "logo": "https://avatars.githubusercontent.com/u/179488767?s=200&v=4",
       "description": "An open-source web-based wallet for verifiable credentials, enabling users to manage their digital identity directly in the browser without installing an app.",
       "type": "personal",
       "platforms": [
+        "iOS",
+        "Android",
         "Web"
       ],
       "vcFormat": [
@@ -28,9 +31,14 @@
       },
       "openSource": true,
       "repository": "https://github.com/wwWallet",
-      "status": "production"
+      "status": "production",
+      "license": "other",
+      "licenseOther": "BSD 2-Clause",
+      "capabilities": [
+        "holder"
+      ],
+      "catalogTier": "Community"
     }
   ],
-  "lastUpdated": "2025-01-06T12:00:00Z",
-  "orgId": "org:wwwallet"
+  "lastUpdated": "2026-08-26T13:47:29+00:00"
 }

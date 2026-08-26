@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "catalogType": "wallet",
-  "lastImportAt": "2026-08-26T09:48:11.916Z",
+  "lastImportAt": "2026-08-26T13:47:52.573Z",
   "managedWallets": [
     {
       "slug": "bcgov",
@@ -54,6 +54,10 @@
     {
       "slug": "verana",
       "walletId": "vs-agent-verana-business-wallet"
+    },
+    {
+      "slug": "wwwallet",
+      "walletId": "wwwallet"
     }
   ]
 }
