@@ -228,6 +228,9 @@
       "slaAvailable": true,
       "pricing": "Fixed annual fee",
       "media": {
+        "videos": [
+          "https://vimeo.com/1221415005?fl=pl&fe=sh"
+        ],
         "images": [
           "https://docs.sphereon.com/img/diagrams/edk-architecture-overview.svg",
           "https://sphereon.com/content/uploads/2026/07/Machine-Safety-Image-1.jpg",
@@ -244,7 +247,7 @@
       },
       "additionalDocumentation": [
         {
-          "title": "FIDES Award submission",
+          "title": "FIDES Award Nomination",
           "url": "https://sphereon.com/content/uploads/PDF/FIDES_Best_Business_Wallet.pdf"
         }
       ],
