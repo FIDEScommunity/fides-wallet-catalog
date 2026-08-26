@@ -1,7 +1,7 @@
 {
     "schemaVersion": "1.0.0",
     "catalogType": "wallet",
-    "generatedAt": "2026-08-26T15:24:07+00:00",
+    "generatedAt": "2026-08-26T17:12:59+00:00",
     "entries": [
         {
             "itemId": "aadhaar",
@@ -120,7 +120,7 @@
                     {
                         "id": "credenco-business-wallet",
                         "name": "Credenco Business Wallet",
-                        "description": "A DIIP v5 compliant Business Wallet platform providing full holder, issuer, and verifier capabilities for enterprise digital identity management.",
+                        "description": "A DIIP v5 compliant European Business Wallet platform providing full holder, issuer, and verifier capabilities for enterprise digital identity management.",
                         "logo": "https://wallet.acc.credenco.com/logo_white_background.png",
                         "website": "https://www.credenco.com",
                         "type": "organizational",
@@ -129,7 +129,9 @@
                         ],
                         "media": {
                             "videos": [
-                                "https://www.youtube.com/watch?v=IIZ7dlF4gmM"
+                                "https://www.youtube.com/watch?v=IIZ7dlF4gmM",
+                                "https://www.youtube.com/watch?v=mPfLun8p0yE",
+                                "https://www.youtube.com/watch?v=eEve58WGF3c"
                             ]
                         },
                         "vcFormat": [
@@ -197,10 +199,10 @@
                         "catalogTier": "Pro"
                     }
                 ],
-                "lastUpdated": "2026-08-26T14:43:24+00:00"
+                "lastUpdated": "2026-08-26T15:24:14+00:00"
             },
-            "publishedAt": "2026-08-26 14:43:24",
-            "updatedAt": "2026-08-26 14:43:24"
+            "publishedAt": "2026-08-26 15:24:14",
+            "updatedAt": "2026-08-26 15:24:14"
         },
         {
             "itemId": "credenco-wallet",
@@ -1005,45 +1007,6 @@
             },
             "publishedAt": "2026-08-06 15:45:01",
             "updatedAt": "2026-08-06 15:45:01"
-        },
-        {
-            "itemId": "wwwallet",
-            "slug": "wwwallet",
-            "filename": "wallet-catalog.json",
-            "source": "wordpress",
-            "document": {
-                "$schema": "https://fides.community/schemas/wallet-catalog/v2",
-                "orgId": "org:wwwallet",
-                "wallets": [
-                    {
-                        "id": "wwwallet",
-                        "name": "SIROS ID",
-                        "description": "An open-source web-based wallet for verifiable credentials, enabling users to manage their digital identity directly in the browser without installing an app.",
-                        "logo": "https://avatars.githubusercontent.com/u/179488767?s=200&v=4",
-                        "type": "personal",
-                        "platforms": [
-                            "iOS",
-                            "Android",
-                            "Web"
-                        ],
-                        "openSource": true,
-                        "license": "other",
-                        "licenseOther": "BSD 2-Clause",
-                        "vcFormat": [
-                            "sd_jwt_vc",
-                            "jwt_vc"
-                        ],
-                        "status": "production",
-                        "capabilities": [
-                            "holder"
-                        ],
-                        "catalogTier": "Community"
-                    }
-                ],
-                "lastUpdated": "2026-08-26T13:47:29+00:00"
-            },
-            "publishedAt": "2026-08-26 13:47:29",
-            "updatedAt": "2026-08-26 13:47:29"
         }
     ]
 }
