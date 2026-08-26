@@ -1,6 +1,6 @@
 {
   "$schema": "https://fides.community/schemas/wallet-catalog/v2",
-  "orgId": "org:wwwallet",
+  "orgId": "org:siros-foundation",
   "wallets": [
     {
       "id": "wwwallet",
@@ -25,12 +25,12 @@
           "OpenID4VP"
         ]
       },
-      "website": "https://wwwallet.org",
+      "website": "https://id.siros.org/",
       "appStoreLinks": {
-        "web": "https://demo.wwwallet.org/login"
+        "web": "https://id.siros.org/"
       },
       "openSource": true,
-      "repository": "https://github.com/wwWallet",
+      "repository": "https://github.com/sirosfoundation/wallet-frontend",
       "status": "production",
       "license": "other",
       "licenseOther": "BSD 2-Clause",
