@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "catalogType": "wallet",
-  "lastImportAt": "2026-08-26T17:14:03.881Z",
+  "lastImportAt": "2026-08-27T15:28:42.294Z",
   "managedWallets": [
     {
       "slug": "bcgov",
@@ -42,6 +42,10 @@
     {
       "slug": "spherity",
       "walletId": "spherity-business-wallet"
+    },
+    {
+      "slug": "swiyu",
+      "walletId": "swiyu-wallet"
     },
     {
       "slug": "ubique",
