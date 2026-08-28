@@ -1,10 +1,18 @@
 name: Modal CSS drift
 
+# Only run when the distributed modal stylesheet (or this workflow) changes.
+# WordPress export pushes touch data/wp-export/wallet.json and must not trigger this.
 on:
   pull_request:
+    paths:
+      - 'wordpress-plugin/fides-wallet-catalog/assets/lib/fides-catalog-ui.css'
+      - '.github/workflows/modal-css-drift.yml'
   push:
     branches:
       - main
+    paths:
+      - 'wordpress-plugin/fides-wallet-catalog/assets/lib/fides-catalog-ui.css'
+      - '.github/workflows/modal-css-drift.yml'
   workflow_dispatch:
 
 permissions:
@@ -16,13 +24,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out wallet catalog
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
+      # tiles is private; GITHUB_TOKEN of this public repo cannot read it.
+      # Secret FIDES_COMMUNITY_CHECKOUT_PAT must be set at org level or on this repo
+      # (Contents: read on FIDEScommunity/fides-community-tools-tiles).
       - name: Check out canonical modal library
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: FIDEScommunity/fides-community-tools-tiles
           path: canonical
+          token: ${{ secrets.FIDES_COMMUNITY_CHECKOUT_PAT }}
 
       - name: Require canonical modal stylesheet
         run: |
