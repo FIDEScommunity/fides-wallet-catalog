@@ -4,10 +4,10 @@
   "wallets": [
     {
       "id": "swiyu-wallet",
-      "name": "SWIYU Wallet",
-      "description": "swiyu is the Swiss Confederation's wallet. It can be used to easily and securely request, store and present digital credentials and documents. swiyu can currently be used as part of Public Beta. The aim is to gain experience with the e-ID (digital identity) that will be issued by the Swiss Confederation.",
+      "name": "swiyu Wallet",
+      "description": "swiyu is the Swiss Confederation's wallet. It can be used to easily and securely request, store and present digital credentials and documents. swiyu can currently be used as part of the sandbox environment (former \"Public Beta\"). The aim is to gain experience with the e-ID (digital identity) that will be issued by the Swiss Confederation.",
       "logo": "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/95/45/6f/95456f82-a1cb-79c7-5f89-7310844bea61/Placeholder.mill/400x400bb-75.webp",
-      "website": "https://www.swiyu.admin.ch/",
+      "website": "https://www.eid.admin.ch/",
       "type": "personal",
       "platforms": [
         "iOS",
@@ -16,7 +16,7 @@
       "openSource": true,
       "license": "MIT",
       "repository": "https://github.com/swiyu-admin-ch",
-      "pricing": "Free",
+      "pricing": "Free for all.",
       "vcFormat": [
         "sd_jwt_vc"
       ],
@@ -44,20 +44,32 @@
       ],
       "features": [
         "Biometric unlock",
-        "QR-Code scanning"
+        "QR-Code scanning for reader engagement flow in proximity scenarios using Bluetooth Low Energy (BLE) for device-to-device communications."
       ],
-      "documentation": "https://www.swiyu.admin.ch/documentation",
+      "documentation": "https://swiyu-admin-ch.github.io/",
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/ch/app/swiyu/id6737259614",
-        "android": "https://play.google.com/store/apps/details?id=ch.admin.foitt.swiyu",
-        "web": "https://www.swiyu.admin.ch/"
+        "android": "https://play.google.com/store/apps/details?id=ch.admin.foitt.swiyu"
       },
       "status": "beta",
       "capabilities": [
         "holder"
       ],
-      "catalogTier": "Pro"
+      "catalogTier": "Pro",
+      "media": {
+        "videos": [
+          "https://youtu.be/FG1kx0huPvc?si=gncJf4f4Ut8q7DjW"
+        ]
+      },
+      "recognitions": {
+        "customerStories": [
+          {
+            "title": "Collection of show-and-tell projects using our wallet and trust infrastructure.",
+            "url": "https://github.com/orgs/swiyu-admin-ch/discussions/categories/show-and-tell"
+          }
+        ]
+      }
     }
   ],
-  "lastUpdated": "2026-08-27T15:28:07+00:00"
+  "lastUpdated": "2026-08-28T08:43:13+00:00"
 }
