@@ -2,6 +2,9 @@ name: Modal CSS drift
 
 # Only run when the distributed modal stylesheet (or this workflow) changes.
 # WordPress export pushes touch data/wp-export/wallet.json and must not trigger this.
+# Canonical drift is enforced in fides-community-tools-tiles (Modal Drift Check).
+# This job is a consumer-side extra: tiles is private, so checkout may fail and
+# that is ignored — no PAT on this public repo.
 on:
   pull_request:
     paths:
@@ -26,17 +29,16 @@ jobs:
       - name: Check out wallet catalog
         uses: actions/checkout@v6
 
-      # tiles is private; GITHUB_TOKEN of this public repo cannot read it.
-      # Secret FIDES_COMMUNITY_CHECKOUT_PAT must be set at org level or on this repo
-      # (Contents: read on FIDEScommunity/fides-community-tools-tiles).
       - name: Check out canonical modal library
+        id: canonical
+        continue-on-error: true
         uses: actions/checkout@v6
         with:
           repository: FIDEScommunity/fides-community-tools-tiles
           path: canonical
-          token: ${{ secrets.FIDES_COMMUNITY_CHECKOUT_PAT }}
 
       - name: Require canonical modal stylesheet
+        if: steps.canonical.outcome == 'success'
         run: |
           canonical="canonical/lib/fides-catalog-ui/fides-catalog-ui.css"
           distributed="wordpress-plugin/fides-wallet-catalog/assets/lib/fides-catalog-ui.css"
@@ -45,3 +47,9 @@ jobs:
             diff -u "$canonical" "$distributed" || true
             exit 1
           fi
+
+      - name: Skip when tiles is not readable
+        if: steps.canonical.outcome != 'success'
+        run: |
+          echo "Could not check out private fides-community-tools-tiles from this public repo."
+          echo "Canonical modal drift is enforced by Modal Drift Check in fides-community-tools-tiles."
