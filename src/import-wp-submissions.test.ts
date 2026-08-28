@@ -7,6 +7,7 @@ import {
   buildImportPlan,
   emptyState,
   loadCommittedExportPayload,
+  foldOtherOrgCatalogsIntoSlug,
   mergeWalletIntoCatalog,
   type WpExportEntry,
 } from '../scripts/import-wp-submissions.ts';
@@ -191,4 +192,42 @@ test('walletFromEntry prefers embedded wallet id over itemId metadata', () => {
   };
   const wallet = mergeWalletIntoCatalog(null, entry).wallets?.[0];
   assert.equal(wallet?.id, 'embedded-id');
+});
+
+test('foldOtherOrgCatalogsIntoSlug merges siblings and removes the duplicate folder', async () => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'fides-fold-'));
+  await fs.mkdir(path.join(dir, 'CHE'), { recursive: true });
+  await fs.mkdir(path.join(dir, 'swiyu'), { recursive: true });
+  await fs.writeFile(
+    path.join(dir, 'CHE', 'wallet-catalog.json'),
+    `${JSON.stringify({
+      orgId: 'org:swiyu',
+      lastUpdated: '2026-01-10T12:00:00Z',
+      wallets: [
+        { id: 'swiyu-wallet', name: 'Old SWIYU Wallet' },
+        { id: 'swiyu-generic-issuer', name: 'SWIYU Generic Issuer' },
+      ],
+    }, null, 2)}\n`,
+    'utf8',
+  );
+  await fs.writeFile(
+    path.join(dir, 'swiyu', 'wallet-catalog.json'),
+    `${JSON.stringify({
+      orgId: 'org:swiyu',
+      lastUpdated: '2026-08-28T08:43:13+00:00',
+      wallets: [{ id: 'swiyu-wallet', name: 'swiyu Wallet' }],
+    }, null, 2)}\n`,
+    'utf8',
+  );
+
+  const folded = await foldOtherOrgCatalogsIntoSlug('swiyu', 'org:swiyu', dir);
+  assert.equal(folded.length, 1);
+  assert.equal(folded[0]!.toLowerCase(), 'che');
+
+  const merged = JSON.parse(await fs.readFile(path.join(dir, 'swiyu', 'wallet-catalog.json'), 'utf8'));
+  assert.equal(merged.wallets.length, 2);
+  assert.equal(merged.wallets[0].name, 'swiyu Wallet');
+  assert.equal(merged.wallets[1].id, 'swiyu-generic-issuer');
+  await assert.rejects(fs.access(path.join(dir, folded[0]!)), /ENOENT/);
+  await fs.rm(dir, { recursive: true, force: true });
 });

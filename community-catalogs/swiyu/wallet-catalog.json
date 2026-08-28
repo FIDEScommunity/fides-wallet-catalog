@@ -69,6 +69,54 @@
           }
         ]
       }
+    },
+    {
+      "id": "swiyu-generic-issuer",
+      "name": "SWIYU Generic Issuer",
+      "description": "Generic issuer component of the SWIYU ecosystem, enabling organizations to issue verifiable credentials to compatible wallets within the Swiss e-ID infrastructure.",
+      "type": "organizational",
+      "platforms": [
+        "Web"
+      ],
+      "website": "https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-issuer/",
+      "documentation": "https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-issuer/",
+      "openSource": true,
+      "license": "MIT",
+      "repository": "https://github.com/swiyu-admin-ch/swiyu-issuer",
+      "vcFormat": [
+        "sd_jwt_vc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "status": "development",
+      "capabilities": [
+        "issuer"
+      ]
+    },
+    {
+      "id": "swiyu-generic-verifier",
+      "name": "SWIYU Generic Verifier",
+      "description": "Generic verifier component of the SWIYU ecosystem, enabling organizations to request and verify verifiable presentations from compatible wallets within the Swiss e-ID infrastructure.",
+      "type": "organizational",
+      "platforms": [
+        "Web"
+      ],
+      "website": "https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-verifier/",
+      "documentation": "https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-verifier/",
+      "openSource": true,
+      "license": "MIT",
+      "repository": "https://github.com/swiyu-admin-ch/swiyu-verifier",
+      "vcFormat": [
+        "sd_jwt_vc"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "status": "development",
+      "capabilities": [
+        "verifier"
+      ]
     }
   ],
   "lastUpdated": "2026-08-28T08:43:13+00:00"

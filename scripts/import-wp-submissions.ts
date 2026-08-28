@@ -326,8 +326,11 @@ export async function loadExportPayload(wpUrl: string, secret: string): Promise<
   return fetchWpExport(wpUrl, secret);
 }
 
-async function readCatalogAt(slug: string): Promise<WalletCatalogDoc | null> {
-  const filePath = path.join(COMMUNITY_DIR, slug, COMMUNITY_FILENAME);
+async function readCatalogAt(
+  slug: string,
+  communityDir: string = COMMUNITY_DIR,
+): Promise<WalletCatalogDoc | null> {
+  const filePath = path.join(communityDir, slug, COMMUNITY_FILENAME);
   try {
     return JSON.parse(await fs.readFile(filePath, 'utf8')) as WalletCatalogDoc;
   } catch (err) {
@@ -336,18 +339,93 @@ async function readCatalogAt(slug: string): Promise<WalletCatalogDoc | null> {
   }
 }
 
-async function markerExists(slug: string): Promise<boolean> {
+async function listProviderSlugs(communityDir: string = COMMUNITY_DIR): Promise<string[]> {
   try {
-    await fs.access(path.join(COMMUNITY_DIR, slug, MARKER_FILENAME));
+    const entries = await fs.readdir(communityDir, { withFileTypes: true });
+    return entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name);
+  } catch (err) {
+    if ((err as NodeJS.ErrnoException).code === 'ENOENT') return [];
+    throw err;
+  }
+}
+
+/**
+ * WordPress uses the org slug (e.g. `swiyu`) as the community-catalogs folder.
+ * Older GitHub listings sometimes live under a different folder with the same
+ * orgId (e.g. ISO code `CHE`). After writing the WP catalog, fold leftover
+ * sibling wallets into the WP folder and remove the duplicate directory so
+ * the crawler cannot keep serving the stale copy.
+ */
+export async function foldOtherOrgCatalogsIntoSlug(
+  targetSlug: string,
+  orgId: string,
+  communityDir: string = COMMUNITY_DIR,
+): Promise<string[]> {
+  const trimmedOrgId = orgId.trim();
+  if (!trimmedOrgId) return [];
+
+  const targetPath = path.join(communityDir, targetSlug, COMMUNITY_FILENAME);
+  const target = await readCatalogAt(targetSlug, communityDir);
+  if (!target) return [];
+
+  const targetIds = new Set((target.wallets ?? []).map((wallet) => String(wallet.id || '')));
+  const extras: WalletRecord[] = [];
+  const folded: string[] = [];
+  const targetResolved = await fs.realpath(path.join(communityDir, targetSlug)).catch(() => '');
+
+  for (const slug of await listProviderSlugs(communityDir)) {
+    if (slug === targetSlug) continue;
+    const otherDir = path.join(communityDir, slug);
+    const otherResolved = await fs.realpath(otherDir).catch(() => '');
+    if (targetResolved && otherResolved && targetResolved === otherResolved) continue;
+
+    const other = await readCatalogAt(slug, communityDir);
+    if (!other) continue;
+    if (String(other.orgId || '').trim() !== trimmedOrgId) continue;
+
+    for (const wallet of other.wallets ?? []) {
+      const id = String(wallet.id || '');
+      if (!id || targetIds.has(id)) continue;
+      targetIds.add(id);
+      extras.push(wallet);
+    }
+    folded.push(slug);
+  }
+
+  if (!folded.length) return [];
+
+  if (extras.length) {
+    const merged: WalletCatalogDoc = {
+      ...target,
+      wallets: [...(target.wallets ?? []), ...extras],
+    };
+    await fs.writeFile(targetPath, `${JSON.stringify(merged, null, 2)}\n`, 'utf8');
+  }
+
+  for (const slug of folded) {
+    await fs.rm(path.join(communityDir, slug), { recursive: true, force: true });
+  }
+  return folded;
+}
+
+async function markerExists(
+  slug: string,
+  communityDir: string = COMMUNITY_DIR,
+): Promise<boolean> {
+  try {
+    await fs.access(path.join(communityDir, slug, MARKER_FILENAME));
     return true;
   } catch {
     return false;
   }
 }
 
-async function readMarker(slug: string): Promise<{ wallets?: Record<string, unknown> } | null> {
+async function readMarker(
+  slug: string,
+  communityDir: string = COMMUNITY_DIR,
+): Promise<{ wallets?: Record<string, unknown> } | null> {
   try {
-    const raw = await fs.readFile(path.join(COMMUNITY_DIR, slug, MARKER_FILENAME), 'utf8');
+    const raw = await fs.readFile(path.join(communityDir, slug, MARKER_FILENAME), 'utf8');
     return JSON.parse(raw) as { wallets?: Record<string, unknown> };
   } catch {
     return null;
@@ -363,17 +441,18 @@ export async function applyImportPlan(
   plan: ImportPlan,
   apply: boolean,
   catalogType = 'wallet',
+  communityDir: string = COMMUNITY_DIR,
 ): Promise<WpSubmissionState> {
   const managedWallets: ManagedWallet[] = [];
 
   for (const group of plan.groups) {
-    let doc = await readCatalogAt(group.slug);
+    let doc = await readCatalogAt(group.slug, communityDir);
     for (const entry of group.entries) {
       doc = mergeWalletIntoCatalog(doc, entry);
       managedWallets.push({ slug: group.slug, walletId: entry.itemId });
     }
 
-    const dir = path.join(COMMUNITY_DIR, group.slug);
+    const dir = path.join(communityDir, group.slug);
     const catalogPath = path.join(dir, COMMUNITY_FILENAME);
     const markerPath = path.join(dir, MARKER_FILENAME);
     const marker = {
@@ -388,27 +467,32 @@ export async function applyImportPlan(
     if (apply) {
       await fs.mkdir(dir, { recursive: true });
       await fs.writeFile(catalogPath, `${JSON.stringify(doc, null, 2)}\n`, 'utf8');
-      const existingMarker = (await readMarker(group.slug)) ?? {};
+      const existingMarker = (await readMarker(group.slug, communityDir)) ?? {};
       const mergedWallets = { ...(existingMarker.wallets ?? {}), ...marker.wallets };
       await fs.writeFile(
         markerPath,
         `${JSON.stringify({ ...marker, wallets: mergedWallets }, null, 2)}\n`,
         'utf8',
       );
+      const orgId = String(doc?.orgId || group.entries[0]?.document?.orgId || '').trim();
+      const folded = await foldOtherOrgCatalogsIntoSlug(group.slug, orgId, communityDir);
+      for (const slug of folded) {
+        console.log(`FOLD  ${slug} → ${group.slug} (duplicate orgId ${orgId})`);
+      }
     }
     console.log(`${apply ? 'WRITE' : 'DRY '} ${group.slug} (${group.entries.length} wallet(s))`);
   }
 
   for (const managed of plan.prune) {
-    const hasMarker = await markerExists(managed.slug);
+    const hasMarker = await markerExists(managed.slug, communityDir);
     if (!hasMarker) {
       console.log(`SKIP  prune ${managed.slug}/${managed.walletId} — not WP-managed`);
       continue;
     }
-    const doc = await readCatalogAt(managed.slug);
+    const doc = await readCatalogAt(managed.slug, communityDir);
     if (!doc) continue;
     const next = removeWalletFromCatalog(doc, managed.walletId);
-    const dir = path.join(COMMUNITY_DIR, managed.slug);
+    const dir = path.join(communityDir, managed.slug);
     if (apply) {
       if ((next.wallets ?? []).length === 0) {
         await fs.rm(dir, { recursive: true, force: true });
@@ -419,7 +503,7 @@ export async function applyImportPlan(
           `${JSON.stringify(next, null, 2)}\n`,
           'utf8',
         );
-        const marker = await readMarker(managed.slug);
+        const marker = await readMarker(managed.slug, communityDir);
         if (marker?.wallets && managed.walletId in marker.wallets) {
           delete marker.wallets[managed.walletId];
           await fs.writeFile(

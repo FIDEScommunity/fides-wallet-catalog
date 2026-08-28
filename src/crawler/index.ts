@@ -889,6 +889,8 @@ function calculateStats(wallets: NormalizedWallet[]): AggregatedCatalog['stats']
  * Deduplicate wallets (same organization + wallet ID)
  * Priority: DID > GitHub > Local (non-EU landscape) > EU Landscape
  * Preserve catalogTier from the lower-priority copy when the winner lacks it.
+ * Equal priority: prefer the newer updatedAt so a WordPress republish is not
+ * shadowed by an older duplicate folder (e.g. CHE vs swiyu).
  */
 function deduplicateWallets(wallets: NormalizedWallet[]): NormalizedWallet[] {
   const seen = new Map<string, NormalizedWallet>();
@@ -905,6 +907,11 @@ function deduplicateWallets(wallets: NormalizedWallet[]): NormalizedWallet[] {
     return 0;
   };
 
+  const updatedAtMs = (wallet: NormalizedWallet): number => {
+    const parsed = Date.parse(wallet.updatedAt || '');
+    return Number.isFinite(parsed) ? parsed : 0;
+  };
+
   const mergeCatalogTier = (
     winner: NormalizedWallet,
     loser: NormalizedWallet | undefined
@@ -917,7 +924,22 @@ function deduplicateWallets(wallets: NormalizedWallet[]): NormalizedWallet[] {
     const key = `${wallet.orgId}:${wallet.id}`;
     const existing = seen.get(key);
 
-    if (!existing || getPriority(wallet) > getPriority(existing)) {
+    if (!existing) {
+      seen.set(key, wallet);
+      continue;
+    }
+
+    const incomingPriority = getPriority(wallet);
+    const existingPriority = getPriority(existing);
+    if (incomingPriority > existingPriority) {
+      seen.set(key, mergeCatalogTier(wallet, existing));
+      continue;
+    }
+    if (incomingPriority < existingPriority) {
+      seen.set(key, mergeCatalogTier(existing, wallet));
+      continue;
+    }
+    if (updatedAtMs(wallet) > updatedAtMs(existing)) {
       seen.set(key, mergeCatalogTier(wallet, existing));
     } else {
       seen.set(key, mergeCatalogTier(existing, wallet));
