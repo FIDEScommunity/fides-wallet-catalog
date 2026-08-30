@@ -175,7 +175,7 @@
     var p = String(platform || '').toLowerCase();
     if (p === 'ios') return 'app_store';
     if (p === 'android') return 'google_play';
-    if (p === 'web') return 'web_app';
+    if (p === 'web') return 'product';
     return '';
   }
 
@@ -183,8 +183,9 @@
     const link = labelsOnly ? null : getAppStoreLink(wallet, platform);
     const icon = platform === 'iOS' || platform === 'Android' ? icons.smartphone : icons.globe;
     if (link) {
-      return '<a href="' + escapeHtml(link) + '" target="_blank" rel="noopener" class="fides-tag platform clickable"' +
-        walletSalesTrackAttrString(wallet, platformSalesLinkType(platform)) + '>' +
+      const salesAttrs = walletSalesTrackAttrString(wallet, platformSalesLinkType(platform));
+      return '<a href="' + escapeHtml(link) + '" target="_blank" rel="noopener" class="fides-tag platform clickable' +
+        (salesAttrs ? ' matomo_ignore piwik_ignore' : '') + '"' + salesAttrs + '>' +
         icon + ' ' + escapeHtml(platform) + '</a>';
     }
     return '<span class="fides-tag platform">' + icon + ' ' + escapeHtml(platform) + '</span>';
@@ -529,9 +530,11 @@
     const url = String(href || '').trim();
     if (!url) return '';
     const display = linkText != null && String(linkText).trim() ? String(linkText).trim() : url;
+    const trackingClass = salesAttrs ? ' matomo_ignore piwik_ignore' : '';
+    const legacyMatomoAttr = salesAttrs ? '' : ' data-matomo-name="' + escapeHtml(matomoName) + '"';
     return '<div class="fides-additional-product-link-row">' +
       '<span class="fides-additional-product-link-label">' + escapeHtml(label) + '</span>' +
-      '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer" class="fides-modal-link-inline fides-additional-product-link" data-matomo-name="' + escapeHtml(matomoName) + '"' +
+      '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer" class="fides-modal-link-inline fides-additional-product-link' + trackingClass + '"' + legacyMatomoAttr +
       (salesAttrs || '') + '>' +
       escapeHtml(display) + ' ' + icons.externalLinkSmall + '</a></div>';
   }
@@ -544,7 +547,7 @@
       wallet.website,
       'Product link',
       null,
-      walletSalesTrackAttrString(wallet, 'website')
+      walletSalesTrackAttrString(wallet, 'product')
     );
     if (websiteRow) linkRows.push(websiteRow);
     const documentationRow = buildWalletAdditionalProductLinkRow(
@@ -555,13 +558,21 @@
       walletSalesTrackAttrString(wallet, 'documentation')
     );
     if (documentationRow) linkRows.push(documentationRow);
-    const repositoryRow = buildWalletAdditionalProductLinkRow('Code Repository', wallet.repository, 'Code Repository');
+    const repositoryRow = buildWalletAdditionalProductLinkRow(
+      'Code Repository',
+      wallet.repository,
+      'Code Repository',
+      null,
+      walletSalesTrackAttrString(wallet, 'code_repository')
+    );
     if (repositoryRow) linkRows.push(repositoryRow);
     walletAdditionalDocumentationItems(wallet).forEach(function(item) {
       const row = buildWalletAdditionalProductLinkRow(
         String(item.title || '').trim(),
         item.url,
-        'Additional documentation'
+        'Additional documentation',
+        null,
+        walletSalesTrackAttrString(wallet, 'documentation')
       );
       if (row) linkRows.push(row);
     });
@@ -815,11 +826,13 @@
 
   function renderWalletAppStoreButton(kind, iconHtml, smallText, strongText, url, isClickable, matomoName, ariaLabel, extraClass, salesAttrs) {
     const extra = extraClass ? ' ' + String(extraClass).trim() : '';
-    const className = 'fides-app-store-btn ' + kind + extra + (isClickable ? '' : ' is-disabled');
+    const trackingClass = salesAttrs ? ' matomo_ignore piwik_ignore' : '';
+    const className = 'fides-app-store-btn ' + kind + extra + trackingClass + (isClickable ? '' : ' is-disabled');
     const labelHtml = '<span><small>' + escapeHtml(smallText) + '</small><strong>' + escapeHtml(strongText) + '</strong></span>';
     const content = iconHtml + labelHtml;
     if (isClickable && url) {
-      return '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer" class="' + className + '" data-matomo-name="' + escapeHtml(matomoName) + '"' +
+      const legacyMatomoAttr = salesAttrs ? '' : ' data-matomo-name="' + escapeHtml(matomoName) + '"';
+      return '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer" class="' + className + '"' + legacyMatomoAttr +
         (salesAttrs || '') +
         ' aria-label="' + escapeHtml(ariaLabel) + '">' + content + '</a>';
     }
@@ -872,7 +885,7 @@
         'Web app',
         'Open web app',
         '',
-        isPro && webUrl ? walletSalesTrackAttrString(wallet, 'web_app') : ''
+        isPro && webUrl ? walletSalesTrackAttrString(wallet, 'product') : ''
       ));
     }
     if (!buttons.length) return '';
@@ -1771,14 +1784,16 @@
     return '<p class="fides-accordion-body-text">' + escapeHtml(text) + '</p>';
   }
 
-  function renderWalletRecognitionListItemHtml(item) {
+  function renderWalletRecognitionListItemHtml(item, wallet) {
     const title = escapeHtml(String(item.title || '').trim());
     const url = item.url ? String(item.url).trim() : '';
     if (!title) return '';
     if (url) {
+      const salesAttrs = walletSalesTrackAttrString(wallet, 'documentation');
       return '<li class="fides-recognition-item">' +
         '<span class="fides-recognition-item-title">' + title + '</span>' +
-        '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener" class="fides-modal-link-inline fides-recognition-item-link" data-matomo-name="Recognition link">' +
+        '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener" class="fides-modal-link-inline fides-recognition-item-link' +
+        (salesAttrs ? ' matomo_ignore piwik_ignore' : '') + '"' + salesAttrs + '>' +
         'Learn more ' + icons.externalLinkSmall + '</a></li>';
     }
     return '<li class="fides-recognition-item"><span class="fides-recognition-item-title">' + title + '</span></li>';
@@ -1797,7 +1812,7 @@
       html += '<div class="fides-recognitions-section" data-section="' + escapeHtml(section.key) + '">' +
         '<div class="fides-recognitions-section-title">' + escapeHtml(section.title) + '</div>' +
         '<ul class="fides-recognitions-list">' +
-        items.map(renderWalletRecognitionListItemHtml).filter(Boolean).join('') +
+        items.map(function(item) { return renderWalletRecognitionListItemHtml(item, wallet); }).filter(Boolean).join('') +
         '</ul></div>';
     });
     return html;
@@ -1808,7 +1823,7 @@
     const items = walletRecognitionItems(wallet, 'certifications');
     if (!items.length) return '';
     return '<ul class="fides-recognitions-list">' +
-      items.map(renderWalletRecognitionListItemHtml).filter(Boolean).join('') +
+      items.map(function(item) { return renderWalletRecognitionListItemHtml(item, wallet); }).filter(Boolean).join('') +
       '</ul>';
   }
 
@@ -1869,8 +1884,9 @@
     return wallet.platforms.map(function(p) {
       const link = platformLabelsOnly ? null : getAppStoreLink(wallet, p);
       if (link) {
-        return '<a href="' + escapeHtml(link) + '" target="_blank" rel="noopener" class="fides-modal-link-inline"' +
-          walletSalesTrackAttrString(wallet, platformSalesLinkType(p)) + '>' +
+        const salesAttrs = walletSalesTrackAttrString(wallet, platformSalesLinkType(p));
+        return '<a href="' + escapeHtml(link) + '" target="_blank" rel="noopener" class="fides-modal-link-inline' +
+          (salesAttrs ? ' matomo_ignore piwik_ignore' : '') + '"' + salesAttrs + '>' +
           escapeHtml(p) + ' ' + icons.externalLinkSmall + '</a>';
       }
       return escapeHtml(p);
@@ -2214,24 +2230,42 @@
   }
 
   function salesTrackSafePart(value) {
-    return String(value || 'unknown')
+    return String(value || '')
       .trim()
       .toLowerCase()
       .replace(/\|/g, '-')
       .replace(/\s+/g, '-');
   }
 
+  var PROVIDER_OUTBOUND_LINK_TYPES = [
+    'website',
+    'product',
+    'documentation',
+    'contact',
+    'app_store',
+    'google_play',
+    'demo',
+    'code_repository'
+  ];
+
+  function normalizeProviderOutboundLinkType(linkType) {
+    var normalized = salesTrackSafePart(linkType);
+    if (normalized === 'web_app') normalized = 'product';
+    return PROVIDER_OUTBOUND_LINK_TYPES.indexOf(normalized) !== -1 ? normalized : '';
+  }
+
   function salesTrackDestinationFromHref(href) {
     var value = String(href || '').trim();
-    if (!value) return 'unknown';
+    if (!value) return '';
     if (/^mailto:/i.test(value)) return 'email';
-    if (value.charAt(0) === '#' || value.charAt(0) === '/') return 'internal';
+    if (value.charAt(0) === '#' || (value.charAt(0) === '/' && value.charAt(1) !== '/')) return '';
     try {
       var base = (window.location && window.location.href) ? window.location.href : 'https://fides.community/';
-      var host = new URL(value, base).hostname.toLowerCase();
-      return host || 'unknown';
+      var url = new URL(value, base);
+      if (url.protocol !== 'http:' && url.protocol !== 'https:') return '';
+      return url.hostname.toLowerCase();
     } catch (e) {
-      return 'unknown';
+      return '';
     }
   }
 
@@ -2246,14 +2280,31 @@
     return salesTrackSafePart(wallet && wallet.id);
   }
 
+  function walletAnalyticsAttrString(wallet) {
+    var providerId = walletSalesProviderId(wallet);
+    var entityId = walletSalesWalletId(wallet);
+    if (!providerId || !entityId) return '';
+    var providerName = wallet && wallet.provider && wallet.provider.name
+      ? String(wallet.provider.name).trim()
+      : String((wallet && wallet.providerName) || '').trim();
+    var entityName = String((wallet && wallet.name) || '').trim();
+    return ' data-provider-id="' + escapeHtml(providerId) + '"' +
+      ' data-provider-name="' + escapeHtml(providerName) + '"' +
+      ' data-entity-type="wallet"' +
+      ' data-entity-id="' + escapeHtml(entityId) + '"' +
+      ' data-entity-name="' + escapeHtml(entityName) + '"' +
+      ' data-wallet-id="' + escapeHtml(entityId) + '"' +
+      ' data-wallet-name="' + escapeHtml(entityName) + '"';
+  }
+
   function walletSalesTrackAttrString(wallet, linkType, options) {
     if (!wallet || !linkType) return '';
-    var attrs = ' data-sales-track="wallet-link"' +
-      ' data-provider-id="' + escapeHtml(walletSalesProviderId(wallet)) + '"' +
-      ' data-wallet-id="' + escapeHtml(walletSalesWalletId(wallet)) + '"' +
-      ' data-link-type="' + escapeHtml(salesTrackSafePart(linkType)) + '"';
-    if (options && options.matomoIgnore) attrs += ' data-matomo-ignore="1"';
-    return attrs;
+    var analyticsAttrs = walletAnalyticsAttrString(wallet);
+    var normalizedLinkType = normalizeProviderOutboundLinkType(linkType);
+    if (!analyticsAttrs || !normalizedLinkType) return '';
+    return ' data-sales-track="wallet-link"' + analyticsAttrs +
+      ' data-link-type="' + escapeHtml(normalizedLinkType) + '"' +
+      ' data-matomo-ignore="1"';
   }
 
   function organizationSalesProviderId(org) {
@@ -2263,31 +2314,55 @@
     return salesTrackSafePart(raw.replace(/^org:/i, ''));
   }
 
+  function organizationAnalyticsAttrString(org) {
+    var providerId = organizationSalesProviderId(org);
+    if (!providerId) return '';
+    var providerName = String((org && (org.name || org.displayName)) || '').trim();
+    return ' data-provider-id="' + escapeHtml(providerId) + '"' +
+      ' data-provider-name="' + escapeHtml(providerName) + '"' +
+      ' data-entity-type="organization"' +
+      ' data-entity-id="' + escapeHtml(providerId) + '"' +
+      ' data-entity-name="' + escapeHtml(providerName) + '"';
+  }
+
   function organizationSalesTrackAttrString(org, linkType, options) {
     if (!org || !linkType) return '';
-    var attrs = ' data-sales-track="org-link"' +
-      ' data-provider-id="' + escapeHtml(organizationSalesProviderId(org)) + '"' +
-      ' data-link-type="' + escapeHtml(salesTrackSafePart(linkType)) + '"';
-    if (options && options.matomoIgnore) attrs += ' data-matomo-ignore="1"';
-    return attrs;
+    var analyticsAttrs = organizationAnalyticsAttrString(org);
+    var normalizedLinkType = normalizeProviderOutboundLinkType(linkType);
+    if (!analyticsAttrs || !normalizedLinkType) return '';
+    return ' data-sales-track="org-link"' + analyticsAttrs +
+      ' data-link-type="' + escapeHtml(normalizedLinkType) + '"' +
+      ' data-matomo-ignore="1"';
   }
 
   function trackWalletDetailOpen(wallet) {
     if (!wallet) return;
+    var providerId = walletSalesProviderId(wallet);
+    var entityId = walletSalesWalletId(wallet);
+    if (!providerId || !entityId) return;
     trackMatomoEvent(
       'Wallet Catalog',
-      'Modal Open',
-      walletSalesProviderId(wallet) + '|' + walletSalesWalletId(wallet)
+      'Detail Open',
+      [providerId, 'wallet', entityId].join('|')
     );
   }
 
-  function trackOrganizationDetailOpen(org) {
+  function trackOrganizationDetailOpen(org, options) {
     if (!org) return;
+    var providerId = organizationSalesProviderId(org);
+    if (!providerId) return;
+    var eventNameParts = [providerId, 'organization', providerId];
+    var attribution = String((options && options.attributionFrom) || '').trim();
+    var attributionMatch = /^usecase:(.+)$/i.exec(attribution);
+    if (attributionMatch && attributionMatch[1]) {
+      var attributionId = salesTrackSafePart(attributionMatch[1]);
+      if (attributionId) eventNameParts.push('from:usecase:' + attributionId);
+    }
     ensureSalesLinkTracking();
     trackMatomoEvent(
       'Organization Catalog',
-      'Modal Open',
-      organizationSalesProviderId(org)
+      'Detail Open',
+      eventNameParts.join('|')
     );
   }
 
@@ -2295,25 +2370,40 @@
     if (!link) return;
     var href = (link.getAttribute && link.getAttribute('href')) || link.href || '';
     var dataset = link.dataset || {};
+    var providerId = salesTrackSafePart(dataset.providerId);
+    var entityType = salesTrackSafePart(dataset.entityType) || 'wallet';
+    var entityId = salesTrackSafePart(dataset.entityId || dataset.walletId);
+    var linkType = normalizeProviderOutboundLinkType(dataset.linkType);
+    var destination = salesTrackDestinationFromHref(href);
+    if (!providerId || entityType !== 'wallet' || !entityId || !linkType || !destination) return;
     var name = [
-      dataset.providerId,
-      dataset.walletId,
-      dataset.linkType,
-      salesTrackDestinationFromHref(href)
-    ].map(salesTrackSafePart).join('|');
-    trackMatomoEvent('Wallet Catalog', 'Link Click', name);
+      providerId,
+      entityType,
+      entityId,
+      linkType,
+      destination
+    ].join('|');
+    trackMatomoEvent('Wallet Catalog', 'Provider Outbound', name);
   }
 
   function trackOrganizationLinkClick(link) {
     if (!link) return;
     var href = (link.getAttribute && link.getAttribute('href')) || link.href || '';
     var dataset = link.dataset || {};
+    var providerId = salesTrackSafePart(dataset.providerId);
+    var entityType = salesTrackSafePart(dataset.entityType) || 'organization';
+    var entityId = salesTrackSafePart(dataset.entityId) || providerId;
+    var linkType = normalizeProviderOutboundLinkType(dataset.linkType);
+    var destination = salesTrackDestinationFromHref(href);
+    if (!providerId || entityType !== 'organization' || entityId !== providerId || !linkType || !destination) return;
     var name = [
-      dataset.providerId,
-      dataset.linkType,
-      salesTrackDestinationFromHref(href)
-    ].map(salesTrackSafePart).join('|');
-    trackMatomoEvent('Organization Catalog', 'Link Click', name);
+      providerId,
+      entityType,
+      entityId,
+      linkType,
+      destination
+    ].join('|');
+    trackMatomoEvent('Organization Catalog', 'Provider Outbound', name);
   }
 
   function salesTrackKind(el) {
@@ -2383,6 +2473,7 @@
       var a = e.target.closest('a');
       if (!a || !a.href) return;
       if (isSalesTrackLink(a)) return;
+      if (a.dataset.matomoIgnore || a.classList.contains('matomo_ignore') || a.classList.contains('piwik_ignore')) return;
       var inCatalog = containerSelector && document.querySelector(containerSelector) && document.querySelector(containerSelector).contains(a);
       var overlay = document.getElementById(modalOverlayId);
       var inModal = overlay && overlay.contains(a);
@@ -3132,7 +3223,8 @@
 
   function buildWalletModalLinkButton(href, label, iconSvg, matomoName, isPrimary, salesAttrs) {
     return '<a href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer" class="fides-modal-link' +
-      (isPrimary ? ' primary' : '') + '" data-matomo-name="' + escapeHtml(matomoName) + '"' +
+      (isPrimary ? ' primary' : '') + (salesAttrs ? ' matomo_ignore piwik_ignore' : '') + '"' +
+      (salesAttrs ? '' : ' data-matomo-name="' + escapeHtml(matomoName) + '"') +
       (salesAttrs || '') + '>' +
       iconSvg + ' ' + escapeHtml(label) + '</a>';
   }
@@ -3148,7 +3240,8 @@
         : '';
       if (entry.type === 'mailto') {
         return '<a href="mailto:' + escapeHtml(entry.href) + '" class="fides-modal-link' +
-          (isPrimary ? ' primary' : '') + (salesAttrs ? ' matomo_ignore' : '') + '" data-matomo-name="' + escapeHtml(entry.matomoName) + '"' +
+          (isPrimary ? ' primary' : '') + (salesAttrs ? ' matomo_ignore piwik_ignore' : '') + '"' +
+          (salesAttrs ? '' : ' data-matomo-name="' + escapeHtml(entry.matomoName) + '"') +
           salesAttrs + '>' +
           entry.icon + ' ' + escapeHtml(entry.label) + '</a>';
       }
@@ -3223,19 +3316,22 @@
       ? walletSalesTrackAttrString(salesWallet, 'contact', { matomoIgnore: true })
       : (salesOrg ? organizationSalesTrackAttrString(salesOrg, 'contact', { matomoIgnore: true }) : '');
     const meetingSalesAttrs = salesWallet
-      ? walletSalesTrackAttrString(salesWallet, 'contact')
-      : (salesOrg ? organizationSalesTrackAttrString(salesOrg, 'contact') : '');
+      ? walletSalesTrackAttrString(salesWallet, 'contact', { matomoIgnore: true })
+      : (salesOrg ? organizationSalesTrackAttrString(salesOrg, 'contact', { matomoIgnore: true }) : '');
     const buttons = [];
     if (email) {
       buttons.push(
         '<a href="mailto:' + escapeHtml(email) + '" class="fides-modal-footer-btn fides-modal-footer-btn--accent' +
-        (contactSalesAttrs ? ' matomo_ignore' : '') + '" data-matomo-name="Contact"' + contactSalesAttrs + '>' +
+        (contactSalesAttrs ? ' matomo_ignore piwik_ignore' : '') + '"' +
+        (contactSalesAttrs ? '' : ' data-matomo-name="Contact"') + contactSalesAttrs + '>' +
         icons.mail + ' Contact</a>'
       );
     }
     if (bookMeetingUrl) {
       buttons.push(
-        '<a href="' + escapeHtml(bookMeetingUrl) + '" target="_blank" rel="noopener noreferrer" class="fides-modal-footer-btn" data-matomo-name="Book a Meeting"' +
+        '<a href="' + escapeHtml(bookMeetingUrl) + '" target="_blank" rel="noopener noreferrer" class="fides-modal-footer-btn' +
+        (meetingSalesAttrs ? ' matomo_ignore piwik_ignore' : '') + '"' +
+        (meetingSalesAttrs ? '' : ' data-matomo-name="Book a Meeting"') +
         meetingSalesAttrs + '>' +
         icons.externalLink + ' Book a Meeting</a>'
       );
@@ -3605,7 +3701,7 @@
     const tierUi = optionsTierUiEnabled(options);
     const isCommunity = tierUi ? !walletListingTierIsPro(org, options) : itemIsCommunity(org);
     selectedContext = { type: 'organization', item: org, options: options || {}, theme: theme };
-    trackOrganizationDetailOpen(org);
+    trackOrganizationDetailOpen(org, options);
     if (options && typeof options.onOpen === 'function') options.onOpen(org);
 
     const logo = org.logo || '';
@@ -3657,6 +3753,9 @@
     const shareButtonHtml = (options && options.showShare === false)
       ? ''
       : '<button type="button" class="fides-modal-copy-link" id="fides-modal-copy-link" aria-label="Copy link">' + icons.share + '</button>';
+    const organizationWebsiteSalesAttrs = !isCommunity && org.website
+      ? organizationSalesTrackAttrString(org, 'website')
+      : '';
 
     const modalHtml = '<div class="fides-modal-overlay" id="fides-modal-overlay" data-theme="' + escapeHtml(theme) + '">' +
       '<div class="fides-modal" role="dialog" aria-modal="true">' +
@@ -3678,7 +3777,8 @@
       (credentialLinks ? '<div class="fides-modal-grid-item"><div class="fides-modal-grid-label">' + icons.fileCheck + ' Credentials</div><div class="fides-modal-grid-value">' + credentialLinks + '</div></div>' : '') +
       '</div>' +
       '<div class="fides-modal-links">' +
-      (!isCommunity && org.website ? '<a href="' + escapeHtml(org.website) + '" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Organization website"' + organizationSalesTrackAttrString(org, 'website') + '>' + icons.externalLink + ' Visit Website</a>' : '') +
+      (!isCommunity && org.website ? '<a href="' + escapeHtml(org.website) + '" target="_blank" rel="noopener" class="fides-modal-link primary' +
+        (organizationWebsiteSalesAttrs ? ' matomo_ignore piwik_ignore' : '') + '"' + organizationWebsiteSalesAttrs + '>' + icons.externalLink + ' Visit Website</a>' : '') +
       '</div>' +
       buildModalLastUpdatedHtml(org, ['updatedAt', 'updated', 'fetchedAt']) +
       '</div>' +
@@ -4220,8 +4320,10 @@
     trackMatomoEvent,
     trackWalletDetailOpen,
     trackOrganizationDetailOpen,
+    walletAnalyticsAttrString,
     walletSalesTrackAttrString,
     platformSalesLinkType,
+    organizationAnalyticsAttrString,
     organizationSalesTrackAttrString,
     initMatomoLinkTracking,
     userCanEditCatalogItem,

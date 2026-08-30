@@ -770,7 +770,7 @@
     const d = getWalletDisplayData(wallet);
     const officialClass = walletOfficialCardClass(wallet);
     return `
-      <div class="fides-wallet-card${officialClass}" data-wallet-id="${escapeHtml(wallet.id)}" role="button" tabindex="0" aria-label="${walletCardAriaLabel(wallet)} – ${escapeHtml(d.providerName)}">
+      <div class="fides-wallet-card${officialClass}" data-wallet-id="${escapeHtml(wallet.id)}"${walletCardAnalyticsAttrs(wallet)} role="button" tabindex="0" aria-label="${walletCardAriaLabel(wallet)} – ${escapeHtml(d.providerName)}">
         <div class="fides-row-icon" aria-hidden="true">
           ${wallet.logo
             ? `<img src="${escapeHtml(wallet.logo)}" alt="${escapeHtml(wallet.name || d.displayName)}" style="width:22px;height:22px;object-fit:contain;border-radius:3px;">`
@@ -799,7 +799,7 @@
       const icon = getAppStoreIcon(platform);
       const platformLabel = escapeHtml(platform);
       if (href) {
-        return `<a href="${escapeHtml(href)}" target="_blank" rel="noopener" class="fides-row-platform-link" title="${platformLabel}" aria-label="${platformLabel} store link" onclick="event.stopPropagation();"${walletSalesTrackAttrs(wallet, platformSalesLinkType(platform))}>${icon}</a>`;
+        return `<a href="${escapeHtml(href)}" target="_blank" rel="noopener" class="fides-row-platform-link${walletSalesTrackClass(wallet, platformSalesLinkType(platform))}" title="${platformLabel}" aria-label="${platformLabel} store link" onclick="event.stopPropagation();"${walletSalesTrackAttrs(wallet, platformSalesLinkType(platform))}>${icon}</a>`;
       }
       return `<span class="fides-row-platform-icon" title="${platformLabel}" aria-label="${platformLabel}">${icon}</span>`;
     }).join('');
@@ -2155,7 +2155,7 @@
     const logoMain = renderWalletCardLogoMain(wallet);
 
     return `
-      <div class="fides-wallet-card${officialClass}" data-wallet-id="${wallet.id}" role="button" tabindex="0" aria-label="${walletCardAriaLabel(wallet)}">
+      <div class="fides-wallet-card${officialClass}" data-wallet-id="${escapeHtml(wallet.id)}"${walletCardAnalyticsAttrs(wallet)} role="button" tabindex="0" aria-label="${walletCardAriaLabel(wallet)}">
         <header class="fides-wallet-header fides-wallet-card-header--text-only type-${wallet.type}">
           <div class="fides-wallet-info">
             <h3 class="fides-wallet-name" title="${escapeHtml(displayName)}">${escapeHtml(displayName)}</h3>
@@ -2197,8 +2197,30 @@
     const p = String(platform || '').toLowerCase();
     if (p === 'ios') return 'app_store';
     if (p === 'android') return 'google_play';
-    if (p === 'web') return 'web_app';
+    if (p === 'web') return 'product';
     return '';
+  }
+
+  function walletCardAnalyticsAttrs(wallet) {
+    const rawProviderId = String(
+      (wallet && wallet.orgId) ||
+      (wallet && wallet.provider && wallet.provider.orgId) ||
+      ''
+    ).trim().replace(/^org:/i, '');
+    const providerId = rawProviderId.toLowerCase().replace(/\|/g, '-').replace(/\s+/g, '-');
+    const providerName = String(
+      (wallet && wallet.provider && wallet.provider.name) ||
+      (wallet && wallet.providerName) ||
+      ''
+    ).trim();
+    const walletName = String((wallet && wallet.name) || '').trim();
+    if (!providerId || !wallet || !wallet.id) return '';
+    return ` data-provider-id="${escapeHtml(providerId)}"` +
+      ` data-provider-name="${escapeHtml(providerName)}"` +
+      ' data-entity-type="wallet"' +
+      ` data-entity-id="${escapeHtml(wallet.id)}"` +
+      ` data-entity-name="${escapeHtml(walletName)}"` +
+      ` data-wallet-name="${escapeHtml(walletName)}"`;
   }
 
   function walletSalesTrackAttrs(wallet, linkType) {
@@ -2206,7 +2228,25 @@
     if (window.FidesCatalogUI && typeof window.FidesCatalogUI.walletSalesTrackAttrString === 'function') {
       return window.FidesCatalogUI.walletSalesTrackAttrString(wallet, linkType);
     }
-    return '';
+    const allowed = ['website', 'product', 'documentation', 'contact', 'app_store', 'google_play', 'demo', 'code_repository'];
+    const normalizedLinkType = String(linkType).trim().toLowerCase() === 'web_app'
+      ? 'product'
+      : String(linkType).trim().toLowerCase();
+    const rawProviderId = String(
+      (wallet && wallet.orgId) ||
+      (wallet && wallet.provider && wallet.provider.orgId) ||
+      ''
+    ).trim().replace(/^org:/i, '');
+    const providerId = rawProviderId.toLowerCase().replace(/\|/g, '-').replace(/\s+/g, '-');
+    const walletId = String((wallet && wallet.id) || '').trim().toLowerCase().replace(/\|/g, '-').replace(/\s+/g, '-');
+    if (!providerId || !walletId || !allowed.includes(normalizedLinkType)) return '';
+    return ' data-matomo-action="Provider Outbound"' +
+      ` data-matomo-name="${escapeHtml([providerId, 'wallet', walletId, normalizedLinkType, 'legacy'].join('|'))}"` +
+      ' data-matomo-ignore="1"';
+  }
+
+  function walletSalesTrackClass(wallet, linkType) {
+    return walletSalesTrackAttrs(wallet, linkType) ? ' matomo_ignore piwik_ignore' : '';
   }
 
   /**
@@ -2227,7 +2267,7 @@
     const icon = platform === 'iOS' || platform === 'Android' ? icons.smartphone : icons.globe;
     
     if (link) {
-      return `<a href="${escapeHtml(link)}" target="_blank" rel="noopener" class="fides-tag platform clickable"${walletSalesTrackAttrs(wallet, platformSalesLinkType(platform))}>${icon} ${escapeHtml(platform)}</a>`;
+      return `<a href="${escapeHtml(link)}" target="_blank" rel="noopener" class="fides-tag platform clickable${walletSalesTrackClass(wallet, platformSalesLinkType(platform))}"${walletSalesTrackAttrs(wallet, platformSalesLinkType(platform))}>${icon} ${escapeHtml(platform)}</a>`;
     }
     return `<span class="fides-tag platform">${icon} ${escapeHtml(platform)}</span>`;
   }
@@ -2340,7 +2380,7 @@
             ` : ''}
 
             <!-- Video embed (full listings only when tier UI is on) -->
-            ${walletHasFullCatalogContent(wallet) && walletPrimaryVideoUrl(wallet) ? getVideoEmbedHtml(walletPrimaryVideoUrl(wallet)) : ''}
+            ${walletHasFullCatalogContent(wallet) && walletPrimaryVideoUrl(wallet) ? getVideoEmbedHtml(walletPrimaryVideoUrl(wallet), wallet) : ''}
 
             <!-- Quick info grid -->
             <div class="fides-modal-grid">
@@ -2476,17 +2516,17 @@
             ${walletHasFullCatalogContent(wallet) ? `
             <div class="fides-modal-links">
               ${wallet.website ? `
-                <a href="${escapeHtml(wallet.website)}" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Visit website">
+                <a href="${escapeHtml(wallet.website)}" target="_blank" rel="noopener" class="fides-modal-link primary${walletSalesTrackClass(wallet, 'product')}"${walletSalesTrackAttrs(wallet, 'product')}>
                   ${icons.externalLink} Visit Website
                 </a>
               ` : ''}
               ${wallet.openSource && wallet.repository ? `
-                <a href="${escapeHtml(wallet.repository)}" target="_blank" rel="noopener" class="fides-modal-link" data-matomo-name="Repository">
+                <a href="${escapeHtml(wallet.repository)}" target="_blank" rel="noopener" class="fides-modal-link${walletSalesTrackClass(wallet, 'code_repository')}"${walletSalesTrackAttrs(wallet, 'code_repository')}>
                   ${icons.github} View Repository
                 </a>
               ` : ''}
               ${wallet.documentation ? `
-                <a href="${escapeHtml(wallet.documentation)}" target="_blank" rel="noopener" class="fides-modal-link" data-matomo-name="Documentation">
+                <a href="${escapeHtml(wallet.documentation)}" target="_blank" rel="noopener" class="fides-modal-link${walletSalesTrackClass(wallet, 'documentation')}"${walletSalesTrackAttrs(wallet, 'documentation')}>
                   ${icons.book} Documentation
                 </a>
               ` : ''}
@@ -3204,7 +3244,7 @@
    * @param {string} videoUrl - Original video URL
    * @returns {string} - HTML for embedded video or fallback button
    */
-  function getVideoEmbedHtml(videoUrl) {
+  function getVideoEmbedHtml(videoUrl, wallet) {
     const embedUrl = getVideoEmbedUrl(videoUrl);
     
     if (embedUrl) {
@@ -3225,7 +3265,7 @@
     // Fallback: external link button if provider not supported
     return `
       <div class="fides-video-fallback">
-        <a href="${escapeHtml(videoUrl)}" target="_blank" rel="noopener" class="fides-modal-link primary" data-matomo-name="Video">
+        <a href="${escapeHtml(videoUrl)}" target="_blank" rel="noopener" class="fides-modal-link primary${walletSalesTrackClass(wallet, 'demo')}"${walletSalesTrackAttrs(wallet, 'demo')}>
           ${icons.play} Watch Video (External)
         </a>
       </div>
