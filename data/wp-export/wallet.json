@@ -1,7 +1,7 @@
 {
     "schemaVersion": "1.0.0",
     "catalogType": "wallet",
-    "generatedAt": "2026-08-31T07:49:49+00:00",
+    "generatedAt": "2026-09-04T16:02:38+00:00",
     "entries": [
         {
             "itemId": "aadhaar",
@@ -367,20 +367,13 @@
                     {
                         "id": "heidi-wallet",
                         "name": "Heidi Wallet App",
-                        "description": "Heidi Wallet is the easy-to-use wallet app. Built on open protocols, Heidi Wallet interacts with a range of issuers and verifiers. It is compatible with both the EUDI Wallet ecosystem and Switzerland’s swiyu trust infrastructure, supporting a broad range of use cases.\n\nThe app goes beyond credential issuance and presentation. It supports zero-knowledge proofs based on BBS+, and lets users sign digital documents directly within the wallet, exploring what digital identity wallets can do beyond their core use cases.",
+                        "description": "Heidi Wallet is the easy-to-use wallet app. Built on open protocols, Heidi Wallet interacts with a range of issuers and verifiers. It is compatible with both the EUDI Wallet ecosystem and Switzerland’",
                         "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/13/2d/44/132d44a4-424b-3dfc-174e-541248ef421b/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/400x400ia-75.webp",
-                        "website": "https://heidi-wallet.app",
                         "type": "personal",
                         "platforms": [
                             "iOS",
                             "Android"
                         ],
-                        "pricing": "Free",
-                        "media": {
-                            "images": [
-                                "https://fides.community/app/uploads/2026/08/Heidi_Wallet-1.png"
-                            ]
-                        },
                         "vcFormat": [
                             "sd_jwt_vc",
                             "mdoc",
@@ -399,15 +392,11 @@
                             "DIIP v5",
                             "EUDI Wallet ARF"
                         ],
-                        "appStoreLinks": {
-                            "iOS": "https://apps.apple.com/bj/app/heidi-wallet/id6741428702",
-                            "android": "https://play.google.com/store/apps/details?id=ch.ubique.heidi.android"
-                        },
                         "status": "production",
                         "capabilities": [
                             "holder"
                         ],
-                        "catalogTier": "Pro"
+                        "catalogTier": "Community"
                     }
                 ],
                 "lastUpdated": "2026-08-21T15:32:48+00:00"
