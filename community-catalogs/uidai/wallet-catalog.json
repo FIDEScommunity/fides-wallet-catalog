@@ -63,8 +63,16 @@
         "OpenID4VP",
         "W3C Verifiable Credentials",
         "Android Credential Manager."
-      ]
+      ],
+      "recognitions": {
+        "awardsAndRecognitions": [
+          {
+            "title": "Global Digital Trust Awards 2026 | Best Wallet",
+            "url": "https://fides.community/app/uploads/2026/09/Winner_best_wallet-768x768.png"
+          }
+        ]
+      }
     }
   ],
-  "lastUpdated": "2026-08-26T07:01:10+00:00"
+  "lastUpdated": "2026-09-04T20:15:34+00:00"
 }
