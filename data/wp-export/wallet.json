@@ -1,7 +1,7 @@
 {
     "schemaVersion": "1.0.0",
     "catalogType": "wallet",
-    "generatedAt": "2026-09-04T16:02:38+00:00",
+    "generatedAt": "2026-09-04T20:15:34+00:00",
     "entries": [
         {
             "itemId": "aadhaar",
@@ -24,6 +24,14 @@
                             "Android"
                         ],
                         "pricing": "Free for all user",
+                        "recognitions": {
+                            "awardsAndRecognitions": [
+                                {
+                                    "title": "Global Digital Trust Awards 2026 | Best Wallet",
+                                    "url": "https://fides.community/app/uploads/2026/09/Winner_best_wallet-768x768.png"
+                                }
+                            ]
+                        },
                         "vcFormat": [
                             "sd_jwt_vc",
                             "mdoc"
@@ -76,10 +84,10 @@
                         "catalogListingDepth": "full"
                     }
                 ],
-                "lastUpdated": "2026-08-26T07:01:10+00:00"
+                "lastUpdated": "2026-09-04T20:15:34+00:00"
             },
-            "publishedAt": "2026-08-26 07:01:10",
-            "updatedAt": "2026-08-26 07:01:10"
+            "publishedAt": "2026-09-04 20:15:34",
+            "updatedAt": "2026-09-04 20:15:34"
         },
         {
             "itemId": "carteira-digital-da-empresa",
