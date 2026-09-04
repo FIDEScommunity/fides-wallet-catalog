@@ -6,7 +6,7 @@
       "id": "heidi-wallet",
       "name": "Heidi Wallet App",
       "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/13/2d/44/132d44a4-424b-3dfc-174e-541248ef421b/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/400x400ia-75.webp",
-      "description": "Heidi Wallet is the easy-to-use wallet app. Built on open protocols, Heidi Wallet interacts with a range of issuers and verifiers. It is compatible with both the EUDI Wallet ecosystem and Switzerland’s swiyu trust infrastructure, supporting a broad range of use cases.\n\nThe app goes beyond credential issuance and presentation. It supports zero-knowledge proofs based on BBS+, and lets users sign digital documents directly within the wallet, exploring what digital identity wallets can do beyond their core use cases.",
+      "description": "Heidi Wallet is the easy-to-use wallet app. Built on open protocols, Heidi Wallet interacts with a range of issuers and verifiers. It is compatible with both the EUDI Wallet ecosystem and Switzerland’",
       "type": "personal",
       "platforms": [
         "iOS",
@@ -54,7 +54,7 @@
       "capabilities": [
         "holder"
       ],
-      "catalogTier": "Pro"
+      "catalogTier": "Community"
     }
   ],
   "lastUpdated": "2026-08-21T15:32:48+00:00"
