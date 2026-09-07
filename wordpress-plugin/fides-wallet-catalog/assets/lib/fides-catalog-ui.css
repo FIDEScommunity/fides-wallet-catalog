@@ -21,6 +21,7 @@
 
 .fides-modal-overlay.closing {
   animation: fides-modal-fade-out 0.2s ease forwards;
+  pointer-events: none;
 }
 
 @keyframes fides-modal-fade-in {
@@ -92,6 +93,8 @@
   padding: 1.5rem 1.5rem 1rem;
   border-bottom: 1px solid var(--fides-border, rgba(255, 255, 255, 0.1));
   flex-shrink: 0;
+  position: relative;
+  z-index: 2;
 }
 
 .fides-modal-header-content {
@@ -108,6 +111,8 @@
   gap: 0.25rem;
   flex-shrink: 0;
   margin: -0.5rem -0.5rem 0 0;
+  position: relative;
+  z-index: 3;
 }
 
 /* Modal mounts on document.body — catalog CSS vars do not apply. */
@@ -239,10 +244,10 @@
   color: #475569;
   background: #f1f5f9;
   border-color: rgba(71, 85, 105, 0.3);
-  padding-left: 0.55rem;
 }
 
-.fides-modal-header-official-badge svg {
+.fides-modal-header-official-badge svg,
+.fides-modal-header-listing-badge svg {
   width: 14px;
   height: 14px;
   flex-shrink: 0;
@@ -3529,12 +3534,75 @@ span.fides-tag.platform {
   .fides-modal-overlay .fides-modal-header {
     flex-shrink: 0;
     padding: 1rem 1rem 0.75rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .fides-modal-overlay .fides-modal-header-actions {
+    position: relative;
+    z-index: 3;
+  }
+
+  .fides-modal-overlay .fides-modal-body {
+    position: relative;
+    z-index: 0;
+  }
+
+  .fides-modal-overlay .fides-modal-close,
+  .fides-modal-overlay .fides-modal-copy-link {
+    min-width: 44px;
+    min-height: 44px;
+    touch-action: manipulation;
   }
 
   .fides-modal-overlay .fides-modal-title,
   .fides-modal-overlay .fides-modal-title-row .fides-modal-title {
     font-size: 1.125rem !important;
     line-height: 1.25 !important;
+  }
+
+  /* Icon-only listing badge so the title stays readable next to share/close. */
+  .fides-modal-overlay .fides-modal-title-row {
+    flex-wrap: nowrap;
+    min-width: 0;
+  }
+
+  .fides-modal-overlay .fides-modal-title-row .fides-modal-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .fides-modal-overlay .fides-modal-header-listing-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .fides-modal-overlay .fides-modal-header-official-badge,
+  .fides-modal-overlay .fides-modal-header-listing-badge {
+    position: relative;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    gap: 0;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .fides-modal-overlay .fides-modal-header-official-badge svg,
+  .fides-modal-overlay .fides-modal-header-listing-badge svg {
+    width: 14px;
+    height: 14px;
   }
 
   .fides-modal-overlay .fides-modal-logo,

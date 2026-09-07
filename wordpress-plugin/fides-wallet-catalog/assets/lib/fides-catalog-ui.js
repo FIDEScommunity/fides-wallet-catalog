@@ -129,6 +129,7 @@
     laptop: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></svg>',
     tag: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></svg>',
     official: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>',
+    community: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
     mail: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
     apple: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>',
     playStore: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 9.99l-2.302 2.302-8.634-8.634z"/></svg>',
@@ -143,6 +144,8 @@
   const COMMUNITY_LISTING_TITLE = 'Community listing — contributed by the community';
 
   let selectedContext = null;
+  let modalCloseTimer = null;
+  let modalEscHandler = null;
 
   function escapeHtml(str) {
     if (str === null || str === undefined) return '';
@@ -240,13 +243,13 @@
   function buildCatalogListingHeaderBadgeHtml(item, options) {
     if (!optionsTierUiEnabled(options)) return '';
     if (catalogListingIsOfficial(item)) {
-      return '<span class="fides-modal-header-official-badge fides-modal-header-listing-badge fides-modal-header-listing-badge--official" role="status" title="' +
+      return '<span class="fides-modal-header-official-badge fides-modal-header-listing-badge fides-modal-header-listing-badge--official" role="img" aria-label="Official Listing" title="' +
         escapeHtml(OFFICIAL_LISTING_TITLE) + '">' + icons.official +
         '<span class="fides-modal-header-official-label fides-modal-header-listing-label">Official Listing</span></span>';
     }
-    return '<span class="fides-modal-header-official-badge fides-modal-header-listing-badge fides-modal-header-listing-badge--community" role="status" title="' +
-      escapeHtml(COMMUNITY_LISTING_TITLE) +
-      '"><span class="fides-modal-header-official-label fides-modal-header-listing-label">Community Listing</span></span>';
+    return '<span class="fides-modal-header-official-badge fides-modal-header-listing-badge fides-modal-header-listing-badge--community" role="img" aria-label="Community Listing" title="' +
+      escapeHtml(COMMUNITY_LISTING_TITLE) + '">' + icons.community +
+      '<span class="fides-modal-header-official-label fides-modal-header-listing-label">Community Listing</span></span>';
   }
 
   function normalizeIsoCountryCode(code) {
@@ -2517,20 +2520,42 @@
     }, 200);
   }
 
+  function unbindModalEscape() {
+    if (!modalEscHandler) return;
+    document.removeEventListener('keydown', modalEscHandler);
+    modalEscHandler = null;
+  }
+
+  function removeModalOverlayNow() {
+    if (modalCloseTimer) {
+      clearTimeout(modalCloseTimer);
+      modalCloseTimer = null;
+    }
+    unbindModalEscape();
+    const overlay = document.getElementById('fides-modal-overlay');
+    if (overlay) overlay.remove();
+  }
+
   function closeModal() {
     closeMediaLightbox();
     closeNestedVocabularyModal();
+    unbindModalEscape();
     const overlay = document.getElementById('fides-modal-overlay');
-    if (overlay) {
-      overlay.classList.add('closing');
-      setTimeout(() => {
-        overlay.remove();
-        // Keep page scroll locked when mobile filters are still open.
-        syncCatalogBodyScrollLock();
-        selectedContext = null;
-        document.dispatchEvent(new CustomEvent('fides-catalog-modal-closed'));
-      }, 200);
+    if (!overlay) {
+      syncCatalogBodyScrollLock();
+      selectedContext = null;
+      return;
     }
+    if (overlay.classList.contains('closing')) return;
+    overlay.classList.add('closing');
+    modalCloseTimer = setTimeout(function() {
+      modalCloseTimer = null;
+      overlay.remove();
+      // Keep page scroll locked when mobile filters are still open.
+      syncCatalogBodyScrollLock();
+      selectedContext = null;
+      document.dispatchEvent(new CustomEvent('fides-catalog-modal-closed'));
+    }, 200);
   }
 
   const MOBILE_FILTER_BREAKPOINT = 1024;
@@ -2783,8 +2808,8 @@
   function attachModalListeners() {
     const overlay = document.getElementById('fides-modal-overlay');
     if (!overlay) return;
-    const closeBtn = document.getElementById('fides-modal-close');
-    const copyBtn = document.getElementById('fides-modal-copy-link');
+    const closeBtn = overlay.querySelector('.fides-modal-close');
+    const copyBtn = overlay.querySelector('.fides-modal-copy-link');
     if (copyBtn) copyBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       copySelectedLink();
@@ -2793,20 +2818,20 @@
     overlay.addEventListener('click', (e) => {
       if (e.target === overlay) closeModal();
     });
-    document.addEventListener('keydown', function escHandler(e) {
-      if (e.key === 'Escape') {
-        if (document.getElementById('fides-media-lightbox')) {
-          closeMediaLightbox();
-          return;
-        }
-        if (document.getElementById('fides-nested-vocab-overlay')) {
-          closeNestedVocabularyModal();
-          return;
-        }
-        closeModal();
-        document.removeEventListener('keydown', escHandler);
+    unbindModalEscape();
+    modalEscHandler = function(e) {
+      if (e.key !== 'Escape') return;
+      if (document.getElementById('fides-media-lightbox')) {
+        closeMediaLightbox();
+        return;
       }
-    });
+      if (document.getElementById('fides-nested-vocab-overlay')) {
+        closeNestedVocabularyModal();
+        return;
+      }
+      closeModal();
+    };
+    document.addEventListener('keydown', modalEscHandler);
   }
 
   function attachNestedVocabularyListeners() {
@@ -2850,7 +2875,7 @@
   }
 
   function mountModal(html) {
-    closeModal();
+    removeModalOverlayNow();
     document.body.insertAdjacentHTML('beforeend', html);
     document.body.style.overflow = 'hidden';
     attachModalListeners();
