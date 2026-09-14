@@ -3,7 +3,7 @@
  * Plugin Name: FIDES Wallet Catalog
  * Plugin URI: https://fides.community
  * Description: Displays the FIDES Wallet Catalog with search and filter functionality. When the master fides_catalog_ssr_enabled flag (provided by FIDES Community Tools Tiles ≥ 1.6.0) is enabled, the plugin also emits a server-rendered listing fallback, per-deeplink SEO meta tags and a SoftwareApplication JSON-LD payload so wallet detail URLs become indexable by search engines.
- * Version: 2.11.18
+ * Version: 2.12.0
  * Author: FIDES Labs BV
  * Author URI: https://fides.community
  * License: Apache-2.0
@@ -17,6 +17,13 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+define('FIDES_WALLET_CATALOG_VERSION', '2.12.0');
+define('FIDES_WALLET_CATALOG_PATH', plugin_dir_path(__FILE__));
+define('FIDES_WALLET_CATALOG_URL', plugin_dir_url(__FILE__));
+/** Bump this when share rewrite rules change so existing sites flush once. */
+define('FIDES_WALLET_CATALOG_SHARE_REWRITE_VERSION', '2.12.0');
+
+require_once plugin_dir_path(__FILE__) . 'includes/wallet-share-url.php';
 require_once plugin_dir_path(__FILE__) . 'includes/class-fides-wallet-catalog-ssr.php';
 require_once plugin_dir_path(__FILE__) . 'includes/class-fides-wallet-catalog-v2-normalizer.php';
 require_once plugin_dir_path(__FILE__) . 'includes/class-fides-wallet-catalog-submission-adapter.php';
@@ -28,7 +35,7 @@ Fides_Wallet_Catalog_Submission_Forms::bootstrap();
 class FIDES_Wallet_Catalog {
     
     private static $instance = null;
-    private const VERSION = '2.11.18';
+    private const VERSION = FIDES_WALLET_CATALOG_VERSION;
     /** @var string Site path for the wallet update submission form page. */
     const DEFAULT_UPDATE_FORM_PATH = '/wallets-update/';
     private $plugin_url;
@@ -158,6 +165,9 @@ class FIDES_Wallet_Catalog {
             'tierUiEnabled' => function_exists('fides_catalog_tier_ui_enabled') && fides_catalog_tier_ui_enabled(),
             'askFidesAvailable' => has_action('fides_assistant_enqueue_headless') !== false,
             'askFidesPlaceholder' => __('Ask anything about wallets…', 'fides-wallet-catalog'),
+            'sharePath' => fides_wallet_catalog_share_path(),
+            'personalListingPath' => fides_wallet_catalog_personal_listing_path(),
+            'businessListingPath' => fides_wallet_catalog_business_listing_path(),
         ));
     }
 
@@ -423,6 +433,163 @@ class FIDES_Wallet_Catalog {
         <?php
     }
 }
+
+/**
+ * @param array<int, string> $vars
+ * @return array<int, string>
+ */
+function fides_wallet_catalog_share_query_vars(array $vars): array {
+    $vars[] = 'wallet';
+    $vars[] = 'fides_wallet_share';
+    return $vars;
+}
+
+function fides_wallet_catalog_page_id_from_path(string $path): int {
+    $path = trim($path, '/');
+    if ($path === '') {
+        return 0;
+    }
+    $page = get_page_by_path($path);
+    if ($page instanceof WP_Post) {
+        return (int) $page->ID;
+    }
+    $segments = explode('/', $path);
+    $leaf = end($segments);
+    if (is_string($leaf) && $leaf !== '') {
+        $page = get_page_by_path($leaf);
+        if ($page instanceof WP_Post) {
+            return (int) $page->ID;
+        }
+    }
+    return 0;
+}
+
+function fides_wallet_catalog_share_page_id_for_item($item): int {
+    $wallet_type = (is_array($item) && isset($item['type'])) ? (string) $item['type'] : '';
+    $candidates = $wallet_type === 'organizational'
+        ? array(
+            fides_wallet_catalog_business_listing_path(),
+            '/ecosystem-explorer/business-wallets/',
+            '/ecosystem-explorer/organizational-wallets/',
+        )
+        : array(
+            fides_wallet_catalog_personal_listing_path(),
+            '/ecosystem-explorer/personal-wallets/',
+            '/community-tools/personal-wallets/',
+        );
+    foreach ($candidates as $path) {
+        $page_id = fides_wallet_catalog_page_id_from_path($path);
+        if ($page_id > 0) {
+            return $page_id;
+        }
+    }
+    return fides_wallet_catalog_any_listing_page_id();
+}
+
+function fides_wallet_catalog_any_listing_page_id(): int {
+    $personal = fides_wallet_catalog_page_id_from_path(fides_wallet_catalog_personal_listing_path());
+    if ($personal > 0) {
+        return $personal;
+    }
+    return fides_wallet_catalog_page_id_from_path(fides_wallet_catalog_business_listing_path());
+}
+
+function fides_wallet_catalog_register_share_rewrites(): void {
+    if (fides_wallet_catalog_any_listing_page_id() < 1) {
+        return;
+    }
+    $share = trim(fides_wallet_catalog_share_path(), '/');
+    if ($share === '') {
+        return;
+    }
+    add_rewrite_rule(
+        '^' . preg_quote($share, '/') . '/([^/]+)/?$',
+        'index.php?fides_wallet_share=1&wallet=$matches[1]',
+        'top'
+    );
+}
+
+function fides_wallet_catalog_maybe_flush_share_rewrites(): void {
+    if (get_option('fides_wallet_catalog_share_rewrite') === FIDES_WALLET_CATALOG_SHARE_REWRITE_VERSION) {
+        return;
+    }
+    if (fides_wallet_catalog_any_listing_page_id() < 1) {
+        return;
+    }
+    fides_wallet_catalog_register_share_rewrites();
+    flush_rewrite_rules(false);
+    update_option('fides_wallet_catalog_share_rewrite', FIDES_WALLET_CATALOG_SHARE_REWRITE_VERSION);
+}
+
+/**
+ * Map /wallet/{id}/ onto the personal or business listing page so the
+ * matching shortcode dataset is loaded.
+ *
+ * @param array<string, mixed> $query_vars
+ * @return array<string, mixed>
+ */
+function fides_wallet_catalog_map_share_request(array $query_vars): array {
+    if (empty($query_vars['fides_wallet_share']) || empty($query_vars['wallet'])) {
+        return $query_vars;
+    }
+    $id = sanitize_text_field((string) $query_vars['wallet']);
+    $item = null;
+    if ($id !== '' && class_exists('Fides_Catalog_Source')) {
+        $source = Fides_Catalog_Source::for('wallet');
+        if ($source) {
+            $found = $source->find_by_id($id);
+            if (is_array($found)) {
+                $item = $found;
+            }
+        }
+    }
+    $page_id = fides_wallet_catalog_share_page_id_for_item($item);
+    if ($page_id > 0) {
+        $query_vars['page_id'] = $page_id;
+        unset($query_vars['pagename'], $query_vars['name']);
+    }
+    unset($query_vars['fides_wallet_share']);
+    return $query_vars;
+}
+
+/**
+ * LinkedIn ignores ?wallet= on the listing page. Send those listing URLs to
+ * the unique path. Update/submit forms also use ?wallet= and must not redirect.
+ */
+function fides_wallet_catalog_redirect_query_share_urls(): void {
+    if (is_admin() || wp_doing_ajax() || (function_exists('wp_is_json_request') && wp_is_json_request())) {
+        return;
+    }
+    if (isset($_SERVER['REQUEST_METHOD']) && strtoupper((string) $_SERVER['REQUEST_METHOD']) !== 'GET') {
+        return;
+    }
+    // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+    if (empty($_GET['wallet'])) {
+        return;
+    }
+    $request_uri = isset($_SERVER['REQUEST_URI']) ? wp_unslash((string) $_SERVER['REQUEST_URI']) : '';
+    $path = wp_parse_url($request_uri, PHP_URL_PATH);
+    if (! fides_wallet_catalog_is_listing_request_path(is_string($path) ? $path : '')) {
+        return;
+    }
+    $share = fides_wallet_catalog_share_path();
+    if (is_string($path) && str_starts_with(trailingslashit($path), $share)) {
+        return;
+    }
+    // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+    $id = sanitize_text_field(wp_unslash((string) $_GET['wallet']));
+    if ($id === '' || strpos($id, '/') !== false) {
+        return;
+    }
+    wp_safe_redirect(home_url($share . rawurlencode($id) . '/'), 301);
+    exit;
+}
+
+add_action('init', 'fides_wallet_catalog_register_share_rewrites', 6);
+add_action('init', 'fides_wallet_catalog_maybe_flush_share_rewrites', 20);
+add_filter('query_vars', 'fides_wallet_catalog_share_query_vars');
+add_filter('request', 'fides_wallet_catalog_map_share_request');
+add_action('template_redirect', 'fides_wallet_catalog_redirect_query_share_urls', 1);
 
 // Initialize plugin
 FIDES_Wallet_Catalog::get_instance();

@@ -72,6 +72,7 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
                 if (self::$instance === null) {
                     self::$instance = new self();
                     self::$instance->bootstrap_renderer();
+                    self::$instance->bootstrap_share_metadata();
                     add_action('admin_init', array(__CLASS__, 'register_settings'));
                 }
             }
@@ -105,6 +106,7 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
                     'description_field' => 'description',
                     'logo_field'        => 'logo',
                     'detail_param'      => 'wallet',
+                    'pretty_path'       => fides_wallet_catalog_share_path(),
                     'pages'             => array(
                         'personal' => self::personal_path(),
                         'business' => self::business_path(),
@@ -163,6 +165,11 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
                 if ($type !== self::TYPE) {
                     return $render;
                 }
+                $request_uri = isset($_SERVER['REQUEST_URI']) ? wp_unslash((string) $_SERVER['REQUEST_URI']) : '';
+                $path = wp_parse_url($request_uri, PHP_URL_PATH);
+                if (function_exists('fides_wallet_catalog_path_is_share_item') && fides_wallet_catalog_path_is_share_item($path)) {
+                    return $render;
+                }
                 $wallet_type = (is_array($item) && isset($item['type'])) ? (string) $item['type'] : '';
                 if ($page_slug === 'personal' && $wallet_type === 'organizational') {
                     return false;
@@ -171,6 +178,206 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
                     return false;
                 }
                 return $render;
+            }
+
+            /**
+             * Share metadata: wallet name as OG title, logo when present, otherwise
+             * the branded 1200×627 card (LinkedIn ignores listing ?wallet= and
+             * prefers a landscape image).
+             */
+            private function bootstrap_share_metadata(): void {
+                add_filter('fides_catalog_seo_logo_for', array($this, 'filter_seo_share_image'), 20, 3);
+                add_filter('fides_catalog_seo_og_title_for', array($this, 'filter_seo_og_title'), 20, 3);
+                add_filter('wpseo_opengraph_image', array($this, 'filter_yoast_share_image'), 100);
+                add_filter('wpseo_twitter_image', array($this, 'filter_yoast_share_image'), 100);
+                add_filter('wpseo_opengraph_title', array($this, 'filter_yoast_share_title'), 1000);
+                add_filter('wpseo_twitter_title', array($this, 'filter_yoast_share_title'), 1000);
+                add_filter('wpseo_twitter_card_type', array($this, 'filter_yoast_twitter_card'), 100);
+                add_filter('wpseo_frontend_presenter_classes', array($this, 'filter_yoast_presenter_classes'), 99);
+                add_filter('wpseo_frontend_presenters', array($this, 'filter_yoast_presenters'), 99);
+                add_filter('oembed_response_data', array($this, 'filter_oembed_share_title'), 100, 4);
+                add_action('wp_head', array($this, 'render_share_image_fallbacks'), 100);
+            }
+
+            public static function og_image_url(): string {
+                return FIDES_WALLET_CATALOG_URL . 'assets/og-wallet.jpg';
+            }
+
+            /**
+             * @param mixed                $name
+             * @param string               $type
+             * @param array<string, mixed> $item
+             * @return mixed
+             */
+            public function filter_seo_og_title($name, $type, $item) {
+                if ($type !== self::TYPE || ! is_array($item)) {
+                    return $name;
+                }
+                $formatted = self::share_title_for_item($item);
+                return $formatted !== '' ? $formatted : $name;
+            }
+
+            /**
+             * @param mixed                $logo
+             * @param string               $type
+             * @param array<string, mixed> $item
+             * @return mixed
+             */
+            public function filter_seo_share_image($logo, $type, $item) {
+                if ($type !== self::TYPE) {
+                    return $logo;
+                }
+                if (is_string($logo) && trim($logo) !== '' && strpos($logo, 'google.com/s2/favicons') === false) {
+                    return $logo;
+                }
+                unset($item);
+                return self::og_image_url();
+            }
+
+            public function filter_yoast_share_image($image) {
+                $item = $this->current_share_item();
+                if (! $item) {
+                    return $image;
+                }
+                return self::share_image_url($item);
+            }
+
+            public function filter_yoast_share_title($title) {
+                $item = $this->current_share_item();
+                if (! $item) {
+                    return $title;
+                }
+                $formatted = self::share_title_for_item($item);
+                return $formatted !== '' ? $formatted : $title;
+            }
+
+            /**
+             * LinkedIn prefers oEmbed title over og:title.
+             *
+             * @param array        $data
+             * @param WP_Post|null $post
+             * @param int          $width
+             * @param int          $height
+             * @return array
+             */
+            public function filter_oembed_share_title($data, $post, $width, $height) {
+                unset($post, $width, $height);
+                if (! is_array($data)) {
+                    return $data;
+                }
+                // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+                $item_url = isset($_GET['url']) ? esc_url_raw(wp_unslash((string) $_GET['url'])) : '';
+                $item = $this->current_share_item($item_url);
+                if (! $item) {
+                    return $data;
+                }
+                $formatted = self::share_title_for_item($item);
+                if ($formatted !== '') {
+                    $data['title'] = $formatted;
+                }
+                return $data;
+            }
+
+            /**
+             * @param array<string, mixed> $item
+             */
+            private static function share_title_for_item(array $item): string {
+                $name = isset($item['name']) ? trim(wp_strip_all_tags((string) $item['name'])) : '';
+                if ($name === '') {
+                    return '';
+                }
+                return $name . ' - FIDES Trust Explorer';
+            }
+
+            public function filter_yoast_twitter_card($type) {
+                return $this->current_share_item() ? 'summary_large_image' : $type;
+            }
+
+            /**
+             * @param array<int, string> $classes
+             * @return array<int, string>
+             */
+            public function filter_yoast_presenter_classes($classes) {
+                if (! $this->current_share_item() || ! is_array($classes)) {
+                    return $classes;
+                }
+                return array_values(
+                    array_filter(
+                        $classes,
+                        static function ($class) {
+                            return is_string($class) && strpos($class, 'Image_Dimensions') === false;
+                        }
+                    )
+                );
+            }
+
+            /**
+             * @param array<int, object|string> $presenters
+             * @return array<int, object|string>
+             */
+            public function filter_yoast_presenters($presenters) {
+                if (! $this->current_share_item() || ! is_array($presenters)) {
+                    return $presenters;
+                }
+                return array_values(
+                    array_filter(
+                        $presenters,
+                        static function ($presenter) {
+                            $class = is_object($presenter) ? get_class($presenter) : (string) $presenter;
+                            return strpos($class, 'Image_Dimensions') === false;
+                        }
+                    )
+                );
+            }
+
+            /**
+             * Prefer a real logo; Google favicons are too small for LinkedIn.
+             *
+             * @param array<string, mixed> $item
+             */
+            private static function share_image_url(array $item): string {
+                $url = isset($item['logo']) ? trim((string) $item['logo']) : '';
+                if ($url === '' || strpos($url, 'google.com/s2/favicons') !== false) {
+                    return self::og_image_url();
+                }
+                return $url;
+            }
+
+            public function render_share_image_fallbacks(): void {
+                $item = $this->current_share_item();
+                if (! $item) {
+                    return;
+                }
+                if (self::share_image_url($item) !== self::og_image_url()) {
+                    return;
+                }
+                echo '<meta property="og:image:width" content="1200" />' . "\n";
+                echo '<meta property="og:image:height" content="627" />' . "\n";
+            }
+
+            /**
+             * @param string $item_url Optional absolute URL (oEmbed `url` query).
+             * @return array<string, mixed>|null
+             */
+            private function current_share_item($item_url = '') {
+                if (! function_exists('fides_catalog_ssr_enabled') || ! fides_catalog_ssr_enabled()) {
+                    return null;
+                }
+                if (! class_exists('Fides_Catalog_Registry') || ! class_exists('Fides_Catalog_Source')) {
+                    return null;
+                }
+                $detected = ($item_url !== '' && method_exists('Fides_Catalog_Registry', 'detect_detail_request_from_url'))
+                    ? Fides_Catalog_Registry::detect_detail_request_from_url($item_url)
+                    : Fides_Catalog_Registry::detect_current_detail_request();
+                if (! is_array($detected) || ($detected['type'] ?? '') !== self::TYPE) {
+                    return null;
+                }
+                $source = Fides_Catalog_Source::for(self::TYPE);
+                if (! $source) {
+                    return null;
+                }
+                $item = $source->find_by_id((string) $detected['item_id']);
+                return is_array($item) ? $item : null;
             }
 
             private static function item_has_full_listing(array $item): bool {

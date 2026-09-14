@@ -108,6 +108,8 @@
     x: '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>',
     xLarge: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>',
     share: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg>',
+    linkedin: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.26 2.36 4.26 5.43v6.31zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 1 1 0 4.12zM7.11 20.45H3.56V9h3.55v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.21 0 22.23 0z"/></svg>',
+    link: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>',
     pencil: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>',
     shield: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>',
     key: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></svg>',
@@ -2531,12 +2533,14 @@
       clearTimeout(modalCloseTimer);
       modalCloseTimer = null;
     }
+    closeSharePopover();
     unbindModalEscape();
     const overlay = document.getElementById('fides-modal-overlay');
     if (overlay) overlay.remove();
   }
 
   function closeModal() {
+    closeSharePopover();
     closeMediaLightbox();
     closeNestedVocabularyModal();
     unbindModalEscape();
@@ -2737,6 +2741,16 @@
 
   function getDirectLink(contextType, item, options) {
     if (options && options.directLinkUrl) return options.directLinkUrl;
+    if (item && item.id && options && options.sharePath) {
+      try {
+        const url = new URL(String(options.sharePath).replace(/\/?$/, '/') + encodeURIComponent(item.id) + '/', window.location.origin);
+        url.search = '';
+        url.hash = '';
+        return url.toString();
+      } catch (e) {
+        return window.location.origin + String(options.sharePath).replace(/\/?$/, '/') + encodeURIComponent(item.id) + '/';
+      }
+    }
     const url = new URL(window.location.href);
     if (contextType === 'wallet') url.searchParams.set('wallet', item.id);
     if (contextType === 'rp') url.searchParams.set('rp', item.id);
@@ -2744,6 +2758,25 @@
     if (contextType === 'organization') url.searchParams.set('org', item.id);
     if (contextType === 'vocabulary') url.searchParams.set('term', item.id);
     return url.toString();
+  }
+
+  function buildModalShareButtonHtml(options, noun) {
+    if (options && options.showShare === false) return '';
+    if (options && options.sharePath) {
+      const label = 'Share this ' + noun;
+      return '<div class="fides-modal-share">' +
+        '<button type="button" class="fides-modal-copy-link" id="fides-modal-copy-link" aria-label="' + escapeHtml(label) + '" title="' + escapeHtml(label) + '" aria-haspopup="menu" aria-expanded="false" aria-controls="fides-modal-share-popover">' +
+        icons.share +
+        '</button>' +
+        '<div class="fides-modal-share-popover" id="fides-modal-share-popover" hidden role="menu" aria-label="' + escapeHtml(label) + '">' +
+        '<p class="fides-modal-share-popover-title">' + escapeHtml(label) + '</p>' +
+        '<button type="button" class="fides-modal-share-option" id="fides-modal-share-linkedin" role="menuitem">' +
+        icons.linkedin + ' Share on LinkedIn</button>' +
+        '<button type="button" class="fides-modal-share-option" id="fides-modal-share-copy" role="menuitem">' +
+        icons.link + ' <span data-share-copy-label>Copy link</span></button>' +
+        '</div></div>';
+    }
+    return '<button type="button" class="fides-modal-copy-link" id="fides-modal-copy-link" aria-label="Copy link">' + icons.share + '</button>';
   }
 
   function buildVocabularyUpdateFormUrl(termId, options) {
@@ -2805,15 +2838,186 @@
     showToast(success ? 'Link copied to clipboard' : 'Failed to copy link', success ? 'success' : 'error', selectedContext.theme);
   }
 
+  function shareButtonEl() {
+    return document.getElementById('fides-modal-copy-link');
+  }
+
+  function sharePopoverEl() {
+    return document.getElementById('fides-modal-share-popover');
+  }
+
+  function isSharePopoverOpen() {
+    const popover = sharePopoverEl();
+    return !!(popover && !popover.hidden);
+  }
+
+  function onSharePopoverOutsideClick(event) {
+    const wrap = document.querySelector('#fides-modal-overlay .fides-modal-share');
+    if (wrap && wrap.contains(event.target)) return;
+    closeSharePopover();
+  }
+
+  function closeSharePopover() {
+    const popover = sharePopoverEl();
+    const button = shareButtonEl();
+    if (popover) popover.hidden = true;
+    if (button) button.setAttribute('aria-expanded', 'false');
+    document.removeEventListener('mousedown', onSharePopoverOutsideClick, true);
+  }
+
+  function openSharePopover() {
+    const popover = sharePopoverEl();
+    const button = shareButtonEl();
+    if (!popover || !button) return;
+    popover.hidden = false;
+    button.setAttribute('aria-expanded', 'true');
+    document.addEventListener('mousedown', onSharePopoverOutsideClick, true);
+  }
+
+  function toggleSharePopover() {
+    if (isSharePopoverOpen()) closeSharePopover();
+    else openSharePopover();
+  }
+
+  function shouldUseNativeShare() {
+    if (typeof navigator === 'undefined' || typeof navigator.share !== 'function') return false;
+    const coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    const narrow = window.matchMedia && window.matchMedia('(max-width: 720px)').matches;
+    return !!(coarse || narrow);
+  }
+
+  function itemShareSummary(item) {
+    const raw = String((item && item.description) || '').replace(/\s+/g, ' ').trim();
+    if (!raw) return '';
+    return raw.length > 180 ? raw.slice(0, 177) + '…' : raw;
+  }
+
+  function linkedInShareUrlForContext() {
+    if (!selectedContext || !selectedContext.item) return '';
+    const canonical = getDirectLink(selectedContext.type, selectedContext.item, selectedContext.options || {});
+    if (!canonical) return '';
+    try {
+      const tracked = new URL(canonical);
+      tracked.searchParams.set('utm_source', 'linkedin');
+      tracked.searchParams.set('utm_medium', 'social');
+      tracked.searchParams.set('utm_campaign', selectedContext.type === 'wallet' ? 'wallet_share' : (selectedContext.type + '_share'));
+      return 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(tracked.toString());
+    } catch (e) {
+      return '';
+    }
+  }
+
+  function trackContextShare(method) {
+    if (!selectedContext || !selectedContext.item) return;
+    const itemId = selectedContext.item.id || '';
+    const name = [salesTrackSafePart(itemId), salesTrackSafePart(method)].join('|');
+    const category = selectedContext.type === 'wallet' ? 'Wallet Catalog' : 'Catalog';
+    const action = selectedContext.type === 'wallet' ? 'share_wallet' : 'share';
+    trackMatomoEvent(category, action, name);
+  }
+
+  function markCopyLinkSuccess() {
+    const label = document.querySelector('#fides-modal-share-copy [data-share-copy-label]');
+    if (label) label.textContent = 'Link copied ✓';
+    setTimeout(function() {
+      if (label) label.textContent = 'Copy link';
+      closeSharePopover();
+    }, 900);
+  }
+
+  async function nativeShareContext() {
+    if (!selectedContext || !selectedContext.item) return;
+    const item = selectedContext.item;
+    const url = getDirectLink(selectedContext.type, item, selectedContext.options || {});
+    const title = String(item.name || item.displayName || item.id || 'FIDES catalog');
+    const text = itemShareSummary(item) || title;
+    try {
+      await navigator.share({ title: title, text: text, url: url });
+      trackContextShare('native');
+    } catch (err) {
+      if (err && err.name === 'AbortError') return;
+      openSharePopover();
+    }
+  }
+
+  function onShareButtonClick(event) {
+    event.stopPropagation();
+    if (!selectedContext || !selectedContext.item) return;
+    if (shouldUseNativeShare()) {
+      nativeShareContext();
+      return;
+    }
+    toggleSharePopover();
+  }
+
+  function shareContextOnLinkedIn() {
+    if (!selectedContext || !selectedContext.item) return;
+    const href = linkedInShareUrlForContext();
+    if (!href) return;
+    trackContextShare('linkedin');
+    closeSharePopover();
+    window.open(href, '_blank', 'noopener,noreferrer');
+  }
+
+  function copyContextShareLink() {
+    if (!selectedContext || !selectedContext.item) return;
+    const text = getDirectLink(selectedContext.type, selectedContext.item, selectedContext.options || {});
+    const onSuccess = function() {
+      trackContextShare('copy_link');
+      if (isSharePopoverOpen()) markCopyLinkSuccess();
+      else showToast('Link copied to clipboard', 'success', selectedContext.theme);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(onSuccess).catch(function() {
+        showToast('Failed to copy link', 'error', selectedContext.theme);
+      });
+      return;
+    }
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    const success = document.execCommand('copy');
+    textarea.remove();
+    if (success) onSuccess();
+    else showToast('Failed to copy link', 'error', selectedContext.theme);
+  }
+
+  function attachModalShareListeners(overlay) {
+    const copyBtn = overlay.querySelector('#fides-modal-copy-link');
+    if (!copyBtn) return;
+    if (overlay.querySelector('#fides-modal-share-popover')) {
+      copyBtn.addEventListener('click', onShareButtonClick);
+      const linkedInButton = overlay.querySelector('#fides-modal-share-linkedin');
+      if (linkedInButton) {
+        linkedInButton.addEventListener('click', function(e) {
+          e.stopPropagation();
+          shareContextOnLinkedIn();
+        });
+      }
+      const copyOption = overlay.querySelector('#fides-modal-share-copy');
+      if (copyOption) {
+        copyOption.addEventListener('click', function(e) {
+          e.stopPropagation();
+          copyContextShareLink();
+        });
+      }
+      return;
+    }
+    copyBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      copySelectedLink();
+    });
+  }
+
   function attachModalListeners() {
     const overlay = document.getElementById('fides-modal-overlay');
     if (!overlay) return;
     const closeBtn = overlay.querySelector('.fides-modal-close');
-    const copyBtn = overlay.querySelector('.fides-modal-copy-link');
-    if (copyBtn) copyBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      copySelectedLink();
-    });
+    attachModalShareListeners(overlay);
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
     overlay.addEventListener('click', (e) => {
       if (e.target === overlay) closeModal();
@@ -2827,6 +3031,13 @@
       }
       if (document.getElementById('fides-nested-vocab-overlay')) {
         closeNestedVocabularyModal();
+        return;
+      }
+      if (isSharePopoverOpen()) {
+        e.preventDefault();
+        closeSharePopover();
+        const button = shareButtonEl();
+        if (button) button.focus();
         return;
       }
       closeModal();
@@ -3427,9 +3638,7 @@
     const bluePagesUrl = getBluePagesUrl(wallet.provider && wallet.provider.did, options);
 
     const editActionHtml = buildWalletEditActionHtml(wallet, options);
-    const shareButtonHtml = (options && options.showShare === false)
-      ? ''
-      : '<button type="button" class="fides-modal-copy-link" id="fides-modal-copy-link" aria-label="Copy link">' + icons.share + '</button>';
+    const shareButtonHtml = buildModalShareButtonHtml(options, 'wallet');
     const listingHeaderBadge = buildCatalogListingHeaderBadgeHtml(wallet, options);
     const countryModalFlagHtml = buildWalletCountryModalFlagHtml(wallet, options);
     const standardsList = walletStandardsList(wallet);

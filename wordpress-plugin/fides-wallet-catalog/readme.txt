@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.11.18
+Stable tag: 2.12.0
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -102,6 +102,11 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.12.0 =
+* Shareable wallet URLs: listing `?wallet=` redirects to `/wallet/{id}/` so LinkedIn can scrape a unique page. Submit/update form URLs that also use `?wallet=` are not redirected.
+* Wallet modal share button offers LinkedIn + copy (native share on mobile), copying the pretty URL with `utm_campaign=wallet_share`.
+* Open Graph title `{name} - FIDES Trust Explorer` and branded landscape fallback image when no real logo is present.
 
 = 2.11.18 =
 * Mobile wallet modal: icon-only listing badge so names stay readable; close the overlay immediately when opening another wallet, ignore taps during the close animation, and unbind Escape so the X keeps working after several opens (tiles ≥ 1.13.22).

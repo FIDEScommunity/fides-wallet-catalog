@@ -35,6 +35,8 @@
     play: '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>',
     link: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>',
     share: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg>',
+    linkedin: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.26 2.36 4.26 5.43v6.31zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 1 1 0 4.12zM7.11 20.45H3.56V9h3.55v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.21 0 22.23 0z"/></svg>',
+    link: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>',
     pencil: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>',
     viewGrid: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>',
     viewList: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>',
@@ -50,6 +52,7 @@
 
   // Selected wallet for modal
   let selectedWallet = null;
+  let listingUrlWhenOpened = '';
 
   // Track which filter groups are expanded (true = expanded, false = collapsed)
   // Default: top filters open, bottom filters collapsed
@@ -191,6 +194,15 @@
     ? window.fidesWalletCatalog.editAccess
     : { isLoggedIn: false, isAdmin: false, ownedOrgIds: [], proOrgIds: [], fullOrgIds: [] };
   const TIER_UI_ENABLED = !!(window.fidesWalletCatalog && window.fidesWalletCatalog.tierUiEnabled);
+  const SHARE_PATH = (window.fidesWalletCatalog && window.fidesWalletCatalog.sharePath)
+    ? String(window.fidesWalletCatalog.sharePath)
+    : '/wallet/';
+  const PERSONAL_LISTING_PATH = (window.fidesWalletCatalog && window.fidesWalletCatalog.personalListingPath)
+    ? String(window.fidesWalletCatalog.personalListingPath)
+    : '/ecosystem-explorer/personal-wallets/';
+  const BUSINESS_LISTING_PATH = (window.fidesWalletCatalog && window.fidesWalletCatalog.businessListingPath)
+    ? String(window.fidesWalletCatalog.businessListingPath)
+    : '/ecosystem-explorer/organizational-wallets/';
   const RATINGS_BATCH_LIMIT = 100;
 
   function resolveWalletOrgIdForEdit(wallet) {
@@ -1152,13 +1164,80 @@
     }
   }
 
+  function walletSharePath() {
+    return String(SHARE_PATH || '/wallet/').replace(/\/?$/, '/');
+  }
+
+  function walletCanonicalUrl(walletId) {
+    const id = String(walletId || '').trim();
+    if (!id) return '';
+    try {
+      const url = new URL(walletSharePath() + encodeURIComponent(id) + '/', window.location.origin);
+      url.search = '';
+      url.hash = '';
+      return url.toString();
+    } catch {
+      return window.location.origin + walletSharePath() + encodeURIComponent(id) + '/';
+    }
+  }
+
+  function walletIdFromLocation() {
+    const fromQuery = new URLSearchParams(window.location.search).get('wallet');
+    if (fromQuery) return fromQuery;
+    const hash = String(window.location.hash || '').replace(/^#/, '');
+    if (hash) return hash;
+    const sharePath = walletSharePath();
+    const path = String(window.location.pathname || '').replace(/\/+$/, '') + '/';
+    if (path.indexOf(sharePath) !== 0) return '';
+    const rest = path.slice(sharePath.length).replace(/\/+$/, '');
+    if (!rest || rest.indexOf('/') !== -1) return '';
+    try {
+      return decodeURIComponent(rest);
+    } catch {
+      return rest;
+    }
+  }
+
+  function isWalletSharePath() {
+    return !!walletIdFromLocation() && String(window.location.pathname || '').indexOf(walletSharePath()) === 0;
+  }
+
+  function rememberListingUrlIfNeeded() {
+    if (!listingUrlWhenOpened && !isWalletSharePath()) {
+      const url = new URL(window.location.href);
+      url.searchParams.delete('wallet');
+      listingUrlWhenOpened = url.pathname + url.search + url.hash;
+    }
+  }
+
+  function walletListingPathForClose() {
+    if (listingUrlWhenOpened) {
+      const remembered = listingUrlWhenOpened;
+      listingUrlWhenOpened = '';
+      return remembered;
+    }
+    const type = selectedWallet && selectedWallet.type;
+    const path = type === 'organizational' ? BUSINESS_LISTING_PATH : PERSONAL_LISTING_PATH;
+    return String(path || '/ecosystem-explorer/personal-wallets/').replace(/\/?$/, '/') || '/ecosystem-explorer/personal-wallets/';
+  }
+
+  function setWalletShareHistory(walletId) {
+    rememberListingUrlIfNeeded();
+    const href = walletCanonicalUrl(walletId);
+    if (!href) return;
+    history.replaceState(null, '', href);
+  }
+
+  function clearWalletModalQuery() {
+    history.replaceState(null, '', walletListingPathForClose());
+  }
+
   /**
    * Check URL for wallet deep link parameter
-   * Supports: ?wallet=wallet-id or #wallet-id
+   * Supports: ?wallet=wallet-id, #wallet-id, or /wallet/{id}/
    */
   function checkDeepLink() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const walletId = urlParams.get('wallet') || window.location.hash.replace('#', '');
+    const walletId = walletIdFromLocation();
     
     if (walletId) {
       const wallet = wallets.find(w => w.id === walletId);
@@ -2344,9 +2423,20 @@
             </div>
             <div class="fides-modal-header-actions">
               ${renderModalEditAction(wallet)}
-              <button type="button" class="fides-modal-copy-link" id="fides-modal-copy-link" aria-label="Copy link to this wallet" title="Copy link to this wallet">
-                ${icons.share}
-              </button>
+              <div class="fides-modal-share">
+                <button type="button" class="fides-modal-copy-link" id="fides-modal-copy-link" aria-label="Share this wallet" title="Share this wallet" aria-haspopup="menu" aria-expanded="false" aria-controls="fides-modal-share-popover">
+                  ${icons.share}
+                </button>
+                <div class="fides-modal-share-popover" id="fides-modal-share-popover" hidden role="menu" aria-label="Share this wallet">
+                  <p class="fides-modal-share-popover-title">Share this wallet</p>
+                  <button type="button" class="fides-modal-share-option" id="fides-modal-share-linkedin" role="menuitem">
+                    ${icons.linkedin} Share on LinkedIn
+                  </button>
+                  <button type="button" class="fides-modal-share-option" id="fides-modal-share-copy" role="menuitem">
+                    ${icons.link} <span data-share-copy-label>Copy link</span>
+                  </button>
+                </div>
+              </div>
               <button class="fides-modal-close" id="fides-modal-close" aria-label="Close modal">
                 ${icons.xLarge}
               </button>
@@ -2558,7 +2648,9 @@
     const overlay = document.getElementById('fides-modal-overlay');
     if (!overlay) return;
     if (overlay.classList.contains('closing')) return;
+    closeSharePopover();
     overlay.classList.add('closing');
+    clearWalletModalQuery();
     setTimeout(() => {
       overlay.remove();
       if (window.FidesCatalogUI && typeof window.FidesCatalogUI.syncCatalogBodyScrollLock === 'function') {
@@ -2610,13 +2702,114 @@
   }
 
   /**
-   * Get the direct link URL for the currently selected wallet (opens in modal when visited)
+   * Get the canonical share URL for the currently selected wallet.
    */
   function getWalletDirectLink() {
     if (!selectedWallet) return '';
-    const url = new URL(window.location.href);
-    url.searchParams.set('wallet', selectedWallet.id);
-    return url.toString();
+    return walletCanonicalUrl(selectedWallet.id);
+  }
+
+  function walletLinkedInShareUrl(walletId) {
+    const canonical = walletCanonicalUrl(walletId);
+    if (!canonical) return '';
+    try {
+      const tracked = new URL(canonical);
+      tracked.searchParams.set('utm_source', 'linkedin');
+      tracked.searchParams.set('utm_medium', 'social');
+      tracked.searchParams.set('utm_campaign', 'wallet_share');
+      return 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(tracked.toString());
+    } catch {
+      return '';
+    }
+  }
+
+  function shouldUseNativeShare() {
+    if (typeof navigator === 'undefined' || typeof navigator.share !== 'function') return false;
+    const coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    const narrow = window.matchMedia && window.matchMedia('(max-width: 720px)').matches;
+    return !!(coarse || narrow);
+  }
+
+  function shareButtonEl() {
+    return document.getElementById('fides-modal-copy-link');
+  }
+
+  function sharePopoverEl() {
+    return document.getElementById('fides-modal-share-popover');
+  }
+
+  function isSharePopoverOpen() {
+    const popover = sharePopoverEl();
+    return !!(popover && !popover.hidden);
+  }
+
+  function onSharePopoverOutsideClick(event) {
+    const wrap = document.querySelector('#fides-modal-overlay .fides-modal-share');
+    if (wrap && wrap.contains(event.target)) return;
+    closeSharePopover();
+  }
+
+  function closeSharePopover() {
+    const popover = sharePopoverEl();
+    const button = shareButtonEl();
+    if (popover) popover.hidden = true;
+    if (button) button.setAttribute('aria-expanded', 'false');
+    document.removeEventListener('mousedown', onSharePopoverOutsideClick, true);
+  }
+
+  function openSharePopover() {
+    const popover = sharePopoverEl();
+    const button = shareButtonEl();
+    if (!popover || !button) return;
+    popover.hidden = false;
+    button.setAttribute('aria-expanded', 'true');
+    document.addEventListener('mousedown', onSharePopoverOutsideClick, true);
+  }
+
+  function toggleSharePopover() {
+    if (isSharePopoverOpen()) closeSharePopover();
+    else openSharePopover();
+  }
+
+  function markCopyLinkSuccess() {
+    const label = document.querySelector('#fides-modal-share-copy [data-share-copy-label]');
+    if (label) label.textContent = 'Link copied ✓';
+    setTimeout(() => {
+      if (label) label.textContent = 'Copy link';
+      closeSharePopover();
+    }, 900);
+  }
+
+  async function nativeShareWallet() {
+    if (!selectedWallet || !selectedWallet.id) return;
+    const url = walletCanonicalUrl(selectedWallet.id);
+    const title = String(selectedWallet.name || selectedWallet.id || 'FIDES wallet');
+    const raw = String(selectedWallet.description || '').replace(/\s+/g, ' ').trim();
+    const text = raw ? (raw.length > 180 ? raw.slice(0, 177) + '…' : raw) : title;
+    try {
+      await navigator.share({ title: title, text: text, url: url });
+    } catch (err) {
+      if (err && err.name === 'AbortError') return;
+      openSharePopover();
+    }
+  }
+
+  function onShareButtonClick(event) {
+    event.stopPropagation();
+    if (!selectedWallet || !selectedWallet.id) return;
+    if (shouldUseNativeShare()) {
+      nativeShareWallet();
+      return;
+    }
+    toggleSharePopover();
+  }
+
+  function shareWalletOnLinkedIn() {
+    if (!selectedWallet || !selectedWallet.id) return;
+    const href = walletLinkedInShareUrl(selectedWallet.id);
+    if (!href) return;
+    closeSharePopover();
+    window.open(href, '_blank', 'noopener,noreferrer');
   }
 
   /**
@@ -2630,6 +2823,10 @@
     const originalAriaLabel = btn ? btn.getAttribute('aria-label') : '';
     
     const showSuccess = () => {
+      if (isSharePopoverOpen()) {
+        markCopyLinkSuccess();
+        return;
+      }
       if (btn) {
         btn.setAttribute('title', 'Link copied!');
         btn.setAttribute('aria-label', 'Link copied!');
@@ -2696,12 +2893,30 @@
     const copyLinkBtn = overlay.querySelector('#fides-modal-copy-link');
     const modal = overlay.querySelector('.fides-modal');
 
-    // Copy link button
+    // Share button
     if (copyLinkBtn) {
-      copyLinkBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        copyWalletLink();
-      });
+      if (overlay.querySelector('#fides-modal-share-popover')) {
+        copyLinkBtn.addEventListener('click', onShareButtonClick);
+        const linkedInButton = overlay.querySelector('#fides-modal-share-linkedin');
+        if (linkedInButton) {
+          linkedInButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            shareWalletOnLinkedIn();
+          });
+        }
+        const copyOption = overlay.querySelector('#fides-modal-share-copy');
+        if (copyOption) {
+          copyOption.addEventListener('click', (e) => {
+            e.stopPropagation();
+            copyWalletLink();
+          });
+        }
+      } else {
+        copyLinkBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          copyWalletLink();
+        });
+      }
     }
 
     // Close button
@@ -2720,10 +2935,18 @@
 
     // Escape key
     document.addEventListener('keydown', function escapeHandler(e) {
-      if (e.key === 'Escape') {
-        closeModal();
-        document.removeEventListener('keydown', escapeHandler);
+      if (e.key !== 'Escape') {
+        return;
       }
+      if (isSharePopoverOpen()) {
+        e.preventDefault();
+        closeSharePopover();
+        const button = shareButtonEl();
+        if (button) button.focus();
+        return;
+      }
+      closeModal();
+      document.removeEventListener('keydown', escapeHandler);
     });
 
     // Focus trap
@@ -2778,6 +3001,8 @@
   async function openWalletDetail(walletId) {
     const wallet = wallets.find(w => w.id === walletId);
     if (wallet) {
+      selectedWallet = wallet;
+      setWalletShareHistory(wallet.id);
       if (window.FidesCatalogUI && typeof window.FidesCatalogUI.openWalletModal === 'function') {
         const derivedUseCases = getDerivedUseCasesForWallet(wallet);
         const usecaseIds = derivedUseCases.map(function(u) { return u && u.id; }).filter(Boolean);
@@ -2799,6 +3024,7 @@
           ratingsNonce: RATINGS_NONCE,
           ratingsIsLoggedIn: RATINGS_IS_LOGGED_IN,
           ratingsLoginUrl: RATINGS_LOGIN_URL,
+          sharePath: walletSharePath(),
           onRatingUpdate: function(updated) {
             if (!updated || updated.itemId !== wallet.id) return;
             setWalletRatingSummary(wallet.id, {
@@ -2812,7 +3038,6 @@
         });
         return;
       }
-      selectedWallet = wallet;
 
       if (window.FidesCatalogUI && typeof window.FidesCatalogUI.trackWalletDetailOpen === 'function') {
         window.FidesCatalogUI.trackWalletDetailOpen(wallet);
@@ -3293,6 +3518,12 @@
   }
 
   // Initialize when DOM is ready
+  document.addEventListener('fides-catalog-modal-closed', function() {
+    if (!listingUrlWhenOpened && !isWalletSharePath()) return;
+    clearWalletModalQuery();
+    selectedWallet = null;
+  });
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
