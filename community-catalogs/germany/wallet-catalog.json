@@ -3,12 +3,12 @@
   "wallets": [
     {
       "id": "national-eudi-wallet-germany",
-      "name": "National EUDI Wallet (Germany)",
-      "description": "Coordination by SPRIND on behalf of the BMDS (Federal Ministry for Digital and Economic Affairs). SPRIND Funke competition for prototype development (15 months, 3 stages). Stage 3 ends September 2025. Partners: BSI (Federal Office for Information Security), Bundesdruckerei (Federal Printing Office), Fraunhofer AISEC, PwC.",
+      "name": "d-you",
+      "description": "d-you is Germany’s official national European Digital Identity Wallet (EUDI Wallet), developed by SPRIND on behalf of the Federal Ministry for Digital and State Modernisation (BMDS). Launch is scheduled for 2 January 2027. The wallet will let people store and present digital identity data and electronic attestations on their smartphone, online and in person. Use is voluntary and free. Design principles include user control, selective disclosure, local encrypted storage and European interoperability. Around 40 partners from business, government and academia are preparing launch services such as age verification, contract signing and bank account opening.",
       "type": "personal",
       "openSource": true,
       "status": "development",
-      "website": "https://www.sprind.org/eudi-wallet",
+      "website": "https://eudi-wallet.gov.de/en",
       "platforms": [
         "iOS",
         "Android"
@@ -26,7 +26,7 @@
       "interoperabilityProfiles": [
         "EUDI Wallet ARF"
       ],
-      "logo": "https://flagcdn.com/w80/de.png"
+      "logo": "https://www.google.com/s2/favicons?domain=eudi-wallet.gov.de&sz=128"
     }
   ],
   "orgId": "org:germany"
