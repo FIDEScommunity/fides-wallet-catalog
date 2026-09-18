@@ -1,7 +1,7 @@
 {
     "schemaVersion": "1.0.0",
     "catalogType": "wallet",
-    "generatedAt": "2026-09-18T09:41:27+00:00",
+    "generatedAt": "2026-09-18T09:51:58+00:00",
     "entries": [
         {
             "itemId": "aadhaar",
@@ -128,7 +128,7 @@
                     {
                         "id": "credenco-business-wallet",
                         "name": "Credenco Business Wallet",
-                        "description": "A DIIP v5 compliant European Business Wallet platform providing full holder, issuer, and verifier capabilities for enterprise digital identity management.\nWinner of the Best Business Wallet Award 2026!",
+                        "description": "A DIIP v5 compliant European Business Wallet platform providing full holder, issuer, and verifier capabilities for enterprise digital identity management.\n\nWinner of the Best Business Wallet Award 2026!",
                         "logo": "https://wallet.acc.credenco.com/logo_white_background.png",
                         "website": "https://www.credenco.com",
                         "type": "organizational",
@@ -140,6 +140,9 @@
                                 "https://www.youtube.com/watch?v=IIZ7dlF4gmM",
                                 "https://www.youtube.com/watch?v=mPfLun8p0yE",
                                 "https://www.youtube.com/watch?v=eEve58WGF3c"
+                            ],
+                            "images": [
+                                "https://www.credenco.com/images/fides-award-best-business-wallet-2026.png"
                             ]
                         },
                         "vcFormat": [
@@ -207,10 +210,10 @@
                         "catalogTier": "Pro"
                     }
                 ],
-                "lastUpdated": "2026-09-18T09:41:27+00:00"
+                "lastUpdated": "2026-09-18T09:51:58+00:00"
             },
-            "publishedAt": "2026-09-18 09:41:27",
-            "updatedAt": "2026-09-18 09:41:27"
+            "publishedAt": "2026-09-18 09:51:58",
+            "updatedAt": "2026-09-18 09:51:58"
         },
         {
             "itemId": "credenco-wallet",
