@@ -1,7 +1,7 @@
 {
     "schemaVersion": "1.0.0",
     "catalogType": "wallet",
-    "generatedAt": "2026-09-09T07:30:18+00:00",
+    "generatedAt": "2026-09-18T09:41:27+00:00",
     "entries": [
         {
             "itemId": "aadhaar",
@@ -128,7 +128,7 @@
                     {
                         "id": "credenco-business-wallet",
                         "name": "Credenco Business Wallet",
-                        "description": "A DIIP v5 compliant European Business Wallet platform providing full holder, issuer, and verifier capabilities for enterprise digital identity management.",
+                        "description": "A DIIP v5 compliant European Business Wallet platform providing full holder, issuer, and verifier capabilities for enterprise digital identity management.\nWinner of the Best Business Wallet Award 2026!",
                         "logo": "https://wallet.acc.credenco.com/logo_white_background.png",
                         "website": "https://www.credenco.com",
                         "type": "organizational",
@@ -207,10 +207,10 @@
                         "catalogTier": "Pro"
                     }
                 ],
-                "lastUpdated": "2026-08-26T15:24:14+00:00"
+                "lastUpdated": "2026-09-18T09:41:27+00:00"
             },
-            "publishedAt": "2026-08-26 15:24:14",
-            "updatedAt": "2026-08-26 15:24:14"
+            "publishedAt": "2026-09-18 09:41:27",
+            "updatedAt": "2026-09-18 09:41:27"
         },
         {
             "itemId": "credenco-wallet",
