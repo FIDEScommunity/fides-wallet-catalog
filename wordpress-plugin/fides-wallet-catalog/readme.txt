@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.12.0
+Stable tag: 2.13.0
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -102,6 +102,10 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.13.0 =
+* Catalog cards are real `<a href="/wallet/{id}/">` links (open in a new tab works; left-click still opens the modal).
+* Direct detail URLs keep the wallet H1 and content visible after JavaScript rendering, with a short related-wallet list instead of the full catalog.
 
 = 2.12.0 =
 * Shareable wallet URLs: listing `?wallet=` redirects to `/wallet/{id}/` so LinkedIn can scrape a unique page. Submit/update form URLs that also use `?wallet=` are not redirected.

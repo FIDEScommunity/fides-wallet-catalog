@@ -783,8 +783,10 @@
   function renderWalletRow(wallet) {
     const d = getWalletDisplayData(wallet);
     const officialClass = walletOfficialCardClass(wallet);
+    const detailHref = walletCanonicalUrl(wallet.id);
     return `
-      <div class="fides-wallet-card${officialClass}" data-wallet-id="${escapeHtml(wallet.id)}"${walletCardAnalyticsAttrs(wallet)} role="button" tabindex="0" aria-label="${walletCardAriaLabel(wallet)} – ${escapeHtml(d.providerName)}">
+      <div class="fides-wallet-card${officialClass}" data-wallet-id="${escapeHtml(wallet.id)}"${walletCardAnalyticsAttrs(wallet)}>
+        <a class="fides-catalog-card-link" href="${escapeHtml(detailHref)}" aria-label="${walletCardAriaLabel(wallet)} – ${escapeHtml(d.providerName)}">${escapeHtml(d.displayName)}</a>
         <div class="fides-row-icon" aria-hidden="true">
           ${wallet.logo
             ? `<img src="${escapeHtml(wallet.logo)}" alt="${escapeHtml(wallet.name || d.displayName)}" style="width:22px;height:22px;object-fit:contain;border-radius:3px;">`
@@ -1082,8 +1084,16 @@
     readQueryParams();
     normalizeWalletSigningAlgorithmFilters();
 
+    if (retainStandaloneDetailPage()) {
+      applyStaleCatalogNotice();
+      return;
+    }
+
     render();
     
+    // Check for deep link after render
+    checkDeepLink();
+
     // Check for deep link after render
     checkDeepLink();
 
@@ -2192,6 +2202,24 @@
     }
   }
 
+  function isModifiedClick(e) {
+    return !!(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0);
+  }
+
+  function retainStandaloneDetailPage() {
+    if (!container) return false;
+    const detailPage = container.querySelector('[data-fides-ssr-page="detail"]');
+    if (!detailPage && !isWalletSharePath()) return false;
+    const spinner = container.querySelector('[data-fides-ssr-spinner="1"]');
+    if (spinner) spinner.remove();
+    const ssr = container.querySelector('[data-fides-ssr]');
+    if (ssr) {
+      ssr.style.display = '';
+      ssr.removeAttribute('aria-hidden');
+    }
+    return !!(detailPage || ssr);
+  }
+
   /**
    * Attach click listeners to wallet cards (for use after grid-only updates)
    */
@@ -2199,14 +2227,11 @@
     const walletCards = container.querySelectorAll('.fides-wallet-card');
     walletCards.forEach(card => {
       card.addEventListener('click', (e) => {
-        if (e.target.closest('a')) return;
+        if (isModifiedClick(e)) return;
+        const nested = e.target.closest('a');
+        if (nested && nested !== card && !nested.classList.contains('fides-catalog-card-link')) return;
+        e.preventDefault();
         openWalletDetail(card.dataset.walletId);
-      });
-      card.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          openWalletDetail(card.dataset.walletId);
-        }
       });
     });
   }
@@ -2234,9 +2259,10 @@
     const displayName = displayData.displayName;
     const officialClass = walletOfficialCardClass(wallet);
     const logoMain = renderWalletCardLogoMain(wallet);
+    const detailHref = walletCanonicalUrl(wallet.id);
 
     return `
-      <div class="fides-wallet-card${officialClass}" data-wallet-id="${escapeHtml(wallet.id)}"${walletCardAnalyticsAttrs(wallet)} role="button" tabindex="0" aria-label="${walletCardAriaLabel(wallet)}">
+      <a class="fides-wallet-card${officialClass}" href="${escapeHtml(detailHref)}" data-wallet-id="${escapeHtml(wallet.id)}"${walletCardAnalyticsAttrs(wallet)} aria-label="${walletCardAriaLabel(wallet)}">
         <header class="fides-wallet-header fides-wallet-card-header--text-only type-${wallet.type}">
           <div class="fides-wallet-info">
             <h3 class="fides-wallet-name" title="${escapeHtml(displayName)}">${escapeHtml(displayName)}</h3>
@@ -2255,7 +2281,7 @@
           </div>
           <span class="fides-view-details">${icons.eye} View details</span>
         </div>
-      </div>
+      </a>
     `;
   }
 
@@ -3210,25 +3236,8 @@
       });
     }
 
-    // Wallet card click - open detail modal
-    container.querySelectorAll('.fides-wallet-card').forEach(card => {
-      card.addEventListener('click', (e) => {
-        // Don't open modal if clicking a link
-        if (e.target.closest('a')) return;
-        
-        const walletId = card.dataset.walletId;
-        openWalletDetail(walletId);
-      });
-
-      // Keyboard accessibility
-      card.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          const walletId = card.dataset.walletId;
-          openWalletDetail(walletId);
-        }
-      });
-    });
+    // Wallet card click - open detail modal, keep href for new-tab / no-JS
+    attachWalletCardListeners();
   }
 
   /**
