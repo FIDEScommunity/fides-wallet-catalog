@@ -91,6 +91,7 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
             protected function shortcode_root_id(): string { return 'fides-wallet-catalog-root'; }
             protected function loading_label(): string    { return __('Loading wallet catalog…', 'fides-wallet-catalog'); }
             protected function max_listing_items(): int   { return self::MAX_LISTING_ITEMS; }
+            protected function supports_standalone_detail_page(): bool { return true; }
 
             public function register_with_core(): void {
                 if (! class_exists('Fides_Catalog_Registry')) {
@@ -611,6 +612,8 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
 
                 ob_start();
 
+                echo $this->render_provider_organization_link($item);
+
                 if (! empty($app_links)) :
                     ?>
                     <section class="fides-ssr-detail__section">
@@ -645,6 +648,45 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
                     echo $this->render_eudi_landscape_ssr_section($item['eudiTracker']);
                 }
 
+                return (string) ob_get_clean();
+            }
+
+            private function render_provider_organization_link(array $item): string {
+                $org_id = isset($item['orgId']) ? trim((string) $item['orgId']) : '';
+                if (
+                    $org_id === ''
+                    && isset($item['provider'])
+                    && is_array($item['provider'])
+                    && isset($item['provider']['orgId'])
+                ) {
+                    $org_id = trim((string) $item['provider']['orgId']);
+                }
+                if ($org_id === '') {
+                    return '';
+                }
+                $name = '';
+                if (isset($item['provider']) && is_array($item['provider']) && ! empty($item['provider']['name'])) {
+                    $name = (string) $item['provider']['name'];
+                } elseif (! empty($item['providerName'])) {
+                    $name = (string) $item['providerName'];
+                } else {
+                    $name = $org_id;
+                }
+                $url = class_exists('Fides_Catalog_Registry')
+                    ? Fides_Catalog_Registry::detail_url_for('organization', array('id' => $org_id))
+                    : null;
+                if (! $url) {
+                    $url = home_url('/organization/' . rawurlencode($org_id) . '/');
+                }
+                ob_start();
+                ?>
+                <section class="fides-ssr-detail__section">
+                    <h2 class="fides-ssr-detail__section-title"><?php echo esc_html__('Organization', 'fides-wallet-catalog'); ?></h2>
+                    <p class="fides-ssr-detail__related">
+                        <a href="<?php echo esc_url($url); ?>"><?php echo esc_html($name); ?></a>
+                    </p>
+                </section>
+                <?php
                 return (string) ob_get_clean();
             }
 
@@ -775,6 +817,26 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
 
             protected function listing_page_url(string $page_slug): string {
                 return home_url($page_slug === 'business' ? self::business_path() : self::personal_path());
+            }
+
+            protected function related_listing_title(): string {
+                return __('More wallets', 'fides-wallet-catalog');
+            }
+
+            protected function catalog_index_label(): string {
+                return __('View wallet catalog', 'fides-wallet-catalog');
+            }
+
+            protected function related_listing_url(): string {
+                $id = $this->current_detail_id();
+                if ($id !== '' && class_exists('Fides_Catalog_Source')) {
+                    $source = Fides_Catalog_Source::for(self::TYPE);
+                    $item   = $source ? $source->find_by_id($id) : null;
+                    if (is_array($item) && isset($item['type']) && $item['type'] === 'organizational') {
+                        return home_url(self::business_path());
+                    }
+                }
+                return home_url(self::personal_path());
             }
 
             /* --------------------------------------------------------------
