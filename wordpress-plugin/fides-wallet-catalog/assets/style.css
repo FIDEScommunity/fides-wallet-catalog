@@ -1160,6 +1160,61 @@
 .fides-wallet-grid[data-columns="3"] { grid-template-columns: repeat(3, 1fr); }
 .fides-wallet-grid[data-columns="4"] { grid-template-columns: repeat(4, 1fr); }
 
+#fides-wallet-catalog-root .fides-catalog-pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+#fides-wallet-catalog-root .fides-catalog-pagination__meta {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--fides-text-muted);
+}
+
+#fides-wallet-catalog-root .fides-catalog-pagination__nav,
+#fides-wallet-catalog-root .fides-catalog-pagination__pages {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+#fides-wallet-catalog-root .fides-catalog-pagination__pages {
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#fides-wallet-catalog-root .fides-catalog-pagination a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--fides-border);
+  border-radius: 8px;
+  color: var(--fides-text-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#fides-wallet-catalog-root .fides-catalog-pagination a[aria-current="page"],
+#fides-wallet-catalog-root .fides-catalog-pagination a:hover {
+  border-color: var(--fides-accent);
+  color: var(--fides-accent);
+}
+
+#fides-wallet-catalog-root .fides-catalog-pagination__ellipsis {
+  padding: 0.45rem 0.15rem;
+  color: var(--fides-text-muted);
+}
+
 /* ============================================================
  * VIEW TOGGLE + LIST VIEW
  * ============================================================ */
@@ -1656,6 +1711,14 @@
   text-decoration: none;
 }
 
+#fides-wallet-catalog-root a.fides-wallet-card,
+#fides-wallet-catalog-root a.fides-wallet-card:hover,
+#fides-wallet-catalog-root a.fides-wallet-card:focus,
+#fides-wallet-catalog-root a.fides-wallet-card .fides-wallet-name,
+#fides-wallet-catalog-root a.fides-wallet-card .fides-wallet-provider {
+  text-decoration: none !important;
+}
+
 .fides-wallet-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
@@ -1830,10 +1893,63 @@
 }
 
 #fides-wallet-catalog-root .fides-wallet-grid[data-view="grid"] .fides-wallet-rating-summary {
-  margin: 0 0 0.15rem;
+  margin: 0;
   text-align: left;
-  width: 100%;
+  width: auto;
   flex-shrink: 0;
+}
+
+.fides-wallet-card-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-height: 1.75rem;
+  margin-bottom: 0.15rem;
+}
+
+.fides-wallet-award-badge {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 0.25rem;
+  max-width: 8.75rem;
+  min-height: 1.5rem;
+  padding: 0.2rem 0.45rem;
+  border: 1px solid #7dd3fc;
+  border-radius: 999px;
+  background: #e0f2fe;
+  color: #075985;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.fides-wallet-award-badge.is-winner {
+  border-color: #fcd34d;
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.fides-wallet-award-badge svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+.fides-wallet-award-badge > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fides-wallet-award-badge.is-compact {
+  min-height: 1.25rem;
+  padding: 0.15rem 0.3rem;
+}
+
+.fides-wallet-award-badge.is-compact > span {
+  display: none;
 }
 
 .fides-wallet-card-logo-main {
@@ -3441,18 +3557,13 @@ span.fides-tag.platform {
 
 /* ==========================================================================
  * SSR fallback (Fase 2)
- * Server-rendered content shown until wallet-catalog.js mounts and replaces
- * the contents of #fides-wallet-catalog-root. Crawlers see this content;
- * users see it briefly during initial paint before the interactive UI arrives.
+ * Server-rendered fallback content for crawlers and visitors without JavaScript.
+ * JavaScript users see the loading state until the interactive UI mounts.
  * ========================================================================== */
 
 .fides-ssr-fallback {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color: #1f2937;
-}
-
-.fides-ssr-fallback--visible {
-  display: block;
 }
 
 .fides-ssr-pagination {

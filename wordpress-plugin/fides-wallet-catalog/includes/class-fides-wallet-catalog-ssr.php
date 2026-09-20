@@ -45,7 +45,7 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
             const DEFAULT_BUSINESS_PATH = '/ecosystem-explorer/organizational-wallets/';
             const OPTION_PERSONAL_URL   = 'fides_wallet_catalog_personal_url';
             const OPTION_BUSINESS_URL   = 'fides_wallet_catalog_business_url';
-            const MAX_LISTING_ITEMS     = 30;
+            const MAX_LISTING_ITEMS     = 24;
             public static function bootstrap() { /* no-op without base */ }
             public static function build_initial_html(array $atts) { return ''; }
         }
@@ -59,7 +59,7 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
             const DEFAULT_BUSINESS_PATH = '/ecosystem-explorer/organizational-wallets/';
             const OPTION_PERSONAL_URL   = 'fides_wallet_catalog_personal_url';
             const OPTION_BUSINESS_URL   = 'fides_wallet_catalog_business_url';
-            const MAX_LISTING_ITEMS     = 30;
+            const MAX_LISTING_ITEMS     = 24;
 
             /** @var self|null */
             private static $instance = null;
@@ -91,7 +91,6 @@ if (! class_exists('Fides_Wallet_Catalog_SSR')) {
             protected function shortcode_root_id(): string { return 'fides-wallet-catalog-root'; }
             protected function loading_label(): string    { return __('Loading wallet catalog…', 'fides-wallet-catalog'); }
             protected function max_listing_items(): int   { return self::MAX_LISTING_ITEMS; }
-            protected function supports_standalone_detail_page(): bool { return true; }
 
             public function register_with_core(): void {
                 if (! class_exists('Fides_Catalog_Registry')) {

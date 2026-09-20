@@ -29,7 +29,8 @@
     "test:import": "node --import tsx --test src/import-wp-submissions.test.ts",
     "test:schema": "node --import tsx --test src/wallet-catalog-schema.test.ts",
     "test:migrate": "node --import tsx --test src/migrate-wallet-catalog-v1-to-v2.test.ts",
-    "test": "npm run test:import && npm run test:schema && npm run test:migrate"
+    "test:catalog-discovery": "node --test tests/js/catalog-discovery.test.mjs",
+    "test": "npm run test:import && npm run test:schema && npm run test:migrate && npm run test:catalog-discovery"
   },
   "dependencies": {
     "ajv": "^8.12.0",

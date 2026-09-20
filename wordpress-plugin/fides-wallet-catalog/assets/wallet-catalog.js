@@ -179,6 +179,12 @@
   const RATINGS_API_BASE = (window.fidesWalletCatalog && window.fidesWalletCatalog.ratingsApiBase)
     ? String(window.fidesWalletCatalog.ratingsApiBase).trim().replace(/\/$/, '')
     : '';
+  const AWARDS_API_BASE = (window.fidesWalletCatalog && (window.fidesWalletCatalog.awardsApiBase || window.fidesWalletCatalog.ratingsApiBase))
+    ? String(window.fidesWalletCatalog.awardsApiBase || window.fidesWalletCatalog.ratingsApiBase).trim().replace(/\/$/, '')
+    : '';
+  const AWARD_PROGRAM_KEYS = (window.fidesWalletCatalog && Array.isArray(window.fidesWalletCatalog.awardProgramKeys) && window.fidesWalletCatalog.awardProgramKeys.length)
+    ? window.fidesWalletCatalog.awardProgramKeys.map(String)
+    : ['gdt-2026', 'fides-community-2026'];
   const RATINGS_NONCE = (window.fidesWalletCatalog && window.fidesWalletCatalog.ratingsNonce)
     ? String(window.fidesWalletCatalog.ratingsNonce)
     : '';
@@ -409,15 +415,19 @@
   // State
   let wallets = [];
   let ratingSummariesByWalletId = Object.create(null);
+  let awardRecognitionsByWalletId = Object.create(null);
   /** wallet id → use cases[] reverse-linked from use case catalog aggregated.json */
   let useCasesByWalletId = Object.create(null);
   /** Precomputed counts per filter option (set after load, over walletsForFacets) */
   let filterFacets = null;
-  const SORT_PREFERENCE_STORAGE_KEY = 'fidesWalletCatalogSortBy';
+  const SORT_PREFERENCE_STORAGE_KEY = 'fidesWalletCatalogSortByV2';
   const VIEW_PREFERENCE_STORAGE_KEY = 'fides-wallet-view';
   const LIST_BREAKPOINT = 1024;
-  let sortBy = 'rating';
+  const LISTING_PAGE_SIZE = 24;
+  const LISTING_PAGE_PARAM = 'catalog_page';
+  let sortBy = 'explore';
   let viewMode = 'grid';
+  let listingPage = 1;
   let originalIds = []; // IDs from ?wallets= URL param; preserved so the filter can be toggled back on
   let filters = {
     search: '',
@@ -441,6 +451,133 @@
     officialOnly: false,
     ids: [] // pre-filter by wallet IDs (set via ?wallets= URL param)
   };
+
+  function listingPageFromLocation() {
+    try {
+      const raw = new URLSearchParams(window.location.search).get(LISTING_PAGE_PARAM);
+      const page = parseInt(raw || '1', 10);
+      return Number.isFinite(page) && page > 0 ? page : 1;
+    } catch {
+      return 1;
+    }
+  }
+
+  function walletListingBasePath() {
+    if (settings && settings.type === 'organizational') return BUSINESS_LISTING_PATH;
+    return PERSONAL_LISTING_PATH;
+  }
+
+  function listingHrefForPage(page) {
+    try {
+      const base = isWalletSharePath()
+        ? new URL(walletListingBasePath(), window.location.origin)
+        : new URL(window.location.href);
+      base.searchParams.delete('wallet');
+      if (page <= 1) base.searchParams.delete(LISTING_PAGE_PARAM);
+      else base.searchParams.set(LISTING_PAGE_PARAM, String(page));
+      return base.pathname + base.search + base.hash;
+    } catch {
+      return walletListingBasePath();
+    }
+  }
+
+  function setListingPage(page, push) {
+    listingPage = Math.max(1, Number(page) || 1);
+    try {
+      const next = listingHrefForPage(listingPage);
+      if (push) history.pushState({ fidesCatalogPage: listingPage }, '', next);
+      else history.replaceState({ fidesCatalogPage: listingPage }, '', next);
+    } catch {
+      // Ignore history API failures.
+    }
+  }
+
+  function resetListingPage() {
+    if (listingPage !== 1 || listingPageFromLocation() !== 1) setListingPage(1, false);
+    else listingPage = 1;
+  }
+
+  function visibleSlice(items) {
+    const list = Array.isArray(items) ? items : [];
+    let bounds = paginationBounds(list, listingPage);
+    if (listingPage > bounds.totalPages) {
+      setListingPage(bounds.totalPages, false);
+      bounds = paginationBounds(list, listingPage);
+    }
+    return list.slice(bounds.startIndex, bounds.endIndex);
+  }
+
+  function paginationBounds(items, page) {
+    const list = Array.isArray(items) ? items : [];
+    const total = list.length;
+    const storedFirstPageSize = Number(list.exploreFirstPageSize);
+    const firstPageSize = Number.isInteger(storedFirstPageSize)
+      ? Math.max(0, Math.min(LISTING_PAGE_SIZE, storedFirstPageSize))
+      : Math.min(LISTING_PAGE_SIZE, total);
+    const totalPages = Math.max(1, 1 + Math.ceil(Math.max(0, total - firstPageSize) / LISTING_PAGE_SIZE));
+    const safePage = Math.max(1, Math.min(Number(page) || 1, totalPages));
+    const startIndex = safePage === 1
+      ? 0
+      : firstPageSize + (safePage - 2) * LISTING_PAGE_SIZE;
+    const pageSize = safePage === 1 ? firstPageSize : LISTING_PAGE_SIZE;
+    return {
+      totalPages,
+      startIndex,
+      endIndex: Math.min(startIndex + pageSize, total)
+    };
+  }
+
+  function paginationPageNumbers(page, totalPages) {
+    if (totalPages <= 9) return Array.from({ length: totalPages }, (_, index) => index + 1);
+    const pages = [1];
+    for (let number = Math.max(2, page - 2); number <= Math.min(totalPages - 1, page + 2); number += 1) {
+      pages.push(number);
+    }
+    pages.push(totalPages);
+    return pages.filter((number, index, list) => list.indexOf(number) === index);
+  }
+
+  function renderPaginationBar(items) {
+    const total = Array.isArray(items) ? items.length : 0;
+    if (total === 0) return '';
+    const bounds = paginationBounds(items, listingPage);
+    const totalPages = bounds.totalPages;
+    const page = Math.min(listingPage, totalPages);
+    const start = bounds.startIndex + 1;
+    const end = bounds.endIndex;
+    let previousPage = 0;
+    const pageLinks = paginationPageNumbers(page, totalPages).map((number) => {
+      const ellipsis = previousPage > 0 && number > previousPage + 1
+        ? '<li class="fides-catalog-pagination__ellipsis" aria-hidden="true">…</li>'
+        : '';
+      previousPage = number;
+      const current = number === page ? ' aria-current="page"' : '';
+      return `${ellipsis}<li><a href="${escapeHtml(listingHrefForPage(number))}" data-catalog-page="${number}"${current}>${number}</a></li>`;
+    }).join('');
+    const previous = page > 1
+      ? `<a class="fides-catalog-pagination__prev" href="${escapeHtml(listingHrefForPage(page - 1))}" data-catalog-page="${page - 1}" rel="prev">Previous</a>`
+      : '';
+    const next = page < totalPages
+      ? `<a class="fides-catalog-pagination__next" href="${escapeHtml(listingHrefForPage(page + 1))}" data-catalog-page="${page + 1}" rel="next">Next</a>`
+      : '';
+    return `<nav class="fides-catalog-pagination" data-fides-wallet-pagination aria-label="Catalog pages">
+      <p class="fides-catalog-pagination__meta">Showing ${start}–${end} of ${total}</p>
+      <div class="fides-catalog-pagination__nav">${previous}<ol class="fides-catalog-pagination__pages">${pageLinks}</ol>${next}</div>
+    </nav>`;
+  }
+
+  function bindPaginationLinks() {
+    if (!container) return;
+    container.querySelectorAll('[data-catalog-page]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        if (isModifiedClick(event)) return;
+        event.preventDefault();
+        const page = parseInt(link.getAttribute('data-catalog-page') || '1', 10);
+        setListingPage(page, true);
+        renderWalletGridOnly();
+      });
+    });
+  }
 
   // Country code to name mapping
   const COUNTRY_NAMES = {
@@ -615,7 +752,7 @@
     // Restore persisted sort preference (if supported)
     try {
       const savedSort = window.localStorage.getItem(SORT_PREFERENCE_STORAGE_KEY);
-      if (savedSort === 'az' || savedSort === 'lastUpdated' || savedSort === 'rating') {
+      if (savedSort === 'explore' || savedSort === 'az' || savedSort === 'lastUpdated' || savedSort === 'rating') {
         sortBy = savedSort;
       }
       const savedView = window.localStorage.getItem(VIEW_PREFERENCE_STORAGE_KEY);
@@ -796,6 +933,7 @@
         <div class="fides-row-name">
           <span class="fides-row-name-text" title="${escapeHtml(d.displayName)}">${escapeHtml(d.displayName)}</span>
           ${renderWalletListBadges(wallet)}
+          ${renderWalletAwardBadge(wallet, true)}
         </div>
         <div class="fides-row-likes">${renderWalletListLikeSummary(wallet.id)}</div>
         <div class="fides-row-provider" title="${escapeHtml(d.providerName)}">${renderWalletCountryFlag(wallet)}${escapeHtml(d.providerName)}</div>
@@ -929,6 +1067,77 @@
     }
   }
 
+  function awardRecognitions(wallet) {
+    const id = wallet && wallet.id ? String(wallet.id) : '';
+    return id && Array.isArray(awardRecognitionsByWalletId[id])
+      ? awardRecognitionsByWalletId[id]
+      : [];
+  }
+
+  function strongestAwardRecognition(wallet) {
+    const recognitions = awardRecognitions(wallet);
+    return recognitions.find((recognition) => recognition.place === 1) || recognitions[0] || null;
+  }
+
+  function awardBadgeLabel(recognition) {
+    if (!recognition) return '';
+    const result = recognition.place === 1 ? 'Winner' : 'Finalist';
+    return recognition.year ? `${result} ${recognition.year}` : result;
+  }
+
+  async function loadAwardRecognitions() {
+    awardRecognitionsByWalletId = Object.create(null);
+    if (!AWARDS_API_BASE || AWARD_PROGRAM_KEYS.length === 0) return;
+    const payloads = await Promise.all(
+      AWARD_PROGRAM_KEYS.map(async (programKey) => {
+        const endpoint = buildRatingsEndpoint(AWARDS_API_BASE, `awards/${encodeURIComponent(programKey)}`);
+        if (!endpoint) return null;
+        try {
+          const response = await fetch(endpoint, { credentials: 'same-origin' });
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          return await response.json();
+        } catch (error) {
+          console.warn(`Award program ${programKey} could not be loaded:`, error.message);
+          return null;
+        }
+      })
+    );
+
+    payloads.filter(Boolean).forEach((payload) => {
+      const programKey = String(payload.key || '');
+      const programLabel = String(payload.label || programKey);
+      const programUrl = String(payload.url || '');
+      const year = Number(payload.year) || null;
+      (Array.isArray(payload.categories) ? payload.categories : []).forEach((category) => {
+        const categoryKey = String(category.key || '');
+        const categoryLabel = String(category.label || categoryKey);
+        (Array.isArray(category.finalists) ? category.finalists : []).forEach((finalist) => {
+          if (String(finalist.type || '') !== 'wallet' || !finalist.id) return;
+          const id = String(finalist.id);
+          if (!awardRecognitionsByWalletId[id]) awardRecognitionsByWalletId[id] = [];
+          awardRecognitionsByWalletId[id].push({
+            programKey,
+            programLabel,
+            programUrl,
+            year,
+            categoryKey,
+            categoryLabel,
+            place: Number(finalist.place) || null
+          });
+        });
+      });
+    });
+  }
+
+  function renderWalletAwardBadge(wallet, compact) {
+    const recognition = strongestAwardRecognition(wallet);
+    if (!recognition) return '';
+    const winner = recognition.place === 1;
+    const label = awardBadgeLabel(recognition);
+    const title = `${label} · ${recognition.categoryLabel} · ${recognition.programLabel}`;
+    return `<span class="fides-wallet-award-badge ${winner ? 'is-winner' : 'is-finalist'}${compact ? ' is-compact' : ''}" title="${escapeHtml(title)}">${icons.award}<span>${escapeHtml(label)}</span></span>`;
+  }
+
   function renderViewToggle() {
     return `
       <div class="fides-view-toggle" role="group" aria-label="View mode">
@@ -1053,12 +1262,13 @@
     }
 
     if (wallets.length > 0) {
-      try {
-        await loadWalletRatingSummaries(wallets);
-      } catch (ratingsError) {
-        console.warn('Failed to load wallet likes:', ratingsError.message);
-      }
-      await loadUseCaseIndex();
+      await Promise.all([
+        loadWalletRatingSummaries(wallets).catch((ratingsError) => {
+          console.warn('Failed to load wallet likes:', ratingsError.message);
+        }),
+        loadAwardRecognitions(),
+        loadUseCaseIndex()
+      ]);
       console.log(`Loaded ${wallets.length} wallets from ${sourceName}`);
     }
 
@@ -1083,17 +1293,10 @@
     // Read query parameters for filtering
     readQueryParams();
     normalizeWalletSigningAlgorithmFilters();
+    listingPage = listingPageFromLocation();
 
-    if (retainStandaloneDetailPage()) {
-      applyStaleCatalogNotice();
-      return;
-    }
-
-    render();
+    render({ keepListingPage: true });
     
-    // Check for deep link after render
-    checkDeepLink();
-
     // Check for deep link after render
     checkDeepLink();
 
@@ -1266,6 +1469,85 @@
   /**
    * Filter wallets based on current filters
    */
+  function dailyExploreScore(wallet) {
+    const seed = `${new Date().toISOString().slice(0, 10)}|${String(wallet.id || wallet.name || '')}`;
+    let hash = 2166136261;
+    for (let index = 0; index < seed.length; index += 1) {
+      hash ^= seed.charCodeAt(index);
+      hash = Math.imul(hash, 16777619);
+    }
+    return hash >>> 0;
+  }
+
+  function walletExploreBand(wallet) {
+    const recognitions = awardRecognitions(wallet);
+    if (recognitions.some((recognition) => recognition.place === 1)) return 0;
+    if (recognitions.length > 0) return 1;
+    if (getWalletStatusBucket(wallet) === 'available') return 2;
+    return 3;
+  }
+
+  function compareDailyExplore(a, b) {
+    const scoreDiff = dailyExploreScore(a) - dailyExploreScore(b);
+    if (scoreDiff !== 0) return scoreDiff;
+    return String(a.name || '').localeCompare(String(b.name || ''), undefined, { sensitivity: 'base' });
+  }
+
+  function walletExploreBuckets(items) {
+    return [
+      items.filter((wallet) => walletExploreBand(wallet) === 0).sort(compareDailyExplore),
+      items.filter((wallet) => walletExploreBand(wallet) === 1).sort(compareDailyExplore),
+      items.filter((wallet) => walletExploreBand(wallet) === 2).sort(compareDailyExplore),
+      items.filter((wallet) => walletExploreBand(wallet) === 3).sort(compareDailyExplore)
+    ];
+  }
+
+  function takeExplorePage(buckets) {
+    const slotPattern = [
+      2, 0, 2, 3,
+      2, 1, 2, 3,
+      2, 1, 2, 3,
+      2, 0, 2, 3,
+      2, 1, 2, 3,
+      2, 1, 2, 3
+    ];
+    const page = [];
+    slotPattern.forEach((bucketIndex) => {
+      const wallet = buckets[bucketIndex].shift();
+      if (wallet) page.push(wallet);
+    });
+    while (page.length < LISTING_PAGE_SIZE) {
+      const fallbackBucket = buckets
+        .filter((bucket) => bucket.length > 0)
+        .sort((a, b) => b.length - a.length)[0];
+      if (!fallbackBucket) break;
+      page.push(fallbackBucket.shift());
+    }
+    return page;
+  }
+
+  function buildExploreOrder(items, deferWithoutLogo) {
+    const withLogo = deferWithoutLogo
+      ? items.filter((wallet) => Boolean(String(wallet.logo || '').trim()))
+      : items.slice();
+    const shouldDefer = deferWithoutLogo && withLogo.length > 0;
+    const withoutLogo = shouldDefer
+      ? items.filter((wallet) => !String(wallet.logo || '').trim())
+      : [];
+    const visibleBuckets = walletExploreBuckets(shouldDefer ? withLogo : items);
+    const firstPage = takeExplorePage(visibleBuckets);
+    const deferredBuckets = walletExploreBuckets(withoutLogo);
+    const remainingBuckets = visibleBuckets.map((bucket, index) =>
+      bucket.concat(deferredBuckets[index]).sort(compareDailyExplore)
+    );
+    const ordered = firstPage.slice();
+    while (remainingBuckets.some((bucket) => bucket.length > 0)) {
+      ordered.push(...takeExplorePage(remainingBuckets));
+    }
+    ordered.exploreFirstPageSize = firstPage.length;
+    return ordered;
+  }
+
   function getFilteredWallets() {
     const filtered = wallets.filter(wallet => {
       // Pre-filter: only show specific wallet IDs (set via ?wallets= URL param)
@@ -1404,6 +1686,12 @@
 
       return true;
     });
+
+    if (sortBy === 'explore') {
+      const defaultTypeFilterCount = settings.type && filters.type.length === 1 && filters.type[0] === settings.type ? 1 : 0;
+      const deferWithoutLogo = !filters.search && getActiveFilterCount() === defaultTypeFilterCount;
+      return buildExploreOrder(filtered, deferWithoutLogo);
+    }
 
     if (sortBy === 'lastUpdated') {
       return filtered.sort((a, b) => {
@@ -1620,11 +1908,14 @@
   /**
    * Render the catalog
    */
-  function render() {
+  function render(options) {
+    const keepListingPage = options && options.keepListingPage;
+    if (!keepListingPage) resetListingPage();
     if (!showsNationalEudiWalletFilter()) {
       filters.nationalEudiWallet = false;
     }
     const filtered = getFilteredWallets();
+    const visible = visibleSlice(filtered);
     const metrics = getCatalogMetrics(filtered);
     const activeFilterCount = getActiveFilterCount();
     
@@ -2040,6 +2331,7 @@
           <label class="fides-sort-label" for="fides-sort-select">
             <span class="fides-sort-text">Sort by:</span>
             <select id="fides-sort-select" class="fides-sort-select">
+              <option value="explore" ${sortBy === 'explore' ? 'selected' : ''}>Explore</option>
               <option value="lastUpdated" ${sortBy === 'lastUpdated' ? 'selected' : ''}>Last updated</option>
               <option value="rating" ${sortBy === 'rating' ? 'selected' : ''}>Likes</option>
               <option value="az" ${sortBy === 'az' ? 'selected' : ''}>A-Z</option>
@@ -2078,7 +2370,7 @@
       if (ev === 'list') {
         html += renderWalletListHeader();
       }
-      filtered.forEach(wallet => {
+      visible.forEach(wallet => {
         html += ev === 'list' ? renderWalletRow(wallet) : renderWalletCard(wallet);
       });
       html += '</div>';
@@ -2092,12 +2384,14 @@
       `;
     }
 
+    html += renderPaginationBar(filtered);
     html += `</main>`; // Close fides-content
     html += `</div>`; // Close fides-main-layout
 
     const mobileFiltersOpen = getMobileFilters()?.captureOpenState() || false;
     container.innerHTML = html;
     attachEventListeners();
+    bindPaginationLinks();
     getMobileFilters()?.applyAfterRender(mobileFiltersOpen);
     applyStaleCatalogNotice();
     
@@ -2117,6 +2411,7 @@
    */
   function renderWalletGridOnly() {
     const filtered = getFilteredWallets();
+    const visible = visibleSlice(filtered);
     const metrics = getCatalogMetrics(filtered);
     
     const kpiTotal = container.querySelector('.fides-kpi-card[data-kpi-action="clear-added-filter"] .fides-kpi-value');
@@ -2175,7 +2470,7 @@
       if (ev === 'list') {
         html += renderWalletListHeader();
       }
-      filtered.forEach(wallet => {
+      visible.forEach(wallet => {
         html += ev === 'list' ? renderWalletRow(wallet) : renderWalletCard(wallet);
       });
       grid.innerHTML = html;
@@ -2200,24 +2495,26 @@
         contentArea.appendChild(empty);
       }
     }
+    syncPaginationBar(filtered);
   }
 
   function isModifiedClick(e) {
     return !!(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0);
   }
 
-  function retainStandaloneDetailPage() {
-    if (!container) return false;
-    const detailPage = container.querySelector('[data-fides-ssr-page="detail"]');
-    if (!detailPage && !isWalletSharePath()) return false;
-    const spinner = container.querySelector('[data-fides-ssr-spinner="1"]');
-    if (spinner) spinner.remove();
-    const ssr = container.querySelector('[data-fides-ssr]');
-    if (ssr) {
-      ssr.style.display = '';
-      ssr.removeAttribute('aria-hidden');
+  function syncPaginationBar(filtered) {
+    if (!container) return;
+    const html = renderPaginationBar(filtered);
+    const existing = container.querySelector('[data-fides-wallet-pagination]');
+    if (existing) {
+      existing.outerHTML = html;
+    } else if (html) {
+      const contentArea = container.querySelector('.fides-content');
+      const anchor = contentArea && (contentArea.querySelector('.fides-wallet-grid') || contentArea.querySelector('.fides-empty'));
+      if (anchor) anchor.insertAdjacentHTML('afterend', html);
+      else if (contentArea) contentArea.insertAdjacentHTML('beforeend', html);
     }
-    return !!(detailPage || ssr);
+    bindPaginationLinks();
   }
 
   /**
@@ -2270,7 +2567,10 @@
           </div>
         </header>
         <div class="fides-wallet-body">
-          <p class="fides-wallet-rating-summary">${renderWalletRatingSummary(wallet.id)}</p>
+          <div class="fides-wallet-card-meta-row">
+            <p class="fides-wallet-rating-summary">${renderWalletRatingSummary(wallet.id)}</p>
+            ${renderWalletAwardBadge(wallet, false)}
+          </div>
           <div class="fides-wallet-card-logo-panel" aria-hidden="true">
             <div class="fides-wallet-card-logo-main">${logoMain}</div>
           </div>
@@ -3041,6 +3341,7 @@
           organizationCatalogUrl: ORGANIZATION_CATALOG_PAGE_URL,
           useCaseCatalogUrl: USE_CASE_CATALOG_PAGE_URL,
           derivedUseCases: derivedUseCases,
+          awardRecognition: strongestAwardRecognition(wallet),
           entityRatingSummaries: { usecase: usecaseSummaries },
           bluePagesUrl: BLUE_PAGES_URL,
           updateFormUrl: UPDATE_FORM_URL,
@@ -3082,6 +3383,7 @@
 
     const handleSearchInput = debounce((e) => {
       filters.search = e.target.value;
+      resetListingPage();
       renderWalletGridOnly();
     }, 300);
 
@@ -3095,6 +3397,7 @@
       filters.search = '';
       const input = document.getElementById('fides-search-input');
       if (input) input.value = '';
+      resetListingPage();
       renderWalletGridOnly();
     };
 
@@ -3158,9 +3461,9 @@
     const sortSelect = document.getElementById('fides-sort-select');
     if (sortSelect) {
       sortSelect.addEventListener('change', () => {
-        const nextSort = sortSelect.value === 'az'
-          ? 'az'
-          : (sortSelect.value === 'rating' ? 'rating' : 'lastUpdated');
+        const nextSort = ['explore', 'lastUpdated', 'rating', 'az'].includes(sortSelect.value)
+          ? sortSelect.value
+          : 'explore';
         sortBy = nextSort;
         try {
           window.localStorage.setItem(SORT_PREFERENCE_STORAGE_KEY, sortBy);
@@ -3531,6 +3834,11 @@
     if (!listingUrlWhenOpened && !isWalletSharePath()) return;
     clearWalletModalQuery();
     selectedWallet = null;
+  });
+
+  window.addEventListener('popstate', function() {
+    listingPage = listingPageFromLocation();
+    if (container && container.querySelector('.fides-wallet-grid')) renderWalletGridOnly();
   });
 
   if (document.readyState === 'loading') {

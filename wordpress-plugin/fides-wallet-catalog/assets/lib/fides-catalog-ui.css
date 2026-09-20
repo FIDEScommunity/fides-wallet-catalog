@@ -395,6 +395,52 @@
   gap: 0.375rem;
 }
 
+.fides-modal-overlay .fides-modal-award-inline {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 0.2rem;
+  margin-left: 0.35rem;
+  padding: 0.15rem 0.4rem;
+  border: 1px solid rgba(14, 165, 233, 0.35);
+  border-radius: 999px;
+  background: rgba(14, 165, 233, 0.1);
+  color: #0369a1;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.fides-modal-overlay .fides-modal-award-inline.award-winner {
+  border-color: rgba(245, 158, 11, 0.45);
+  background: rgba(245, 158, 11, 0.12);
+  color: #92400e;
+}
+
+.fides-modal-overlay .fides-modal-award-inline:hover {
+  border-color: currentColor;
+  color: inherit;
+  text-decoration: none;
+}
+
+.fides-modal-overlay .fides-modal-award-inline svg {
+  width: 11px;
+  height: 11px;
+}
+
+@media (max-width: 640px) {
+  .fides-modal-overlay--wallet .fides-modal-provider {
+    flex-wrap: wrap;
+    row-gap: 0.25rem;
+  }
+
+  .fides-modal-overlay--wallet .fides-modal-award-inline {
+    margin-left: 0;
+  }
+}
+
 .fides-modal-country-flag {
   width: 18px;
   height: 13px;
@@ -1888,6 +1934,16 @@
 
   .fides-modal-overlay .fides-kv-key {
     white-space: normal;
+  }
+
+  /* Use-case details keep each key and value on one row on mobile. */
+  .fides-modal-overlay.fides-modal-overlay--usecase .fides-kv-row {
+    grid-template-columns: minmax(7rem, max-content) minmax(0, 1fr);
+    gap: 0.5rem 0.75rem;
+  }
+
+  .fides-modal-overlay.fides-modal-overlay--usecase .fides-kv-key {
+    white-space: nowrap;
   }
 
   .fides-wallet-technical-specs .fides-kv-section {

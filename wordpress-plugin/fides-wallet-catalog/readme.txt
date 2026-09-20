@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.13.0
+Stable tag: 2.15.0
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -103,9 +103,24 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 
 == Changelog ==
 
+= 2.15.0 =
+* Add Explore as the default sort: a deterministic daily mix of award winners, finalists, publicly available wallets, and other wallets.
+* Keep wallets without a logo off the first unfiltered Explore page while preserving normal pagination for filtered results.
+
+= 2.14.0 =
+* Add 24-item catalog pagination with stable `?catalog_page=` URLs, Previous/Next navigation, result ranges, browser history support, and automatic page reset after filtering, searching, or sorting.
+* Keep the server-rendered wallet detail fallback hidden while JavaScript opens deeplinks in the interactive modal, preventing an initial layout flash.
+
+= 2.13.2 =
+* Open the wallet detail modal for direct `/wallet/{id}/` links while preserving the server-rendered detail page for crawlers and visitors without JavaScript.
+
+= 2.13.1 =
+* Show FIDES award winner and finalist badges on wallet cards and in the shared detail modal.
+* Keep card titles and provider names free of inherited link underlines.
+
 = 2.13.0 =
 * Catalog cards are real `<a href="/wallet/{id}/">` links (open in a new tab works; left-click still opens the modal).
-* Direct detail URLs keep the wallet H1 and content visible after JavaScript rendering, with a short related-wallet list instead of the full catalog.
+* Direct detail URLs provide a server-rendered wallet H1, detail content, and related-wallet links for crawlers and visitors without JavaScript.
 
 = 2.12.0 =
 * Shareable wallet URLs: listing `?wallet=` redirects to `/wallet/{id}/` so LinkedIn can scrape a unique page. Submit/update form URLs that also use `?wallet=` are not redirected.
