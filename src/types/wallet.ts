@@ -187,6 +187,8 @@ export interface Wallet {
   catalogTier?: string;
   /** Full Community listing depth — set by WP export or inherited from organization at crawl time. */
   catalogListingDepth?: 'full';
+  /** Inherited from the parent organization when that listing opted out of Latest news. */
+  listingNewsEnabled?: boolean;
 }
 
 export interface WalletCatalog {

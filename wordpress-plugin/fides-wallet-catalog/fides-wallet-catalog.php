@@ -3,7 +3,7 @@
  * Plugin Name: FIDES Wallet Catalog
  * Plugin URI: https://fides.community
  * Description: Displays the FIDES Wallet Catalog with search and filter functionality. When the master fides_catalog_ssr_enabled flag (provided by FIDES Community Tools Tiles ≥ 1.6.0) is enabled, the plugin also emits a server-rendered listing fallback, per-deeplink SEO meta tags and a SoftwareApplication JSON-LD payload so wallet detail URLs become indexable by search engines.
- * Version: 2.15.0
+ * Version: 2.16.1
  * Author: FIDES Labs BV
  * Author URI: https://fides.community
  * License: Apache-2.0
@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('FIDES_WALLET_CATALOG_VERSION', '2.15.0');
+define('FIDES_WALLET_CATALOG_VERSION', '2.16.1');
 define('FIDES_WALLET_CATALOG_PATH', plugin_dir_path(__FILE__));
 define('FIDES_WALLET_CATALOG_URL', plugin_dir_url(__FILE__));
 /** Bump this when share rewrite rules change so existing sites flush once. */
@@ -75,6 +75,7 @@ class FIDES_Wallet_Catalog {
         $ui_lib_js_path = $this->plugin_path . 'assets/lib/fides-catalog-ui.js';
         $aggregated_path = $this->plugin_path . 'data/aggregated.json';
         $vocabulary_path = $this->plugin_path . 'assets/vocabulary.json';
+        $pro_news_path = $this->plugin_path . 'data/pro-news.json';
 
         $css_version = file_exists($css_path) ? filemtime($css_path) : self::VERSION;
         $js_version = file_exists($js_path) ? filemtime($js_path) : self::VERSION;
@@ -82,6 +83,7 @@ class FIDES_Wallet_Catalog {
         $ui_lib_js_version = file_exists($ui_lib_js_path) ? filemtime($ui_lib_js_path) : self::VERSION;
         $aggregated_version = file_exists($aggregated_path) ? (string) filemtime($aggregated_path) : '';
         $vocabulary_version = file_exists($vocabulary_path) ? (string) filemtime($vocabulary_path) : '';
+        $pro_news_version = file_exists($pro_news_path) ? (string) filemtime($pro_news_path) : '';
 
         // Assets are only loaded when the shortcode is used
         wp_register_style(
@@ -130,6 +132,8 @@ class FIDES_Wallet_Catalog {
             'githubDataUrl' => 'https://raw.githubusercontent.com/FIDEScommunity/fides-wallet-catalog/main/data/aggregated.json',
             'cacheDataUrl' => rest_url('fides-catalog/v1/aggregated/wallet'),
             'aggregatedDataVersion' => $aggregated_version,
+            'proNewsDataUrl' => 'https://raw.githubusercontent.com/FIDEScommunity/fides-organization-catalog/main/data/pro-news.json',
+            'proNewsDataVersion' => $pro_news_version,
             'vocabularyUrl' => 'https://raw.githubusercontent.com/FIDEScommunity/fides-interop-profiles/main/data/vocabulary.json',
             'vocabularyFallbackUrl' => $this->plugin_url . 'assets/vocabulary.json',
             'vocabularyDataVersion' => $vocabulary_version,

@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.15.0
+Stable tag: 2.16.1
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -102,6 +102,12 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.16.1 =
+* Hide Latest news when the parent Official organization opted out (`listingNewsEnabled: false`).
+
+= 2.16.0 =
+* Official wallet listings can show a Latest news accordion for headlines tagged to that wallet (`walletIds` in `pro-news.json`). Company news stays on the organization modal.
 
 = 2.15.0 =
 * Add Explore as the default sort: a deterministic daily mix of award winners, finalists, publicly available wallets, and other wallets.

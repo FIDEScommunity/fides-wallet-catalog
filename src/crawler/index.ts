@@ -83,6 +83,8 @@ interface OrgCatalogEntry {
   catalogTier?: string;
   /** Full Community listing depth — inherited onto wallets at crawl time. */
   catalogListingDepth?: string;
+  /** Official/Pro org opt-out of harvested Latest news. */
+  listingNewsEnabled?: boolean;
 }
 
 function orgEntryToWalletProvider(entry: OrgCatalogEntry, orgId: string): WalletProvider {
@@ -820,11 +822,13 @@ function normalizeWallets(
 
     const catalogTier = resolveWalletCatalogTier(walletAny, orgId, organizationById);
     const catalogListingDepth = resolveWalletCatalogListingDepth(walletAny, orgId, organizationById);
+    const listingNewsEnabled = organizationById.get(orgId)?.listingNewsEnabled;
 
     return {
       ...walletRest,
       ...(catalogTier ? { catalogTier } : {}),
       ...(catalogListingDepth ? { catalogListingDepth } : {}),
+      ...(listingNewsEnabled === false ? { listingNewsEnabled: false } : {}),
       orgId,
       provider,
       catalogUrl,

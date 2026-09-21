@@ -160,6 +160,7 @@
   const config = window.fidesWalletCatalog || {
     pluginUrl: '',
     githubDataUrl: 'https://raw.githubusercontent.com/FIDEScommunity/fides-wallet-catalog/main/data/aggregated.json',
+    proNewsDataUrl: 'https://raw.githubusercontent.com/FIDEScommunity/fides-organization-catalog/main/data/pro-news.json',
     useCaseAggregatedDataUrl: 'https://raw.githubusercontent.com/FIDEScommunity/fides-use-case-catalog/main/data/aggregated.json'
   };
   const ASK_FIDES_AVAILABLE = !!(window.fidesWalletCatalog && window.fidesWalletCatalog.askFidesAvailable);
@@ -1218,6 +1219,27 @@
     return useCasesByWalletId[wallet.id] || [];
   }
 
+  async function loadListingNews() {
+    const ui = window.FidesCatalogUI;
+    if (!ui || typeof ui.attachListingNews !== 'function') return;
+    const version = config.proNewsDataVersion ? `?v=${encodeURIComponent(config.proNewsDataVersion)}` : '';
+    const localUrl = `${config.pluginUrl}data/pro-news.json${version}`;
+    const remoteUrl = config.proNewsDataUrl || 'https://raw.githubusercontent.com/FIDEScommunity/fides-organization-catalog/main/data/pro-news.json';
+    const fetchJson = typeof ui.fetchJsonWithTimeout === 'function'
+      ? ui.fetchJsonWithTimeout
+      : null;
+    if (!fetchJson) return;
+    const sources = isFidesLocalDevHost() ? [localUrl, remoteUrl] : [remoteUrl, localUrl];
+    for (const url of sources) {
+      if (!url) continue;
+      const result = await fetchJson(url, 4000);
+      if (result && result.ok && result.data && result.data.organizations) {
+        ui.attachListingNews(wallets, result.data, function (wallet) { return wallet && wallet.orgId; }, { scope: 'wallet' });
+        return;
+      }
+    }
+  }
+
   /**
    * Load wallets from multiple sources (with fallbacks)
    * Default: GitHub/raw JSON first, then plugin data/aggregated.json.
@@ -1267,7 +1289,8 @@
           console.warn('Failed to load wallet likes:', ratingsError.message);
         }),
         loadAwardRecognitions(),
-        loadUseCaseIndex()
+        loadUseCaseIndex(),
+        loadListingNews()
       ]);
       console.log(`Loaded ${wallets.length} wallets from ${sourceName}`);
     }

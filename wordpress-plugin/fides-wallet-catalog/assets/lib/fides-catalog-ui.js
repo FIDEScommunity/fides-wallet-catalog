@@ -138,7 +138,8 @@
     playStore: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 9.99l-2.302 2.302-8.634-8.634z"/></svg>',
     globeApp: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>',
     useCases: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg>',
-    alert: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>'
+    alert: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>',
+    newspaper: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>'
   };
 
   let currentModalMediaSlides = [];
@@ -1604,10 +1605,29 @@
       '</div>';
   }
 
+  function updateModalUseCasesNav(wrap) {
+    if (!wrap) return;
+    const scroller = wrap.querySelector('.fides-modal-use-cases--scroll');
+    if (!scroller) return;
+    const prevBtn = wrap.querySelector('[data-modal-uc-scroll="prev"]');
+    const nextBtn = wrap.querySelector('[data-modal-uc-scroll="next"]');
+    const maxScroll = Math.max(0, scroller.scrollWidth - scroller.clientWidth);
+    const left = scroller.scrollLeft;
+    const atStart = left <= 4;
+    const atEnd = left >= maxScroll - 4;
+    if (prevBtn) prevBtn.disabled = atStart;
+    if (nextBtn) nextBtn.disabled = atEnd;
+    wrap.classList.toggle('is-at-start', atStart);
+    wrap.classList.toggle('is-at-end', atEnd);
+  }
+
   function bindModalUseCasesScroll(root) {
     const scope = root && root.querySelectorAll ? root : document;
     scope.querySelectorAll('.fides-modal-use-cases-wrap--scroll').forEach(function(wrap) {
-      if (wrap.getAttribute('data-fides-uc-scroll-bound') === '1') return;
+      if (wrap.getAttribute('data-fides-uc-scroll-bound') === '1') {
+        updateModalUseCasesNav(wrap);
+        return;
+      }
       const scroller = wrap.querySelector('.fides-modal-use-cases--scroll');
       if (!scroller) return;
       wrap.setAttribute('data-fides-uc-scroll-bound', '1');
@@ -1615,14 +1635,7 @@
       const nextBtn = wrap.querySelector('[data-modal-uc-scroll="next"]');
 
       function updateNavState() {
-        const maxScroll = Math.max(0, scroller.scrollWidth - scroller.clientWidth);
-        const left = scroller.scrollLeft;
-        const atStart = left <= 4;
-        const atEnd = left >= maxScroll - 4;
-        if (prevBtn) prevBtn.disabled = atStart;
-        if (nextBtn) nextBtn.disabled = atEnd;
-        wrap.classList.toggle('is-at-start', atStart);
-        wrap.classList.toggle('is-at-end', atEnd);
+        updateModalUseCasesNav(wrap);
       }
 
       function scrollByPage(direction) {
@@ -2068,6 +2081,152 @@
     return map[status] || 'fides-eudi-landscape-badge--unknown';
   }
 
+  function isHttpUrl(value) {
+    return typeof value === 'string' && /^https?:\/\//i.test(value.trim());
+  }
+
+  function listingNewsAllowed(item) {
+    return !(item && item.listingNewsEnabled === false);
+  }
+
+  function listingNewsWalletIds(entry) {
+    if (!entry || !Array.isArray(entry.walletIds)) return [];
+    return entry.walletIds.map(function(id) {
+      return String(id || '').trim();
+    }).filter(Boolean);
+  }
+
+  function newsItemAppliesToWallet(entry, walletId) {
+    const id = String(walletId || '').trim();
+    if (!id) return false;
+    return listingNewsWalletIds(entry).indexOf(id) !== -1;
+  }
+
+  function listingNewsItems(item, options) {
+    if (!listingNewsAllowed(item)) return [];
+    const news = item && item.news && typeof item.news === 'object' ? item.news : null;
+    const raw = news && Array.isArray(news.items) ? news.items : [];
+    const walletScope = options && options.entityType === 'wallet';
+    const walletId = walletScope
+      ? String((options && options.walletId) || (item && item.id) || '').trim()
+      : '';
+    return raw.filter(function(entry) {
+      if (!(entry && String(entry.title || '').trim() && isHttpUrl(entry.url))) return false;
+      if (walletScope) return newsItemAppliesToWallet(entry, walletId);
+      return true;
+    }).slice(0, 5);
+  }
+
+  function formatListingNewsDate(value) {
+    if (!value) return '';
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) {
+      return String(value).trim();
+    }
+    return date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+  }
+
+  function listingNewsSourceKindLabel(kind) {
+    if (kind === 'github_release') return 'GitHub release';
+    if (kind === 'press') return 'Press';
+    return '';
+  }
+
+  function attachListingNews(items, payload, getOrgId, options) {
+    const byOrg = payload && payload.organizations && typeof payload.organizations === 'object'
+      ? payload.organizations
+      : {};
+    const fetchedAt = payload && payload.generatedAt ? String(payload.generatedAt) : '';
+    const walletScope = options && options.scope === 'wallet';
+    (Array.isArray(items) ? items : []).forEach(function(item) {
+      if (!item || typeof item !== 'object') return;
+      if (!listingNewsAllowed(item)) return;
+      const orgId = typeof getOrgId === 'function'
+        ? getOrgId(item)
+        : (item.orgId || item.id);
+      const entry = orgId && byOrg[orgId] ? byOrg[orgId] : null;
+      const newsItems = entry && Array.isArray(entry.items) ? entry.items.filter(function(row) {
+        if (!(row && String(row.title || '').trim() && isHttpUrl(row.url))) return false;
+        if (walletScope) return newsItemAppliesToWallet(row, item.id);
+        return true;
+      }).slice(0, 5) : [];
+      if (!newsItems.length) return;
+      item.news = {
+        fetchedAt: fetchedAt || entry.fetchedAt || '',
+        items: newsItems
+      };
+    });
+  }
+
+  function buildListingNewsCardsHtml(newsItems, options) {
+    const list = (Array.isArray(newsItems) ? newsItems : []).filter(function(entry) {
+      return entry && String(entry.title || '').trim() && isHttpUrl(entry.url);
+    });
+    if (!list.length) return '';
+    const opts = options || {};
+    const entityType = opts.entityType === 'wallet' ? 'wallet' : 'organization';
+    const salesItem = opts.salesItem;
+    const salesAttrs = entityType === 'wallet'
+      ? walletSalesTrackAttrString(salesItem, 'website', opts)
+      : organizationSalesTrackAttrString(salesItem, 'website', opts);
+    const salesClass = salesAttrs ? ' matomo_ignore piwik_ignore' : '';
+    const scroll = list.length > 2;
+    const wrapClass = scroll ? ' fides-modal-use-cases-wrap--scroll' : '';
+    const scrollClass = scroll ? ' fides-modal-use-cases--scroll' : '';
+    const cardsHtml = list.map(function(entry) {
+      const title = String(entry.title || '').trim();
+      const url = String(entry.url || '').trim();
+      const dateLabel = formatListingNewsDate(entry.publishedAt);
+      const sourceLabel = String(entry.sourceLabel || '').trim();
+      const kindLabel = listingNewsSourceKindLabel(entry.sourceKind);
+      const eyebrow = [dateLabel, sourceLabel || kindLabel].filter(Boolean).join(' · ') || 'News';
+      const body =
+        '<span class="fides-modal-use-case-card__top">' +
+        '<span class="fides-modal-use-case-card__eyebrow">' + escapeHtml(eyebrow) + '</span>' +
+        '</span>' +
+        '<strong class="fides-modal-use-case-card__title">' + escapeHtml(title) + '</strong>' +
+        '<span class="fides-modal-use-case-card__link">Read article <span aria-hidden="true">→</span></span>';
+      return '<a class="fides-modal-use-case-card' + salesClass + '" href="' + escapeHtml(url) +
+        '" target="_blank" rel="noopener noreferrer"' + salesAttrs +
+        ' onclick="event.stopPropagation();">' + body + '</a>';
+    }).join('');
+    const navPrev = scroll
+      ? '<button type="button" class="fides-modal-use-cases-nav-btn fides-modal-use-cases-nav-btn--prev" data-modal-uc-scroll="prev" aria-label="Previous news" disabled>' +
+        icons.chevronLeft + '</button>'
+      : '';
+    const navNext = scroll
+      ? '<button type="button" class="fides-modal-use-cases-nav-btn fides-modal-use-cases-nav-btn--next" data-modal-uc-scroll="next" aria-label="Next news">' +
+        icons.chevronRight + '</button>'
+      : '';
+    return '<div class="fides-modal-use-cases-wrap' + wrapClass + '">' +
+      navPrev +
+      '<div class="fides-modal-use-cases' + scrollClass + '" aria-label="Latest news">' + cardsHtml + '</div>' +
+      navNext +
+      '</div>';
+  }
+
+  function buildListingNewsAccordionHtml(item, options) {
+    const newsItems = listingNewsItems(item, options);
+    if (!newsItems.length) return '';
+    const entityType = options && options.entityType === 'wallet' ? 'wallet' : 'organization';
+    const accordionId = (options && options.accordionId) || (
+      entityType === 'wallet' ? 'fides-accordion-wallet-news' : 'fides-accordion-org-news'
+    );
+    const body = buildListingNewsCardsHtml(newsItems, Object.assign({}, options || {}, {
+      entityType: entityType,
+      salesItem: (options && options.salesItem) || item
+    }));
+    if (!body) return '';
+    return renderModalAccordion(
+      accordionId,
+      'Latest news',
+      icons.newspaper,
+      body,
+      true,
+      newsItems.length
+    );
+  }
+
   function buildWalletEudiLandscapeBadgeHtml(wallet) {
     const tracker = wallet && wallet.eudiTracker;
     if (!tracker || !tracker.status) return '';
@@ -2135,6 +2294,11 @@
       'No use cases linked from the use case catalog for this wallet.',
       { showOrganizationColumn: false, showHeader: false }
     );
+    const newsAccordionHtml = buildListingNewsAccordionHtml(wallet, {
+      entityType: 'wallet',
+      salesItem: wallet,
+      accordionId: 'fides-accordion-wallet-news'
+    });
     const accordions = [
       renderModalAccordion(
         'fides-accordion-wallet-eudi-landscape',
@@ -2151,6 +2315,7 @@
         true,
         rpUseCasesCount(useCaseOptions)
       ),
+      newsAccordionHtml,
       renderModalAccordion(
         'fides-accordion-wallet-technical',
         'Specifications',
@@ -2203,7 +2368,9 @@
   }
 
   function initModalAccordions() {
-    document.querySelectorAll('#fides-modal-overlay .fides-accordion-toggle[type="button"]').forEach(function(btn) {
+    const overlay = document.getElementById('fides-modal-overlay');
+    if (!overlay || typeof overlay.querySelectorAll !== 'function') return;
+    overlay.querySelectorAll('.fides-accordion-toggle[type="button"]').forEach(function(btn) {
       btn.addEventListener('click', function() {
         const accordion = btn.closest('.fides-accordion');
         if (!accordion) return;
@@ -2211,9 +2378,14 @@
         accordion.querySelectorAll('.fides-accordion-toggle[type="button"]').forEach(function(toggle) {
           toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
+        if (isOpen) {
+          requestAnimationFrame(function() {
+            bindModalUseCasesScroll(overlay);
+          });
+        }
       });
     });
-    bindModalUseCasesScroll(document.getElementById('fides-modal-overlay'));
+    bindModalUseCasesScroll(overlay);
   }
 
   function initModalEcosystemTargets() {
@@ -4036,12 +4208,14 @@
       (!isCommunity && org.website ? '<a href="' + escapeHtml(org.website) + '" target="_blank" rel="noopener" class="fides-modal-link primary' +
         (organizationWebsiteSalesAttrs ? ' matomo_ignore piwik_ignore' : '') + '"' + organizationWebsiteSalesAttrs + '>' + icons.externalLink + ' Visit Website</a>' : '') +
       '</div>' +
+      buildListingNewsAccordionHtml(org, { entityType: 'organization', salesItem: org, accordionId: 'fides-accordion-org-news' }) +
       buildModalLastUpdatedHtml(org, ['updatedAt', 'updated', 'fetchedAt']) +
       '</div>' +
       buildOrganizationContactFooterHtml(org.contact, { tierUiEnabled: optionsTierUiEnabled(options), isCommunity: isCommunity, item: org, editAccess: options && options.editAccess, salesOrg: org }) +
       '</div></div>';
 
     mountModal(modalHtml);
+    initModalAccordions();
   }
 
   function openVocabularyModal(term, options) {
@@ -4602,6 +4776,8 @@
     resolveWalletCountryLabel,
     buildOrganizationContactFooterHtml,
     buildModalLastUpdatedHtml,
+    buildListingNewsAccordionHtml,
+    attachListingNews,
     buildOrganizationHeroSectionHtml,
     buildUseCasesCardsHtml,
     bindModalUseCasesScroll,
