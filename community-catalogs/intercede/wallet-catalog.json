@@ -6,7 +6,7 @@
       "type": "personal",
       "name": "MyID Identity Wallet",
       "description": "A mobile identity wallet that integrates with Intercede MyID to provision and manage Mobile Identity Documents (mDoc), based on ISO/IEC 18013-5 (mDL). Users can present requested attributes via QR-code flows to compatible verifier apps.",
-      "website": "https://www.intercede.com/solutions/digital-identity/myid/",
+      "website": "https://www.intercede.com/products/",
       "appStoreLinks": {
         "iOS": "https://apps.apple.com/us/app/myid-identity-wallet/id6450743813",
         "android": "https://play.google.com/store/apps/details?id=com.intercede.MyIDWallet"

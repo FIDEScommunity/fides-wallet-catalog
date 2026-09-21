@@ -5,7 +5,7 @@
       "id": "orbit-enterprise",
       "name": "Orbit Enterprise",
       "description": "An enterprise digital identity platform providing verifier and issuer capabilities for organizations to manage and issue verifiable credentials.",
-      "logo": "https://www.google.com/s2/favicons?domain=northernblock.io&sz=128",
+      "logo": "https://northernblock.io/wp-content/uploads/2022/10/NB-Orbit-App-Icon-1-1.png",
       "website": "https://northernblock.io",
       "type": "organizational",
       "capabilities": [
@@ -36,16 +36,13 @@
       "type": "personal",
       "name": "Orbit Edge",
       "description": "Personal wallet by Northern Block for holding and presenting verifiable credentials, designed to work with the Orbit enterprise identity platform.",
-      "logo": "https://www.google.com/s2/favicons?domain=northernblock.io&sz=128",
+      "logo": "https://northernblock.io/wp-content/uploads/2022/10/NB-Orbit-App-Icon-1-1.png",
       "website": "https://northernblock.io",
       "platforms": [
         "iOS",
         "Android"
       ],
       "openSource": false,
-      "appStoreLinks": {
-        "iOS": "https://apps.apple.com/au/app/orbit-edge/id1508037063"
-      },
       "status": "production"
     }
   ],

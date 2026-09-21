@@ -6,7 +6,7 @@
       "type": "personal",
       "name": "TSG Mobile Wallet",
       "description": "Personal SSI wallet for receiving, storing and presenting Verifiable Credentials within the TNO Security Gateway (TSG) ecosystem. Supports OpenID4VCI for issuance and OpenID4VP for presentations.",
-      "logo": "https://www.google.com/s2/favicons?domain=tsg.dataspac.es&sz=128",
+      "logo": "https://tno-tsg.gitlab.io/assets/images/TSG-Logo-White.svg",
       "website": "https://tsg.dataspac.es/docs/apps/wallet/",
       "platforms": [
         "iOS"

@@ -6,7 +6,7 @@
       "name": "CredIssuer",
       "description": "CredIssuer is a digital credentialing platform that enables institutions and governments to issue tamper-proof, verifiable certificates in real time.",
       "logo": "https://www.google.com/s2/favicons?domain=ooru.io&sz=256",
-      "website": "https://ooru.io/products/credissuer-secure-verifiable-credentials/",
+      "website": "https://ooru.io/products/credissuer",
       "type": "organizational",
       "platforms": [
         "Web"
@@ -20,7 +20,7 @@
         "OpenID4VCI"
       ],
       "appStoreLinks": {
-        "web": "https://ooru.io/products/credissuer-secure-verifiable-credentials/"
+        "web": "https://ooru.io/products/credissuer"
       },
       "status": "production",
       "capabilities": [
@@ -32,7 +32,7 @@
       "name": "SnapKYC",
       "description": "SnapKYC is a consent-first business verification platform that enables organizations to verify digital credentials. Supports OID4VP-based presentations including mDL/mDoc, SD-JWT VC and VCDM credentials.",
       "logo": "https://www.google.com/s2/favicons?domain=ooru.io&sz=256",
-      "website": "https://ooru.io/products/sanpkyc-user-approved-national-id-authentication/",
+      "website": "https://ooru.io/products/snapkyc",
       "type": "organizational",
       "platforms": [
         "Web"
@@ -46,7 +46,7 @@
         "OpenID4VP"
       ],
       "appStoreLinks": {
-        "web": "https://ooru.io/products/sanpkyc-user-approved-national-id-authentication/"
+        "web": "https://ooru.io/products/snapkyc"
       },
       "status": "production",
       "capabilities": [
