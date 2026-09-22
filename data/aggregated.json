@@ -31,7 +31,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/2060/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:29:59.342Z",
+      "fetchedAt": "2026-09-22T10:35:06.108Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-13T19:28:00.000Z",
       "source": "github"
@@ -64,6 +64,7 @@
       ],
       "documentation": "https://www.dmv.ca.gov/portal/ca-dmv-wallet/",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:ca-dmv",
       "provider": {
         "orgId": "org:ca-dmv",
@@ -73,7 +74,7 @@
         "country": "US"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/CA/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:29:59.466Z",
+      "fetchedAt": "2026-09-22T10:35:06.192Z",
       "updatedAt": "2026-02-18T00:00:00.000Z",
       "firstSeenAt": "2026-02-18T00:00:00.000Z",
       "source": "github"
@@ -110,7 +111,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/TNO/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:29:59.584Z",
+      "fetchedAt": "2026-09-22T10:35:06.269Z",
       "updatedAt": "2026-09-21T17:27:57.000Z",
       "firstSeenAt": "2025-06-06T00:00:00.000Z",
       "source": "github"
@@ -137,11 +138,11 @@
       "provider": {
         "orgId": "org:a3bc",
         "name": "A3BC",
-        "logo": "https://www.a3bc.io/img/favicon/apple-touch-icon.png?v=3",
+        "logo": "https://www.a3bc.io/images/logo/logo-horizontal-couleurs.svg",
         "country": "FR"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/a3bc/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:29:59.715Z",
+      "fetchedAt": "2026-09-22T10:35:06.346Z",
       "updatedAt": "2026-09-21T17:27:57.000Z",
       "firstSeenAt": "2022-06-01T00:00:00.000Z",
       "source": "github"
@@ -183,7 +184,7 @@
         "country": "SG"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/affinidi/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:29:59.837Z",
+      "fetchedAt": "2026-09-22T10:35:06.421Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -198,6 +199,7 @@
       "platforms": [],
       "logo": "https://flagcdn.com/w80/al.png",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:albania",
       "provider": {
         "orgId": "org:albania",
@@ -207,14 +209,14 @@
         "country": "AL"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/albania/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:29:59.964Z",
+      "fetchedAt": "2026-09-22T10:35:06.501Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-12T16:03:07.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Albania",
         "isoAlpha2": "AL",
         "trackerPageSlug": "albania",
@@ -317,7 +319,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/animo/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:00.105Z",
+      "fetchedAt": "2026-09-22T10:35:06.577Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2023-06-01T00:00:00.000Z",
       "source": "github"
@@ -370,7 +372,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/animo/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:00.105Z",
+      "fetchedAt": "2026-09-22T10:35:06.577Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -404,7 +406,7 @@
         "country": "US"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/apple/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:00.231Z",
+      "fetchedAt": "2026-09-22T10:35:06.656Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "github"
@@ -442,6 +444,7 @@
       },
       "releaseDate": "2024-01-01",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:austria",
       "provider": {
         "orgId": "org:austria",
@@ -451,14 +454,14 @@
         "country": "AT"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/austria/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:00.362Z",
+      "fetchedAt": "2026-09-22T10:35:06.757Z",
       "updatedAt": "2026-07-08T19:38:11.000Z",
       "firstSeenAt": "2024-01-01T00:00:00.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Austria",
         "isoAlpha2": "AT",
         "trackerPageSlug": "austria",
@@ -561,7 +564,7 @@
         "country": "US"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/auth0/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:00.488Z",
+      "fetchedAt": "2026-09-22T10:35:06.842Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -622,7 +625,7 @@
         "country": "FI"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/authbound/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:00.630Z",
+      "fetchedAt": "2026-09-22T10:35:06.924Z",
       "updatedAt": "2026-02-17T12:00:00.000Z",
       "firstSeenAt": "2026-02-17T12:00:00.000Z",
       "source": "github"
@@ -666,7 +669,7 @@
         "country": "IN"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/ayanworks/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:00.764Z",
+      "fetchedAt": "2026-09-22T10:35:06.995Z",
       "updatedAt": "2026-01-19T00:00:00.000Z",
       "firstSeenAt": "2026-01-19T00:00:00.000Z",
       "source": "github"
@@ -705,7 +708,7 @@
         "country": "IN"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/ayanworks/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:00.764Z",
+      "fetchedAt": "2026-09-22T10:35:06.995Z",
       "updatedAt": "2026-01-19T00:00:00.000Z",
       "firstSeenAt": "2026-01-19T00:00:00.000Z",
       "source": "github"
@@ -737,7 +740,7 @@
         "country": "CA"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/bcgov/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:01.011Z",
+      "fetchedAt": "2026-09-22T10:35:07.064Z",
       "updatedAt": "2026-08-21T04:44:18.000Z",
       "firstSeenAt": "2026-01-12T00:00:00.000Z",
       "source": "github"
@@ -763,7 +766,7 @@
         "country": "CA"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/bcgov/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:01.011Z",
+      "fetchedAt": "2026-09-22T10:35:07.064Z",
       "updatedAt": "2026-08-21T04:44:18.000Z",
       "firstSeenAt": "2026-08-21T04:44:18.000Z",
       "source": "github"
@@ -784,6 +787,7 @@
       "logo": "https://flagcdn.com/w80/be.png",
       "releaseDate": "2025-01-01",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:belgium",
       "provider": {
         "orgId": "org:belgium",
@@ -793,14 +797,14 @@
         "country": "BE"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/belgium/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:01.261Z",
+      "fetchedAt": "2026-09-22T10:35:07.164Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2025-01-01T00:00:00.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Belgium",
         "isoAlpha2": "BE",
         "trackerPageSlug": "belgium",
@@ -872,6 +876,7 @@
       ],
       "logo": "https://flagcdn.com/w80/ba.png",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:bosnia-herzegovina",
       "provider": {
         "orgId": "org:bosnia-herzegovina",
@@ -881,14 +886,14 @@
         "country": "BA"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/bosnia-herzegovina/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:01.414Z",
+      "fetchedAt": "2026-09-22T10:35:07.238Z",
       "updatedAt": "2026-09-21T17:27:57.000Z",
       "firstSeenAt": "2026-07-08T19:38:11.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Bosnia and Herzegovina",
         "isoAlpha2": "BA",
         "trackerPageSlug": "bosnia-and-herzegovina",
@@ -937,6 +942,7 @@
       ],
       "logo": "https://flagcdn.com/w80/bg.png",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:bulgaria",
       "provider": {
         "orgId": "org:bulgaria",
@@ -946,14 +952,14 @@
         "country": "BG"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/bulgaria/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:01.537Z",
+      "fetchedAt": "2026-09-22T10:35:07.336Z",
       "updatedAt": "2026-07-08T19:38:11.000Z",
       "firstSeenAt": "2026-07-08T19:38:11.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Bulgaria",
         "isoAlpha2": "BG",
         "trackerPageSlug": "bulgaria",
@@ -1024,6 +1030,7 @@
       "openSource": false,
       "status": "production",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:buthan",
       "provider": {
         "orgId": "org:buthan",
@@ -1033,7 +1040,7 @@
         "country": "BT"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/buthan/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:01.663Z",
+      "fetchedAt": "2026-09-22T10:35:07.418Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-13T19:56:51.000Z",
       "source": "github"
@@ -1132,7 +1139,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/credenco/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:01.882Z",
+      "fetchedAt": "2026-09-22T10:35:07.495Z",
       "updatedAt": "2026-09-09T07:30:18.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -1221,7 +1228,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/credenco/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:01.882Z",
+      "fetchedAt": "2026-09-22T10:35:07.495Z",
       "updatedAt": "2026-09-09T07:30:18.000Z",
       "firstSeenAt": "2026-07-12T15:44:53.685Z",
       "source": "github"
@@ -1242,6 +1249,7 @@
       ],
       "logo": "https://www.google.com/s2/favicons?domain=certilia.com&sz=128",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:croatia",
       "provider": {
         "orgId": "org:croatia",
@@ -1251,14 +1259,14 @@
         "country": "HR"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/croatia/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:02.011Z",
+      "fetchedAt": "2026-09-22T10:35:07.612Z",
       "updatedAt": "2026-07-08T19:38:11.000Z",
       "firstSeenAt": "2026-07-08T19:38:11.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Croatia",
         "isoAlpha2": "HR",
         "trackerPageSlug": "croatia",
@@ -1328,22 +1336,23 @@
       "logo": "https://www.google.com/s2/favicons?domain=digital-citizen.gov.cy&sz=128",
       "releaseDate": "2024-01-01",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:cyprus",
       "provider": {
         "orgId": "org:cyprus",
         "name": "Government of Cyprus",
-        "website": "https://www.cygov.gov.cy/",
+        "website": "https://www.gov.cy/",
         "country": "CY"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/cyprus/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:02.162Z",
+      "fetchedAt": "2026-09-22T10:35:07.725Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2024-01-01T00:00:00.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Cyprus",
         "isoAlpha2": "CY",
         "trackerPageSlug": "cyprus",
@@ -1398,6 +1407,7 @@
       "logo": "https://www.google.com/s2/favicons?domain=edoklady.cz&sz=128",
       "releaseDate": "2022-01-01",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:czechia",
       "provider": {
         "orgId": "org:czechia",
@@ -1407,14 +1417,14 @@
         "country": "CZ"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/czechia/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:02.297Z",
+      "fetchedAt": "2026-09-22T10:35:07.792Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2022-01-01T00:00:00.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Czechia",
         "isoAlpha2": "CZ",
         "trackerPageSlug": "czechia",
@@ -1495,7 +1505,7 @@
         "country": "NL"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/datakeeper/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:02.517Z",
+      "fetchedAt": "2026-09-22T10:35:07.872Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-12T19:50:41.000Z",
       "source": "github"
@@ -1542,7 +1552,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/digidentity/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:02.645Z",
+      "fetchedAt": "2026-09-22T10:35:07.966Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "github"
@@ -1597,7 +1607,7 @@
         "country": "US"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/digitalbazaar/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:02.772Z",
+      "fetchedAt": "2026-09-22T10:35:08.044Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -1631,6 +1641,7 @@
         "holder"
       ],
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:digitaliseringsstyrelsen",
       "provider": {
         "orgId": "org:digitaliseringsstyrelsen",
@@ -1640,14 +1651,14 @@
         "country": "DK"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/digitaliseringsstyrelsen/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:02.902Z",
+      "fetchedAt": "2026-09-22T10:35:08.118Z",
       "updatedAt": "2026-06-05T00:00:00.000Z",
       "firstSeenAt": "2026-06-03T00:00:00.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Denmark",
         "isoAlpha2": "DK",
         "trackerPageSlug": "denmark",
@@ -1738,7 +1749,7 @@
       "provider": {
         "orgId": "org:digiyatra",
         "name": "DigiYatra Foundation",
-        "website": "https://www.digiyatra.org/",
+        "website": "https://digiyatrafoundation.com/",
         "logo": "https://raw.githubusercontent.com/FIDEScommunity/fides-organization-catalog/main/community-catalogs/digiyatra/digiyatra.webp",
         "country": "IN",
         "contact": {
@@ -1746,7 +1757,7 @@
         }
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/digiyatra/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:03.014Z",
+      "fetchedAt": "2026-09-22T10:35:08.192Z",
       "updatedAt": "2026-09-21T17:27:57.000Z",
       "firstSeenAt": "2026-04-22T13:33:59.000Z",
       "source": "github"
@@ -1793,7 +1804,7 @@
         "country": "CH"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/docklabs/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:03.146Z",
+      "fetchedAt": "2026-09-22T10:35:08.269Z",
       "updatedAt": "2026-01-10T12:00:00.000Z",
       "firstSeenAt": "2026-01-10T12:00:00.000Z",
       "source": "github"
@@ -1846,7 +1857,7 @@
         "country": "CH"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/docklabs/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:03.146Z",
+      "fetchedAt": "2026-09-22T10:35:08.269Z",
       "updatedAt": "2026-01-10T12:00:00.000Z",
       "firstSeenAt": "2026-01-10T12:00:00.000Z",
       "source": "github"
@@ -1866,23 +1877,24 @@
       ],
       "logo": "https://flagcdn.com/w80/ee.png",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:estonia",
       "provider": {
         "orgId": "org:estonia",
         "name": "Estonian Government",
         "website": "https://www.ria.ee/",
-        "logo": "https://www.google.com/s2/favicons?domain=ria.ee&sz=128",
+        "logo": "https://www.ria.ee/profiles/vp_distro/themes/vp_distro_theme/favicon.ico",
         "country": "EE"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/estonia/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:03.282Z",
+      "fetchedAt": "2026-09-22T10:35:08.355Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-12T15:59:00.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Estonia",
         "isoAlpha2": "EE",
         "trackerPageSlug": "estonia",
@@ -1955,6 +1967,7 @@
       },
       "documentation": "https://id.gov.et/",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:ethiopia",
       "provider": {
         "orgId": "org:ethiopia",
@@ -1964,7 +1977,7 @@
         "country": "ET"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/ethiopia/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:03.406Z",
+      "fetchedAt": "2026-09-22T10:35:08.432Z",
       "updatedAt": "2026-02-18T09:00:00.000Z",
       "firstSeenAt": "2026-02-18T09:00:00.000Z",
       "source": "github"
@@ -1994,6 +2007,7 @@
         "ISO 18013-5"
       ],
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:eu",
       "provider": {
         "orgId": "org:eu",
@@ -2003,7 +2017,7 @@
         "country": "EU"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/eu/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:03.526Z",
+      "fetchedAt": "2026-09-22T10:35:08.529Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-13T19:41:01.000Z",
       "source": "github"
@@ -2031,6 +2045,7 @@
         "ISO 18013-5"
       ],
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:eu",
       "provider": {
         "orgId": "org:eu",
@@ -2040,7 +2055,7 @@
         "country": "EU"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/eu/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:03.526Z",
+      "fetchedAt": "2026-09-22T10:35:08.529Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-13T19:41:01.000Z",
       "source": "github"
@@ -2065,6 +2080,7 @@
         "OpenID4VCI"
       ],
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:eu",
       "provider": {
         "orgId": "org:eu",
@@ -2074,7 +2090,7 @@
         "country": "EU"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/eu/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:03.526Z",
+      "fetchedAt": "2026-09-22T10:35:08.529Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-13T19:41:01.000Z",
       "source": "github"
@@ -2100,6 +2116,7 @@
         "ISO 18013-5"
       ],
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:eu",
       "provider": {
         "orgId": "org:eu",
@@ -2109,7 +2126,7 @@
         "country": "EU"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/eu/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:03.526Z",
+      "fetchedAt": "2026-09-22T10:35:08.529Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-13T19:41:01.000Z",
       "source": "github"
@@ -2131,6 +2148,7 @@
       "logo": "https://flagcdn.com/w80/fi.png",
       "releaseDate": "2026-01-01",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:finland",
       "provider": {
         "orgId": "org:finland",
@@ -2140,14 +2158,14 @@
         "country": "FI"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/finland/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:03.644Z",
+      "fetchedAt": "2026-09-22T10:35:08.601Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-01T00:00:00.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Finland",
         "isoAlpha2": "FI",
         "trackerPageSlug": "finland",
@@ -2230,7 +2248,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/forkbomb/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:03.774Z",
+      "fetchedAt": "2026-09-22T10:35:08.673Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -2259,7 +2277,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/forkbomb/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:03.774Z",
+      "fetchedAt": "2026-09-22T10:35:08.673Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -2322,14 +2340,14 @@
         "country": "FR"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/france/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:03.911Z",
+      "fetchedAt": "2026-09-22T10:35:08.745Z",
       "updatedAt": "2026-08-25T06:42:04.000Z",
       "firstSeenAt": "2024-01-01T00:00:00.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "France",
         "isoAlpha2": "FR",
         "trackerPageSlug": "france",
@@ -2474,7 +2492,7 @@
         "country": "ES"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/gataca/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:04.028Z",
+      "fetchedAt": "2026-09-22T10:35:08.822Z",
       "updatedAt": "2026-03-27T12:00:00.000Z",
       "firstSeenAt": "2026-01-15T12:00:00.000Z",
       "source": "github"
@@ -2572,7 +2590,7 @@
         "country": "ES"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/gataca/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:04.028Z",
+      "fetchedAt": "2026-09-22T10:35:08.822Z",
       "updatedAt": "2026-03-27T12:00:00.000Z",
       "firstSeenAt": "2026-01-15T12:00:00.000Z",
       "source": "github"
@@ -2593,6 +2611,7 @@
       ],
       "logo": "https://flagcdn.com/w80/ge.png",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:georgia",
       "provider": {
         "orgId": "org:georgia",
@@ -2602,14 +2621,14 @@
         "country": "GE"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/georgia/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:04.154Z",
+      "fetchedAt": "2026-09-22T10:35:08.891Z",
       "updatedAt": "2026-07-08T19:38:11.000Z",
       "firstSeenAt": "2026-07-08T19:38:11.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Georgia",
         "isoAlpha2": "GE",
         "trackerPageSlug": "georgia",
@@ -2655,6 +2674,7 @@
       ],
       "logo": "https://www.google.com/s2/favicons?domain=eudi-wallet.gov.de&sz=128",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:germany",
       "provider": {
         "orgId": "org:germany",
@@ -2664,14 +2684,14 @@
         "country": "DE"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/germany/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:04.272Z",
+      "fetchedAt": "2026-09-22T10:35:08.962Z",
       "updatedAt": "2026-09-14T10:47:07.000Z",
       "firstSeenAt": "2026-01-11T10:29:32.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Germany",
         "isoAlpha2": "DE",
         "trackerPageSlug": "germany",
@@ -2755,7 +2775,7 @@
         "country": "US"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/google/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:04.389Z",
+      "fetchedAt": "2026-09-22T10:35:09.049Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "github"
@@ -2778,6 +2798,7 @@
       "logo": "https://www.google.com/s2/favicons?domain=wallet.gov.gr&sz=128",
       "releaseDate": "2022-01-01",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:greece",
       "provider": {
         "orgId": "org:greece",
@@ -2787,7 +2808,7 @@
         "country": "GR"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/greece/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:04.505Z",
+      "fetchedAt": "2026-09-22T10:35:09.124Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2022-01-01T00:00:00.000Z",
       "source": "github"
@@ -2808,6 +2829,7 @@
       "logo": "https://flagcdn.com/w80/gr.png",
       "releaseDate": "2026-01-01",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:greece",
       "provider": {
         "orgId": "org:greece",
@@ -2817,14 +2839,14 @@
         "country": "GR"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/greece/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:04.505Z",
+      "fetchedAt": "2026-09-22T10:35:09.124Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-01T00:00:00.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Greece",
         "isoAlpha2": "GR",
         "trackerPageSlug": "greece",
@@ -2951,7 +2973,7 @@
         "country": "DE"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/helixid/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:04.637Z",
+      "fetchedAt": "2026-09-22T10:35:09.197Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2020-01-01T00:00:00.000Z",
       "source": "github"
@@ -2973,6 +2995,7 @@
         "iOS": "https://apps.apple.com/us/app/bien/id6754266435"
       },
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:honduras",
       "provider": {
         "orgId": "org:honduras",
@@ -2981,7 +3004,7 @@
         "country": "HN"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/honduras/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:04.761Z",
+      "fetchedAt": "2026-09-22T10:35:09.272Z",
       "updatedAt": "2026-02-18T10:15:00.000Z",
       "firstSeenAt": "2026-02-18T10:15:00.000Z",
       "source": "github"
@@ -3062,7 +3085,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/hovi/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:04.894Z",
+      "fetchedAt": "2026-09-22T10:35:09.351Z",
       "updatedAt": "2026-03-31T12:00:00.000Z",
       "firstSeenAt": "2024-10-01T00:00:00.000Z",
       "source": "github"
@@ -3144,7 +3167,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/hovi/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:04.894Z",
+      "fetchedAt": "2026-09-22T10:35:09.351Z",
       "updatedAt": "2026-03-31T12:00:00.000Z",
       "firstSeenAt": "2024-10-01T00:00:00.000Z",
       "source": "github"
@@ -3165,6 +3188,7 @@
       "logo": "https://flagcdn.com/w80/hu.png",
       "releaseDate": "2024-01-01",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:hungary",
       "provider": {
         "orgId": "org:hungary",
@@ -3174,14 +3198,14 @@
         "country": "HU"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/hungary/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:05.019Z",
+      "fetchedAt": "2026-09-22T10:35:09.423Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2024-01-01T00:00:00.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Hungary",
         "isoAlpha2": "HU",
         "trackerPageSlug": "hungary",
@@ -3232,6 +3256,7 @@
       "logo": "https://flagcdn.com/w80/is.png",
       "releaseDate": "2027-01-01",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:iceland",
       "provider": {
         "orgId": "org:iceland",
@@ -3241,14 +3266,14 @@
         "country": "IS"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/iceland/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:05.142Z",
+      "fetchedAt": "2026-09-22T10:35:09.499Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2027-01-01T00:00:00.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Iceland",
         "isoAlpha2": "IS",
         "trackerPageSlug": "iceland",
@@ -3385,7 +3410,7 @@
         "country": "SE"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/igrant/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:05.271Z",
+      "fetchedAt": "2026-09-22T10:35:09.569Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2021-06-01T00:00:00.000Z",
       "source": "github"
@@ -3479,7 +3504,7 @@
         "country": "SE"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/igrant/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:05.271Z",
+      "fetchedAt": "2026-09-22T10:35:09.569Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -3529,7 +3554,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/impierce/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:05.414Z",
+      "fetchedAt": "2026-09-22T10:35:09.658Z",
       "updatedAt": "2026-02-16T12:00:00.000Z",
       "firstSeenAt": "2026-02-16T12:00:00.000Z",
       "source": "github"
@@ -3581,7 +3606,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/impierce/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:05.414Z",
+      "fetchedAt": "2026-09-22T10:35:09.658Z",
       "updatedAt": "2026-02-16T12:00:00.000Z",
       "firstSeenAt": "2026-02-16T12:00:00.000Z",
       "source": "github"
@@ -3606,6 +3631,7 @@
       },
       "documentation": "https://www.digilocker.gov.in/web/resources",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:india",
       "provider": {
         "orgId": "org:india",
@@ -3615,7 +3641,7 @@
         "country": "IN"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/india/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:05.532Z",
+      "fetchedAt": "2026-09-22T10:35:09.734Z",
       "updatedAt": "2026-02-18T08:15:00.000Z",
       "firstSeenAt": "2026-02-18T08:15:00.000Z",
       "source": "github"
@@ -3656,7 +3682,7 @@
         "country": "ES"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/inetum/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:05.653Z",
+      "fetchedAt": "2026-09-22T10:35:09.810Z",
       "updatedAt": "2026-03-05T12:00:00.000Z",
       "firstSeenAt": "2026-03-05T12:00:00.000Z",
       "source": "github"
@@ -3702,7 +3728,7 @@
         "country": "ES"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/inetum/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:05.653Z",
+      "fetchedAt": "2026-09-22T10:35:09.810Z",
       "updatedAt": "2026-03-05T12:00:00.000Z",
       "firstSeenAt": "2026-03-05T12:00:00.000Z",
       "source": "github"
@@ -3740,7 +3766,7 @@
         "country": "GB"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/intercede/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:05.771Z",
+      "fetchedAt": "2026-09-22T10:35:09.881Z",
       "updatedAt": "2026-09-21T17:27:57.000Z",
       "firstSeenAt": "2026-01-19T11:32:53.000Z",
       "source": "github"
@@ -3760,6 +3786,7 @@
       ],
       "logo": "https://flagcdn.com/w80/ie.png",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:ireland",
       "provider": {
         "orgId": "org:ireland",
@@ -3769,14 +3796,14 @@
         "country": "IE"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/ireland/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:05.884Z",
+      "fetchedAt": "2026-09-22T10:35:09.977Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-12T15:28:59.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Ireland",
         "isoAlpha2": "IE",
         "trackerPageSlug": "ireland",
@@ -3850,14 +3877,14 @@
         "country": "IT"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/italy/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:06.029Z",
+      "fetchedAt": "2026-09-22T10:35:10.064Z",
       "updatedAt": "2026-08-24T11:19:55.000Z",
       "firstSeenAt": "2024-01-01T00:00:00.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Italy",
         "isoAlpha2": "IT",
         "trackerPageSlug": "italy",
@@ -3963,7 +3990,7 @@
         "country": "CH"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/ixo/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:06.273Z",
+      "fetchedAt": "2026-09-22T10:35:10.141Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-13T19:07:51.000Z",
       "source": "github"
@@ -4043,7 +4070,7 @@
         "country": "ES"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/izertis/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:06.424Z",
+      "fetchedAt": "2026-09-22T10:35:10.206Z",
       "updatedAt": "2026-05-18T12:00:00.000Z",
       "firstSeenAt": "2026-03-16T12:00:00.000Z",
       "source": "github"
@@ -4122,7 +4149,7 @@
         "country": "ES"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/izertis/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:06.424Z",
+      "fetchedAt": "2026-09-22T10:35:10.206Z",
       "updatedAt": "2026-05-18T12:00:00.000Z",
       "firstSeenAt": "2026-03-16T12:00:00.000Z",
       "source": "github"
@@ -4173,7 +4200,7 @@
         "country": "KR"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/k4security/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:06.545Z",
+      "fetchedAt": "2026-09-22T10:35:10.278Z",
       "updatedAt": "2026-03-03T00:00:00.000Z",
       "firstSeenAt": "2026-03-03T00:00:00.000Z",
       "source": "github"
@@ -4193,6 +4220,7 @@
       ],
       "logo": "https://flagcdn.com/w80/lv.png",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:latvia",
       "provider": {
         "orgId": "org:latvia",
@@ -4202,14 +4230,14 @@
         "country": "LV"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/latvia/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:06.669Z",
+      "fetchedAt": "2026-09-22T10:35:10.344Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-12T16:00:02.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Latvia",
         "isoAlpha2": "LV",
         "trackerPageSlug": "latvia",
@@ -4270,23 +4298,24 @@
         "android": "https://play.google.com/store/apps/details?id=li.llv.eidli.app"
       },
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:liechtenstein",
       "provider": {
         "orgId": "org:liechtenstein",
         "name": "Government of Liechtenstein",
-        "website": "https://www.llv.li",
+        "website": "https://www.llv.li/en",
         "logo": "https://www.google.com/s2/favicons?domain=llv.li&sz=128",
         "country": "LI"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/liechtenstein/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:06.816Z",
+      "fetchedAt": "2026-09-22T10:35:10.435Z",
       "updatedAt": "2026-07-08T19:38:11.000Z",
       "firstSeenAt": "2026-07-08T19:38:11.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Liechtenstein",
         "isoAlpha2": "LI",
         "trackerPageSlug": "liechtenstein",
@@ -4394,7 +4423,7 @@
         "country": "DE"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/lissi/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:06.927Z",
+      "fetchedAt": "2026-09-22T10:35:10.507Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2021-01-15T00:00:00.000Z",
       "source": "github"
@@ -4447,7 +4476,7 @@
         "country": "DE"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/lissi/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:06.927Z",
+      "fetchedAt": "2026-09-22T10:35:10.507Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -4468,6 +4497,7 @@
       ],
       "logo": "https://flagcdn.com/w80/lt.png",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:lithuania",
       "provider": {
         "orgId": "org:lithuania",
@@ -4477,14 +4507,14 @@
         "country": "LT"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/lithuania/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:07.042Z",
+      "fetchedAt": "2026-09-22T10:35:10.578Z",
       "updatedAt": "2026-07-08T19:38:11.000Z",
       "firstSeenAt": "2026-07-08T19:38:11.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Lithuania",
         "isoAlpha2": "LT",
         "trackerPageSlug": "lithuania",
@@ -4539,6 +4569,7 @@
       ],
       "logo": "https://flagcdn.com/w80/lu.png",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:luxembourg",
       "provider": {
         "orgId": "org:luxembourg",
@@ -4548,14 +4579,14 @@
         "country": "LU"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/luxembourg/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:07.171Z",
+      "fetchedAt": "2026-09-22T10:35:10.658Z",
       "updatedAt": "2026-07-08T19:38:11.000Z",
       "firstSeenAt": "2026-07-08T19:38:11.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Luxembourg",
         "isoAlpha2": "LU",
         "trackerPageSlug": "luxembourg",
@@ -4611,6 +4642,7 @@
       ],
       "logo": "https://flagcdn.com/w80/mt.png",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:malta",
       "provider": {
         "orgId": "org:malta",
@@ -4620,14 +4652,14 @@
         "country": "MT"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/malta/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:07.314Z",
+      "fetchedAt": "2026-09-22T10:35:10.749Z",
       "updatedAt": "2026-07-08T19:38:11.000Z",
       "firstSeenAt": "2026-07-08T19:38:11.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Malta",
         "isoAlpha2": "MT",
         "trackerPageSlug": "malta",
@@ -4730,7 +4762,7 @@
         "country": "NZ"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/mattr/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:07.447Z",
+      "fetchedAt": "2026-09-22T10:35:10.823Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -4762,7 +4794,7 @@
         "country": "NZ"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/mattr/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:07.447Z",
+      "fetchedAt": "2026-09-22T10:35:10.823Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -4805,7 +4837,7 @@
         "country": "AU"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/meeco/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:07.582Z",
+      "fetchedAt": "2026-09-22T10:35:10.915Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -4836,7 +4868,7 @@
         "country": "AU"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/meeco/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:07.582Z",
+      "fetchedAt": "2026-09-22T10:35:10.915Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -4879,7 +4911,7 @@
         "country": "US"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/microsoft/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:07.721Z",
+      "fetchedAt": "2026-09-22T10:35:10.998Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "github"
@@ -4911,6 +4943,7 @@
       "openSource": false,
       "status": "production",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:minisuomi",
       "provider": {
         "orgId": "org:minisuomi",
@@ -4920,7 +4953,7 @@
         "country": "FI"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/minisuomi/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:07.842Z",
+      "fetchedAt": "2026-09-22T10:35:11.114Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -4960,6 +4993,7 @@
       },
       "status": "production",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:moldova",
       "provider": {
         "orgId": "org:moldova",
@@ -4969,14 +5003,14 @@
         "country": "MD"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/moldova/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:07.975Z",
+      "fetchedAt": "2026-09-22T10:35:11.186Z",
       "updatedAt": "2026-03-23T00:00:00.000Z",
       "firstSeenAt": "2026-03-23T00:00:00.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Moldova",
         "isoAlpha2": "MD",
         "trackerPageSlug": "moldova",
@@ -5055,7 +5089,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/mosip/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:08.101Z",
+      "fetchedAt": "2026-09-22T10:35:11.275Z",
       "updatedAt": "2026-02-18T07:45:00.000Z",
       "firstSeenAt": "2026-02-18T07:45:00.000Z",
       "source": "github"
@@ -5097,7 +5131,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/mosip/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:08.101Z",
+      "fetchedAt": "2026-09-22T10:35:11.275Z",
       "updatedAt": "2026-02-18T07:45:00.000Z",
       "firstSeenAt": "2026-02-18T07:45:00.000Z",
       "source": "github"
@@ -5139,7 +5173,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/mosip/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:08.101Z",
+      "fetchedAt": "2026-09-22T10:35:11.275Z",
       "updatedAt": "2026-02-18T07:45:00.000Z",
       "firstSeenAt": "2026-02-18T07:45:00.000Z",
       "source": "github"
@@ -5205,7 +5239,7 @@
         "country": "IT"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/namirial/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:08.223Z",
+      "fetchedAt": "2026-09-22T10:35:11.348Z",
       "updatedAt": "2026-03-10T19:00:00.000Z",
       "firstSeenAt": "2026-03-10T19:00:00.000Z",
       "source": "github"
@@ -5257,7 +5291,7 @@
         "country": "IT"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/namirial/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:08.223Z",
+      "fetchedAt": "2026-09-22T10:35:11.348Z",
       "updatedAt": "2026-03-10T19:00:00.000Z",
       "firstSeenAt": "2026-03-10T19:00:00.000Z",
       "source": "github"
@@ -5289,7 +5323,7 @@
         "country": "NL"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/neoke/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:08.362Z",
+      "fetchedAt": "2026-09-22T10:35:11.418Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-13T19:11:36.000Z",
       "source": "github"
@@ -5322,6 +5356,7 @@
       ],
       "logo": "https://flagcdn.com/w80/nl.png",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:netherlands",
       "provider": {
         "orgId": "org:netherlands",
@@ -5331,14 +5366,14 @@
         "country": "NL"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/netherlands/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:08.512Z",
+      "fetchedAt": "2026-09-22T10:35:11.485Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-13T16:28:39.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Netherlands",
         "isoAlpha2": "NL",
         "trackerPageSlug": "netherlands",
@@ -5442,7 +5477,7 @@
         "country": "CA"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/northernblock/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:08.629Z",
+      "fetchedAt": "2026-09-22T10:35:11.564Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -5469,7 +5504,7 @@
         "country": "CA"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/northernblock/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:08.629Z",
+      "fetchedAt": "2026-09-22T10:35:11.564Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -5490,6 +5525,7 @@
       "logo": "https://flagcdn.com/w80/no.png",
       "releaseDate": "2027-01-01",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:norway",
       "provider": {
         "orgId": "org:norway",
@@ -5499,14 +5535,14 @@
         "country": "NO"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/norway/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:08.938Z",
+      "fetchedAt": "2026-09-22T10:35:11.645Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2027-01-01T00:00:00.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Norway",
         "isoAlpha2": "NO",
         "trackerPageSlug": "norway",
@@ -5583,14 +5619,14 @@
         "orgId": "org:ooru",
         "name": "Ooru",
         "website": "https://ooru.io/",
-        "logo": "https://ooru.io/wp-content/uploads/2024/10/favicon.ico",
+        "logo": "https://framerusercontent.com/images/HijkYEeUDpGRn66LacWOyd8jbmE.png",
         "country": "IN",
         "contact": {
           "email": "info@oouru.io"
         }
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/ooru/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:09.275Z",
+      "fetchedAt": "2026-09-22T10:35:11.722Z",
       "updatedAt": "2026-02-18T07:25:00.000Z",
       "firstSeenAt": "2026-02-18T07:25:00.000Z",
       "source": "github"
@@ -5626,14 +5662,14 @@
         "orgId": "org:ooru",
         "name": "Ooru",
         "website": "https://ooru.io/",
-        "logo": "https://ooru.io/wp-content/uploads/2024/10/favicon.ico",
+        "logo": "https://framerusercontent.com/images/HijkYEeUDpGRn66LacWOyd8jbmE.png",
         "country": "IN",
         "contact": {
           "email": "info@oouru.io"
         }
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/ooru/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:09.275Z",
+      "fetchedAt": "2026-09-22T10:35:11.722Z",
       "updatedAt": "2026-02-18T07:25:00.000Z",
       "firstSeenAt": "2026-02-18T07:25:00.000Z",
       "source": "github"
@@ -5667,7 +5703,7 @@
         "country": "SN"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/oumou/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:09.403Z",
+      "fetchedAt": "2026-09-22T10:35:11.794Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-04-06T19:44:12.000Z",
       "source": "github"
@@ -5687,6 +5723,7 @@
         "android": "https://play.google.com/store/apps/details?id=com.png.sevispass"
       },
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:png",
       "provider": {
         "orgId": "org:png",
@@ -5696,7 +5733,7 @@
         "country": "PG"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/png/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:09.534Z",
+      "fetchedAt": "2026-09-22T10:35:11.877Z",
       "updatedAt": "2026-02-18T12:00:00.000Z",
       "firstSeenAt": "2026-02-18T12:00:00.000Z",
       "source": "github"
@@ -5729,6 +5766,7 @@
         ]
       },
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:poland",
       "provider": {
         "orgId": "org:poland",
@@ -5738,14 +5776,14 @@
         "country": "PL"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/poland/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:09.683Z",
+      "fetchedAt": "2026-09-22T10:35:11.942Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2018-01-01T00:00:00.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Poland",
         "isoAlpha2": "PL",
         "trackerPageSlug": "poland",
@@ -5821,6 +5859,7 @@
       "logo": "https://www.google.com/s2/favicons?domain=eportugal.gov.pt&sz=128",
       "releaseDate": "2019-01-01",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:portugal",
       "provider": {
         "orgId": "org:portugal",
@@ -5830,14 +5869,14 @@
         "country": "PT"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/portugal/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:09.875Z",
+      "fetchedAt": "2026-09-22T10:35:12.036Z",
       "updatedAt": "2026-08-11T15:36:14.000Z",
       "firstSeenAt": "2019-01-01T00:00:00.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Portugal",
         "isoAlpha2": "PT",
         "trackerPageSlug": "portugal",
@@ -5893,6 +5932,7 @@
         "holder"
       ],
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:portugal",
       "provider": {
         "orgId": "org:portugal",
@@ -5902,7 +5942,7 @@
         "country": "PT"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/portugal/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:09.875Z",
+      "fetchedAt": "2026-09-22T10:35:12.036Z",
       "updatedAt": "2026-08-11T15:36:14.000Z",
       "firstSeenAt": "2026-08-11T15:36:14.000Z",
       "source": "github"
@@ -5974,7 +6014,7 @@
         "country": "CH"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/procivis/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:09.999Z",
+      "fetchedAt": "2026-09-22T10:35:12.103Z",
       "updatedAt": "2026-02-04T12:00:00.000Z",
       "firstSeenAt": "2026-02-04T12:00:00.000Z",
       "source": "github"
@@ -6046,7 +6086,7 @@
         "country": "CH"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/procivis/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:09.999Z",
+      "fetchedAt": "2026-09-22T10:35:12.103Z",
       "updatedAt": "2026-02-04T12:00:00.000Z",
       "firstSeenAt": "2026-02-04T12:00:00.000Z",
       "source": "github"
@@ -6067,6 +6107,7 @@
       ],
       "logo": "https://flagcdn.com/w80/ro.png",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:romania",
       "provider": {
         "orgId": "org:romania",
@@ -6076,14 +6117,14 @@
         "country": "RO"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/romania/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:10.155Z",
+      "fetchedAt": "2026-09-22T10:35:12.172Z",
       "updatedAt": "2026-07-08T19:38:11.000Z",
       "firstSeenAt": "2026-07-08T19:38:11.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Romania",
         "isoAlpha2": "RO",
         "trackerPageSlug": "romania",
@@ -6165,7 +6206,7 @@
         "country": "KR"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/samsung/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:10.293Z",
+      "fetchedAt": "2026-09-22T10:35:12.251Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-13T18:47:53.000Z",
       "source": "github"
@@ -6207,7 +6248,7 @@
         "country": "SE"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/scytales/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:10.418Z",
+      "fetchedAt": "2026-09-22T10:35:12.336Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -6249,7 +6290,7 @@
         "country": "SE"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/scytales/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:10.418Z",
+      "fetchedAt": "2026-09-22T10:35:12.336Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -6290,7 +6331,7 @@
         "country": "CH"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/sicpa/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:10.535Z",
+      "fetchedAt": "2026-09-22T10:35:12.415Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -6338,7 +6379,7 @@
         "country": "SE"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/siros-foundation/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:10.660Z",
+      "fetchedAt": "2026-09-22T10:35:12.495Z",
       "updatedAt": "2026-08-26T13:47:29.000Z",
       "firstSeenAt": "2026-08-26T13:47:29.000Z",
       "source": "github"
@@ -6358,6 +6399,7 @@
       ],
       "logo": "https://flagcdn.com/w80/sk.png",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:slovakia",
       "provider": {
         "orgId": "org:slovakia",
@@ -6367,14 +6409,14 @@
         "country": "SK"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/slovakia/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:10.837Z",
+      "fetchedAt": "2026-09-22T10:35:12.559Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-12T15:31:16.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Slovakia",
         "isoAlpha2": "SK",
         "trackerPageSlug": "slovakia",
@@ -6432,6 +6474,7 @@
       ],
       "logo": "https://flagcdn.com/w80/si.png",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:slovenia",
       "provider": {
         "orgId": "org:slovenia",
@@ -6441,14 +6484,14 @@
         "country": "SI"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/slovenia/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:11.034Z",
+      "fetchedAt": "2026-09-22T10:35:12.649Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-12T15:31:42.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Slovenia",
         "isoAlpha2": "SI",
         "trackerPageSlug": "slovenia",
@@ -6500,6 +6543,7 @@
       "logo": "https://flagcdn.com/w80/es.png",
       "releaseDate": "2024-01-01",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:spain",
       "provider": {
         "orgId": "org:spain",
@@ -6509,14 +6553,14 @@
         "country": "ES"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/spain/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:11.197Z",
+      "fetchedAt": "2026-09-22T10:35:12.712Z",
       "updatedAt": "2026-09-21T17:27:57.000Z",
       "firstSeenAt": "2024-01-01T00:00:00.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Spain",
         "isoAlpha2": "ES",
         "trackerPageSlug": "spain",
@@ -6682,7 +6726,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/sphereon/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:11.310Z",
+      "fetchedAt": "2026-09-22T10:35:12.787Z",
       "updatedAt": "2026-07-20T12:40:36.000Z",
       "firstSeenAt": "2022-03-15T00:00:00.000Z",
       "source": "github"
@@ -6818,7 +6862,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/sphereon/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:11.310Z",
+      "fetchedAt": "2026-09-22T10:35:12.787Z",
       "updatedAt": "2026-07-20T12:40:36.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -6954,7 +6998,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/sphereon/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:11.310Z",
+      "fetchedAt": "2026-09-22T10:35:12.787Z",
       "updatedAt": "2026-07-20T12:40:36.000Z",
       "firstSeenAt": "2026-07-17T21:33:43.105Z",
       "source": "github"
@@ -7064,7 +7108,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/spherity/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:11.455Z",
+      "fetchedAt": "2026-09-22T10:35:12.855Z",
       "updatedAt": "2026-07-20T16:26:37.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -7116,7 +7160,7 @@
         "country": "US"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/spruce/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:11.568Z",
+      "fetchedAt": "2026-09-22T10:35:12.930Z",
       "updatedAt": "2026-01-10T12:00:00.000Z",
       "firstSeenAt": "2026-01-10T12:00:00.000Z",
       "source": "github"
@@ -7136,6 +7180,7 @@
       ],
       "logo": "https://flagcdn.com/w80/se.png",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:sweden",
       "provider": {
         "orgId": "org:sweden",
@@ -7145,14 +7190,14 @@
         "country": "SE"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/sweden/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:11.703Z",
+      "fetchedAt": "2026-09-22T10:35:12.995Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2026-01-12T16:02:03.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Sweden",
         "isoAlpha2": "SE",
         "trackerPageSlug": "sweden",
@@ -7282,7 +7327,7 @@
         "country": "CH"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/swiyu/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:11.865Z",
+      "fetchedAt": "2026-09-22T10:35:13.068Z",
       "updatedAt": "2026-08-31T07:49:49.000Z",
       "firstSeenAt": "2026-01-10T12:00:00.000Z",
       "source": "github"
@@ -7320,7 +7365,7 @@
         "country": "CH"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/swiyu/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:11.865Z",
+      "fetchedAt": "2026-09-22T10:35:13.068Z",
       "updatedAt": "2026-08-31T07:49:49.000Z",
       "firstSeenAt": "2026-01-10T12:00:00.000Z",
       "source": "github"
@@ -7358,7 +7403,7 @@
         "country": "CH"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/swiyu/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:11.865Z",
+      "fetchedAt": "2026-09-22T10:35:13.068Z",
       "updatedAt": "2026-08-31T07:49:49.000Z",
       "firstSeenAt": "2026-01-10T12:00:00.000Z",
       "source": "github"
@@ -7417,7 +7462,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/talao/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:12.008Z",
+      "fetchedAt": "2026-09-22T10:35:13.129Z",
       "updatedAt": "2026-03-26T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "github"
@@ -7485,7 +7530,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/talao/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:12.008Z",
+      "fetchedAt": "2026-09-22T10:35:13.129Z",
       "updatedAt": "2026-03-26T12:00:00.000Z",
       "firstSeenAt": "2026-03-26T12:00:00.000Z",
       "source": "github"
@@ -7544,7 +7589,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/talao/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:12.008Z",
+      "fetchedAt": "2026-09-22T10:35:13.129Z",
       "updatedAt": "2026-03-26T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "github"
@@ -7592,7 +7637,7 @@
         "country": "JP"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/toppan/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:12.286Z",
+      "fetchedAt": "2026-09-22T10:35:13.198Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "github"
@@ -7628,6 +7673,7 @@
       "openSource": false,
       "status": "production",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:uaegean",
       "provider": {
         "orgId": "org:uaegean",
@@ -7637,7 +7683,7 @@
         "country": "GR"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/uaegean/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:12.410Z",
+      "fetchedAt": "2026-09-22T10:35:13.270Z",
       "updatedAt": "2026-01-06T12:00:00.000Z",
       "firstSeenAt": "2026-01-06T12:00:00.000Z",
       "source": "github"
@@ -7703,7 +7749,7 @@
         "country": "CH"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/ubique/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:12.564Z",
+      "fetchedAt": "2026-09-22T10:35:13.348Z",
       "updatedAt": "2026-08-21T15:32:48.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "github"
@@ -7782,12 +7828,12 @@
       "provider": {
         "orgId": "org:uidai",
         "name": "Unique Identification Authority of India",
-        "website": "https://uidai.gov.in/",
+        "website": "https://uidai.gov.in/en",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Aadhaar.svg/960px-Aadhaar.svg.png",
         "country": "IN"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/uidai/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:12.688Z",
+      "fetchedAt": "2026-09-22T10:35:13.423Z",
       "updatedAt": "2026-09-04T20:15:34.000Z",
       "firstSeenAt": "2026-02-18T08:15:00.000Z",
       "source": "github"
@@ -7810,6 +7856,7 @@
       "logo": "https://www.google.com/s2/favicons?domain=diia.gov.ua&sz=128",
       "releaseDate": "2020-01-01",
       "catalogTier": "Community",
+      "catalogListingDepth": "full",
       "orgId": "org:ukraine",
       "provider": {
         "orgId": "org:ukraine",
@@ -7819,14 +7866,14 @@
         "country": "UA"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/ukraine/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:12.816Z",
+      "fetchedAt": "2026-09-22T10:35:13.512Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2020-01-01T00:00:00.000Z",
       "source": "github",
       "eudiTracker": {
         "source": "https://github.com/L3-iGrant/eudi-wallet-tracker",
         "sourceLastUpdated": "2026-08-13",
-        "fetchedAt": "2026-09-21T17:30:14.083Z",
+        "fetchedAt": "2026-09-22T10:35:14.338Z",
         "countryName": "Ukraine",
         "isoAlpha2": "UA",
         "trackerPageSlug": "ukraine",
@@ -7922,7 +7969,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/verana/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:13.056Z",
+      "fetchedAt": "2026-09-22T10:35:13.693Z",
       "updatedAt": "2026-08-06T15:45:01.000Z",
       "firstSeenAt": "2026-08-06T13:28:22.000Z",
       "source": "github"
@@ -7951,7 +7998,7 @@
         "country": "DE"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/verimi/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:13.267Z",
+      "fetchedAt": "2026-09-22T10:35:13.772Z",
       "updatedAt": "2026-09-21T17:27:57.000Z",
       "firstSeenAt": "2017-01-01T00:00:00.000Z",
       "source": "github"
@@ -7991,7 +8038,7 @@
         "country": "NL"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/yivi/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:13.395Z",
+      "fetchedAt": "2026-09-22T10:35:13.849Z",
       "updatedAt": "2026-07-02T12:00:00.000Z",
       "firstSeenAt": "2026-07-02T12:00:00.000Z",
       "source": "github"
@@ -8023,7 +8070,7 @@
         "country": "GB"
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/yoti/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:13.550Z",
+      "fetchedAt": "2026-09-22T10:35:13.938Z",
       "updatedAt": "2026-07-02T04:41:11.000Z",
       "firstSeenAt": "2014-01-01T00:00:00.000Z",
       "source": "github"
@@ -8072,7 +8119,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/yourd/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:13.672Z",
+      "fetchedAt": "2026-09-22T10:35:14.016Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "github"
@@ -8116,7 +8163,7 @@
         "fidesManifestoSupporter": true
       },
       "catalogUrl": "https://github.com/FIDEScommunity/fides-wallet-catalog/blob/main/community-catalogs/yourd/wallet-catalog.json",
-      "fetchedAt": "2026-09-21T17:30:13.672Z",
+      "fetchedAt": "2026-09-22T10:35:14.016Z",
       "updatedAt": "2025-01-06T12:00:00.000Z",
       "firstSeenAt": "2025-01-06T12:00:00.000Z",
       "source": "github"
@@ -8152,7 +8199,7 @@
     {
       "orgId": "org:a3bc",
       "name": "A3BC",
-      "logo": "https://www.a3bc.io/img/favicon/apple-touch-icon.png?v=3",
+      "logo": "https://www.a3bc.io/images/logo/logo-horizontal-couleurs.svg",
       "country": "FR"
     },
     {
@@ -8262,7 +8309,7 @@
     {
       "orgId": "org:cyprus",
       "name": "Government of Cyprus",
-      "website": "https://www.cygov.gov.cy/",
+      "website": "https://www.gov.cy/",
       "country": "CY"
     },
     {
@@ -8304,7 +8351,7 @@
     {
       "orgId": "org:digiyatra",
       "name": "DigiYatra Foundation",
-      "website": "https://www.digiyatra.org/",
+      "website": "https://digiyatrafoundation.com/",
       "logo": "https://raw.githubusercontent.com/FIDEScommunity/fides-organization-catalog/main/community-catalogs/digiyatra/digiyatra.webp",
       "country": "IN",
       "contact": {
@@ -8322,7 +8369,7 @@
       "orgId": "org:estonia",
       "name": "Estonian Government",
       "website": "https://www.ria.ee/",
-      "logo": "https://www.google.com/s2/favicons?domain=ria.ee&sz=128",
+      "logo": "https://www.ria.ee/profiles/vp_distro/themes/vp_distro_theme/favicon.ico",
       "country": "EE"
     },
     {
@@ -8505,7 +8552,7 @@
     {
       "orgId": "org:liechtenstein",
       "name": "Government of Liechtenstein",
-      "website": "https://www.llv.li",
+      "website": "https://www.llv.li/en",
       "logo": "https://www.google.com/s2/favicons?domain=llv.li&sz=128",
       "country": "LI"
     },
@@ -8616,7 +8663,7 @@
       "orgId": "org:ooru",
       "name": "Ooru",
       "website": "https://ooru.io/",
-      "logo": "https://ooru.io/wp-content/uploads/2024/10/favicon.ico",
+      "logo": "https://framerusercontent.com/images/HijkYEeUDpGRn66LacWOyd8jbmE.png",
       "country": "IN",
       "contact": {
         "email": "info@oouru.io"
@@ -8779,7 +8826,7 @@
     {
       "orgId": "org:uidai",
       "name": "Unique Identification Authority of India",
-      "website": "https://uidai.gov.in/",
+      "website": "https://uidai.gov.in/en",
       "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Aadhaar.svg/960px-Aadhaar.svg.png",
       "country": "IN"
     },
@@ -8829,7 +8876,7 @@
       "fidesManifestoSupporter": true
     }
   ],
-  "lastUpdated": "2026-09-21T17:30:14.083Z",
+  "lastUpdated": "2026-09-22T10:35:14.339Z",
   "stats": {
     "totalWallets": 134,
     "totalProviders": 100,
