@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.16.1
+Stable tag: 2.16.2
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -102,6 +102,9 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 3. Admin settings page
 
 == Changelog ==
+
+= 2.16.2 =
+* Make the shared mobile filter drawer modal and keyboard-accessible (tiles ≥ 1.13.31).
 
 = 2.16.1 =
 * Hide Latest news when the parent Official organization opted out (`listingNewsEnabled: false`).

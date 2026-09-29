@@ -2427,6 +2427,46 @@
     }
   }
 
+  /**
+   * Track one terminal catalog-load outcome and keep aria-busy in sync.
+   */
+  function createCatalogLoadTracker(options) {
+    options = options || {};
+    const getRoot = typeof options.root === 'function'
+      ? options.root
+      : function() { return options.root || null; };
+    const now = typeof options.now === 'function'
+      ? options.now
+      : function() { return performance.now(); };
+    const startedAt = options.startedAt == null ? 0 : Number(options.startedAt);
+    const category = options.category || 'Catalog';
+    const breakpoint = options.breakpoint || MOBILE_FILTER_BREAKPOINT;
+    let complete = false;
+
+    function setBusy(busy) {
+      const root = getRoot();
+      if (root && root.setAttribute) root.setAttribute('aria-busy', busy ? 'true' : 'false');
+    }
+
+    function finish(action) {
+      setBusy(false);
+      if (complete) return false;
+      complete = true;
+      const device = window.innerWidth < breakpoint ? 'mobile' : 'desktop';
+      const elapsed = Math.max(0, Math.round(now() - startedAt));
+      trackMatomoEvent(category, action, device, elapsed);
+      return true;
+    }
+
+    setBusy(true);
+    return {
+      ready: function() { return finish('Catalog Ready'); },
+      failed: function() { return finish('Catalog Load Failed'); },
+      setBusy: setBusy,
+      isComplete: function() { return complete; }
+    };
+  }
+
   function salesTrackSafePart(value) {
     return String(value || '')
       .trim()
@@ -2805,9 +2845,15 @@
       ? options.isModalOpen
       : function() { return defaultIsCatalogModalOpen(doc); };
     let viewportBound = false;
+    let dialogKeydownBound = false;
 
     function isMobileViewport() {
       return win.innerWidth < breakpoint;
+    }
+
+    function getToggle() {
+      const root = getRoot();
+      return root && root.querySelector ? root.querySelector('#fides-mobile-filter-toggle') : null;
     }
 
     function getSidebar() {
@@ -2815,9 +2861,127 @@
       return root && root.querySelector ? root.querySelector('.fides-sidebar') : null;
     }
 
+    function getMainContent() {
+      const root = getRoot();
+      if (!root || !root.querySelector) return null;
+      return root.querySelector('.fides-main-content') || root.querySelector('.fides-content');
+    }
+
     function isOpen() {
       const root = getRoot();
       return !!(root && root.querySelector && root.querySelector('.fides-sidebar.mobile-open'));
+    }
+
+    function dialogId() {
+      const root = getRoot();
+      return root && root.id ? root.id + '-filter-dialog' : 'fides-filter-dialog';
+    }
+
+    function titleId() {
+      return dialogId() + '-title';
+    }
+
+    function setMainContentInert(inert) {
+      const mainContent = getMainContent();
+      if (!mainContent) return;
+      mainContent.inert = !!inert;
+      if (inert) {
+        mainContent.setAttribute('inert', '');
+      } else {
+        mainContent.removeAttribute('inert');
+      }
+    }
+
+    function focusableElements(sidebar) {
+      if (!sidebar || !sidebar.querySelectorAll) return [];
+      const selector = [
+        'a[href]',
+        'button:not([disabled])',
+        'input:not([disabled])',
+        'select:not([disabled])',
+        'textarea:not([disabled])',
+        '[tabindex]:not([tabindex="-1"])'
+      ].join(',');
+      return Array.prototype.slice.call(sidebar.querySelectorAll(selector)).filter(function(element) {
+        if (element.hidden || element.disabled) return false;
+        if (typeof win.getComputedStyle === 'function') {
+          const style = win.getComputedStyle(element);
+          if (style.display === 'none' || style.visibility === 'hidden') return false;
+        }
+        if (typeof element.getClientRects !== 'function') return true;
+        return element.offsetWidth > 0 || element.offsetHeight > 0 || element.getClientRects().length > 0;
+      });
+    }
+
+    function closeAndRestoreFocus() {
+      setOpen(false);
+    }
+
+    function onDialogKeydown(event) {
+      if (!isOpen()) return;
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeAndRestoreFocus();
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      const sidebar = getSidebar();
+      const focusable = focusableElements(sidebar);
+      if (!focusable.length) {
+        event.preventDefault();
+        if (sidebar && typeof sidebar.focus === 'function') sidebar.focus();
+        return;
+      }
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && doc.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && doc.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
+    function bindDialogKeydown() {
+      if (dialogKeydownBound) return;
+      doc.addEventListener('keydown', onDialogKeydown);
+      dialogKeydownBound = true;
+    }
+
+    function unbindDialogKeydown() {
+      if (!dialogKeydownBound) return;
+      doc.removeEventListener('keydown', onDialogKeydown);
+      dialogKeydownBound = false;
+    }
+
+    function applyDialogSemantics(open) {
+      const sidebar = getSidebar();
+      const toggle = getToggle();
+      if (toggle) {
+        toggle.setAttribute('aria-controls', dialogId());
+        toggle.setAttribute('aria-expanded', String(!!open));
+      }
+      if (!sidebar) return;
+      sidebar.id = dialogId();
+      const title = sidebar.querySelector('.fides-sidebar-title');
+      if (title) title.id = titleId();
+      if (open && isMobileViewport()) {
+        sidebar.setAttribute('role', 'dialog');
+        sidebar.setAttribute('aria-modal', 'true');
+        if (title) sidebar.setAttribute('aria-labelledby', titleId());
+        else sidebar.removeAttribute('aria-labelledby');
+        sidebar.setAttribute('tabindex', '-1');
+        setMainContentInert(true);
+        bindDialogKeydown();
+      } else {
+        sidebar.removeAttribute('role');
+        sidebar.removeAttribute('aria-modal');
+        sidebar.removeAttribute('aria-labelledby');
+        sidebar.removeAttribute('tabindex');
+        setMainContentInert(false);
+        unbindDialogKeydown();
+      }
     }
 
     function syncScrollLock() {
@@ -2828,12 +2992,23 @@
       });
     }
 
-    function setOpen(open) {
+    function setOpen(open, restoreFocus) {
       const sidebar = getSidebar();
+      const shouldOpen = !!open && isMobileViewport();
       if (sidebar) {
-        sidebar.classList.toggle('mobile-open', !!open);
+        sidebar.classList.toggle('mobile-open', shouldOpen);
       }
+      applyDialogSemantics(shouldOpen);
       syncScrollLock();
+      if (shouldOpen) {
+        const root = getRoot();
+        const closeBtn = root && root.querySelector ? root.querySelector('#fides-sidebar-close') : null;
+        if (closeBtn && typeof closeBtn.focus === 'function') closeBtn.focus();
+        else if (sidebar && typeof sidebar.focus === 'function') sidebar.focus();
+      } else if (open === false && restoreFocus !== false) {
+        const toggle = getToggle();
+        if (toggle && typeof toggle.focus === 'function') toggle.focus();
+      }
       return isOpen();
     }
 
@@ -2845,7 +3020,7 @@
       if (wasOpen && isMobileViewport()) {
         setOpen(true);
       } else {
-        setOpen(false);
+        setOpen(false, false);
       }
     }
 
@@ -2855,6 +3030,7 @@
       const sidebar = root.querySelector('.fides-sidebar');
       const toggle = root.querySelector('#fides-mobile-filter-toggle');
       const closeBtn = root.querySelector('#fides-sidebar-close');
+      applyDialogSemantics(isOpen());
       if (toggle && sidebar) {
         toggle.addEventListener('click', function() { setOpen(true); });
       }
@@ -2892,7 +3068,7 @@
 
     function onLeavingMobileViewport() {
       if (!isMobileViewport() && isOpen()) {
-        setOpen(false);
+        setOpen(false, false);
       } else {
         syncScrollLock();
       }
@@ -4748,6 +4924,7 @@
     mountStaleCatalogNotice,
     CATALOG_SOURCE_TIMEOUT_MS,
     trackMatomoEvent,
+    createCatalogLoadTracker,
     trackWalletDetailOpen,
     trackOrganizationDetailOpen,
     walletAnalyticsAttrString,
