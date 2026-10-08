@@ -1,7 +1,7 @@
 {
     "schemaVersion": "1.0.0",
     "catalogType": "wallet",
-    "generatedAt": "2026-09-18T09:51:58+00:00",
+    "generatedAt": "2026-10-08T11:32:25+00:00",
     "entries": [
         {
             "itemId": "aadhaar",
@@ -328,6 +328,7 @@
                         "openSource": false,
                         "license": "proprietary",
                         "vcFormat": [
+                            "sd_jwt_vc",
                             "mdoc"
                         ],
                         "issuanceProtocols": [
@@ -345,12 +346,23 @@
                             "Secure Enclave (iOS)",
                             "StrongBox (Android)",
                             "TEE",
-                            "HSM"
+                            "HSM",
+                            "Smart Card"
                         ],
                         "signingAlgorithms": [
                             "ES256",
                             "ES384",
                             "ES512"
+                        ],
+                        "credentialStatusMethods": [
+                            "IETF Token Status List"
+                        ],
+                        "interoperabilityProfiles": [
+                            "EUDI Wallet ARF",
+                            "HAIP v1"
+                        ],
+                        "standards": [
+                            "DC API (ISO/IEC 18013-7 Annex C)"
                         ],
                         "appStoreLinks": {
                             "iOS": "https://apps.apple.com/fr/app/france-identit%C3%A9/id1590142959",
@@ -364,10 +376,10 @@
                         "catalogListingDepth": "full"
                     }
                 ],
-                "lastUpdated": "2026-08-25T06:42:04+00:00"
+                "lastUpdated": "2026-10-08T11:32:24+00:00"
             },
-            "publishedAt": "2026-08-25 06:42:04",
-            "updatedAt": "2026-08-25 06:42:04"
+            "publishedAt": "2026-10-08 11:32:24",
+            "updatedAt": "2026-10-08 11:32:24"
         },
         {
             "itemId": "heidi-wallet",
@@ -476,7 +488,8 @@
                             "issuer",
                             "verifier"
                         ],
-                        "catalogTier": "Community"
+                        "catalogTier": "Community",
+                        "catalogListingDepth": "full"
                     }
                 ],
                 "lastUpdated": "2026-08-21T04:44:18+00:00"
@@ -1043,21 +1056,12 @@
                     {
                         "id": "vs-agent-verana-business-wallet",
                         "name": "VS Agent - Verana Business Wallet",
-                        "description": "VS Agent is the reference implementation of a Verifiable Service: an open-source, self-hosted business wallet that gives every service an organization operates a verifiable identity, so anyone can check what it is and who runs it before connecting.\n\nIts DID plugs into the Verana Network, a public decentralized trust infrastructure that no vendor or state controls: join any ecosystem as issuer, verifier or holder, with no platform account and no gatekeeper. Each ecosystem defines its own onboarding process (registry lookup, accreditation, eIDAS-grade KYB if required) and its own privacy-preserving business model: onboarding, pay-per-issuance and pay-per-verification fees settled on-chain, without tracking users. The credential lifecycle is automatic via the vt-flow protocol: onboarding triggers issuance, on-chain revocation reaches the holder.\n\nDIDComm and OpenID4VCI/VP; JSON-LD, AnonCreds and SD-JWT VC. Host chat agents, MCP servers, A2A agents or HTTP APIs under one DID. Apache-2.0.",
+                        "description": "VS Agent is the reference implementation of a Verifiable Service: an open-source, self-hosted business wallet that gives every service an organization operates a verifiable identity, so anyone can che",
                         "logo": "https://verana.io/logo.svg",
-                        "website": "https://playground.testnet.verana.network/business-wallets",
                         "type": "organizational",
                         "openSource": true,
                         "license": "Apache-2.0",
-                        "repository": "https://github.com/verana-labs/vs-agent/",
                         "deploymentModel": "on_premises",
-                        "pricing": "The wallet is free and always will be. VS Agent is the reference implementation of a Verifiable Service, published under the Apache-2.0 license and stewarded as part of the Verana Foundation's mission: trust infrastructure only works if anyone can inspect it, run it and build on it without asking permission. No license fee, no usage tier, no hosted lock-in: you self-host the container and keep full control of your keys, data and DID.\n\nThere is no software vendor to pay; value flows between ecosystem participants instead. You pay your own hosting, the network fees of the Verana Verifiable Public Registry, and the fees each ecosystem defines for its privacy-preserving business models: onboarding, pay-per-issuance and pay-per-verification, settled on-chain, backed by reclaimable trust deposits, and charged without tracking users or monetizing their data. Commercial support and integration services are available from Verana Labs and ecosystem partners.",
-                        "media": {
-                            "images": [
-                                "https://fides.community/app/uploads/2026/08/signal-2026-08-06-10-07-13-189_002.jpg",
-                                "https://fides.community/app/uploads/2026/08/signal-2026-08-06-10-09-54-647_002.jpg"
-                            ]
-                        },
                         "vcFormat": [
                             "sd_jwt_vc",
                             "anoncreds"
@@ -1076,17 +1080,13 @@
                             "did:web",
                             "did:webvh"
                         ],
-                        "features": [
-                            "mrtd support",
-                            "webrtc over DIDComm"
-                        ],
                         "status": "production",
                         "capabilities": [
                             "holder",
                             "issuer",
                             "verifier"
                         ],
-                        "catalogTier": "Pro"
+                        "catalogTier": "Community"
                     }
                 ],
                 "lastUpdated": "2026-08-06T15:45:01+00:00"
