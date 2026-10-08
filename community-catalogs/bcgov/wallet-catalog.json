@@ -33,7 +33,8 @@
         "issuer",
         "verifier"
       ],
-      "catalogTier": "Community"
+      "catalogTier": "Community",
+      "catalogListingDepth": "full"
     }
   ],
   "lastUpdated": "2026-08-21T04:44:18+00:00"

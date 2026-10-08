@@ -5,7 +5,7 @@
     {
       "id": "vs-agent-verana-business-wallet",
       "name": "VS Agent - Verana Business Wallet",
-      "description": "VS Agent is the reference implementation of a Verifiable Service: an open-source, self-hosted business wallet that gives every service an organization operates a verifiable identity, so anyone can check what it is and who runs it before connecting.\n\nIts DID plugs into the Verana Network, a public decentralized trust infrastructure that no vendor or state controls: join any ecosystem as issuer, verifier or holder, with no platform account and no gatekeeper. Each ecosystem defines its own onboarding process (registry lookup, accreditation, eIDAS-grade KYB if required) and its own privacy-preserving business model: onboarding, pay-per-issuance and pay-per-verification fees settled on-chain, without tracking users. The credential lifecycle is automatic via the vt-flow protocol: onboarding triggers issuance, on-chain revocation reaches the holder.\n\nDIDComm and OpenID4VCI/VP; JSON-LD, AnonCreds and SD-JWT VC. Host chat agents, MCP servers, A2A agents or HTTP APIs under one DID. Apache-2.0.",
+      "description": "VS Agent is the reference implementation of a Verifiable Service: an open-source, self-hosted business wallet that gives every service an organization operates a verifiable identity, so anyone can che",
       "logo": "https://verana.io/logo.svg",
       "website": "https://playground.testnet.verana.network/business-wallets",
       "type": "organizational",
@@ -42,7 +42,7 @@
         "issuer",
         "verifier"
       ],
-      "catalogTier": "Pro",
+      "catalogTier": "Community",
       "media": {
         "images": [
           "https://fides.community/app/uploads/2026/08/signal-2026-08-06-10-07-13-189_002.jpg",
