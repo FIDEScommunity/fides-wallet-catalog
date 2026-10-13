@@ -1374,12 +1374,17 @@
   }
 
   function buildRpAcceptedCredentialsAccordionBody(rp, credentialCatalogUrl, options) {
-    const credById = (options && options.credentialById) || {};
-    const rows = getAcceptedCredentialRows(rp).map(function(row) {
-      const meta = row.credentialId && credById[row.credentialId] ? credById[row.credentialId] : null;
+    const aliasIndex = options && options.credentialAliasIndex;
+    const credById = (options && options.credentialById)
+      || (aliasIndex && aliasIndex.byId)
+      || {};
+    const rows = getAcceptedCredentialRows(rp, options).map(function(row) {
+      const meta = lookupCredentialByIdOrAlias(row.credentialId, credById);
       const name = meta && meta.displayName ? meta.displayName : row.label;
       const organization = meta && meta.authorityName ? meta.authorityName : '';
-      const href = row.credentialId ? getCredentialCatalogDeepLink(row.credentialId, credentialCatalogUrl) : '';
+      const href = row.credentialId
+        ? getCredentialCatalogDeepLink(row.credentialId, credentialCatalogUrl, aliasIndex)
+        : '';
       return {
         id: row.credentialId || row.label,
         name: name,
@@ -1397,8 +1402,8 @@
     });
   }
 
-  function rpAcceptedCredentialsCount(rp) {
-    return getAcceptedCredentialRows(rp).length;
+  function rpAcceptedCredentialsCount(rp, options) {
+    return getAcceptedCredentialRows(rp, options).length;
   }
 
   function buildRpSupportedWalletsAccordionBody(rp, walletCatalogUrl, options) {
@@ -1482,7 +1487,7 @@
 
   function buildRpEcosystemModelHtml(rp, options) {
     if (!rp) return '';
-    const credentialCount = rpAcceptedCredentialsCount(rp);
+    const credentialCount = rpAcceptedCredentialsCount(rp, options);
     const walletIds = rpSupportedWalletCatalogIds(rp);
     const walletCount = walletIds.length;
     const issuers = (options && Array.isArray(options.ecosystemIssuers)) ? options.ecosystemIssuers : [];
@@ -1719,7 +1724,7 @@
       'issuers',
       issuers.map(function(i) { return i.id; })
     );
-    const credentialIds = getAcceptedCredentialRows(rp)
+    const credentialIds = getAcceptedCredentialRows(rp, options)
       .map(function(row) { return row.credentialId; })
       .filter(Boolean);
     const credentialExploreHref = buildCatalogFilteredHref(
@@ -1768,7 +1773,7 @@
         icons.fileCheck,
         acceptedBody,
         false,
-        rpAcceptedCredentialsCount(rp),
+        rpAcceptedCredentialsCount(rp, options),
         credentialExploreHref
       ),
       renderModalAccordion(
@@ -2414,6 +2419,10 @@
    * Do not create window._paq here — a missing tracker means analytics is off.
    */
   function trackMatomoEvent(category, action, name, value) {
+    var isSalesCatalog = category === 'Wallet Catalog' || category === 'Organization Catalog';
+    var legacySalesActions = ['Modal Open', 'Link Click', 'Click', 'Organisation Click'];
+    if (isSalesCatalog && legacySalesActions.indexOf(String(action || '')) !== -1) return;
+    if (isSalesCatalog && /\|legacy$/i.test(String(name || ''))) return;
     if (typeof window._paq === 'undefined') return;
     if (navigator.doNotTrack === '1' || navigator.doNotTrack === 'yes') return;
     try {
@@ -2492,6 +2501,12 @@
     return PROVIDER_OUTBOUND_LINK_TYPES.indexOf(normalized) !== -1 ? normalized : '';
   }
 
+  function salesTrackAttributionId(value) {
+    var raw = String(value || '').trim();
+    if (!raw || !/^[A-Za-z0-9][A-Za-z0-9._~-]*$/.test(raw)) return '';
+    return raw;
+  }
+
   function salesTrackDestinationFromHref(href) {
     var value = String(href || '').trim();
     if (!value) return '';
@@ -2501,7 +2516,13 @@
       var base = (window.location && window.location.href) ? window.location.href : 'https://fides.community/';
       var url = new URL(value, base);
       if (url.protocol !== 'http:' && url.protocol !== 'https:') return '';
-      return url.hostname.toLowerCase();
+      var pageUrl = new URL(base);
+      var destinationHost = url.hostname.toLowerCase();
+      var pageHost = pageUrl.hostname.toLowerCase();
+      var destinationSiteHost = destinationHost.replace(/^www\./, '');
+      var pageSiteHost = pageHost.replace(/^www\./, '');
+      if (url.origin === pageUrl.origin || destinationSiteHost === pageSiteHost) return '';
+      return destinationHost;
     } catch (e) {
       return '';
     }
@@ -2593,7 +2614,7 @@
     var attribution = String((options && options.attributionFrom) || '').trim();
     var attributionMatch = /^usecase:(.+)$/i.exec(attribution);
     if (attributionMatch && attributionMatch[1]) {
-      var attributionId = salesTrackSafePart(attributionMatch[1]);
+      var attributionId = salesTrackAttributionId(attributionMatch[1]);
       if (attributionId) eventNameParts.push('from:usecase:' + attributionId);
     }
     ensureSalesLinkTracking();
@@ -2703,6 +2724,7 @@
     var containerSelector = config.containerSelector || null;
     var modalOverlayId = config.modalOverlayId || 'fides-modal-overlay';
     var classToName = config.classToName || DEFAULT_LINK_CLASS_TO_NAME;
+    var disableLegacyLinkEvents = config.disableLegacyLinkEvents === true;
     var bindKey = config.category + '|' + (containerSelector || '') + '|' + modalOverlayId;
     if (matomoLinkTrackingBound[bindKey]) return;
     matomoLinkTrackingBound[bindKey] = true;
@@ -2716,6 +2738,8 @@
       var overlay = document.getElementById(modalOverlayId);
       var inModal = overlay && overlay.contains(a);
       if (!inCatalog && !inModal) return;
+      var explicitAction = a.dataset.matomoAction || '';
+      if (disableLegacyLinkEvents && !explicitAction) return;
       var name = a.dataset.matomoName;
       if (!name && classToName.length) {
         for (var i = 0; i < classToName.length; i++) {
@@ -2728,7 +2752,7 @@
         }
       }
       if (name) {
-        var action = a.dataset.matomoAction || 'Link Click';
+        var action = explicitAction || 'Link Click';
         trackMatomoEvent(config.category, action, name);
       }
     });
@@ -3459,6 +3483,7 @@
     document.body.insertAdjacentHTML('beforeend', html);
     document.body.style.overflow = 'hidden';
     attachModalListeners();
+    return document.getElementById('fides-modal-overlay');
   }
 
   function boolFromMixed(value) {
@@ -3554,7 +3579,7 @@
     const client = getRatingsClient(options || {});
     if (!client.apiBase) return;
     const issuers = (options && Array.isArray(options.ecosystemIssuers)) ? options.ecosystemIssuers : [];
-    const credentialRows = getAcceptedCredentialRows(rp);
+    const credentialRows = getAcceptedCredentialRows(rp, options);
     const walletIds = rpSupportedWalletCatalogIds(rp);
     const batches = [
       { type: 'issuer', ids: issuers.map(function(i) { return i.id; }).filter(Boolean) },
@@ -3993,8 +4018,6 @@
     const tierUi = optionsTierUiEnabled(options);
     const platformLabelsOnly = tierUi && !walletListingTierIsPro(wallet, options);
     selectedContext = { type: 'wallet', item: wallet, options: options || {}, theme: theme };
-    trackWalletDetailOpen(wallet);
-    if (options && typeof options.onOpen === 'function') options.onOpen(wallet);
 
     const organizationCatalogUrl = (options && options.organizationCatalogUrl) || 'https://fides.community/ecosystem-explorer/organization-catalog/';
     const effectiveWalletOrgId = (wallet.orgId && String(wallet.orgId).trim()) ||
@@ -4033,12 +4056,18 @@
       buildWalletModalFooterHtml(wallet, options) +
       '</div></div>';
 
-    mountModal(modalHtml);
+    const walletOverlay = mountModal(modalHtml);
+    if (!walletOverlay) {
+      selectedContext = null;
+      return false;
+    }
+    trackWalletDetailOpen(wallet);
+    if (options && typeof options.onOpen === 'function') options.onOpen(wallet);
     initModalMediaCarousels();
     initModalAccordions();
     initWalletTechnicalGlossaryLinks(options || {});
-    const walletOverlay = document.getElementById('fides-modal-overlay');
     if (walletOverlay) attachModalRating(walletOverlay, 'wallet', wallet.id, options || {}, wallet);
+    return true;
   }
 
   function getBluePagesUrl(did, options) {
@@ -4180,9 +4209,73 @@
     return typeof id === 'string' && id.indexOf('cred:') === 0 ? id : null;
   }
 
-  function getAcceptedCredentialRows(rp) {
-    const labels = Array.isArray(rp.acceptedCredentials) ? rp.acceptedCredentials : [];
-    const refs = Array.isArray(rp.acceptedCredentialRefs) ? rp.acceptedCredentialRefs : [];
+  /**
+   * All ids that resolve to this credential (canonical type id + legacy format aliases).
+   * Used so RP / issuer / use-case catalogs can keep publishing format-era refs
+   * while the credential catalog uses attestation-type ids.
+   */
+  function credentialResolvableIds(credential) {
+    if (!credential || typeof credential.id !== 'string') return [];
+    const ids = {};
+    ids[credential.id] = true;
+    const aliases = Array.isArray(credential.aliasIds) ? credential.aliasIds : [];
+    for (let i = 0; i < aliases.length; i++) {
+      if (aliases[i]) ids[String(aliases[i])] = true;
+    }
+    const formats = Array.isArray(credential.formats) ? credential.formats : [];
+    for (let j = 0; j < formats.length; j++) {
+      const format = formats[j];
+      if (format && format.credentialId) ids[String(format.credentialId)] = true;
+    }
+    return Object.keys(ids);
+  }
+
+  /**
+   * Build lookup tables from credential catalog rows.
+   * @returns {{ byId: Object, canonicalIdByRef: Object }}
+   */
+  function buildCredentialAliasIndex(credentials) {
+    const byId = Object.create(null);
+    const canonicalIdByRef = Object.create(null);
+    const list = Array.isArray(credentials) ? credentials : [];
+    for (let i = 0; i < list.length; i++) {
+      const credential = list[i];
+      if (!credential || typeof credential.id !== 'string') continue;
+      const resolvable = credentialResolvableIds(credential);
+      for (let j = 0; j < resolvable.length; j++) {
+        const id = resolvable[j];
+        byId[id] = credential;
+        canonicalIdByRef[id] = credential.id;
+      }
+    }
+    return { byId: byId, canonicalIdByRef: canonicalIdByRef };
+  }
+
+  function resolveCredentialCanonicalId(credentialId, aliasIndexOrMap) {
+    const wanted = String(credentialId || '').trim();
+    if (!wanted) return null;
+    if (!aliasIndexOrMap) return wanted;
+    if (aliasIndexOrMap.canonicalIdByRef) {
+      return aliasIndexOrMap.canonicalIdByRef[wanted] || wanted;
+    }
+    if (typeof aliasIndexOrMap.get === 'function') {
+      return aliasIndexOrMap.get(wanted) || wanted;
+    }
+    if (typeof aliasIndexOrMap === 'object') {
+      return aliasIndexOrMap[wanted] || wanted;
+    }
+    return wanted;
+  }
+
+  function lookupCredentialByIdOrAlias(credentialId, byId) {
+    const wanted = String(credentialId || '').trim();
+    if (!wanted || !byId) return null;
+    return byId[wanted] || null;
+  }
+
+  function getAcceptedCredentialRows(rp, options) {
+    const labels = Array.isArray(rp && rp.acceptedCredentials) ? rp.acceptedCredentials : [];
+    const refs = Array.isArray(rp && rp.acceptedCredentialRefs) ? rp.acceptedCredentialRefs : [];
     const n = Math.max(labels.length, refs.length);
     const rows = [];
     for (let i = 0; i < n; i++) {
@@ -4197,16 +4290,38 @@
       if (!label) continue;
       rows.push({ label: label, credentialId: credentialId });
     }
-    return rows;
+
+    const aliasIndex = options && options.credentialAliasIndex;
+    const credById = (options && options.credentialById)
+      || (aliasIndex && aliasIndex.byId)
+      || null;
+    if (!aliasIndex && !credById) return rows;
+
+    const seen = Object.create(null);
+    const deduped = [];
+    for (let r = 0; r < rows.length; r++) {
+      const row = rows[r];
+      const canonical = resolveCredentialCanonicalId(row.credentialId, aliasIndex);
+      const key = canonical || row.label;
+      if (seen[key]) continue;
+      seen[key] = true;
+      const meta = lookupCredentialByIdOrAlias(canonical || row.credentialId, credById);
+      deduped.push({
+        label: (meta && meta.displayName) ? meta.displayName : row.label,
+        credentialId: canonical || row.credentialId
+      });
+    }
+    return deduped;
   }
 
-  function getCredentialCatalogDeepLink(credentialId, catalogBase) {
+  function getCredentialCatalogDeepLink(credentialId, catalogBase, aliasIndexOrMap) {
     if (!credentialId || typeof credentialId !== 'string' || credentialId.indexOf('cred:') !== 0) return null;
+    const resolved = resolveCredentialCanonicalId(credentialId, aliasIndexOrMap) || credentialId;
     const base = (catalogBase || '').trim();
     if (!base) return null;
     try {
       const u = new URL(base);
-      u.searchParams.set('credential', credentialId);
+      u.searchParams.set('credential', resolved);
       return u.toString();
     } catch (e) {
       return null;
@@ -4226,10 +4341,13 @@
     }
   }
 
-  function renderAcceptedCredentialTagsHtmlForRpModal(rp, catalogBase) {
-    const rows = getAcceptedCredentialRows(rp);
+  function renderAcceptedCredentialTagsHtmlForRpModal(rp, catalogBase, options) {
+    const rows = getAcceptedCredentialRows(rp, options);
+    const aliasIndex = options && options.credentialAliasIndex;
     return rows.map(function(row) {
-      const href = row.credentialId ? getCredentialCatalogDeepLink(row.credentialId, catalogBase) : null;
+      const href = row.credentialId
+        ? getCredentialCatalogDeepLink(row.credentialId, catalogBase, aliasIndex)
+        : null;
       const safe = escapeHtml(row.label);
       if (href) {
         return '<a href="' + escapeHtml(href) + '" class="fides-tag accepted-credential credential-catalog-link">' + icons.externalLink + ' ' + safe + '</a>';
@@ -4305,8 +4423,6 @@
     const tierUi = optionsTierUiEnabled(options);
     const isCommunity = tierUi ? !walletListingTierIsPro(org, options) : itemIsCommunity(org);
     selectedContext = { type: 'organization', item: org, options: options || {}, theme: theme };
-    trackOrganizationDetailOpen(org, options);
-    if (options && typeof options.onOpen === 'function') options.onOpen(org);
 
     const logo = org.logo || '';
     const countryLabel = org.country
@@ -4345,9 +4461,10 @@
       return '<span class="fides-tag">' + escapeHtml(label) + '</span>';
     }).filter(Boolean).join('');
 
+    const credentialAliasIndex = options && options.credentialAliasIndex;
     const credentialLinks = arrayValues(org.credentials).map(function(c) {
       const credentialId = c && c.id ? c.id : '';
-      const href = credentialCatalogBase && credentialId ? credentialCatalogBase.replace(/\/$/, '') + '?credential=' + encodeURIComponent(credentialId) : null;
+      const href = getCredentialCatalogDeepLink(credentialId, credentialCatalogBase, credentialAliasIndex);
       const label = (c && c.displayName) ? c.displayName : credentialId;
       if (!label) return '';
       if (href) return '<a href="' + escapeHtml(href) + '" class="fides-tag credential-catalog-link" target="_blank" rel="noopener">' + escapeHtml(label) + ' ' + icons.externalLinkSmall + '</a>';
@@ -4390,8 +4507,15 @@
       buildOrganizationContactFooterHtml(org.contact, { tierUiEnabled: optionsTierUiEnabled(options), isCommunity: isCommunity, item: org, editAccess: options && options.editAccess, salesOrg: org }) +
       '</div></div>';
 
-    mountModal(modalHtml);
+    const organizationOverlay = mountModal(modalHtml);
+    if (!organizationOverlay) {
+      selectedContext = null;
+      return false;
+    }
+    trackOrganizationDetailOpen(org, options);
+    if (options && typeof options.onOpen === 'function') options.onOpen(org);
     initModalAccordions();
+    return true;
   }
 
   function openVocabularyModal(term, options) {
@@ -4961,6 +5085,13 @@
     initModalMediaCarousels,
     syncCatalogBodyScrollLock,
     createMobileFiltersController,
-    MOBILE_FILTER_BREAKPOINT
+    MOBILE_FILTER_BREAKPOINT,
+    credentialResolvableIds,
+    buildCredentialAliasIndex,
+    resolveCredentialCanonicalId,
+    lookupCredentialByIdOrAlias,
+    getCredentialCatalogDeepLink,
+    getCredentialRefCatalogId,
+    getAcceptedCredentialRows
   };
 })();
