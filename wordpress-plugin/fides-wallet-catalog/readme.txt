@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.16.3
+Stable tag: 2.16.4
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -100,6 +100,9 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 1. Wallet catalog with search and filters
 2. Wallet card with details
 3. Admin settings page
+
+= 2.16.4 =
+* Redeploy marker for TS11 credential alias resolution already shipped in 2.16.3 (tiles ≥ 1.13.32).
 
 = 2.16.3 =
 * Sync shared catalog UI for credential attestation-type alias resolution (tiles ≥ 1.13.32).
