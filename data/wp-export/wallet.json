@@ -1,7 +1,7 @@
 {
     "schemaVersion": "1.0.0",
     "catalogType": "wallet",
-    "generatedAt": "2026-10-08T11:32:25+00:00",
+    "generatedAt": "2026-10-25T10:22:04+00:00",
     "entries": [
         {
             "itemId": "aadhaar",
@@ -304,6 +304,53 @@
             },
             "publishedAt": "2026-09-09 07:30:18",
             "updatedAt": "2026-09-09 07:30:18"
+        },
+        {
+            "itemId": "eudi-dev",
+            "slug": "eudi-dev",
+            "filename": "wallet-catalog.json",
+            "source": "wordpress",
+            "document": {
+                "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+                "orgId": "org:eudi-dev",
+                "wallets": [
+                    {
+                        "id": "eudi-dev",
+                        "name": "eudi-dev",
+                        "description": "eudi-dev is an OpenID-certified testing wallet, that lets you test your issuers and verifiers without using a phone. Use the public demo or run it yourself.\nPublic demo: https://eudi-test.dev",
+                        "logo": "https://raw.githubusercontent.com/eudi-dev/eudi-dev/main/docs/assets/logo-mark.png",
+                        "type": "personal",
+                        "platforms": [
+                            "Web"
+                        ],
+                        "openSource": true,
+                        "license": "Apache-2.0",
+                        "vcFormat": [
+                            "sd_jwt_vc",
+                            "mdoc",
+                            "jwt_vc"
+                        ],
+                        "issuanceProtocols": [
+                            "OpenID4VCI"
+                        ],
+                        "presentationProtocols": [
+                            "OpenID4VP"
+                        ],
+                        "interoperabilityProfiles": [
+                            "EUDI Wallet ARF",
+                            "HAIP v1"
+                        ],
+                        "status": "development",
+                        "capabilities": [
+                            "holder"
+                        ],
+                        "catalogTier": "Community"
+                    }
+                ],
+                "lastUpdated": "2026-10-25T10:22:04+00:00"
+            },
+            "publishedAt": "2026-10-25 10:22:04",
+            "updatedAt": "2026-10-25 10:22:04"
         },
         {
             "itemId": "france-identite",
