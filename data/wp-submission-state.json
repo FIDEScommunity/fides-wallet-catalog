@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "catalogType": "wallet",
-  "lastImportAt": "2026-10-08T11:32:49.952Z",
+  "lastImportAt": "2026-10-25T10:22:24.544Z",
   "managedWallets": [
     {
       "slug": "bcgov",
@@ -14,6 +14,10 @@
     {
       "slug": "credenco",
       "walletId": "credenco-wallet"
+    },
+    {
+      "slug": "eudi-dev",
+      "walletId": "eudi-dev"
     },
     {
       "slug": "france",

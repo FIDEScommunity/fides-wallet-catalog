@@ -1,0 +1,39 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:eudi-dev",
+  "wallets": [
+    {
+      "id": "eudi-dev",
+      "name": "eudi-dev",
+      "description": "eudi-dev is an OpenID-certified testing wallet, that lets you test your issuers and verifiers without using a phone. Use the public demo or run it yourself.\nPublic demo: https://eudi-test.dev",
+      "logo": "https://raw.githubusercontent.com/eudi-dev/eudi-dev/main/docs/assets/logo-mark.png",
+      "type": "personal",
+      "platforms": [
+        "Web"
+      ],
+      "openSource": true,
+      "license": "Apache-2.0",
+      "vcFormat": [
+        "sd_jwt_vc",
+        "mdoc",
+        "jwt_vc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "interoperabilityProfiles": [
+        "EUDI Wallet ARF",
+        "HAIP v1"
+      ],
+      "status": "development",
+      "capabilities": [
+        "holder"
+      ],
+      "catalogTier": "Community"
+    }
+  ],
+  "lastUpdated": "2026-10-25T10:22:04+00:00"
+}
