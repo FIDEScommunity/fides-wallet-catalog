@@ -6,7 +6,14 @@
       "name": "EVO",
       "description": "Government mobile wallet and public services app from the Republic of Moldova. EVO gives citizens access to digital documents and government services in a single mobile application.",
       "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/61/6f/66/616f66c0-047b-eb22-8bb3-0d3a82b3edb2/app_logo_ios-1x_U007emarketing-0-8-0-85-220-0.png/400x400ia-75.webp",
-      "website": "https://apps.apple.com/us/app/evo/id6462688921",
+      "website": "https://evo.gov.md/",
+      "documentation": "https://egov-moldova.github.io/egov4dev/guides/evo-wallet/",
+      "additionalDocumentation": [
+        {
+          "title": "EVO Wallet Verifier Integration Guide",
+          "url": "https://egov-moldova.github.io/egov4dev/guides/evo-wallet/integration/"
+        }
+      ],
       "type": "personal",
       "platforms": [
         "iOS",
@@ -23,6 +30,11 @@
         "OpenID4VP"
       ],
       "features": [
+        "Person Identification Data (PID)",
+        "EUDI PID Profile",
+        "Moldovan Driving Licence",
+        "ISO Mobile Driving Licence",
+        "Vehicle Registration Certificate",
         "Digital document wallet",
         "QR code verification",
         "Access to public services",
@@ -34,7 +46,10 @@
         "iOS": "https://apps.apple.com/us/app/evo/id6462688921",
         "android": "https://play.google.com/store/apps/details?id=md.egov.evo"
       },
-      "status": "production"
+      "status": "production",
+      "capabilities": [
+        "holder"
+      ]
     }
   ],
   "lastUpdated": "2026-03-23T00:00:00Z",

@@ -9,7 +9,8 @@
       "openSource": true,
       "repository": "https://github.com/MinBZK/nl-wallet",
       "status": "development",
-      "website": "https://www.nldigitalgovernment.nl/",
+      "website": "https://edi.pleio.nl/",
+      "documentation": "https://minbzk.github.io/nl-wallet/",
       "platforms": [
         "iOS",
         "Android"
