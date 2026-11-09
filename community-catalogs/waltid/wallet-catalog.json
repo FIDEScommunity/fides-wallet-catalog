@@ -1,0 +1,327 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:waltid",
+  "wallets": [
+    {
+      "id": "waltid-issuer",
+      "name": "walt.id Issuer",
+      "description": "Self-managed issuer service to issue W3C VCs, SD-JWT VCs and ISO mdocs/mDLs via OpenID4VCI 1.0.",
+      "website": "https://walt.id/issuer",
+      "type": "organizational",
+      "capabilities": [
+        "issuer"
+      ],
+      "platforms": [
+        "Web",
+        "Linux"
+      ],
+      "openSource": true,
+      "license": "Apache-2.0",
+      "repository": "https://github.com/walt-id/waltid-identity/tree/main/waltid-services/waltid-issuer-api2",
+      "deploymentModel": "on_premises",
+      "vcFormat": [
+        "sd_jwt_vc",
+        "mdoc",
+        "jwt_vc",
+        "vcdm_1_1",
+        "vcdm_2_0"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "supportedIdentifiers": [
+        "did:key",
+        "did:jwk",
+        "did:web",
+        "x509"
+      ],
+      "keyStorage": [
+        "HSM",
+        "Cloud KMS",
+        "Software"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "ES256K",
+        "EdDSA",
+        "RS256"
+      ],
+      "credentialStatusMethods": [
+        "IETF Token Status List",
+        "Bitstring Status List",
+        "StatusList2021",
+        "RevocationList2020"
+      ],
+      "interoperabilityProfiles": [
+        "HAIP v1",
+        "EUDI Wallet ARF"
+      ],
+      "standards": [
+        "OpenID4VCI 1.0",
+        "HAIP 1.0",
+        "SD-JWT VC",
+        "ISO/IEC 18013-5",
+        "ISO/IEC 18013-7",
+        "W3C VCDM 1.1 and 2.0"
+      ],
+      "documentation": "https://docs.walt.id/community-stack/issuer2/getting-started",
+      "status": "production",
+      "logo": "https://walt.id/logo.svg"
+    },
+    {
+      "id": "waltid-verifier",
+      "name": "walt.id Verifier",
+      "description": "Self-managed verifier service to verify credentials from any compliant ID wallet via OpenID4VP 1.0 and the Digital Credentials API.",
+      "website": "https://walt.id/verifier",
+      "type": "organizational",
+      "capabilities": [
+        "verifier"
+      ],
+      "platforms": [
+        "Web",
+        "Linux"
+      ],
+      "openSource": true,
+      "license": "Apache-2.0",
+      "repository": "https://github.com/walt-id/waltid-identity/tree/main/waltid-services/waltid-verifier-api2",
+      "deploymentModel": "on_premises",
+      "vcFormat": [
+        "sd_jwt_vc",
+        "mdoc",
+        "jwt_vc",
+        "vcdm_1_1",
+        "vcdm_2_0"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "supportedIdentifiers": [
+        "did:key",
+        "did:jwk",
+        "did:web",
+        "x509"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "ES256K",
+        "EdDSA",
+        "RS256"
+      ],
+      "credentialStatusMethods": [
+        "IETF Token Status List",
+        "Bitstring Status List",
+        "StatusList2021",
+        "RevocationList2020"
+      ],
+      "interoperabilityProfiles": [
+        "HAIP v1",
+        "EUDI Wallet ARF"
+      ],
+      "standards": [
+        "OpenID4VP 1.0",
+        "HAIP 1.0",
+        "Digital Credentials API",
+        "SD-JWT VC",
+        "ISO/IEC 18013-5",
+        "ISO/IEC 18013-7",
+        "W3C VCDM 1.1 and 2.0"
+      ],
+      "documentation": "https://docs.walt.id/community-stack/verifier2/getting-started",
+      "status": "production",
+      "logo": "https://walt.id/logo.svg"
+    },
+    {
+      "id": "waltid-business-wallet",
+      "name": "walt.id Business Wallet (Wallet API)",
+      "description": "Self-managed organizational wallet service to collect, store, manage and present credentials.",
+      "website": "https://walt.id/wallet",
+      "type": "organizational",
+      "capabilities": [
+        "holder"
+      ],
+      "platforms": [
+        "Web",
+        "Linux"
+      ],
+      "openSource": true,
+      "license": "Apache-2.0",
+      "repository": "https://github.com/walt-id/waltid-identity/tree/main/waltid-services/waltid-wallet-api2",
+      "deploymentModel": "on_premises",
+      "vcFormat": [
+        "sd_jwt_vc",
+        "mdoc",
+        "jwt_vc",
+        "vcdm_1_1",
+        "vcdm_2_0"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "supportedIdentifiers": [
+        "did:key",
+        "did:jwk",
+        "did:web",
+        "x509"
+      ],
+      "keyStorage": [
+        "HSM",
+        "Cloud KMS",
+        "Software"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "ES256K",
+        "EdDSA",
+        "RS256"
+      ],
+      "interoperabilityProfiles": [
+        "HAIP v1",
+        "EUDI Wallet ARF"
+      ],
+      "standards": [
+        "OpenID4VCI 1.0",
+        "OpenID4VP 1.0",
+        "Digital Credentials API",
+        "SD-JWT VC",
+        "ISO/IEC 18013-5",
+        "ISO/IEC 18013-7",
+        "W3C VCDM 1.1 and 2.0"
+      ],
+      "documentation": "https://docs.walt.id/community-stack/wallet2/getting-started",
+      "status": "production",
+      "logo": "https://walt.id/logo.svg"
+    },
+    {
+      "id": "waltid-wallet",
+      "name": "walt.id Wallet (Web Wallet and Wallet SDK)",
+      "description": "Open-source white-label web wallet and Wallet SDK to launch branded identity wallets on the web and in native iOS and Android apps (non-custodial or hybrid).",
+      "website": "https://walt.id/wallet",
+      "type": "personal",
+      "capabilities": [
+        "holder"
+      ],
+      "platforms": [
+        "Web",
+        "iOS",
+        "Android"
+      ],
+      "openSource": true,
+      "license": "Apache-2.0",
+      "repository": "https://github.com/walt-id/waltid-identity",
+      "deploymentModel": "on_premises",
+      "vcFormat": [
+        "sd_jwt_vc",
+        "mdoc",
+        "jwt_vc",
+        "vcdm_1_1",
+        "vcdm_2_0"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "supportedIdentifiers": [
+        "did:key",
+        "did:jwk",
+        "did:web",
+        "x509"
+      ],
+      "interoperabilityProfiles": [
+        "HAIP v1",
+        "EUDI Wallet ARF"
+      ],
+      "documentation": "https://docs.walt.id/community-stack/mobile-wallet/getting-started",
+      "status": "production",
+      "logo": "https://walt.id/logo.svg"
+    },
+    {
+      "id": "waltid-enterprise-stack",
+      "name": "walt.id Enterprise Stack",
+      "description": "Proprietary, self-managed platform built on the open-source walt.id services to run issuers, verifiers and (business) wallets in production: reliable, scalable, secure and compliant (e.g. eIDAS 2).",
+      "website": "https://walt.id/enterprise-stack",
+      "type": "organizational",
+      "capabilities": [
+        "holder",
+        "issuer",
+        "verifier"
+      ],
+      "platforms": [
+        "Web",
+        "Linux"
+      ],
+      "openSource": false,
+      "license": "proprietary",
+      "deploymentModel": "on_premises",
+      "slaAvailable": true,
+      "vcFormat": [
+        "sd_jwt_vc",
+        "mdoc",
+        "jwt_vc",
+        "vcdm_1_1",
+        "vcdm_2_0"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "supportedIdentifiers": [
+        "did:key",
+        "did:jwk",
+        "did:web",
+        "x509"
+      ],
+      "keyStorage": [
+        "HSM",
+        "Cloud KMS",
+        "Software"
+      ],
+      "signingAlgorithms": [
+        "ES256",
+        "ES256K",
+        "EdDSA",
+        "RS256"
+      ],
+      "credentialStatusMethods": [
+        "IETF Token Status List",
+        "Bitstring Status List",
+        "StatusList2021",
+        "RevocationList2020"
+      ],
+      "interoperabilityProfiles": [
+        "HAIP v1",
+        "EUDI Wallet ARF"
+      ],
+      "standards": [
+        "OpenID4VCI 1.0",
+        "OpenID4VP 1.0",
+        "HAIP 1.0",
+        "Digital Credentials API",
+        "SD-JWT VC",
+        "ISO/IEC 18013-5",
+        "ISO/IEC 18013-7",
+        "W3C VCDM 1.1 and 2.0"
+      ],
+      "features": [
+        "Multi-tenancy",
+        "Role-based access control",
+        "Horizontal scaling",
+        "Data persistence and encryption",
+        "Audit, system and event logs",
+        "X.509 and EU trust list management",
+        "OIDC bridge to IAM systems",
+        "Analytics"
+      ],
+      "documentation": "https://docs.walt.id/",
+      "status": "production",
+      "logo": "https://walt.id/logo.svg"
+    }
+  ],
+  "lastUpdated": "2026-11-09T00:00:00Z"
+}
