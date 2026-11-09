@@ -7,6 +7,8 @@
       "description": "Ireland's National EUDI Wallet is in development to comply with eIDAS 2.0 regulation, which mandates all EU member states to provide European Digital Identity Wallets by 2026. The wallet will enable Irish citizens to securely store and share verified digital credentials, access online services across the EU, and authenticate their identity for both public and private sector services. Ireland's implementation will integrate with the country's existing MyGovID authentication system and align with the EU-wide interoperability framework for cross-border digital identity recognition established under eIDAS Regulation 2024/1183.",
       "type": "personal",
       "status": "development",
+      "website": "https://www.gov.ie/DigitalWallet",
+      "documentation": "https://www.gov.ie/en/department-of-public-expenditure-infrastructure-public-service-reform-and-digitalisation/government-digital-wallet-interoperability/",
       "platforms": [
         "iOS",
         "Android"

@@ -11,9 +11,23 @@
       "repository": "https://github.com/a-sit-plus/valera",
       "status": "production",
       "website": "https://www.id-austria.gv.at/de/verwenden/eausweise",
+      "additionalDocumentation": [
+        {
+          "title": "A-SIT Plus Wallet Playground",
+          "url": "https://wallet.a-sit.plus/"
+        }
+      ],
       "platforms": [
         "iOS",
         "Android"
+      ],
+      "capabilities": [
+        "holder"
+      ],
+      "features": [
+        "Person Identification Data (PID)",
+        "Digital Driving Licence",
+        "Proof of Age"
       ],
       "presentationProtocols": [
         "OpenID4VP"

@@ -9,6 +9,12 @@
       "type": "personal",
       "status": "production",
       "website": "https://france-identite.gouv.fr/",
+      "additionalDocumentation": [
+        {
+          "title": "France Identité Playground",
+          "url": "https://playground.france-identite.gouv.fr/marketplace/wallets/fin/"
+        }
+      ],
       "platforms": [
         "iOS",
         "Android"
@@ -50,6 +56,11 @@
       ],
       "capabilities": [
         "holder"
+      ],
+      "features": [
+        "Person Identification Data (PID)",
+        "Proof of Age",
+        "Identity and Portrait Data"
       ],
       "catalogTier": "Community",
       "catalogListingDepth": "full",

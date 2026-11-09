@@ -9,6 +9,13 @@
       "type": "personal",
       "status": "production",
       "website": "https://io.italia.it/",
+      "documentation": "https://italia.github.io/eid-wallet-it-docs/versione-corrente/en/index.html",
+      "additionalDocumentation": [
+        {
+          "title": "Official IT-Wallet Programme",
+          "url": "https://innovazione.gov.it/progetti/sistema-it-wallet/"
+        }
+      ],
       "platforms": [
         "iOS",
         "Android"
@@ -21,6 +28,11 @@
       "releaseDate": "2024-01-01",
       "capabilities": [
         "holder"
+      ],
+      "features": [
+        "Digital Driving Licence",
+        "European Health Insurance Card",
+        "European Disability Card"
       ],
       "catalogTier": "Community",
       "catalogListingDepth": "full"

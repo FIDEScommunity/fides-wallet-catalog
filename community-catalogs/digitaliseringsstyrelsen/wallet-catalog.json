@@ -8,6 +8,13 @@
       "description": "AltID is Denmark's official app for digital identity and credentials. The wallet enables users to store and present official digital credentials issued by trusted providers.",
       "logo": "https://play-lh.googleusercontent.com/Nm2j6DF0Vah37zUMElEW4QPht2fWKtbDay4cjFNkX655e2j2yfyseCU6yPGnJsxvs7nugmeE4JngEd_f2H_iiA=w480-h960-rw",
       "website": "https://digst.dk/it-loesninger/altid/",
+      "documentation": "https://www.digitaliser.dk/altid/vejledninger-altid",
+      "additionalDocumentation": [
+        {
+          "title": "AltID Official Overview",
+          "url": "https://en.digst.dk/systems/altid/about-altid/"
+        }
+      ],
       "type": "personal",
       "platforms": [
         "iOS",

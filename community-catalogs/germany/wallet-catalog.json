@@ -8,10 +8,25 @@
       "type": "personal",
       "openSource": true,
       "status": "development",
+      "releaseDate": "2027-01-02",
       "website": "https://eudi-wallet.gov.de/en",
+      "documentation": "https://bmi.usercontent.opencode.de/eudi-wallet/developer-guide/",
+      "additionalDocumentation": [
+        {
+          "title": "d-you Ecosystem Knowledge Center",
+          "url": "https://eudi-wallet.gov.de/en/ecosystem-knowledge-center"
+        }
+      ],
       "platforms": [
         "iOS",
         "Android"
+      ],
+      "capabilities": [
+        "holder"
+      ],
+      "features": [
+        "Person Identification Data (PID)",
+        "Electronic Attestations of Attributes (EAAs)"
       ],
       "presentationProtocols": [
         "OpenID4VP"

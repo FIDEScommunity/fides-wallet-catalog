@@ -3,13 +3,43 @@
   "wallets": [
     {
       "id": "national-eudi-wallet-norway",
-      "name": "National EUDI Wallet (Norway)",
+      "name": "Digital lommebok",
       "description": "Norway as European Economic Area (EEA) country alongside Iceland and Liechtenstein has December 2027 deadline (one-year extension compared to EU member states' December 2026 requirement) to offer citizens EU Digital Identity Wallet, led by Digdir (Norwegian Digitalisation Agency) coordinating NOBID (Nordic-Baltic eID Project) multi-country consortium including Denmark, Germany, Iceland, Italy, and Latvia focusing on payments use case leveraging existing payment infrastructure. BankID participates in first phase of European Identity Wallet work through involvement in two consortia (EUDI Wallet Consortium EWC and Digital Credentials for Europe DC4EU) piloting EUDI wallet functionality, building on Norway's advanced digital infrastructure where more than 90% of citizens have access to eID with millions using digital services daily and 75% (4.1 million) Norwegians using Vipps payment tool, positioning Norway as leader in digital payments and eID adoption preparing for EUDI wallet integration with financial institutions obliged to accept wallet as official identification method from end of 2027. In the national sandbox, Digipost offers a credential-issuance API and a verification service.",
       "type": "personal",
       "status": "development",
+      "documentation": "https://docs.digdir.no/docs/lommebok/lommebok_om.html",
+      "additionalDocumentation": [
+        {
+          "title": "Bevisporten Credential Playground",
+          "url": "https://bevisporten.test.eidas2sandkasse.net/"
+        },
+        {
+          "title": "EBWOID Issuer Documentation",
+          "url": "https://docs.digdir.no/docs/lommebok/lommebok_ebwoid_usteder.html"
+        }
+      ],
       "platforms": [
         "iOS",
         "Android"
+      ],
+      "capabilities": [
+        "holder"
+      ],
+      "vcFormat": [
+        "mdoc",
+        "sd_jwt_vc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "features": [
+        "Person Identification Data (PID)",
+        "Proof of Age",
+        "Proof of Income",
+        "European Business Wallet Owner Identification Data (EBWOID)"
       ],
       "interoperabilityProfiles": [
         "EUDI Wallet ARF"
