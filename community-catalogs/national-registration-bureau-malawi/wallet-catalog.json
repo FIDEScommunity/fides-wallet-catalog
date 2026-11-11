@@ -1,0 +1,22 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:national-registration-bureau-malawi",
+  "wallets": [
+    {
+      "id": "nzika-wallet",
+      "name": "Nzika Wallet",
+      "description": "Nzika Wallet is Malawi’s official digital identity wallet, provided by the National Registration Bureau (NRB). It enables citizens to securely store and present government-issued digital credentials,",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "status": "production",
+      "capabilities": [
+        "holder"
+      ],
+      "catalogTier": "Community"
+    }
+  ],
+  "lastUpdated": "2026-11-11T14:15:38+00:00"
+}

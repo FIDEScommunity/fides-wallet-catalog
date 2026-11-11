@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "catalogType": "wallet",
-  "lastImportAt": "2026-10-25T10:22:24.544Z",
+  "lastImportAt": "2026-11-11T14:15:57.056Z",
   "managedWallets": [
     {
       "slug": "bcgov",
@@ -26,6 +26,10 @@
     {
       "slug": "italy",
       "walletId": "it-wallet"
+    },
+    {
+      "slug": "national-registration-bureau-malawi",
+      "walletId": "nzika-wallet"
     },
     {
       "slug": "portugal",
