@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "catalogType": "wallet",
-  "lastImportAt": "2026-11-11T14:15:57.056Z",
+  "lastImportAt": "2026-11-13T12:36:58.972Z",
   "managedWallets": [
     {
       "slug": "bcgov",
@@ -22,6 +22,10 @@
     {
       "slug": "france",
       "walletId": "france-identite"
+    },
+    {
+      "slug": "idakto",
+      "walletId": "idakto-wallet-sdk"
     },
     {
       "slug": "italy",
