@@ -1,7 +1,7 @@
 {
     "schemaVersion": "1.0.0",
     "catalogType": "wallet",
-    "generatedAt": "2026-11-13T12:36:37+00:00",
+    "generatedAt": "2026-11-13T13:50:30+00:00",
     "entries": [
         {
             "itemId": "aadhaar",
@@ -488,7 +488,7 @@
                 "wallets": [
                     {
                         "id": "idakto-wallet-sdk",
-                        "name": "iDAKTO Wallet SDK",
+                        "name": "IDCluster Wallet SDK",
                         "description": "iDAKTO's wallet SDK used to build wallet apps such as France Identité. \nThe provided sample app allows easy configuration and testing of all options and is used during interoperability testing.",
                         "logo": "https://www.idakto.com/wp-content/uploads/2023/06/logo-idakto-fond-blanc-540x340px-tagless.png",
                         "type": "personal",
@@ -543,10 +543,10 @@
                         "catalogTier": "Community"
                     }
                 ],
-                "lastUpdated": "2026-11-13T12:36:37+00:00"
+                "lastUpdated": "2026-11-13T13:50:30+00:00"
             },
-            "publishedAt": "2026-11-13 12:36:37",
-            "updatedAt": "2026-11-13 12:36:37"
+            "publishedAt": "2026-11-13 13:50:30",
+            "updatedAt": "2026-11-13 13:50:30"
         },
         {
             "itemId": "it-wallet",
