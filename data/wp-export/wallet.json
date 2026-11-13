@@ -1,7 +1,7 @@
 {
     "schemaVersion": "1.0.0",
     "catalogType": "wallet",
-    "generatedAt": "2026-11-11T14:15:38+00:00",
+    "generatedAt": "2026-11-13T12:36:37+00:00",
     "entries": [
         {
             "itemId": "aadhaar",
@@ -476,6 +476,77 @@
             },
             "publishedAt": "2026-08-21 15:32:48",
             "updatedAt": "2026-08-21 15:32:48"
+        },
+        {
+            "itemId": "idakto-wallet-sdk",
+            "slug": "idakto",
+            "filename": "wallet-catalog.json",
+            "source": "wordpress",
+            "document": {
+                "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+                "orgId": "org:idakto",
+                "wallets": [
+                    {
+                        "id": "idakto-wallet-sdk",
+                        "name": "iDAKTO Wallet SDK",
+                        "description": "iDAKTO's wallet SDK used to build wallet apps such as France Identité. \nThe provided sample app allows easy configuration and testing of all options and is used during interoperability testing.",
+                        "logo": "https://www.idakto.com/wp-content/uploads/2023/06/logo-idakto-fond-blanc-540x340px-tagless.png",
+                        "type": "personal",
+                        "platforms": [
+                            "iOS",
+                            "Android"
+                        ],
+                        "vcFormat": [
+                            "sd_jwt_vc",
+                            "mdoc"
+                        ],
+                        "issuanceProtocols": [
+                            "OpenID4VCI"
+                        ],
+                        "presentationProtocols": [
+                            "OpenID4VP",
+                            "ISO 18013-5"
+                        ],
+                        "supportedIdentifiers": [
+                            "x509"
+                        ],
+                        "keyStorage": [
+                            "Secure Enclave (iOS)",
+                            "StrongBox (Android)",
+                            "TEE",
+                            "HSM",
+                            "Smart Card"
+                        ],
+                        "signingAlgorithms": [
+                            "ES256",
+                            "ES384",
+                            "ES512",
+                            "EdDSA"
+                        ],
+                        "credentialStatusMethods": [
+                            "IETF Token Status List"
+                        ],
+                        "interoperabilityProfiles": [
+                            "EUDI Wallet ARF",
+                            "HAIP v1"
+                        ],
+                        "standards": [
+                            "EUDI Wallet ARF",
+                            "HAIP v1",
+                            "ISO 18013-5",
+                            "DC API (ISO/IEC 18013-7 Annex C)"
+                        ],
+                        "status": "production",
+                        "capabilities": [
+                            "holder"
+                        ],
+                        "catalogTier": "Community"
+                    }
+                ],
+                "lastUpdated": "2026-11-13T12:36:37+00:00"
+            },
+            "publishedAt": "2026-11-13 12:36:37",
+            "updatedAt": "2026-11-13 12:36:37"
         },
         {
             "itemId": "it-wallet",
