@@ -236,8 +236,16 @@
     return catalogTierIsProExplicit(item);
   }
 
+  function catalogListingFieldsAreOpen(options) {
+    const access = options && options.editAccess && typeof options.editAccess === 'object'
+      ? options.editAccess
+      : {};
+    return access.openListingFields === true;
+  }
+
   function catalogListingHasFullFields(item, options) {
     if (!optionsTierUiEnabled(options)) return true;
+    if (catalogListingFieldsAreOpen(options)) return true;
     if (!item) return false;
     return catalogListingIsOfficial(item) ||
       catalogListingDepthIsFull(item) ||
@@ -453,7 +461,7 @@
     return userCanEditCatalogItem(normalizeEditAccess(options), resolveCatalogItemOrgId(rp), rp);
   }
 
-  /** Full public fields when tier switch is on (Official Pro or curated catalogListingDepth=full). */
+  /** Full public fields when tier switch is on (open listing fields, Official, or curated depth). */
   function walletListingTierIsPro(item, options) {
     return catalogListingHasFullFields(item, options);
   }
