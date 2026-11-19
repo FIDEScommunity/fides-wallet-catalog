@@ -819,10 +819,18 @@
   }
 
   /**
+   * The Commission reference implementation is a demo, not a national EUDI wallet.
+   */
+  function isCommissionReferenceWallet(wallet) {
+    return String(wallet && wallet.id || '') === 'eudi-reference-personal-wallet';
+  }
+
+  /**
    * Whether wallet is listed in the iGrant EUDI landscape overlay.
    */
   function hasEudiLandscapeWallet(wallet) {
-    return !!(wallet && wallet.eudiTracker && typeof wallet.eudiTracker === 'object');
+    if (!wallet || isCommissionReferenceWallet(wallet)) return false;
+    return !!(wallet.eudiTracker && typeof wallet.eudiTracker === 'object');
   }
 
   /** National EUDI quick filter: personal catalog only, not business. */
@@ -1377,6 +1385,7 @@
    *   ?profile=Profile Name     — pre-filter by interoperability profile
    *   ?wallets=id1,id2,...      — show only specific wallets (comma-separated IDs)
    *   ?country=NL               — pre-filter by provider country (ISO 3166-1 alpha-2)
+   *   ?eudi=1                   — national EUDI wallets only
    */
   function readQueryParams() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -1396,6 +1405,11 @@
     const countryCode = normalizeCountryFilterCode(urlParams.get('country') || '');
     if (countryCode) {
       filters.countries = [countryCode];
+      document.body.classList.add('filters-visible');
+    }
+
+    if (urlParams.get('eudi') === '1' && showsNationalEudiWalletFilter()) {
+      filters.nationalEudiWallet = true;
       document.body.classList.add('filters-visible');
     }
   }
