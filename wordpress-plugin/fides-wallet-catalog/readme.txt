@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.16.4
+Stable tag: 2.16.5
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -108,6 +108,9 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 * Sync shared catalog UI for credential attestation-type alias resolution (tiles ≥ 1.13.32).
 
 == Changelog ==
+
+= 2.16.5 =
+* Sync shared catalog UI so full listing fields stay visible when open listing fields is on. Community and Official badges are unchanged (tiles ≥ 1.13.33).
 
 = 2.16.2 =
 * Make the shared mobile filter drawer modal and keyboard-accessible (tiles ≥ 1.13.31).
