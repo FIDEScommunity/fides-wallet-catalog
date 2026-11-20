@@ -47,7 +47,6 @@
   };
 
   const OFFICIAL_ACCOUNT_TITLE = 'Official listing — managed by the provider';
-  const OFFICIAL_FILTER_LABEL = 'Official listings only';
   const NATIONAL_EUDI_FILTER_LABEL = 'National EUDI wallets';
 
   // Selected wallet for modal
@@ -449,7 +448,6 @@
     governance: null, // 'government' or 'private'
     addedLast30Days: false,
     nationalEudiWallet: false,
-    officialOnly: false,
     ids: [] // pre-filter by wallet IDs (set via ?wallets= URL param)
   };
 
@@ -1718,9 +1716,6 @@
         if (!hasEudiLandscapeWallet(wallet)) return false;
       }
 
-      // Official (Pro organization) accounts only
-      if (TIER_UI_ENABLED && filters.officialOnly && !walletCatalogTierIsPro(wallet)) return false;
-
       return true;
     });
 
@@ -1775,7 +1770,6 @@
     if (filters.governance !== null) count += 1;
     if (filters.addedLast30Days) count += 1;
     if (showsNationalEudiWalletFilter() && filters.nationalEudiWallet) count += 1;
-    if (filters.officialOnly) count += 1;
     if (filters.ids && filters.ids.length > 0) count += 1;
     return count;
   }
@@ -1815,7 +1809,6 @@
     const openSource = { true: 0, false: 0 };
     let addedLast30Days = 0;
     let nationalEudiWallet = 0;
-    let officialOnly = 0;
 
     walletList.forEach(wallet => {
       if (wallet.type) {
@@ -1866,7 +1859,6 @@
       else openSource.false += 1;
       if (isWithinLastDays(getWalletAddedDate(wallet), 30)) addedLast30Days += 1;
       if (hasEudiLandscapeWallet(wallet)) nationalEudiWallet += 1;
-      if (walletCatalogTierIsPro(wallet)) officialOnly += 1;
     });
 
     const country = Object.entries(countryCount)
@@ -1890,8 +1882,7 @@
       interoperabilityProfiles,
       openSource,
       addedLast30Days,
-      nationalEudiWallet,
-      officialOnly
+      nationalEudiWallet
     };
   }
 
@@ -2002,12 +1993,6 @@
               <label class="fides-filter-checkbox">
                 <input type="checkbox" data-filter="nationalEudiWallet" data-value="true" ${filters.nationalEudiWallet ? 'checked' : ''}>
                 <span>${NATIONAL_EUDI_FILTER_LABEL}<span class="fides-filter-option-count">(${filterFacets ? filterFacets.nationalEudiWallet : ''})</span></span>
-              </label>
-              ` : ''}
-              ${TIER_UI_ENABLED ? `
-              <label class="fides-filter-checkbox">
-                <input type="checkbox" data-filter="officialOnly" data-value="true" ${filters.officialOnly ? 'checked' : ''}>
-                <span>${OFFICIAL_FILTER_LABEL}<span class="fides-filter-option-count">(${filterFacets ? filterFacets.officialOnly : ''})</span></span>
               </label>
               ` : ''}
             </div>
@@ -3467,7 +3452,7 @@
         if (filterType === 'linkedWallets') {
           filters.ids = isChecked ? [...originalIds] : [];
         }
-        else if (filterType === 'addedLast30Days' || filterType === 'nationalEudiWallet' || filterType === 'officialOnly') {
+        else if (filterType === 'addedLast30Days' || filterType === 'nationalEudiWallet') {
           filters[filterType] = isChecked;
         }
         // Special handling for openSource (boolean toggle)
@@ -3554,7 +3539,6 @@
           governance: null,
           addedLast30Days: false,
           nationalEudiWallet: false,
-          officialOnly: false,
           ids: []
         };
         // Clear the deep-link pre-filter entirely (checkbox will disappear)

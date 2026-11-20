@@ -3,7 +3,7 @@ Contributors: fideslabs
 Tags: wallet, identity, eudi, digital identity, credentials, verifiable credentials
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.16.6
+Stable tag: 2.16.7
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -108,6 +108,9 @@ Yes, this plugin is open source under the Apache-2.0 license and completely free
 * Sync shared catalog UI for credential attestation-type alias resolution (tiles ≥ 1.13.32).
 
 == Changelog ==
+
+= 2.16.7 =
+* Remove the Official listings only quick filter. Official and Community badges stay.
 
 = 2.16.6 =
 * Apply `?eudi=1` on the personal wallet catalog so only national EUDI wallets are shown.
