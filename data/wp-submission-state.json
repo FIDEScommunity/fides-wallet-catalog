@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "catalogType": "wallet",
-  "lastImportAt": "2026-11-13T13:50:48.454Z",
+  "lastImportAt": "2026-11-23T14:05:13.628Z",
   "managedWallets": [
     {
       "slug": "bcgov",
@@ -38,6 +38,10 @@
     {
       "slug": "portugal",
       "walletId": "carteira-digital-da-empresa"
+    },
+    {
+      "slug": "reniec",
+      "walletId": "peru-pass"
     },
     {
       "slug": "sphereon",

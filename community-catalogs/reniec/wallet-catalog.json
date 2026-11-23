@@ -1,0 +1,39 @@
+{
+  "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+  "orgId": "org:reniec",
+  "wallets": [
+    {
+      "id": "peru-pass",
+      "name": "Perú Pass",
+      "description": "Perú Pass is a mobile application designed to allow Peruvian citizens to store, manage, and share their digital documents and credentials quickly and securely. It functions as a secure digital wallet that gives users full control over their personal information at all times. The application provides a simple and user-friendly experience, designed to modernize digital identity in Peru.",
+      "logo": "https://fides.community/app/uploads/2026/11/peru-pass.png",
+      "website": "https://identidad.reniec.gob.pe/dnid",
+      "type": "personal",
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "pricing": "Free",
+      "vcFormat": [
+        "sd_jwt_vc"
+      ],
+      "issuanceProtocols": [
+        "OpenID4VCI"
+      ],
+      "presentationProtocols": [
+        "OpenID4VP"
+      ],
+      "documentation": "https://busquedas.elperuano.pe/dispositivo/EX/2575817-1?utm_source=chatgpt.com",
+      "appStoreLinks": {
+        "iOS": "https://apps.apple.com/us/app/per%C3%BA-pass/id6794195414",
+        "android": "https://play.google.com/store/apps/details?id=pe.gob.reniec.perupass"
+      },
+      "status": "production",
+      "capabilities": [
+        "holder"
+      ],
+      "catalogTier": "Community"
+    }
+  ],
+  "lastUpdated": "2026-11-23T14:04:53+00:00"
+}
