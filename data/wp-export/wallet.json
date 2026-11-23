@@ -1,7 +1,7 @@
 {
     "schemaVersion": "1.0.0",
     "catalogType": "wallet",
-    "generatedAt": "2026-11-13T13:50:30+00:00",
+    "generatedAt": "2026-11-23T14:04:53+00:00",
     "entries": [
         {
             "itemId": "aadhaar",
@@ -440,13 +440,20 @@
                     {
                         "id": "heidi-wallet",
                         "name": "Heidi Wallet App",
-                        "description": "Heidi Wallet is the easy-to-use wallet app. Built on open protocols, Heidi Wallet interacts with a range of issuers and verifiers. It is compatible with both the EUDI Wallet ecosystem and Switzerland’",
+                        "description": "Heidi Wallet is the easy-to-use wallet app. Built on open protocols, Heidi Wallet interacts with a range of issuers and verifiers. It is compatible with both the EUDI Wallet ecosystem and Switzerland’s swiyu trust infrastructure, supporting a broad range of use cases.\n\nThe app goes beyond credential issuance and presentation. It supports zero-knowledge proofs based on BBS+, and lets users sign digital documents directly within the wallet, exploring what digital identity wallets can do beyond their core use cases.",
                         "logo": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/13/2d/44/132d44a4-424b-3dfc-174e-541248ef421b/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/400x400ia-75.webp",
+                        "website": "https://heidi-wallet.app",
                         "type": "personal",
                         "platforms": [
                             "iOS",
                             "Android"
                         ],
+                        "pricing": "Free",
+                        "media": {
+                            "images": [
+                                "https://fides.community/app/uploads/2026/08/Heidi_Wallet-1.png"
+                            ]
+                        },
                         "vcFormat": [
                             "sd_jwt_vc",
                             "mdoc",
@@ -465,6 +472,10 @@
                             "DIIP v5",
                             "EUDI Wallet ARF"
                         ],
+                        "appStoreLinks": {
+                            "iOS": "https://apps.apple.com/bj/app/heidi-wallet/id6741428702",
+                            "android": "https://play.google.com/store/apps/details?id=ch.ubique.heidi.android"
+                        },
                         "status": "production",
                         "capabilities": [
                             "holder"
@@ -644,6 +655,53 @@
             },
             "publishedAt": "2026-08-21 04:44:18",
             "updatedAt": "2026-08-21 04:44:18"
+        },
+        {
+            "itemId": "peru-pass",
+            "slug": "reniec",
+            "filename": "wallet-catalog.json",
+            "source": "wordpress",
+            "document": {
+                "$schema": "https://fides.community/schemas/wallet-catalog/v2",
+                "orgId": "org:reniec",
+                "wallets": [
+                    {
+                        "id": "peru-pass",
+                        "name": "Perú Pass",
+                        "description": "Perú Pass is a mobile application designed to allow Peruvian citizens to store, manage, and share their digital documents and credentials quickly and securely. It functions as a secure digital wallet that gives users full control over their personal information at all times. The application provides a simple and user-friendly experience, designed to modernize digital identity in Peru.",
+                        "logo": "https://fides.community/app/uploads/2026/11/peru-pass.png",
+                        "website": "https://identidad.reniec.gob.pe/dnid",
+                        "type": "personal",
+                        "platforms": [
+                            "iOS",
+                            "Android"
+                        ],
+                        "pricing": "Free",
+                        "vcFormat": [
+                            "sd_jwt_vc"
+                        ],
+                        "issuanceProtocols": [
+                            "OpenID4VCI"
+                        ],
+                        "presentationProtocols": [
+                            "OpenID4VP"
+                        ],
+                        "documentation": "https://busquedas.elperuano.pe/dispositivo/EX/2575817-1?utm_source=chatgpt.com",
+                        "appStoreLinks": {
+                            "iOS": "https://apps.apple.com/us/app/per%C3%BA-pass/id6794195414",
+                            "android": "https://play.google.com/store/apps/details?id=pe.gob.reniec.perupass"
+                        },
+                        "status": "production",
+                        "capabilities": [
+                            "holder"
+                        ],
+                        "catalogTier": "Community"
+                    }
+                ],
+                "lastUpdated": "2026-11-23T14:04:53+00:00"
+            },
+            "publishedAt": "2026-11-23 14:04:53",
+            "updatedAt": "2026-11-23 14:04:53"
         },
         {
             "itemId": "sphereon-business-wallet",
@@ -1033,8 +1091,9 @@
                     {
                         "id": "spherity-business-wallet",
                         "name": "Spherity's European Business Wallet",
-                        "description": "Spherity’s European Business Wallet (EBW) enables the seamless exchange of verifiable credentials across organisations, from banking, insurance and beyond. As part of the EBW framework and fully eIDAS",
+                        "description": "Spherity’s European Business Wallet (EBW) enables the seamless exchange of verifiable credentials across organisations, from banking, insurance and beyond. As part of the EBW framework and fully eIDAS 2.0-compliant, it streamlines operations, cuts costs, and boosts efficiency. Enhanced with automated business partner data validation, our Business Wallet transforms how businesses handles regulatory obligations in Germany and beyond. With enterprise-grade data automation and primary source-validated information from Bundesanzeiger Verlag, businesses can minimise risks, eliminate manual KYC/KYS processes, and ensure real-time due diligence. Organisations operating in regulated industries or managing complex supply chains, our solution helps you meet obligations such as Anti-Money Laundering regulations.",
                         "logo": "https://www.google.com/s2/favicons?domain=spherity.com&sz=128",
+                        "website": "https://www.spherity.com/eida",
                         "type": "organizational",
                         "platforms": [
                             "Web"
@@ -1043,6 +1102,26 @@
                         "license": "proprietary",
                         "deploymentModel": "hybrid",
                         "slaAvailable": true,
+                        "media": {
+                            "videos": [
+                                "https://youtu.be/yNrJYYx-VQA",
+                                "https://youtube.com/playlist?list=PLnj6hp2xuFVI9DxMgnrPSbvK36WxN-KSl&si=7N1sv2QWay6-rP0r",
+                                "https://youtube.com/playlist?list=PLnj6hp2xuFVLRc_qcCZ_3X1pwVsJv1gPg&si=_N4YnNToUGA1KxZy"
+                            ],
+                            "images": [
+                                "https://static.wixstatic.com/media/4e321c_bdd8b44ded4243249921af3cdfbdae17~mv2.png/v1/crop/x_24,y_19,w_1552,h_985/fill/w_1110,h_704,fp_0.50_0.50,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/Spherity%20Enterprise%20Wallet%20UI%20UX%202-p-1600.png"
+                            ]
+                        },
+                        "additionalDocumentation": [
+                            {
+                                "title": "European Business Wallet User Guide",
+                                "url": "https://oid.spherity.com/architecture"
+                            },
+                            {
+                                "title": "European Business Wallet Playground",
+                                "url": "https://playground.spherity.com/"
+                            }
+                        ],
                         "vcFormat": [
                             "sd_jwt_vc",
                             "jwt_vc",
@@ -1094,6 +1173,9 @@
                             "W3C VCDM 2.0",
                             "SD-JWT VC",
                             "eIDAS"
+                        ],
+                        "features": [
+                            "Integration of external identity providers based on OAuth 2.0"
                         ],
                         "status": "production",
                         "capabilities": [
@@ -1204,12 +1286,21 @@
                     {
                         "id": "vs-agent-verana-business-wallet",
                         "name": "VS Agent - Verana Business Wallet",
-                        "description": "VS Agent is the reference implementation of a Verifiable Service: an open-source, self-hosted business wallet that gives every service an organization operates a verifiable identity, so anyone can che",
+                        "description": "VS Agent is the reference implementation of a Verifiable Service: an open-source, self-hosted business wallet that gives every service an organization operates a verifiable identity, so anyone can check what it is and who runs it before connecting.\n\nIts DID plugs into the Verana Network, a public decentralized trust infrastructure that no vendor or state controls: join any ecosystem as issuer, verifier or holder, with no platform account and no gatekeeper. Each ecosystem defines its own onboarding process (registry lookup, accreditation, eIDAS-grade KYB if required) and its own privacy-preserving business model: onboarding, pay-per-issuance and pay-per-verification fees settled on-chain, without tracking users. The credential lifecycle is automatic via the vt-flow protocol: onboarding triggers issuance, on-chain revocation reaches the holder.\n\nDIDComm and OpenID4VCI/VP; JSON-LD, AnonCreds and SD-JWT VC. Host chat agents, MCP servers, A2A agents or HTTP APIs under one DID. Apache-2.0.",
                         "logo": "https://verana.io/logo.svg",
+                        "website": "https://playground.testnet.verana.network/business-wallets",
                         "type": "organizational",
                         "openSource": true,
                         "license": "Apache-2.0",
+                        "repository": "https://github.com/verana-labs/vs-agent/",
                         "deploymentModel": "on_premises",
+                        "pricing": "The wallet is free and always will be. VS Agent is the reference implementation of a Verifiable Service, published under the Apache-2.0 license and stewarded as part of the Verana Foundation's mission: trust infrastructure only works if anyone can inspect it, run it and build on it without asking permission. No license fee, no usage tier, no hosted lock-in: you self-host the container and keep full control of your keys, data and DID.\n\nThere is no software vendor to pay; value flows between ecosystem participants instead. You pay your own hosting, the network fees of the Verana Verifiable Public Registry, and the fees each ecosystem defines for its privacy-preserving business models: onboarding, pay-per-issuance and pay-per-verification, settled on-chain, backed by reclaimable trust deposits, and charged without tracking users or monetizing their data. Commercial support and integration services are available from Verana Labs and ecosystem partners.",
+                        "media": {
+                            "images": [
+                                "https://fides.community/app/uploads/2026/08/signal-2026-08-06-10-07-13-189_002.jpg",
+                                "https://fides.community/app/uploads/2026/08/signal-2026-08-06-10-09-54-647_002.jpg"
+                            ]
+                        },
                         "vcFormat": [
                             "sd_jwt_vc",
                             "anoncreds"
@@ -1227,6 +1318,10 @@
                         "supportedIdentifiers": [
                             "did:web",
                             "did:webvh"
+                        ],
+                        "features": [
+                            "mrtd support",
+                            "webrtc over DIDComm"
                         ],
                         "status": "production",
                         "capabilities": [
